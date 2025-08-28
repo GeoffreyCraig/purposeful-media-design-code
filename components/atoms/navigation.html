@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Services - Export Test</title>
+    <style>
+        .navigation,
+.navigation * {
+    box-sizing: border-box;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.h-1 {
+    color: var(--menusimple, #ffffff);
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 36px;
+    line-height: 54px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* variant styles */
+.navigation.state-accent-default .h-1,
+.navigation.state-accent-default .h-2,
+.navigation.state-accent-default .h-3,
+.navigation.state-accent-default .h-5,
+.navigation.state-accent-default .h-6 {
+    color: var(--accentsimple, #d4af37)
+}
+
+.navigation:hover .h-1,
+.navigation.state-hover .h-1,
+.navigation:hover .h-2,
+.navigation.state-hover .h-2,
+.navigation:hover .h-5,
+.navigation.state-hover .h-5,
+.navigation:hover .h-6,
+.navigation.state-hover .h-6 {
+    color: var(--hoversimple, #dcbe5d)
+}
+
+.navigation.state-active .h-1,
+.navigation.state-active .h-2,
+.navigation.state-active .h-3,
+.navigation.state-active .h-5,
+.navigation.state-active .h-6 {
+    color: var(--activesimple, #b39226)
+}
+
+.navigation.state-disabled .h-1,
+.navigation.state-disabled .h-2,
+.navigation.state-disabled .h-3,
+.navigation.state-disabled .h-5,
+.navigation.state-disabled .h-6 {
+    color: var(--menudisabled, #868f97)
+}
+
+.navigation.size-h-2-30 .h-2 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative
+}
+
+.navigation.state-default.type-simple .h-2 {
+    color: var(--menusimple, #ffffff)
+}
+
+.navigation.type-accordion .h-2,
+.navigation.type-footer:hover .h-4,
+.navigation.state-hover.type-footer .h-4 {
+    color: var(--menudrop, #1b1464)
+}
+
+.navigation.size-h-3-24 .h-3,
+.navigation.size-h-4-21 .h-3 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative
+}
+
+.navigation.state-default .h-3,
+.navigation.state-active.type-footer .h-4 {
+    color: var(--reverse, #ffffff)
+}
+
+.navigation.size-h-4-21 .h-4 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    position: relative
+}
+
+.navigation.state-default .h-4 {
+    color: var(--menudrop, #1b1464);
+    line-height: 30.5px
+}
+
+.navigation:hover .h-4,
+.navigation.state-hover .h-4,
+.navigation.state-active .h-4 {
+    line-height: 30.5px
+}
+
+.navigation.type-drop-down:hover .h-4,
+.navigation.state-hover.type-drop-down .h-4 {
+    color: var(--hoverdrop, #1d50de);
+    text-decoration: underline
+}
+
+.navigation.state-active.type-drop-down .h-4 {
+    color: var(--activedrop, #06102b)
+}
+
+.navigation.state-disabled.type-drop-down .h-4 {
+    color: var(--menudisabled, #868f97);
+    line-height: 30.5px
+}
+
+.navigation.state-disabled.type-footer .h-4 {
+    color: var(--muted, #c7cbcf);
+    line-height: 31.5px
+}
+
+.navigation.size-h-5-18 .h-5 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative
+}
+
+.navigation.state-default .h-5,
+.navigation.state-default .h-6 {
+    color: var(--heading, #1b1464)
+}
+
+.navigation.size-h-6-16 .h-6 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative
+}
+    </style>
+</head>
+<body>
+    <div class="size-h-1-36-pt-type-simple-state-default">
+    <div class="headline">
+        <div class="h-1"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-1-36-pt-type-simple-state-accent-default">
+    <div class="headline">
+        <div class="h-1"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-1-36-pt-type-simple-state-hover">
+    <div class="headline">
+        <div class="h-1"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-1-36-pt-type-simple-state-active">
+    <div class="headline">
+        <div class="h-1"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-1-36-pt-type-simple-state-disabled">
+    <div class="headline">
+        <div class="h-1"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-2-30-type-simple-state-default">
+    <div class="headline">
+        <div class="h-2"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-2-30-type-simple-state-accent-default">
+    <div class="headline">
+        <div class="h-2"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-2-30-type-simple-state-active">
+    <div class="headline">
+        <div class="h-2"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-2-30-type-simple-state-hover">
+    <div class="headline">
+        <div class="h-2"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-2-30-type-simple-state-disabled">
+    <div class="headline">
+        <div class="h-2"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-2-30-type-accordion-state-default">
+    <div class="headline">
+        <div class="h-2"> Accordion Item </div>
+    </div>
+</div>
+  <div class="size-h-3-24-type-simple-state-default">
+    <div class="headline">
+        <div class="h-3"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-3-24-type-simple-state-accent-default">
+    <div class="headline">
+        <div class="h-3"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-4-21-type-simple-state-default">
+    <div class="headline">
+        <div class="h-3"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-3-24-type-simple-state-active">
+    <div class="headline">
+        <div class="h-3"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-3-24-type-simple-state-disabled">
+    <div class="headline">
+        <div class="h-3"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-4-21-type-drop-down-state-default">
+    <div class="headline">
+        <div class="h-4"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-4-21-type-drop-down-state-hover">
+    <div class="headline">
+        <div class="h-4"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-4-21-type-drop-down-state-active">
+    <div class="headline">
+        <div class="h-4"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-4-21-type-drop-down-state-disabled">
+    <div class="headline">
+        <div class="h-4"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-4-21-type-footer-state-default">
+    <div class="headline">
+        <div class="h-4"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-4-21-type-footer-state-hover">
+    <div class="headline">
+        <div class="h-4"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-4-21-type-footer-state-active">
+    <div class="headline">
+        <div class="h-4"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-4-21-type-footer-state-disabled">
+    <div class="headline">
+        <div class="h-4"> Disabled State </div>
+    </div>
+</div>
+  <div class="size-h-5-18-type-simple-state-default">
+    <div class="headline">
+        <div class="h-5"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-5-18-type-simple-state-accent-default">
+    <div class="headline">
+        <div class="h-5"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-5-18-type-simple-state-hover">
+    <div class="headline">
+        <div class="h-5"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-5-18-type-simple-state-active">
+    <div class="headline">
+        <div class="h-5"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-5-18-type-simple-state-disabled">
+    <div class="headline">
+        <div class="h-5"> Disabled State </div>
+    </div>
+</div>
+  <div class="size-h-6-16-type-simple-state-default">
+    <div class="headline">
+        <div class="h-6"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-6-16-type-simple-state-accent-default">
+    <div class="headline">
+        <div class="h-6"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-6-16-type-simple-state-hover">
+    <div class="headline">
+        <div class="h-6"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-6-16-type-simple-state-active">
+    <div class="headline">
+        <div class="h-6"> Menu Item </div>
+    </div>
+</div>
+  <div class="size-h-6-16-type-simple-state-disabled">
+    <div class="headline">
+        <div class="h-6"> Disabled State </div>
+    </div>
+</div>
+</body>
+</html>
