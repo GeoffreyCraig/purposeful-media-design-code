@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Services - Export Test</title>
+    <style>
+        .quote,
+.quote * {
+    box-sizing: border-box;
+}
+
+.quote {
+    padding: 29px 50px 29px 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+    color: var(--body, #51585e);
+    text-align: left;
+    font-family: 'OpenSans-SemiboldItalic', sans-serif;
+    font-size: 52px;
+    line-height: 78px;
+    font-weight: 600;
+    font-style: italic;
+    position: relative;
+    flex: 1;
+}
+
+/* variant styles */
+.quote.color-light .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+    color: var(--muted, #c7cbcf)
+}
+
+.quote.color-brand .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+    color: var(--heading, #1b1464)
+}
+
+.quote.color-reverse .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+    color: var(--reverse, #ffffff)
+}
+
+.quote.size-large .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+    font-size: 30px;
+    line-height: 45px
+}
+
+.quote.size-medium .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+    font-size: 24px;
+    line-height: 36px
+}
+    </style>
+</head>
+<body>
+    <div class="size-oversize-color-default">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-oversize-color-light">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-oversize-color-brand">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-oversize-color-reverse">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-large-color-default">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-large-color-light">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-large-color-brand">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-large-color-reverse">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-medium-color-default">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-medium-color-light">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-medium-color-brand">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+<div class="size-medium-color-reverse">
+    <div class="lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit"> &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit,...&quot; </div>
+</div>
+</body>
+</html>
