@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Services - Export Test</title>
+    <style>
+        .paragraph,
+.paragraph * {
+    box-sizing: border-box;
+}
+
+.paragraph {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.paragraph-24-36-h-semi-bold {
+    color: var(--body, #51585e);
+    text-align: left;
+    font-family: 'OpenSans-Semibold', sans-serif;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 600;
+    position: relative;
+    flex: 1;
+}
+
+/* variant styles */
+.paragraph.color-reverse .paragraph-24-36-h-semi-bold {
+    color: var(--reverse, #ffffff)
+}
+
+.paragraph.color-brand .paragraph-24-36-h-semi-bold {
+    color: var(--heading, #1b1464)
+}
+
+.paragraph.color-light .paragraph-24-36-h-semi-bold {
+    color: var(--muted, #c7cbcf)
+}
+
+.paragraph.color-default .paragraph-text-18-27-h {
+    color: var(--body, #51585e);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-reverse .paragraph-text-18-27-h {
+    color: var(--reverse, #ffffff);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-brand .paragraph-text-18-27-h {
+    color: var(--heading, #1b1464);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-light .paragraph-text-18-27-h {
+    color: var(--muted, #c7cbcf);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-default .paragraph-text-21-31-5-h {
+    color: var(--body, #51585e);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 21px;
+    line-height: 31.5px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-light .paragraph-text-21-30-5-h {
+    color: var(--muted, #c7cbcf);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 21px;
+    line-height: 31.5px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-reverse .paragraph-text-21-30-5-h {
+    color: var(--reverse, #ffffff);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 21px;
+    line-height: 31.5px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-brand .paragraph-text-21-30-5-h {
+    color: var(--heading, #1b1464);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 21px;
+    line-height: 31.5px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-default .form-text-18-18-h {
+    color: var(--body, #51585e);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-focus .form-text-18-18-h {
+    color: var(--focus, #06102b);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-error .form-text-18-18-h {
+    color: var(--error, #ef4444);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-disabled .form-text-18-18-h {
+    color: var(--disabled, #a2a9af);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-placeholder-italic .form-text-18-18-h {
+    color: var(--disabled, #a2a9af);
+    text-align: left;
+    font-family: 'OpenSans-LightItalic', sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 300;
+    font-style: italic;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-default .paragraph-text-12-18-h {
+    color: var(--body, #51585e);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-light .paragraph-text-12-18-h {
+    color: var(--muted, #c7cbcf);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-reverse .paragraph-text-12-18-h {
+    color: var(--reverse, #ffffff);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-brand .paragraph-text-12-18-h {
+    color: var(--heading, #1b1464);
+    text-align: left;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-default .helper-text-12-12-h-italic {
+    color: var(--body, #51585e);
+    text-align: left;
+    font-family: 'OpenSans-Italic', sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-error .helper-text-12-12-h-italic {
+    color: var(--error, #ef4444);
+    text-align: left;
+    font-family: 'OpenSans-Italic', sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-disabled .helper-text-12-12-h-italic {
+    color: var(--disabled, #a2a9af);
+    text-align: left;
+    font-family: 'OpenSans-Italic', sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.size-captions {
+    justify-content: center
+}
+
+.paragraph.color-default .captions-and-attribution {
+    color: var(--body, #51585e);
+    text-align: center;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-light .captions-and-attribution {
+    color: var(--muted, #c7cbcf);
+    text-align: center;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-reverse .captions-and-attribution {
+    color: var(--reverse, #ffffff);
+    text-align: center;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+
+.paragraph.color-brand .captions-and-attribution {
+    color: var(--heading, #1b1464);
+    text-align: center;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 400;
+    position: relative;
+    flex: 1
+}
+    </style>
+</head>
+<body>
+    <div class="color-default-size-large">
+    <div class="paragraph-24-36-h-semi-bold"> Paragraph 24 36h Semi-Bold </div>
+</div>
+  <div class="color-reverse-size-large">
+    <div class="paragraph-24-36-h-semi-bold"> Paragraph 24 36h Semi-Bold </div>
+</div>
+  <div class="color-brand-size-large">
+    <div class="paragraph-24-36-h-semi-bold"> Paragraph 24 36h Semi-Bold </div>
+</div>
+  <div class="color-light-size-large">
+    <div class="paragraph-24-36-h-semi-bold"> Paragraph 24 36h Semi-Bold </div>
+</div>
+  <div class="color-default-size-default">
+    <div class="paragraph-text-18-27-h"> Paragraph Text 18 27h </div>
+</div>
+  <div class="color-reverse-size-default">
+    <div class="paragraph-text-18-27-h"> Paragraph Text 18 27h </div>
+</div>
+  <div class="color-brand-size-default">
+    <div class="paragraph-text-18-27-h"> Paragraph Text 18 27h </div>
+</div>
+  <div class="color-light-size-default">
+    <div class="paragraph-text-18-27-h"> Paragraph Text 18 27h </div>
+</div>
+  <div class="color-default-size-lead">
+    <div class="paragraph-text-21-31-5-h"> Paragraph Text 21 31.5h </div>
+</div>
+  <div class="color-light-size-lead">
+    <div class="paragraph-text-21-30-5-h"> Paragraph Text 21 31.5h </div>
+</div>
+  <div class="color-reverse-size-lead">
+    <div class="paragraph-text-21-30-5-h"> Paragraph Text 21 31.5h </div>
+</div>
+  <div class="color-brand-size-lead">
+    <div class="paragraph-text-21-30-5-h"> Paragraph Text 21 31.5h </div>
+</div>
+  <div class="color-default-size-form">
+    <div class="form-text-18-18-h"> Form Text 18 18h </div>
+</div>
+  <div class="color-focus-size-form">
+    <div class="form-text-18-18-h"> Form Text 18 18h </div>
+</div>
+  <div class="color-error-size-form">
+    <div class="form-text-18-18-h"> Form Text 18 18h </div>
+</div>
+  <div class="color-disabled-size-form">
+    <div class="form-text-18-18-h"> Form Text 18 18h </div>
+</div>
+  <div class="color-placeholder-italic-size-form">
+    <div class="form-text-18-18-h"> Form Text 18 18h </div>
+</div>
+  <div class="color-default-size-small">
+    <div class="paragraph-text-12-18-h"> Paragraph Text 12 18h </div>
+</div>
+  <div class="color-light-size-small">
+    <div class="paragraph-text-12-18-h"> Paragraph Text 12 18h </div>
+</div>
+  <div class="color-reverse-size-small">
+    <div class="paragraph-text-12-18-h"> Paragraph Text 12 18h </div>
+</div>
+  <div class="color-brand-size-small">
+    <div class="paragraph-text-12-18-h"> Paragraph Text 12 18h </div>
+</div>
+  <div class="color-default-size-helper">
+    <div class="helper-text-12-12-h-italic"> Helper Text 12 12h Italic </div>
+</div>
+  <div class="color-error-size-helper">
+    <div class="helper-text-12-12-h-italic"> Helper Text 12 12h Italic </div>
+</div>
+  <div class="color-disabled-size-helper">
+    <div class="helper-text-12-12-h-italic"> Helper Text 12 12h Italic </div>
+</div>
+  <div class="color-default-size-captions">
+    <div class="captions-and-attribution"> Captions and Attribution </div>
+</div>
+  <div class="color-light-size-captions">
+    <div class="captions-and-attribution"> Captions and Attribution </div>
+</div>
+  <div class="color-reverse-size-captions">
+    <div class="captions-and-attribution"> Captions and Attribution </div>
+</div>
+  <div class="color-brand-size-captions">
+    <div class="captions-and-attribution"> Captions and Attribution </div>
+</div>
+</body>
+</html>
