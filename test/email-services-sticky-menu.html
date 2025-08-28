@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Services - Sticky Menu</title>
+    <style>
+        /* Container styles from Figma */
+        .sticky-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            align-self: stretch;
+            
+            /* Adding positioning for sticky behavior */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #1B1464; /* Your brand navy */
+            padding: 16px 0;
+        }
+        
+        /* Navigation container */
+        .sticky-menu nav {
+            display: flex;
+            gap: 32px;
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Nav items */
+        .sticky-menu a {
+            color: white;
+            text-decoration: none;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        .sticky-menu a:hover {
+            background-color: #DCBE5D; /* Your gold accent */
+            color: #1B1464;
+        }
+        
+        .sticky-menu a.active {
+            background-color: #B39226; /* Darker gold for active */
+            color: white;
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            .sticky-menu nav {
+                gap: 16px;
+            }
+            
+            /* Hide middle items on mobile */
+            .sticky-menu a:not(.current):not(.cta) {
+                display: none;
+            }
+            
+            .sticky-menu a.current {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sticky-menu" data-node-id="4708-1200">
+        <nav>
+            <a href="#overview">Overview</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#method">Method</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#resources">Resources</a>
+            <a href="#faq">FAQ</a>
+            <a href="#get-started" class="cta">Get Started</a>
+        </nav>
+    </div>
+</body>
+</html>
