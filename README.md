@@ -1,7 +1,7 @@
 # purposeful-media-design-code
 Code export repository for the Purposeful Media Minimum Viable Website code from Figma.
 **Folder Structure**
-/purposeful-media-web
+/purposeful-media-web\
     /components
         /atoms
         /molecules
