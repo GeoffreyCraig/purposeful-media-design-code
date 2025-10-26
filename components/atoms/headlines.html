@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Services - Export Test</title>
+    <style>
+        .headline,
+.headline * {
+    box-sizing: border-box;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.h-1 {
+    color: var(--heading, #1b1464);
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 36px;
+    line-height: 54px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* variant styles */
+.headline.case-default .h-1 {
+    text-transform: unset
+}
+
+.headline.color-reverse .h-1,
+.headline.color-reverse .h-2,
+.headline.color-reverse .h-3,
+.headline.color-reverse .h-5,
+.headline.color-reverse .h-6 {
+    color: var(--reverse, #ffffff)
+}
+
+.headline.color-dark .h-1,
+.headline.color-dark .h-2,
+.headline.color-dark .h-3,
+.headline.color-dark .h-5,
+.headline.color-dark .h-6 {
+    color: var(--dark, #51585e)
+}
+
+.headline.color-gray .h-1,
+.headline.color-gray .h-2,
+.headline.color-gray .h-3,
+.headline.color-gray .h-5,
+.headline.color-gray .h-6 {
+    color: var(--muted, #c7cbcf)
+}
+
+.headline.case-upper .h-2 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative
+}
+
+.headline.color-default .h-2,
+.headline.color-default .h-3,
+.headline.color-default .h-5,
+.headline.color-default .h-6 {
+    color: var(--heading, #1b1464)
+}
+
+.headline.case-default .h-2 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 400;
+    position: relative
+}
+
+.headline.case-upper .h-3 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative
+}
+
+.headline.case-default .h-3 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+    position: relative
+}
+
+.headline.case-upper .h-4 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative
+}
+
+.headline.color-default .h-4 {
+    color: var(--heading, #1b1464);
+    line-height: 30.5px
+}
+
+.headline.case-default .h-4 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    position: relative
+}
+
+.headline.color-reverse .h-4 {
+    color: var(--reverse, #ffffff);
+    line-height: 30.5px
+}
+
+.headline.color-dark .h-4 {
+    color: var(--dark, #51585e);
+    line-height: 30.5px
+}
+
+.headline.color-gray .h-4 {
+    color: var(--muted, #c7cbcf);
+    line-height: 31.5px
+}
+
+.headline.case-upper .h-5 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative
+}
+
+.headline.case-default .h-5 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    position: relative
+}
+
+.headline.case-upper .h-6 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative
+}
+
+.headline.case-default .h-6 {
+    text-align: left;
+    font-family: 'Lato-Heavy', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative
+}
+    </style>
+</head>
+<body>
+   <div class="color-default-size-h-1-case-upper">
+    <div class="h-1"> H1 Headline 36 54h </div>
+</div>
+  <div class="color-reverse-size-h-1-case-upper">
+    <div class="h-1"> H1 Headline 36 54h </div>
+</div>
+  <div class="color-reverse-size-h-1-case-default">
+    <div class="h-1"> H1 Headline 36 54h </div>
+</div>
+  <div class="color-dark-size-h-1-case-upper">
+    <div class="h-1"> H1 Headline 36 54h </div>
+</div>
+  <div class="color-dark-size-h-1-case-default">
+    <div class="h-1"> H1 Headline 36 54h </div>
+</div>
+  <div class="color-gray-size-h-1-case-upper">
+    <div class="h-1"> H1 Headline 36 54h </div>
+</div>
+  <div class="color-gray-size-h-1-case-default">
+    <div class="h-1"> H1 Headline 36 54h </div>
+</div>
+  <div class="color-default-size-h-2-case-upper">
+    <div class="h-2"> H2 Headline 30 45h </div>
+</div>
+  <div class="color-default-size-h-2-case-default">
+    <div class="h-2"> H2 Headline 30 45h </div>
+</div>
+  <div class="color-reverse-size-h-2-case-upper">
+    <div class="h-2"> H2 Headline 30 45h </div>
+</div>
+  <div class="color-reverse-size-h-2-case-default">
+    <div class="h-2"> H2 Headline 30 45h </div>
+</div>
+  <div class="color-dark-size-h-2-case-upper">
+    <div class="h-2"> H2 Headline 30 45h </div>
+</div>
+  <div class="color-dark-size-h-2-case-default">
+    <div class="h-2"> H2 Headline 30 45h </div>
+</div>
+  <div class="color-gray-size-h-2-case-upper">
+    <div class="h-2"> H2 Headline 30 45h </div>
+</div>
+  <div class="color-gray-size-h-2-case-default">
+    <div class="h-2"> H2 Headline 30 45h </div>
+</div>
+  <div class="color-default-size-h-3-case-upper">
+    <div class="h-3"> H3 Headline 24 36h </div>
+</div>
+  <div class="color-default-size-h-3-case-default">
+    <div class="h-3"> H3 Headline 24 36h </div>
+</div>
+  <div class="color-reverse-size-h-3-case-upper">
+    <div class="h-3"> H3 Headline 24 36h </div>
+</div>
+  <div class="color-reverse-size-h-3-case-default">
+    <div class="h-3"> H3 Headline 24 36h </div>
+</div>
+  <div class="color-dark-size-h-3-case-upper">
+    <div class="h-3"> H3 Headline 24 36h </div>
+</div>
+  <div class="color-dark-size-h-3-case-default">
+    <div class="h-3"> H3 Headline 24 36h </div>
+</div>
+  <div class="color-gray-size-h-3-case-upper">
+    <div class="h-3"> H3 Headline 24 36h </div>
+</div>
+  <div class="color-gray-size-h-3-case-default">
+    <div class="h-3"> H3 Headline 24 36h </div>
+</div>
+  <div class="color-default-size-h-4-case-upper">
+    <div class="h-4"> H4 Headline 21 31.5h </div>
+</div>
+  <div class="color-default-size-h-4-case-default">
+    <div class="h-4"> H4 Headline 21 31.5h </div>
+</div>
+  <div class="color-reverse-size-h-4-case-upper">
+    <div class="h-4"> H4 Headline 21 31.5h </div>
+</div>
+  <div class="color-reverse-size-h-4-case-default">
+    <div class="h-4"> H4 Headline 21 31.5h </div>
+</div>
+  <div class="color-dark-size-h-4-case-upper">
+    <div class="h-4"> H4 Headline 21 31.5h </div>
+</div>
+  <div class="color-dark-size-h-4-case-default">
+    <div class="h-4"> H4 Headline 21 31.5h </div>
+</div>
+  <div class="color-gray-size-h-4-case-upper">
+    <div class="h-4"> H4 Headline 21 31.5h </div>
+</div>
+  <div class="color-gray-size-h-4-case-default">
+    <div class="h-4"> H4 Headline 21 31.5h </div>
+</div>
+  <div class="color-default-size-h-5-case-upper">
+    <div class="h-5"> H5 Headline 18 27H </div>
+</div>
+  <div class="color-default-size-h-5-case-default">
+    <div class="h-5"> H5 Headline 18 27H </div>
+</div>
+  <div class="color-reverse-size-h-5-case-default">
+    <div class="h-5"> H5 Headline 18 27H </div>
+</div>
+  <div class="color-dark-size-h-5-case-default">
+    <div class="h-5"> H5 Headline 18 27H </div>
+</div>
+  <div class="color-gray-size-h-5-case-upper">
+    <div class="h-5"> H5 Headline 18 27H </div>
+</div>
+  <div class="color-gray-size-h-5-case-default">
+    <div class="h-5"> H5 Headline 18 27H </div>
+</div>
+  <div class="color-default-size-h-6-case-upper">
+    <div class="h-6"> H6 Headline 16 24H </div>
+</div>
+  <div class="color-default-size-h-6-case-default">
+    <div class="h-6"> H6 Headline 16 24H </div>
+</div>
+  <div class="color-reverse-size-h-6-case-upper">
+    <div class="h-6"> H6 Headline 16 24H </div>
+</div>
+  <div class="color-reverse-size-h-6-case-default">
+    <div class="h-6"> H6 Headline 16 24H </div>
+</div>
+  <div class="color-dark-size-h-6-case-upper">
+    <div class="h-6"> H6 Headline 16 24H </div>
+</div>
+  <div class="color-dark-size-h-6-case-default">
+    <div class="h-6"> H6 Headline 16 24H </div>
+</div>
+  <div class="color-gray-size-h-6-case-upper">
+    <div class="h-6"> H6 Headline 16 24H </div>
+</div>
+  <div class="color-gray-size-h-6-case-default">
+    <div class="h-6"> H6 Headline 16 24H </div>
+</div>
+</div>
+</body>
+</html>
