@@ -1,0 +1,182 @@
+.card-paragraph-options,
+.card-paragraph-options * {
+  box-sizing: border-box;
+}
+.card-paragraph-options {
+  background: var(--primary, #ffffff);
+  border-radius: 0.25rem;
+  padding: 2rem 2rem 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    0.25rem 0.25rem 0.75rem 0rem rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.headline {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.iconography {
+  flex-shrink: 0;
+  width: 5.625rem;
+  height: 5.625rem;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.h-2 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 1.875rem;
+  line-height: 2.8125rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.paragraph-text-18-27-h {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+  width: 33.5rem;
+}
+.buttons-button {
+  background: var(--default, #1b1464);
+  border-radius: 0.25rem;
+  padding: 1rem 5rem 1rem 5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 3.125rem;
+  position: relative;
+}
+.label {
+  color: var(--reverse, #ffffff);
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+/* variant styles */
+.card-paragraph-options.color-default:hover .buttons-button,
+.card-paragraph-options.color-default.state-hover .buttons-button,
+.card-paragraph-options.color-gray:hover .buttons-button,
+.card-paragraph-options.color-gray.state-hover .buttons-button {
+  background: var(--hover, #1d50de);
+}
+.card-paragraph-options.color-default.state-active .buttons-button,
+.card-paragraph-options.color-gray.state-active .buttons-button {
+  background: var(--active, #06102b);
+}
+.card-paragraph-options.state-disabled .buttons-button {
+  background: var(--disabled, #868f97);
+}
+.card-paragraph-options.state-disabled .label,
+.card-paragraph-options.color-reverse .paragraph-text-18-27-h {
+  color: var(--muted, #c7cbcf);
+}
+.card-paragraph-options.color-gray {
+  background: var(--secondary, #eceeef);
+}
+.card-paragraph-options.color-reverse {
+  background: var(--brand, #1b1464);
+}
+.card-paragraph-options.color-reverse .h-2,
+.card-paragraph-options.color-reverse .h-3,
+.card-paragraph-options.color-reverse .h-4 {
+  color: var(--reverse, #ffffff);
+}
+.card-paragraph-options.color-reverse.state-default .buttons-button {
+  background: var(--default, #d4af37);
+}
+.card-paragraph-options.color-reverse.state-default .label,
+.card-paragraph-options.color-reverse:hover .label,
+.card-paragraph-options.color-reverse.state-hover .label,
+.card-paragraph-options.color-reverse.state-active .label,
+.card-paragraph-options.color-default .h-3,
+.card-paragraph-options.color-gray .h-3,
+.card-paragraph-options.color-default .h-4,
+.card-paragraph-options.color-gray .h-4 {
+  color: var(--heading, #1b1464);
+}
+.card-paragraph-options.color-reverse:hover .buttons-button,
+.card-paragraph-options.color-reverse.state-hover .buttons-button {
+  background: var(--hover, #dcbe5d);
+}
+.card-paragraph-options.color-reverse.state-active .buttons-button {
+  background: var(--active, #b39226);
+}
+.card-paragraph-options.break-point-desktop .paragraph-text-18-27-h {
+  width: 27.25rem;
+}
+.card-paragraph-options.break-point-tablet .h-3 {
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.card-paragraph-options.break-point-tablet .paragraph-text-18-27-h {
+  width: 21rem;
+}
+.card-paragraph-options.break-point-tablet .buttons-button {
+  padding: 0.75rem 4rem 0.75rem 4rem;
+  height: 2.625rem;
+}
+.card-paragraph-options.break-point-mobile {
+  width: 20rem;
+}
+.card-paragraph-options.break-point-mobile .headline {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.card-paragraph-options.break-point-mobile .h-4 {
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 1.3125rem;
+  line-height: 1.90625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+  width: 16rem;
+}
+.card-paragraph-options.break-point-mobile .paragraph-text-18-27-h {
+  width: 16rem;
+}
+.card-paragraph-options.break-point-mobile .buttons-button {
+  padding: 0.5rem 4rem 0.5rem 4rem;
+  height: 2.125rem;
+}
+.card-paragraph-options.break-point-mobile.color-reverse .buttons-button {
+  align-self: stretch;
+}

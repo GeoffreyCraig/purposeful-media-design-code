@@ -1,0 +1,405 @@
+/* =============================================
+   PURPOSEFUL MEDIA - UNIFIED DESIGN TOKENS
+   Consolidated from all raw exports and existing tokens
+   Following design system rules and 8px grid system
+   ============================================= */
+
+/* =============== FONT IMPORTS =============== */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap');
+
+/* =============== COLOR TOKENS =============== */
+:root {
+  /* Primary Brand Colors */
+  --brand: #1B1464;             /* Primary brand navy blue */
+  --color-brand: #1B1464;       /* Alias for compatibility */
+  --accent: #D4AF37;            /* Gold accent */
+  --color-accent: #D4AF37;      /* Alias for compatibility */
+  --heading: #1B1464;           /* Heading color (same as brand) */
+  --color-heading: #1B1464;     /* Alias for compatibility */
+  --reverse: #FFFFFF;           /* White for reversed contexts */
+  --color-reverse: #FFFFFF;     /* Alias for compatibility */
+  --default: #D4AF37;           /* Default accent color */
+  
+  /* Interactive States */
+  --hover: #1D50DE;             /* Bright blue hover */
+  --active: #06102B;            /* Very dark navy active */
+  --hover-light: #DCBE5D;       /* Light gold hover */
+  --hover-dark: #B39226;        /* Dark gold hover */
+  
+  /* Semantic Colors */
+  --error: #FF0000;             /* Error states */
+  --color-error: #FF0000;       /* Alias for compatibility */
+  --success: #00FF00;           /* Success states */
+  --color-success: #00FF00;     /* Alias for compatibility */
+  --warning: #F97316;           /* Warning states */
+  --color-warning: #F97316;     /* Alias for compatibility */
+  --info: #39CCCC;              /* Info states */
+  --color-info: #39CCCC;        /* Alias for compatibility */
+  
+  /* Text Colors */
+  --text-primary: #1B1464;      /* Primary text */
+  --text-secondary: #54595F;    /* Secondary text */
+  --text-reverse: #FFFFFF;      /* Reverse text */
+  --text-muted: #C7CBCF;        /* Muted text */
+  --text-disabled: #868F97;     /* Disabled text */
+  
+  /* Background Colors */
+  --bg-primary: #FFFFFF;        /* Primary background */
+  --color-white: #FFFFFF;       /* Alias for compatibility */
+  --bg-secondary: #F6F6F7;      /* Secondary background */
+  --bg-brand: #1B1464;          /* Brand background */
+  
+  /* Border Colors */
+  --border-subtle: #C7CBCF;     /* Light gray border */
+  --color-neutral-300: #C7CBCF;  /* Alias for compatibility */
+  --border-default: #A2A9AF;    /* Default border */
+  --color-neutral-400: #A2A9AF;  /* Alias for compatibility */
+  --border-strong: #6C757D;     /* Strong border */
+  --color-neutral-500: #6C757D;  /* Alias for compatibility */
+  
+  /* Additional Neutral Colors */
+  --color-neutral-100: #F6F6F7;  /* Light gray */
+  --color-neutral-200: #E9ECEF;  /* Lighter gray */
+  
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+  --gradient-spacer: linear-gradient(180deg, white 0%, var(--brand) 100%);
+}
+
+/* =============== SPACING TOKENS (8px Grid System) =============== */
+:root {
+  /* Base Spacing Units */
+  --space-0: 0;                 /* No spacing */
+  --space-1: 4px;               /* 0.5x base (extra small) */
+  --space-2: 8px;               /* 1x base (small) */
+  --space-3: 12px;              /* 1.5x base (small-medium) */
+  --space-4: 16px;              /* 2x base (medium) */
+  --space-5: 20px;              /* 2.5x base (medium-large) */
+  --space-6: 24px;              /* 3x base (large) */
+  --space-8: 32px;              /* 4x base (extra large) */
+  --space-10: 40px;             /* 5x base (2x extra large) */
+  --space-12: 48px;             /* 6x base (3x extra large) */
+  --space-16: 64px;             /* 8x base (4x extra large) */
+  --space-20: 80px;             /* 10x base (5x extra large) */
+  --space-24: 96px;             /* 12x base (6x extra large) */
+  
+  /* Semantic Spacing (Context-Specific) */
+  --container-padding-x: var(--space-4);    /* 16px horizontal padding */
+  --container-padding-y: var(--space-3);    /* 12px vertical padding */
+  --component-gap: var(--space-3);          /* 12px between components */
+  --section-gap: var(--space-8);            /* 32px between sections */
+  --form-field-gap: var(--space-3);         /* 12px between form fields */
+  --button-padding-x: var(--space-4);       /* 16px button horizontal */
+  --button-padding-y: var(--space-2);       /* 8px button vertical */
+  --hero-padding-mobile: 0;                 /* Mobile hero padding */
+  --hero-padding-desktop: var(--space-10);  /* 40px desktop hero padding */
+}
+
+/* =============== TYPOGRAPHY TOKENS =============== */
+:root {
+  /* Font Families */
+  --font-heading: 'Lato', sans-serif;        /* Headlines use Lato */
+  --font-body: 'Open Sans', sans-serif;      /* Body text uses Open Sans */
+  --font-fallback: system-ui, sans-serif;
+  
+  /* Font Weights */
+  --weight-regular: 400;
+  --font-weight-regular: 400;   /* Alias for compatibility */
+  --weight-bold: 700;
+  --font-weight-bold: 700;      /* Alias for compatibility */
+  --weight-heavy: 900;
+  --font-weight-heavy: 900;     /* Alias for compatibility */
+  
+  /* Desktop Typography Sizes */
+  --text-h1: 36px;
+  --font-size-h1: 36px;         /* Alias for compatibility */
+  --text-h2: 30px;
+  --font-size-h2: 30px;         /* Alias for compatibility */
+  --text-h3: 24px;
+  --font-size-h3: 24px;         /* Alias for compatibility */
+  --text-h4: 21px;
+  --font-size-h4: 21px;         /* Alias for compatibility */
+  --text-h5: 18px;
+  --font-size-h5: 18px;         /* Alias for compatibility */
+  --text-body: 18px;
+  --font-size-body: 18px;       /* Alias for compatibility */
+  --text-small: 16px;
+  --font-size-small: 16px;      /* Alias for compatibility */
+  --text-xs: 14px;
+  --font-size-xs: 14px;         /* Alias for compatibility */
+  
+  /* Mobile Typography Sizes */
+  --text-h1-mobile: 30px;
+  --text-h2-mobile: 24px;
+  --text-h3-mobile: 20px;
+  --text-h4-mobile: 18px;
+  --text-h5-mobile: 16px;
+  --text-body-mobile: 16px;
+  --text-small-mobile: 14px;
+  --text-xs-mobile: 12px;
+  
+  /* Line Heights */
+  --line-height-heading: 1.5;
+  --line-height-body: 1.6;
+  --line-height-tight: 1.2;
+  
+  /* Letter Spacing */
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-normal: 0;
+}
+
+/* =============== RADIUS TOKENS =============== */
+:root {
+  --radius-none: 0;
+  --radius-small: 4px;          /* Small radius */
+  --radius-medium: 8px;         /* Medium radius */
+  --radius-large: 12px;         /* Large radius */
+  --radius-round: 999px;        /* Pill shape */
+}
+
+/* =============== SHADOW TOKENS =============== */
+:root {
+  --shadow-none: none;
+  --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-standard: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --shadow-strong: 0 12px 24px rgba(0, 0, 0, 0.25);
+  --shadow-focus: 0 0 0 3px rgba(27, 20, 100, 0.1);
+}
+
+/* =============== BORDER TOKENS =============== */
+:root {
+  --border-none: 0;
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 4px;
+  --border-style: solid;
+  
+  /* Common Border Combinations */
+  --border-default: var(--border-thin) var(--border-style) var(--border-subtle);
+  --border-accent: var(--border-thick) var(--border-style) var(--accent);
+  --border-primary: var(--border-thick) var(--border-style) var(--brand);
+  --border-focus: var(--border-medium) var(--border-style) var(--brand);
+}
+
+/* =============== BREAKPOINT TOKENS =============== */
+:root {
+  /* Core Breakpoints - Only two padding states needed */
+  --breakpoint-mobile-max: 767px;
+  --breakpoint-desktop-min: 768px;
+  
+  /* Full Breakpoint System for Layout */
+  --breakpoint-mobile-min: 320px;
+  --breakpoint-tablet-min: 768px;
+  --breakpoint-tablet-max: 1149px;
+  --breakpoint-desktop-max: 1919px;
+  --breakpoint-desktop-plus: 1920px;
+  
+  /* Container Behavior */
+  --container-max-width: 1920px;
+  --container-mobile-padding: 0;
+  --container-desktop-padding: var(--space-10); /* 40px */
+}
+
+/* =============== COMPONENT-SPECIFIC TOKENS =============== */
+:root {
+  /* Button Tokens */
+  --button-height-small: 36px;
+  --button-height-medium: 44px;
+  --button-height-large: 52px;
+  --button-min-width: 120px;
+  --button-border-radius: var(--radius-small);
+  
+  /* Form Tokens */
+  --input-height: 44px;
+  --input-border-radius: var(--radius-small);
+  --input-padding-x: var(--space-3);
+  --input-padding-y: var(--space-2);
+  
+  /* Card Tokens */
+  --card-border-radius: var(--radius-medium);
+  --card-padding: var(--space-4);
+  --card-shadow: var(--shadow-subtle);
+  
+  /* Navigation Tokens */
+  --nav-height: 80px;
+  --nav-height-mobile: 60px;
+  --nav-padding-x: var(--space-4);
+  --nav-padding-y: var(--space-3);
+  
+  /* Hero Tokens */
+  --hero-aspect-ratio: 16/9;
+  --hero-overlay-opacity: 0.8;
+  --hero-content-max-width: 554px;
+}
+
+/* =============== Z-INDEX TOKENS =============== */
+:root {
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* =============== TRANSITION TOKENS =============== */
+:root {
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.2s ease-in-out;
+  --transition-slow: 0.3s ease-in-out;
+  --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* =============== RESPONSIVE UTILITY TOKENS =============== */
+:root {
+  /* Mobile-first responsive values */
+  --responsive-padding: var(--container-mobile-padding);
+  --responsive-text-h1: var(--text-h1-mobile);
+  --responsive-text-h2: var(--text-h2-mobile);
+  --responsive-text-h3: var(--text-h3-mobile);
+  --responsive-text-body: var(--text-body-mobile);
+  --responsive-nav-height: var(--nav-height-mobile);
+}
+
+/* Desktop overrides */
+@media (min-width: 768px) {
+  :root {
+    --responsive-padding: var(--container-desktop-padding);
+    --responsive-text-h1: var(--text-h1);
+    --responsive-text-h2: var(--text-h2);
+    --responsive-text-h3: var(--text-h3);
+    --responsive-text-body: var(--text-body);
+    --responsive-nav-height: var(--nav-height);
+  }
+}
+
+/* =============== ACCESSIBILITY TOKENS =============== */
+:root {
+  /* Focus indicators */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--accent);
+  
+  /* Touch targets */
+  --touch-target-min: 44px;
+  
+  /* Motion preferences */
+  --motion-reduce: 0.01ms;
+}
+
+/* =============== PRINT TOKENS =============== */
+@media print {
+  :root {
+    --shadow-none: none;
+    --shadow-subtle: none;
+    --shadow-standard: none;
+    --shadow-medium: none;
+    --shadow-strong: none;
+    --brand: #000000;
+    --accent: #666666;
+  }
+}
+
+/* =============== TYPOGRAPHY UTILITY CLASSES =============== */
+/* Base typography styles using correct fonts */
+body {
+  font-family: var(--font-body);
+  font-size: var(--responsive-text-body);
+  line-height: var(--line-height-body);
+  color: var(--text-primary);
+}
+
+/* Heading styles using Lato */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  color: var(--heading);
+  line-height: var(--line-height-heading);
+  margin: 0 0 var(--space-4) 0;
+}
+
+h1 {
+  font-size: var(--responsive-text-h1);
+  font-weight: var(--weight-heavy);
+}
+
+h2 {
+  font-size: var(--responsive-text-h2);
+}
+
+h3 {
+  font-size: var(--responsive-text-h3);
+}
+
+h4 {
+  font-size: var(--text-h4);
+  font-weight: var(--weight-regular);
+}
+
+h5 {
+  font-size: var(--text-h5);
+  font-weight: var(--weight-regular);
+}
+
+h6 {
+  font-size: var(--text-small);
+  font-weight: var(--weight-bold);
+}
+
+/* Paragraph styles using Open Sans */
+p {
+  font-family: var(--font-body);
+  font-size: var(--responsive-text-body);
+  line-height: var(--line-height-body);
+  margin: 0 0 var(--space-4) 0;
+}
+
+/* Small text */
+small, .text-small {
+  font-size: var(--text-small);
+}
+
+/* Extra small text */
+.text-xs {
+  font-size: var(--text-xs);
+}
+
+/* Typography utility classes */
+.text-heading {
+  font-family: var(--font-heading);
+}
+
+.text-body {
+  font-family: var(--font-body);
+}
+
+.font-bold {
+  font-weight: var(--weight-bold);
+}
+
+.font-heavy {
+  font-weight: var(--weight-heavy);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-reverse {
+  color: var(--text-reverse);
+}
+
+.text-brand {
+  color: var(--brand);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+

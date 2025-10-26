@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Dropdown Menu - Purposeful Media Design System</title>
+    
+    <style>
+        /* Header Dropdown Menu Component */
+        .header-dropdown-menu {
+            background-color: #FFFFFF;
+            border-radius: 4px;
+            padding: 0;
+            min-width: 250px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header-dropdown-menu__list {
+            list-style: none;
+            margin: 0;
+            padding: 8px 0;
+        }
+        
+        .header-dropdown-menu__item {
+            margin: 0;
+        }
+        
+        .header-dropdown-menu__link {
+            display: block;
+            padding: 12px 24px;
+            color: #2D3748;
+            font-family: 'Lato', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        /* Hover state */
+        .header-dropdown-menu__link:hover {
+            background-color: #F7FAFC;
+            color: #1B1464;
+        }
+        
+        /* Active/Current page state */
+        .header-dropdown-menu__link--active {
+            color: #1B1464;
+            font-weight: 700;
+        }
+        
+        .header-dropdown-menu__link--active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #D4AF37;
+        }
+        
+        /* Separator */
+        .header-dropdown-menu__separator {
+            height: 1px;
+            background-color: #E2E8F0;
+            margin: 8px 0;
+        }
+        
+        /* Submenu styles */
+        .header-dropdown-menu__item--has-submenu {
+            position: relative;
+        }
+        
+        .header-dropdown-menu__submenu-toggle {
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .header-dropdown-menu__submenu-icon {
+            width: 12px;
+            height: 12px;
+            background-image: url('../assets/svg/ui-icons/purposeful-sprite-ui.svg');
+            background-position: -256px 0; /* Arrow icon */
+            background-size: 1536px 512px;
+            transform: rotate(90deg); /* Point right */
+            transition: transform 0.2s ease;
+        }
+        
+        .header-dropdown-menu__item--expanded .header-dropdown-menu__submenu-icon {
+            transform: rotate(180deg); /* Point down */
+        }
+        
+        /* Submenu list */
+        .header-dropdown-menu__submenu {
+            display: none;
+            background-color: #F7FAFC;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .header-dropdown-menu__item--expanded .header-dropdown-menu__submenu {
+            display: block;
+        }
+        
+        .header-dropdown-menu__submenu .header-dropdown-menu__link {
+            padding-left: 48px;
+            font-size: 14px;
+        }
+        
+        /* Mobile specific styles */
+        @media (max-width: 767px) {
+            .header-dropdown-menu {
+                border-radius: 0;
+                width: 100%;
+                min-width: 100%;
+            }
+            
+            .header-dropdown-menu__link {
+                padding: 16px 20px;
+                font-size: 18px;
+            }
+            
+            .header-dropdown-menu__submenu .header-dropdown-menu__link {
+                padding-left: 40px;
+                font-size: 16px;
+            }
+        }
+        
+        /* Tablet specific styles */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .header-dropdown-menu {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Dropdown Menu Component -->
+    <nav class="header-dropdown-menu" role="navigation" aria-label="Main navigation">
+        <ul class="header-dropdown-menu__list">
+            <!-- Home -->
+            <li class="header-dropdown-menu__item">
+                <a href="/" class="header-dropdown-menu__link header-dropdown-menu__link--active">
+                    Home
+                </a>
+            </li>
+            
+            <!-- Solutions with submenu -->
+            <li class="header-dropdown-menu__item header-dropdown-menu__item--has-submenu">
+                <a href="/solutions" class="header-dropdown-menu__link">
+                    Solutions
+                </a>
+                <button class="header-dropdown-menu__submenu-toggle" aria-label="Toggle submenu">
+                    <span class="header-dropdown-menu__submenu-icon"></span>
+                </button>
+                <ul class="header-dropdown-menu__submenu">
+                    <li class="header-dropdown-menu__item">
+                        <a href="/solutions/email-management" class="header-dropdown-menu__link">
+                            Email Management
+                        </a>
+                    </li>
+                    <li class="header-dropdown-menu__item">
+                        <a href="/solutions/content-creation" class="header-dropdown-menu__link">
+                            Content Creation
+                        </a>
+                    </li>
+                    <li class="header-dropdown-menu__item">
+                        <a href="/solutions/webinar-production" class="header-dropdown-menu__link">
+                            Webinar Production
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            <!-- Resources with submenu -->
+            <li class="header-dropdown-menu__item header-dropdown-menu__item--has-submenu">
+                <a href="/resources" class="header-dropdown-menu__link">
+                    Resources
+                </a>
+                <button class="header-dropdown-menu__submenu-toggle" aria-label="Toggle submenu">
+                    <span class="header-dropdown-menu__submenu-icon"></span>
+                </button>
+                <ul class="header-dropdown-menu__submenu">
+                    <li class="header-dropdown-menu__item">
+                        <a href="/resources/library" class="header-dropdown-menu__link">
+                            Resource Library
+                        </a>
+                    </li>
+                    <li class="header-dropdown-menu__item">
+                        <a href="/about" class="header-dropdown-menu__link">
+                            About Us
+                        </a>
+                    </li>
+                    <li class="header-dropdown-menu__item">
+                        <a href="/blog" class="header-dropdown-menu__link">
+                            Blog
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            <!-- Separator -->
+            <li class="header-dropdown-menu__separator" role="separator"></li>
+            
+            <!-- Contact -->
+            <li class="header-dropdown-menu__item">
+                <a href="/contact" class="header-dropdown-menu__link">
+                    Contact
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- JavaScript for dropdown functionality -->
+    <script>
+        class HeaderDropdownMenu {
+            constructor(element) {
+                this.element = element;
+                this.init();
+            }
+            
+            init() {
+                // Find all submenu toggles
+                const toggles = this.element.querySelectorAll('.header-dropdown-menu__submenu-toggle');
+                
+                toggles.forEach(toggle => {
+                    toggle.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const item = toggle.closest('.header-dropdown-menu__item--has-submenu');
+                        this.toggleSubmenu(item);
+                    });
+                    
+                    // Also allow clicking on the parent link to toggle on mobile
+                    if (window.innerWidth < 1150) {
+                        const parentLink = toggle.previousElementSibling;
+                        parentLink.addEventListener('click', (e) => {
+                            if (toggle.closest('.header-dropdown-menu__item--has-submenu')) {
+                                e.preventDefault();
+                                const item = toggle.closest('.header-dropdown-menu__item--has-submenu');
+                                this.toggleSubmenu(item);
+                            }
+                        });
+                    }
+                });
+            }
+            
+            toggleSubmenu(item) {
+                const isExpanded = item.classList.contains('header-dropdown-menu__item--expanded');
+                
+                // Close all other submenus
+                const allItems = this.element.querySelectorAll('.header-dropdown-menu__item--expanded');
+                allItems.forEach(i => i.classList.remove('header-dropdown-menu__item--expanded'));
+                
+                // Toggle current submenu
+                if (!isExpanded) {
+                    item.classList.add('header-dropdown-menu__item--expanded');
+                }
+            }
+        }
+        
+        // Initialize dropdown menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownMenus = document.querySelectorAll('.header-dropdown-menu');
+            dropdownMenus.forEach(menu => new HeaderDropdownMenu(menu));
+        });
+    </script>
+</body>
+</html>

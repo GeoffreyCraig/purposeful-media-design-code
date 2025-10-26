@@ -1,0 +1,72 @@
+/* Purposeful Media Design System - Design Tokens */
+/* ================================================ */
+
+:root {
+    /* Brand Colors */
+    --brand: #1B1464;          /* Primary brand navy blue */
+    --accent: #D4AF37;         /* Gold accent */
+    --heading: #1B1464;        /* Heading color (same as brand) */
+    --reverse: #FFFFFF;        /* White for reversed contexts */
+    --default: #D4AF37;        /* Default accent color */
+    
+    /* Semantic Colors */
+    --error: #FF0000;          /* Error states */
+    --success: #00FF00;        /* Success states */
+    --dark: #51585e;           /* Dark text variant */
+    --muted: #c7cbcf;          /* Muted/gray text variant */
+    
+    /* Text Colors */
+    --text-primary: #1B1464;
+    --text-secondary: #54595F;
+    --text-reverse: #FFFFFF;
+    
+    /* Spacing (8px Grid System) */
+    --space-0: 0;
+    --space-1: 4px;            /* 0.5x base (extra small) */
+    --space-2: 8px;            /* 1x base (small) */
+    --space-3: 12px;           /* 1.5x base (small-medium) */
+    --space-4: 16px;           /* 2x base (medium) */
+    --space-5: 20px;           /* 2.5x base (medium-large) */
+    --space-6: 24px;           /* 3x base (large) */
+    --space-8: 32px;           /* 4x base (extra large) */
+    --space-10: 40px;          /* 5x base (2x extra large) */
+    --space-12: 48px;          /* 6x base (3x extra large) */
+    --space-16: 64px;          /* 8x base (4x extra large) */
+    --space-20: 80px;          /* 10x base (5x extra large) */
+    --space-24: 96px;          /* 12x base (6x extra large) */
+    
+    /* Typography */
+    --font-primary: 'Lato', sans-serif;
+    --font-fallback: system-ui, sans-serif;
+    --weight-regular: 400;
+    --weight-bold: 700;
+    --weight-heavy: 900;
+    
+    /* Typography Sizes */
+    --h1-size: 36px;
+    --h1-line-height: 54px;
+    --h2-size: 30px;
+    --h2-line-height: 45px;
+    --h3-size: 24px;
+    --h3-line-height: 36px;
+    --h4-size: 21px;
+    --h4-line-height: 30.5px;
+    --h5-size: 18px;
+    --h5-line-height: 27px;
+    --h6-size: 16px;
+    --h6-line-height: 24px;
+    --body-size: 18px;
+    --small-size: 16px;
+    
+    /* Component Spacing */
+    --container-padding-x: var(--space-4);    /* 16px horizontal padding */
+    --container-padding-y: var(--space-3);    /* 12px vertical padding */
+    --component-gap: var(--space-3);          /* 12px between components */
+    --section-gap: var(--space-8);            /* 32px between sections */
+    --form-field-gap: var(--space-3);         /* 12px between form fields */
+    --button-padding-x: var(--space-4);       /* 16px button horizontal */
+    --button-padding-y: var(--space-2);       /* 8px button vertical */
+    --hero-padding-mobile: 0;                 /* Mobile hero padding */
+    --hero-padding-desktop: var(--space-10);  /* 40px desktop hero padding */
+}
+

@@ -1,0 +1,108 @@
+/* Footer Menu Module Styles */
+/* Component: Footer Menu Services */
+/* Figma Node ID: 4521:502 */
+
+.footer-menu {
+    background: var(--color-white, #ffffff);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-0, 0px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 240px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-menu__container {
+    background: var(--color-primary-700, #1b1464);
+    padding: var(--space-3, 12px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-0, 0px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-menu__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.footer-menu__title {
+    color: var(--color-white, #ffffff);
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.footer-menu__items {
+    padding: var(--space-3, 12px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 16px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+}
+
+.footer-menu__item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+}
+
+.footer-menu__link {
+    color: var(--color-white, #ffffff);
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 21px;
+    line-height: 21px;
+    font-weight: 700;
+    position: relative;
+    flex: 1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-menu__link:hover {
+    color: var(--color-accent-500, #d4af37);
+}
+
+.footer-menu__link--disabled {
+    color: var(--color-neutral-400, #868f97);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Responsive adjustments for footer menu in different layouts */
+@media (min-width: 768px) and (max-width: 1149px) {
+    /* Tablet: 2-column layout */
+    .footer-menu {
+        width: 100%;
+        max-width: 360px;
+    }
+}
+
+@media (min-width: 1150px) {
+    /* Desktop & DesktopPlus: 4-column layout */
+    .footer-menu {
+        width: 240px;
+    }
+}

@@ -1,0 +1,214 @@
+/* ============================================
+   ORGANISMS: FOOTER COMPONENTS
+   Purposeful Media Design System
+   Version: 1.0
+   Last Updated: 2025-09-25
+   ============================================ */
+
+/* Import dependencies */
+@import url('variables-v2.0-20250915.css');
+
+/* ============================================
+   MOBILE FOOTER COMPONENT
+   ============================================ */
+
+/* Base Footer Structure */
+.footer-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 380px;
+  max-width: 767px;
+  width: 100%;
+}
+
+.footer-mobile__top {
+  background: var(--color-primary-700, #1b1464);
+  border-top: 4px solid var(--color-accent-500, #d4af37);
+  padding: var(--space-6, 24px) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.footer-mobile__logo {
+  width: 171px;
+  height: 90px;
+  flex-shrink: 0;
+}
+
+/* Navigation Section */
+.footer-mobile__nav {
+  background: var(--color-primary-700, #1b1464);
+  padding: var(--space-8, 32px) var(--space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer-mobile__nav-item {
+  background: var(--color-primary-700, #1b1464);
+  padding: var(--space-2, 8px) var(--space-3, 12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.footer-mobile__nav-item:hover {
+  background: var(--color-primary-600, #1740b0);
+}
+
+.footer-mobile__nav-item.active {
+  background: var(--color-primary-600, #1740b0);
+}
+
+.footer-mobile__nav-text {
+  color: var(--color-white, #ffffff);
+  font-family: 'Lato', sans-serif;
+  font-size: 36px;
+  line-height: 54px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.footer-mobile__nav-arrow {
+  color: var(--color-white, #ffffff);
+  font-family: 'Lato', sans-serif;
+  font-size: 36px;
+  line-height: 54px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: transform 0.3s ease;
+}
+
+.footer-mobile__nav-item.active .footer-mobile__nav-arrow {
+  transform: rotate(90deg);
+}
+
+/* Attribution Section */
+.footer-mobile__attribution {
+  background: var(--color-primary-900, #06102b);
+  padding: var(--space-3, 12px) var(--space-8, 32px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.footer-mobile__attribution-content {
+  padding: var(--space-3, 12px) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  align-items: center;
+  text-align: center;
+}
+
+.footer-mobile__company,
+.footer-mobile__copyright {
+  color: var(--color-neutral-200, #c7cbcf);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.footer-mobile__policy {
+  color: var(--color-neutral-200, #c7cbcf);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.footer-mobile__policy:hover {
+  color: var(--color-accent-500, #d4af37);
+}
+
+/* ============================================
+   MOBILE DROPDOWN MENU
+   ============================================ */
+
+.dropdown-mobile {
+  background: var(--color-accent-100, #f4ebcd);
+  border-radius: 8px;
+  padding: 32px 64px 32px var(--space-12, 48px);
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 380px;
+  margin: 0 var(--space-3, 12px);
+  box-shadow: var(--shadow-subtle, 4px 4px 12px 0px rgba(0, 0, 0, 0.1));
+  overflow: hidden;
+  transform-origin: top;
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
+.dropdown-mobile.active {
+  display: flex;
+  opacity: 1;
+  max-height: 500px;
+  margin-bottom: var(--space-3, 12px);
+}
+
+.dropdown-mobile__item {
+  padding: var(--space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.dropdown-mobile__link {
+  color: var(--color-primary-700, #1b1464);
+  font-family: 'Lato', sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 900;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.dropdown-mobile__link:hover:not(.dropdown-mobile__link--disabled) {
+  color: var(--color-accent-500, #d4af37);
+}
+
+.dropdown-mobile__link--disabled {
+  color: var(--color-neutral-400, #868f97);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Hide mobile footer on tablet and larger screens */
+@media (min-width: 768px) {
+  .footer-mobile,
+  .dropdown-mobile {
+    display: none;
+  }
+}
+
+/* Tablet Footer (768-1149px) */
+@media (min-width: 768px) and (max-width: 1149px) {
+  /* Tablet footer styles will go here */
+}
+
+/* Desktop Footer (1150-1919px) */
+@media (min-width: 1150px) and (max-width: 1919px) {
+  /* Desktop footer styles will go here */
+}
+
+/* DesktopPlus Footer (1920px+) */
+@media (min-width: 1920px) {
+  /* DesktopPlus footer styles will go here */
+}

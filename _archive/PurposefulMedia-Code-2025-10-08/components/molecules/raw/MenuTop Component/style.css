@@ -1,0 +1,303 @@
+.menu-top-level,
+.menu-top-level * {
+  box-sizing: border-box;
+}
+.menu-top-level {
+  background: var(--brand, #1b1464);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-16, 64px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.headline {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.h-1 {
+  color: var(--menusimple, #ffffff);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 36px;
+  line-height: 54px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.drop-down {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.solutions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.navigation2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.resources {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+/* variant styles */
+.menu-top-level:hover .home,
+.menu-top-level.state-hover-1 .home,
+.menu-top-level.state-hover-2 .home,
+.menu-top-level.state-hover-3 .home,
+.menu-top-level.state-hover-4 .home,
+.menu-top-level.state-active-1 .home,
+.menu-top-level.state-active-2 .home,
+.menu-top-level.state-active-3 .home,
+.menu-top-level.state-active-4 .home,
+.menu-top-level.break-point-desktop.state-default .home {
+  gap: 10px;
+}
+.menu-top-level:hover .h-1,
+.menu-top-level.state-hover-1 .h-1,
+.menu-top-level:hover .h-12,
+.menu-top-level.state-hover-2 .h-12,
+.menu-top-level.state-hover-3 .h-12,
+.menu-top-level.state-hover-4 .h-12,
+.menu-top-level.state-hover-1 .h-2,
+.menu-top-level:hover .h-22,
+.menu-top-level.state-hover-2 .h-22,
+.menu-top-level.state-hover-3 .h-22,
+.menu-top-level.state-hover-4 .h-22 {
+  color: var(--hoversimple, #dcbe5d);
+}
+.menu-top-level.break-point-desktop-plus:hover .h-12,
+.menu-top-level.break-point-desktop-plus .h-12 {
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 36px;
+  line-height: 54px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.menu-top-level.state-hover-1 .h-12,
+.menu-top-level.state-active-1 .h-12,
+.menu-top-level.state-default .h-2,
+.menu-top-level:hover .h-2,
+.menu-top-level.state-hover-1 .h-22,
+.menu-top-level.state-hover-2 .h-2,
+.menu-top-level.state-hover-3 .h-2,
+.menu-top-level.state-hover-4 .h-2,
+.menu-top-level.state-active-1 .h-22,
+.menu-top-level.state-active-2 .h-2,
+.menu-top-level.state-active-3 .h-2,
+.menu-top-level.state-active-4 .h-2 {
+  color: var(--menusimple, #ffffff);
+}
+.menu-top-level.break-point-desktop-plus:hover,
+.menu-top-level.break-point-desktop-plus.state-hover-2,
+.menu-top-level.break-point-desktop-plus.state-hover-3,
+.menu-top-level.break-point-desktop-plus.state-hover-4,
+.menu-top-level.break-point-desktop-plus.state-active-1,
+.menu-top-level.break-point-desktop-plus.state-active-2,
+.menu-top-level.break-point-desktop-plus.state-active-3,
+.menu-top-level.break-point-desktop-plus.state-active-4,
+.menu-top-level.break-point-tablet,
+.menu-top-level.break-point-mobile {
+  gap: 64px;
+}
+.menu-top-level.state-hover-2,
+.menu-top-level.state-hover-3,
+.menu-top-level.state-active-2,
+.menu-top-level.state-active-3 {
+  overflow: unset;
+}
+.menu-top-level.break-point-desktop-plus:hover .solutions,
+.menu-top-level.break-point-desktop-plus.state-hover-4 .solutions {
+  width: 204px;
+}
+.menu-top-level.break-point-desktop-plus.state-hover-2 .solutions {
+  gap: 0px;
+  align-self: stretch;
+}
+.menu-top-level.state-active-1 .h-1,
+.menu-top-level.state-active-2 .h-12,
+.menu-top-level.state-active-3 .h-12,
+.menu-top-level.state-active-4 .h-12,
+.menu-top-level.state-active-1 .h-2,
+.menu-top-level.state-active-2 .h-22,
+.menu-top-level.state-active-3 .h-22,
+.menu-top-level.state-active-4 .h-22 {
+  color: var(--activesimple, #b39226);
+}
+.menu-top-level.break-point-desktop {
+  justify-content: space-between;
+  gap: unset;
+}
+.menu-top-level.break-point-desktop.state-default {
+  width: 100%;
+  min-width: 615px;
+  max-width: 886px;
+}
+.menu-top-level.break-point-desktop .navigation {
+  align-self: unset;
+}
+.menu-top-level.break-point-desktop .h-2,
+.menu-top-level.break-point-desktop:hover .h-22,
+.menu-top-level.break-point-desktop .h-22 {
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.menu-top-level.break-point-desktop:hover,
+.menu-top-level.break-point-desktop.state-hover-1,
+.menu-top-level.break-point-desktop:hover .navigation2,
+.menu-top-level.break-point-desktop .navigation2,
+.menu-top-level.break-point-desktop.state-hover-2,
+.menu-top-level.break-point-desktop.state-hover-3,
+.menu-top-level.break-point-desktop.state-hover-4,
+.menu-top-level.break-point-desktop.state-active-1,
+.menu-top-level.break-point-desktop.state-active-2,
+.menu-top-level.break-point-desktop.state-active-3,
+.menu-top-level.break-point-desktop.state-active-4 {
+  align-self: stretch;
+}
+.menu-top-level.break-point-tablet .menu,
+.menu-top-level.break-point-mobile .menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 54px;
+  position: relative;
+}
+.menu-top-level.state-default .menu,
+.menu-top-level.break-point-mobile.state-touch-hover .menu,
+.menu-top-level.break-point-mobile.state-touch-active .menu,
+.menu-top-level.break-point-mobile.state-touch-close .menu {
+  align-items: center;
+}
+.menu-top-level.break-point-tablet .buttons-mobile-menu,
+.menu-top-level.break-point-mobile .buttons-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5, 20px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: auto;
+  position: relative;
+  overflow: visible;
+}
+.menu-top-level.break-point-tablet.state-touch-hover .menu,
+.menu-top-level.break-point-tablet.state-touch-active .menu,
+.menu-top-level.break-point-tablet.state-touch-close .menu {
+  align-items: flex-end;
+}
+.menu-top-level.break-point-tablet .icon-hamburger-hover-focus-lg-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 54px;
+  height: auto;
+  position: relative;
+  overflow: visible;
+}
+.menu-top-level.break-point-tablet .icon-close-default-lg-1,
+.menu-top-level.break-point-tablet .icon-close-hover-lg-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 54px;
+  height: auto;
+  position: relative;
+  overflow: visible;
+}
+.menu-top-level.break-point-mobile .icon-hamburger-hover-med-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 45px;
+  height: auto;
+  position: relative;
+  overflow: visible;
+}
+.menu-top-level.break-point-mobile .icon-close-default-med-1,
+.menu-top-level.break-point-mobile .icon-close-hover-med-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 45px;
+  height: auto;
+  position: relative;
+  overflow: visible;
+}

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEATURED RESOURCE BREADBOARD TEST</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Import Variables -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* ============================================
+           FEATURED RESOURCE SECTION
+           ============================================ */
+        
+        .featured-resource-section {
+            position: relative;
+            background-color: #ECEEEF; /* Light gray */
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        /* Background Image Layer (25% opacity) */
+        .section-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background-image: url('../../assets/images/shutterstock_1421446100.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.25;
+        }
+        
+        /* Main Content Container */
+        .resource-container {
+            position: relative;
+            background-color: #FFFFFF;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 16px 64px;
+            z-index: 1;
+            width: 1150px;
+        }
+        
+        /* Left Column: Thumbnail Image */
+        .thumbnail-column {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .thumbnail-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Right Column: Teaser Card */
+        .card-column {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Card Teaser Component */
+        .card-teaser {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: clip;
+            padding: 40px 48px 64px 48px;
+            position: relative;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            background-color: #FFFFFF;
+        }
+        
+        .card-teaser__heading {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 45px;
+            text-transform: uppercase;
+            color: #1B1464;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .card-teaser__body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            color: #51585E;
+            margin: 0;
+            width: 100%;
+        }
+        
+        /* Branded Button - Primary Navy */
+        .card-teaser__button {
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: 4px;
+            flex-shrink: 0;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #1B1464; /* Primary navy */
+            color: #FFFFFF;
+            border: none;
+            padding: 16px 80px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        
+        .card-teaser__button:hover {
+            background-color: #36448F; /* Primary hover */
+            transform: translateY(-1px);
+        }
+        
+        .card-teaser__button:active {
+            background-color: #0B1F57; /* Primary active */
+            transform: translateY(0);
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+        
+        /* DesktopPlus: 1920px and wider */
+        @media (min-width: 1920px) {
+            .featured-resource-section {
+                padding: 0;
+            }
+            
+            .resource-container {
+                width: 1150px;
+            }
+            
+            .thumbnail-column {
+                width: 450px;
+                height: auto;
+            }
+            
+            .card-teaser {
+                max-width: 500px;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .featured-resource-section {
+                padding: 0;
+            }
+            
+            .resource-container {
+                width: 1150px;
+            }
+            
+            .thumbnail-column {
+                width: 450px;
+            }
+            
+            .card-teaser {
+                max-width: 500px;
+            }
+            
+            /* Background fades as viewport approaches 1150px */
+            .section-background {
+                opacity: calc((100vw - 1150px) / (1919 - 1150) * 0.25);
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .featured-resource-section {
+                padding: 0;
+            }
+            
+            /* Hide background at Tablet */
+            .section-background {
+                display: none;
+            }
+            
+            .resource-container {
+                width: 100%;
+                flex-direction: row; /* Keep side-by-side */
+                padding: 32px;
+                gap: 20px;
+            }
+            
+            .thumbnail-column {
+                flex-shrink: 0;
+                width: auto;
+                max-width: 45%; /* Scale proportionally */
+            }
+            
+            .thumbnail-image {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+            
+            .card-column {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .card-teaser {
+                width: 100%; /* Reduces with viewport */
+                max-width: 500px;
+            }
+            
+            .card-teaser__heading {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .featured-resource-section {
+                padding: 0;
+                background-color: #ECEEEF;
+            }
+            
+            /* Hide main background at Mobile */
+            .section-background {
+                display: none;
+            }
+            
+            .resource-container {
+                width: 100%;
+                padding: 0;
+                background-color: transparent;
+                position: relative;
+            }
+            
+            /* Hide the thumbnail column element */
+            .thumbnail-column {
+                display: none;
+            }
+            
+            /* Card column becomes the main container */
+            .card-column {
+                width: 100%;
+                position: relative;
+                padding: 24px;
+            }
+            
+            /* Thumbnail becomes background behind card */
+            .card-column::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('../../assets/images/four-hour-marketing-plan-TN.png');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                opacity: 1;
+                z-index: 0;
+                pointer-events: none;
+            }
+            
+            .card-teaser {
+                padding: 40px 24px 64px 24px;
+                width: 100%;
+                max-width: 367px;
+                position: relative;
+                z-index: 1;
+            }
+            
+            .card-teaser__heading {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+            
+            .card-teaser__button {
+                padding: 8px 64px;
+            }
+        }
+        
+        /* Test Info Bar */
+        .test-info {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        
+        .test-info .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        /* Content spacer */
+        .content-spacer {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .content-spacer h2 {
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            margin-bottom: 16px;
+        }
+        
+        .content-spacer p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Info Bar -->
+    <div class="test-info">
+        <div>Screen: <span class="value" id="screenWidth">0</span>px</div>
+        <div>Breakpoint: <span class="value" id="breakpointName">-</span></div>
+        <div>Layout: <span class="value" id="layoutMode">-</span></div>
+    </div>
+    
+    <!-- Featured Resource Section -->
+    <section class="featured-resource-section" role="region" aria-labelledby="resource-heading">
+        <!-- Background Image (25% opacity) -->
+        <div class="section-background" aria-hidden="true"></div>
+        
+        <!-- Main Content Container -->
+        <div class="resource-container">
+            <!-- Left Column: Thumbnail Image -->
+            <div class="thumbnail-column">
+                <img src="../../assets/images/four-hour-marketing-plan-TN.png" 
+                     alt="Four Hour Marketing Plan Guide" 
+                     class="thumbnail-image"
+                     loading="eager">
+            </div>
+            
+            <!-- Right Column: Teaser Card -->
+            <div class="card-column">
+                <div class="card-teaser">
+                    <h2 id="resource-heading" class="card-teaser__heading">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    </h2>
+                    
+                    <p class="card-teaser__body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.
+                    </p>
+                    
+                    <a href="#download" class="card-teaser__button">
+                        Download Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Test Content Below Section -->
+    <div class="content-spacer">
+        <div>
+            <h2>Featured Resource Breadboard Test</h2>
+            <p><strong>Component Specifications:</strong></p>
+            <p>✓ Container: Fixed 1150px width (Desktop/DesktopPlus)<br>
+            ✓ Card: Max-width 500px<br>
+            ✓ Background: 25% opacity (fades at Desktop, hidden at Tablet)<br>
+            ✓ Branded button with proper states<br>
+            ✓ Section height matches container</p>
+            <p style="margin-top: 20px;"><strong>Layout by Breakpoint:</strong><br>
+            <strong>DesktopPlus (1920px+):</strong> Side-by-side, 1150px fixed, background visible<br>
+            <strong>Desktop (1150-1919px):</strong> Side-by-side, 1150px fixed, background fades<br>
+            <strong>Tablet (768-1149px):</strong> Side-by-side, fluid width, no background<br>
+            <strong>Mobile (380-767px):</strong> Thumbnail as 100% background behind card</p>
+        </div>
+    </div>
+    
+    <!-- Breakpoint Monitor Script -->
+    <script>
+        function updateInfo() {
+            const width = window.innerWidth;
+            
+            document.getElementById('screenWidth').textContent = width;
+            
+            let breakpoint = '';
+            let layout = '';
+            
+            if (width < 380) {
+                breakpoint = 'Small Mobile';
+                layout = 'Thumbnail BG';
+            } else if (width >= 380 && width <= 767) {
+                breakpoint = 'Mobile';
+                layout = 'Thumbnail BG';
+            } else if (width >= 768 && width <= 1149) {
+                breakpoint = 'Tablet';
+                layout = 'Side-by-Side Fluid';
+            } else if (width >= 1150 && width <= 1919) {
+                breakpoint = 'Desktop';
+                layout = 'Side-by-Side 1150px';
+            } else if (width >= 1920) {
+                breakpoint = 'Desktop Plus';
+                layout = 'Side-by-Side 1150px';
+            }
+            
+            document.getElementById('breakpointName').textContent = breakpoint;
+            document.getElementById('layoutMode').textContent = layout;
+        }
+        
+        updateInfo();
+        window.addEventListener('resize', updateInfo);
+        
+        console.log('✅ Featured resource test initialized');
+    </script>
+</body>
+</html>
+

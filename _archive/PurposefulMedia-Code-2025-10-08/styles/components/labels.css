@@ -1,0 +1,149 @@
+/* Purposeful Media Design System - Labels Component */
+/* ================================================ */
+
+/* Base Label Container */
+.label,
+.label * {
+    box-sizing: border-box;
+}
+
+.label {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-2);
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Label Text Styles */
+.label__text {
+    color: var(--reverse);
+    text-align: center;
+    font-family: var(--font-primary), sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* Label Variants */
+.label.label2 .label__text {
+    text-align: left;
+    font-family: var(--font-primary), sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.label.cta .label__text {
+    text-align: left;
+    font-family: var(--font-primary), sans-serif;
+    font-weight: 400;
+}
+
+/* Label Cases */
+.label.case-default .label__text {
+    text-transform: unset;
+}
+
+.label.case-upper .label__text {
+    text-transform: uppercase;
+}
+
+/* Label Colors */
+.label.color-default .label__text {
+    color: var(--heading);
+}
+
+.label.color-light .label__text {
+    color: var(--muted);
+}
+
+.label.color-reverse .label__text {
+    color: var(--reverse);
+}
+
+.label.color-ghost-secondary .label__text {
+    color: var(--accent);
+}
+
+.label.color-ghost-tertiary .label__text {
+    color: #39cccc; /* Tertiary color - teal */
+}
+
+.label.color-gray .label__text {
+    color: var(--text-secondary);
+    text-align: left;
+    font-family: var(--font-primary), sans-serif;
+    font-weight: 400;
+}
+
+.label.color-dark .label__text {
+    color: #06102b; /* Dark color - very dark blue */
+    text-align: left;
+    font-family: var(--font-primary), sans-serif;
+    font-weight: 400;
+}
+
+/* Label Layout Variants */
+.label.purpose-label {
+    justify-content: flex-start;
+}
+
+.label.color-default.purpose-label .label__text {
+    text-align: left;
+    font-family: var(--font-primary), sans-serif;
+    font-weight: 400;
+}
+
+/* Label States */
+.label:hover {
+    cursor: pointer;
+}
+
+.label.color-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .label__text {
+        font-size: 16px;
+        line-height: 16px;
+    }
+    
+    .label.label2 .label__text {
+        font-size: 16px;
+        line-height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .label__text {
+        font-size: 14px;
+        line-height: 14px;
+    }
+    
+    .label.label2 .label__text {
+        font-size: 14px;
+        line-height: 14px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

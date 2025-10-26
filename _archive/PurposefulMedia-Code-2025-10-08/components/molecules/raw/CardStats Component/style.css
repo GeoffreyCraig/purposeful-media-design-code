@@ -1,0 +1,305 @@
+.card-stats,
+.card-stats * {
+  box-sizing: border-box;
+}
+.card-stats {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: var(--space-5, 20px) 20px var(--space-8, 32px) 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.left-column {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.iconography {
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.mid-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  width: 149px;
+  position: relative;
+  overflow: hidden;
+}
+.statistic {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-SemiboldItalic", sans-serif;
+  font-size: 52px;
+  line-height: 78px;
+  font-weight: 600;
+  font-style: italic;
+  position: relative;
+}
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.label {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+}
+.paragraph-text-18-27-h {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  width: 327px;
+}
+/* variant styles */
+.card-stats.size-medium .left-column {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 149px;
+  height: 136px;
+  align-self: unset;
+}
+.card-stats.alignment-horizontal .a-stat,
+.card-stats.alignment-vertical .a-stat {
+  position: relative;
+}
+.card-stats.alignment-horizontal.size-medium .a-stat {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 136px;
+  overflow: hidden;
+}
+.card-stats.alignment-horizontal
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-SemiboldItalic", sans-serif;
+  font-size: 52px;
+  line-height: 78px;
+  font-weight: 600;
+  font-style: italic;
+  position: relative;
+}
+.card-stats.size-medium .right-column {
+  gap: 0px;
+  align-self: stretch;
+}
+.card-stats.alignment-horizontal .header {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.card-stats.size-medium .header {
+  height: 44px;
+  aspect-ratio: 291/44;
+}
+.card-stats.alignment-horizontal.size-medium .iconography,
+.card-stats.alignment-horizontal.size-small .iconography {
+  width: 45px;
+  height: 45px;
+}
+.card-stats.alignment-horizontal
+  .strategic-marketing-systems-that-transform-prospects-into-revenue-streams-within-12-months {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+}
+.card-stats.size-medium
+  .strategic-marketing-systems-that-transform-prospects-into-revenue-streams-within-12-months {
+  flex: 1;
+  width: 291px;
+}
+.card-stats.size-small .left-column {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 149px;
+  height: 136px;
+  align-self: unset;
+}
+.card-stats.size-small .a-stat,
+.card-stats.size-mobile .a-stat,
+.card-stats.size-large .a-stat,
+.card-stats.size-tall .a-stat,
+.card-stats.alignment-vertical.size-medium .a-stat {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-SemiboldItalic", sans-serif;
+  font-size: 52px;
+  line-height: 78px;
+  font-weight: 600;
+  font-style: italic;
+}
+.card-stats.size-small .right-column {
+  gap: 12px;
+  align-self: stretch;
+}
+.card-stats.size-small .header {
+  height: 28.88px;
+  aspect-ratio: 191/28.88;
+}
+.card-stats.alignment-horizontal.size-small .label {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  color: unset;
+  text-align: unset;
+  font-family: unset;
+  font-size: unset;
+  line-height: unset;
+  font-weight: unset;
+}
+.card-stats.alignment-horizontal .label2 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.card-stats.size-small
+  .strategic-marketing-systems-that-transform-prospects-into-revenue-streams-within-12-months {
+  align-self: stretch;
+}
+.card-stats.size-mobile {
+  width: 320px;
+}
+.card-stats.size-mobile .left-column {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.card-stats.size-mobile .right-column {
+  gap: 8px;
+  justify-content: flex-end;
+}
+.card-stats.alignment-horizontal.size-mobile .label,
+.card-stats.alignment-horizontal.size-mobile .paragraph-text-18-27-h {
+  flex: 1;
+  width: 117px;
+}
+.card-stats.alignment-vertical {
+  flex-direction: column;
+}
+.card-stats.alignment-vertical.size-large,
+.card-stats.alignment-vertical.size-medium,
+.card-stats.alignment-vertical.size-small {
+  gap: var(--space-3, 12px);
+  align-items: flex-start;
+  justify-content: center;
+}
+.card-stats.alignment-vertical .top-frame {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.card-stats.alignment-vertical .bottom-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.card-stats.size-large .bottom-frame,
+.card-stats.size-medium .bottom-frame,
+.card-stats.size-small .bottom-frame,
+.card-stats.size-mobile .bottom-frame {
+  gap: var(--space-2, 8px);
+  justify-content: center;
+}
+.card-stats.alignment-vertical.size-large .paragraph-text-18-27-h {
+  flex: 1;
+  width: 560px;
+}
+.card-stats.size-tall {
+  padding: var(--space-5, 20px) var(--space-8, 32px) var(--space-8, 32px)
+    var(--space-8, 32px);
+  gap: var(--space-8, 32px);
+}
+.card-stats.size-tall .bottom-frame {
+  gap: var(--space-5, 20px);
+  justify-content: flex-start;
+}
+.card-stats.alignment-vertical
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+  width: 253px;
+}
+.card-stats.size-medium .paragraph-text-18-27-h {
+  flex: 1;
+  width: 460px;
+}
+.card-stats.size-small .paragraph-text-18-27-h {
+  flex: 1;
+  width: 360px;
+}
+.card-stats.alignment-vertical.size-mobile {
+  align-items: flex-start;
+  justify-content: center;
+}

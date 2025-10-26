@@ -1,0 +1,146 @@
+.card-teaser,
+.card-teaser * {
+  box-sizing: border-box;
+}
+.card-teaser {
+  background: var(--primary, #ffffff);
+  border-radius: 4px;
+  padding: var(--space-10, 40px) var(--space-12, 48px) 64px
+    var(--space-12, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.h-2 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+}
+.buttons-button {
+  background: var(--default, #1b1464);
+  border-radius: 4px;
+  padding: 16px 80px 16px 80px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.label {
+  color: var(--reverse, #ffffff);
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+/* variant styles */
+.card-teaser.color-gray {
+  background: var(--secondary, #eceeef);
+}
+.card-teaser.color-reverse {
+  background: var(--brand, #1b1464);
+}
+.card-teaser.color-reverse .h-2 {
+  color: var(--reverse, #ffffff);
+}
+.card-teaser.color-reverse .paragraph-text-18-27-h {
+  color: var(--muted, #c7cbcf);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+}
+.card-teaser.color-reverse .buttons-button {
+  background: var(--default, #d4af37);
+}
+.card-teaser.color-reverse .label {
+  color: var(--heading, #1b1464);
+}
+.card-teaser.color-default .h-3,
+.card-teaser.color-gray .h-3 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+}
+.card-teaser.size-small .buttons-button {
+  padding: 12px 64px 12px 64px;
+}
+.card-teaser.color-reverse .h-3 {
+  color: var(--reverse, #ffffff);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+}
+.card-teaser.size-mobile {
+  width: 320px;
+}
+.card-teaser.color-default .h-4,
+.card-teaser.color-gray .h-4 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+}
+.card-teaser.size-mobile .buttons-button {
+  padding: 8px 64px 8px 64px;
+}
+.card-teaser.color-reverse .h-4 {
+  color: var(--reverse, #ffffff);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+}

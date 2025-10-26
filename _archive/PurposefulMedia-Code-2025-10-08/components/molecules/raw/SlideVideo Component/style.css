@@ -1,0 +1,94 @@
+.slide-video,
+.slide-video * {
+  box-sizing: border-box;
+}
+.slide-video {
+  background: #ffffff;
+  border-radius: var(--space-2, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5, 20px);
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.slide-frame {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 352px;
+  height: 198px;
+  position: relative;
+  overflow: hidden;
+}
+.video-overlay {
+  background: rgba(27, 20, 100, 0.3);
+  padding: var(--space-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  width: 352px;
+  height: 198px;
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  bottom: 0px;
+  overflow: hidden;
+}
+.buttons-play-pause {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  padding: var(--space-3, 12px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.buttons-play {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  overflow: visible;
+}
+/* variant styles */
+.slide-video.aspect-ratio-4-3,
+.slide-video.aspect-ratio-1-1,
+.slide-video.aspect-ratio-flex {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.slide-video.aspect-ratio-4-3 .slide-frame,
+.slide-video.aspect-ratio-4-3 .video-overlay {
+  height: 264px;
+}
+.slide-video.aspect-ratio-1-1 .slide-frame,
+.slide-video.aspect-ratio-1-1 .video-overlay {
+  height: 352px;
+}
+.slide-video.aspect-ratio-flex .slide-frame {
+  height: 156.38px;
+}
+.slide-video.aspect-ratio-flex .video-overlay {
+  height: 352px;
+  bottom: 0.38px;
+}

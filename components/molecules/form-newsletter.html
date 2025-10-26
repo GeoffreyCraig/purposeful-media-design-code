@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form/Newsletter Component</title>
+    
+    <!-- CSS Variables -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-forms.css">
+    
+    <!-- Component-specific styles -->
+    <style>
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* Newsletter Form Container Styles */
+        .form-newsletter {
+            background-color: #ECEEEF;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        /* Breakpoint-specific sizing and padding */
+        .form-newsletter--desktop-plus {
+            width: 600px;
+            padding: 29px 27px;
+            gap: 11px;
+        }
+        
+        .form-newsletter--desktop {
+            width: 500px;
+            padding: 29px 27px;
+            gap: 11px;
+        }
+        
+        .form-newsletter--tablet {
+            width: 400px;
+            padding: 29px 27px;
+            gap: 11px;
+        }
+        
+        .form-newsletter--mobile {
+            width: 320px;
+            max-width: 320px;
+            padding: var(--space-8, 32px) var(--space-6, 24px);
+            gap: var(--space-3, 12px);
+        }
+        
+        /* Title Styles */
+        .form-newsletter__title {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            line-height: 36px;
+            color: #1B1464;
+            text-transform: uppercase;
+            white-space: nowrap;
+            margin: 0;
+        }
+        
+        /* Description Styles */
+        .form-newsletter__description {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            color: #51585E;
+            margin: 0;
+        }
+        
+        .form-newsletter--desktop-plus .form-newsletter__description {
+            width: 547px;
+            min-height: 54px;
+        }
+        
+        .form-newsletter--desktop .form-newsletter__description {
+            width: 446px;
+            min-height: 54px;
+        }
+        
+        .form-newsletter--tablet .form-newsletter__description {
+            width: 346px;
+            min-height: 81px;
+        }
+        
+        .form-newsletter--mobile .form-newsletter__description {
+            width: 266px;
+            min-height: 108px;
+        }
+        
+        /* Fallback Form Styles */
+        .form-newsletter__fallback {
+            width: 100%;
+        }
+        
+        /* Form Field Container */
+        .form-newsletter__field-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            padding: 4px 0;
+            min-height: 79px;
+            justify-content: center;
+        }
+        
+        /* Input Label */
+        .form-newsletter__label {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 18px;
+            color: #51585E;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Input Field Container */
+        .form-newsletter__input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        
+        /* Input Field */
+        .form-newsletter__input {
+            width: 100%;
+            padding: 4px 8px;
+            background-color: #FFFFFF;
+            border: 1px solid #A2A9AF;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 18px;
+            color: #51585E;
+            outline: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            min-height: 27px;
+        }
+        
+        /* Placeholder styles */
+        .form-newsletter__input::placeholder {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            font-style: italic;
+            color: #A2A9AF;
+        }
+        
+        /* Input States */
+        .form-newsletter__input:hover {
+            border-color: #1D50DE;
+        }
+        
+        .form-newsletter__input:focus {
+            border-color: #1D50DE;
+        }
+        
+        .form-newsletter__input:disabled {
+            background-color: #ECEEEF;
+            color: #A2A9AF;
+            cursor: not-allowed;
+        }
+        
+        /* Error State */
+        .form-newsletter__input--error {
+            background-color: #FEF2F2;
+            border-color: #EF4444;
+            color: #EF4444;
+        }
+        
+        /* Helper Text */
+        .form-newsletter__helper {
+            font-family: 'Open Sans', sans-serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 12px;
+            color: #51585E;
+            max-width: 327px;
+        }
+        
+        .form-newsletter__helper--error {
+            color: #51585E;
+        }
+        
+        /* Submit Container */
+        .form-newsletter__submit-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 32px;
+        }
+        
+        /* Submit Button */
+        .form-newsletter__submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 80px;
+            background-color: #1B1464;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 18px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .form-newsletter__submit:hover {
+            background-color: #1D50DE;
+        }
+        
+        .form-newsletter__submit:active {
+            background-color: #06102B;
+        }
+        
+        .form-newsletter__submit:disabled {
+            background-color: #868F97;
+            color: #C7CBCF;
+            cursor: not-allowed;
+        }
+        
+        /* Error state button */
+        .form-newsletter--error .form-newsletter__submit {
+            background-color: transparent;
+            border: 2px solid #868F97;
+            color: #C7CBCF;
+            cursor: not-allowed;
+        }
+        
+        /* Success State Styles */
+        .form-newsletter--success .form-newsletter__submit-container {
+            padding-bottom: 12px;
+        }
+        
+        .form-newsletter__success {
+            width: 100%;
+        }
+        
+        .form-newsletter__success-message {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 18px;
+            color: #1B1464;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        
+        .form-newsletter__success-link {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 27px;
+            color: #1B1464;
+            text-decoration: underline;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        
+        .form-newsletter__success-link:hover {
+            opacity: 0.8;
+        }
+        
+        /* State Classes */
+        .form-newsletter--hover .form-newsletter__submit {
+            background-color: #1D50DE;
+        }
+        
+        .form-newsletter--active .form-newsletter__input {
+            border-color: #1D50DE;
+        }
+        
+        .form-newsletter--active .form-newsletter__submit {
+            background-color: #06102B;
+        }
+        
+        .form-newsletter--disabled .form-newsletter__input {
+            background-color: #ECEEEF;
+            color: #A2A9AF;
+        }
+        
+        .form-newsletter--disabled .form-newsletter__submit {
+            background-color: #868F97;
+            color: #C7CBCF;
+        }
+        
+        /* HubSpot Form Integration Styles */
+        .form-newsletter__hubspot-container {
+            width: 100%;
+        }
+        
+        /* Override HubSpot form styles when it loads */
+        .form-newsletter__hubspot-container .hs-form {
+            width: 100%;
+        }
+        
+        .form-newsletter__hubspot-container .hs-form-field {
+            margin-bottom: 8px;
+        }
+        
+        .form-newsletter__hubspot-container .hs-form-field label {
+            font-family: 'Lato', sans-serif !important;
+            font-weight: 900 !important;
+            font-size: 18px !important;
+            line-height: 18px !important;
+            color: #51585E !important;
+            display: block !important;
+            margin-bottom: 8px !important;
+        }
+        
+        .form-newsletter__hubspot-container .hs-form-field input[type="email"],
+        .form-newsletter__hubspot-container .hs-form-field input[type="text"] {
+            width: 100% !important;
+            padding: 4px 8px !important;
+            background-color: #FFFFFF !important;
+            border: 1px solid #A2A9AF !important;
+            border-radius: 4px !important;
+            font-family: 'Open Sans', sans-serif !important;
+            font-size: 18px !important;
+            line-height: 18px !important;
+            color: #51585E !important;
+            min-height: 27px !important;
+            outline: none !important;
+        }
+        
+        .form-newsletter__hubspot-container .hs-form-field input[type="email"]:hover,
+        .form-newsletter__hubspot-container .hs-form-field input[type="text"]:hover {
+            border-color: #1D50DE !important;
+        }
+        
+        .form-newsletter__hubspot-container .hs-form-field input[type="email"]:focus,
+        .form-newsletter__hubspot-container .hs-form-field input[type="text"]:focus {
+            border-color: #1D50DE !important;
+        }
+        
+        .form-newsletter__hubspot-container .hs-form-field .hs-error-msg {
+            font-family: 'Open Sans', sans-serif !important;
+            font-style: italic !important;
+            font-size: 12px !important;
+            line-height: 12px !important;
+            color: #51585E !important;
+            margin-top: 4px !important;
+        }
+        
+        .form-newsletter__hubspot-container .hs-submit {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            padding-top: 20px !important;
+            padding-bottom: 32px !important;
+        }
+        
+        .form-newsletter__hubspot-container .hs-submit input {
+            padding: 16px 80px !important;
+            background-color: #1B1464 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            font-family: 'Lato', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 18px !important;
+            line-height: 18px !important;
+            color: #FFFFFF !important;
+            text-transform: uppercase !important;
+            cursor: pointer !important;
+            transition: background-color 0.2s ease !important;
+            white-space: nowrap !important;
+        }
+        
+        .form-newsletter__hubspot-container .hs-submit input:hover {
+            background-color: #1D50DE !important;
+        }
+        
+        .form-newsletter__hubspot-container .hs-submit input:active {
+            background-color: #06102B !important;
+        }
+        
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 640px) {
+            body {
+                padding: 10px;
+            }
+            
+            .form-newsletter--mobile {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Newsletter Form Component -->
+    <div class="form-newsletter form-newsletter--desktop-plus" data-state="default">
+        <!-- Title -->
+        <h3 class="form-newsletter__title">Stay Connected</h3>
+        
+        <!-- Description -->
+        <p class="form-newsletter__description">
+            Share your email address and get our B2B marketing strategies and digital transformation in your inbox.
+        </p>
+        
+        <!-- HubSpot Form Container (Primary Implementation) -->
+        <div class="form-newsletter__hubspot-container" id="hubspot-newsletter-form">
+            <!-- HubSpot form will be embedded here via JavaScript -->
+        </div>
+        
+        <!-- Fallback HTML Form (shown immediately for now) -->
+        <form class="form-newsletter__fallback" id="newsletter-fallback-form">
+            <!-- Field Container -->
+            <div class="form-newsletter__field-container">
+                <!-- Label -->
+                <label for="email" class="form-newsletter__label">Email Address*</label>
+                
+                <!-- Input Wrapper -->
+                <div class="form-newsletter__input-wrapper">
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-newsletter__input" 
+                        placeholder="Write your input here"
+                        required
+                        aria-required="true"
+                        aria-invalid="false"
+                    />
+                </div>
+                
+                <!-- Helper Text -->
+                <span class="form-newsletter__helper">*This field is required.</span>
+            </div>
+            
+            <!-- Submit Container -->
+            <div class="form-newsletter__submit-container">
+                <button type="submit" class="form-newsletter__submit">
+                    Subscribe Now
+                </button>
+            </div>
+        </form>
+        
+        <!-- Success State (Hidden by default) -->
+        <div class="form-newsletter__success" id="newsletter-success" style="display: none;">
+            <!-- Success Title -->
+            <h3 class="form-newsletter__title">Success!</h3>
+            
+            <!-- Success Description -->
+            <p class="form-newsletter__description">
+                Check your email inbox for our confirmation email. Thank you!
+            </p>
+            
+            <!-- Success CTA -->
+            <div class="form-newsletter__submit-container">
+                <p class="form-newsletter__success-message">
+                    While you're here, why not check out this valuable resource that was published for busy executives like you?
+                </p>
+                <a href="#" class="form-newsletter__success-link">Download the Resource Here</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for HubSpot Integration and Form Handling -->
+    <script>
+        // Configuration
+        const HUBSPOT_CONFIG = {
+            portalId: '48424315', // Purposeful Media HubSpot Portal ID
+            formId: '2ed5d7e7-71f6-4b75-90e9-162875f65d4d', // Newsletter Form ID
+            region: 'na1', // North America region
+            target: '#hubspot-newsletter-form',
+            cssRequired: false, // We're providing custom styles
+            onFormSubmitted: function() {
+                handleFormSuccess();
+            },
+            onFormReady: function() {
+                console.log('HubSpot form loaded successfully');
+                // Hide fallback form when HubSpot loads successfully
+                const fallbackForm = document.getElementById('newsletter-fallback-form');
+                if (fallbackForm) {
+                    fallbackForm.style.display = 'none';
+                }
+            },
+            onFormSubmitError: function(error) {
+                console.error('HubSpot form submission error:', error);
+                showFallbackForm();
+            }
+        };
+        
+        // Load HubSpot Forms Script
+        function loadHubSpotForms() {
+            // Load HubSpot forms library
+            const script = document.createElement('script');
+            script.src = '//js.hsforms.net/forms/v2.js';
+            script.onload = function() {
+                // Create HubSpot form
+                window.hbspt.forms.create({
+                    ...HUBSPOT_CONFIG
+                });
+            };
+            script.onerror = function() {
+                console.error('Failed to load HubSpot forms script');
+                showFallbackForm();
+            };
+            document.head.appendChild(script);
+        }
+        
+        // Show fallback form if HubSpot fails
+        function showFallbackForm() {
+            const hubspotContainer = document.getElementById('hubspot-newsletter-form');
+            const fallbackForm = document.getElementById('newsletter-fallback-form');
+            
+            if (hubspotContainer) {
+                hubspotContainer.style.display = 'none';
+            }
+            if (fallbackForm) {
+                fallbackForm.style.display = 'block';
+            }
+        }
+        
+        // Handle successful form submission
+        function handleFormSuccess() {
+            const component = document.querySelector('.form-newsletter');
+            const form = document.getElementById('newsletter-fallback-form');
+            const hubspot = document.getElementById('hubspot-newsletter-form');
+            const success = document.getElementById('newsletter-success');
+            const title = component.querySelector('.form-newsletter__title');
+            const description = component.querySelector('.form-newsletter__description');
+            
+            // Hide form elements
+            if (form) form.style.display = 'none';
+            if (hubspot) hubspot.style.display = 'none';
+            if (title && title.textContent === 'Stay Connected') title.style.display = 'none';
+            if (description && description.textContent.includes('Share your email')) description.style.display = 'none';
+            
+            // Show success message
+            if (success) {
+                success.style.display = 'block';
+            }
+            
+            // Update component state
+            if (component) {
+                component.setAttribute('data-state', 'success');
+                component.classList.add('form-newsletter--success');
+            }
+        }
+        
+        // Handle fallback form submission
+        function handleFallbackSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const emailInput = form.querySelector('#email');
+            const email = emailInput.value;
+            const component = document.querySelector('.form-newsletter');
+            
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                // Show error state
+                emailInput.classList.add('form-newsletter__input--error');
+                emailInput.setAttribute('aria-invalid', 'true');
+                component.classList.add('form-newsletter--error');
+                
+                // Update helper text
+                const helper = form.querySelector('.form-newsletter__helper');
+                if (helper) {
+                    helper.textContent = 'Please check your address format and try again.';
+                    helper.classList.add('form-newsletter__helper--error');
+                }
+                
+                return;
+            }
+            
+            // Here you would typically submit to your backend
+            console.log('Fallback form submitted with email:', email);
+            
+            // Simulate success for demo
+            handleFormSuccess();
+        }
+        
+        // Handle input field interactions
+        function setupFieldInteractions() {
+            const emailInput = document.querySelector('.form-newsletter__input');
+            const component = document.querySelector('.form-newsletter');
+            
+            if (emailInput && component) {
+                // Hover state
+                component.addEventListener('mouseenter', function() {
+                    if (!component.classList.contains('form-newsletter--active')) {
+                        component.classList.add('form-newsletter--hover');
+                    }
+                });
+                
+                component.addEventListener('mouseleave', function() {
+                    component.classList.remove('form-newsletter--hover');
+                });
+                
+                // Focus state
+                emailInput.addEventListener('focus', function() {
+                    component.setAttribute('data-state', 'active');
+                    component.classList.remove('form-newsletter--hover');
+                    component.classList.add('form-newsletter--active');
+                });
+                
+                // Blur state
+                emailInput.addEventListener('blur', function() {
+                    component.setAttribute('data-state', 'default');
+                    component.classList.remove('form-newsletter--active');
+                });
+                
+                // Clear error on typing
+                emailInput.addEventListener('input', function() {
+                    if (this.classList.contains('form-newsletter__input--error')) {
+                        this.classList.remove('form-newsletter__input--error');
+                        this.setAttribute('aria-invalid', 'false');
+                        component.classList.remove('form-newsletter--error');
+                        
+                        // Reset helper text
+                        const helper = this.closest('form').querySelector('.form-newsletter__helper');
+                        if (helper) {
+                            helper.textContent = '*This field is required.';
+                            helper.classList.remove('form-newsletter__helper--error');
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Responsive handling
+        function updateBreakpoint() {
+            const component = document.querySelector('.form-newsletter');
+            
+            if (!component) return;
+            
+            const width = window.innerWidth;
+            
+            // Remove all breakpoint classes
+            component.classList.remove(
+                'form-newsletter--desktop-plus',
+                'form-newsletter--desktop', 
+                'form-newsletter--tablet',
+                'form-newsletter--mobile'
+            );
+            
+            // Add appropriate breakpoint class
+            if (width >= 1920) {
+                component.classList.add('form-newsletter--desktop-plus');
+            } else if (width >= 1150) {
+                component.classList.add('form-newsletter--desktop');
+            } else if (width >= 768) {
+                component.classList.add('form-newsletter--tablet');
+            } else {
+                component.classList.add('form-newsletter--mobile');
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Try to load HubSpot forms (currently commented out)
+            loadHubSpotForms();
+            
+            // Setup fallback form
+            const fallbackForm = document.getElementById('newsletter-fallback-form');
+            if (fallbackForm) {
+                fallbackForm.addEventListener('submit', handleFallbackSubmit);
+            }
+            
+            // Setup field interactions
+            setupFieldInteractions();
+            
+            // Setup responsive handling
+            updateBreakpoint();
+            window.addEventListener('resize', updateBreakpoint);
+            
+            // Set a timeout to show fallback if HubSpot doesn't load
+            setTimeout(function() {
+                const hubspotForm = document.querySelector('.hs-form');
+                if (!hubspotForm) {
+                    console.log('HubSpot form not loaded after 5 seconds, showing fallback');
+                    showFallbackForm();
+                }
+            }, 5000); // 5 second timeout
+        });
+    </script>
+</body>
+</html>

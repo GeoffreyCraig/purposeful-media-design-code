@@ -1,0 +1,151 @@
+/* =================================================
+   HERO SIMPLE REVERSE COMPONENT STYLES
+   Purposeful Media Design System
+   Component: Organism/Hero/Simple/Reverse
+   Date: 2025-09-30
+   ================================================= */
+
+/* Base Hero Simple Reverse Styles */
+.hero-simple-reverse {
+    position: relative;
+    width: 100%;
+    height: 124px;
+    background: var(--color-primary-700); /* Solid blue background */
+    border-bottom: 4px solid var(--color-accent-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Content Container - Light Gray to Gold Radial Gradient */
+.hero-simple-reverse__content {
+    position: relative;
+    width: calc(100% - 80px); /* 40px margin on each side */
+    max-width: 1840px; /* 1920px - 80px total margins */
+    height: 100%;
+    /* Exact gradient from Figma - light gray center to gold edges */
+    background: radial-gradient(355.56% 50% at 50% 50%, #F5F5F5 0%, var(--color-accent-500) 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    margin: 0 40px;
+}
+
+/* Headline Typography - Dark Blue on Light Background */
+.hero-simple-reverse__headline {
+    font-family: var(--font-primary);
+    font-size: var(--text-h1-size);
+    line-height: var(--text-h1-height);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-700); /* Dark blue text */
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+/* =================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================= */
+
+/* DesktopPlus: 1920px and wider */
+@media (min-width: 1920px) {
+    .hero-simple-reverse {
+        width: 100%;
+    }
+    
+    .hero-simple-reverse__content {
+        /* Fixed width with 40px margins showing blue background */
+        width: 1840px;
+        max-width: 1840px;
+        margin: 0 40px;
+    }
+}
+
+/* Desktop: 1150px to 1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .hero-simple-reverse {
+        width: 100%;
+    }
+    
+    .hero-simple-reverse__content {
+        /* Responsive width maintaining 40px margins */
+        width: calc(100% - 80px);
+        max-width: calc(100% - 80px);
+        margin: 0 40px;
+    }
+}
+
+/* Tablet with full margins: 848px to 1149px */
+@media (min-width: 848px) and (max-width: 1149px) {
+    .hero-simple-reverse {
+        width: 100%;
+    }
+    
+    .hero-simple-reverse__content {
+        /* Maintain 40px margins */
+        width: calc(100% - 80px);
+        margin: 0 40px;
+        padding: 0 40px;
+    }
+    
+    .hero-simple-reverse__headline {
+        font-size: var(--text-h2-size);
+        line-height: var(--text-h2-height);
+    }
+}
+
+/* Tablet transition: 768px to 848px - smooth margin reduction */
+@media (min-width: 768px) and (max-width: 848px) {
+    .hero-simple-reverse {
+        width: 100%;
+    }
+    
+    .hero-simple-reverse__content {
+        /* Content stays at 768px width */
+        min-width: 768px;
+        width: 768px;
+        /* Margins smoothly reduce from 40px to 0px */
+        margin: 0 calc((100vw - 768px) / 2);
+        padding: 0 40px;
+    }
+    
+    .hero-simple-reverse__headline {
+        font-size: var(--text-h2-size);
+        line-height: var(--text-h2-height);
+    }
+}
+
+/* Mobile: 380px to 767px */
+@media (max-width: 767px) {
+    .hero-simple-reverse {
+        /* Solid blue background maintained */
+        background: var(--color-primary-700);
+    }
+    
+    .hero-simple-reverse__content {
+        /* Full width, no margins */
+        width: 100%;
+        min-width: unset;
+        padding: 0 20px;
+        margin: 0;
+        /* Same gradient pattern for mobile */
+        background: radial-gradient(355.56% 50% at 50% 50%, #F5F5F5 0%, var(--color-accent-500) 100%);
+    }
+    
+    .hero-simple-reverse__headline {
+        font-size: var(--text-h3-size);
+        line-height: var(--text-h3-height);
+    }
+}
+
+/* Extra small mobile: below 380px */
+@media (max-width: 379px) {
+    .hero-simple-reverse__content {
+        padding: 0 16px;
+    }
+    
+    .hero-simple-reverse__headline {
+        font-size: var(--text-h4-size);
+        line-height: var(--text-h4-height);
+    }
+}

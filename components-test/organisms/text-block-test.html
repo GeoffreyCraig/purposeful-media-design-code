@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEXT BLOCK BREADBOARD TEST</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+        }
+        
+        /* Text Block Section Container */
+        .text-block-section {
+            width: 100%;
+            background-color: #ECEEEF;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        /* Text Block Content Container */
+        .text-block-content {
+            width: 100%;
+            background-color: #ECEEEF;
+        }
+        
+        /* Main Heading */
+        .main-heading {
+            font-family: 'Lato', sans-serif;
+            font-size: 48px;
+            line-height: 72px;
+            font-weight: 700;
+            color: #1B1464;
+            text-transform: uppercase;
+            margin-bottom: 48px;
+        }
+        
+        /* Content Sections Container */
+        .content-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+        
+        /* Individual Content Section */
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        /* Section Heading */
+        .section-heading {
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 700;
+            color: #1B1464;
+            text-transform: uppercase;
+        }
+        
+        /* Section Text */
+        .section-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            font-weight: 400;
+            color: #51585E;
+        }
+        
+        /* Section List */
+        .section-list {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            font-weight: 400;
+            color: #51585E;
+            margin-left: 32px;
+            list-style-type: disc;
+        }
+        
+        .section-list li {
+            margin-bottom: 12px;
+        }
+        
+        .section-list li:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* DesktopPlus: 1920px and wider */
+        @media (min-width: 1920px) {
+            .text-block-section {
+                padding: 80px 0;
+            }
+            
+            .text-block-content {
+                width: 1920px;
+                max-width: 1920px;
+                padding: 80px;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .text-block-section {
+                padding: 80px 0;
+            }
+            
+            .text-block-content {
+                width: 100%;
+                max-width: 1919px;
+                padding: 80px;
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .text-block-section {
+                padding: 80px 0;
+            }
+            
+            .text-block-content {
+                width: 100%;
+                max-width: 1149px;
+                padding: 80px 64px;
+            }
+            
+            .main-heading {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .section-heading {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .text-block-section {
+                padding: 80px 0;
+            }
+            
+            .text-block-content {
+                width: 100%;
+                max-width: 767px;
+                padding: 80px 40px;
+            }
+            
+            .main-heading {
+                font-size: 30px;
+                line-height: 45px;
+                margin-bottom: 32px;
+            }
+            
+            .section-heading {
+                font-size: 21px;
+                line-height: 31.5px;
+            }
+            
+            .content-sections {
+                gap: 32px;
+            }
+            
+            .content-section {
+                gap: 16px;
+            }
+        }
+        
+        /* Test Info Bar */
+        .test-info {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        
+        .test-info .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Info Bar -->
+    <div class="test-info">
+        <div>Screen: <span class="value" id="screenWidth">0</span>px</div>
+        <div>Breakpoint: <span class="value" id="breakpointName">-</span></div>
+        <div>Width: <span class="value" id="contentWidth">0</span>px</div>
+        <div>Padding: <span class="value" id="paddingInfo">-</span></div>
+    </div>
+    
+    <!-- Text Block Section -->
+    <section class="text-block-section">
+        <div class="text-block-content">
+            <!-- Main Heading -->
+            <h1 class="main-heading">LOREM IPSUM DOLOR SIT AMET</h1>
+            
+            <!-- Content Sections -->
+            <div class="content-sections">
+                <!-- Section 1 -->
+                <section class="content-section">
+                    <h2 class="section-heading">SED DO EIUSMOD TEMPOR INCIDIDUNT</h2>
+                    <p class="section-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p class="section-text">
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+
+                <!-- Section 2 -->
+                <section class="content-section">
+                    <h2 class="section-heading">TURPIS EGESTAS INTEGER EGET ALIQUET NIBH PRAESENT TRISTIQUE</h2>
+                    <p class="section-text">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                    </p>
+                    <p class="section-text">
+                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </p>
+                </section>
+
+                <!-- Section 3 -->
+                <section class="content-section">
+                    <h2 class="section-heading">FERMENTUM POSUERE URNA NEC TINCIDUNT</h2>
+                    <p class="section-text">
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+                    </p>
+                    <ul class="section-list">
+                        <li>Similique sunt in culpa qui officia deserunt mollitia animi</li>
+                        <li>Id est laborum et dolorum fuga</li>
+                        <li>Et harum quidem rerum facilis est et expedita distinctio</li>
+                        <li>Nam libero tempore cum soluta nobis est eligendi</li>
+                    </ul>
+                </section>
+
+                <!-- Section 4 -->
+                <section class="content-section">
+                    <h2 class="section-heading">FERMENTUM POSUERE URNA NEC TINCIDUNT</h2>
+                    <p class="section-text">
+                        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                    </p>
+                    <ul class="section-list">
+                        <li>Itaque earum rerum hic tenetur a sapiente delectus</li>
+                        <li>Ut aut reiciendis voluptatibus maiores alias</li>
+                        <li>Consequatur aut perferendis doloribus asperiores repellat</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Simple breakpoint monitor
+        function updateInfo() {
+            const width = window.innerWidth;
+            const content = document.querySelector('.text-block-content');
+            const contentRect = content ? content.getBoundingClientRect() : null;
+            
+            document.getElementById('screenWidth').textContent = width;
+            
+            if (contentRect) {
+                document.getElementById('contentWidth').textContent = Math.round(contentRect.width);
+            }
+            
+            let breakpoint = '';
+            let padding = '';
+            
+            if (width < 380) {
+                breakpoint = 'Small Mobile';
+                padding = '80px/40px';
+            } else if (width >= 380 && width <= 767) {
+                breakpoint = 'Mobile';
+                padding = '80px/40px T/B-L/R';
+            } else if (width >= 768 && width <= 1149) {
+                breakpoint = 'Tablet';
+                padding = '80px/64px T/B-L/R';
+            } else if (width >= 1150 && width <= 1919) {
+                breakpoint = 'Desktop';
+                padding = '80px all around';
+            } else if (width >= 1920) {
+                breakpoint = 'Desktop Plus';
+                padding = '80px all around';
+            }
+            
+            document.getElementById('breakpointName').textContent = breakpoint;
+            document.getElementById('paddingInfo').textContent = padding;
+        }
+        
+        updateInfo();
+        window.addEventListener('resize', updateInfo);
+        
+        console.log('✅ Text block test ready');
+    </script>
+</body>
+</html>
+

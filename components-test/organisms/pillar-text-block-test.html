@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pillar Text Block Section - Test Component</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    
+    <style>
+        /* Component Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        /**
+         * Component: Pillar Text Block with Icons
+         * Type: Organism
+         * Description: Text block section with 4 icon subsections for Pillar pages
+         *              Includes anchor points for sticky menu navigation
+         * 
+         * Dependencies:
+         * - Design Tokens (required)
+         * - Google Fonts: Lato, Open Sans
+         * - Decorative Icon Sprite: purposeful-sprite-symbolic.svg
+         * 
+         * Usage:
+         * - Contains 4 subsections: Overview, Strategy, Method, Benefits
+         * - Each subsection has an icon, headline, and content
+         * - ID attributes match sticky menu anchors
+         */
+        
+        /* ============================================
+           PILLAR TEXT BLOCK SECTION
+           ============================================ */
+        
+        .pillar-text-block {
+            width: 100%;
+            background-color: var(--secondary-100, #eceeef);
+        }
+        
+        .pillar-text-block__container {
+            width: 100%;
+            max-width: var(--container-max-width, 1920px);
+            margin: 0 auto;
+        }
+        
+        /* Individual Subsection */
+        .pillar-text-block__section {
+            width: 100%;
+            background-color: var(--color-white, #ffffff);
+            scroll-margin-top: 80px; /* Offset for sticky menu */
+        }
+        
+        .pillar-text-block__section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-8, 32px);
+        }
+        
+        /* Icon Container */
+        .pillar-text-block__icon-wrapper {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pillar-text-block__icon {
+            width: 256px;
+            height: 256px;
+            background-image: url('../../assets/svg/decorative-icons/purposeful-sprite-symbolic.svg');
+            background-size: 1536px 4096px;
+            background-repeat: no-repeat;
+        }
+        
+        /* Icon positions from JSON */
+        .pillar-text-block__icon--accelerate {
+            background-position: 0px 0px; /* accelerate-blue: row 1, col 1 */
+        }
+        
+        .pillar-text-block__icon--strategy {
+            background-position: -1280px -512px; /* strategic-blue: row 3, col 6 */
+        }
+        
+        .pillar-text-block__icon--attract {
+            background-position: -256px 0px; /* attract-blue: row 1, col 2 */
+        }
+        
+        .pillar-text-block__icon--roi {
+            background-position: -768px -512px; /* roi-blue: row 3, col 4 */
+        }
+        
+        /* Content Container */
+        .pillar-text-block__content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4, 16px);
+        }
+        
+        .pillar-text-block__headline {
+            color: var(--text-primary, #1b1464);
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .pillar-text-block__text {
+            color: var(--text-secondary, #51585e);
+            font-family: var(--font-body, 'Open Sans'), sans-serif;
+            font-weight: 400;
+            margin: 0;
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .pillar-text-block__section {
+                padding: var(--space-8, 32px) var(--space-4, 16px);
+                scroll-margin-top: 60px;
+            }
+            
+            .pillar-text-block__section-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: var(--space-6, 24px);
+            }
+            
+            .pillar-text-block__icon {
+                width: 128px;
+                height: 128px;
+                background-size: 768px 2048px;
+            }
+            
+            /* Icon positions scaled for mobile */
+            .pillar-text-block__icon--accelerate {
+                background-position: 0px 0px;
+            }
+            
+            .pillar-text-block__icon--strategy {
+                background-position: -640px -256px;
+            }
+            
+            .pillar-text-block__icon--attract {
+                background-position: -128px 0px;
+            }
+            
+            .pillar-text-block__icon--roi {
+                background-position: -384px -256px;
+            }
+            
+            .pillar-text-block__headline {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .pillar-text-block__text {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .pillar-text-block__section {
+                padding: var(--space-12, 48px) var(--space-8, 32px);
+                scroll-margin-top: 70px;
+            }
+            
+            .pillar-text-block__icon {
+                width: 192px;
+                height: 192px;
+                background-size: 1152px 3072px;
+            }
+            
+            /* Icon positions scaled for tablet */
+            .pillar-text-block__icon--accelerate {
+                background-position: 0px 0px;
+            }
+            
+            .pillar-text-block__icon--strategy {
+                background-position: -960px -384px;
+            }
+            
+            .pillar-text-block__icon--attract {
+                background-position: -192px 0px;
+            }
+            
+            .pillar-text-block__icon--roi {
+                background-position: -576px -384px;
+            }
+            
+            .pillar-text-block__headline {
+                font-size: 30px;
+                line-height: 45px;
+            }
+            
+            .pillar-text-block__text {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .pillar-text-block__section {
+                padding: var(--space-16, 64px) var(--space-10, 40px);
+                scroll-margin-top: 80px;
+            }
+            
+            .pillar-text-block__headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .pillar-text-block__text {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* DesktopPlus: 1920px and above */
+        @media (min-width: 1920px) {
+            .pillar-text-block__section {
+                padding: var(--space-20, 80px) var(--space-10, 40px);
+                scroll-margin-top: 80px;
+            }
+            
+            .pillar-text-block__headline {
+                font-size: 48px;
+                line-height: 72px;
+            }
+            
+            .pillar-text-block__text {
+                font-size: 21px;
+                line-height: 31.5px;
+            }
+        }
+        
+        /* Demo Styles */
+        .demo-container {
+            padding: 40px 20px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        .breakpoint-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .breakpoint-header {
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .breakpoint-content {
+            background: #ffffff;
+            position: relative;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; text-align: center; margin-bottom: 40px;">
+            Pillar Text Block Section - Test Component
+        </h1>
+        
+        <!-- Component Info -->
+        <div style="background: #d4af37; color: white; padding: 20px; border-radius: 8px; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="margin-bottom: 10px;">Component Features:</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>4 Subsections:</strong> Overview, Strategy, Method, Benefits</li>
+                <li><strong>Decorative Icons:</strong> Using sprite positioning from purposeful-sprite-symbolic.svg</li>
+                <li><strong>Anchor Points:</strong> Each section has an ID for sticky menu navigation</li>
+                <li><strong>Scroll Offset:</strong> scroll-margin-top accounts for sticky menu height</li>
+                <li><strong>Responsive Icons:</strong> Icons scale from 128px (mobile) to 256px (desktop+)</li>
+            </ul>
+        </div>
+        
+        <!-- Desktop Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Desktop (1150px+)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Desktop View - Full horizontal layout with large icons</div>
+                <div class="breakpoint-content" style="min-width: 1200px;">
+                    <!-- Component: Pillar Text Block -->
+                    <!-- Type: Organism -->
+                    <!-- Usage: Main content sections for Pillar pages with icon subsections -->
+                    <section class="pillar-text-block" aria-label="Main content sections">
+                        <div class="pillar-text-block__container">
+                            
+                            <!-- Section 1: Overview -->
+                            <div id="overview" class="pillar-text-block__section">
+                                <div class="pillar-text-block__section-inner">
+                                    <div class="pillar-text-block__icon-wrapper">
+                                        <div class="pillar-text-block__icon pillar-text-block__icon--accelerate" role="img" aria-label="Accelerate icon"></div>
+                                    </div>
+                                    <div class="pillar-text-block__content">
+                                        <h2 class="pillar-text-block__headline">Overview</h2>
+                                        <p class="pillar-text-block__text">
+                                            Our comprehensive approach combines industry expertise with cutting-edge technology to deliver measurable results. We understand the unique challenges facing B2B companies and provide tailored solutions that drive growth and maximize ROI.
+                                        </p>
+                                        <p class="pillar-text-block__text">
+                                            Whether you're looking to improve deliverability, increase engagement, or generate qualified leads, our proven methodologies ensure your marketing efforts deliver real business impact.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Section 2: Strategy -->
+                            <div id="strategy" class="pillar-text-block__section">
+                                <div class="pillar-text-block__section-inner">
+                                    <div class="pillar-text-block__icon-wrapper">
+                                        <div class="pillar-text-block__icon pillar-text-block__icon--strategy" role="img" aria-label="Strategy icon"></div>
+                                    </div>
+                                    <div class="pillar-text-block__content">
+                                        <h2 class="pillar-text-block__headline">Strategy</h2>
+                                        <p class="pillar-text-block__text">
+                                            We start every engagement with a comprehensive strategic assessment. Our team analyzes your current position, competitive landscape, and target audience to develop a customized roadmap aligned with your business objectives.
+                                        </p>
+                                        <p class="pillar-text-block__text">
+                                            This strategic foundation ensures that every tactic, message, and campaign works together to achieve your goals and deliver sustainable business growth.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Section 3: Method -->
+                            <div id="method" class="pillar-text-block__section">
+                                <div class="pillar-text-block__section-inner">
+                                    <div class="pillar-text-block__icon-wrapper">
+                                        <div class="pillar-text-block__icon pillar-text-block__icon--attract" role="img" aria-label="Attract icon"></div>
+                                    </div>
+                                    <div class="pillar-text-block__content">
+                                        <h2 class="pillar-text-block__headline">Method</h2>
+                                        <p class="pillar-text-block__text">
+                                            Our methodology is built on years of experience working with B2B companies in complex industries. We combine data-driven insights with creative excellence to attract qualified prospects and guide them through the buyer journey.
+                                        </p>
+                                        <p class="pillar-text-block__text">
+                                            From initial awareness through consideration and decision-making, we ensure your brand provides value at every touchpoint and builds the trust necessary for long-term customer relationships.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Section 4: Benefits -->
+                            <div id="benefits" class="pillar-text-block__section">
+                                <div class="pillar-text-block__section-inner">
+                                    <div class="pillar-text-block__icon-wrapper">
+                                        <div class="pillar-text-block__icon pillar-text-block__icon--roi" role="img" aria-label="ROI icon"></div>
+                                    </div>
+                                    <div class="pillar-text-block__content">
+                                        <h2 class="pillar-text-block__headline">Benefits</h2>
+                                        <p class="pillar-text-block__text">
+                                            Companies that partner with us see measurable improvements in key performance indicators: higher email engagement rates, increased qualified lead generation, improved conversion rates, and stronger customer retention.
+                                        </p>
+                                        <p class="pillar-text-block__text">
+                                            Beyond the metrics, you gain a strategic partner committed to your success, with transparent reporting, continuous optimization, and expert guidance every step of the way.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Mobile (≤767px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Mobile View - Centered layout with smaller icons</div>
+                <div class="breakpoint-content" style="width: 500px;">
+                    <section class="pillar-text-block">
+                        <div class="pillar-text-block__container">
+                            
+                            <!-- Section 1: Overview (Mobile) -->
+                            <div id="overview-mobile" class="pillar-text-block__section">
+                                <div class="pillar-text-block__section-inner">
+                                    <div class="pillar-text-block__icon-wrapper">
+                                        <div class="pillar-text-block__icon pillar-text-block__icon--accelerate" role="img" aria-label="Accelerate icon"></div>
+                                    </div>
+                                    <div class="pillar-text-block__content">
+                                        <h2 class="pillar-text-block__headline">Overview</h2>
+                                        <p class="pillar-text-block__text">
+                                            Our comprehensive approach delivers measurable results for B2B companies through tailored solutions that maximize ROI.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Section 2: Strategy (Mobile) -->
+                            <div id="strategy-mobile" class="pillar-text-block__section">
+                                <div class="pillar-text-block__section-inner">
+                                    <div class="pillar-text-block__icon-wrapper">
+                                        <div class="pillar-text-block__icon pillar-text-block__icon--strategy" role="img" aria-label="Strategy icon"></div>
+                                    </div>
+                                    <div class="pillar-text-block__content">
+                                        <h2 class="pillar-text-block__headline">Strategy</h2>
+                                        <p class="pillar-text-block__text">
+                                            We develop customized roadmaps aligned with your business objectives through comprehensive strategic assessment.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Specifications -->
+        <div style="background: #f0f3fd; padding: 30px; border-radius: 8px; max-width: 1200px; margin: 40px auto 0;">
+            <h3 style="color: #1b1464; margin-bottom: 20px;">Technical Specifications</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">📱 Mobile (≤767px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>Icon: 128px × 128px</li>
+                        <li>Layout: Centered, stacked</li>
+                        <li>Headline: 24px/36px</li>
+                        <li>Text: 16px/24px</li>
+                        <li>Padding: 32px 16px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">📱 Tablet (768-1149px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>Icon: 192px × 192px</li>
+                        <li>Layout: Horizontal</li>
+                        <li>Headline: 30px/45px</li>
+                        <li>Text: 18px/27px</li>
+                        <li>Padding: 48px 32px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">💻 Desktop (1150-1919px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>Icon: 256px × 256px</li>
+                        <li>Layout: Horizontal</li>
+                        <li>Headline: 36px/54px</li>
+                        <li>Text: 18px/27px</li>
+                        <li>Padding: 64px 40px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">🖥️ DesktopPlus (≥1920px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>Icon: 256px × 256px</li>
+                        <li>Layout: Horizontal</li>
+                        <li>Headline: 48px/72px</li>
+                        <li>Text: 21px/31.5px</li>
+                        <li>Padding: 80px 40px</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h4 style="color: #1b1464; margin: 20px 0 10px;">Icon Sprite Positions</h4>
+            <ul style="line-height: 1.8;">
+                <li><strong>Overview (Accelerate):</strong> Row 1, Col 1 → background-position: 0px 0px</li>
+                <li><strong>Strategy:</strong> Row 3, Col 6 → background-position: -1280px -512px</li>
+                <li><strong>Method (Attract):</strong> Row 1, Col 2 → background-position: -256px 0px</li>
+                <li><strong>Benefits (ROI):</strong> Row 3, Col 4 → background-position: -768px -512px</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

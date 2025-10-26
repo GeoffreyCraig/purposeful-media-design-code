@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section/Resources Component - Purposeful Media</title>
+    
+    <!-- Import existing stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-cards-resources.css">
+    <link rel="stylesheet" href="../../styles/organisms-section-resources.css">
+    
+    <style>
+        /* ================================
+           DEMO STYLES (for preview only)
+           ================================ */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-secondary), 'Open Sans', sans-serif;
+        }
+        
+        .demo-container {
+            padding: 0;
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
+        
+        .demo-controls {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .demo-controls label {
+            font-weight: 600;
+            color: var(--color-primary-700, #1B1464);
+        }
+        
+        .demo-controls select {
+            padding: 8px 12px;
+            border: 1px solid var(--color-neutral-300, #A2A9AF);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .demo-viewport {
+            margin: 20px auto;
+            background-color: #f5f5f5;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow-x: auto;
+            transition: max-width 0.3s ease;
+            min-height: 400px;
+        }
+        
+        /* Simulated viewport widths */
+        .viewport-mobile { max-width: 414px; }
+        .viewport-tablet { max-width: 768px; }
+        .viewport-desktop { max-width: 1150px; }
+        .viewport-desktopplus { max-width: 100%; min-width: 1920px; }
+        
+        /* Full width test mode */
+        .viewport-full { 
+            max-width: 100%; 
+            border: none;
+            margin: 0;
+        }
+        
+        .demo-info {
+            background: white;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 8px;
+            line-height: 1.6;
+            color: var(--color-neutral-600, #51585E);
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        
+        .demo-info h2 {
+            color: var(--color-primary-700, #1B1464);
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--color-primary-700, #1B1464);
+            padding-bottom: 10px;
+        }
+        
+        .demo-info h3 {
+            color: var(--color-primary-700, #1B1464);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .demo-info code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #d14;
+        }
+        
+        .demo-info pre {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border-left: 4px solid var(--color-primary-700, #1B1464);
+        }
+        
+        /* Debug info panel */
+        .debug-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(27, 20, 100, 0.95);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            z-index: 1000;
+            max-width: 250px;
+        }
+        
+        .debug-info h4 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: var(--color-accent-500, #D4AF37);
+        }
+        
+        .debug-info p {
+            margin: 5px 0;
+        }
+        
+        .width-indicator {
+            background: var(--color-accent-500, #D4AF37);
+            color: var(--color-primary-700, #1B1464);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Demo Controls -->
+        <div class="demo-controls">
+            <label for="viewportSelector">Select Viewport:</label>
+            <select id="viewportSelector" onchange="changeViewport(this.value)">
+                <option value="desktopplus">Desktop Plus (1920px+)</option>
+                <option value="desktop">Desktop (1150-1919px)</option>
+                <option value="tablet">Tablet (768-1149px)</option>
+                <option value="mobile">Mobile (380-767px)</option>
+                <option value="full">Full Width (No constraints)</option>
+            </select>
+            
+            <label for="cardCount">Number of Cards:</label>
+            <select id="cardCount" onchange="updateCardCount(this.value)">
+                <option value="12">12 Cards (3 rows)</option>
+                <option value="8" selected>8 Cards (2 rows)</option>
+                <option value="6">6 Cards</option>
+                <option value="4">4 Cards (1 row)</option>
+                <option value="3">3 Cards</option>
+                <option value="2">2 Cards</option>
+                <option value="1">1 Card</option>
+            </select>
+            
+            <div class="width-indicator" id="widthIndicator">Width: calculating...</div>
+        </div>
+        
+        <!-- Simulated Viewport -->
+        <div class="demo-viewport viewport-desktopplus" id="demoViewport">
+            <!-- Section/Resources Component -->
+            <section class="section-resources">
+                <div class="section-resources__grid">
+                    <div class="section-resources__row" id="resourceRow1">
+                        <!-- Cards will be dynamically inserted here -->
+                    </div>
+                    <div class="section-resources__row" id="resourceRow2">
+                        <!-- Second row of cards -->
+                    </div>
+                    <div class="section-resources__row" id="resourceRow3">
+                        <!-- Third row of cards if needed -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Debug Information Panel -->
+        <div class="debug-info" id="debugInfo">
+            <h4>Layout Debug Info</h4>
+            <p>Viewport: <span id="debugViewport">-</span></p>
+            <p>Container Width: <span id="debugWidth">-</span></p>
+            <p>Cards per Row: <span id="debugCardsPerRow">-</span></p>
+            <p>Grid Max-Width: <span id="debugMaxWidth">-</span></p>
+            <p>Actual Cards: <span id="debugCardCount">-</span></p>
+        </div>
+        
+        <!-- Usage Information -->
+        <div class="demo-info">
+            <h2>Section/Resources Component Documentation</h2>
+            
+            <h3>✅ Fixed Width Constraints</h3>
+            <p>The layout has been updated to properly handle the following breakpoints:</p>
+            <ul>
+                <li><strong>Mobile (380-767px):</strong> 1 card per row, full width (max 350px)</li>
+                <li><strong>Tablet (768-1149px):</strong> 2 cards per row, grid max-width: 796px</li>
+                <li><strong>Desktop (1150-1919px):</strong> 3 cards per row, grid max-width: 1178px</li>
+                <li><strong>Desktop Plus (1920px+):</strong> 4 cards per row, grid max-width: 1560px</li>
+            </ul>
+            
+            <h3>📐 Layout Calculations</h3>
+            <p>Each breakpoint is calculated as follows:</p>
+            <ul>
+                <li>Card width: <code>350px</code> (fixed)</li>
+                <li>Gap between cards: <code>32px</code></li>
+                <li>Section padding: <code>32px</code> left and right</li>
+                <li>Formula: <code>(cards × 350px) + (gaps × 32px) + (padding × 2)</code></li>
+            </ul>
+            
+            <h3>🎯 Key Features</h3>
+            <ul>
+                <li>Responsive grid that adapts to viewport width</li>
+                <li>Consistent card sizing across all breakpoints</li>
+                <li>Centered alignment with proper spacing</li>
+                <li>Background color: <code>var(--color-neutral-100)</code></li>
+                <li>Flexible row wrapping for dynamic content</li>
+            </ul>
+            
+            <h3>💻 Implementation Example</h3>
+            <pre>&lt;section class="section-resources"&gt;
+    &lt;div class="section-resources__grid"&gt;
+        &lt;div class="section-resources__row"&gt;
+            &lt;div class="section-resources__card"&gt;
+                &lt;!-- Card/Resources component --&gt;
+            &lt;/div&gt;
+            &lt;div class="section-resources__card"&gt;
+                &lt;!-- Card/Resources component --&gt;
+            &lt;/div&gt;
+            &lt;!-- Additional cards as needed --&gt;
+        &lt;/div&gt;
+        &lt;!-- Additional rows as needed --&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</pre>
+            
+            <h3>🔧 CSS Dependencies</h3>
+            <ul>
+                <li><code>variables-v2.0-20250915.css</code> - Design system tokens</li>
+                <li><code>atoms-master.css</code> - Base atomic styles</li>
+                <li><code>molecules-cards-resources.css</code> - Resource card component</li>
+                <li><code>organisms-section-resources.css</code> - This section's styles</li>
+            </ul>
+            
+            <h3>♿ Accessibility Considerations</h3>
+            <ul>
+                <li>Semantic HTML5 <code>&lt;section&gt;</code> element for proper document structure</li>
+                <li>Cards maintain consistent tab order for keyboard navigation</li>
+                <li>Responsive layout works with screen readers</li>
+                <li>Proper heading hierarchy within cards (h3 for card titles)</li>
+                <li>Alt text on all images</li>
+                <li>Focus states on interactive elements</li>
+            </ul>
+            
+            <h3>🎨 Visual Specifications</h3>
+            <ul>
+                <li>Section background: <code>#ECEEEF</code> (--color-neutral-100)</li>
+                <li>Card dimensions: <code>350px × 420px</code></li>
+                <li>Card shadow and overlay effects included</li>
+                <li>Consistent spacing: <code>32px</code> gaps throughout</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        /* =========================================
+           ICON CONFIGURATION SECTION
+           To change which icon appears in each card,
+           simply edit the customIconMap below.
+           
+           Available icons (white versions):
+           - accelerate
+           - attract
+           - contact
+           - delight
+           - download
+           - efficiency
+           - email
+           - engage
+           - exit
+           - expertise
+           - inbound
+           - momentum
+           - news
+           - persona
+           - professional
+           - roi
+           - schedule
+           - strategy
+           - unit
+           - value
+           - webinar
+           
+           Just change the icon name for any position!
+           ========================================= */
+        
+        // Card template with placeholder content
+        function createCard(index, customIcon = null) {
+            const icons = ['accelerate', 'attract', 'contact', 'delight', 'download', 'efficiency', 'email', 'engage'];
+            const iconName = customIcon || icons[index % icons.length];
+            
+            return `
+                <div class="section-resources__card">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail"
+                             onerror="this.style.backgroundColor='#e0e0e0'; this.style.height='200px';">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--${iconName}-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Button Text</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Update debug information
+        function updateDebugInfo() {
+            const viewport = document.getElementById('viewportSelector').value;
+            const viewportDiv = document.getElementById('demoViewport');
+            const grid = viewportDiv.querySelector('.section-resources__grid');
+            const cardCount = document.querySelectorAll('.section-resources__card').length;
+            
+            let cardsPerRow;
+            let maxWidth;
+            
+            switch(viewport) {
+                case 'mobile':
+                    cardsPerRow = 1;
+                    maxWidth = '100%';
+                    break;
+                case 'tablet':
+                    cardsPerRow = 2;
+                    maxWidth = '796px';
+                    break;
+                case 'desktop':
+                    cardsPerRow = 3;
+                    maxWidth = '1178px';
+                    break;
+                case 'desktopplus':
+                    cardsPerRow = 4;
+                    maxWidth = '1560px';
+                    break;
+                case 'full':
+                    cardsPerRow = 'flexible';
+                    maxWidth = '100%';
+                    break;
+                default:
+                    cardsPerRow = 4;
+                    maxWidth = '1560px';
+            }
+            
+            // Update debug panel
+            document.getElementById('debugViewport').textContent = viewport;
+            document.getElementById('debugWidth').textContent = viewportDiv.offsetWidth + 'px';
+            document.getElementById('debugCardsPerRow').textContent = cardsPerRow;
+            document.getElementById('debugMaxWidth').textContent = maxWidth;
+            document.getElementById('debugCardCount').textContent = cardCount;
+            
+            // Update width indicator
+            document.getElementById('widthIndicator').textContent = 
+                'Width: ' + viewportDiv.offsetWidth + 'px';
+        }
+        
+        // Define custom icon mapping for specific cards (optional)
+        // You can easily change which icon appears in which position
+        const customIconMap = {
+            0: 'email',        // First card
+            1: 'webinar',      // Second card
+            2: 'strategy',     // Third card
+            3: 'roi',          // Fourth card
+            4: 'persona',      // Fifth card
+            5: 'inbound',      // Sixth card
+            6: 'momentum',     // Seventh card
+            7: 'value'         // Eighth card
+            // Add more as needed...
+        };
+        
+        // Initialize cards
+        function updateCardCount(count) {
+            const row1 = document.getElementById('resourceRow1');
+            const row2 = document.getElementById('resourceRow2');
+            const row3 = document.getElementById('resourceRow3');
+            const totalCards = parseInt(count);
+            
+            // Clear existing cards
+            row1.innerHTML = '';
+            row2.innerHTML = '';
+            row3.innerHTML = '';
+            
+            // Determine cards per row based on viewport
+            const viewport = document.getElementById('viewportSelector').value;
+            let cardsPerRow;
+            switch(viewport) {
+                case 'mobile': cardsPerRow = 1; break;
+                case 'tablet': cardsPerRow = 2; break;
+                case 'desktop': cardsPerRow = 3; break;
+                case 'desktopplus': 
+                case 'full': cardsPerRow = 4; break;
+                default: cardsPerRow = 4;
+            }
+            
+            // Distribute cards across rows
+            let cardsAdded = 0;
+            const rows = [row1, row2, row3];
+            let currentRow = 0;
+            
+            while (cardsAdded < totalCards) {
+                if (currentRow < rows.length) {
+                    const cardsInThisRow = Math.min(cardsPerRow, totalCards - cardsAdded);
+                    for (let i = 0; i < cardsInThisRow; i++) {
+                        // Use custom icon if defined, otherwise use default rotation
+                        const customIcon = customIconMap[cardsAdded] || null;
+                        rows[currentRow].innerHTML += createCard(cardsAdded, customIcon);
+                        cardsAdded++;
+                    }
+                    currentRow++;
+                } else {
+                    break;
+                }
+            }
+            
+            // Hide empty rows
+            rows.forEach(row => {
+                row.style.display = row.innerHTML ? 'flex' : 'none';
+            });
+            
+            // Update debug info
+            updateDebugInfo();
+        }
+        
+        // Change viewport size
+        function changeViewport(viewport) {
+            const viewportDiv = document.getElementById('demoViewport');
+            viewportDiv.className = 'demo-viewport viewport-' + viewport;
+            
+            // Refresh card layout
+            const currentCount = document.getElementById('cardCount').value;
+            updateCardCount(currentCount);
+        }
+        
+        // Monitor window resize
+        window.addEventListener('resize', updateDebugInfo);
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCardCount(8);
+            updateDebugInfo();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Item Component</title>
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-forms.css">
+    <style>
+        /* Form Item Component Styles */
+        .form-item {
+            --item-gap: 8px;
+            --item-padding-y: 4px;
+            --label-font-size: 18px;
+            --label-line-height: 18px;
+            --helper-font-size: 12px;
+            --helper-line-height: 12px;
+            
+            display: flex;
+            flex-direction: column;
+            gap: var(--item-gap);
+            padding: var(--item-padding-y) 0;
+            width: 100%;
+            max-width: 400px; /* Default max-width for standalone use */
+        }
+
+        /* Label styles */
+        .form-item__label {
+            font-family: var(--font-family-heading);
+            font-size: var(--label-font-size);
+            line-height: var(--label-line-height);
+            font-weight: 800;
+            color: var(--neutrals-600, #51585e);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .form-item__label-required {
+            color: var(--error-500, #ef4444);
+        }
+
+        /* Helper text styles */
+        .form-item__helper {
+            font-family: var(--font-family-body);
+            font-size: var(--helper-font-size);
+            line-height: var(--helper-line-height);
+            font-style: italic;
+            color: var(--neutrals-600, #51585e);
+        }
+
+        /* Error state helper text */
+        .form-item--error .form-item__helper {
+            color: var(--error-500, #ef4444);
+        }
+
+        /* Textarea variant for message field */
+        .form-item__textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: var(--input-padding-y, 4px) var(--input-padding-x, 8px);
+            border: 1px solid var(--neutrals-300, #a2a9af);
+            border-radius: 4px;
+            background: var(--white, #ffffff);
+            font-family: var(--font-family-body);
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: 400;
+            color: var(--neutrals-600, #51585e);
+            transition: all 0.2s ease;
+            outline: none;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        .form-item__textarea::placeholder {
+            color: var(--neutrals-300, #a2a9af);
+            font-weight: 300;
+            font-style: italic;
+            opacity: 1;
+        }
+
+        .form-item__textarea:focus {
+            border-color: var(--primary-500, #1d50de);
+            box-shadow: 0 0 0 2px rgba(29, 80, 222, 0.1);
+        }
+
+        .form-item--error .form-item__textarea {
+            border-color: var(--error-500, #ef4444);
+            background-color: var(--error-50, #fef2f2);
+        }
+
+        /* Demo styles */
+        .demo-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            font-family: var(--font-family-body);
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        h2 {
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: var(--neutrals-700, #363a3e);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Form Item Component</h1>
+        
+        <h2>Basic Field Types</h2>
+        <div class="demo-grid">
+            <!-- Text Entry Field -->
+            <div class="form-item">
+                <label class="form-item__label">Label Text</label>
+                <div class="form-input-field">
+                    <input 
+                        type="text" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                    >
+                </div>
+                <div class="form-item__helper">Please write your message</div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-item">
+                <label class="form-item__label">Email Address</label>
+                <div class="form-input-field">
+                    <input 
+                        type="email" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                    >
+                </div>
+                <div class="form-item__helper">We will never share your email address</div>
+            </div>
+
+            <!-- Name Field -->
+            <div class="form-item">
+                <label class="form-item__label">Name</label>
+                <div class="form-input-field">
+                    <input 
+                        type="text" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                    >
+                </div>
+                <div class="form-item__helper">Please write your full name.</div>
+            </div>
+
+            <!-- Phone Field -->
+            <div class="form-item">
+                <label class="form-item__label">Phone Number</label>
+                <div class="form-input-field">
+                    <input 
+                        type="tel" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                    >
+                </div>
+                <div class="form-item__helper">What is your contact phone number?</div>
+            </div>
+        </div>
+
+        <h2>Split Name Fields</h2>
+        <div class="demo-grid">
+            <!-- First Name Field -->
+            <div class="form-item">
+                <label class="form-item__label">First Name</label>
+                <div class="form-input-field">
+                    <input 
+                        type="text" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                    >
+                </div>
+                <div class="form-item__helper">How do you prefer to be addressed?</div>
+            </div>
+
+            <!-- Last Name Field -->
+            <div class="form-item">
+                <label class="form-item__label">Last Name</label>
+                <div class="form-input-field">
+                    <input 
+                        type="text" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                    >
+                </div>
+                <div class="form-item__helper">What is your last name?</div>
+            </div>
+        </div>
+
+        <h2>Company Field</h2>
+        <div class="demo-grid">
+            <!-- Company Field -->
+            <div class="form-item">
+                <label class="form-item__label">Company</label>
+                <div class="form-input-field">
+                    <input 
+                        type="text" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                    >
+                </div>
+                <div class="form-item__helper">What is your company?</div>
+            </div>
+
+            <!-- Company Required Field -->
+            <div class="form-item">
+                <label class="form-item__label">Company<span class="form-item__label-required">*</span></label>
+                <div class="form-input-field">
+                    <input 
+                        type="text" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                        required
+                    >
+                </div>
+                <div class="form-item__helper">*This field is required.</div>
+            </div>
+        </div>
+
+        <h2>Required Fields</h2>
+        <div class="demo-grid">
+            <!-- Required Email -->
+            <div class="form-item">
+                <label class="form-item__label">Email Address<span class="form-item__label-required">*</span></label>
+                <div class="form-input-field">
+                    <input 
+                        type="email" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                        required
+                    >
+                </div>
+                <div class="form-item__helper">*This field is required.</div>
+            </div>
+
+            <!-- Required Name -->
+            <div class="form-item">
+                <label class="form-item__label">Name<span class="form-item__label-required">*</span></label>
+                <div class="form-input-field">
+                    <input 
+                        type="text" 
+                        class="form-input-field__input" 
+                        placeholder="Write your input here"
+                        required
+                    >
+                </div>
+                <div class="form-item__helper">*This field is required.</div>
+            </div>
+        </div>
+
+        <h2>Error States</h2>
+        <div class="demo-grid">
+            <!-- Email Error -->
+            <div class="form-item form-item--error">
+                <label class="form-item__label">Email Address</label>
+                <div class="form-input-field form-input-field--error">
+                    <input 
+                        type="email" 
+                        class="form-input-field__input" 
+                        value="Error"
+                    >
+                </div>
+                <div class="form-item__helper">Please check your address format and try again.</div>
+            </div>
+
+            <!-- Phone Error -->
+            <div class="form-item form-item--error">
+                <label class="form-item__label">Phone Number</label>
+                <div class="form-input-field form-input-field--error">
+                    <input 
+                        type="tel" 
+                        class="form-input-field__input" 
+                        value="Error"
+                    >
+                </div>
+                <div class="form-item__helper">Please check the number format and try again.</div>
+            </div>
+        </div>
+
+        <h2>Message Field (Textarea)</h2>
+        <!-- Message Field -->
+        <div class="form-item">
+            <label class="form-item__label">Message</label>
+            <textarea 
+                class="form-item__textarea" 
+                placeholder="Write your message here..."
+                rows="5"
+            ></textarea>
+            <div class="form-item__helper">Please provide details about your inquiry</div>
+        </div>
+    </div>
+</body>
+</html>

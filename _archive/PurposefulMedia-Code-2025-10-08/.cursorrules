@@ -1,0 +1,253 @@
+# Purposeful Media Design System - Cursor AI Rules
+
+## Project Overview
+This is a design system for Purposeful Media, following Atomic Design methodology with strict design boundaries. The project is in Q4 2025, Week 41, working toward a Minimum Viable Website (MVW).
+
+## Core Design System Principles
+
+### 1. Design Tokens - ALWAYS USE THESE
+**NEVER use hardcoded values.** All design values MUST use CSS custom properties from our design tokens:
+
+#### Brand Colors
+- `--brand`: #1B1464 (Navy Blue - primary)
+- `--accent`: #D4AF37 (Gold - secondary)
+- `--text-primary`: #1B1464
+- `--text-secondary`: #54595F
+- `--text-reverse`: #FFFFFF
+
+#### Spacing (8px Grid System)
+- Use ONLY: `--space-0`, `--space-1` (4px), `--space-2` (8px), `--space-3` (12px), `--space-4` (16px), `--space-6` (24px), `--space-8` (32px), `--space-10` (40px), `--space-12` (48px), `--space-16` (64px), `--space-20` (80px), `--space-24` (96px)
+- NEVER use arbitrary pixel values
+
+#### Typography
+- Headings: `--font-heading`: 'Lato'
+- Body: `--font-body`: 'Open Sans'
+- Sizes: `--text-h1` through `--text-h5`, `--text-body`, `--text-small`, `--text-xs`
+- Responsive sizes available: `--text-h1-mobile`, etc.
+
+#### Border Radius
+- `--radius-small` (4px), `--radius-medium` (8px), `--radius-large` (12px)
+
+#### Shadows
+- Currently using minimal shadows: `--shadow-subtle`, `--shadow-standard`, `--shadow-focus`
+
+### 2. Component Architecture Rules
+
+#### Atomic Design Hierarchy - STRICTLY FOLLOW
+```
+atoms/       → Basic building blocks (buttons, inputs, labels, links)
+molecules/   → Combinations of atoms (cards, forms, navigation items)
+organisms/   → Complex UI sections (heroes, footers, headers)
+templates/   → Full page layouts (homepage, blog, about)
+```
+
+**NEVER mix levels inappropriately.** Atoms should not import organisms, molecules should only use atoms, etc.
+
+#### File Organization
+```
+components/
+├── atoms/
+│   ├── raw/          ← Original/unprocessed components
+│   └── cleaned/      ← Production-ready components
+├── molecules/
+│   ├── raw/
+│   └── cleaned/
+├── organisms/
+│   ├── raw/
+│   └── cleaned/
+└── templates/
+    ├── raw/
+    └── cleaned/
+```
+
+**Work in `cleaned/` directories for production code.**
+**`raw/` directories are for reference/conversion only.**
+
+### 3. CSS Naming Conventions - BEM Methodology
+
+```css
+/* ✅ CORRECT */
+.card { }                    /* Block */
+.card__header { }            /* Element */
+.card__title { }             /* Element */
+.card--featured { }          /* Modifier */
+.card--large { }             /* Modifier */
+
+/* ❌ WRONG */
+.cardHeader { }              /* No camelCase */
+.card-header-title { }       /* Too nested */
+.featured-card { }           /* Modifier before block */
+```
+
+**Rules:**
+- Use lowercase with hyphens
+- Block: `.component-name`
+- Element: `.component-name__element`
+- Modifier: `.component-name--modifier`
+- Maximum 3 levels deep
+
+### 4. Responsive Design Boundaries
+
+#### Breakpoints (ALWAYS USE THESE)
+```css
+/* Mobile: 320px - 767px */
+@media (max-width: 767px) { }
+
+/* Tablet/Desktop: 768px - 1919px */
+@media (min-width: 768px) { }
+
+/* Desktop Plus: 1920px+ */
+@media (min-width: 1920px) { }
+```
+
+#### Container Constraints
+- `--container-max-width`: 1920px
+- `--container-mobile-padding`: 0
+- `--container-desktop-padding`: 40px
+
+### 5. Semantic HTML - REQUIRED
+
+```html
+<!-- ✅ CORRECT -->
+<button class="btn">Click me</button>
+<article class="card">
+<nav class="menu">
+<header class="hero">
+<section class="section">
+
+<!-- ❌ WRONG -->
+<div class="btn">Click me</div>
+<div class="card">
+<div class="menu">
+```
+
+### 6. Accessibility Requirements
+
+**EVERY component must include:**
+- Proper ARIA labels where needed
+- Keyboard navigation support (tab order)
+- Focus states (using `--shadow-focus`)
+- Alt text for all images
+- Proper heading hierarchy (h1 → h2 → h3)
+- Color contrast meeting WCAG AA
+- Form labels associated with inputs
+
+### 7. File Output Rules
+
+#### When Creating Components
+1. **Always create BOTH files**: `.html` AND `.css`
+2. **Use design tokens** in all CSS
+3. **Include component documentation** at top of CSS file:
+```css
+/**
+ * Component: [Name]
+ * Type: [Atom/Molecule/Organism/Template]
+ * Description: [Brief description]
+ * 
+ * Dependencies:
+ * - Design Tokens (required)
+ * - [Other dependencies]
+ * 
+ * Usage:
+ * [Brief usage example]
+ */
+```
+
+4. **HTML structure comments**:
+```html
+<!-- Component: [Name] -->
+<!-- Type: [Atom/Molecule/Organism] -->
+<!-- Usage: [Brief description] -->
+```
+
+#### File Paths
+- Components: `/components/[level]/cleaned/[component-name].html|css`
+- Processed output: `/dist/processed/[level]/[component-name].html|css`
+- Documentation: `/docs/components/[component-name].md`
+
+### 8. Code Quality Standards
+
+**CSS:**
+- No `!important` unless absolutely necessary (document why)
+- Use CSS custom properties, not hardcoded values
+- Mobile-first media queries
+- Logical property grouping (layout, typography, visual, animation)
+
+**HTML:**
+- Proper indentation (2 spaces)
+- Semantic elements
+- Self-documenting class names
+- No inline styles
+
+### 9. What NOT to Do
+
+**NEVER:**
+- Create new design tokens without explicit approval
+- Use colors not in the design system
+- Use spacing values not in the 8px grid
+- Mix camelCase and kebab-case
+- Create overly complex selectors
+- Use absolute positioning unless required
+- Add JavaScript without discussion
+- Create documentation files unprompted
+
+### 10. Documentation References
+
+When in doubt, refer to:
+- `/docs/README.md` - Main documentation
+- `/docs/design-tokens.md` - Complete token reference
+- `/docs/component-examples.md` - Component patterns
+- `/dist/styles/tokens.md` - Auto-generated token list
+- `/docs/PROJECT-STRUCTURE.md` - Directory map
+
+## Workflow for AI Assistance
+
+### When User Requests a Component
+
+1. **Clarify the component level** (atom, molecule, organism, template)
+2. **Check if similar components exist** in raw/ or cleaned/ directories
+3. **Identify required design tokens** from the system
+4. **Create both HTML and CSS files** in appropriate `/cleaned/` directory
+5. **Use BEM naming** throughout
+6. **Include responsive breakpoints**
+7. **Add accessibility features**
+8. **Test against design system rules**
+
+### When Modifying Existing Components
+
+1. **Read the existing file first**
+2. **Maintain existing patterns and naming**
+3. **Use design tokens for any new values**
+4. **Preserve accessibility features**
+5. **Update component documentation if needed**
+
+### When Creating Documentation
+
+1. **Only create docs when explicitly requested**
+2. **Follow existing documentation patterns**
+3. **Include code examples with proper syntax highlighting**
+4. **Reference design tokens by name**
+
+## MVW (Minimum Viable Website) Goals
+
+The current project goal is to establish a working website using:
+- Core atomic components (buttons, inputs, labels, links, headlines, paragraphs)
+- Essential molecules (cards, forms, navigation)
+- Key organisms (hero, header, footer)
+- Primary templates (homepage, about, blog)
+
+**Focus on production-ready, accessible, responsive components that strictly adhere to the design system.**
+
+## Questions to Ask
+
+Before implementing, consider asking:
+- "Which component level is this?" (atom/molecule/organism/template)
+- "Are there existing components I should build upon?"
+- "Should this go in `cleaned/` or `raw/`?" (default: cleaned)
+- "What design tokens apply here?"
+- "What accessibility features are needed?"
+- "Is this responsive across all breakpoints?"
+
+---
+
+**Remember:** Consistency is key. When uncertain, ask for clarification rather than making assumptions that break the design system.

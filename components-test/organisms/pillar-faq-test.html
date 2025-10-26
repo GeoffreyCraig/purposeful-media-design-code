@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pillar FAQ Section - Test Component</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    
+    <style>
+        /* Component Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        /**
+         * Component: Pillar FAQ Section
+         * Type: Organism
+         * Description: FAQ section with 5 accordion-style questions for Pillar pages
+         * 
+         * Dependencies:
+         * - Design Tokens (required)
+         * - Google Fonts: Lato, Open Sans
+         * - JavaScript for accordion functionality
+         * 
+         * Usage:
+         * - Displays 5 frequently asked questions with expandable answers
+         * - Used on Pillar pages with "FAQ" anchor for sticky menu
+         */
+        
+        /* ============================================
+           PILLAR FAQ SECTION
+           ============================================ */
+        
+        .pillar-faq {
+            width: 100%;
+            background-color: var(--secondary-100, #eceeef);
+            scroll-margin-top: 80px; /* Offset for sticky menu */
+        }
+        
+        .pillar-faq__container {
+            width: 100%;
+            max-width: var(--container-max-width, 1920px);
+            margin: 0 auto;
+        }
+        
+        .pillar-faq__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--secondary-100, #eceeef);
+            border-radius: var(--radius-large, 12px);
+            padding: var(--space-8, 32px);
+        }
+        
+        /* FAQ Card */
+        .card-faq {
+            padding: var(--space-4, 16px) var(--space-3, 12px);
+            border-bottom: 1px solid var(--color-neutral-200, #c7cbcf);
+        }
+        
+        .card-faq:last-child {
+            border-bottom: none;
+        }
+        
+        .card-faq__question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-2, 8px) var(--space-3, 12px);
+            border-radius: var(--radius-medium, 8px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+        
+        .card-faq__question:hover {
+            background-color: var(--accent-100, #f4ebcd);
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-faq__question-text {
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            color: var(--text-secondary, #51585e);
+            flex: 1;
+            padding-right: var(--space-3, 12px);
+        }
+        
+        .card-faq__arrow {
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 45px;
+            color: var(--text-secondary, #51585e);
+            width: 45px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-faq--open .card-faq__arrow {
+            transform: rotate(90deg);
+        }
+        
+        .card-faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .card-faq--open .card-faq__answer {
+            max-height: 500px;
+            opacity: 1;
+        }
+        
+        .card-faq__answer-content {
+            padding: var(--space-2, 8px) var(--space-2, 8px) var(--space-2, 8px) var(--space-8, 32px);
+            font-family: var(--font-body, 'Open Sans'), sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            color: var(--text-secondary, #51585e);
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .pillar-faq {
+                padding: var(--space-8, 32px) var(--space-4, 16px);
+                scroll-margin-top: 60px;
+            }
+            
+            .pillar-faq__inner {
+                padding: var(--space-6, 24px);
+                border-radius: var(--radius-medium, 8px);
+            }
+            
+            .card-faq__question-text {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .pillar-faq {
+                padding: var(--space-12, 48px) var(--space-8, 32px);
+                scroll-margin-top: 70px;
+            }
+            
+            .pillar-faq__inner {
+                border-radius: var(--radius-large, 12px);
+            }
+            
+            .card-faq__question-text {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .pillar-faq {
+                padding: var(--space-16, 64px) var(--space-10, 40px);
+                scroll-margin-top: 80px;
+            }
+            
+            .card-faq__question-text {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+        }
+        
+        /* DesktopPlus: 1920px and above */
+        @media (min-width: 1920px) {
+            .pillar-faq {
+                padding: var(--space-20, 80px) var(--space-10, 40px);
+                scroll-margin-top: 80px;
+            }
+            
+            .card-faq__question-text {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+        }
+        
+        /* Demo Styles */
+        .demo-container {
+            padding: 40px 20px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        .breakpoint-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .breakpoint-header {
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .breakpoint-content {
+            background: #ffffff;
+            position: relative;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; text-align: center; margin-bottom: 40px;">
+            Pillar FAQ Section - Test Component
+        </h1>
+        
+        <!-- Component Info -->
+        <div style="background: #d4af37; color: white; padding: 20px; border-radius: 8px; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="margin-bottom: 10px;">Component Features:</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>5 FAQ Items:</strong> Accordion-style expand/collapse</li>
+                <li><strong>Anchor Point:</strong> ID "faq" for sticky menu navigation</li>
+                <li><strong>Smooth Animation:</strong> Answers slide open/closed</li>
+                <li><strong>Arrow Rotation:</strong> "›" rotates 90° when open</li>
+                <li><strong>Hover States:</strong> Cream background on question hover</li>
+            </ul>
+        </div>
+        
+        <!-- Desktop Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Desktop (1150px+)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Desktop View - FAQ with 5 questions (one open by default for demo)</div>
+                <div class="breakpoint-content" style="min-width: 1200px;">
+                    <!-- Component: Pillar FAQ Section -->
+                    <!-- Type: Organism -->
+                    <!-- Usage: FAQ section for Pillar pages -->
+                    <section id="faq" class="pillar-faq" aria-label="Frequently Asked Questions">
+                        <div class="pillar-faq__container">
+                            <div class="pillar-faq__inner">
+                                
+                                <!-- FAQ 1 -->
+                                <div class="card-faq">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            What services do you offer for email marketing?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We provide comprehensive email marketing services including strategy development, list management and segmentation, campaign design and execution, deliverability optimization, and performance analytics. Our team helps B2B companies improve open rates, increase engagement, and generate qualified leads through targeted email campaigns.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ 2 (Open by default for demo) -->
+                                <div class="card-faq card-faq--open">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="true">
+                                        <div class="card-faq__question-text">
+                                            How do you improve email deliverability?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="false">
+                                        <div class="card-faq__answer-content">
+                                            We implement proven deliverability best practices including SPF, DKIM, and DMARC authentication, regular list hygiene to remove inactive contacts, engagement-based segmentation, and careful monitoring of sender reputation. We also help clients avoid spam triggers and maintain healthy sending patterns that ISPs recognize as legitimate.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ 3 -->
+                                <div class="card-faq">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            What results can I expect from your services?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            Results vary by industry and starting point, but our clients typically see significant improvements in key metrics: 20-40% increase in open rates, 15-30% improvement in click-through rates, and measurable growth in qualified lead generation. We provide detailed analytics and ROI tracking to demonstrate the impact of our work.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ 4 -->
+                                <div class="card-faq">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            How long does it take to see results?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            Initial improvements in deliverability and engagement often appear within the first 30-60 days. More substantial results in lead generation and conversion typically develop over 90-180 days as we optimize campaigns, refine targeting, and build momentum. We recommend a minimum 6-month engagement for meaningful transformation.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ 5 -->
+                                <div class="card-faq">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            Do you work with specific industries?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We specialize in B2B companies with complex products or services, particularly in industrial, engineering, software, and professional services sectors. Our team understands technical audiences and knows how to craft messaging that resonates with decision-makers in these industries while maintaining compliance with industry-specific regulations.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Mobile (≤767px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Mobile View - Smaller padding and font sizes</div>
+                <div class="breakpoint-content" style="width: 500px;">
+                    <section class="pillar-faq">
+                        <div class="pillar-faq__container">
+                            <div class="pillar-faq__inner">
+                                
+                                <div class="card-faq">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            What services do you offer?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            Comprehensive email marketing services including strategy, campaigns, and analytics.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-faq">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            How long to see results?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            Initial improvements within 30-60 days, substantial results in 90-180 days.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Specifications -->
+        <div style="background: #f0f3fd; padding: 30px; border-radius: 8px; max-width: 1200px; margin: 40px auto 0;">
+            <h3 style="color: #1b1464; margin-bottom: 20px;">Technical Specifications</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Component Structure</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>✅ Gray container background</li>
+                        <li>✅ 5 FAQ cards with borders</li>
+                        <li>✅ Arrow rotation animation</li>
+                        <li>✅ Max-height transition</li>
+                        <li>✅ Keyboard accessible</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Typography</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li><strong>Question:</strong> Lato 900</li>
+                        <li><strong>Mobile:</strong> 18px/27px</li>
+                        <li><strong>Tablet+:</strong> 21px/30.5px</li>
+                        <li><strong>Answer:</strong> Open Sans 18px/27px</li>
+                        <li><strong>Arrow:</strong> 30px/45px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Colors</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li><strong>Background:</strong> #eceeef</li>
+                        <li><strong>Text:</strong> #51585e (gray)</li>
+                        <li><strong>Hover BG:</strong> #f4ebcd (cream)</li>
+                        <li><strong>Border:</strong> #c7cbcf</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Behavior</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>✅ Click to expand/collapse</li>
+                        <li>✅ One answer open at a time</li>
+                        <li>✅ Smooth 0.3s transition</li>
+                        <li>✅ Hover highlights question</li>
+                        <li>✅ ARIA attributes update</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for FAQ Accordion -->
+    <script>
+        /**
+         * Pillar FAQ - Accordion Functionality
+         * Handles expand/collapse of FAQ answers
+         */
+        (function() {
+            'use strict';
+            
+            // Get all FAQ cards
+            const faqCards = document.querySelectorAll('.card-faq');
+            
+            faqCards.forEach(card => {
+                const question = card.querySelector('.card-faq__question');
+                const answer = card.querySelector('.card-faq__answer');
+                
+                if (question && answer) {
+                    question.addEventListener('click', function() {
+                        const isOpen = card.classList.contains('card-faq--open');
+                        
+                        // Close all other FAQs
+                        faqCards.forEach(otherCard => {
+                            if (otherCard !== card) {
+                                otherCard.classList.remove('card-faq--open');
+                                const otherQuestion = otherCard.querySelector('.card-faq__question');
+                                const otherAnswer = otherCard.querySelector('.card-faq__answer');
+                                if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+                                if (otherAnswer) otherAnswer.setAttribute('aria-hidden', 'true');
+                            }
+                        });
+                        
+                        // Toggle current FAQ
+                        if (isOpen) {
+                            card.classList.remove('card-faq--open');
+                            question.setAttribute('aria-expanded', 'false');
+                            answer.setAttribute('aria-hidden', 'true');
+                        } else {
+                            card.classList.add('card-faq--open');
+                            question.setAttribute('aria-expanded', 'true');
+                            answer.setAttribute('aria-hidden', 'false');
+                        }
+                    });
+                    
+                    // Keyboard support
+                    question.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            question.click();
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
+

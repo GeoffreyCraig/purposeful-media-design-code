@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-COLUMN GRAPHIC SECTION BREADBOARD TEST</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* ====================================
+           SECTION 2-COLUMN GRAPHIC COMPONENT
+           ==================================== */
+        
+        /* Main Container with Background Image */
+        .section-2column-graphic {
+            width: 100%;
+            position: relative;
+            margin: 0;
+            padding: 0 64px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+            /* Default background */
+            background-image: url('../../assets/images/shutterstock_2085055825.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Content Container */
+        .section-2column-graphic__content {
+            width: 100%;
+            max-width: 1920px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Cards Container - Horizontal Layout */
+        .section-2column-graphic__cards {
+            display: flex;
+            gap: 0;
+            width: 100%;
+            position: relative;
+            z-index: 3; /* Above all background layers */
+        }
+        
+        /* Card Containers - Transparent */
+        .card-container {
+            flex: 1;
+            padding: 64px;
+            opacity: 1; /* Containers are transparent for background to show */
+            background: transparent;
+            display: flex;
+            align-items: flex-end; /* FIXED: Align cards to bottom of container */
+        }
+        
+        .card-container--left {
+            justify-content: flex-start;
+        }
+        
+        .card-container--right {
+            justify-content: flex-end;
+        }
+        
+        /* Individual Cards - White Opaque */
+        .content-card {
+            background: #FFFFFF;
+            padding: 64px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* FIXED: Content aligns to bottom of card */
+            gap: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            height: auto; /* FIXED: Cards hug their content, no fixed height */
+        }
+        
+        /* Card Headline */
+        .card-heading {
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 700;
+            color: #1B1464;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        /* Card CTA Text */
+        .card-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            font-weight: 400;
+            color: #51585E;
+            margin: 0;
+        }
+        
+        /* Buttons - Primary and Secondary Styling */
+        .btn {
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            user-select: none;
+        }
+        
+        /* Button Sizes */
+        .btn--large {
+            font-size: 18px;
+            padding: 20px 32px;
+            min-width: 160px;
+        }
+        
+        .btn--medium {
+            font-size: 16px;
+            padding: 16px 24px;
+            min-width: 120px;
+        }
+        
+        .btn--small {
+            font-size: 14px;
+            padding: 12px 20px;
+            min-width: 100px;
+        }
+        
+        /* Primary Button (Blue) */
+        .btn-brand,
+        .btn--primary {
+            background-color: #1B1464;
+            color: #FFFFFF;
+            border-color: #1B1464;
+        }
+        
+        .btn-brand:hover:not(:disabled),
+        .btn--primary:hover:not(:disabled) {
+            background-color: #36448F;
+            border-color: #36448F;
+        }
+        
+        .btn-brand:active:not(:disabled),
+        .btn--primary:active:not(:disabled) {
+            background-color: #0B1F57;
+            border-color: #0B1F57;
+        }
+        
+        /* Secondary Button (Gold) */
+        .btn-accent,
+        .btn--secondary {
+            background-color: #D4AF37;
+            color: #1B1464;
+            border-color: #D4AF37;
+        }
+        
+        .btn-accent:hover:not(:disabled),
+        .btn--secondary:hover:not(:disabled) {
+            background-color: #E4CD82;
+            border-color: #E4CD82;
+        }
+        
+        .btn-accent:active:not(:disabled),
+        .btn--secondary:active:not(:disabled) {
+            background-color: #B39226;
+            border-color: #B39226;
+        }
+        
+        /* ====================================
+           RESPONSIVE BREAKPOINTS
+           ==================================== */
+        
+        /* DesktopPlus: 1920px and wider */
+        @media (min-width: 1920px) {
+            .section-2column-graphic {
+                padding: 0 64px;
+                /* LAYER 1: Outer background at 25% opacity (full viewport) */
+                background-image: url('../../assets/images/shutterstock_2085055825.jpg');
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                position: relative;
+            }
+            
+            /* 25% opacity overlay on the outer background */
+            .section-2column-graphic::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.75); /* White overlay at 75% = 25% image opacity */
+                z-index: 0;
+                pointer-events: none;
+            }
+            
+            .section-2column-graphic__content {
+                width: 1920px;
+                max-width: 1920px;
+                position: relative;
+                z-index: 2; /* Above the white overlay */
+                /* LAYER 2: Sharp center background at full opacity */
+                background-image: url('../../assets/images/shutterstock_2085055825.jpg');
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            
+            .section-2column-graphic__cards {
+                flex-direction: row;
+                align-items: flex-end; /* FIXED: Align cards to bottom in horizontal layout */
+            }
+            
+            .card-container {
+                padding: 64px;
+                align-items: flex-end; /* FIXED: Bottom-align cards within containers */
+            }
+            
+            .content-card {
+                width: 600px;
+                max-width: 600px;
+            }
+            
+            .btn {
+                /* Large button size */
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .section-2column-graphic {
+                padding: 0 64px;
+                background-image: url('../../assets/images/shutterstock_2085055825.jpg');
+                background-position: center center;
+                background-size: cover;
+            }
+            
+            .section-2column-graphic__content {
+                width: 100%;
+                max-width: 1919px;
+            }
+            
+            .section-2column-graphic__cards {
+                flex-direction: row;
+                align-items: flex-end; /* FIXED: Align cards to bottom in horizontal layout */
+            }
+            
+            .card-container {
+                padding: 64px;
+                align-items: flex-end; /* FIXED: Bottom-align cards within containers */
+            }
+            
+            .content-card {
+                width: 100%;
+                max-width: 600px;
+                min-width: 320px; /* Allow cards to shrink but maintain readability */
+            }
+            
+            .btn {
+                /* Large button size */
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .section-2column-graphic {
+                padding: 0 64px;
+                background-image: url('../../assets/images/shutterstock_2085055825.jpg');
+                background-position: center center;
+                background-size: cover;
+            }
+            
+            .section-2column-graphic__content {
+                width: 100%;
+                max-width: 1149px;
+            }
+            
+            .section-2column-graphic__cards {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start; /* FIXED: Left-align cards in vertical layout */
+            }
+            
+            .card-container {
+                padding: 64px;
+                width: 100%; /* Full width of cards container */
+                justify-content: flex-start; /* Left-align cards */
+                align-items: flex-start; /* Align to start for vertical layout */
+            }
+            
+            .content-card {
+                width: 100%;
+                max-width: 385px; /* FIXED: Max 385px for smooth transition at 1150px */
+                min-width: 320px;
+            }
+            
+            .btn {
+                /* Medium button size */
+            }
+            
+            .card-heading {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .section-2column-graphic {
+                padding: 0 24px;
+                background-image: url('../../assets/images/shutterstock_2085055825.jpg');
+                background-position: center center;
+                background-size: cover;
+            }
+            
+            .section-2column-graphic__content {
+                width: 100%;
+                max-width: 767px;
+            }
+            
+            .section-2column-graphic__cards {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start; /* FIXED: Left-align cards in vertical layout */
+            }
+            
+            .card-container {
+                padding: 63px 16px; /* 63px top/bottom, 16px left/right */
+                width: 100%; /* Full width of cards container */
+                justify-content: flex-start; /* Left-align cards */
+                align-items: flex-start; /* Align to start for vertical layout */
+            }
+            
+            .content-card {
+                width: 320px;
+                max-width: 320px;
+                min-width: 320px;
+            }
+            
+            .btn {
+                /* Small button size */
+            }
+            
+            .card-heading {
+                font-size: 21px;
+                line-height: 31.5px;
+            }
+            
+            .card-text {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+        
+        /* Test Info Bar */
+        .test-info {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        
+        .test-info .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Info Bar -->
+    <div class="test-info">
+        <div>Screen: <span class="value" id="screenWidth">0</span>px</div>
+        <div>Breakpoint: <span class="value" id="breakpointName">-</span></div>
+        <div>Layout: <span class="value" id="layoutMode">-</span></div>
+    </div>
+    
+    <!-- 2-Column Graphic Section Component -->
+    <section class="section-2column-graphic">
+        <div class="section-2column-graphic__content">
+            <div class="section-2column-graphic__cards">
+                <!-- Container 1 - Transparent (Left/Top Card) -->
+                <div class="card-container card-container--left">
+                    <div class="content-card">
+                        <h3 class="card-heading">Ready to transform your marketing efforts?</h3>
+                        <p class="card-text">Schedule a free consultation to discuss your specific challenges and opportunities.</p>
+                        <button class="btn btn-accent btn--large">SCHEDULE</button>
+                    </div>
+                </div>
+                
+                <!-- Container 2 - Transparent (Right/Bottom Card) -->
+                <div class="card-container card-container--right">
+                    <div class="content-card">
+                        <h3 class="card-heading">Have questions first?</h3>
+                        <p class="card-text">Get in touch to start a conversation about how we can help your B2B business grow.</p>
+                        <button class="btn btn-brand btn--large">GET IN TOUCH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Breakpoint monitor
+        function updateInfo() {
+            const width = window.innerWidth;
+            
+            document.getElementById('screenWidth').textContent = width;
+            
+            let breakpoint = '';
+            let layout = '';
+            
+            if (width < 380) {
+                breakpoint = 'Small Mobile';
+                layout = '1 Column (Vertical)';
+            } else if (width >= 380 && width <= 767) {
+                breakpoint = 'Mobile';
+                layout = '1 Column (Vertical)';
+            } else if (width >= 768 && width <= 1149) {
+                breakpoint = 'Tablet';
+                layout = '1 Column (Vertical)';
+            } else if (width >= 1150 && width <= 1919) {
+                breakpoint = 'Desktop';
+                layout = '2 Columns (Horizontal)';
+            } else if (width >= 1920) {
+                breakpoint = 'Desktop Plus';
+                layout = '2 Columns (Horizontal)';
+            }
+            
+            document.getElementById('breakpointName').textContent = breakpoint;
+            document.getElementById('layoutMode').textContent = layout;
+            
+            // Update button sizes based on breakpoint
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('btn--large', 'btn--medium', 'btn--small');
+                
+                if (width >= 1150) {
+                    btn.classList.add('btn--large');
+                } else if (width >= 768) {
+                    btn.classList.add('btn--medium');
+                } else {
+                    btn.classList.add('btn--small');
+                }
+            });
+        }
+        
+        updateInfo();
+        window.addEventListener('resize', updateInfo);
+        
+        console.log('✅ 2-Column Graphic Section test ready');
+    </script>
+</body>
+</html>
+

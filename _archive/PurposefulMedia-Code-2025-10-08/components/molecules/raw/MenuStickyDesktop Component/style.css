@@ -1,0 +1,211 @@
+.break-point-desktop-tablet-state-closed-current-sections-default,
+.break-point-desktop-tablet-state-closed-current-sections-default * {
+  box-sizing: border-box;
+}
+.break-point-desktop-tablet-state-closed-current-sections-default {
+  background: var(--secondary, #eceeef);
+  border-style: solid;
+  border-color: var(--accent, #d4af37);
+  border-width: 0px 0px 1px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 80px;
+  min-width: 768px;
+  max-width: 1920px;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.solutions-menu {
+  padding: var(--space-1, 4px) var(--space-2, 8px) var(--space-1, 4px)
+    var(--space-2, 8px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  height: 60px;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden;
+}
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.h-6 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.sticky-gap-1 {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.h-4 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.strategy {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.sticky-gap-2 {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.method {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.sticky-gap-3 {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.benefits {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.sticky-gap-4 {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.resources {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.sticky-gap-5 {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.faq {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.sticky-gap-6 {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.start {
+  background: var(--50, #faf5e6);
+  border-radius: var(--space-2, 8px);
+  padding: var(--space-2, 8px) var(--space-4, 16px) var(--space-2, 8px)
+    var(--space-4, 16px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.h-5 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}

@@ -1,0 +1,176 @@
+/* ==========================================================================
+   LINK COMPONENT STYLES
+   Purpose: Interactive text typography with hover and active states
+   Node ID: 1601:1195
+   ========================================================================== */
+
+/* Base Link Setup
+   ========================================================================== */
+   
+.link {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+/* Link Types
+   ========================================================================== */
+
+/* Attribution Links - Small footer/credit links */
+.link.attribution {
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  text-decoration: underline;
+  color: #C7CBCF; /* Gray by default */
+}
+
+/* Text Links - Standard inline links */
+.link.text {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Menu Links - Navigation menu items */
+.link.menu {
+  font-size: 21px;
+  line-height: 21px;
+  font-weight: 700;
+  text-decoration: none; /* No underline for menu items */
+}
+
+/* Color & State Combinations
+   ========================================================================== */
+
+/* Primary Color Scheme */
+.link.text.primary.default,
+.link.menu.primary.default {
+  color: #1B1464;
+}
+
+.link.text.primary:hover,
+.link.text.primary.hover,
+.link.menu.primary:hover,
+.link.menu.primary.hover {
+  color: #1D50DE;
+}
+
+.link.text.primary:active,
+.link.text.primary.active,
+.link.menu.primary:active,
+.link.menu.primary.active {
+  color: #06102B;
+}
+
+/* Accent Color Scheme */
+.link.text.accent.default,
+.link.menu.accent.default {
+  color: #D4AF37;
+}
+
+.link.text.accent:hover,
+.link.text.accent.hover,
+.link.menu.accent:hover,
+.link.menu.accent.hover {
+  color: #DCBE5D;
+}
+
+.link.text.accent:active,
+.link.text.accent.active,
+.link.menu.accent:active,
+.link.menu.accent.active {
+  color: #B39226;
+}
+
+/* Reverse (White) - For dark backgrounds */
+.link.menu.reverse {
+  color: #FFFFFF;
+}
+
+.link.menu.reverse:hover {
+  color: #DCBE5D; /* Gold on hover */
+}
+
+/* Disabled State */
+.link.disabled,
+.link.text.disabled,
+.link.menu.disabled,
+.link[disabled] {
+  color: #868F97;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Focus State for Accessibility
+   ========================================================================== */
+
+.link:focus {
+  outline: 2px solid #1D50DE;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Utility Classes
+   ========================================================================== */
+
+/* Remove underline */
+.link.no-underline {
+  text-decoration: none !important;
+}
+
+/* Force underline */
+.link.underline {
+  text-decoration: underline !important;
+}
+
+/* Block-level link */
+.link.block {
+  display: block;
+  width: 100%;
+}
+
+/* Inline-block for button-like links */
+.link.inline-block {
+  display: inline-block;
+}
+
+/* External link indicator */
+.link.external::after {
+  content: ' ↗';
+  font-size: 0.8em;
+  vertical-align: super;
+}
+
+/* Responsive Adjustments
+   ========================================================================== */
+
+/* Mobile: 380px to 767px */
+@media (max-width: 767px) {
+  .link.text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .link.menu {
+    font-size: 18px;
+    line-height: 18px;
+  }
+}
+
+/* Tablet: 768px to 1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+  .link.text {
+    font-size: 17px;
+    line-height: 25px;
+  }
+  
+  .link.menu {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}

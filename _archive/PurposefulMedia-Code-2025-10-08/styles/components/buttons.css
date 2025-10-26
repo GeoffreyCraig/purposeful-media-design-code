@@ -1,0 +1,160 @@
+/* Purposeful Media Design System - Button Component */
+/* ================================================ */
+
+/* Base Button Styles */
+.btn {
+    font-family: var(--font-primary), var(--font-fallback);
+    font-weight: var(--weight-bold);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button Sizes */
+.btn--small {
+    padding: var(--space-2) var(--space-3);
+    font-size: 16px;
+    min-height: 36px;
+}
+
+.btn--medium {
+    padding: var(--space-3) var(--space-4);
+    font-size: 18px;
+    min-height: 44px;
+}
+
+.btn--large {
+    padding: var(--space-4) var(--space-6);
+    font-size: 20px;
+    min-height: 52px;
+}
+
+/* Button Themes */
+.btn--primary {
+    background: var(--brand);
+    color: var(--reverse);
+}
+
+.btn--primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn--primary:active {
+    transform: scale(0.98);
+}
+
+.btn--accent {
+    background: var(--accent);
+    color: var(--text-primary);
+}
+
+.btn--accent:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn--accent:active {
+    transform: scale(0.98);
+}
+
+.btn--secondary {
+    background: transparent;
+    color: var(--brand);
+    border: 2px solid var(--brand);
+}
+
+.btn--secondary:hover {
+    background: var(--brand);
+    color: var(--reverse);
+}
+
+.btn--secondary:active {
+    transform: scale(0.98);
+}
+
+.btn--reverse {
+    background: var(--reverse);
+    color: var(--brand);
+    border: 2px solid var(--reverse);
+}
+
+.btn--reverse:hover {
+    background: transparent;
+    color: var(--reverse);
+}
+
+.btn--reverse:active {
+    transform: scale(0.98);
+}
+
+/* Button States */
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Button with Icons */
+.btn--icon-left .btn__icon {
+    order: -1;
+}
+
+.btn--icon-right .btn__icon {
+    order: 1;
+}
+
+.btn__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Button Groups */
+.btn-group {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.btn-group--vertical {
+    flex-direction: column;
+}
+
+.btn-group--centered {
+    justify-content: center;
+}
+
+.btn-group--full-width .btn {
+    flex: 1;
+}
+
+/* Responsive Button Adjustments */
+@media (max-width: 767px) {
+    .btn--large {
+        padding: var(--space-3) var(--space-5);
+        font-size: 18px;
+        min-height: 48px;
+    }
+    
+    .btn-group--stacked {
+        flex-direction: column;
+    }
+    
+    .btn-group--stacked .btn {
+        width: 100%;
+    }
+}
+

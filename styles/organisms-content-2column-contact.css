@@ -1,0 +1,435 @@
+/* ============================================
+   Content/2ColumnContact Section Styles
+   Purposeful Media Design System
+   Version: 1.1
+   Dependencies: variables-v2.0-20250915.css
+   
+   Components:
+   - Two-column responsive contact section
+   - Contact card (teaser) with CTA
+   - eBook/resource image display
+   - Reverse variant (image left, card right)
+   ============================================ */
+
+/* Base Section Styles */
+.content-2column-contact {
+    position: relative;
+    background-color: var(--color-neutral-100, #eceeef);
+    padding: 10px 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+/* Optional Background Container */
+.section-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Main Column Group Container */
+.column-group {
+    position: relative;
+    background-color: var(--color-white, #ffffff);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 16px 64px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1348px;
+}
+
+/* Content Columns */
+.content-column {
+    display: flex;
+    align-items: center;
+}
+
+.left-column {
+    flex: 1;
+    min-width: 0;
+}
+
+.right-column {
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Contact Card Styles */
+.contact-card {
+    background: var(--color-white, #ffffff);
+    border-radius: 4px;
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+    padding: 40px 48px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.card-title {
+    font-family: var(--font-primary, 'Lato'), sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 45px;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1b1464);
+    margin: 0;
+    width: 100%;
+}
+
+.card-description {
+    font-family: var(--font-secondary, 'Open Sans'), sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--color-neutral-600, #51585e);
+    margin: 0;
+    width: 100%;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--color-primary-700, #1b1464);
+    border: none;
+    border-radius: 4px;
+    padding: 16px 80px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-800, #0b1f57);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-text {
+    font-family: var(--font-primary, 'Lato'), sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: var(--color-white, #ffffff);
+    white-space: nowrap;
+}
+
+/* Image Container Styles */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ebook-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ========================================
+   REVERSE VARIANT
+   ======================================== */
+
+.content-2column-contact.reverse .column-group {
+    padding: 32px 20px;
+    max-width: 1150px;
+}
+
+.content-2column-contact.reverse .left-column {
+    flex-shrink: 0;
+}
+
+.content-2column-contact.reverse .right-column {
+    flex: 1;
+    min-width: 0;
+}
+
+.content-2column-contact.reverse .contact-card {
+    align-items: flex-start;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS - DEFAULT
+   ======================================== */
+
+/* Desktop Plus (1920px and wider) */
+.content-2column-contact.desktop-plus {
+    padding: 10px 64px;
+}
+
+.desktop-plus .column-group {
+    width: 1348px;
+}
+
+.desktop-plus .contact-card {
+    max-width: 600px;
+}
+
+.desktop-plus .right-column {
+    width: 693px;
+    height: 1047px;
+    margin-right: -64px; /* Overlay right padding */
+}
+
+/* Desktop (1150px - 1919px) */
+.content-2column-contact.desktop {
+    padding: 10px 64px;
+}
+
+.desktop .column-group {
+    width: 1148px;
+}
+
+.desktop .contact-card {
+    max-width: 500px;
+}
+
+.desktop .right-column {
+    width: 500px;
+    height: 892px;
+    margin-right: -64px; /* Overlay right padding */
+}
+
+/* Tablet (768px - 1149px) */
+.content-2column-contact.tablet {
+    padding: 10px 0;
+    justify-content: flex-start;
+}
+
+.tablet .column-group {
+    width: 1149px;
+    max-width: none;
+}
+
+.tablet .contact-card {
+    max-width: 500px;
+}
+
+.tablet .card-title {
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.tablet .btn-primary {
+    padding: 12px 64px;
+}
+
+.tablet .right-column {
+    width: 500px;
+    height: 731px;
+    margin-right: -64px; /* Overlay right padding */
+}
+
+/* Mobile (380px - 767px) */
+.content-2column-contact.mobile {
+    padding: 10px 0;
+    justify-content: flex-start;
+}
+
+.mobile .column-group {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 64px;
+    width: auto;
+    max-width: none;
+}
+
+.mobile .left-column,
+.mobile .right-column {
+    width: 100%;
+}
+
+.mobile .contact-card {
+    max-width: 320px;
+    width: 100%;
+}
+
+.mobile .right-column {
+    margin-right: 0;
+    margin-top: 20px;
+    height: auto;
+}
+
+.mobile .image-container {
+    width: 320px;
+    aspect-ratio: 8.5 / 11; /* Standard US Letter proportion for eBook */
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS - REVERSE VARIANT
+   ======================================== */
+
+/* Desktop Plus (1920px and wider) - Reverse */
+.content-2column-contact.reverse.desktop-plus {
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.reverse.desktop-plus .column-group {
+    width: 1150px;
+    padding: 32px 20px;
+}
+
+.reverse.desktop-plus .left-column {
+    width: 610px;
+    height: 790px;
+}
+
+.reverse.desktop-plus .contact-card {
+    max-width: none;
+    padding: 40px 48px;
+}
+
+.reverse.desktop-plus .right-column {
+    margin-right: 0;
+    width: auto;
+    height: auto;
+}
+
+/* Desktop (1150px - 1919px) - Reverse */
+.content-2column-contact.reverse.desktop {
+    padding: 10px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.reverse.desktop .column-group {
+    width: 1150px;
+    padding: 32px 20px;
+}
+
+.reverse.desktop .left-column {
+    width: 610px;
+    height: 790px;
+}
+
+.reverse.desktop .contact-card {
+    max-width: none;
+    padding: 40px 48px;
+}
+
+.reverse.desktop .right-column {
+    margin-right: 0;
+    width: auto;
+    height: auto;
+}
+
+/* Tablet (768px - 1149px) - Reverse */
+.content-2column-contact.reverse.tablet {
+    padding: 10px 0;
+}
+
+.reverse.tablet .column-group {
+    width: 100%;
+    max-width: 1149px;
+    padding: 32px 20px;
+}
+
+.reverse.tablet .left-column {
+    width: 500px;
+    height: 650px;
+}
+
+.reverse.tablet .contact-card {
+    max-width: none;
+    padding: 40px 48px;
+}
+
+.reverse.tablet .right-column {
+    margin-right: 0;
+    width: auto;
+    height: auto;
+}
+
+/* Mobile (380px - 767px) - Reverse */
+.content-2column-contact.reverse.mobile {
+    padding: 10px 0;
+    min-height: auto;
+}
+
+.reverse.mobile .column-group {
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 20px;
+    width: 100%;
+}
+
+.reverse.mobile .left-column {
+    display: none; /* No image on mobile for reverse variant */
+}
+
+.reverse.mobile .right-column {
+    width: 100%;
+    margin-top: 0;
+}
+
+.reverse.mobile .contact-card {
+    max-width: 500px;
+    width: 100%;
+    min-width: 380px;
+    padding: 40px 24px;
+}
+
+.reverse.mobile .card-title {
+    font-size: 24px;
+    line-height: 36px;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Background Image Support */
+.content-2column-contact.has-background .section-background {
+    background-image: var(--section-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+}
+
+/* Visibility Control for Narrow Viewports */
+@media (max-width: 1149px) {
+    .section-background {
+        display: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .content-2column-contact {
+        background-color: transparent;
+        min-height: auto;
+        padding: 20px;
+    }
+    
+    .contact-card {
+        box-shadow: none;
+        border: 1px solid var(--color-neutral-300);
+    }
+    
+    .btn-primary {
+        border: 2px solid var(--color-primary-700);
+    }
+}

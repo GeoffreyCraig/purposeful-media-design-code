@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Purposeful Media Promotions</title>
+    
+    <!--==========================================================================
+        GOOGLE FONTS
+        Description: Web fonts for Lato (headings) and Open Sans (body text)
+        ===========================================================================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!--==========================================================================
+        STYLESHEET IMPORTS
+        Description: Design system tokens and component styles
+        ===========================================================================-->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/molecules-ui-icon-display.css">
+    <link rel="stylesheet" href="../../styles/organisms-footers.css">
+    <link rel="stylesheet" href="../../styles/molecules-icon-display.css">
+    
+    <style>
+        /*===========================================================================
+            GLOBAL RESET
+            Description: Reset browser default styling for consistency
+            ===========================================================================*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /*===========================================================================
+            HEADER COMPONENT
+            Description: Top navigation with logo and menu
+            ===========================================================================*/
+        
+        .banner-header-main {
+            width: 100%;
+            height: 125px;
+            background-color: #1b1464;
+            border-bottom: 4px solid #d4af37;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+            overflow: visible !important;
+        }
+        
+        .banner-header-main__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .banner-header-main__logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-header-main__logo {
+            display: none;
+            height: auto;
+        }
+        
+        .banner-header-main__menu-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+            overflow: visible !important;
+            position: relative;
+        }
+        
+        .main-menu {
+            background-color: transparent;
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            position: relative;
+            overflow: visible !important;
+        }
+        
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 60px;
+            padding: 0;
+            position: relative;
+            overflow: visible !important;
+        }
+        
+        .desktop-nav .menu-item {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        .desktop-nav .menu-item:hover {
+            color: #DCBE5D;
+        }
+        
+        .mobile-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0;
+        }
+        
+        .hamburger-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+        }
+        
+        .hamburger-button svg {
+            width: 45px;
+            height: auto;
+        }
+        
+        /* Desktop dropdown */
+        .menu-item-dropdown {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            z-index: 1001;
+        }
+        
+        .menu-text {
+            display: inline-block;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        
+        .menu-item-dropdown:hover .menu-text {
+            color: #DCBE5D;
+        }
+        
+        .dropdown-container {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 280px;
+            z-index: 9999 !important;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            margin-top: 12px;
+        }
+        
+        .dropdown-container.open {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+        
+        .dropdown-menu {
+            background-color: #ECEEEF !important;
+            border-radius: 8px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important;
+            padding: 32px;
+            padding-right: 64px;
+            font-family: 'Lato', sans-serif;
+            min-height: 150px;
+            position: relative;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dropdown-menu:hover {
+            background-color: #F4EBCD !important;
+        }
+        
+        .dropdown-menu .dropdown-item {
+            display: block !important;
+            color: #1B1464 !important;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin: 0 0 16px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            font-weight: 800;
+            background-color: transparent;
+        }
+        
+        .dropdown-menu .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dropdown-menu .dropdown-item:hover {
+            color: #1D50DE !important;
+        }
+        
+        /* Mobile accordion */
+        .mobile-accordion {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ECEEEF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion.active {
+            display: block;
+            max-height: 800px;
+            padding: 20px 24px;
+        }
+        
+        .accordion-header {
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 45px;
+            cursor: pointer;
+            padding: 10px;
+            margin: 0 -10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            max-height: 300px;
+            padding-top: 10px;
+        }
+        
+        .accordion-item {
+            display: block;
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 10px 10px 10px 30px;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        .accordion-item:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .hamburger-icon {
+            display: block;
+        }
+        
+        .close-icon {
+            display: none;
+        }
+        
+        .menu-open .hamburger-icon {
+            display: none;
+        }
+        
+        .menu-open .close-icon {
+            display: block;
+        }
+        
+        /* Return to Top Button */
+        .return-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .return-button.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .return-button:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .return-button:active {
+            transform: translateY(0);
+        }
+        
+        .return-button:hover .ui-icon-display[data-color="gray"] {
+            filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+        }
+        
+        /* UI Icon Display System */
+        .ui-icon-display {
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-image: url('../../assets/svg/ui-icons/purposeful-sprite-ui.svg');
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .ui-icon-display--large {
+            width: 48px;
+            height: 48px;
+            background-size: 288px 96px;
+        }
+        
+        .ui-icon-display--large[data-icon="arrow-up"] { 
+            background-position: -48px 0px; 
+        }
+        
+        .ui-icon-display[data-color="gray"] {
+            filter: brightness(0) saturate(100%) invert(47%) sepia(8%) saturate(719%) hue-rotate(166deg) brightness(91%) contrast(88%);
+        }
+        
+        /*===========================================================================
+            HERO SIMPLE COMPONENT
+            Description: Simple hero with gradient background and centered headline
+            ===========================================================================*/
+        
+        .hero-simple {
+            position: relative;
+            width: 100%;
+            height: 124px;
+            background: linear-gradient(180deg, #D4AF37 0%, #1B1464 100%);
+            border-bottom: 4px solid #D4AF37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+            box-sizing: border-box;
+        }
+        
+        .hero-simple__content {
+            position: relative;
+            width: calc(100% - 80px);
+            max-width: 1840px;
+            height: 124px;
+            background-color: #1B1464;
+            border-bottom: 4px solid #D4AF37;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+            margin: 0 40px;
+            box-sizing: content-box;
+            position: relative;
+            top: 0;
+        }
+        
+        .hero-simple__headline {
+            font-family: 'Lato', sans-serif;
+            font-size: 60px;
+            line-height: 72px;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+        
+        /*===========================================================================
+            BANNER HEADLINE COMPONENT
+            Description: Section divider with headline
+            ===========================================================================*/
+        
+        .banner-headline-section {
+            width: 100%;
+            height: 80px;
+            background-color: #1B1464;
+            border-bottom: 4px solid #D4AF37;
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+        }
+        
+        .banner-headline-section__content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .banner-headline {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin: 0;
+            text-align: left;
+        }
+        
+        /*===========================================================================
+            FEATURED RESOURCE COMPONENT
+            Description: Featured resource with thumbnail and card
+            ===========================================================================*/
+        
+        .featured-resource-section {
+            position: relative;
+            background-color: #ECEEEF;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .section-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background-image: url('../../assets/images/shutterstock_1421446100.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.25;
+        }
+        
+        .resource-container {
+            position: relative;
+            background-color: #FFFFFF;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 16px 64px;
+            z-index: 1;
+            width: 1150px;
+        }
+        
+        .thumbnail-column {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .thumbnail-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-column {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-teaser {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: clip;
+            padding: 40px 48px 64px 48px;
+            position: relative;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            background-color: #FFFFFF;
+        }
+        
+        .card-teaser__heading {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 45px;
+            text-transform: uppercase;
+            color: #1B1464;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .card-teaser__body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            color: #51585E;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .card-teaser__button {
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: 4px;
+            flex-shrink: 0;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #1B1464;
+            color: #FFFFFF;
+            border: none;
+            padding: 16px 80px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        
+        .card-teaser__button:hover {
+            background-color: #36448F;
+            transform: translateY(-1px);
+        }
+        
+        .card-teaser__button:active {
+            background-color: #0B1F57;
+            transform: translateY(0);
+        }
+        
+        /*===========================================================================
+            RESOURCE GRID COMPONENT
+            Description: Grid of resource cards
+            ===========================================================================*/
+        
+        .section-resources {
+            width: 100%;
+            background-color: #ECEEEF;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .section-resources__grid {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+        }
+        
+        .section-resources__row {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+        
+        .section-resources__card {
+            flex-shrink: 0;
+        }
+        
+        /* Responsive card visibility modifiers */
+        .section-resources__card--desktop-only {
+            display: none;
+        }
+        
+        .section-resources__card--desktopplus-only {
+            display: none;
+        }
+        
+        .section-resources__row--desktop-only {
+            display: none;
+        }
+        
+        .card-resources {
+            box-sizing: border-box;
+            position: relative;
+            width: 350px;
+            height: 453px;
+            border-radius: 16px;
+            border: 4px solid var(--color-accent-500, #D4AF37);
+            overflow: hidden;
+            background-color: var(--color-neutral-100, #ECEEEF);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-resources__thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .card-resources__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(27, 20, 100, 0.25);
+            z-index: 2;
+        }
+        
+        .card-resources__content {
+            box-sizing: border-box;
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 12px 48px 12px;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .card-resources__header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: flex-start;
+            width: 286px;
+            height: 90px;
+            flex-shrink: 0;
+        }
+        
+        .card-resources__icon {
+            width: 90px;
+            height: 90px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            flex-shrink: 0;
+        }
+        
+        .card-resources__icon--roi-white { background-image: url('../../assets/svg/decorative-icons/purposeful-sprite-symbolic.svg'); background-position: -810px -360px; }
+        .card-resources__icon--email-white { background-image: url('../../assets/svg/decorative-icons/purposeful-sprite-symbolic.svg'); background-position: -450px -180px; }
+        .card-resources__icon--webinar-white { background-image: url('../../assets/svg/decorative-icons/purposeful-sprite-symbolic.svg'); background-position: -900px -360px; }
+        .card-resources__icon--strategy-white { background-image: url('../../assets/svg/decorative-icons/purposeful-sprite-symbolic.svg'); background-position: -360px -360px; }
+        
+        .card-resources__heading {
+            flex: 1 1 0;
+            font-family: var(--font-primary, 'Lato'), sans-serif;
+            font-weight: 900;
+            font-size: 21px;
+            line-height: 30.5px;
+            font-style: normal;
+            text-transform: uppercase;
+            color: var(--color-white, #FFFFFF);
+            margin: 0;
+        }
+        
+        .card-resources__cta {
+            font-family: var(--font-secondary, 'Open Sans'), sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            font-style: normal;
+            text-align: center;
+            color: var(--color-white, #FFFFFF);
+            width: 286px;
+            margin: 0;
+        }
+        
+        .card-resources__button {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 64px;
+            background-color: var(--color-accent-500, #D4AF37);
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            flex-shrink: 0;
+        }
+        
+        .card-resources__button-text {
+            font-family: var(--font-primary, 'Lato'), sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 18px;
+            font-style: normal;
+            text-transform: uppercase;
+            text-align: center;
+            white-space: nowrap;
+            color: var(--color-primary-700, #1B1464);
+            margin: 0;
+        }
+        
+        .card-resources__button:hover {
+            background-color: var(--color-accent-400, #DCBE5D);
+        }
+        
+        .card-resources__button:active {
+            background-color: var(--color-accent-600, #B39226);
+        }
+        
+        /*===========================================================================
+            RESPONSIVE BREAKPOINTS
+            ===========================================================================*/
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--mobile {
+                display: block;
+                width: 179px;
+                height: 89px;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .mobile-accordion {
+                position: fixed;
+                top: 129px;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+            
+            .hero-simple {
+                background: #1B1464;
+            }
+            
+            .hero-simple__content {
+                width: 100%;
+                min-width: unset;
+                padding: 0 20px;
+                margin: 0;
+            }
+            
+            .hero-simple__headline {
+                font-size: 36px;
+                line-height: 43px;
+            }
+            
+            .banner-headline {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .section-background {
+                display: none;
+            }
+            
+            .resource-container {
+                width: 100%;
+                padding: 0;
+                background-color: transparent;
+                position: relative;
+            }
+            
+            .thumbnail-column {
+                display: none;
+            }
+            
+            .card-column {
+                width: 100%;
+                position: relative;
+                padding: 24px;
+            }
+            
+            .card-column::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('../../assets/images/four-hour-marketing-plan-TN.png');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                opacity: 1;
+                z-index: 0;
+                pointer-events: none;
+            }
+            
+            .card-teaser {
+                padding: 40px 24px 64px 24px;
+                width: 100%;
+                max-width: 367px;
+                position: relative;
+                z-index: 1;
+            }
+            
+            .card-teaser__heading {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+            
+            .card-teaser__button {
+                padding: 8px 64px;
+            }
+            
+            .section-resources__grid {
+                padding: 32px 16px;
+                gap: 24px;
+            }
+            
+            .section-resources__row {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+            }
+            
+            /* Mobile: Hide all responsive modifiers */
+            .section-resources__card--desktop-only,
+            .section-resources__card--desktopplus-only {
+                display: none;
+            }
+            
+            .section-resources__row--desktop-only {
+                display: none;
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--tablet {
+                display: block;
+                width: 417px;
+                height: 89px;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .hero-simple__content {
+                width: calc(100% - 80px);
+                margin: 0 40px;
+                padding: 0 40px;
+            }
+            
+            .hero-simple__headline {
+                font-size: 48px;
+                line-height: 58px;
+            }
+            
+            .banner-headline {
+                font-size: 30px;
+                line-height: 45px;
+            }
+            
+            .section-background {
+                display: none;
+            }
+            
+            .resource-container {
+                width: 100%;
+                flex-direction: row;
+                padding: 32px;
+                gap: 20px;
+            }
+            
+            .thumbnail-column {
+                flex-shrink: 0;
+                width: auto;
+                max-width: 45%;
+            }
+            
+            .thumbnail-image {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+            
+            .card-column {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .card-teaser {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .card-teaser__heading {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .section-resources__grid {
+                padding: 32px;
+                max-width: 796px;
+            }
+            
+            .section-resources__row {
+                gap: 32px;
+            }
+            
+            /* Tablet: Hide all responsive modifiers */
+            .section-resources__card--desktop-only,
+            .section-resources__card--desktopplus-only {
+                display: none;
+            }
+            
+            .section-resources__row--desktop-only {
+                display: none;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .banner-header-main__container {
+                padding: 0 36px 0 24px;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 460px;
+                height: 89px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 48px;
+            }
+            
+            .desktop-nav .menu-item {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .hero-simple__content {
+                width: calc(100% - 80px);
+                max-width: calc(100% - 80px);
+                margin: 0 40px;
+            }
+            
+            .banner-headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .section-background {
+                opacity: calc((100vw - 1150px) / (1919 - 1150) * 0.25);
+            }
+            
+            .section-resources__grid {
+                padding: 64px 32px;
+                max-width: 1178px;
+            }
+            
+            /* Desktop: Show desktop-only cards and rows, hide desktopplus-only */
+            .section-resources__card--desktop-only {
+                display: block;
+            }
+            
+            .section-resources__card--desktopplus-only {
+                display: none;
+            }
+            
+            .section-resources__row--desktop-only {
+                display: flex;
+            }
+        }
+        
+        /* DesktopPlus: 1920px and above */
+        @media (min-width: 1920px) {
+            .banner-header-main__container {
+                max-width: 1900px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 481px;
+                height: 93px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 80px;
+            }
+            
+            .hero-simple__content {
+                width: 1840px;
+                max-width: 1840px;
+                margin: 0 40px;
+            }
+            
+            .banner-headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .section-resources__grid {
+                padding: 80px 32px;
+                max-width: 1560px;
+            }
+            
+            /* DesktopPlus: Show desktopplus-only cards, hide desktop-only and desktop-only row */
+            .section-resources__card--desktopplus-only {
+                display: block;
+            }
+            
+            .section-resources__card--desktop-only {
+                display: none;
+            }
+            
+            .section-resources__row--desktop-only {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--===========================================================================
+        HEADER SECTION
+        Component: Header (Organism)
+        Description: Top navigation with logo and main menu
+        ===========================================================================-->
+    <header class="banner-header-main">
+        <div class="banner-header-main__container">
+            <!-- Logo -->
+            <a href="/" class="banner-header-main__logo-link" aria-label="Purposeful Media Promotions Home">
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--mobile"
+                >
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--tablet"
+                >
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--desktop"
+                >
+            </a>
+            
+            <!-- Menu Container -->
+            <div class="banner-header-main__menu-container">
+                <nav class="main-menu" role="navigation" aria-label="Main navigation">
+                    <!-- Desktop Navigation -->
+                    <div class="desktop-nav">
+                        <a href="/" class="menu-item" data-page="home">Home</a>
+                        
+                        <div class="menu-item-dropdown" data-page="solutions">
+                            <span class="menu-text">Solutions</span>
+                            <div class="dropdown-container">
+                                <div class="dropdown-menu">
+                                    <a href="/email-management" class="dropdown-item">Email Management</a>
+                                    <a href="/content-creation" class="dropdown-item">Content Creation</a>
+                                    <a href="/webinar-production" class="dropdown-item">Webinar Production</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item-dropdown" data-page="resources">
+                            <span class="menu-text">Resources</span>
+                            <div class="dropdown-container">
+                                <div class="dropdown-menu">
+                                    <a href="/resource-library" class="dropdown-item">Resource Library</a>
+                                    <a href="/about-us" class="dropdown-item">About Us</a>
+                                    <a href="/blog" class="dropdown-item">Blog</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="/contact" class="menu-item" data-page="contact">Contact</a>
+                    </div>
+                    
+                    <!-- Mobile/Tablet Navigation -->
+                    <div class="mobile-nav">
+                        <button class="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                            <svg class="hamburger-icon" width="45" height="54" viewBox="0 0 45 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="3" width="45" height="8" rx="4" fill="white"/>
+                                <rect y="23" width="45" height="8" rx="4" fill="white"/>
+                                <rect y="43" width="45" height="8" rx="4" fill="white"/>
+                            </svg>
+                            <svg class="close-icon" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="5" y="36" width="45" height="8" rx="4" transform="rotate(-45 5 36)" fill="white"/>
+                                <rect x="10.66" y="4.31" width="45" height="8" rx="4" transform="rotate(45 10.66 4.31)" fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Accordion Menu -->
+                    <div class="mobile-accordion">
+                        <div class="accordion-section">
+                            <a href="/" class="accordion-header no-dropdown" data-page="home">Home</a>
+                        </div>
+                        
+                        <div class="accordion-section">
+                            <div class="accordion-header" data-accordion="solutions">Solutions</div>
+                            <div class="accordion-content" id="solutions-content">
+                                <a href="/email-management" class="accordion-item">Email Management</a>
+                                <a href="/content-creation" class="accordion-item">Content Creation</a>
+                                <a href="/webinar-production" class="accordion-item">Webinar Production</a>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-section">
+                            <div class="accordion-header" data-accordion="resources">Resources</div>
+                            <div class="accordion-content" id="resources-content">
+                                <a href="/resource-library" class="accordion-item">Resource Library</a>
+                                <a href="/about-us" class="accordion-item">About Us</a>
+                                <a href="/blog" class="accordion-item">Blog</a>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-section">
+                            <a href="/contact" class="accordion-header no-dropdown" data-page="contact">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!--===========================================================================
+        HERO SECTION
+        Component: Hero Simple (Organism)
+        Description: Simple hero with gradient background and centered headline
+        ===========================================================================-->
+    <section class="hero-simple" role="banner" aria-label="Page Header">
+        <div class="hero-simple__content">
+            <h1 class="hero-simple__headline">Purposeful Media Thought Leadership Resources</h1>
+        </div>
+    </section>
+    
+    <!--===========================================================================
+        BANNER HEADLINE: FEATURED RESOURCE
+        Component: Banner Headline (Organism)
+        Description: Section divider with headline
+        ===========================================================================-->
+    <section class="banner-headline-section">
+        <div class="banner-headline-section__content">
+            <h2 class="banner-headline">Featured Resource</h2>
+        </div>
+    </section>
+    
+    <!--===========================================================================
+        FEATURED RESOURCE SECTION
+        Component: Featured Resource (Organism)
+        Description: Highlighted resource with thumbnail and card
+        ===========================================================================-->
+    <section class="featured-resource-section" role="region" aria-labelledby="resource-heading">
+        <!-- Background Image (25% opacity) -->
+        <div class="section-background" aria-hidden="true"></div>
+        
+        <!-- Main Content Container -->
+        <div class="resource-container">
+            <!-- Left Column: Thumbnail Image -->
+            <div class="thumbnail-column">
+                <img src="../../assets/images/four-hour-marketing-plan-TN.png" 
+                     alt="Four Hour Marketing Plan Guide" 
+                     class="thumbnail-image"
+                     loading="eager">
+            </div>
+            
+            <!-- Right Column: Teaser Card -->
+            <div class="card-column">
+                <div class="card-teaser">
+                    <h2 id="resource-heading" class="card-teaser__heading">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    </h2>
+                    
+                    <p class="card-teaser__body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.
+                    </p>
+                    
+                    <a href="#download" class="card-teaser__button">
+                        Download Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--===========================================================================
+        BANNER HEADLINE: RESOURCE LIBRARY
+        Component: Banner Headline (Organism)
+        Description: Section divider with headline
+        ===========================================================================-->
+    <section class="banner-headline-section">
+        <div class="banner-headline-section__content">
+            <h2 class="banner-headline">Purposeful Media Resource Library</h2>
+        </div>
+    </section>
+    
+    <!--===========================================================================
+        RESOURCE GRID SECTION
+        Component: Resource Grid (Organism)
+        Description: Grid of resource cards
+        ===========================================================================-->
+    <section class="section-resources" id="resources">
+        <div class="section-resources__grid">
+            <!-- Row 1: First 3 cards (Desktop) / First 4 cards (DesktopPlus) -->
+            <div class="section-resources__row">
+                <!-- Resource Card 1 -->
+                <div class="section-resources__card">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--email-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 2 -->
+                <div class="section-resources__card">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--webinar-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 3 -->
+                <div class="section-resources__card">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--strategy-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 4 (hidden on Desktop, visible on DesktopPlus) -->
+                <div class="section-resources__card section-resources__card--desktopplus-only">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--roi-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 2: Next 3 cards (Desktop) / Next 4 cards (DesktopPlus) -->
+            <div class="section-resources__row">
+                <!-- Resource Card 4 (Desktop) / Card 5 (DesktopPlus) -->
+                <div class="section-resources__card section-resources__card--desktop-only">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--roi-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 5 (Desktop) / Card 6 (DesktopPlus) -->
+                <div class="section-resources__card">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--email-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 6 (Desktop) / Card 7 (DesktopPlus) -->
+                <div class="section-resources__card">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--webinar-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 8 (DesktopPlus only) -->
+                <div class="section-resources__card section-resources__card--desktopplus-only">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--strategy-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 3: Remaining 2 cards (Desktop only) -->
+            <div class="section-resources__row section-resources__row--desktop-only">
+                <!-- Resource Card 7 (Desktop) -->
+                <div class="section-resources__card">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--strategy-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resource Card 8 (Desktop) -->
+                <div class="section-resources__card">
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" 
+                             src="../../assets/images/image-blank-lg-portrait-TN.png" 
+                             alt="Resource thumbnail">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--roi-white"></div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Download</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--===========================================================================
+        FOOTER SECTION
+        Component: Footer (Organism)
+        Description: Site footer with menu and newsletter signup
+        ===========================================================================-->
+    <footer class="footer-responsive">
+        <!-- DESKTOP/TABLET FOOTER (768px and up) -->
+        <div class="footer-main" data-breakpoint="responsive">
+            <div class="footer-container">
+                <!-- Logo Section -->
+                <div class="footer-logo-section">
+                    <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                         alt="Purposeful Media Promotions" 
+                         class="footer-logo">
+                </div>
+
+                <!-- Footer Content Columns -->
+                <div class="footer-content">
+                    <!-- Column 1: Services -->
+                    <div class="footer-column" data-column="services">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Services</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a></li>
+                                    <li><a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a></li>
+                                    <li><a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a></li>
+                                    <li><span class="footer-menu-link disabled">Succession Planning [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Business Unit Growth [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Who We Serve -->
+                    <div class="footer-column" data-column="who-we-serve">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Who We Serve</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><span class="footer-menu-link disabled">Revenue Growth [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Preparing for Exit [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Plan a Webinar [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Resources -->
+                    <div class="footer-column" data-column="resources">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Resources</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/blog" class="footer-menu-link">Read Our Blog</a></li>
+                                    <li><a href="/resources/thought-leadership" class="footer-menu-link">Thought Leadership</a></li>
+                                    <li><span class="footer-menu-link disabled">Pricing [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Company & Newsletter -->
+                    <div class="footer-column" data-column="company-newsletter">
+                        <!-- Company Menu -->
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Company</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/about" class="footer-menu-link">About Us</a></li>
+                                    <li><a href="/contact" class="footer-menu-link">Contact Us</a></li>
+                                    <li><a href="/privacy" class="footer-menu-link">Privacy Policy</a></li>
+                                    <li><span class="footer-menu-link disabled">Affiliates [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Newsletter Form -->
+                        <div class="footer-newsletter">
+                          <form class="form-newsletter">
+                                <h4 class="form-newsletter__title">Stay Connected</h4>
+                                <p class="form-newsletter__description">
+                                    Share your email address and get our B2B marketing strategies and digital transformation inspirations in your inbox.
+                                </p>
+                                <div class="form-newsletter__field">
+                                    <label for="footer-email" class="form-newsletter__label">Email Address*</label>
+                                    <input type="email" 
+                                           id="footer-email" 
+                                           class="form-newsletter__input" 
+                                           placeholder="Enter your email"
+                                           required>
+                                    <span class="form-newsletter__helper">*This field is required.</span>
+                                </div>
+                                <div class="form-newsletter__submit-wrapper">
+                                    <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attribution Sub-footer -->
+            <div class="footer-attribution">
+                <div class="footer-attribution-content">
+                    <span class="footer-copyright">© All rights reserved 2025</span>
+                    <span class="footer-divider">|</span>
+                    <span class="footer-company">Purposeful Media Promotions</span>
+                    <span class="footer-divider">|</span>
+                    <a href="/policy" class="footer-policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE FOOTER (767px and below) -->
+        <div class="footer-mobile">
+            <div class="footer-mobile__top">
+                <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                     alt="Purposeful Media Promotions" 
+                     class="footer-mobile__logo">
+            </div>
+            
+            <nav class="footer-mobile__nav">
+                <!-- Services -->
+                <div class="footer-mobile__nav-item" data-dropdown="services">
+                    <span class="footer-mobile__nav-text">Services</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                <div class="dropdown-mobile" id="dropdown-services">
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/email-marketing" class="dropdown-mobile__link">Email Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/webinar-production" class="dropdown-mobile__link">Webinar Production</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/inbound-marketing" class="dropdown-mobile__link">Inbound Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Succession Planning</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Business Unit Growth</span>
+                    </div>
+                </div>
+                
+                <!-- Who We Serve -->
+                <div class="footer-mobile__nav-item" data-dropdown="who-we-serve">
+                    <span class="footer-mobile__nav-text">Who We Serve</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                <div class="dropdown-mobile" id="dropdown-who-we-serve">
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Revenue Growth</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Preparing for Exit</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Plan a Webinar</span>
+                    </div>
+                </div>
+                
+                <!-- Resources -->
+                <div class="footer-mobile__nav-item" data-dropdown="resources">
+                    <span class="footer-mobile__nav-text">Resources</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                <div class="dropdown-mobile" id="dropdown-resources">
+                    <div class="dropdown-mobile__item">
+                        <a href="/blog" class="dropdown-mobile__link">Read Our Blog</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/resources/thought-leadership" class="dropdown-mobile__link">Thought Leadership</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Pricing</span>
+                    </div>
+                </div>
+                
+                <!-- Company -->
+                <div class="footer-mobile__nav-item" data-dropdown="company">
+                    <span class="footer-mobile__nav-text">Company</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                <div class="dropdown-mobile" id="dropdown-company">
+                    <div class="dropdown-mobile__item">
+                        <a href="/about" class="dropdown-mobile__link">About Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/contact" class="dropdown-mobile__link">Contact Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/privacy" class="dropdown-mobile__link">Privacy Policy</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Affiliates [Coming Soon]</span>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Newsletter Form for Mobile -->
+            <div class="footer-mobile__newsletter">
+                <form class="form-newsletter form-newsletter--size-mobile">
+                    <h4 class="form-newsletter__title">Stay Connected</h4>
+                    <p class="form-newsletter__description">
+                        Get B2B marketing strategies and digital transformation inspiration in your inbox.
+                    </p>
+                    <div class="form-newsletter__field">
+                        <label for="footer-mobile-email" class="form-newsletter__label">Email Address*</label>
+                        <input type="email" 
+                               id="footer-mobile-email" 
+                               class="form-newsletter__input" 
+                               placeholder="Enter your email"
+                               required>
+                        <span class="form-newsletter__helper">*This field is required.</span>
+                    </div>
+                    <div class="form-newsletter__submit-wrapper">
+                        <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="footer-mobile__attribution">
+                <div class="footer-mobile__attribution-content">
+                    <div class="footer-mobile__company">Purposeful Media Promotions</div>
+                    <a href="/policy" class="footer-mobile__policy">Policy Statement</a>
+                    <div class="footer-mobile__copyright">© All rights reserved 2025</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Return to Top Button -->
+    <button class="return-button" id="returnButton" aria-label="Return to top">
+        <div class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray"></div>
+    </button>
+    
+    <script>
+        /*===========================================================================
+            HEADER MENU FUNCTIONALITY
+            Description: Desktop dropdown and mobile accordion functionality
+            ===========================================================================*/
+        
+        // Desktop dropdown functionality
+        (function() {
+            const menuDropdowns = document.querySelectorAll('.desktop-nav .menu-item-dropdown');
+            
+            menuDropdowns.forEach(item => {
+                const menuText = item.querySelector('.menu-text');
+                const dropdown = item.querySelector('.dropdown-container');
+                
+                if (menuText && dropdown) {
+                    menuText.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown-container').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('open');
+                    });
+                }
+            });
+            
+            // Click outside to close
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-item-dropdown')) {
+                    document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside
+            document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+        })();
+        
+        // Mobile menu toggle
+        (function() {
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const mobileAccordion = document.querySelector('.mobile-accordion');
+            const mainMenu = document.querySelector('.main-menu');
+            
+            if (hamburgerButton) {
+                hamburgerButton.addEventListener('click', function() {
+                    const isOpen = mobileAccordion.classList.contains('active');
+                    
+                    if (isOpen) {
+                        mobileAccordion.classList.remove('active');
+                        mainMenu.classList.remove('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        mobileAccordion.classList.add('active');
+                        mainMenu.classList.add('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            }
+            
+            // Accordion functionality
+            document.querySelectorAll('.accordion-header[data-accordion]').forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionId = this.dataset.accordion;
+                    const content = document.getElementById(accordionId + '-content');
+                    
+                    if (content) {
+                        // Close all other accordions
+                        document.querySelectorAll('.accordion-content').forEach(otherContent => {
+                            if (otherContent !== content) {
+                                otherContent.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current accordion
+                        content.classList.toggle('active');
+                    }
+                });
+            });
+        })();
+        
+        /*===========================================================================
+            MOBILE FOOTER FUNCTIONALITY
+            Description: Mobile footer accordion dropdowns
+            ===========================================================================*/
+        
+        (function() {
+            const footerNavItems = document.querySelectorAll('.footer-mobile__nav-item[data-dropdown]');
+            
+            footerNavItems.forEach(navItem => {
+                navItem.addEventListener('click', function() {
+                    const dropdownId = 'dropdown-' + this.getAttribute('data-dropdown');
+                    const dropdown = document.getElementById(dropdownId);
+                    const arrow = this.querySelector('.footer-mobile__nav-arrow');
+                    
+                    if (dropdown) {
+                        const isOpen = dropdown.classList.contains('active');
+                        
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown-mobile').forEach(dd => {
+                            if (dd !== dropdown) {
+                                dd.classList.remove('active');
+                            }
+                        });
+                        
+                        document.querySelectorAll('.footer-mobile__nav-arrow').forEach(arr => {
+                            if (arr !== arrow) {
+                                arr.classList.remove('rotated');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        if (isOpen) {
+                            dropdown.classList.remove('active');
+                            arrow.classList.remove('rotated');
+                        } else {
+                            dropdown.classList.add('active');
+                            arrow.classList.add('rotated');
+                        }
+                    }
+                });
+            });
+        })();
+        
+        /*===========================================================================
+            RETURN TO TOP BUTTON
+            Description: Floating button to scroll back to top of page
+            ===========================================================================*/
+        
+        (function() {
+            const returnButton = document.getElementById('returnButton');
+            
+            if (returnButton) {
+                // Show/hide based on scroll position
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 300) {
+                        returnButton.classList.add('visible');
+                    } else {
+                        returnButton.classList.remove('visible');
+                    }
+                });
+                
+                // Scroll to top on click
+                returnButton.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
+

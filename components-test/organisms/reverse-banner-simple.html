@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Subheading Banner - Simple Test</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            background-color: #eceeef;
+        }
+        
+        /* Reverse Subheading Banner - ONLY THIS */
+        .reverse-banner {
+            width: 100%;
+            height: 69px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .reverse-banner__container {
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .reverse-banner__subheading {
+            color: #1b1464;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 21px;
+            line-height: 31.5px;
+            margin: 0;
+            text-align: left;
+        }
+        
+        /* Viewport indicator */
+        .viewport-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        
+        .viewport-info .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Viewport Size Indicator -->
+    <div class="viewport-info">
+        <div>Width: <span class="value" id="width">0</span>px</div>
+        <div>Height: <span class="value">69px FIXED</span></div>
+    </div>
+    
+    <!-- Component: Reverse Subheading Banner -->
+    <!-- ONLY the white 69px section with left-aligned subheading -->
+    <section class="reverse-banner" aria-label="Section subheading">
+        <div class="reverse-banner__container">
+            <p class="reverse-banner__subheading">The Latest From Our Blog</p>
+        </div>
+    </section>
+    
+    <!-- Second Example -->
+    <section class="reverse-banner" aria-label="Section subheading" style="margin-top: 20px;">
+        <div class="reverse-banner__container">
+            <p class="reverse-banner__subheading">Featured Resource Download</p>
+        </div>
+    </section>
+    
+    <script>
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            document.getElementById('width').textContent = width;
+        }
+        
+        updateViewportInfo();
+        window.addEventListener('resize', updateViewportInfo);
+    </script>
+</body>
+</html>
+
+
+
+
+
+

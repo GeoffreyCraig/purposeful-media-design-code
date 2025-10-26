@@ -1,0 +1,249 @@
+/* ==========================================================================
+   PARAGRAPH COMPONENT STYLES
+   Purpose: Body text typography system with multiple sizes and contexts
+   Node ID: 1457:1182
+   ========================================================================== */
+
+/* Base Paragraph Setup
+   ========================================================================== */
+   
+.paragraph {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* Size Variants
+   ========================================================================== */
+
+/* Large - Emphasis paragraphs */
+.paragraph.large {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 600;
+}
+
+/* Lead - Intro paragraphs */
+.paragraph.lead {
+  font-size: 21px;
+  line-height: 31.5px;
+  font-weight: 400;
+}
+
+/* Default - Standard body text */
+.paragraph:not(.large):not(.lead):not(.form):not(.small):not(.helper):not(.caption),
+.paragraph.default {
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+}
+
+/* Form - Input/form related text */
+.paragraph.form {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+/* Small - Secondary content */
+.paragraph.small {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+/* Helper - Form help text */
+.paragraph.helper {
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Caption - Image captions and attribution */
+.paragraph.caption {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+}
+
+/* Color Variants
+   ========================================================================== */
+
+/* Default Colors by Size */
+.paragraph.large.default,
+.paragraph.lead.default,
+.paragraph:not(.reverse):not(.brand):not(.light):not(.focus):not(.error):not(.disabled):not(.placeholder),
+.paragraph.default:not(.reverse):not(.brand):not(.light),
+.paragraph.small.default,
+.paragraph.caption.default {
+  color: #51585E; /* Body text color */
+}
+
+/* Reverse - For dark backgrounds */
+.paragraph.reverse,
+.paragraph.large.reverse,
+.paragraph.lead.reverse,
+.paragraph.small.reverse,
+.paragraph.caption.reverse {
+  color: #FFFFFF;
+}
+
+/* Brand - Primary brand color */
+.paragraph.brand,
+.paragraph.large.brand,
+.paragraph.lead.brand,
+.paragraph.small.brand,
+.paragraph.caption.brand {
+  color: #1B1464;
+}
+
+/* Light/Muted - Secondary text */
+.paragraph.light,
+.paragraph.large.light,
+.paragraph.lead.light,
+.paragraph.small.light,
+.paragraph.caption.light {
+  color: #C7CBCF;
+}
+
+/* Form States
+   ========================================================================== */
+
+.paragraph.form.default {
+  color: #51585E;
+}
+
+.paragraph.form.focus {
+  color: #06102B;
+}
+
+.paragraph.form.error {
+  color: #EF4444;
+}
+
+.paragraph.form.disabled {
+  color: #A2A9AF;
+}
+
+.paragraph.form.placeholder {
+  color: #A2A9AF;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Helper States */
+.paragraph.helper.default {
+  color: #51585E;
+}
+
+.paragraph.helper.error {
+  color: #EF4444;
+}
+
+.paragraph.helper.disabled {
+  color: #A2A9AF;
+}
+
+/* Utility Classes
+   ========================================================================== */
+
+/* Text alignment */
+.paragraph.text-center {
+  text-align: center;
+}
+
+.paragraph.text-right {
+  text-align: right;
+}
+
+.paragraph.text-justify {
+  text-align: justify;
+}
+
+/* Margins */
+.paragraph.mb-sm { margin-bottom: 8px; }
+.paragraph.mb-md { margin-bottom: 16px; }
+.paragraph.mb-lg { margin-bottom: 24px; }
+.paragraph.mb-xl { margin-bottom: 32px; }
+
+/* Max width for readability */
+.paragraph.max-width-prose {
+  max-width: 65ch;
+}
+
+/* First letter styling */
+.paragraph.drop-cap::first-letter {
+  font-size: 3em;
+  line-height: 1;
+  font-weight: 600;
+  float: left;
+  margin-right: 8px;
+  color: #1B1464;
+}
+
+/* Responsive Adjustments
+   ========================================================================== */
+
+/* Mobile: 380px to 767px */
+@media (max-width: 767px) {
+  .paragraph.large {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  
+  .paragraph.lead {
+    font-size: 18px;
+    line-height: 27px;
+  }
+  
+  .paragraph:not(.large):not(.lead):not(.form):not(.small):not(.helper):not(.caption),
+  .paragraph.default {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .paragraph.form {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+
+/* Tablet: 768px to 1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+  .paragraph.large {
+    font-size: 22px;
+    line-height: 33px;
+  }
+  
+  .paragraph.lead {
+    font-size: 19px;
+    line-height: 28px;
+  }
+  
+  .paragraph:not(.large):not(.lead):not(.form):not(.small):not(.helper):not(.caption),
+  .paragraph.default {
+    font-size: 17px;
+    line-height: 25px;
+  }
+}
+
+/* DesktopPlus: 1920px and wider */
+@media (min-width: 1920px) {
+  .paragraph.large {
+    font-size: 26px;
+    line-height: 39px;
+  }
+  
+  .paragraph.lead {
+    font-size: 23px;
+    line-height: 34px;
+  }
+  
+  .paragraph:not(.large):not(.lead):not(.form):not(.small):not(.helper):not(.caption),
+  .paragraph.default {
+    font-size: 19px;
+    line-height: 28px;
+  }
+}

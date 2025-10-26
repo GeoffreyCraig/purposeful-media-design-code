@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form/Resource Component - Purposeful Media</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- CSS Variables and Component Styles -->
+    <style>
+        /* CSS Variables from design system */
+        :root {
+            /* Brand Colors */
+            --color-primary-700: #1b1464;
+            --color-primary-500: #1d50de;
+            --color-primary-900: #06102b;
+            
+            /* Neutrals */
+            --color-neutral-100: #eceeef;
+            --color-neutral-300: #a2a9af;
+            --color-neutral-400: #868f97;
+            --color-neutral-500: #51585e;
+            --color-neutral-200: #c7cbcf;
+            
+            /* Feedback Colors */
+            --color-error-50: #fef2f2;
+            --color-error-500: #ef4444;
+            
+            /* Typography */
+            --font-heading: 'Lato', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 20px;
+            --spacing-xl: 24px;
+            --spacing-2xl: 32px;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            
+            /* Shadows */
+            --shadow-card: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-neutral-500);
+            line-height: 1.5;
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+        }
+        
+        /* Form Resource Component */
+        .form-resource {
+            background-color: var(--color-neutral-100);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-card);
+            padding: var(--spacing-xl) 27px var(--spacing-2xl);
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            transition: all 0.3s ease;
+        }
+        
+        /* Size Variants */
+        .form-resource.size-large {
+            max-width: 600px;
+        }
+        
+        .form-resource.size-medium {
+            max-width: 500px;
+        }
+        
+        .form-resource.size-small {
+            max-width: 400px;
+        }
+        
+        .form-resource.size-mobile {
+            max-width: 320px;
+            padding: var(--spacing-xl) 27px var(--spacing-2xl);
+        }
+        
+        /* Form States */
+        .form-resource.state-hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 16px 0px rgba(0, 0, 0, 0.15);
+        }
+        
+        .form-resource.state-disabled {
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        
+        /* Typography */
+        .form-resource__title {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 24px;
+            line-height: 1.5;
+            color: var(--color-primary-700);
+            text-transform: uppercase;
+        }
+        
+        .form-resource__description {
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--color-neutral-500);
+        }
+        
+        .form-resource__list {
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--color-neutral-500);
+            padding-left: 27px;
+            list-style-type: disc;
+        }
+        
+        .form-resource__list li {
+            margin-bottom: 0;
+        }
+        
+        /* Form Item */
+        .form-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-xs) 0;
+            width: 100%;
+            max-width: 356px;
+        }
+        
+        .form-item__label {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 1;
+            color: var(--color-neutral-500);
+        }
+        
+        .form-item__input {
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 1;
+            color: var(--color-neutral-500);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background-color: white;
+            border: 1px solid var(--color-neutral-300);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-item__input:hover {
+            border-color: var(--color-neutral-400);
+        }
+        
+        .form-item__input:focus {
+            outline: none;
+            border-color: var(--color-primary-500);
+        }
+        
+        .form-item__input:disabled {
+            background-color: var(--color-neutral-100);
+            color: var(--color-neutral-300);
+            cursor: not-allowed;
+        }
+        
+        .form-item.state-error .form-item__input {
+            background-color: var(--color-error-50);
+            border-color: var(--color-error-500);
+            color: var(--color-error-500);
+        }
+        
+        .form-item__helper {
+            font-family: var(--font-body);
+            font-style: italic;
+            font-size: 12px;
+            line-height: 1;
+            color: var(--color-neutral-500);
+        }
+        
+        /* Submit Section */
+        .form-resource__submit {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            align-items: center;
+            padding-top: var(--spacing-lg);
+            padding-bottom: var(--spacing-2xl);
+        }
+        
+        /* Button */
+        .btn {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 16px 80px;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .btn-primary {
+            background-color: var(--color-primary-700);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-primary-500);
+        }
+        
+        .btn-primary:active {
+            background-color: var(--color-primary-900);
+        }
+        
+        .btn-primary:disabled {
+            background-color: var(--color-neutral-400);
+            color: var(--color-neutral-200);
+            cursor: not-allowed;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-neutral-200);
+            border: 2px solid var(--color-neutral-400);
+        }
+        
+        /* Success State */
+        .form-resource.state-success .form-resource__content {
+            display: none;
+        }
+        
+        .form-resource__success {
+            display: none;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            align-items: center;
+            text-align: center;
+        }
+        
+        .form-resource.state-success .form-resource__success {
+            display: flex;
+        }
+        
+        .form-resource__success-title {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 24px;
+            line-height: 1.5;
+            color: var(--color-primary-700);
+            text-transform: uppercase;
+        }
+        
+        .form-resource__success-message {
+            font-family: var(--font-body);
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--color-neutral-500);
+        }
+        
+        .form-resource__download-link {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--color-primary-700);
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .form-resource__download-link:hover {
+            color: var(--color-primary-500);
+        }
+        
+        .form-resource__bonus-text {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 1;
+            color: var(--color-primary-700);
+            text-align: center;
+            padding: 0 64px;
+        }
+        
+        /* Responsive adjustments for Mobile */
+        @media (max-width: 380px) {
+            .form-resource.size-mobile .btn {
+                padding: 8px 64px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Container -->
+    <div class="demo-container">
+        <h1 style="text-align: center; margin-bottom: 40px; font-family: 'Lato', sans-serif; color: #1b1464;">Form/Resource Component Demo</h1>
+        
+        <!-- Default State -->
+        <div class="form-resource state-default size-large" id="resourceForm">
+            <div class="form-resource__content">
+                <h2 class="form-resource__title">Lorem Ipsum</h2>
+                
+                <p class="form-resource__description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique:
+                </p>
+                
+                <ul class="form-resource__list">
+                    <li>Fermentum posuere urna nec tincidunt</li>
+                    <li>Mi sit amet mauris commodo quis imperdiet</li>
+                    <li>Massa ultricies mi quis hendrerit dolor magna</li>
+                    <li>Risus in hendrerit gravida rutrum quisque</li>
+                    <li>Imperdiet massa tincidunt nunc pulvinar</li>
+                </ul>
+                
+                <!-- HubSpot Form Fields -->
+                <form id="hsResourceForm" data-portal-id="48424315" data-form-id="4a110440-e2ea-4dfa-9951-e490f20d5e3d">
+                    <div class="form-item">
+                        <label class="form-item__label" for="email">Email Address*</label>
+                        <input type="email" class="form-item__input" id="email" name="email" placeholder="Enter your email" required>
+                        <span class="form-item__helper">*This field is required.</span>
+                    </div>
+                    
+                    <div class="form-resource__submit">
+                        <button type="submit" class="btn btn-primary">Download Now</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Success State Content -->
+            <div class="form-resource__success">
+                <h2 class="form-resource__success-title">Success!</h2>
+                <p class="form-resource__success-message">Download your resource on the link below. Thank you!</p>
+                <a href="#" class="form-resource__download-link">Download Your Copy of the Resource Here.</a>
+                <p class="form-resource__bonus-text">Check your email inbox for our confirmation email and a link to valuable bonus content.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for form interaction -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('hsResourceForm');
+            const formContainer = document.getElementById('resourceForm');
+            const emailInput = document.getElementById('email');
+            const formItem = emailInput.closest('.form-item');
+            
+            // Handle form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                if (!emailInput.value || !emailInput.validity.valid) {
+                    formItem.classList.add('state-error');
+                    emailInput.value = 'Error';
+                    return;
+                }
+                
+                // Show success state
+                formContainer.classList.add('state-success');
+                
+                // Here you would normally submit to HubSpot
+                // This is a placeholder for the actual HubSpot form submission
+                console.log('Form submitted with email:', emailInput.value);
+                console.log('HubSpot Portal ID:', form.dataset.portalId);
+                console.log('HubSpot Form ID:', form.dataset.formId);
+            });
+            
+            // Handle input focus to remove error state
+            emailInput.addEventListener('focus', function() {
+                if (formItem.classList.contains('state-error')) {
+                    formItem.classList.remove('state-error');
+                    if (emailInput.value === 'Error') {
+                        emailInput.value = '';
+                    }
+                }
+            });
+            
+            // Handle hover state
+            formContainer.addEventListener('mouseenter', function() {
+                if (!formContainer.classList.contains('state-success')) {
+                    formContainer.classList.add('state-hover');
+                }
+            });
+            
+            formContainer.addEventListener('mouseleave', function() {
+                formContainer.classList.remove('state-hover');
+            });
+            
+            // Handle active state on button
+            const submitBtn = form.querySelector('.btn');
+            submitBtn.addEventListener('mousedown', function() {
+                formContainer.classList.add('state-active');
+            });
+            
+            submitBtn.addEventListener('mouseup', function() {
+                formContainer.classList.remove('state-active');
+            });
+        });
+    </script>
+    
+    <!-- Demo Controls -->
+    <div style="margin-top: 40px; text-align: center;">
+        <h3 style="font-family: 'Lato', sans-serif; color: #1b1464; margin-bottom: 20px;">Demo Controls</h3>
+        
+        <!-- Size Controls -->
+        <div style="margin-bottom: 20px;">
+            <label style="font-weight: bold; margin-right: 10px;">Size:</label>
+            <button onclick="changeSize('large')" style="margin: 0 5px; padding: 5px 15px;">Large</button>
+            <button onclick="changeSize('medium')" style="margin: 0 5px; padding: 5px 15px;">Medium</button>
+            <button onclick="changeSize('small')" style="margin: 0 5px; padding: 5px 15px;">Small</button>
+            <button onclick="changeSize('mobile')" style="margin: 0 5px; padding: 5px 15px;">Mobile</button>
+        </div>
+        
+        <!-- State Controls -->
+        <div style="margin-bottom: 20px;">
+            <label style="font-weight: bold; margin-right: 10px;">State:</label>
+            <button onclick="resetForm()" style="margin: 0 5px; padding: 5px 15px;">Default</button>
+            <button onclick="setDisabled()" style="margin: 0 5px; padding: 5px 15px;">Disabled</button>
+            <button onclick="setError()" style="margin: 0 5px; padding: 5px 15px;">Error</button>
+            <button onclick="setSuccess()" style="margin: 0 5px; padding: 5px 15px;">Success</button>
+        </div>
+    </div>
+    
+    <script>
+        function changeSize(size) {
+            const form = document.getElementById('resourceForm');
+            form.className = form.className.replace(/size-\w+/, `size-${size}`);
+        }
+        
+        function resetForm() {
+            const form = document.getElementById('resourceForm');
+            const emailInput = document.getElementById('email');
+            const formItem = emailInput.closest('.form-item');
+            const submitBtn = document.querySelector('.btn');
+            
+            form.classList.remove('state-success', 'state-disabled', 'state-error');
+            formItem.classList.remove('state-error');
+            emailInput.value = '';
+            emailInput.disabled = false;
+            submitBtn.disabled = false;
+            submitBtn.className = 'btn btn-primary';
+        }
+        
+        function setDisabled() {
+            const form = document.getElementById('resourceForm');
+            const emailInput = document.getElementById('email');
+            const submitBtn = document.querySelector('.btn');
+            
+            resetForm();
+            form.classList.add('state-disabled');
+            emailInput.disabled = true;
+            emailInput.value = 'This field is disabled';
+            submitBtn.disabled = true;
+        }
+        
+        function setError() {
+            const form = document.getElementById('resourceForm');
+            const emailInput = document.getElementById('email');
+            const formItem = emailInput.closest('.form-item');
+            const submitBtn = document.querySelector('.btn');
+            
+            resetForm();
+            formItem.classList.add('state-error');
+            emailInput.value = 'Error';
+            submitBtn.className = 'btn btn-outline';
+        }
+        
+        function setSuccess() {
+            const form = document.getElementById('resourceForm');
+            form.classList.remove('state-disabled', 'state-error');
+            form.classList.add('state-success');
+        }
+    </script>
+</body>
+</html>

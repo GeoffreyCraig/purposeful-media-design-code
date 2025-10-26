@@ -1,0 +1,439 @@
+/*
+ * ORGANISMS - HEADERS
+ * Purposeful Media Design System
+ * BannerHeader Component Styles
+ * 
+ * Based on Figma specifications:
+ * - Header height: 125px (desktop/tablet), 100px (mobile)
+ * - Gold bottom border: 4px
+ * - Menu text: 30px font, 45px line height, 800 weight
+ * 
+ * Breakpoints:
+ * - Mobile: 380-767px
+ * - Tablet: 768-1149px
+ * - Desktop: 1150-1919px
+ * - DesktopPlus: 1920px+
+ * 
+ * NOTE: Google Fonts should be loaded in HTML head, not through CSS imports
+ */
+
+@import url('variables-v2.0-20250915.css');
+
+/* ============================================
+   BANNER HEADER COMPONENT
+   ============================================ */
+
+/* Base Container */
+.banner-header {
+    position: relative;
+    width: 100%;
+    background-color: #1B1464;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid #D4AF37;
+    z-index: 1000;
+}
+
+/* Inner Container */
+.banner-header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Logo Container */
+.banner-header__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.banner-header__logo-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+}
+
+.banner-header__logo-image {
+    display: block;
+    max-width: none;
+    height: 100%;
+    width: auto;
+}
+
+/* Menu Wrapper */
+.banner-header__menu-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* Menu Container */
+.banner-header__menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1B1464;
+    overflow: hidden;
+}
+
+/* Menu Items */
+.banner-header__menu-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Menu Links - Based on Figma H2 Headline 30 45h */
+.banner-header__menu-link {
+    font-family: 'Lato', sans-serif;
+    font-weight: 800; /* Heavy/Extra Bold */
+    font-size: 30px;
+    line-height: 45px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.banner-header__menu-link:hover {
+    color: #D4AF37;
+}
+
+.banner-header__menu-link--active {
+    color: #D4AF37;
+}
+
+/* Dropdown Container */
+.banner-header__dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background-color: #FFFFFF;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.banner-header__menu-item:hover .banner-header__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.banner-header__dropdown-link {
+    display: block;
+    padding: 12px 20px;
+    color: #2D3748;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.banner-header__dropdown-link:hover {
+    background-color: #F7FAFC;
+    color: #1B1464;
+}
+
+/* Hamburger Menu Button */
+.banner-header__hamburger {
+    display: none;
+    width: 54px;
+    height: 54px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.banner-header__hamburger-icon {
+    width: 45px;
+    height: 53px;
+    background-image: url('../../assets/svg/ui-icons/purposeful-sprite-ui.svg');
+    background-size: 1536px 512px; /* Total sprite dimensions */
+    background-position: -1024px 0; /* Hamburger position */
+    filter: brightness(0) saturate(100%) invert(100%); /* Makes it white */
+}
+
+/* Close icon state */
+.banner-header__hamburger--active .banner-header__hamburger-icon {
+    background-position: -1280px 0; /* Close icon position */
+}
+
+/* Mobile Menu Dropdown */
+.banner-header__mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+    z-index: 1000;
+}
+
+.banner-header__mobile-menu--active {
+    display: block;
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+    padding: 0;
+}
+
+.mobile-menu__link {
+    display: block;
+    padding: 16px 24px;
+    color: #2D3748;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px solid #E2E8F0;
+    transition: all 0.2s ease;
+}
+
+.mobile-menu__link:hover {
+    background-color: #F7FAFC;
+    color: #1B1464;
+}
+
+.mobile-menu__link--active {
+    color: #1B1464;
+    font-weight: 700;
+    border-left: 4px solid #D4AF37;
+}
+
+.mobile-menu__submenu {
+    position: relative;
+}
+
+.mobile-menu__submenu-items {
+    background-color: #F7FAFC;
+    display: none;
+}
+
+.mobile-menu__submenu--expanded .mobile-menu__submenu-items {
+    display: block;
+}
+
+.mobile-menu__sublink {
+    display: block;
+    padding: 12px 24px 12px 48px;
+    color: #6C757D;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.mobile-menu__sublink:hover {
+    color: #1B1464;
+    background-color: #ECEEEF;
+}
+
+/* CTA Container for Landing Page Variants */
+.banner-header__cta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Phone Link Styling */
+.banner-header__phone {
+    color: #FFFFFF;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.banner-header__phone:hover {
+    color: #D4AF37;
+}
+
+/* ============================================
+   DESKTOP PLUS BREAKPOINT (1920px+)
+   ============================================ */
+@media (min-width: 1920px) {
+    .banner-header__container {
+        max-width: 1900px;
+        padding: 0 10px;
+    }
+    
+    .banner-header__logo {
+        width: 481px;
+        height: 93px;
+    }
+    
+    .banner-header__menu-wrapper {
+        padding: 0 32px;
+    }
+    
+    .banner-header__menu {
+        width: 894px;
+    }
+}
+
+/* ============================================
+   DESKTOP BREAKPOINT (1150-1919px)
+   ============================================ */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .banner-header__container {
+        padding-left: 24px;
+        padding-right: 36px;
+    }
+    
+    .banner-header__logo {
+        width: 460px;
+        height: 89px;
+    }
+    
+    .banner-header__menu {
+        min-width: 615px;
+        max-width: 886px;
+        flex-grow: 1;
+    }
+}
+
+/* ============================================
+   TABLET BREAKPOINT (768-1149px)
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .banner-header__container {
+        padding: 0 24px;
+    }
+    
+    .banner-header__logo {
+        width: 289px;
+        height: 62px;
+    }
+    
+    /* Hide desktop menu, show hamburger */
+    .banner-header__menu {
+        display: none;
+    }
+    
+    .banner-header__hamburger {
+        display: flex;
+    }
+}
+
+/* ============================================
+   MOBILE BREAKPOINT (380-767px)
+   ============================================ */
+@media (max-width: 767px) {
+    .banner-header {
+        height: 100px;
+    }
+    
+    .banner-header__container {
+        padding: 0 20px;
+    }
+    
+    .banner-header__logo {
+        width: 200px;
+        height: 43px;
+    }
+    
+    /* Hide desktop menu, show hamburger */
+    .banner-header__menu {
+        display: none;
+    }
+    
+    .banner-header__hamburger {
+        display: flex;
+    }
+    
+    .banner-header__hamburger-icon {
+        width: 36px;
+        height: 42px;
+    }
+}
+
+/* ============================================
+   HEADER TYPE VARIANTS
+   ============================================ */
+
+/* LP-Clean: Logo only */
+.banner-header--lp-clean .banner-header__menu-wrapper,
+.banner-header--lp-clean .banner-header__hamburger,
+.banner-header--lp-clean .banner-header__cta {
+    display: none;
+}
+
+/* LP-CTA: Logo + CTA Button */
+.banner-header--lp-cta .banner-header__menu-wrapper,
+.banner-header--lp-cta .banner-header__hamburger {
+    display: none;
+}
+
+.banner-header--lp-cta .banner-header__cta {
+    display: flex;
+}
+
+/* LP-Contact: Logo + Phone */
+.banner-header--lp-contact .banner-header__menu-wrapper,
+.banner-header--lp-contact .banner-header__hamburger {
+    display: none;
+}
+
+.banner-header--lp-contact .banner-header__cta {
+    display: flex;
+}
+
+/* ============================================
+   STICKY HEADER BEHAVIOR
+   ============================================ */
+.banner-header--sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Add padding to body when header is sticky */
+body.has-sticky-header {
+    padding-top: 125px;
+}
+
+@media (max-width: 767px) {
+    body.has-sticky-header {
+        padding-top: 100px;
+    }
+}

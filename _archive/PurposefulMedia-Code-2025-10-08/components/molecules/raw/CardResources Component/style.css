@@ -1,0 +1,125 @@
+.card-resources,
+.card-resources * {
+  box-sizing: border-box;
+}
+.card-resources {
+  border-radius: var(--space-4, 1rem);
+  border-style: solid;
+  border-color: var(--accent, #d4af37);
+  border-width: 0.25rem;
+  padding: var(--space-3, 0.75rem) var(--space-3, 0.75rem) var(--space-12, 3rem)
+    var(--space-3, 0.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 2rem);
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 28.3125rem;
+  position: relative;
+  overflow: hidden;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 17.875rem;
+  height: 5.625rem;
+  position: relative;
+}
+.iconography {
+  flex-shrink: 0;
+  width: 5.625rem;
+  height: 5.625rem;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.h-4 {
+  color: var(--reverse, #ffffff);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 1.3125rem;
+  line-height: 1.90625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.paragraph-text-18-27-h {
+  color: var(--reverse, #ffffff);
+  text-align: center;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  font-weight: 400;
+  position: relative;
+  width: 17.875rem;
+}
+.buttons-button {
+  background: var(--default, #d4af37);
+  border-radius: 0.25rem;
+  padding: 0.75rem 4rem 0.75rem 4rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 2.625rem;
+  position: relative;
+}
+.label {
+  color: var(--heading, #1b1464);
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+/* variant styles */
+.card-resources:hover,
+.card-resources.state-hover {
+  padding: var(--space-8, 2rem) var(--space-3, 0.75rem) var(--space-12, 3rem)
+    var(--space-3, 0.75rem);
+}
+.card-resources:hover .paragraph-text-18-27-h,
+.card-resources.state-hover .paragraph-text-18-27-h {
+  width: 17.375rem;
+  height: 6.75rem;
+}
+.card-resources:hover .buttons-button,
+.card-resources.state-hover .buttons-button {
+  background: var(--hover, #dcbe5d);
+}
+.card-resources.state-active,
+.card-resources.state-disabled {
+  padding: var(--space-3, 0.75rem);
+  aspect-ratio: 350/453;
+}
+.card-resources.state-active .paragraph-text-18-27-h {
+  width: 17.375rem;
+}
+.card-resources.state-active .buttons-button {
+  background: var(--active, #b39226);
+}
+.card-resources.state-disabled .h-4 {
+  color: var(--muted, #c7cbcf);
+  line-height: 1.96875rem;
+}
+.card-resources.state-disabled .paragraph-text-18-27-h {
+  color: var(--muted, #c7cbcf);
+  width: 20.375rem;
+}
+.card-resources.state-disabled .buttons-button {
+  background: var(--disabled, #868f97);
+}
+.card-resources.state-disabled .label {
+  color: var(--muted, #c7cbcf);
+}

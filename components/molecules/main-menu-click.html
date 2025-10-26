@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu Component - Click Version</title>
+    
+    <!-- 
+    ============================================================================
+    COMPONENT INTEGRATION NOTES:
+    ============================================================================
+    
+    This menu component is designed to be nested within the Banner/Header component.
+    
+    CONTAINER STRUCTURE:
+    - Banner/Header provides the outer container
+    - DesktopPlus: Menu is fixed at 886px within 1920px banner
+    - Desktop: Menu flexes from 886px to 615px (proportional to banner width)
+    - Tablet/Mobile: Full width with hamburger menu
+    
+    INTEGRATION OPTIONS:
+    
+    Option 1 - Wrapped in container (RECOMMENDED):
+    <div class="banner-header">
+        <div class="logo-container">...</div>
+        <div class="menu-container">
+            <nav class="main-menu">...</nav>
+        </div>
+    </div>
+    
+    Option 2 - Direct child:
+    <div class="banner-header">
+        <div class="logo-container">...</div>
+        <nav class="main-menu">...</nav>
+    </div>
+    
+    The menu uses width: 100% to fill whatever container it's placed in.
+    The Banner/Header component controls the actual menu width.
+    
+    Z-INDEX HIERARCHY:
+    - 1000: Dropdown menus (highest)
+    - 100:  Banner/Header (if needed)
+    - 1:    Page content (lowest)
+    
+    FUTURE ENHANCEMENT:
+    - Tablet breakpoint may switch to horizontal menu layout
+    - Will utilize space from narrower tablet logo (no image mark)
+    
+    ============================================================================
+    -->
+    
+    <!-- Component-Specific Styles -->
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            padding: 20px;
+        }
+        
+        /* Main Menu Container */
+        .main-menu {
+            position: relative;
+            width: 100%;
+            background-color: #1B1464;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        
+        /* Desktop Navigation (1150px and up) */
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(40px, 5vw, 80px); /* Flexible gap: 40px min, scales with viewport, 80px max */
+            padding: 0 40px;
+            min-height: 80px;
+            width: 100%; /* Fill the container provided by Banner/Header */
+        }
+        
+        .desktop-nav .menu-item {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Desktop Hover States */
+        .desktop-nav .menu-item:hover,
+        .desktop-nav .menu-item-dropdown:hover .menu-text {
+            color: #DCBE5D; /* Accent gold */
+        }
+        
+        /* Desktop Active State */
+        .desktop-nav .menu-item.active,
+        .desktop-nav .menu-item-dropdown.active .menu-text {
+            color: #B39226; /* Darker gold */
+        }
+        
+        /* Menu items with dropdowns */
+        .desktop-nav .menu-item-dropdown {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Menu text styling */
+        .desktop-nav .menu-text {
+            display: inline-block;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        /* Desktop Dropdown Container */
+        .dropdown-container {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 280px;
+            z-index: 1000; /* Z-INDEX DOCUMENTATION:
+                              1000 - Dropdown menus (above page content)
+                              100  - Banner/Header component (if needed)
+                              1    - Page content
+                              Set Banner/Header to z-index: 100 if dropdowns appear behind content */
+            display: none; /* Hidden by default */
+        }
+        
+        /* Show dropdown when open */
+        .dropdown-container.open {
+            display: block;
+        }
+        
+        /* Desktop Dropdown Menu */
+        .dropdown-menu {
+            background-color: #ECEEEF;
+            border-radius: 8px;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            padding-right: 64px;
+            display: block;
+        }
+        
+        .dropdown-menu .dropdown-item {
+            display: block;
+            color: #1B1464;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin: 0 0 16px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        .dropdown-menu .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Dropdown Hover States */
+        .dropdown-menu .dropdown-item:hover {
+            color: #1D50DE; /* Hoverdrop blue */
+            background-color: #F4EBCD; /* Accent 100 - light gold */
+            /* Extend background to full width of card */
+            margin-left: -32px;
+            margin-right: -64px;
+            padding-left: 48px;
+            padding-right: 80px;
+            border-radius: 4px;
+        }
+        
+        /* Dropdown Active State */
+        .dropdown-menu .dropdown-item.active {
+            background-color: #D7F5F5; /* Brand 100 - light teal */
+            color: #1B1464;
+            /* Extend background to full width of card */
+            margin-left: -32px;
+            margin-right: -64px;
+            padding-left: 48px;
+            padding-right: 80px;
+            border-radius: 4px;
+        }
+        
+        /* Ensure active state stays visible even on hover */
+        .dropdown-menu .dropdown-item.active:hover {
+            background-color: #D7F5F5; /* Keep teal background */
+            color: #1D50DE; /* But allow blue text on hover */
+        }
+        
+        /* Mobile/Tablet Navigation */
+        .mobile-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 16px 24px;
+            min-height: 80px;
+        }
+        
+        .hamburger-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 54px;
+        }
+        
+        .hamburger-button svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Mobile Accordion Menu */
+        .mobile-accordion {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ECEEEF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion.active {
+            display: block;
+            max-height: 600px;
+            padding: 20px 24px;
+        }
+        
+        .mobile-accordion .accordion-section {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-accordion .accordion-header {
+            color: #1B1464;
+            font-size: 30px;
+            line-height: 45px;
+            cursor: pointer;
+            padding: 10px 0;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+        
+        .mobile-accordion .accordion-header:hover {
+            background-color: #F4EBCD;
+            margin-left: -10px;
+            padding-left: 10px;
+            margin-right: -10px;
+            padding-right: 10px;
+        }
+        
+        .mobile-accordion .accordion-header.no-dropdown {
+            text-decoration: none;
+        }
+        
+        .mobile-accordion .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion .accordion-content.active {
+            max-height: 200px;
+            padding-top: 10px;
+        }
+        
+        .mobile-accordion .accordion-item {
+            display: block;
+            color: #1B1464;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 10px 0 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .mobile-accordion .accordion-item:hover {
+            background-color: #F4EBCD;
+        }
+        
+        .mobile-accordion .accordion-item.active {
+            background-color: #D7F5F5;
+        }
+        
+        /* Breakpoint: Desktop Plus (1920px and up) */
+        @media (min-width: 1920px) {
+            .desktop-nav {
+                display: flex;
+                gap: 80px;
+            }
+        }
+        
+        /* Breakpoint: Desktop (1150px to 1919px) */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .desktop-nav {
+                display: flex;
+                gap: 48px;
+            }
+            
+            .desktop-nav .menu-item,
+            .desktop-nav .menu-item-dropdown {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .dropdown-menu .dropdown-item {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* Breakpoint: Tablet (768px to 1149px) */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .mobile-accordion.active {
+                display: block;
+            }
+        }
+        
+        /* Breakpoint: Mobile (380px to 767px) */
+        @media (max-width: 767px) {
+            .mobile-nav {
+                display: flex;
+                padding: 12px 16px;
+            }
+            
+            .mobile-accordion.active {
+                display: block;
+                padding: 16px 16px;
+            }
+        }
+        
+        /* Menu state classes */
+        .menu-open .hamburger-icon {
+            display: none;
+        }
+        
+        .menu-open .close-icon {
+            display: block;
+        }
+        
+        .hamburger-icon {
+            display: block;
+        }
+        
+        .close-icon {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Menu Component -->
+    <!-- 
+        ACTIVE STATES TESTING:
+        Active states work automatically based on the current page URL.
+        To test active states without actual pages:
+        1. Open browser console (F12)
+        2. Run one of these commands:
+           - document.querySelector('.dropdown-item[href="/email-management"]').classList.add('active')
+           - document.querySelector('.menu-item[data-page="solutions"]').classList.add('active')
+        3. The item will show with light teal background
+        
+        When deployed, active states will automatically highlight based on the current page.
+    -->
+    <nav class="main-menu" role="navigation" aria-label="Main navigation">
+        
+        <!-- Desktop Navigation -->
+        <div class="desktop-nav">
+            <a href="/" class="menu-item" data-page="home">Home</a>
+            
+            <div class="menu-item-dropdown" data-page="solutions">
+                <span class="menu-text">Solutions</span>
+                <div class="dropdown-container">
+                    <div class="dropdown-menu">
+                        <a href="/email-management" class="dropdown-item">Email Management</a>
+                        <a href="/content-creation" class="dropdown-item">Content Creation</a>
+                        <a href="/webinar-production" class="dropdown-item">Webinar Production</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-item-dropdown" data-page="resources">
+                <span class="menu-text">Resources</span>
+                <div class="dropdown-container">
+                    <div class="dropdown-menu">
+                        <a href="/resource-library" class="dropdown-item">Resource Library</a>
+                        <a href="/about-us" class="dropdown-item">About Us</a>
+                        <a href="/blog" class="dropdown-item">Blog</a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="/contact" class="menu-item" data-page="contact">Contact</a>
+        </div>
+        
+        <!-- Mobile/Tablet Navigation -->
+        <div class="mobile-nav">
+            <button class="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                <svg class="hamburger-icon" width="46" height="54" viewBox="0 0 46 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.135254" y="3" width="45" height="8" rx="4" fill="white"/>
+                    <rect x="0.135254" y="23" width="45" height="8" rx="4" fill="white"/>
+                    <rect x="0.135254" y="43" width="45" height="8" rx="4" fill="white"/>
+                </svg>
+                <svg class="close-icon" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5.13525" y="35.9706" width="45" height="8" rx="4" transform="rotate(-45 5.13525 35.9706)" fill="white"/>
+                    <rect x="10.7916" y="4.31421" width="45" height="8" rx="4" transform="rotate(45 10.7916 4.31421)" fill="white"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Accordion Menu -->
+        <div class="mobile-accordion">
+            <div class="accordion-section">
+                <a href="/" class="accordion-header no-dropdown" data-page="home">Home</a>
+            </div>
+            
+            <div class="accordion-section">
+                <div class="accordion-header" data-accordion="solutions">Solutions</div>
+                <div class="accordion-content" id="solutions-content">
+                    <a href="/email-management" class="accordion-item">Email Management</a>
+                    <a href="/content-creation" class="accordion-item">Content Creation</a>
+                    <a href="/webinar-production" class="accordion-item">Webinar Production</a>
+                </div>
+            </div>
+            
+            <div class="accordion-section">
+                <div class="accordion-header" data-accordion="resources">Resources</div>
+                <div class="accordion-content" id="resources-content">
+                    <a href="/resource-library" class="accordion-item">Resource Library</a>
+                    <a href="/about-us" class="accordion-item">About Us</a>
+                    <a href="/blog" class="accordion-item">Blog</a>
+                </div>
+            </div>
+            
+            <div class="accordion-section">
+                <a href="/contact" class="accordion-header no-dropdown" data-page="contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- JavaScript for Interactive Functionality -->
+    <script>
+        (function() {
+            // Desktop dropdown click functionality
+            document.querySelectorAll('.desktop-nav .menu-item-dropdown').forEach(item => {
+                const menuText = item.querySelector('.menu-text');
+                const dropdown = item.querySelector('.dropdown-container');
+                
+                if (menuText && dropdown) {
+                    menuText.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown-container').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('open');
+                    });
+                }
+            });
+            
+            // Click outside to close dropdowns
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-item-dropdown')) {
+                    document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside
+            document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Mobile menu toggle
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const mobileAccordion = document.querySelector('.mobile-accordion');
+            const mainMenu = document.querySelector('.main-menu');
+            
+            if (hamburgerButton) {
+                hamburgerButton.addEventListener('click', function() {
+                    const isOpen = mobileAccordion.classList.contains('active');
+                    
+                    if (isOpen) {
+                        mobileAccordion.classList.remove('active');
+                        mainMenu.classList.remove('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        mobileAccordion.classList.add('active');
+                        mainMenu.classList.add('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            }
+            
+            // Accordion functionality for mobile
+            document.querySelectorAll('.accordion-header[data-accordion]').forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionId = this.dataset.accordion;
+                    const content = document.getElementById(accordionId + '-content');
+                    
+                    if (content) {
+                        // Close all other accordions
+                        document.querySelectorAll('.accordion-content').forEach(otherContent => {
+                            if (otherContent !== content) {
+                                otherContent.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current accordion
+                        content.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Set active states based on current page
+            const currentPath = window.location.pathname;
+            
+            // Desktop menu items
+            document.querySelectorAll('.menu-item[data-page], .menu-item-dropdown[data-page]').forEach(item => {
+                if (currentPath === '/' && item.dataset.page === 'home') {
+                    item.classList.add('active');
+                } else if (currentPath.includes(item.dataset.page)) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Dropdown items
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                if (currentPath === item.getAttribute('href')) {
+                    item.classList.add('active');
+                    // Also mark parent as active
+                    const parent = item.closest('.menu-item-dropdown');
+                    if (parent) {
+                        parent.classList.add('active');
+                    }
+                }
+            });
+            
+            // Mobile accordion items
+            document.querySelectorAll('.accordion-header[data-page], .accordion-item').forEach(item => {
+                const href = item.getAttribute('href');
+                if (href && currentPath === href) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    // Close mobile menu if switching to desktop
+                    if (window.innerWidth >= 1150) {
+                        if (mobileAccordion) {
+                            mobileAccordion.classList.remove('active');
+                        }
+                        if (mainMenu) {
+                            mainMenu.classList.remove('menu-open');
+                        }
+                        if (hamburgerButton) {
+                            hamburgerButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                }, 250);
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+.form-newsletter,
+.form-newsletter * {
+  box-sizing: border-box;
+}
+.form-newsletter {
+  background: var(--secondary, #eceeef);
+  border-radius: 4px;
+  padding: 29px 27px 29px 27px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.h-3 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.share-your-email-address-and-get-our-b-2-b-marketing-strategies-and-digital-transformation-in-your-inbox {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  width: 547px;
+  height: 54px;
+}
+.form-item {
+  padding: 4px 0px 4px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 79px;
+  position: relative;
+  overflow: hidden;
+}
+.label {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.email-address {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+}
+.form-input-field {
+  background: #ffffff;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: var(--default, #a2a9af);
+  border-width: 1px;
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.form-text-18-18-h {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.helper-text {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 327px;
+  position: relative;
+}
+.helper-text-12-12-h-italic {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Italic", sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  font-style: italic;
+  position: relative;
+  flex: 1;
+}
+.input-send {
+  padding: 20px 0px 32px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.buttons-button {
+  background: var(--default, #1b1464);
+  border-radius: 4px;
+  padding: 16px 80px 16px 80px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.label2 {
+  color: var(--reverse, #ffffff);
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+/* variant styles */
+.form-newsletter:hover .buttons-button,
+.form-newsletter.state-hover .buttons-button {
+  background: var(--hover, #1d50de);
+}
+.form-newsletter.break-point-desktop-plus.state-active .form-input-field {
+  border-color: var(--feedback-info, #1d50de);
+  gap: 0px;
+}
+.form-newsletter.state-active .buttons-button {
+  background: var(--active, #06102b);
+}
+.form-newsletter.break-point-desktop-plus.state-disabled .form-input-field,
+.form-newsletter.break-point-desktop.state-disabled .form-input-field,
+.form-newsletter.break-point-tablet.state-disabled .form-input-field {
+  background: var(--100, #eceeef);
+  gap: 0px;
+}
+.form-newsletter.break-point-desktop-plus.state-disabled .form-text-18-18-h,
+.form-newsletter.break-point-desktop.state-disabled .form-text-18-18-h,
+.form-newsletter.break-point-tablet.state-disabled .form-text-18-18-h {
+  color: var(--disabled, #a2a9af);
+}
+.form-newsletter.state-disabled .buttons-button {
+  background: var(--disabled, #868f97);
+}
+.form-newsletter.state-disabled .label2,
+.form-newsletter.state-error .label2 {
+  color: var(--muted, #c7cbcf);
+}
+.form-newsletter.state-error .form-input-field {
+  background: var(--50, #fef2f2);
+  border-color: var(--error, #ef4444);
+  gap: 0px;
+}
+.form-newsletter.state-error .form-text-18-18-h {
+  color: var(--error, #ef4444);
+}
+.form-newsletter.state-error .buttons-button {
+  background: var(--disabled, transparent);
+  border-style: solid;
+  border-color: var(--disabled, #868f97);
+  border-width: 2px;
+}
+.form-newsletter.break-point-desktop-plus
+  .check-your-email-inbox-for-our-confirmation-email-thank-you {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  width: 547px;
+  height: 27px;
+}
+.form-newsletter.state-success .input-send {
+  padding: 20px 0px 12px 0px;
+}
+.form-newsletter.state-success .label {
+  justify-content: center;
+  align-self: stretch;
+}
+.form-newsletter.break-point-desktop-plus .cta,
+.form-newsletter.break-point-desktop .cta,
+.form-newsletter.break-point-tablet .cta,
+.form-newsletter.break-point-mobile .cta {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.form-newsletter.break-point-desktop-plus .link,
+.form-newsletter.break-point-desktop .link,
+.form-newsletter.break-point-tablet .link,
+.form-newsletter.break-point-mobile .link {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 244px;
+  position: relative;
+}
+.form-newsletter.break-point-desktop-plus .text-link-state-18-27-h,
+.form-newsletter.break-point-desktop .text-link-state-18-27-h,
+.form-newsletter.break-point-tablet .text-link-state-18-27-h,
+.form-newsletter.break-point-mobile .text-link-state-18-27-h {
+  color: var(--default, #1b1464);
+  text-align: left;
+  font-family: "OpenSans-Semibold", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 600;
+  text-decoration: underline;
+  position: relative;
+}
+.form-newsletter.break-point-desktop,
+.form-newsletter.break-point-tablet {
+  align-self: unset;
+}
+.form-newsletter.break-point-desktop
+  .share-your-email-address-and-get-our-b-2-b-marketing-strategies-and-digital-transformation-in-your-inbox {
+  width: 446px;
+}
+.form-newsletter.break-point-desktop:hover .form-text-18-18-h,
+.form-newsletter.break-point-desktop.state-hover .form-text-18-18-h,
+.form-newsletter.break-point-desktop.state-active .form-text-18-18-h {
+  color: var(--disabled, #a2a9af);
+  font-family: "OpenSans-LightItalic", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+.form-newsletter.break-point-desktop
+  .check-your-email-inbox-for-our-confirmation-email-thank-you {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  width: 446px;
+  height: 54px;
+}
+.form-newsletter.break-point-tablet
+  .share-your-email-address-and-get-our-b-2-b-marketing-strategies-and-digital-transformation-in-your-inbox {
+  width: 346px;
+  height: 81px;
+}
+.form-newsletter.break-point-tablet
+  .check-your-email-inbox-for-our-confirmation-email-thank-you {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  width: 346px;
+  height: 54px;
+}
+.form-newsletter.break-point-mobile {
+  padding: var(--space-8, 32px) var(--space-6, 24px) var(--space-8, 32px)
+    var(--space-6, 24px);
+  gap: var(--space-3, 12px);
+  width: 320px;
+  max-width: 320px;
+  align-self: unset;
+}
+.form-newsletter.break-point-mobile
+  .share-your-email-address-and-get-our-b-2-b-marketing-strategies-and-digital-transformation-in-your-inbox {
+  width: 266px;
+  height: 108px;
+}
+.form-newsletter.break-point-mobile .buttons-button {
+  justify-content: center;
+}
+.form-newsletter.break-point-mobile
+  .check-your-email-inbox-for-our-confirmation-email-thank-you {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  width: 266px;
+  height: 54px;
+}

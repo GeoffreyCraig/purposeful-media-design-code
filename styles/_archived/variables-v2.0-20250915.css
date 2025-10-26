@@ -1,0 +1,396 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* =================================================
+   PURPOSEFUL MEDIA DESIGN SYSTEM - DESIGN TOKENS
+   Version: 2.0
+   Date: 2025-09-15
+   ================================================= */
+
+/* =================================================
+   FONT IMPORTS
+   ================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* =================================================
+   COLOR TOKENS
+   ================================================= */
+:root {
+  /* Primary Brand Colors */
+  --color-primary-900: #06102B;
+  --color-primary-800: #0B1F57;
+  --color-primary-700: #1B1464; /* Primary Navy Blue */
+  --color-primary-600: #1740B0;
+  --color-primary-500: #1D50DE;
+  --color-primary-400: #4872E7;
+  --color-primary-300: #7595ED;
+  --color-primary-200: #A3B8F3;
+  --color-primary-100: #D1DCF9;
+  --color-primary-50: #F0F3FD;
+  
+  /* Secondary Blue */
+  --color-secondary: #36448F;
+  --color-primary-light: #36448F; /* Alias */
+  
+  /* Accent Gold */
+  --color-accent-900: #292209;
+  --color-accent-800: #524312;
+  --color-accent-700: #89701E;
+  --color-accent-600: #B39226;
+  --color-accent-500: #D4AF37; /* Accent Gold */
+  --color-accent-400: #DCBE5D;
+  --color-accent-300: #E4CD82;
+  --color-accent-200: #ECDCA8;
+  --color-accent-100: #F4EBCD;
+  --color-accent-50: #FAF5E6;
+  
+  /* Teal/Success */
+  --color-teal-900: #0A2727;
+  --color-teal-800: #114141;
+  --color-teal-700: #1E7575;
+  --color-teal-600: #2BA9A9;
+  --color-teal-500: #39CCCC; /* Accent Teal */
+  --color-teal-400: #61D6D6;
+  --color-teal-300: #88E0E0;
+  --color-teal-200: #B0EBEB;
+  --color-teal-100: #D7F5F5;
+  --color-teal-50: #F2FCFC;
+  
+  /* Neutrals */
+  --color-neutral-900: #0E0F10;
+  --color-neutral-800: #1B1D1F;
+  --color-neutral-700: #363A3E;
+  --color-neutral-600: #51585E;
+  --color-neutral-500: #6C757D; /* Slate Gray */
+  --color-neutral-400: #868F97;
+  --color-neutral-300: #A2A9AF; /* Medium Gray */
+  --color-neutral-200: #C7CBCF;
+  --color-neutral-100: #ECEEEF; /* Light Gray */
+  --color-neutral-50: #F6F6F7; /* Off-White */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  
+  /* Additional Grays (Legacy naming) */
+  --color-darkest: #2D3748; /* Darkest Gray */
+  --color-charcoal: #54595F; /* Charcoal Gray */
+  --color-slate: #6C757D; /* Same as neutral-500 */
+  --color-medium: #A0AEC0; /* Medium Gray */
+  --color-light: #E2E8F0; /* Light Gray */
+  --color-off-white: #F7FAFC; /* Off-White */
+  
+  /* Error/Warning States */
+  --color-error-900: #7F1D1D;
+  --color-error-800: #991B1B;
+  --color-error-700: #B91C1C;
+  --color-error-600: #DC2626;
+  --color-error-500: #EF4444;
+  --color-error-400: #F87171;
+  --color-error-300: #FCA5A5;
+  --color-error-200: #FECACA;
+  --color-error-100: #FEE2E2;
+  --color-error-50: #FEF2F2;
+  
+  --color-warning-900: #78350F;
+  --color-warning-800: #92400E;
+  --color-warning-700: #B45309;
+  --color-warning-600: #D97706;
+  --color-warning-500: #F97316;
+  --color-warning-400: #FA8839;
+  --color-warning-300: #FBA468;
+  --color-warning-200: #FCC096;
+  --color-warning-100: #FEDCC5;
+  --color-warning-50: #FEF1E8;
+}
+
+/* =================================================
+   SEMANTIC COLOR ALIASES
+   ================================================= */
+:root {
+  /* Text Colors */
+  --text-heading: var(--color-primary-700);
+  --text-body: var(--color-neutral-600);
+  --text-muted: var(--color-neutral-500);
+  --text-disabled: var(--color-neutral-300);
+  --text-placeholder: var(--color-medium);
+  --text-reverse: var(--color-white);
+  --text-error: var(--color-error-500);
+  --text-focus: var(--color-primary-400);
+  
+  /* Background Colors */
+  --bg-primary: var(--color-white);
+  --bg-secondary: var(--color-neutral-100);
+  --bg-brand: var(--color-primary-700);
+  --bg-dark: var(--color-primary-700);
+  --bg-light: var(--color-off-white);
+  
+  /* Border Colors */
+  --border-subtle: var(--color-neutral-200);
+  --border-default: var(--color-neutral-300);
+  --border-strong: var(--color-neutral-600);
+  --border-primary: var(--color-primary-700);
+  --border-accent: var(--color-accent-500);
+  --border-teal: var(--color-teal-500);
+  
+  /* Interactive States */
+  --state-hover: var(--color-accent-400);
+  --state-active: var(--color-accent-600);
+  --state-disabled: var(--color-neutral-300);
+  --state-selected: var(--color-primary-100);
+  
+  /* Quote Specific */
+  --quote-mark-color: var(--color-accent-500);
+  --quote-attribution-color: var(--color-neutral-500);
+}
+
+/* =================================================
+   TYPOGRAPHY TOKENS
+   ================================================= */
+:root {
+  /* Font Families */
+  --font-primary: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-secondary: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-ui: var(--font-primary); /* Lato for UI/Headlines */
+  --font-content: var(--font-secondary); /* Open Sans for body text */
+  
+  /* Aliases for form components */
+  --font-family-heading: var(--font-primary); /* Lato for headings */
+  --font-family-body: var(--font-secondary); /* Open Sans for body text */
+  --font-lato: var(--font-primary);
+  --font-open-sans: var(--font-secondary)
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  
+  /* Headlines (Lato) */
+  --text-h1-size: 48px;
+  --text-h1-height: 48px;
+  --text-h1-weight: var(--font-weight-bold);
+  
+  --text-h2-size: 36px;
+  --text-h2-height: 36px;
+  --text-h2-weight: var(--font-weight-bold);
+  
+  --text-h3-size: 30px;
+  --text-h3-height: 30px;
+  --text-h3-weight: var(--font-weight-bold);
+  
+  --text-h4-size: 24px;
+  --text-h4-height: 24px;
+  --text-h4-weight: var(--font-weight-bold);
+  
+  --text-h5-size: 21px;
+  --text-h5-height: 21px;
+  --text-h5-weight: var(--font-weight-bold);
+  
+  --text-h6-size: 18px;
+  --text-h6-height: 18px;
+  --text-h6-weight: var(--font-weight-bold);
+  
+  /* Paragraphs (Open Sans) */
+  --text-large-size: 24px;
+  --text-large-height: 36px;
+  --text-large-weight: var(--font-weight-semibold);
+  
+  --text-lead-size: 21px;
+  --text-lead-height: 31.5px;
+  --text-lead-weight: var(--font-weight-regular);
+  
+  --text-default-size: 18px;
+  --text-default-height: 27px;
+  --text-default-weight: var(--font-weight-regular);
+  
+  --text-form-size: 18px;
+  --text-form-height: 18px;
+  --text-form-weight: var(--font-weight-regular);
+  
+  --text-small-size: 12px;
+  --text-small-height: 18px;
+  --text-small-weight: var(--font-weight-regular);
+  
+  --text-helper-size: 12px;
+  --text-helper-height: 12px;
+  --text-helper-weight: var(--font-weight-regular);
+  --text-helper-style: italic;
+  
+  --text-caption-size: 10px;
+  --text-caption-height: 15px;
+  --text-caption-weight: var(--font-weight-regular);
+  --text-caption-transform: uppercase;
+  --text-caption-spacing: 0.05em;
+  
+  /* Labels (Lato) */
+  --label-button-size: 16px;
+  --label-button-weight: var(--font-weight-bold);
+  --label-button-spacing: 0.05em;
+  
+  --label-form-size: 14px;
+  --label-form-weight: var(--font-weight-bold);
+  --label-form-spacing: 0.03em;
+  
+  --label-cta-size: 18px;
+  --label-cta-weight: var(--font-weight-bold);
+  --label-cta-spacing: 0.05em;
+  
+  /* Quotes (Lato Italic) */
+  --quote-oversize-size: 30px;
+  --quote-oversize-height: 45px;
+  --quote-oversize-weight: var(--font-weight-light);
+  
+  --quote-large-size: 24px;
+  --quote-large-height: 36px;
+  --quote-large-weight: var(--font-weight-light);
+  
+  --quote-medium-size: 21px;
+  --quote-medium-height: 31.5px;
+  --quote-medium-weight: var(--font-weight-light);
+  
+  /* Links */
+  --link-text-size: 18px;
+  --link-text-height: 27px;
+  --link-text-weight: var(--font-weight-regular);
+  
+  --link-menu-size: 21px;
+  --link-menu-height: 21px;
+  --link-menu-weight: var(--font-weight-regular);
+  
+  --link-attribution-size: 14px;
+  --link-attribution-height: 21px;
+  --link-attribution-weight: var(--font-weight-regular);
+  
+  /* Responsive Typography (Mobile) */
+  --text-h1-mobile-size: 36px;
+  --text-h1-mobile-height: 36px;
+  
+  --text-h2-mobile-size: 30px;
+  --text-h2-mobile-height: 30px;
+  
+  --text-h3-mobile-size: 24px;
+  --text-h3-mobile-height: 24px;
+}
+
+/* =================================================
+   SPACING TOKENS
+   ================================================= */
+:root {
+  /* Base Unit: 8px */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem;  /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem;    /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem;  /* 24px */
+  --space-8: 2rem;    /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem;   /* 48px */
+  --space-16: 4rem;   /* 64px */
+  --space-20: 5rem;   /* 80px */
+  --space-24: 6rem;   /* 96px */
+  
+  /* Component Spacing */
+  --padding-button: 16px 24px;
+  --padding-button-small: 12px 16px;
+  --padding-button-large: 20px 32px;
+  --padding-form: 12px 16px;
+  --padding-card: 1.5rem;
+  --padding-section: 2rem;
+  
+  /* Margins */
+  --margin-element: 1rem;
+  --margin-section: 3rem;
+  --margin-paragraph: 1.5rem;
+}
+
+/* =================================================
+   EFFECTS & SHADOWS
+   ================================================= */
+:root {
+  /* Box Shadows */
+  --shadow-none: 0px 4px 4px 0px rgba(0, 0, 0, 0);
+  --shadow-subtle: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+  --shadow-standard: 4px 4px 12px 0px rgba(0, 0, 0, 0.15);
+  --shadow-medium: 4px 4px 12px 0px rgba(0, 0, 0, 0.2);
+  --shadow-strong: 4px 4px 12px 0px rgba(0, 0, 0, 0.25);
+  
+  /* Focus States */
+  --focus-outline: 2px solid var(--color-accent-500);
+  --focus-outline-offset: 2px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-base: 0.2s ease-in-out;
+  --transition-slow: 0.3s ease-in-out;
+  
+  /* Border Radius */
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 12px;
+  --radius-round: 9999px;
+}
+
+/* =================================================
+   LAYOUT TOKENS
+   ================================================= */
+:root {
+  /* Container Widths */
+  --container-max: 1200px;
+  --container-wide: 1440px;
+  --container-narrow: 768px;
+  
+  /* Breakpoints */
+  --breakpoint-mobile: 380px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1150px;
+  --breakpoint-desktop-plus: 1920px;
+  
+  /* Grid */
+  --grid-columns: 12;
+  --grid-gap: var(--space-6);
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* =================================================
+   COMPONENT-SPECIFIC TOKENS
+   ================================================= */
+:root {
+  /* Buttons */
+  --button-primary-bg: var(--color-primary-700);
+  --button-primary-hover: var(--color-primary-500);
+  --button-primary-active: var(--color-primary-900);
+  --button-primary-disabled: var(--color-primary-400);
+  
+  --button-secondary-bg: var(--color-accent-500);
+  --button-secondary-hover: var(--color-accent-400);
+  --button-secondary-active: var(--color-accent-600);
+  --button-secondary-disabled: var(--color-accent-400);
+  
+  --button-tertiary-bg: var(--color-teal-500);
+  --button-tertiary-hover: var(--color-teal-300);
+  --button-tertiary-active: var(--color-teal-700);
+  
+  /* Navigation */
+  --nav-link-color: var(--color-white);
+  --nav-link-hover: var(--color-accent-400);
+  --nav-link-active: var(--color-accent-600);
+  --nav-dropdown-bg: var(--color-neutral-100);
+  
+  /* Forms */
+  --form-border: 2px solid var(--color-light);
+  --form-border-focus: 2px solid var(--color-primary-700);
+  --form-border-error: 2px solid var(--color-error-500);
+  --form-text-color: var(--color-darkest);
+  --form-placeholder: var(--color-medium);
+}

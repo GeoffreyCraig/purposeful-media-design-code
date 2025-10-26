@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purposeful Media - Hero Component</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/tokens/unified-design-tokens.css">
+    <link rel="stylesheet" href="../../styles/utilities/utility-classes.css">
+    <link rel="stylesheet" href="../atoms/cleaned/button-component.css">
+    <style>
+        /* ===== HERO COMPONENT SYSTEM ===== */
+        .hero {
+            /* Base Hero Styles */
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            min-height: 60vh;
+            background: var(--gradient-brand);
+        }
+        
+        /* ===== HERO VARIANTS ===== */
+        /* Simple Hero (Gradient Background) */
+        .hero--simple {
+            background: var(--gradient-brand);
+            padding: var(--hero-padding-desktop) var(--container-desktop-padding);
+            min-height: 40vh;
+        }
+        
+        .hero--simple::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        /* Image Hero */
+        .hero--image {
+            background: linear-gradient(135deg, rgba(27, 20, 100, 0.8) 0%, rgba(212, 175, 55, 0.6) 100%);
+            min-height: 80vh;
+            padding: var(--hero-padding-desktop) var(--container-desktop-padding);
+        }
+        
+        .hero--image .hero__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        /* Video Hero */
+        .hero--video {
+            background: rgba(0, 0, 0, 0.4);
+            min-height: 80vh;
+            padding: var(--hero-padding-desktop) var(--container-desktop-padding);
+        }
+        
+        .hero--video .hero__video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .hero--video .hero__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(27, 20, 100, 0.7) 0%, rgba(212, 175, 55, 0.5) 100%);
+            z-index: 1;
+        }
+        
+        /* ===== HERO LAYOUTS ===== */
+        .hero--center {
+            text-align: center;
+        }
+        
+        .hero--left {
+            justify-content: flex-start;
+            text-align: left;
+        }
+        
+        .hero--right {
+            justify-content: flex-end;
+            text-align: right;
+        }
+        
+        /* ===== HERO CONTENT ===== */
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: var(--hero-content-max-width);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+        
+        .hero--center .hero__content {
+            text-align: center;
+            align-items: center;
+        }
+        
+        .hero--left .hero__content {
+            text-align: left;
+            align-items: flex-start;
+        }
+        
+        .hero--right .hero__content {
+            text-align: right;
+            align-items: flex-end;
+        }
+        
+        /* ===== HERO TEXT ELEMENTS ===== */
+        .hero__title {
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-bold);
+            color: var(--text-reverse);
+            font-size: var(--text-h1);
+            line-height: var(--line-height-heading);
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .hero__subtitle {
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-regular);
+            color: var(--text-reverse);
+            font-size: var(--text-h3);
+            line-height: var(--line-height-heading);
+            margin: 0;
+        }
+        
+        .hero__description {
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-regular);
+            color: var(--text-reverse);
+            font-size: var(--text-body);
+            line-height: var(--line-height-body);
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        /* ===== HERO ACTIONS ===== */
+        .hero__actions {
+            display: flex;
+            gap: var(--space-4);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero--center .hero__actions {
+            justify-content: center;
+        }
+        
+        .hero--left .hero__actions {
+            justify-content: flex-start;
+        }
+        
+        .hero--right .hero__actions {
+            justify-content: flex-end;
+        }
+        
+        /* ===== HERO MEDIA CONTROLS ===== */
+        .hero__play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-normal);
+            z-index: 3;
+        }
+        
+        .hero__play-button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .hero__play-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--brand);
+            margin-left: 4px;
+        }
+        
+        /* ===== HERO OVERLAY ===== */
+        .hero__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, var(--hero-overlay-opacity));
+            z-index: 1;
+        }
+        
+        /* ===== HERO SIZES ===== */
+        .hero--small {
+            min-height: 40vh;
+            padding: var(--space-8) var(--container-desktop-padding);
+        }
+        
+        .hero--medium {
+            min-height: 60vh;
+            padding: var(--space-12) var(--container-desktop-padding);
+        }
+        
+        .hero--large {
+            min-height: 80vh;
+            padding: var(--space-16) var(--container-desktop-padding);
+        }
+        
+        .hero--fullscreen {
+            min-height: 100vh;
+            padding: var(--space-20) var(--container-desktop-padding);
+        }
+        
+        /* ===== RESPONSIVE BEHAVIOR ===== */
+        @media (max-width: 767px) {
+            .hero {
+                min-height: 50vh;
+                padding: var(--hero-padding-mobile) var(--container-mobile-padding);
+            }
+            
+            .hero__title {
+                font-size: var(--text-h1-mobile);
+            }
+            
+            .hero__subtitle {
+                font-size: var(--text-h3-mobile);
+            }
+            
+            .hero__description {
+                font-size: var(--text-body-mobile);
+            }
+            
+            .hero__actions {
+                flex-direction: column;
+                width: 100%;
+                gap: var(--space-3);
+            }
+            
+            .hero__actions .btn {
+                width: 100%;
+            }
+            
+            .hero__play-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .hero__play-icon {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .hero--small,
+            .hero--medium,
+            .hero--large,
+            .hero--fullscreen {
+                min-height: 50vh;
+                padding: var(--space-6) var(--container-mobile-padding);
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .hero {
+                min-height: 60vh;
+                padding: var(--space-10) var(--container-desktop-padding);
+            }
+            
+            .hero--small {
+                min-height: 40vh;
+            }
+            
+            .hero--medium {
+                min-height: 60vh;
+            }
+            
+            .hero--large {
+                min-height: 70vh;
+            }
+            
+            .hero--fullscreen {
+                min-height: 80vh;
+            }
+        }
+        
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .hero {
+                background: white !important;
+                color: black !important;
+                min-height: auto !important;
+                padding: var(--space-6) !important;
+            }
+            
+            .hero__title,
+            .hero__subtitle,
+            .hero__description {
+                color: black !important;
+            }
+            
+            .hero__background,
+            .hero__video,
+            .hero__overlay {
+                display: none !important;
+            }
+            
+            .hero__play-button {
+                display: none !important;
+            }
+        }
+        
+        /* ===== DEMO STYLES ===== */
+        .demo-section {
+            margin-bottom: var(--space-8);
+            padding: var(--space-6);
+            border: var(--border-default);
+            border-radius: var(--radius-medium);
+            background: var(--bg-secondary);
+        }
+        
+        .demo-title {
+            color: var(--heading);
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-bold);
+            font-size: var(--text-h3);
+            margin-bottom: var(--space-4);
+        }
+        
+        .demo-label {
+            font-size: var(--text-small);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2);
+            font-weight: var(--weight-bold);
+        }
+        
+        /* Container for demo */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-8);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="text-h1 text-center mb-8">Hero Component System</h1>
+        <p class="text-body text-center mb-8">Purposeful Media Design System - Refactored Hero Components</p>
+
+        <!-- Simple Hero -->
+        <section class="demo-section">
+            <h2 class="demo-title">Simple Hero (Gradient Background)</h2>
+            <div class="demo-label">Clean gradient hero with centered content</div>
+            <div class="hero hero--simple hero--center hero--medium">
+                <div class="hero__content">
+                    <h1 class="hero__title">Transform Your Marketing</h1>
+                    <p class="hero__description">
+                        Purposeful Media helps businesses create meaningful connections through strategic design and targeted marketing solutions.
+                    </p>
+                    <div class="hero__actions">
+                        <button class="btn btn--accent btn--medium">Get Started</button>
+                        <button class="btn btn--reverse btn--medium">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Hero -->
+        <section class="demo-section">
+            <h2 class="demo-title">Image Hero with Overlay</h2>
+            <div class="demo-label">Hero with background image and gradient overlay</div>
+            <div class="hero hero--image hero--center hero--large">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Business team working" class="hero__background">
+                <div class="hero__overlay"></div>
+                <div class="hero__content">
+                    <h1 class="hero__title">Strategic Marketing Solutions</h1>
+                    <h2 class="hero__subtitle">For Growing Businesses</h2>
+                    <p class="hero__description">
+                        We help businesses accelerate growth through proven marketing strategies and digital transformation.
+                    </p>
+                    <div class="hero__actions">
+                        <button class="btn btn--primary btn--medium">Start Your Journey</button>
+                        <button class="btn btn--outline btn--medium">View Our Work</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Hero -->
+        <section class="demo-section">
+            <h2 class="demo-title">Video Hero with Play Button</h2>
+            <div class="demo-label">Hero with video background and play controls</div>
+            <div class="hero hero--video hero--center hero--large">
+                <video class="hero__video" autoplay muted loop>
+                    <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+                </video>
+                <div class="hero__overlay"></div>
+                <button class="hero__play-button" onclick="toggleVideo()">
+                    <svg class="hero__play-icon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+                <div class="hero__content">
+                    <h1 class="hero__title">Experience Excellence</h1>
+                    <p class="hero__description">
+                        Watch our success stories and see how we've helped businesses achieve their marketing goals.
+                    </p>
+                    <div class="hero__actions">
+                        <button class="btn btn--accent btn--medium">Watch Video</button>
+                        <button class="btn btn--ghost btn--medium">Skip to Content</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Left Aligned Hero -->
+        <section class="demo-section">
+            <h2 class="demo-title">Left Aligned Hero</h2>
+            <div class="demo-label">Content aligned to the left side</div>
+            <div class="hero hero--simple hero--left hero--medium">
+                <div class="hero__content">
+                    <h1 class="hero__title">Email Marketing Excellence</h1>
+                    <h2 class="hero__subtitle">Drive Engagement & Growth</h2>
+                    <p class="hero__description">
+                        Transform your email marketing with our proven strategies and automation tools that deliver results.
+                    </p>
+                    <div class="hero__actions">
+                        <button class="btn btn--primary btn--medium">Start Campaign</button>
+                        <button class="btn btn--outline btn--medium">View Templates</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Aligned Hero -->
+        <section class="demo-section">
+            <h2 class="demo-title">Right Aligned Hero</h2>
+            <div class="demo-label">Content aligned to the right side</div>
+            <div class="hero hero--simple hero--right hero--medium">
+                <div class="hero__content">
+                    <h1 class="hero__title">Webinar Production</h1>
+                    <h2 class="hero__subtitle">Professional & Engaging</h2>
+                    <p class="hero__description">
+                        Create compelling webinars that captivate your audience and drive meaningful business results.
+                    </p>
+                    <div class="hero__actions">
+                        <button class="btn btn--accent btn--medium">Plan Webinar</button>
+                        <button class="btn btn--reverse btn--medium">See Examples</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Different Sizes -->
+        <section class="demo-section">
+            <h2 class="demo-title">Hero Sizes</h2>
+            <div class="demo-label">Small, Medium, Large, and Fullscreen variants</div>
+            
+            <div class="mb-6">
+                <h3 class="text-h4 mb-3">Small Hero (40vh)</h3>
+                <div class="hero hero--simple hero--center hero--small">
+                    <div class="hero__content">
+                        <h1 class="hero__title">Small Hero</h1>
+                        <p class="hero__description">Perfect for page headers and section introductions.</p>
+                        <div class="hero__actions">
+                            <button class="btn btn--primary btn--small">Action</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="text-h4 mb-3">Large Hero (80vh)</h3>
+                <div class="hero hero--simple hero--center hero--large">
+                    <div class="hero__content">
+                        <h1 class="hero__title">Large Hero</h1>
+                        <p class="hero__description">Ideal for landing pages and major announcements.</p>
+                        <div class="hero__actions">
+                            <button class="btn btn--primary btn--medium">Primary Action</button>
+                            <button class="btn btn--outline btn--medium">Secondary Action</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Video control functionality
+            window.toggleVideo = function() {
+                const video = document.querySelector('.hero__video');
+                const playButton = document.querySelector('.hero__play-button');
+                
+                if (video.paused) {
+                    video.play();
+                    playButton.style.display = 'none';
+                } else {
+                    video.pause();
+                    playButton.style.display = 'flex';
+                }
+            };
+            
+            // Button click handlers
+            const heroButtons = document.querySelectorAll('.hero .btn');
+            heroButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const buttonText = this.textContent.trim();
+                    console.log('Hero button clicked:', buttonText);
+                    alert(`${buttonText} button clicked! (Demo only)`);
+                });
+            });
+            
+            // Video ended handler
+            const video = document.querySelector('.hero__video');
+            if (video) {
+                video.addEventListener('ended', function() {
+                    const playButton = document.querySelector('.hero__play-button');
+                    playButton.style.display = 'flex';
+                });
+            }
+            
+            // Keyboard navigation
+            const heroElements = document.querySelectorAll('.hero');
+            heroElements.forEach(hero => {
+                hero.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        const primaryButton = this.querySelector('.btn--primary, .btn--accent');
+                        if (primaryButton) {
+                            primaryButton.click();
+                        }
+                    }
+                });
+                
+                // Make hero focusable for keyboard navigation
+                hero.setAttribute('tabindex', '0');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

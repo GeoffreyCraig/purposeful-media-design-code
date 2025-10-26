@@ -1,0 +1,98 @@
+/* ====================================
+   SECTION/RESOURCES COMPONENT STYLES
+   Component: Organism/Section/Resources
+   Version: 1.3
+   Last Updated: 2025-10-04
+   
+   Description: Responsive grid layout for resource cards
+   Breakpoints: Mobile (1 col), Tablet (2 cols), Desktop (3 cols), DesktopPlus (4 cols)
+   Dependencies: variables-v2.0-20250915.css, molecules-cards-resources.css
+   ==================================== */
+
+/* Import dependencies */
+@import url('variables-v2.0-20250915.css');
+
+/* Base Section Container */
+.section-resources {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--color-neutral-100, #ECEEEF);
+}
+
+/* Grid Container */
+.section-resources__grid {
+    box-sizing: border-box;
+    padding: 32px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Row Container - Using CSS Grid for precise control */
+.section-resources__row {
+    display: grid;
+    gap: 32px;
+    width: 100%;
+    margin: 0 auto 32px auto;
+    justify-content: center;
+    align-items: center;
+    /* Default: 1 column */
+    grid-template-columns: repeat(auto-fit, 350px);
+}
+
+.section-resources__row:last-child {
+    margin-bottom: 0;
+}
+
+/* Individual Card Wrapper */
+.section-resources__card {
+    width: 350px;
+    justify-self: center;
+}
+
+/* ================================
+   RESPONSIVE BREAKPOINTS
+   Using CSS Grid for exact column control
+   ================================ */
+
+/* Mobile: 380-767px - 1 card per row */
+@media screen and (max-width: 767px) {
+    .section-resources__grid {
+        padding: 32px 16px;
+    }
+    
+    .section-resources__row {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .section-resources__card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+/* Tablet: 768-1149px - EXACTLY 2 cards per row */
+@media screen and (min-width: 768px) and (max-width: 1149px) {
+    .section-resources__row {
+        grid-template-columns: repeat(2, 350px);
+        max-width: 732px; /* 350*2 + 32 gap */
+    }
+}
+
+/* Desktop: 1150-1919px - EXACTLY 3 cards per row */
+@media screen and (min-width: 1150px) and (max-width: 1919px) {
+    .section-resources__row {
+        grid-template-columns: repeat(3, 350px);
+        max-width: 1114px; /* 350*3 + 32*2 gaps */
+    }
+}
+
+/* DesktopPlus: 1920px+ - EXACTLY 4 cards per row */
+@media screen and (min-width: 1920px) {
+    .section-resources__row {
+        grid-template-columns: repeat(4, 350px);
+        max-width: 1496px; /* 350*4 + 32*3 gaps */
+    }
+}

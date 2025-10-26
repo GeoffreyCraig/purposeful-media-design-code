@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Dot Groups Component</title>
+    
+    <!-- External CSS References -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    
+    <style>
+        /* Component Base Styles */
+        .nav-dot-groups {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Individual Dot Styles */
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background-color: #868f97;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            position: relative;
+        }
+
+        /* Large Size Variant */
+        .nav-dot--large {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Active State */
+        .nav-dot--active {
+            background-color: #dcbe5d;
+        }
+
+        /* Hover State */
+        .nav-dot:hover:not(.nav-dot--active) {
+            background-color: rgba(220, 190, 93, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Interactive dot button wrapper */
+        .nav-dot-button {
+            background: none;
+            border: none;
+            padding: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-dot-button:focus {
+            outline: 2px solid rgba(220, 190, 93, 0.5);
+            outline-offset: 2px;
+            border-radius: 999px;
+        }
+
+        /* Component Demo Styles */
+        .component-demo {
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .demo-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .demo-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Component Demonstrations -->
+    <div class="component-demo">
+        <h2>Navigation Dot Groups Component</h2>
+
+        <!-- 3 Dots Variations -->
+        <div class="demo-section">
+            <h3>3 Dots</h3>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="nav-dot-groups" data-dot-count="3" data-active-position="1" data-node-id="3303:77">
+                        <button class="nav-dot-button" data-index="0">
+                            <span class="nav-dot nav-dot--active"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="1">
+                            <span class="nav-dot"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="2">
+                            <span class="nav-dot"></span>
+                        </button>
+                    </div>
+                    <p class="demo-label">Position 1 Active</p>
+                </div>
+
+                <div class="demo-item">
+                    <div class="nav-dot-groups" data-dot-count="3" data-active-position="2" data-node-id="3303:237">
+                        <button class="nav-dot-button" data-index="0">
+                            <span class="nav-dot"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="1">
+                            <span class="nav-dot nav-dot--active nav-dot--large"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="2">
+                            <span class="nav-dot"></span>
+                        </button>
+                    </div>
+                    <p class="demo-label">Position 2 Active</p>
+                </div>
+
+                <div class="demo-item">
+                    <div class="nav-dot-groups" data-dot-count="3" data-active-position="3" data-node-id="3303:245">
+                        <button class="nav-dot-button" data-index="0">
+                            <span class="nav-dot"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="1">
+                            <span class="nav-dot"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="2">
+                            <span class="nav-dot nav-dot--active nav-dot--large"></span>
+                        </button>
+                    </div>
+                    <p class="demo-label">Position 3 Active</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 Dots Variations -->
+        <div class="demo-section">
+            <h3>4 Dots</h3>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="nav-dot-groups" data-dot-count="4" data-active-position="1" data-node-id="3303:65">
+                        <button class="nav-dot-button" data-index="0">
+                            <span class="nav-dot nav-dot--active nav-dot--large"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="1">
+                            <span class="nav-dot"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="2">
+                            <span class="nav-dot"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="3">
+                            <span class="nav-dot"></span>
+                        </button>
+                    </div>
+                    <p class="demo-label">Position 1 Active</p>
+                </div>
+
+                <div class="demo-item">
+                    <div class="nav-dot-groups" data-dot-count="4" data-active-position="2" data-node-id="3303:207">
+                        <button class="nav-dot-button" data-index="0">
+                            <span class="nav-dot"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="1">
+                            <span class="nav-dot nav-dot--active nav-dot--large"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="2">
+                            <span class="nav-dot"></span>
+                        </button>
+                        <button class="nav-dot-button" data-index="3">
+                            <span class="nav-dot"></span>
+                        </button>
+                    </div>
+                    <p class="demo-label">Position 2 Active</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Functional Example -->
+        <div class="demo-section">
+            <h3>Functional Example</h3>
+            <div style="background: white; padding: 40px; border-radius: 8px; text-align: center;">
+                <div id="functional-dots" class="nav-dot-groups" data-dot-count="5" data-active-position="1">
+                    <!-- Dots will be generated dynamically -->
+                </div>
+                <p style="margin-top: 20px; color: #666;">Click any dot to navigate</p>
+                <p id="slide-indicator" style="margin-top: 10px; font-weight: bold;">Slide 1 of 5</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * NavDotGroups Component JavaScript
+         * Manages carousel dot navigation indicators
+         */
+        
+        class NavDotGroups {
+            constructor(element, options = {}) {
+                this.element = element;
+                this.dotCount = parseInt(options.dotCount || element.dataset.dotCount || 3);
+                this.activePosition = parseInt(options.activePosition || element.dataset.activePosition || 1) - 1;
+                this.onNavigate = options.onNavigate || (() => {});
+                this.largeActive = options.largeActive !== false;
+                
+                this.init();
+            }
+
+            init() {
+                this.createDots();
+                this.bindEvents();
+                this.updateActiveDot();
+            }
+
+            createDots() {
+                // Clear existing dots
+                this.element.innerHTML = '';
+                
+                // Create dot buttons
+                for (let i = 0; i < this.dotCount; i++) {
+                    const button = document.createElement('button');
+                    button.className = 'nav-dot-button';
+                    button.dataset.index = i;
+                    button.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    
+                    const dot = document.createElement('span');
+                    dot.className = 'nav-dot';
+                    
+                    button.appendChild(dot);
+                    this.element.appendChild(button);
+                }
+                
+                this.dots = this.element.querySelectorAll('.nav-dot');
+                this.buttons = this.element.querySelectorAll('.nav-dot-button');
+            }
+
+            bindEvents() {
+                this.buttons.forEach((button, index) => {
+                    button.addEventListener('click', () => {
+                        this.setActivePosition(index);
+                    });
+                });
+            }
+
+            updateActiveDot() {
+                // Remove active states from all dots
+                this.dots.forEach(dot => {
+                    dot.classList.remove('nav-dot--active', 'nav-dot--large');
+                });
+                
+                // Add active state to current dot
+                if (this.dots[this.activePosition]) {
+                    const activeDot = this.dots[this.activePosition];
+                    activeDot.classList.add('nav-dot--active');
+                    if (this.largeActive) {
+                        activeDot.classList.add('nav-dot--large');
+                    }
+                }
+                
+                // Update data attributes
+                this.element.dataset.activePosition = (this.activePosition + 1).toString();
+            }
+
+            setActivePosition(index) {
+                if (index >= 0 && index < this.dotCount && index !== this.activePosition) {
+                    const previousPosition = this.activePosition;
+                    this.activePosition = index;
+                    this.updateActiveDot();
+                    
+                    // Trigger callback
+                    this.onNavigate({
+                        currentSlide: this.activePosition,
+                        previousSlide: previousPosition,
+                        totalSlides: this.dotCount
+                    });
+                    
+                    // Dispatch custom event
+                    this.element.dispatchEvent(new CustomEvent('dotnavigation', {
+                        detail: {
+                            currentSlide: this.activePosition,
+                            previousSlide: previousPosition,
+                            totalSlides: this.dotCount
+                        }
+                    }));
+                }
+            }
+
+            // Public methods for external control
+            next() {
+                if (this.activePosition < this.dotCount - 1) {
+                    this.setActivePosition(this.activePosition + 1);
+                }
+            }
+
+            previous() {
+                if (this.activePosition > 0) {
+                    this.setActivePosition(this.activePosition - 1);
+                }
+            }
+
+            goToSlide(index) {
+                this.setActivePosition(index);
+            }
+
+            updateDotCount(count) {
+                this.dotCount = count;
+                this.activePosition = Math.min(this.activePosition, count - 1);
+                this.init();
+            }
+        }
+
+        // Initialize functional example
+        document.addEventListener('DOMContentLoaded', function() {
+            const functionalDots = document.getElementById('functional-dots');
+            const slideIndicator = document.getElementById('slide-indicator');
+            
+            if (functionalDots) {
+                const dotsInstance = new NavDotGroups(functionalDots, {
+                    dotCount: 5,
+                    activePosition: 1,
+                    onNavigate: (data) => {
+                        if (slideIndicator) {
+                            slideIndicator.textContent = `Slide ${data.currentSlide + 1} of ${data.totalSlides}`;
+                        }
+                        console.log('Dot navigation:', data);
+                    }
+                });
+
+                // Example of external control
+                window.dotsController = dotsInstance;
+            }
+
+            // Initialize all static dot groups (optional)
+            const allDotGroups = document.querySelectorAll('.nav-dot-groups:not(#functional-dots)');
+            allDotGroups.forEach(group => {
+                new NavDotGroups(group, {
+                    largeActive: false // Static demos don't need large active dots
+                });
+            });
+        });
+
+        /**
+         * Factory function for creating NavDotGroups programmatically
+         */
+        function createNavDotGroups(config = {}) {
+            const {
+                dotCount = 3,
+                activePosition = 1,
+                largeActive = true
+            } = config;
+
+            const container = document.createElement('div');
+            container.className = 'nav-dot-groups';
+            container.dataset.dotCount = dotCount;
+            container.dataset.activePosition = activePosition;
+
+            return new NavDotGroups(container, config);
+        }
+
+        // Export for use in other components
+        if (typeof module !== 'undefined' && module.exports) {
+            module.exports = { NavDotGroups, createNavDotGroups };
+        }
+    </script>
+</body>
+</html>

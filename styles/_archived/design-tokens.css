@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* CSS Document */
+/* design-tokens.css - REFERENCE FILE */
+/* Cursor: Use these EXACT values for all templates */
+
+/* Spacing Scale */
+--spacing-xs: 8px;
+--spacing-sm: 16px;
+--spacing-md: 24px;
+--spacing-lg: 32px;
+
+/* Typography Scale */
+--text-sm: 14px;
+--text-base: 16px;
+--text-lg: 18px;
+--text-xl: 24px;
+
+/* Button Sizing */
+--btn-padding: 16px 32px;
+--btn-font-size: 18px;
+--btn-radius: 8px;
+
+/* Use like this: */
+.btn-primary {
+  padding: var(--btn-padding);
+  font-size: var(--btn-font-size);
+  border-radius: var(--btn-radius);
+}

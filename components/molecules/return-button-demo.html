@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Return Button Demo</title>
+    
+    <!-- Import UI Icon Display Molecule -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/molecules-ui-icon-display.css">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 200vh; /* Make page tall enough to scroll */
+        }
+
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            color: #1b1464;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* Return Button Styles */
+        .return-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .return-button.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .return-button:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .return-button:active {
+            transform: translateY(0);
+        }
+
+        /* Icon hover effect - Gray to Navy */
+        .return-button:hover .ui-icon-display[data-color="gray"] {
+            filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+        }
+
+        /* Static Demo Buttons */
+        .demo-buttons {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .demo-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hover state demo - Navy color */
+        .demo-button--hover .ui-icon-display[data-color="gray"] {
+            filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+        }
+
+        .state-label {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        .button-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            background: #e3f2fd;
+            border-radius: 8px;
+        }
+
+        .scroll-indicator p {
+            margin-bottom: 0;
+            font-weight: 500;
+            color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Floating Return Button Demo</h1>
+        
+        <div class="demo-section">
+            <h2>Static State Examples</h2>
+            <p>These show the button's default and hover/active states:</p>
+            <div class="demo-buttons">
+                <div class="button-wrapper">
+                    <button class="demo-button demo-button--default">
+                        <div class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray" data-direction="up"></div>
+                    </button>
+                    <div class="state-label">Default State<br>(Gray)</div>
+                </div>
+                <div class="button-wrapper">
+                    <button class="demo-button demo-button--hover">
+                        <div class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray" data-direction="up"></div>
+                    </button>
+                    <div class="state-label">Hover/Active State<br>(Navy Blue)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Implementation Details</h2>
+            <h3>Button Specifications</h3>
+            <ul>
+                <li><strong>Button Size:</strong> 48px × 48px</li>
+                <li><strong>Icon:</strong> ui-icon-display molecule (large = 32px)</li>
+                <li><strong>Position:</strong> Fixed to bottom-right (2rem from edges)</li>
+                <li><strong>Background:</strong> White with 90% opacity</li>
+                <li><strong>Border Radius:</strong> 8px</li>
+                <li><strong>Shadow:</strong> Subtle elevation effect with hover enhancement</li>
+            </ul>
+            
+            <h3>Icon Configuration</h3>
+            <ul>
+                <li><strong>Component:</strong> ui-icon-display molecule</li>
+                <li><strong>Icon:</strong> arrow-up</li>
+                <li><strong>Size:</strong> large (32px)</li>
+                <li><strong>Color:</strong> gray (default), navy (hover)</li>
+                <li><strong>Direction:</strong> up</li>
+            </ul>
+            
+            <h3>Code Example</h3>
+            <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 13px;">&lt;button class="return-button"&gt;
+    &lt;div class="ui-icon-display ui-icon-display--large" 
+         data-icon="arrow-up" 
+         data-color="gray" 
+         data-direction="up"&gt;&lt;/div&gt;
+&lt;/button&gt;</pre>
+        </div>
+
+        <div class="scroll-indicator">
+            <p>⬇️ Scroll down to see the floating button appear ⬇️</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>Content Section 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>Content Section 2</h2>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>Content Section 3</h2>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>Content Section 4</h2>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+
+    <!-- Floating Return Button -->
+    <button class="return-button" id="returnButton" aria-label="Return to top">
+        <div class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray" data-direction="up"></div>
+    </button>
+
+    <script>
+        // Return to Top Button Functionality
+        const returnButton = document.getElementById('returnButton');
+        
+        // Show/hide button based on scroll position
+        function handleScroll() {
+            const scrollPosition = window.pageYOffset;
+            const showThreshold = 300; // Show button after scrolling 300px
+            
+            if (scrollPosition > showThreshold) {
+                returnButton.classList.add('visible');
+            } else {
+                returnButton.classList.remove('visible');
+            }
+        }
+        
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Event listeners
+        window.addEventListener('scroll', handleScroll);
+        returnButton.addEventListener('click', scrollToTop);
+        
+        // Initial check
+        handleScroll();
+    </script>
+</body>
+</html>

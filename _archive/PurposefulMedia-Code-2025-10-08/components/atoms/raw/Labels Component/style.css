@@ -1,0 +1,123 @@
+.label,
+.label * {
+  box-sizing: border-box;
+}
+.label {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.button {
+  color: var(--reverse, #ffffff);
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+/* variant styles */
+.label.case-default .button {
+  text-transform: unset;
+}
+.label.color-light .button,
+.label.color-light .label2,
+.label.color-light .cta {
+  color: var(--muted, #c7cbcf);
+}
+.label.color-reverse .button,
+.label.color-reverse .label2,
+.label.color-default .cta {
+  color: var(--heading, #1b1464);
+}
+.label.color-ghost-secondary .button {
+  color: var(--default, #d4af37);
+}
+.label.color-ghost-tertiary .button {
+  color: var(--default, #39cccc);
+}
+.label.purpose-label {
+  justify-content: flex-start;
+}
+.label.color-gray .button {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-weight: 400;
+}
+.label.color-dark .button {
+  color: var(--active, #06102b);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-weight: 400;
+}
+.label.case-upper .label2 {
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.label.case-default .label2 {
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+}
+.label.color-default.purpose-label .button {
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-weight: 400;
+}
+.label.purpose-cta {
+  align-self: stretch;
+}
+.label.case-upper .cta {
+  text-align: center;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.label.color-gray .cta {
+  color: var(--body, #51585e);
+}
+.label.case-default .cta {
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+}
+.label.case-default.color-gray .cta {
+  text-align: center;
+  flex: 1;
+}
+.label.color-dark .cta {
+  color: var(--active, #06102b);
+}
+.label.case-upper.color-dark .cta {
+  flex: 1;
+}
+.label.case-default.color-dark .cta,
+.label.case-default.color-light .cta,
+.label.case-default.color-reverse .cta {
+  text-align: center;
+}
+.label.color-reverse .cta {
+  color: var(--reverse, #ffffff);
+}
+.label.case-default.color-default .cta {
+  text-align: left;
+}

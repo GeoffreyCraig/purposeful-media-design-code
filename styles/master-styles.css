@@ -1,0 +1,158 @@
+/* ============================================
+   PURPOSEFUL MEDIA DESIGN SYSTEM - MASTER STYLES
+   Version: 1.0
+   Date: September 29, 2025
+   Author: Purposeful Media Promotions
+   
+   Purpose: Master stylesheet that imports all component layers
+   in the correct cascade order
+   
+   IMPORTANT: Google Fonts should be loaded in the HTML <head> section
+   to prevent CSS import chain issues. Do not use @import for fonts.
+   
+   Architecture:
+   1. Variables (Foundation)
+   2. Atoms (Base elements)
+   3. Molecules (Component groups)
+   4. Organisms (Complex components)
+   5. Templates (Page-level styles - future)
+   
+   Breakpoints:
+   - Mobile: 380-767px
+   - Tablet: 768-1149px  
+   - Desktop: 1150-1919px
+   - DesktopPlus: 1920px+
+   ============================================ */
+
+/* ============================================
+   GOOGLE FONTS LOADING INSTRUCTIONS
+   ============================================
+   Add the following to your HTML <head> section:
+   
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+   
+   Do NOT use @import for fonts in CSS files as it can cause
+   stylesheet verification errors and break functionality.
+   ============================================ */
+
+/* ============================================
+   1. FOUNDATION LAYER - Variables & Settings
+   ============================================ */
+@import url('variables-v2.0-20250915.css');
+
+/* ============================================
+   2. ATOMIC LAYER - Base Elements
+   ============================================ */
+@import url('atoms-master.css');
+
+/* ============================================
+   3. MOLECULAR LAYER - Component Groups
+   ============================================ */
+/* Using consolidated molecule master file */
+@import url('molecules-master.css');
+
+/* Note: molecules-master.css imports all individual molecule files,
+   so we don't need to import them separately here */
+
+/* ============================================
+   4. ORGANISM LAYER - Complex Components
+   ============================================ */
+@import url('organisms-headers.css');
+@import url('organisms-heroes.css');      /* NEW: Consolidated hero variants */
+@import url('organisms-navigation.css');
+@import url('organisms-sections.css');
+@import url('organisms-footers.css');     /* UPDATED: Consolidated footer variants */
+@import url('organisms-text-block.css');  /* NEW: Text block organism (Oct 7, 2025) */
+@import url('organisms-blog-group.css');  /* Blog sections */
+@import url('organisms-sections-faq.css'); /* FAQ sections */
+@import url('organisms-content-2column-contact.css'); /* Contact layouts */
+@import url('organisms-content-2column-graphic.css'); /* Graphic layouts */
+@import url('organisms-section-contactus.css'); /* Contact sections */
+@import url('organisms-section-resources.css'); /* Resource sections */
+
+/* ============================================
+   5. TEMPLATE LAYER - Page Layouts (Future)
+   ============================================ */
+/* 
+@import url('templates-homepage.css');
+@import url('templates-services.css');
+@import url('templates-contact.css');
+@import url('templates-about.css');
+*/
+
+/* ============================================
+   GLOBAL UTILITIES
+   ============================================ */
+
+/* Utility classes that apply across all layers */
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Container utilities */
+.container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 24px;
+    }
+}
+
+@media (min-width: 1150px) {
+    .container {
+        padding: 0 32px;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    /* Hide navigation and non-essential elements */
+    .nav-header,
+    .nav-footer,
+    .nav-mobile,
+    .no-print {
+        display: none !important;
+    }
+    
+    /* Ensure good print contrast */
+    body {
+        color: #000 !important;
+        background: #fff !important;
+    }
+    
+    /* Avoid page breaks inside elements */
+    .card-resources,
+    .slide-container,
+    .section-hero {
+        page-break-inside: avoid;
+    }
+}
+
+/* ============================================
+   END OF MASTER STYLES
+   ============================================ */

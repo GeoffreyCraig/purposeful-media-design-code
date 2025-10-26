@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Resources Component</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Component: Section/Resources */
+        .section-resources {
+            background-color: #eceeef;
+            padding: 32px;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .resources-container {
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .resources-grid {
+            display: grid;
+            gap: 32px;
+            justify-items: center;
+            align-items: start;
+        }
+
+        /* Grid Responsive Layout */
+        /* Mobile: 380-767px - 1 column */
+        @media (max-width: 767px) {
+            .resources-grid {
+                grid-template-columns: 1fr;
+                max-width: 414px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Tablet: 768-1149px - 2 columns */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 768px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Desktop: 1150-1919px - 3 columns */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .resources-grid {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 1150px;
+                margin: 0 auto;
+            }
+        }
+
+        /* DesktopPlus: 1920px+ - 4 columns */
+        @media (min-width: 1920px) {
+            .resources-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 1536px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Resource Card - Base styles */
+        .resource-card {
+            width: 350px;
+            height: 453px;
+            border: 4px solid #d4af37;
+            border-radius: 16px;
+            background-color: #1b1464;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 12px 12px 48px 12px;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Card with thumbnail background */
+        .resource-card--has-thumbnail {
+            /* Background image set inline or via style attribute */
+        }
+
+        /* Optional overlay for better text readability on thumbnail backgrounds */
+        .resource-card--has-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(27, 20, 100, 0.85) 0%, rgba(27, 20, 100, 0.95) 100%);
+            z-index: 1;
+        }
+
+        /* Ensure content appears above overlay */
+        .resource-card--has-thumbnail > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Card Header - Contains decorative icon AND title */
+        .resource-card__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 286px;
+            height: 90px;
+        }
+
+        /* Decorative Icon Container */
+        .resource-card__icon {
+            width: 90px;
+            height: 90px;
+            position: relative;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Decorative Icon using Sprite Background Technique */
+        .decorative-icon {
+            width: 85px;
+            height: 60px;
+            background-image: url('../../assets/svg/decorative-icons/purposeful-sprite-symbolic.svg');
+            background-repeat: no-repeat;
+            /* Scale calculations for 85x60 display from 256x256 originals */
+            background-size: 510px 960px;
+        }
+
+        /* White icon variants for navy/dark backgrounds */
+        .decorative-icon--accelerate-white {
+            background-position: 0 -720px; /* col 1, row 13 */
+        }
+
+        .decorative-icon--download-white {
+            background-position: -340px -720px; /* col 5, row 13 */
+        }
+
+        .decorative-icon--email-white {
+            background-position: 0 -780px; /* col 1, row 14 */
+        }
+
+        .decorative-icon--expertise-white {
+            background-position: -255px -780px; /* col 4, row 14 */
+        }
+
+        .decorative-icon--webinar-white {
+            background-position: -170px -900px; /* col 3, row 16 */
+        }
+
+        .decorative-icon--strategy-white {
+            background-position: -425px -840px; /* col 6, row 15 */
+        }
+
+        .decorative-icon--roi-white {
+            background-position: -255px -840px; /* col 4, row 15 */
+        }
+
+        .decorative-icon--engage-white {
+            background-position: -85px -780px; /* col 2, row 14 */
+        }
+
+        .decorative-icon--value-white {
+            background-position: -85px -900px; /* col 2, row 16 */
+        }
+
+        /* Card Title */
+        .resource-card__title {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: uppercase;
+            color: #ffffff;
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Card Body */
+        .resource-card__description {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            text-align: center;
+            color: #ffffff;
+            width: 286px;
+        }
+
+        /* Card Button */
+        .resource-card__button {
+            background-color: #d4af37;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 64px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .resource-card__button:hover {
+            background-color: #b39226;
+        }
+
+        .resource-card__button-text {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: uppercase;
+            color: #1b1464;
+            white-space: nowrap;
+        }
+
+        /* Accessibility */
+        .resource-card__button:focus {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section: Resources -->
+    <section class="section-resources" data-node-id="section-resources">
+        <div class="resources-container">
+            <div class="resources-grid" data-name="ResourceGrid">
+                
+                <!-- Resource Card 1 - With eBook thumbnail background -->
+                <article class="resource-card resource-card--has-thumbnail" 
+                         style="background-image: url('../../assets/images/sample-ebook-cover.jpg');"
+                         data-name="Card/Resources" 
+                         data-node-id="resource-1">
+                    <header class="resource-card__header">
+                        <div class="resource-card__icon">
+                            <div class="decorative-icon decorative-icon--accelerate-white" role="img" aria-label="Accelerate icon"></div>
+                        </div>
+                        <h3 class="resource-card__title">Email Marketing Guide</h3>
+                    </header>
+                    <p class="resource-card__description">
+                        Master the art of email marketing with our comprehensive guide covering strategy, automation, and deliverability.
+                    </p>
+                    <button class="resource-card__button" aria-label="Download Email Marketing Guide">
+                        <span class="resource-card__button-text">Download</span>
+                    </button>
+                </article>
+
+                <!-- Resource Card 2 - No thumbnail, standard navy background -->
+                <article class="resource-card" data-name="Card/Resources" data-node-id="resource-2">
+                    <header class="resource-card__header">
+                        <div class="resource-card__icon">
+                            <div class="decorative-icon decorative-icon--download-white" role="img" aria-label="Download icon"></div>
+                        </div>
+                        <h3 class="resource-card__title">Buyer Persona Template</h3>
+                    </header>
+                    <p class="resource-card__description">
+                        Create detailed buyer personas with our proven template to better understand and reach your ideal customers.
+                    </p>
+                    <button class="resource-card__button" aria-label="Download Buyer Persona Template">
+                        <span class="resource-card__button-text">Get Template</span>
+                    </button>
+                </article>
+
+                <!-- Resource Card 3 - No thumbnail, standard navy background -->
+                <article class="resource-card" data-name="Card/Resources" data-node-id="resource-3">
+                    <header class="resource-card__header">
+                        <div class="resource-card__icon">
+                            <div class="decorative-icon decorative-icon--email-white" role="img" aria-label="Email icon"></div>
+                        </div>
+                        <h3 class="resource-card__title">Email Sequence Builder</h3>
+                    </header>
+                    <p class="resource-card__description">
+                        Build effective email sequences that nurture leads and drive conversions with our step-by-step worksheet.
+                    </p>
+                    <button class="resource-card__button" aria-label="Download Email Sequence Builder">
+                        <span class="resource-card__button-text">Download</span>
+                    </button>
+                </article>
+
+                <!-- Resource Card 4 - No thumbnail, standard navy background -->
+                <article class="resource-card" data-name="Card/Resources" data-node-id="resource-4">
+                    <header class="resource-card__header">
+                        <div class="resource-card__icon">
+                            <div class="decorative-icon decorative-icon--expertise-white" role="img" aria-label="Expertise icon"></div>
+                        </div>
+                        <h3 class="resource-card__title">B2B Marketing Checklist</h3>
+                    </header>
+                    <p class="resource-card__description">
+                        Ensure your B2B marketing strategy covers all the essentials with our comprehensive checklist.
+                    </p>
+                    <button class="resource-card__button" aria-label="Download B2B Marketing Checklist">
+                        <span class="resource-card__button-text">Get Checklist</span>
+                    </button>
+                </article>
+
+                <!-- Resource Card 5 - With webinar thumbnail background -->
+                <article class="resource-card resource-card--has-thumbnail" 
+                         style="background-image: url('../../assets/images/webinar-thumbnail.jpg');"
+                         data-name="Card/Resources" 
+                         data-node-id="resource-5">
+                    <header class="resource-card__header">
+                        <div class="resource-card__icon">
+                            <div class="decorative-icon decorative-icon--webinar-white" role="img" aria-label="Webinar icon"></div>
+                        </div>
+                        <h3 class="resource-card__title">Webinar Planning Kit</h3>
+                    </header>
+                    <p class="resource-card__description">
+                        Plan and execute successful webinars with our complete planning kit including timelines and checklists.
+                    </p>
+                    <button class="resource-card__button" aria-label="Download Webinar Planning Kit">
+                        <span class="resource-card__button-text">Download Kit</span>
+                    </button>
+                </article>
+
+                <!-- Resource Card 6 - No thumbnail, standard navy background -->
+                <article class="resource-card" data-name="Card/Resources" data-node-id="resource-6">
+                    <header class="resource-card__header">
+                        <div class="resource-card__icon">
+                            <div class="decorative-icon decorative-icon--strategy-white" role="img" aria-label="Strategy icon"></div>
+                        </div>
+                        <h3 class="resource-card__title">Content Strategy Map</h3>
+                    </header>
+                    <p class="resource-card__description">
+                        Map out your content strategy across the buyer's journey with our visual planning template.
+                    </p>
+                    <button class="resource-card__button" aria-label="Download Content Strategy Map">
+                        <span class="resource-card__button-text">Get Map</span>
+                    </button>
+                </article>
+
+                <!-- Resource Card 7 - No thumbnail, standard navy background -->
+                <article class="resource-card" data-name="Card/Resources" data-node-id="resource-7">
+                    <header class="resource-card__header">
+                        <div class="resource-card__icon">
+                            <div class="decorative-icon decorative-icon--roi-white" role="img" aria-label="ROI icon"></div>
+                        </div>
+                        <h3 class="resource-card__title">Marketing ROI Calculator</h3>
+                    </header>
+                    <p class="resource-card__description">
+                        Calculate and demonstrate the ROI of your marketing efforts with our comprehensive calculator.
+                    </p>
+                    <button class="resource-card__button" aria-label="Download Marketing ROI Calculator">
+                        <span class="resource-card__button-text">Calculate ROI</span>
+                    </button>
+                </article>
+
+                <!-- Resource Card 8 - No thumbnail, standard navy background -->
+                <article class="resource-card" data-name="Card/Resources" data-node-id="resource-8">
+                    <header class="resource-card__header">
+                        <div class="resource-card__icon">
+                            <div class="decorative-icon decorative-icon--engage-white" role="img" aria-label="Engage icon"></div>
+                        </div>
+                        <h3 class="resource-card__title">Engagement Playbook</h3>
+                    </header>
+                    <p class="resource-card__description">
+                        Learn proven strategies to engage your B2B audience across all digital marketing channels.
+                    </p>
+                    <button class="resource-card__button" aria-label="Download Engagement Playbook">
+                        <span class="resource-card__button-text">Get Playbook</span>
+                    </button>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Optional JavaScript for Dynamic Updates -->
+    <script>
+        // Function to change decorative icon on a card
+        function changeCardIcon(cardElement, newIconClass) {
+            const iconElement = cardElement.querySelector('.decorative-icon');
+            if (iconElement) {
+                // Remove all existing icon classes
+                iconElement.className = 'decorative-icon';
+                // Add new icon class
+                iconElement.classList.add(newIconClass);
+            }
+        }
+
+        // Function to change card background image
+        function changeCardBackground(cardElement, imageUrl) {
+            if (imageUrl) {
+                cardElement.style.backgroundImage = `url('${imageUrl}')`;
+                cardElement.classList.add('resource-card--has-thumbnail');
+            } else {
+                cardElement.style.backgroundImage = '';
+                cardElement.classList.remove('resource-card--has-thumbnail');
+            }
+        }
+
+        // Example usage:
+        // const card1 = document.querySelector('[data-node-id="resource-1"]');
+        // changeCardIcon(card1, 'decorative-icon--value-white');
+        // changeCardBackground(card1, '../../assets/images/new-ebook-cover.jpg');
+    </script>
+
+</body>
+</html>

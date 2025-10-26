@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOTER BREADBOARD TEST</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Import Footer Styles -->
+    <link rel="stylesheet" href="../../styles/organisms-footers.css">
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* Content Spacer to push footer down */
+        .content-spacer {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .content-spacer h2 {
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            margin-bottom: 16px;
+        }
+        
+        .content-spacer p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Newsletter Button Styling - Primary Button Design */
+        .form-newsletter__submit {
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid #1B1464;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            user-select: none;
+            background-color: #1B1464;
+            color: #FFFFFF;
+            border-color: #1B1464;
+            padding: 16px 24px;
+            min-width: 120px;
+        }
+        
+        .form-newsletter__submit:hover:not(:disabled) {
+            background-color: #36448F;
+            border-color: #36448F;
+        }
+        
+        .form-newsletter__submit:active:not(:disabled) {
+            background-color: #0B1F57;
+            border-color: #0B1F57;
+        }
+        
+        .form-newsletter__submit:disabled {
+            background-color: #E2E8F0;
+            color: #6C757D;
+            border-color: #E2E8F0;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        /* Test Info Bar */
+        .test-info {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        
+        .test-info .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Info Bar -->
+    <div class="test-info">
+        <div>Screen: <span class="value" id="screenWidth">0</span>px</div>
+        <div>Breakpoint: <span class="value" id="breakpointName">-</span></div>
+        <div>Footer: <span class="value" id="footerVariant">-</span></div>
+    </div>
+    
+    <!-- Content Spacer -->
+    <div class="content-spacer">
+        <div>
+            <h2>Footer Breadboard Test</h2>
+            <p>Scroll down to see the footer component</p>
+            <p style="margin-top: 12px;">Resize browser to test responsive behavior:<br>
+            Desktop/Tablet (768px+) shows main footer with columns<br>
+            Mobile (below 768px) shows mobile footer with accordion dropdowns</p>
+        </div>
+    </div>
+    
+    <!-- Footer Section -->
+    <footer class="footer-responsive">
+        <!-- DESKTOP/TABLET FOOTER (768px and up) -->
+        <div class="footer-main" data-breakpoint="responsive">
+            <div class="footer-container">
+                <!-- Logo Section -->
+                <div class="footer-logo-section">
+                    <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                         alt="Purposeful Media Promotions" 
+                         class="footer-logo">
+                </div>
+
+                <!-- Footer Content Columns -->
+                <div class="footer-content">
+                    <!-- Column 1: Services -->
+                    <div class="footer-column" data-column="services">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Services</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a></li>
+                                    <li><a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a></li>
+                                    <li><a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a></li>
+                                    <li><span class="footer-menu-link disabled">Succession Planning [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Business Unit Growth [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Who We Serve -->
+                    <div class="footer-column" data-column="who-we-serve">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Who We Serve</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><span class="footer-menu-link disabled">Revenue Growth [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Preparing for Exit [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Plan a Webinar [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Resources -->
+                    <div class="footer-column" data-column="resources">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Resources</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/blog" class="footer-menu-link">Read Our Blog</a></li>
+                                    <li><a href="/resources/thought-leadership" class="footer-menu-link">Thought Leadership</a></li>
+                                    <li><span class="footer-menu-link disabled">Pricing [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Company & Newsletter -->
+                    <div class="footer-column" data-column="company-newsletter">
+                        <!-- Company Menu -->
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Company</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/about" class="footer-menu-link">About Us</a></li>
+                                    <li><a href="/contact" class="footer-menu-link">Contact Us</a></li>
+                                    <li><a href="/privacy" class="footer-menu-link">Privacy Policy</a></li>
+                                    <li><span class="footer-menu-link disabled">Affiliates [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Newsletter Form -->
+                        <div class="footer-newsletter">
+                          <form class="form-newsletter">
+                                <h4 class="form-newsletter__title">Stay Connected</h4>
+                                <p class="form-newsletter__description">
+                                    Share your email address and get our B2B marketing strategies and digital transformation inspirations in your inbox.
+                                </p>
+                                <div class="form-newsletter__field">
+                                    <label for="footer-email" class="form-newsletter__label">Email Address*</label>
+                                    <input type="email" 
+                                           id="footer-email" 
+                                           class="form-newsletter__input" 
+                                           placeholder="Enter your email"
+                                           required>
+                                    <span class="form-newsletter__helper">*This field is required.</span>
+                                </div>
+                                <div class="form-newsletter__submit-wrapper">
+                                    <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attribution Sub-footer -->
+            <div class="footer-attribution">
+                <div class="footer-attribution-content">
+                    <span class="footer-copyright">© All rights reserved 2025</span>
+                    <span class="footer-divider">|</span>
+                    <span class="footer-company">Purposeful Media Promotions</span>
+                    <span class="footer-divider">|</span>
+                    <a href="/policy" class="footer-policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE FOOTER (767px and below) -->
+        <div class="footer-mobile">
+            <div class="footer-mobile__top">
+                <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                     alt="Purposeful Media Promotions" 
+                     class="footer-mobile__logo">
+            </div>
+            
+            <nav class="footer-mobile__nav">
+                <!-- Services -->
+                <div class="footer-mobile__nav-item" data-dropdown="services">
+                    <span class="footer-mobile__nav-text">Services</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Services Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-services">
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/email-marketing" class="dropdown-mobile__link">Email Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/webinar-production" class="dropdown-mobile__link">Webinar Production</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/inbound-marketing" class="dropdown-mobile__link">Inbound Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Succession Planning</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Business Unit Growth</span>
+                    </div>
+                </div>
+                
+                <!-- Who We Serve -->
+                <div class="footer-mobile__nav-item" data-dropdown="who-we-serve">
+                    <span class="footer-mobile__nav-text">Who We Serve</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Who We Serve Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-who-we-serve">	
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Revenue Growth</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Preparing for Exit</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Plan a Webinar</span>
+                    </div>
+                </div>
+                
+                <!-- Resources -->
+                <div class="footer-mobile__nav-item" data-dropdown="resources">
+                    <span class="footer-mobile__nav-text">Resources</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Resources Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-resources">
+                    <div class="dropdown-mobile__item">
+                        <a href="/blog" class="dropdown-mobile__link">Read Our Blog</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/resources/thought-leadership" class="dropdown-mobile__link">Thought Leadership</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Pricing</span>
+                    </div>
+                </div>
+                
+                <!-- Company -->
+                <div class="footer-mobile__nav-item" data-dropdown="company">
+                    <span class="footer-mobile__nav-text">Company</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Company Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-company">
+                    <div class="dropdown-mobile__item">
+                        <a href="/about" class="dropdown-mobile__link">About Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/contact" class="dropdown-mobile__link">Contact Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/privacy" class="dropdown-mobile__link">Privacy Policy</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Affiliates [Coming Soon]</span>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Newsletter Form for Mobile -->
+            <div class="footer-mobile__newsletter">
+                <form class="form-newsletter form-newsletter--size-mobile">
+                    <h4 class="form-newsletter__title">Stay Connected</h4>
+                    <p class="form-newsletter__description">
+                        Get B2B marketing strategies and digital transformation inspiration in your inbox.
+                    </p>
+                    <div class="form-newsletter__field">
+                        <label for="footer-mobile-email" class="form-newsletter__label">Email Address*</label>
+                        <input type="email" 
+                               id="footer-mobile-email" 
+                               class="form-newsletter__input" 
+                               placeholder="Enter your email"
+                               required>
+                        <span class="form-newsletter__helper">*This field is required.</span>
+                    </div>
+                    <div class="form-newsletter__submit-wrapper">
+                        <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="footer-mobile__attribution">
+                <div class="footer-mobile__attribution-content">
+                    <div class="footer-mobile__company">Purposeful Media Promotions</div>
+                    <a href="/policy" class="footer-mobile__policy">Policy Statement</a>
+                    <div class="footer-mobile__copyright">© All rights reserved 2025</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        /* ============================================
+           MOBILE FOOTER NAVIGATION
+           Extracted from footer-mobile.js
+           ============================================ */
+        
+        class MobileFooterNav {
+            constructor() {
+                this.navItems = document.querySelectorAll('.footer-mobile__nav-item[data-dropdown]');
+                this.activeDropdown = null;
+                
+                this.init();
+            }
+            
+            init() {
+                // Add click handlers to navigation items
+                this.navItems.forEach(item => {
+                    item.addEventListener('click', (e) => this.toggleDropdown(e));
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.footer-mobile__nav')) {
+                        this.closeAllDropdowns();
+                    }
+                });
+                
+                // Handle escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeAllDropdowns();
+                    }
+                });
+            }
+            
+            toggleDropdown(event) {
+                event.stopPropagation();
+                const item = event.currentTarget;
+                const dropdownId = item.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(`dropdown-${dropdownId}`);
+                
+                if (!dropdown) return;
+                
+                if (dropdown.classList.contains('active')) {
+                    this.closeDropdown(dropdown);
+                    item.classList.remove('active');
+                    item.setAttribute('aria-expanded', 'false');
+                } else {
+                    this.closeAllDropdowns();
+                    this.openDropdown(dropdown);
+                    item.classList.add('active');
+                    item.setAttribute('aria-expanded', 'true');
+                    this.activeDropdown = dropdown;
+                }
+            }
+            
+            openDropdown(dropdown) {
+                dropdown.classList.add('active');
+                dropdown.setAttribute('aria-hidden', 'false');
+                
+                // Focus first link in dropdown for accessibility
+                const firstLink = dropdown.querySelector('.dropdown-mobile__link:not(.dropdown-mobile__link--disabled)');
+                if (firstLink) {
+                    firstLink.focus();
+                }
+            }
+            
+            closeDropdown(dropdown) {
+                dropdown.classList.remove('active');
+                dropdown.setAttribute('aria-hidden', 'true');
+            }
+            
+            closeAllDropdowns() {
+                document.querySelectorAll('.dropdown-mobile').forEach(dropdown => {
+                    this.closeDropdown(dropdown);
+                });
+                
+                document.querySelectorAll('.footer-mobile__nav-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.setAttribute('aria-expanded', 'false');
+                });
+                
+                this.activeDropdown = null;
+            }
+        }
+        
+        /* ============================================
+           INITIALIZE FOOTER
+           ============================================ */
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize mobile footer navigation
+            new MobileFooterNav();
+            
+            console.log('✅ Footer component initialized');
+        });
+        
+        /* ============================================
+           BREAKPOINT MONITOR
+           ============================================ */
+        
+        function updateInfo() {
+            const width = window.innerWidth;
+            
+            document.getElementById('screenWidth').textContent = width;
+            
+            let breakpoint = '';
+            let footerVariant = '';
+            
+            if (width < 380) {
+                breakpoint = 'Small Mobile';
+                footerVariant = 'Mobile (Accordion)';
+            } else if (width >= 380 && width <= 767) {
+                breakpoint = 'Mobile';
+                footerVariant = 'Mobile (Accordion)';
+            } else if (width >= 768 && width <= 1149) {
+                breakpoint = 'Tablet';
+                footerVariant = 'Desktop (Columns)';
+            } else if (width >= 1150 && width <= 1919) {
+                breakpoint = 'Desktop';
+                footerVariant = 'Desktop (Columns)';
+            } else if (width >= 1920) {
+                breakpoint = 'Desktop Plus';
+                footerVariant = 'Desktop (Columns)';
+            }
+            
+            document.getElementById('breakpointName').textContent = breakpoint;
+            document.getElementById('footerVariant').textContent = footerVariant;
+        }
+        
+        updateInfo();
+        window.addEventListener('resize', updateInfo);
+        
+        console.log('✅ Footer test ready');
+    </script>
+</body>
+</html>
+
+

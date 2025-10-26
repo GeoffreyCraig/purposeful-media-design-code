@@ -1,0 +1,240 @@
+.menu-footer,
+.menu-footer * {
+  box-sizing: border-box;
+}
+.menu-footer {
+  background: var(--brand, #1b1464);
+  padding: var(--space-8, 32px) var(--space-3, 12px) var(--space-8, 32px)
+    var(--space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.services {
+  background: var(--brand, #1b1464);
+  padding: var(--space-2, 8px) var(--space-3, 12px) var(--space-2, 8px)
+    var(--space-3, 12px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.headline {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.h-1 {
+  color: var(--menusimple, #ffffff);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 36px;
+  line-height: 54px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.arrow {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.who-we-serve {
+  background: var(--brand, #1b1464);
+  padding: var(--space-2, 8px) var(--space-3, 12px) var(--space-2, 8px)
+    var(--space-3, 12px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.resources {
+  background: var(--brand, #1b1464);
+  padding: 10px var(--space-3, 12px) 10px var(--space-3, 12px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.company {
+  background: var(--brand, #1b1464);
+  padding: var(--space-2, 8px) var(--space-3, 12px) var(--space-2, 8px)
+    var(--space-3, 12px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+/* variant styles */
+.menu-footer.state-service-active,
+.menu-footer.state-who-active,
+.menu-footer.state-resource-active,
+.menu-footer.state-company-active {
+  padding: var(--space-8, 32px) var(--space-0, 0px) var(--space-8, 32px)
+    var(--space-0, 0px);
+}
+.menu-footer.state-service-active .h-1,
+.menu-footer.state-who-active .h-12,
+.menu-footer.state-resource-active .h-12,
+.menu-footer.state-company-active .h-12 {
+  color: var(--activesimple, #b39226);
+}
+.menu-footer.state-service-active .arrow,
+.menu-footer.state-who-active .arrow2,
+.menu-footer.state-resource-active .arrow2,
+.menu-footer.state-company-active .arrow2 {
+  transform-origin: 0 0;
+  transform: rotate(90deg) scale(1, 1);
+}
+.menu-footer.break-point-mobile .drop-down-mobile-footer-menu {
+  background: var(--100, #f4ebcd);
+  border-radius: 8px;
+  padding: 32px 64px 32px var(--space-12, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.menu-footer.state-service-active .drop-down-mobile-footer-menu,
+.menu-footer.state-who-active .drop-down-mobile-footer-menu,
+.menu-footer.state-resource-active .drop-down-mobile-footer-menu {
+  min-width: 380px;
+}
+.menu-footer.break-point-mobile .navigation2 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.menu-footer.break-point-mobile .email-marketing,
+.menu-footer.break-point-mobile .inbound-marketing,
+.menu-footer.break-point-mobile .succession-planning,
+.menu-footer.break-point-mobile .business-unit-growth,
+.menu-footer.break-point-mobile .revenue-growth,
+.menu-footer.break-point-mobile .preparing-for-exit,
+.menu-footer.break-point-mobile .plan-a-webinar,
+.menu-footer.break-point-mobile .blog,
+.menu-footer.break-point-mobile .thought-leadership,
+.menu-footer.break-point-mobile .pricing,
+.menu-footer.break-point-mobile .about-us,
+.menu-footer.break-point-mobile .contact-us,
+.menu-footer.break-point-mobile .privacy-policy {
+  padding: var(--space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.menu-footer.break-point-mobile .h-4 {
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  position: relative;
+}
+.menu-footer.state-service-active .h-4,
+.menu-footer.state-resource-active .h-4,
+.menu-footer.state-company-active .h-4 {
+  color: var(--menudrop, #1b1464);
+  line-height: 30.5px;
+}
+.menu-footer.break-point-mobile .webinar-production,
+.menu-footer.break-point-mobile .affiliates {
+  padding: var(--space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.menu-footer.break-point-mobile .h-42 {
+  color: var(--muted, #c7cbcf);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 31.5px;
+  font-weight: 400;
+  position: relative;
+}
+.menu-footer.break-point-mobile .h-12 {
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 36px;
+  line-height: 54px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.menu-footer.state-service-active .h-12 {
+  color: var(--menusimple, #ffffff);
+}
+.menu-footer.break-point-mobile .arrow2 {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.menu-footer.state-who-active .h-4 {
+  color: var(--muted, #c7cbcf);
+  line-height: 31.5px;
+}
+.menu-footer.state-company-active .drop-down-mobile-footer-menu {
+  width: 380px;
+}

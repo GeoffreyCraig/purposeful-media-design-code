@@ -1,0 +1,199 @@
+/*
+ * MOLECULES - DROPDOWN MENUS
+ * Purposeful Media Design System
+ * Dropdown Menu Components for Headers
+ * 
+ * Dependencies:
+ * - variables-v2.0-20250915.css (color variables)
+ * - atoms-master.css (typography)
+ */
+
+@import url('variables-v2.0-20250915.css');
+
+/* ============================================
+   HEADER DROPDOWN MENU COMPONENT
+   ============================================ */
+
+.header-dropdown-menu {
+    background-color: var(--color-white, #FFFFFF);
+    border-radius: 4px;
+    padding: 0;
+    min-width: 250px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-dropdown-menu__list {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+}
+
+.header-dropdown-menu__item {
+    margin: 0;
+}
+
+.header-dropdown-menu__link {
+    display: block;
+    padding: 12px 24px;
+    color: var(--color-neutral-800, #2D3748);
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+/* Hover state */
+.header-dropdown-menu__link:hover {
+    background-color: var(--color-neutral-50, #F7FAFC);
+    color: var(--color-primary, #1B1464);
+}
+
+/* Active/Current page state */
+.header-dropdown-menu__link--active {
+    color: var(--color-primary, #1B1464);
+    font-weight: 700;
+}
+
+.header-dropdown-menu__link--active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--color-secondary, #D4AF37);
+}
+
+/* Separator */
+.header-dropdown-menu__separator {
+    height: 1px;
+    background-color: var(--color-neutral-200, #E2E8F0);
+    margin: 8px 0;
+}
+
+/* Submenu styles */
+.header-dropdown-menu__item--has-submenu {
+    position: relative;
+}
+
+.header-dropdown-menu__submenu-toggle {
+    position: absolute;
+    right: 24px;
+    top: 12px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.header-dropdown-menu__submenu-icon {
+    width: 12px;
+    height: 12px;
+    background-image: url('../assets/svg/ui-icons/purposeful-sprite-ui.svg');
+    background-position: -256px 0; /* Arrow icon */
+    background-size: 1536px 512px;
+    transform: rotate(90deg); /* Point right */
+    transition: transform 0.2s ease;
+}
+
+.header-dropdown-menu__item--expanded .header-dropdown-menu__submenu-icon {
+    transform: rotate(180deg); /* Point down */
+}
+
+/* Submenu list */
+.header-dropdown-menu__submenu {
+    display: none;
+    background-color: var(--color-neutral-50, #F7FAFC);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header-dropdown-menu__item--expanded .header-dropdown-menu__submenu {
+    display: block;
+}
+
+.header-dropdown-menu__submenu .header-dropdown-menu__link {
+    padding-left: 48px;
+    font-size: 14px;
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+
+/* Mobile specific styles */
+@media (max-width: 767px) {
+    .header-dropdown-menu {
+        border-radius: 0;
+        width: 100%;
+        min-width: 100%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-dropdown-menu__link {
+        padding: 16px 20px;
+        font-size: 18px;
+    }
+    
+    .header-dropdown-menu__submenu .header-dropdown-menu__link {
+        padding-left: 40px;
+        font-size: 16px;
+    }
+    
+    .header-dropdown-menu__submenu-toggle {
+        right: 20px;
+        top: 16px;
+    }
+}
+
+/* Tablet specific styles */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .header-dropdown-menu {
+        width: 250px;
+    }
+}
+
+/* ============================================
+   ANIMATION CLASSES
+   ============================================ */
+
+/* Slide down animation */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-dropdown-menu--animated {
+    animation: slideDown 0.3s ease;
+}
+
+/* Accordion animation for mobile */
+@keyframes accordionOpen {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        max-height: 500px;
+        opacity: 1;
+    }
+}
+
+.header-dropdown-menu__submenu--animated {
+    overflow: hidden;
+    animation: accordionOpen 0.3s ease;
+}

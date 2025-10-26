@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form/Contact Component</title>
+    
+    <!-- CSS Variables -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-forms.css">
+    
+    <!-- Component-specific styles -->
+    <style>
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* Contact Form Container Styles */
+        .form-contact {
+            background-color: #ECEEEF;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 600px;
+            padding: 24px 27px 32px 27px;
+            gap: 11px;
+        }
+        
+        /* Title Styles */
+        .form-contact__title {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            line-height: 36px;
+            color: #1B1464;
+            text-transform: uppercase;
+            white-space: nowrap;
+            margin: 0;
+        }
+        
+        /* Description Styles */
+        .form-contact__description {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            color: #51585E;
+            margin: 0;
+            width: 100%;
+        }
+        
+        /* Form Styles */
+        .form-contact__form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+        
+        /* Row Container for Side-by-side Fields */
+        .form-contact__row {
+            display: flex;
+            gap: 11px;
+            width: 100%;
+        }
+        
+        /* Form Field Container */
+        .form-contact__field-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+            padding: 4px 0;
+            min-height: 79px;
+            justify-content: center;
+        }
+        
+        .form-contact__field-container--full {
+            width: 100%;
+        }
+        
+        .form-contact__field-container--phone {
+            max-width: 300px;
+        }
+        
+        .form-contact__field-container--message {
+            width: 100%;
+        }
+        
+        /* Input Label */
+        .form-contact__label {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 18px;
+            color: #51585E;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Input Field Container */
+        .form-contact__input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        
+        /* Input Field */
+        .form-contact__input,
+        .form-contact__textarea {
+            width: 100%;
+            padding: 4px 8px;
+            background-color: #FFFFFF;
+            border: 1px solid #A2A9AF;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 18px;
+            color: #51585E;
+            outline: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            min-height: 27px;
+        }
+        
+        .form-contact__textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 24px;
+            padding: 8px;
+        }
+        
+        /* Placeholder styles */
+        .form-contact__input::placeholder,
+        .form-contact__textarea::placeholder {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            font-style: italic;
+            color: #A2A9AF;
+        }
+        
+        /* Input States */
+        .form-contact__input:hover,
+        .form-contact__textarea:hover {
+            border-color: #1D50DE;
+        }
+        
+        .form-contact__input:focus,
+        .form-contact__textarea:focus {
+            border-color: #1D50DE;
+        }
+        
+        .form-contact__input:disabled,
+        .form-contact__textarea:disabled {
+            background-color: #ECEEEF;
+            color: #A2A9AF;
+            cursor: not-allowed;
+        }
+        
+        /* Error State */
+        .form-contact__input--error,
+        .form-contact__textarea--error {
+            background-color: #FEF2F2;
+            border-color: #EF4444;
+            color: #EF4444;
+        }
+        
+        /* Helper Text */
+        .form-contact__helper {
+            font-family: 'Open Sans', sans-serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 12px;
+            color: #51585E;
+            max-width: 327px;
+        }
+        
+        .form-contact__helper--error {
+            color: #51585E;
+        }
+        
+        /* Submit Container */
+        .form-contact__submit-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 32px;
+        }
+        
+        /* Submit Button */
+        .form-contact__submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 80px;
+            background-color: #1B1464;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 18px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .form-contact__submit:hover {
+            background-color: #1D50DE;
+        }
+        
+        .form-contact__submit:active {
+            background-color: #06102B;
+        }
+        
+        .form-contact__submit:disabled {
+            background-color: #868F97;
+            color: #C7CBCF;
+            cursor: not-allowed;
+        }
+        
+        /* Error state button */
+        .form-contact--error .form-contact__submit {
+            background-color: transparent;
+            border: 2px solid #868F97;
+            color: #C7CBCF;
+            cursor: not-allowed;
+        }
+        
+        /* Success State Styles */
+        .form-contact--success {
+            text-align: center;
+        }
+        
+        .form-contact--success .form-contact__title {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .form-contact--success .form-contact__description {
+            text-align: center;
+        }
+        
+        .form-contact__success {
+            width: 100%;
+        }
+        
+        .form-contact__success-message {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 18px;
+            color: #1B1464;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 12px;
+            padding: 0 64px;
+        }
+        
+        .form-contact__success-link {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 27px;
+            color: #1B1464;
+            text-decoration: underline;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        
+        .form-contact__success-link:hover {
+            opacity: 0.8;
+        }
+        
+        /* State Classes */
+        .form-contact--hover .form-contact__submit {
+            background-color: #1D50DE;
+        }
+        
+        .form-contact--active .form-contact__input,
+        .form-contact--active .form-contact__textarea {
+            border-color: #1D50DE;
+        }
+        
+        .form-contact--active .form-contact__submit {
+            background-color: #06102B;
+        }
+        
+        .form-contact--disabled .form-contact__input,
+        .form-contact--disabled .form-contact__textarea {
+            background-color: #ECEEEF;
+            color: #A2A9AF;
+        }
+        
+        .form-contact--disabled .form-contact__submit {
+            background-color: #868F97;
+            color: #C7CBCF;
+        }
+        
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .form-contact {
+                width: 100%;
+                max-width: 400px;
+                padding: 20px;
+            }
+            
+            .form-contact__row {
+                flex-direction: column;
+            }
+            
+            .form-contact__field-container--phone {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .form-contact {
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contact Form Component -->
+    <div class="form-contact" data-state="default" data-name="Form/Contact" data-node-id="1750:4248">
+        <!-- Title -->
+        <h3 class="form-contact__title">Get in Touch</h3>
+        
+        <!-- Description -->
+        <p class="form-contact__description">
+            Ready to transform your marketing? Tell us what's on your mind.
+        </p>
+        
+        <!-- Contact Form -->
+        <form class="form-contact__form" id="contact-form">
+            <!-- Name Row (First & Last) -->
+            <div class="form-contact__row">
+                <!-- First Name Field -->
+                <div class="form-contact__field-container">
+                    <label for="firstName" class="form-contact__label">First Name</label>
+                    <div class="form-contact__input-wrapper">
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            name="firstName" 
+                            class="form-contact__input" 
+                            placeholder="Enter your first name"
+                            aria-describedby="firstName-helper"
+                        />
+                    </div>
+                    <span id="firstName-helper" class="form-contact__helper">How do you prefer to be addressed?</span>
+                </div>
+                
+                <!-- Last Name Field -->
+                <div class="form-contact__field-container">
+                    <label for="lastName" class="form-contact__label">Last Name</label>
+                    <div class="form-contact__input-wrapper">
+                        <input 
+                            type="text" 
+                            id="lastName" 
+                            name="lastName" 
+                            class="form-contact__input" 
+                            placeholder="Enter your last name"
+                            aria-describedby="lastName-helper"
+                        />
+                    </div>
+                    <span id="lastName-helper" class="form-contact__helper">What is your last name?</span>
+                </div>
+            </div>
+            
+            <!-- Email Field (Required) -->
+            <div class="form-contact__field-container form-contact__field-container--full">
+                <label for="email" class="form-contact__label">Email Address*</label>
+                <div class="form-contact__input-wrapper">
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-contact__input" 
+                        placeholder="your.email@example.com"
+                        required
+                        aria-required="true"
+                        aria-invalid="false"
+                        aria-describedby="email-helper"
+                    />
+                </div>
+                <span id="email-helper" class="form-contact__helper">*This field is required.</span>
+            </div>
+            
+            <!-- Phone Number Field -->
+            <div class="form-contact__field-container form-contact__field-container--phone">
+                <label for="phone" class="form-contact__label">Phone Number</label>
+                <div class="form-contact__input-wrapper">
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form-contact__input" 
+                        placeholder="(555) 123-4567"
+                        aria-describedby="phone-helper"
+                    />
+                </div>
+                <span id="phone-helper" class="form-contact__helper">What is your contact phone number?</span>
+            </div>
+            
+            <!-- Company Field -->
+            <div class="form-contact__field-container form-contact__field-container--full">
+                <label for="company" class="form-contact__label">Company</label>
+                <div class="form-contact__input-wrapper">
+                    <input 
+                        type="text" 
+                        id="company" 
+                        name="company" 
+                        class="form-contact__input" 
+                        placeholder="Your company name"
+                        aria-describedby="company-helper"
+                    />
+                </div>
+                <span id="company-helper" class="form-contact__helper">What is your company?</span>
+            </div>
+            
+            <!-- Message Field -->
+            <div class="form-contact__field-container form-contact__field-container--message">
+                <label for="message" class="form-contact__label">Your Message</label>
+                <div class="form-contact__input-wrapper">
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        class="form-contact__textarea" 
+                        placeholder="Tell us about your project..."
+                        aria-describedby="message-helper"
+                    ></textarea>
+                </div>
+                <span id="message-helper" class="form-contact__helper">Please write your message</span>
+            </div>
+            
+            <!-- Submit Container -->
+            <div class="form-contact__submit-container">
+                <button type="submit" class="form-contact__submit">
+                    Send Message
+                </button>
+            </div>
+        </form>
+        
+        <!-- Success State (Hidden by default) -->
+        <div class="form-contact__success" id="contact-success" style="display: none;">
+            <!-- Success Title -->
+            <h3 class="form-contact__title">Thank you for reaching out to us!</h3>
+            
+            <!-- Success Description -->
+            <p class="form-contact__description">
+                Please check your inbox for our automated response. Our representative will follow up with you in person shortly.
+            </p>
+            
+            <!-- Success CTA -->
+            <div class="form-contact__submit-container">
+                <p class="form-contact__success-message">
+                    To schedule a meeting with us, please follow this link to our calendar to check our availability and reserve your time.
+                </p>
+                <a href="#" class="form-contact__success-link">Schedule an Appointment</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for Form Handling -->
+    <script>
+        // Configuration
+        const HUBSPOT_CONFIG = {
+            portalId: '48424315', // Purposeful Media HubSpot Portal ID
+            formId: 'd3b25d84-8bbf-4637-ba32-bd0c9b4d732e', // Contact Form ID
+            region: 'na1' // North America region
+        };
+        
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = {
+                firstName: form.firstName.value,
+                lastName: form.lastName.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                company: form.company.value,
+                message: form.message.value
+            };
+            
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailInput = form.email;
+            
+            if (!emailRegex.test(emailInput.value)) {
+                // Show error state
+                emailInput.classList.add('form-contact__input--error');
+                emailInput.setAttribute('aria-invalid', 'true');
+                
+                // Update helper text
+                const helper = document.getElementById('email-helper');
+                if (helper) {
+                    helper.textContent = 'Please check your address format and try again.';
+                    helper.classList.add('form-contact__helper--error');
+                }
+                
+                return;
+            }
+            
+            // Here you would typically submit to HubSpot
+            console.log('Form submitted with data:', formData);
+            console.log('HubSpot Portal ID:', HUBSPOT_CONFIG.portalId);
+            console.log('HubSpot Form ID:', HUBSPOT_CONFIG.formId);
+            
+            // Simulate success for demo
+            handleFormSuccess();
+        }
+        
+        // Handle successful form submission
+        function handleFormSuccess() {
+            const form = document.getElementById('contact-form');
+            const success = document.getElementById('contact-success');
+            const component = document.querySelector('.form-contact');
+            const title = component.querySelector('.form-contact__title');
+            const description = component.querySelector('.form-contact__description');
+            
+            // Hide form
+            if (form) form.style.display = 'none';
+            if (title && title.textContent === 'Get in Touch') title.style.display = 'none';
+            if (description && description.textContent.includes('Ready to transform')) description.style.display = 'none';
+            
+            // Show success message
+            if (success) {
+                success.style.display = 'block';
+            }
+            
+            // Update component state
+            if (component) {
+                component.setAttribute('data-state', 'success');
+                component.classList.add('form-contact--success');
+            }
+        }
+        
+        // Handle input field interactions
+        function setupFieldInteractions() {
+            const inputs = document.querySelectorAll('.form-contact__input, .form-contact__textarea');
+            const component = document.querySelector('.form-contact');
+            
+            inputs.forEach(input => {
+                // Clear error on typing
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('form-contact__input--error')) {
+                        this.classList.remove('form-contact__input--error');
+                        this.setAttribute('aria-invalid', 'false');
+                        
+                        // Reset helper text for email field
+                        if (this.id === 'email') {
+                            const helper = document.getElementById('email-helper');
+                            if (helper) {
+                                helper.textContent = '*This field is required.';
+                                helper.classList.remove('form-contact__helper--error');
+                            }
+                        }
+                    }
+                });
+                
+                // Focus state
+                input.addEventListener('focus', function() {
+                    component.setAttribute('data-state', 'active');
+                    component.classList.add('form-contact--active');
+                });
+                
+                // Blur state
+                input.addEventListener('blur', function() {
+                    component.setAttribute('data-state', 'default');
+                    component.classList.remove('form-contact--active');
+                });
+            });
+            
+            // Hover state for component
+            if (component) {
+                component.addEventListener('mouseenter', function() {
+                    if (!component.classList.contains('form-contact--active')) {
+                        component.classList.add('form-contact--hover');
+                    }
+                });
+                
+                component.addEventListener('mouseleave', function() {
+                    component.classList.remove('form-contact--hover');
+                });
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup form submission
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.addEventListener('submit', handleFormSubmit);
+            }
+            
+            // Setup field interactions
+            setupFieldInteractions();
+        });
+    </script>
+</body>
+</html>

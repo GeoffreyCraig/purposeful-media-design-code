@@ -1,0 +1,70 @@
+.buttons-play-pause,
+.buttons-play-pause * {
+  box-sizing: border-box;
+}
+.buttons-play-pause {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  padding: var(--space-3, 12px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.buttons-play {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  overflow: visible;
+}
+/* variant styles */
+.buttons-play-pause.interactive-hover.style-ghost {
+  background: rgba(212, 175, 55, 0.2);
+}
+.buttons-play-pause.interactive-pressed.style-ghost {
+  background: rgba(212, 175, 55, 0.4);
+}
+.buttons-play-pause.interactive-default.style-solid {
+  background: #ffffff;
+}
+.buttons-play-pause.interactive-hover.style-solid {
+  background: var(--accent, #d4af37);
+}
+.buttons-play-pause.interactive-pressed.style-solid {
+  background: var(--active, #b39226);
+}
+.buttons-play-pause.size-small .buttons-play {
+  width: 24px;
+  height: 24px;
+}
+.buttons-play-pause.interactive-default .buttons-pause,
+.buttons-play-pause.interactive-hover .buttons-pause,
+.buttons-play-pause.interactive-pressed .buttons-pause {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+}
+.buttons-play-pause.size-medium .buttons-pause {
+  width: 32px;
+  height: 32px;
+}
+.buttons-play-pause.size-small .buttons-pause {
+  width: 24px;
+  height: 24px;
+  aspect-ratio: 1;
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Subheading Banner - Test Component</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    
+    <style>
+        /* Component Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #eceeef;
+        }
+        
+        /**
+         * Component: Reverse Subheading Banner
+         * Type: Organism
+         * Description: White background banner with left-aligned subheading
+         *              Fixed 69px height at all breakpoints
+         * 
+         * Dependencies:
+         * - Design Tokens (required)
+         * - Google Fonts: Lato
+         * 
+         * Usage:
+         * - Placed below headline banners (e.g., "Resources")
+         * - Provides context subheading (e.g., "The Latest From Our Blog")
+         * - "Reverse" refers to white bg / blue text (vs typical blue bg / white text)
+         */
+        
+        /* ============================================
+           REVERSE SUBHEADING BANNER
+           ============================================ */
+        
+        .reverse-banner {
+            width: 100%;
+            height: 69px;
+            background-color: var(--color-white, #ffffff);
+            display: flex;
+            align-items: center;
+        }
+        
+        .reverse-banner__container {
+            width: 100%;
+            max-width: var(--container-max-width, 1920px);
+            margin: 0 auto;
+            padding: 0 var(--space-10, 40px);
+        }
+        
+        .reverse-banner__subheading {
+            color: var(--text-primary, #1b1464);
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 700;
+            font-size: 21px;
+            line-height: 31.5px;
+            margin: 0;
+            text-align: left;
+        }
+        
+        /* Demo Styles */
+        .demo-container {
+            padding: 40px 20px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        .breakpoint-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .breakpoint-header {
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .breakpoint-content {
+            background: #eceeef;
+            position: relative;
+            overflow-x: auto;
+        }
+        
+        /* Example headline banner for context */
+        .headline-banner {
+            width: 100%;
+            background-color: #ffffff;
+            padding: var(--space-8, 32px) var(--space-10, 40px);
+            text-align: center;
+        }
+        
+        .headline-banner__headline {
+            color: var(--text-primary, #1b1464);
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            font-size: 36px;
+            line-height: 54px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; text-align: center; margin-bottom: 40px;">
+            Reverse Subheading Banner - Test Component
+        </h1>
+        
+        <!-- Component Info -->
+        <div style="background: #d4af37; color: white; padding: 20px; border-radius: 8px; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="margin-bottom: 10px;">Component Features:</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>Fixed Height:</strong> 69px at ALL breakpoints</li>
+                <li><strong>Left-Aligned:</strong> Subheading aligned to left</li>
+                <li><strong>White Background:</strong> Provides context below headline banners</li>
+                <li><strong>Simple Structure:</strong> Just one subheading, no headline</li>
+                <li><strong>Usage:</strong> Placed directly below headline banners</li>
+            </ul>
+        </div>
+        
+        <!-- Example: With Context (Headline Banner Above) -->
+        <div class="demo-section">
+            <div class="demo-label">With Headline Banner Context</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Example: "Resources" headline banner + reverse subheading banner</div>
+                <div class="breakpoint-content" style="min-width: 1200px;">
+                    <!-- Headline Banner (for context) -->
+                    <section class="headline-banner">
+                        <h2 class="headline-banner__headline">Resources</h2>
+                    </section>
+                    
+                    <!-- Component: Reverse Subheading Banner -->
+                    <!-- Type: Organism -->
+                    <!-- Usage: Provides subheading context below headline banners -->
+                    <section class="reverse-banner" aria-label="Section subheading">
+                        <div class="reverse-banner__container">
+                            <p class="reverse-banner__subheading">The Latest From Our Blog</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Second Example -->
+        <div class="demo-section">
+            <div class="demo-label">Second Example</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Example: "Downloads" headline + reverse subheading</div>
+                <div class="breakpoint-content" style="min-width: 1200px;">
+                    <section class="headline-banner">
+                        <h2 class="headline-banner__headline">Downloads</h2>
+                    </section>
+                    
+                    <section class="reverse-banner">
+                        <div class="reverse-banner__container">
+                            <p class="reverse-banner__subheading">Featured Resource Download</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Standalone Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Standalone (No Headline Above)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Reverse Banner by itself - Fixed 69px height</div>
+                <div class="breakpoint-content" style="min-width: 1200px;">
+                    <section class="reverse-banner">
+                        <div class="reverse-banner__container">
+                            <p class="reverse-banner__subheading">This is a standalone subheading banner</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Example -->
+        <div class="demo-section">
+            <div class="demo-label">Mobile View (Still 69px height)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Mobile - Same fixed height</div>
+                <div class="breakpoint-content" style="width: 500px;">
+                    <section class="reverse-banner">
+                        <div class="reverse-banner__container">
+                            <p class="reverse-banner__subheading">The Latest From Our Blog</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Specifications -->
+        <div style="background: #f0f3fd; padding: 30px; border-radius: 8px; max-width: 1200px; margin: 40px auto 0;">
+            <h3 style="color: #1b1464; margin-bottom: 20px;">Technical Specifications</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Fixed Dimensions</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li><strong>Height:</strong> 69px (all breakpoints)</li>
+                        <li><strong>Background:</strong> White (#ffffff)</li>
+                        <li><strong>Alignment:</strong> Left</li>
+                        <li><strong>Padding:</strong> 0 40px (horizontal)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Typography</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li><strong>Font:</strong> Lato</li>
+                        <li><strong>Weight:</strong> 700 (bold)</li>
+                        <li><strong>Size:</strong> 21px</li>
+                        <li><strong>Line Height:</strong> 31.5px</li>
+                        <li><strong>Color:</strong> Navy (#1b1464)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Structure</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li><strong>Container:</strong> Max 1920px</li>
+                        <li><strong>Display:</strong> Flex, align center</li>
+                        <li><strong>Single Element:</strong> Just subheading</li>
+                        <li><strong>No headline</strong> in this component</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Usage Context</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>✅ Below headline banners</li>
+                        <li>✅ Provides additional context</li>
+                        <li>✅ Breaks up page sections</li>
+                        <li>✅ Can be used standalone</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

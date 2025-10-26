@@ -1,0 +1,175 @@
+/**
+ * Component: Pillar FAQ Section
+ * Type: Organism
+ * Description: FAQ section with 5 accordion-style questions for Pillar pages
+ * 
+ * Dependencies:
+ * - Design Tokens (required)
+ * - Google Fonts: Lato, Open Sans
+ * - JavaScript for accordion functionality
+ * 
+ * Usage:
+ * - Displays 5 frequently asked questions with expandable answers
+ * - Used on Pillar pages with "FAQ" anchor for sticky menu
+ * 
+ * Last Modified: 2025-10-16
+ */
+
+/* ============================================
+   PILLAR FAQ SECTION
+   ============================================ */
+
+.pillar-faq {
+    width: 100%;
+    background-color: var(--secondary-100, #eceeef);
+    scroll-margin-top: 80px; /* Offset for sticky menu */
+}
+
+.pillar-faq__container {
+    width: 100%;
+    max-width: var(--container-max-width, 1920px);
+    margin: 0 auto;
+}
+
+.pillar-faq__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--secondary-100, #eceeef);
+    border-radius: var(--radius-large, 12px);
+    padding: var(--space-8, 32px);
+}
+
+/* FAQ Card */
+.card-faq {
+    padding: var(--space-4, 16px) var(--space-3, 12px);
+    border-bottom: 1px solid var(--color-neutral-200, #c7cbcf);
+}
+
+.card-faq:last-child {
+    border-bottom: none;
+}
+
+.card-faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2, 8px) var(--space-3, 12px);
+    border-radius: var(--radius-medium, 8px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.card-faq__question:hover {
+    background-color: var(--accent-100, #f4ebcd);
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card-faq__question-text {
+    font-family: var(--font-heading, 'Lato'), sans-serif;
+    font-weight: 900;
+    color: var(--text-secondary, #51585e);
+    flex: 1;
+    padding-right: var(--space-3, 12px);
+}
+
+.card-faq__arrow {
+    font-family: var(--font-heading, 'Lato'), sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 45px;
+    color: var(--text-secondary, #51585e);
+    width: 45px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card-faq--open .card-faq__arrow {
+    transform: rotate(90deg);
+}
+
+.card-faq__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.card-faq--open .card-faq__answer {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.card-faq__answer-content {
+    padding: var(--space-2, 8px) var(--space-2, 8px) var(--space-2, 8px) var(--space-8, 32px);
+    font-family: var(--font-body, 'Open Sans'), sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--text-secondary, #51585e);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Mobile: 380px to 767px */
+@media (max-width: 767px) {
+    .pillar-faq {
+        padding: var(--space-8, 32px) var(--space-4, 16px);
+        scroll-margin-top: 60px;
+    }
+    
+    .pillar-faq__inner {
+        padding: var(--space-6, 24px);
+        border-radius: var(--radius-medium, 8px);
+    }
+    
+    .card-faq__question-text {
+        font-size: 18px;
+        line-height: 27px;
+    }
+}
+
+/* Tablet: 768px to 1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .pillar-faq {
+        padding: var(--space-12, 48px) var(--space-8, 32px);
+        scroll-margin-top: 70px;
+    }
+    
+    .pillar-faq__inner {
+        border-radius: var(--radius-large, 12px);
+    }
+    
+    .card-faq__question-text {
+        font-size: 21px;
+        line-height: 30.5px;
+    }
+}
+
+/* Desktop: 1150px to 1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .pillar-faq {
+        padding: var(--space-16, 64px) var(--space-10, 40px);
+        scroll-margin-top: 80px;
+    }
+    
+    .card-faq__question-text {
+        font-size: 21px;
+        line-height: 30.5px;
+    }
+}
+
+/* DesktopPlus: 1920px and above */
+@media (min-width: 1920px) {
+    .pillar-faq {
+        padding: var(--space-20, 80px) var(--space-10, 40px);
+        scroll-margin-top: 80px;
+    }
+    
+    .card-faq__question-text {
+        font-size: 21px;
+        line-height: 30.5px;
+    }
+}
+

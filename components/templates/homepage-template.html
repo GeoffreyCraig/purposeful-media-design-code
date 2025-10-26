@@ -1,0 +1,2471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Purposeful Media Promotions - Strategic B2B marketing solutions for sustainable business growth.">
+    <meta name="author" content="Purposeful Media Promotions">
+    <title>Home - Purposeful Media Promotions</title>
+    
+    <!-- 
+    ============================================================================
+    HOMEPAGE TEMPLATE - VERSION 1.0
+    ============================================================================
+    
+    Created: October 13, 2025 (Week 42, Monday)
+    Status: Production-Ready - All Components Breadboarded & Approved
+    
+    Components Included:
+    1. Header (Banner) - Desktop dropdowns + Active states
+    2. Hero Carousel - 3 video slides with auto-advance
+    3. Banner Headline - "Welcome"
+    4. Text Block Section - Responsive padding system
+    5. Banner Headline - "Featured Resource Download"
+    6. Featured Resource Section - Thumbnail + Teaser card
+    7. Icon Banner (Your Next Step) - Contact icon + CTA
+    8. 2-Column Graphic Section - Background image + Cards
+    9. Footer - Desktop columns + Mobile accordion
+    10. Return to Top Button - Floating UI element
+    
+    Quality Assurance:
+    ✅ All components individually tested and approved
+    ✅ All breakpoints validated (380px, 768px, 1150px, 1920px)
+    ✅ All interactive states tested
+    ✅ No CSS conflicts
+    ✅ Production-ready code
+    
+    ============================================================================
+    -->
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Import Hero Carousel Styles -->
+    <link rel="stylesheet" href="../../styles/organisms-heroes.css">
+    
+    <!-- Import Icon Display Molecule CSS -->
+    <link rel="stylesheet" href="../../styles/molecules-icon-display.css">
+    
+    <!-- Import UI Icon Display Molecule CSS -->
+    <link rel="stylesheet" href="../../styles/molecules-ui-icon-display.css">
+    
+    <!-- Import Footer Organism CSS -->
+    <link rel="stylesheet" href="../../styles/organisms-footers.css">
+    
+    <!-- Component Styles -->
+    <style>
+        /* ============================================
+           GLOBAL RESET & BASE STYLES
+           ============================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* ============================================
+           HEADER COMPONENT STYLES
+           ============================================ */
+        
+        .banner-header-main {
+            width: 100%;
+            height: 125px;
+            background-color: #1b1464;
+            border-bottom: 4px solid #d4af37;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+            overflow: visible !important;
+        }
+        
+        .banner-header-main__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .banner-header-main__logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-header-main__logo-link:hover {
+            opacity: 0.85;
+        }
+        
+        .banner-header-main__logo {
+            display: none;
+            height: auto;
+        }
+        
+        .banner-header-main__menu-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+            overflow: visible !important;
+            position: relative;
+        }
+        
+        .main-menu {
+            background-color: transparent;
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            position: relative;
+            overflow: visible !important;
+        }
+        
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(40px, 5vw, 80px);
+            padding: 0;
+            min-height: auto;
+            overflow: visible !important;
+            position: relative;
+        }
+        
+        .desktop-nav .menu-item {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        .desktop-nav .menu-item-dropdown {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            z-index: 1001;
+        }
+        
+        .desktop-nav .menu-text {
+            display: inline-block;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        
+        .desktop-nav .menu-item:hover,
+        .desktop-nav .menu-item-dropdown:hover .menu-text {
+            color: #DCBE5D;
+        }
+        
+        .desktop-nav .menu-item.active,
+        .desktop-nav .menu-item-dropdown.active .menu-text {
+            color: #B39226;
+        }
+        
+        .dropdown-container {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 280px;
+            z-index: 9999 !important;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            margin-top: 12px;
+        }
+        
+        .dropdown-container.open {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+        
+        .dropdown-menu {
+            background-color: #ECEEEF !important;
+            border-radius: 8px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important;
+            padding: 32px;
+            padding-right: 64px;
+            display: block !important;
+            font-family: 'Lato', sans-serif;
+            min-height: 150px;
+            position: relative;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dropdown-menu:hover {
+            background-color: #F4EBCD !important;
+        }
+        
+        .menu-item-dropdown.active .dropdown-menu {
+            background-color: #F4EBCD !important;
+        }
+        
+        .dropdown-menu .dropdown-item {
+            display: block !important;
+            color: #1B1464 !important;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin: 0 0 16px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            font-weight: 800;
+            background-color: transparent;
+        }
+        
+        .dropdown-menu .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dropdown-menu .dropdown-item:hover {
+            color: #1D50DE !important;
+        }
+        
+        .dropdown-menu .dropdown-item.active {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+            color: #1B1464 !important;
+            margin-left: -32px;
+            margin-right: -64px;
+            padding-left: 48px;
+            padding-right: 80px;
+            border-radius: 4px;
+        }
+        
+        .dropdown-menu .dropdown-item.active:hover {
+            color: #1D50DE !important;
+        }
+        
+        .mobile-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0;
+            min-height: auto;
+        }
+        
+        .hamburger-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+        }
+        
+        .hamburger-button svg {
+            width: 45px;
+            height: auto;
+        }
+        
+        .hamburger-icon {
+            display: block;
+        }
+        
+        .close-icon {
+            display: none;
+        }
+        
+        .menu-open .hamburger-icon {
+            display: none;
+        }
+        
+        .menu-open .close-icon {
+            display: block;
+        }
+        
+        .mobile-accordion {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ECEEEF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .mobile-accordion.active {
+            display: block;
+            max-height: 800px;
+            padding: 20px 24px;
+        }
+        
+        .mobile-accordion:hover {
+            background-color: #F4EBCD !important;
+        }
+        
+        .mobile-accordion.has-active-page {
+            background-color: #F4EBCD !important;
+        }
+        
+        .mobile-accordion .accordion-section {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-accordion .accordion-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mobile-accordion .accordion-header {
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 45px;
+            cursor: pointer;
+            padding: 10px 10px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        .mobile-accordion .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .mobile-accordion .accordion-header.active {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        .mobile-accordion .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion .accordion-content.active {
+            max-height: 300px;
+            padding-top: 10px;
+        }
+        
+        .mobile-accordion .accordion-item {
+            display: block;
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 10px 10px 10px 30px;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        .mobile-accordion .accordion-item:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .mobile-accordion .accordion-item.active {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        /* ============================================
+           HERO CAROUSEL ENHANCEMENTS
+           ============================================ */
+        
+        /* Carousel nav arrow hover - Gray to Navy */
+        .carousel-nav:hover .ui-icon-display[data-color="gray"] {
+            filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+        }
+        
+        /* Slide overlay text visibility */
+        .slide-eyebrow {
+            color: #D4AF37 !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        .slide-description {
+            font-family: 'Open Sans', sans-serif !important;
+            font-size: 24px !important;
+            line-height: 24px !important;
+            max-width: 900px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        
+        /* ============================================
+           BANNER HEADLINE COMPONENT
+           ============================================ */
+        
+        .banner-headline-section {
+            width: 100%;
+            height: 80px;
+            background-color: #1B1464;
+            border-bottom: 4px solid #D4AF37;
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+        }
+        
+        .banner-headline-section__content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .banner-headline {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin: 0;
+            text-align: left;
+        }
+        
+        /* ============================================
+           TEXT BLOCK SECTION STYLES
+           ============================================ */
+        
+        .text-block-section {
+            width: 100%;
+            background-color: #ECEEEF;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .text-block-content {
+            width: 100%;
+            background-color: #ECEEEF;
+        }
+        
+        .main-heading {
+            font-family: 'Lato', sans-serif;
+            font-size: 48px;
+            line-height: 72px;
+            font-weight: 700;
+            color: #1B1464;
+            text-transform: uppercase;
+            margin-bottom: 48px;
+        }
+        
+        .content-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+        
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .section-heading {
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 700;
+            color: #1B1464;
+            text-transform: uppercase;
+        }
+        
+        .section-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            font-weight: 400;
+            color: #51585E;
+        }
+        
+        .section-list {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            font-weight: 400;
+            color: #51585E;
+            margin-left: 32px;
+            list-style-type: disc;
+        }
+        
+        .section-list li {
+            margin-bottom: 12px;
+        }
+        
+        .section-list li:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* ============================================
+           FEATURED RESOURCE SECTION
+           ============================================ */
+        
+        .featured-resource-section {
+            position: relative;
+            background-color: #ECEEEF;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .section-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background-image: url('../../assets/images/shutterstock_1421446100.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.25;
+        }
+        
+        .resource-container {
+            position: relative;
+            background-color: #FFFFFF;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 16px 64px;
+            z-index: 1;
+            width: 1150px;
+        }
+        
+        .thumbnail-column {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .thumbnail-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-column {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-teaser {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: clip;
+            padding: 40px 48px 64px 48px;
+            position: relative;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            background-color: #FFFFFF;
+        }
+        
+        .card-teaser__heading {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 45px;
+            text-transform: uppercase;
+            color: #1B1464;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .card-teaser__body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            color: #51585E;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .card-teaser__button {
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: 4px;
+            flex-shrink: 0;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #1B1464;
+            color: #FFFFFF;
+            border: none;
+            padding: 16px 80px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        
+        .card-teaser__button:hover {
+            background-color: #36448F;
+            transform: translateY(-1px);
+        }
+        
+        .card-teaser__button:active {
+            background-color: #0B1F57;
+            transform: translateY(0);
+        }
+        
+        /* ============================================
+           ICON BANNER COMPONENT STYLES
+           ============================================ */
+        
+        .icon-banner {
+            width: 100%;
+            background-color: #1B1464;
+            border-bottom: 4px solid #D4AF37;
+            margin: 0;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .icon-banner__content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .icon-banner__text {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            flex: 1;
+        }
+        
+        .icon-banner__title {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 0;
+        }
+        
+        .icon-banner__tagline {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 400;
+            color: #C7CBCF;
+            margin: 0;
+        }
+        
+        /* ============================================
+           2-COLUMN GRAPHIC SECTION STYLES
+           ============================================ */
+        
+        .section-2column-graphic {
+            width: 100%;
+            position: relative;
+            margin: 0;
+            padding: 0 64px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+            background-image: url('../../assets/images/shutterstock_2085055825.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .section-2column-graphic__content {
+            width: 100%;
+            max-width: 1920px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-2column-graphic__cards {
+            display: flex;
+            gap: 0;
+            width: 100%;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .card-container {
+            flex: 1;
+            padding: 64px;
+            opacity: 1;
+            background: transparent;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .card-container--left {
+            justify-content: flex-start;
+        }
+        
+        .card-container--right {
+            justify-content: flex-end;
+        }
+        
+        .content-card {
+            background: #FFFFFF;
+            padding: 64px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            height: auto;
+        }
+        
+        .card-heading {
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 700;
+            color: #1B1464;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .card-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            font-weight: 400;
+            color: #51585E;
+            margin: 0;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            user-select: none;
+        }
+        
+        .btn--large {
+            font-size: 18px;
+            padding: 20px 32px;
+            min-width: 160px;
+        }
+        
+        .btn--medium {
+            font-size: 16px;
+            padding: 16px 24px;
+            min-width: 120px;
+        }
+        
+        .btn--small {
+            font-size: 14px;
+            padding: 12px 20px;
+            min-width: 100px;
+        }
+        
+        .btn-brand,
+        .btn--primary {
+            background-color: #1B1464;
+            color: #FFFFFF;
+            border-color: #1B1464;
+        }
+        
+        .btn-brand:hover:not(:disabled),
+        .btn--primary:hover:not(:disabled) {
+            background-color: #36448F;
+            border-color: #36448F;
+        }
+        
+        .btn-brand:active:not(:disabled),
+        .btn--primary:active:not(:disabled) {
+            background-color: #0B1F57;
+            border-color: #0B1F57;
+        }
+        
+        .btn-accent,
+        .btn--secondary {
+            background-color: #D4AF37;
+            color: #1B1464;
+            border-color: #D4AF37;
+        }
+        
+        .btn-accent:hover:not(:disabled),
+        .btn--secondary:hover:not(:disabled) {
+            background-color: #E4CD82;
+            border-color: #E4CD82;
+        }
+        
+        .btn-accent:active:not(:disabled),
+        .btn--secondary:active:not(:disabled) {
+            background-color: #B39226;
+            border-color: #B39226;
+        }
+        
+        /* Newsletter Button Styling */
+        .form-newsletter__submit {
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid #1B1464;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            user-select: none;
+            background-color: #1B1464;
+            color: #FFFFFF;
+            border-color: #1B1464;
+            padding: 16px 24px;
+            min-width: 120px;
+        }
+        
+        .form-newsletter__submit:hover:not(:disabled) {
+            background-color: #36448F;
+            border-color: #36448F;
+        }
+        
+        .form-newsletter__submit:active:not(:disabled) {
+            background-color: #0B1F57;
+            border-color: #0B1F57;
+        }
+        
+        .form-newsletter__submit:disabled {
+            background-color: #E2E8F0;
+            color: #6C757D;
+            border-color: #E2E8F0;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        /* ============================================
+           RETURN TO TOP BUTTON STYLES
+           ============================================ */
+        
+        .return-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .return-button.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .return-button:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .return-button:active {
+            transform: translateY(0);
+        }
+        
+        .return-button:hover .ui-icon-display[data-color="gray"] {
+            filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS - HEADER
+           ============================================ */
+        
+        @media (max-width: 767px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+                height: 100%;
+            }
+            
+            .banner-header-main__logo--mobile {
+                display: block;
+                width: 179px;
+                height: 89px;
+                object-fit: contain;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            /* Mobile accordion positioning - full-width, below header */
+            .banner-header-main .mobile-accordion {
+                position: fixed;
+                top: 125px; /* Start below header */
+                left: 0;
+                right: 0;
+                width: 100%;
+                z-index: 99;
+            }
+            
+            /* Note: top position is dynamically updated via JavaScript */
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--mobile { display: none; }
+            .banner-header-main__logo--tablet { 
+                display: block; 
+                width: 417px;
+                height: 89px;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            /* Tablet accordion positioning - absolute to header */
+            .banner-header-main .mobile-accordion {
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .banner-header-main__container {
+                padding: 0 36px 0 24px;
+            }
+            
+            .banner-header-main__logo--mobile { display: none; }
+            .banner-header-main__logo--tablet { display: none; }
+            .banner-header-main__logo--desktop { 
+                display: block;
+                width: 460px;
+                height: 89px;
+            }
+            
+            .banner-header-main__menu-container {
+                max-width: 886px;
+                min-width: 615px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 48px;
+            }
+            
+            .desktop-nav .menu-item,
+            .desktop-nav .menu-item-dropdown {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .dropdown-menu .dropdown-item {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        @media (min-width: 1920px) {
+            .banner-header-main__container {
+                max-width: 1900px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            .banner-header-main__logo--mobile { display: none; }
+            .banner-header-main__logo--tablet { display: none; }
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 481px;
+                height: 93px;
+            }
+            
+            .banner-header-main__menu-container {
+                width: 894px;
+                padding-right: 32px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 80px;
+            }
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS - BANNER HEADLINE
+           ============================================ */
+        
+        @media (min-width: 1920px) {
+            .banner-headline-section__content {
+                max-width: 1920px;
+                margin: 0 auto;
+            }
+            
+            .banner-headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+        }
+        
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .banner-headline-section__content {
+                max-width: 1920px;
+                margin: 0 auto;
+            }
+            
+            .banner-headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .banner-headline-section__content {
+                max-width: 1150px;
+                margin: 0 auto;
+            }
+            
+            .banner-headline {
+                font-size: 30px;
+                line-height: 45px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .banner-headline {
+                font-size: 24px;
+                line-height: 36px;
+                text-align: left;
+            }
+            
+            .banner-headline-section__content {
+                justify-content: flex-start;
+            }
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS - TEXT BLOCK
+           ============================================ */
+        
+        @media (min-width: 1920px) {
+            .text-block-section {
+                padding: 80px 0;
+            }
+            
+            .text-block-content {
+                width: 1920px;
+                max-width: 1920px;
+                padding: 80px;
+            }
+        }
+        
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .text-block-section {
+                padding: 80px 0;
+            }
+            
+            .text-block-content {
+                width: 100%;
+                max-width: 1919px;
+                padding: 80px;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .text-block-section {
+                padding: 80px 0;
+            }
+            
+            .text-block-content {
+                width: 100%;
+                max-width: 1149px;
+                padding: 80px 64px;
+            }
+            
+            .main-heading {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .section-heading {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .text-block-section {
+                padding: 80px 0;
+            }
+            
+            .text-block-content {
+                width: 100%;
+                max-width: 767px;
+                padding: 80px 40px;
+            }
+            
+            .main-heading {
+                font-size: 30px;
+                line-height: 45px;
+                margin-bottom: 32px;
+            }
+            
+            .section-heading {
+                font-size: 21px;
+                line-height: 31.5px;
+            }
+            
+            .content-sections {
+                gap: 32px;
+            }
+            
+            .content-section {
+                gap: 16px;
+            }
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS - FEATURED RESOURCE
+           ============================================ */
+        
+        @media (min-width: 1920px) {
+            .featured-resource-section {
+                padding: 0;
+            }
+            
+            .resource-container {
+                width: 1150px;
+            }
+            
+            .thumbnail-column {
+                width: 450px;
+                height: auto;
+            }
+            
+            .card-teaser {
+                max-width: 500px;
+            }
+        }
+        
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .featured-resource-section {
+                padding: 0;
+            }
+            
+            .resource-container {
+                width: 1150px;
+            }
+            
+            .thumbnail-column {
+                width: 450px;
+            }
+            
+            .card-teaser {
+                max-width: 500px;
+            }
+            
+            .section-background {
+                opacity: calc((100vw - 1150px) / (1919 - 1150) * 0.25);
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .featured-resource-section {
+                padding: 0;
+            }
+            
+            .section-background {
+                display: none;
+            }
+            
+            .resource-container {
+                width: 100%;
+                flex-direction: row;
+                padding: 32px;
+                gap: 20px;
+            }
+            
+            .thumbnail-column {
+                flex-shrink: 0;
+                width: auto;
+                max-width: 45%;
+            }
+            
+            .thumbnail-image {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+            
+            .card-column {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .card-teaser {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .card-teaser__heading {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .featured-resource-section {
+                padding: 0;
+                background-color: #ECEEEF;
+            }
+            
+            .section-background {
+                display: none;
+            }
+            
+            .resource-container {
+                width: 100%;
+                padding: 0;
+                background-color: transparent;
+                position: relative;
+            }
+            
+            .thumbnail-column {
+                display: none;
+            }
+            
+            .card-column {
+                width: 100%;
+                position: relative;
+                padding: 24px;
+            }
+            
+            .card-column::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('../../assets/images/four-hour-marketing-plan-TN.png');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                opacity: 1;
+                z-index: 0;
+                pointer-events: none;
+            }
+            
+            .card-teaser {
+                padding: 40px 24px 64px 24px;
+                width: 100%;
+                max-width: 367px;
+                position: relative;
+                z-index: 1;
+            }
+            
+            .card-teaser__heading {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+            
+            .card-teaser__button {
+                padding: 8px 64px;
+            }
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS - ICON BANNER
+           ============================================ */
+        
+        @media (min-width: 1920px) {
+            .icon-banner {
+                min-height: 120px;
+                height: 120px;
+            }
+            
+            .icon-banner__content {
+                max-width: 1920px;
+                width: 1920px;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            
+            .icon-banner__title {
+                font-size: 48px;
+                line-height: 72px;
+            }
+        }
+        
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .icon-banner {
+                min-height: 120px;
+                height: 120px;
+            }
+            
+            .icon-banner__content {
+                width: 100%;
+                max-width: 1919px;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            
+            .icon-banner__title {
+                font-size: 48px;
+                line-height: 72px;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .icon-banner {
+                min-height: 120px;
+                height: auto;
+            }
+            
+            .icon-banner__content {
+                width: 100%;
+                max-width: 1149px;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            
+            .icon-banner__title {
+                font-size: 36px;
+                line-height: 54px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .icon-banner {
+                height: auto;
+                padding: 24px 16px;
+            }
+            
+            .icon-banner__content {
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .icon-banner__title {
+                font-size: 30px;
+                line-height: 45px;
+            }
+            
+            .icon-banner__tagline {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS - 2-COLUMN GRAPHIC
+           ============================================ */
+        
+        @media (min-width: 1920px) {
+            .section-2column-graphic {
+                padding: 0 64px;
+                min-height: 1000px;
+                background-image: url('../../assets/images/shutterstock_2085055825.jpg');
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                position: relative;
+            }
+            
+            .section-2column-graphic::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.75);
+                z-index: 0;
+                pointer-events: none;
+            }
+            
+            .section-2column-graphic__content {
+                width: 1920px;
+                max-width: 1920px;
+                min-height: 1000px;
+                position: relative;
+                z-index: 2;
+                background-image: url('../../assets/images/shutterstock_2085055825.jpg');
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: flex-end;
+            }
+            
+            .section-2column-graphic__cards {
+                flex-direction: row;
+                align-items: flex-end;
+            }
+            
+            .card-container {
+                padding: 64px;
+                align-items: flex-end;
+            }
+            
+            .content-card {
+                width: 600px;
+                max-width: 600px;
+            }
+        }
+        
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .section-2column-graphic {
+                padding: 0 64px;
+                min-height: 1000px;
+            }
+            
+            .section-2column-graphic__content {
+                width: 100%;
+                max-width: 1919px;
+                min-height: 1000px;
+                display: flex;
+                align-items: flex-end;
+            }
+            
+            .section-2column-graphic__cards {
+                flex-direction: row;
+                align-items: flex-end;
+            }
+            
+            .card-container {
+                padding: 64px;
+                align-items: flex-end;
+            }
+            
+            .content-card {
+                width: 100%;
+                max-width: 600px;
+                min-width: 320px;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .section-2column-graphic {
+                padding: 0 64px;
+            }
+            
+            .section-2column-graphic__content {
+                width: 100%;
+                max-width: 1149px;
+            }
+            
+            .section-2column-graphic__cards {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .card-container {
+                padding: 64px;
+                width: 100%;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+            
+            .content-card {
+                width: 100%;
+                max-width: 385px;
+                min-width: 320px;
+            }
+            
+            .card-heading {
+                font-size: 24px;
+                line-height: 36px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .section-2column-graphic {
+                padding: 0 24px;
+            }
+            
+            .section-2column-graphic__content {
+                width: 100%;
+                max-width: 767px;
+            }
+            
+            .section-2column-graphic__cards {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .card-container {
+                padding: 63px 16px;
+                width: 100%;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+            
+            .content-card {
+                width: 320px;
+                max-width: 320px;
+                min-width: 320px;
+            }
+            
+            .card-heading {
+                font-size: 21px;
+                line-height: 31.5px;
+            }
+            
+            .card-text {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+    </style>
+</head>
+<body class="homepage">
+    
+    <!-- ============================================
+         HEADER SECTION
+         ============================================ -->
+    <header class="header-main">
+        <div class="banner-header-main">
+            <div class="banner-header-main__container">
+                <!-- Logo -->
+                <a href="/" class="banner-header-main__logo-link" aria-label="Purposeful Media Promotions Home">
+                    <img 
+                        src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                        alt="Purposeful Media Promotions" 
+                        class="banner-header-main__logo banner-header-main__logo--mobile"
+                    >
+                    <img 
+                        src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg" 
+                        alt="Purposeful Media Promotions" 
+                        class="banner-header-main__logo banner-header-main__logo--tablet"
+                    >
+                    <img 
+                        src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg" 
+                        alt="Purposeful Media Promotions" 
+                        class="banner-header-main__logo banner-header-main__logo--desktop"
+                    >
+                </a>
+                
+                <!-- Menu Container -->
+                <div class="banner-header-main__menu-container">
+                    <nav class="main-menu" role="navigation" aria-label="Main navigation">
+                        
+                        <!-- Desktop Navigation -->
+                        <div class="desktop-nav">
+                            <a href="/" class="menu-item active" data-page="home">Home</a>
+                            
+                            <div class="menu-item-dropdown" data-page="solutions">
+                                <span class="menu-text">Solutions</span>
+                                <div class="dropdown-container">
+                                    <div class="dropdown-menu">
+                                        <a href="/email-management" class="dropdown-item">Email Management</a>
+                                        <a href="/content-creation" class="dropdown-item">Content Creation</a>
+                                        <a href="/webinar-production" class="dropdown-item">Webinar Production</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-item-dropdown" data-page="resources">
+                                <span class="menu-text">Resources</span>
+                                <div class="dropdown-container">
+                                    <div class="dropdown-menu">
+                                        <a href="/resource-library" class="dropdown-item">Resource Library</a>
+                                        <a href="/about-us" class="dropdown-item">About Us</a>
+                                        <a href="/blog" class="dropdown-item">Blog</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="/contact" class="menu-item" data-page="contact">Contact</a>
+                        </div>
+                        
+                        <!-- Mobile/Tablet Navigation -->
+                        <div class="mobile-nav">
+                            <button class="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                                <svg class="hamburger-icon" width="45" height="54" viewBox="0 0 45 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect y="3" width="45" height="8" rx="4" fill="white"/>
+                                    <rect y="23" width="45" height="8" rx="4" fill="white"/>
+                                    <rect y="43" width="45" height="8" rx="4" fill="white"/>
+                                </svg>
+                                <svg class="close-icon" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="5" y="36" width="45" height="8" rx="4" transform="rotate(-45 5 36)" fill="white"/>
+                                    <rect x="10.66" y="4.31" width="45" height="8" rx="4" transform="rotate(45 10.66 4.31)" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Mobile Accordion Menu -->
+                        <div class="mobile-accordion">
+                            <div class="accordion-section">
+                                <a href="/" class="accordion-header no-dropdown active" data-page="home">Home</a>
+                            </div>
+                            
+                            <div class="accordion-section">
+                                <div class="accordion-header" data-accordion="solutions">Solutions</div>
+                                <div class="accordion-content" id="solutions-content">
+                                    <a href="/email-management" class="accordion-item">Email Management</a>
+                                    <a href="/content-creation" class="accordion-item">Content Creation</a>
+                                    <a href="/webinar-production" class="accordion-item">Webinar Production</a>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-section">
+                                <div class="accordion-header" data-accordion="resources">Resources</div>
+                                <div class="accordion-content" id="resources-content">
+                                    <a href="/resource-library" class="accordion-item">Resource Library</a>
+                                    <a href="/about-us" class="accordion-item">About Us</a>
+                                    <a href="/blog" class="accordion-item">Blog</a>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-section">
+                                <a href="/contact" class="accordion-header no-dropdown" data-page="contact">Contact</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- ============================================
+         HERO CAROUSEL SECTION
+         ============================================ -->
+    <section class="hero-carousel" id="heroCarousel">
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Slide 1 - Video -->
+                <div class="carousel-slide active" data-slide="0">
+                    <div class="slide-background">
+                        <video class="slide-video" muted loop playsinline>
+                            <source src="../../assets/videos/3427717167-preview.mp4" type="video/mp4">
+                            <img src="../../assets/images/shutterstock_2492759463.jpg" alt="Digital Marketing Solutions">
+                        </video>
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-eyebrow">Transform Your Business</div>
+                        <h1 class="slide-headline">DIGITAL MARKETING THAT DRIVES RESULTS</h1>
+                        <div class="slide-description">
+                            We help B2B companies grow into thriving brands through strategic branding, design, and promotion
+                        </div>
+                        <a href="#contact" class="slide-cta">Get Started</a>
+                    </div>
+                </div>
+
+                <!-- Slide 2 - Video -->
+                <div class="carousel-slide" data-slide="1">
+                    <div class="slide-background">
+                        <video class="slide-video" muted loop playsinline>
+                            <source src="../../assets/videos/3432135943-preview.mp4" type="video/mp4">
+                            <img src="../../assets/images/shutterstock_2454682663.jpg" alt="Marketing Strategies">
+                        </video>
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-eyebrow">Proven Strategies</div>
+                        <h1 class="slide-headline">TURN PROSPECTS INTO BUSINESS VALUE</h1>
+                        <div class="slide-description">
+                            Strategic email campaigns, thought leadership content, and webinar production that converts
+                        </div>
+                        <a href="#services" class="slide-cta">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Slide 3 - Video -->
+                <div class="carousel-slide" data-slide="2">
+                    <div class="slide-background">
+                        <video class="slide-video" muted loop playsinline>
+                            <source src="../../assets/videos/3539535235-preview.mp4" type="video/mp4">
+                            <img src="../../assets/images/shutterstock_2618933959.jpg" alt="Expert Marketing Support">
+                        </video>
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-eyebrow">Expert Support</div>
+                        <h1 class="slide-headline">YOUR PARTNER IN GROWTH</h1>
+                        <div class="slide-description">
+                            From struggling businesses to thriving brands - we provide the marketing resources you need
+                        </div>
+                        <a href="#contact" class="slide-cta">Start Today</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="carousel-controls">
+                <button class="carousel-nav carousel-nav--prev" aria-label="Previous slide" type="button">
+                    <div class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="gray" data-direction="left"></div>
+                </button>
+                <button class="carousel-nav carousel-nav--next" aria-label="Next slide" type="button">
+                    <div class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="gray" data-direction="right"></div>
+                </button>
+            </div>
+
+            <!-- Slide Indicators -->
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0" aria-label="Go to slide 1" type="button"></button>
+                <button class="indicator" data-slide="1" aria-label="Go to slide 2" type="button"></button>
+                <button class="indicator" data-slide="2" aria-label="Go to slide 3" type="button"></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         BANNER HEADLINE - WELCOME
+         ============================================ -->
+    <section class="banner-headline-section">
+        <div class="banner-headline-section__content">
+            <h1 class="banner-headline">Welcome</h1>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         MAIN CONTENT AREA
+         ============================================ -->
+    <main class="main-content">
+        
+        <!-- Text Block Section -->
+        <section class="text-block-section">
+            <div class="text-block-content">
+                <!-- Main Heading -->
+                <h1 class="main-heading">LOREM IPSUM DOLOR SIT AMET</h1>
+                
+                <!-- Content Sections -->
+                <div class="content-sections">
+                    <!-- Section 1 -->
+                    <section class="content-section">
+                        <h2 class="section-heading">SED DO EIUSMOD TEMPOR INCIDIDUNT</h2>
+                        <p class="section-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </p>
+                        <p class="section-text">
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section class="content-section">
+                        <h2 class="section-heading">TURPIS EGESTAS INTEGER EGET ALIQUET NIBH PRAESENT TRISTIQUE</h2>
+                        <p class="section-text">
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                        </p>
+                        <p class="section-text">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                        </p>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section class="content-section">
+                        <h2 class="section-heading">FERMENTUM POSUERE URNA NEC TINCIDUNT</h2>
+                        <p class="section-text">
+                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+                        </p>
+                        <ul class="section-list">
+                            <li>Similique sunt in culpa qui officia deserunt mollitia animi</li>
+                            <li>Id est laborum et dolorum fuga</li>
+                            <li>Et harum quidem rerum facilis est et expedita distinctio</li>
+                            <li>Nam libero tempore cum soluta nobis est eligendi</li>
+                        </ul>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section class="content-section">
+                        <h2 class="section-heading">FERMENTUM POSUERE URNA NEC TINCIDUNT</h2>
+                        <p class="section-text">
+                            Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                        </p>
+                        <ul class="section-list">
+                            <li>Itaque earum rerum hic tenetur a sapiente delectus</li>
+                            <li>Ut aut reiciendis voluptatibus maiores alias</li>
+                            <li>Consequatur aut perferendis doloribus asperiores repellat</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================
+             BANNER HEADLINE - FEATURED RESOURCE
+             ============================================ -->
+        <section class="banner-headline-section">
+            <div class="banner-headline-section__content">
+                <h2 class="banner-headline">Featured Resource Download</h2>
+            </div>
+        </section>
+        
+        <!-- ============================================
+             FEATURED RESOURCE SECTION
+             ============================================ -->
+        <section class="featured-resource-section" role="region" aria-labelledby="resource-heading">
+            <!-- Background Image (25% opacity at DesktopPlus/Desktop) -->
+            <div class="section-background" aria-hidden="true"></div>
+            
+            <!-- Main Content Container -->
+            <div class="resource-container">
+                <!-- Left Column: Thumbnail Image -->
+                <div class="thumbnail-column">
+                    <img src="../../assets/images/four-hour-marketing-plan-TN.png" 
+                         alt="Four Hour Marketing Plan Guide" 
+                         class="thumbnail-image"
+                         loading="lazy">
+                </div>
+                
+                <!-- Right Column: Teaser Card -->
+                <div class="card-column">
+                    <div class="card-teaser">
+                        <h2 id="resource-heading" class="card-teaser__heading">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        </h2>
+                        
+                        <p class="card-teaser__body">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.
+                        </p>
+                        
+                        <a href="#download" class="card-teaser__button">
+                            Download Guide
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================
+             ICON BANNER SECTION - YOUR NEXT STEP
+             ============================================ -->
+        <section class="icon-banner">
+            <div class="icon-banner__content">
+                <!-- Icon Display Element -->
+                <div class="icon-display icon-display--xlarge" data-icon="contact" data-color="white"></div>
+                
+                <!-- Headline Container -->
+                <div class="icon-banner__text">
+                    <h2 class="icon-banner__title">YOUR NEXT STEP</h2>
+                    <p class="icon-banner__tagline">Book a free consultation or ask us any question.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================
+             2-COLUMN GRAPHIC SECTION
+             ============================================ -->
+        <section class="section-2column-graphic">
+            <div class="section-2column-graphic__content">
+                <div class="section-2column-graphic__cards">
+                    <!-- Left/Top Card -->
+                    <div class="card-container card-container--left">
+                        <div class="content-card">
+                            <h3 class="card-heading">Ready to transform your marketing efforts?</h3>
+                            <p class="card-text">Schedule a free consultation to discuss your specific challenges and opportunities.</p>
+                            <button class="btn btn-accent btn--large">SCHEDULE</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Right/Bottom Card -->
+                    <div class="card-container card-container--right">
+                        <div class="content-card">
+                            <h3 class="card-heading">Have questions first?</h3>
+                            <p class="card-text">Get in touch to start a conversation about how we can help your B2B business grow.</p>
+                            <button class="btn btn-brand btn--large">GET IN TOUCH</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- ============================================
+         FOOTER SECTION
+         ============================================ -->
+    <footer class="footer-responsive">
+        <!-- DESKTOP/TABLET FOOTER (768px and up) -->
+        <div class="footer-main" data-breakpoint="responsive">
+            <div class="footer-container">
+                <!-- Logo Section -->
+                <div class="footer-logo-section">
+                    <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                         alt="Purposeful Media Promotions" 
+                         class="footer-logo">
+                </div>
+
+                <!-- Footer Content Columns -->
+                <div class="footer-content">
+                    <!-- Column 1: Services -->
+                    <div class="footer-column" data-column="services">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Services</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a></li>
+                                    <li><a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a></li>
+                                    <li><a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a></li>
+                                    <li><span class="footer-menu-link disabled">Succession Planning [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Business Unit Growth [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Who We Serve -->
+                    <div class="footer-column" data-column="who-we-serve">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Who We Serve</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><span class="footer-menu-link disabled">Revenue Growth [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Preparing for Exit [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Plan a Webinar [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Resources -->
+                    <div class="footer-column" data-column="resources">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Resources</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/blog" class="footer-menu-link">Read Our Blog</a></li>
+                                    <li><a href="/resources/thought-leadership" class="footer-menu-link">Thought Leadership</a></li>
+                                    <li><span class="footer-menu-link disabled">Pricing [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Company & Newsletter -->
+                    <div class="footer-column" data-column="company-newsletter">
+                        <!-- Company Menu -->
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Company</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/about" class="footer-menu-link">About Us</a></li>
+                                    <li><a href="/contact" class="footer-menu-link">Contact Us</a></li>
+                                    <li><a href="/privacy" class="footer-menu-link">Privacy Policy</a></li>
+                                    <li><span class="footer-menu-link disabled">Affiliates [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Newsletter Form -->
+                        <div class="footer-newsletter">
+                          <form class="form-newsletter">
+                                <h4 class="form-newsletter__title">Stay Connected</h4>
+                                <p class="form-newsletter__description">
+                                    Share your email address and get our B2B marketing strategies and digital transformation inspirations in your inbox.
+                                </p>
+                                <div class="form-newsletter__field">
+                                    <label for="footer-email" class="form-newsletter__label">Email Address*</label>
+                                    <input type="email" 
+                                           id="footer-email" 
+                                           class="form-newsletter__input" 
+                                           placeholder="Enter your email"
+                                           required>
+                                    <span class="form-newsletter__helper">*This field is required.</span>
+                                </div>
+                                <div class="form-newsletter__submit-wrapper">
+                                    <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attribution Sub-footer -->
+            <div class="footer-attribution">
+                <div class="footer-attribution-content">
+                    <span class="footer-copyright">© All rights reserved 2025</span>
+                    <span class="footer-divider">|</span>
+                    <span class="footer-company">Purposeful Media Promotions</span>
+                    <span class="footer-divider">|</span>
+                    <a href="/policy" class="footer-policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE FOOTER (767px and below) -->
+        <div class="footer-mobile">
+            <div class="footer-mobile__top">
+                <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                     alt="Purposeful Media Promotions" 
+                     class="footer-mobile__logo">
+            </div>
+            
+            <nav class="footer-mobile__nav">
+                <!-- Services -->
+                <div class="footer-mobile__nav-item" data-dropdown="services">
+                    <span class="footer-mobile__nav-text">Services</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Services Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-services">
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/email-marketing" class="dropdown-mobile__link">Email Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/webinar-production" class="dropdown-mobile__link">Webinar Production</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/inbound-marketing" class="dropdown-mobile__link">Inbound Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Succession Planning</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Business Unit Growth</span>
+                    </div>
+                </div>
+                
+                <!-- Who We Serve -->
+                <div class="footer-mobile__nav-item" data-dropdown="who-we-serve">
+                    <span class="footer-mobile__nav-text">Who We Serve</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Who We Serve Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-who-we-serve">	
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Revenue Growth</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Preparing for Exit</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Plan a Webinar</span>
+                    </div>
+                </div>
+                
+                <!-- Resources -->
+                <div class="footer-mobile__nav-item" data-dropdown="resources">
+                    <span class="footer-mobile__nav-text">Resources</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Resources Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-resources">
+                    <div class="dropdown-mobile__item">
+                        <a href="/blog" class="dropdown-mobile__link">Read Our Blog</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/resources/thought-leadership" class="dropdown-mobile__link">Thought Leadership</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Pricing</span>
+                    </div>
+                </div>
+                
+                <!-- Company -->
+                <div class="footer-mobile__nav-item" data-dropdown="company">
+                    <span class="footer-mobile__nav-text">Company</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Company Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-company">
+                    <div class="dropdown-mobile__item">
+                        <a href="/about" class="dropdown-mobile__link">About Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/contact" class="dropdown-mobile__link">Contact Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/privacy" class="dropdown-mobile__link">Privacy Policy</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Affiliates [Coming Soon]</span>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Newsletter Form for Mobile -->
+            <div class="footer-mobile__newsletter">
+                <form class="form-newsletter form-newsletter--size-mobile">
+                    <h4 class="form-newsletter__title">Stay Connected</h4>
+                    <p class="form-newsletter__description">
+                        Get B2B marketing strategies and digital transformation inspiration in your inbox.
+                    </p>
+                    <div class="form-newsletter__field">
+                        <label for="footer-mobile-email" class="form-newsletter__label">Email Address*</label>
+                        <input type="email" 
+                               id="footer-mobile-email" 
+                               class="form-newsletter__input" 
+                               placeholder="Enter your email"
+                               required>
+                        <span class="form-newsletter__helper">*This field is required.</span>
+                    </div>
+                    <div class="form-newsletter__submit-wrapper">
+                        <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="footer-mobile__attribution">
+                <div class="footer-mobile__attribution-content">
+                    <div class="footer-mobile__company">Purposeful Media Promotions</div>
+                    <a href="/policy" class="footer-mobile__policy">Policy Statement</a>
+                    <div class="footer-mobile__copyright">© All rights reserved 2025</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- ============================================
+         RETURN TO TOP BUTTON
+         ============================================ -->
+    <button class="return-button" id="returnButton" aria-label="Return to top">
+        <div class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray" data-direction="up"></div>
+    </button>
+    
+    <!-- ============================================
+         JAVASCRIPT FUNCTIONALITY
+         ============================================ -->
+    
+    <!-- Hero Carousel Script -->
+    <script src="../../scripts/hero-carousel.js"></script>
+    
+    <!-- Page Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ Homepage template initializing...');
+            
+            /* ==========================================
+               ICON DISPLAY INITIALIZATION
+               ========================================== */
+            const icons = document.querySelectorAll('.icon-display');
+            icons.forEach(icon => {
+                const iconName = icon.getAttribute('data-icon');
+                const color = icon.getAttribute('data-color');
+                
+                if (iconName && color) {
+                    icon.classList.add(`icon--${iconName}-${color}`);
+                    console.log(`✅ Applied icon class: icon--${iconName}-${color}`);
+                }
+            });
+            
+            /* ==========================================
+               HEADER DESKTOP DROPDOWN FUNCTIONALITY
+               ========================================== */
+            const menuDropdowns = document.querySelectorAll('.desktop-nav .menu-item-dropdown');
+            
+            menuDropdowns.forEach(item => {
+                const menuText = item.querySelector('.menu-text');
+                const dropdown = item.querySelector('.dropdown-container');
+                
+                if (menuText && dropdown) {
+                    menuText.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close all other dropdowns first
+                        document.querySelectorAll('.dropdown-container').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('open');
+                    });
+                }
+            });
+            
+            // Click outside to close all dropdowns
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-item-dropdown')) {
+                    document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside
+            document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            /* ==========================================
+               HEADER MOBILE MENU TOGGLE
+               ========================================== */
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const mobileAccordion = document.querySelector('.mobile-accordion');
+            const mainMenu = document.querySelector('.main-menu');
+            
+            if (hamburgerButton) {
+                hamburgerButton.addEventListener('click', function() {
+                    const isOpen = mobileAccordion.classList.contains('active');
+                    mobileAccordion.classList.toggle('active', !isOpen);
+                    mainMenu.classList.toggle('menu-open', !isOpen);
+                    hamburgerButton.setAttribute('aria-expanded', !isOpen);
+                });
+            }
+            
+            /* ==========================================
+               MOBILE ACCORDION SCROLL BEHAVIOR
+               ========================================== */
+            function handleMobileAccordionScroll() {
+                // Only run on mobile breakpoint
+                if (window.innerWidth < 768 && mobileAccordion) {
+                    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                    const headerHeight = 125; // Header height in pixels
+                    
+                    // Calculate new top position (moves up with scroll)
+                    const newTop = Math.max(0, headerHeight - scrollPosition);
+                    
+                    // Update accordion position
+                    mobileAccordion.style.top = newTop + 'px';
+                }
+            }
+            
+            // Add scroll listener for mobile accordion
+            window.addEventListener('scroll', handleMobileAccordionScroll);
+            
+            // Initial check
+            handleMobileAccordionScroll();
+            
+            /* ==========================================
+               CLOSE MOBILE MENU ON RESIZE TO DESKTOP
+               ========================================== */
+            function closeMobileMenuOnResize() {
+                // Close mobile/tablet accordion when viewport expands to desktop (1150px+)
+                if (window.innerWidth >= 1150) {
+                    if (mobileAccordion && mobileAccordion.classList.contains('active')) {
+                        mobileAccordion.classList.remove('active');
+                        if (mainMenu) {
+                            mainMenu.classList.remove('menu-open');
+                        }
+                        if (hamburgerButton) {
+                            hamburgerButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                }
+            }
+            
+            // Listen for window resize
+            window.addEventListener('resize', closeMobileMenuOnResize);
+            
+            /* ==========================================
+               HEADER MOBILE ACCORDION FUNCTIONALITY
+               ========================================== */
+            document.querySelectorAll('.accordion-header[data-accordion]').forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionId = this.dataset.accordion;
+                    const content = document.getElementById(accordionId + '-content');
+                    if (content) {
+                        content.classList.toggle('active');
+                    }
+                });
+            });
+            
+            /* ==========================================
+               FOOTER MOBILE NAVIGATION
+               ========================================== */
+            class MobileFooterNav {
+                constructor() {
+                    this.navItems = document.querySelectorAll('.footer-mobile__nav-item[data-dropdown]');
+                    this.activeDropdown = null;
+                    this.init();
+                }
+                
+                init() {
+                    this.navItems.forEach(item => {
+                        item.addEventListener('click', (e) => this.toggleDropdown(e));
+                    });
+                    
+                    document.addEventListener('click', (e) => {
+                        if (!e.target.closest('.footer-mobile__nav')) {
+                            this.closeAllDropdowns();
+                        }
+                    });
+                    
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape') {
+                            this.closeAllDropdowns();
+                        }
+                    });
+                }
+                
+                toggleDropdown(event) {
+                    event.stopPropagation();
+                    const item = event.currentTarget;
+                    const dropdownId = item.getAttribute('data-dropdown');
+                    const dropdown = document.getElementById(`dropdown-${dropdownId}`);
+                    
+                    if (!dropdown) return;
+                    
+                    if (dropdown.classList.contains('active')) {
+                        this.closeDropdown(dropdown);
+                        item.classList.remove('active');
+                        item.setAttribute('aria-expanded', 'false');
+                    } else {
+                        this.closeAllDropdowns();
+                        this.openDropdown(dropdown);
+                        item.classList.add('active');
+                        item.setAttribute('aria-expanded', 'true');
+                        this.activeDropdown = dropdown;
+                    }
+                }
+                
+                openDropdown(dropdown) {
+                    dropdown.classList.add('active');
+                    dropdown.setAttribute('aria-hidden', 'false');
+                    
+                    const firstLink = dropdown.querySelector('.dropdown-mobile__link:not(.dropdown-mobile__link--disabled)');
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
+                }
+                
+                closeDropdown(dropdown) {
+                    dropdown.classList.remove('active');
+                    dropdown.setAttribute('aria-hidden', 'true');
+                }
+                
+                closeAllDropdowns() {
+                    document.querySelectorAll('.dropdown-mobile').forEach(dropdown => {
+                        this.closeDropdown(dropdown);
+                    });
+                    
+                    document.querySelectorAll('.footer-mobile__nav-item').forEach(item => {
+                        item.classList.remove('active');
+                        item.setAttribute('aria-expanded', 'false');
+                    });
+                    
+                    this.activeDropdown = null;
+                }
+            }
+            
+            // Initialize mobile footer navigation
+            new MobileFooterNav();
+            
+            /* ==========================================
+               RETURN TO TOP BUTTON FUNCTIONALITY
+               ========================================== */
+            const returnButton = document.getElementById('returnButton');
+            
+            // Show/hide button based on scroll position
+            function handleScroll() {
+                const scrollPosition = window.pageYOffset;
+                const showThreshold = 300; // Show button after scrolling 300px
+                
+                if (scrollPosition > showThreshold) {
+                    returnButton.classList.add('visible');
+                } else {
+                    returnButton.classList.remove('visible');
+                }
+            }
+            
+            // Smooth scroll to top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Event listeners
+            window.addEventListener('scroll', handleScroll);
+            returnButton.addEventListener('click', scrollToTop);
+            
+            // Initial check
+            handleScroll();
+            
+            console.log('✅ Homepage template initialized successfully');
+        });
+    </script>
+</body>
+</html>
+
+

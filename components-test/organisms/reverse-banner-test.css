@@ -1,0 +1,46 @@
+/**
+ * Component: Reverse Subheading Banner
+ * Type: Organism
+ * Description: White background banner with left-aligned subheading
+ *              Fixed 69px height at all breakpoints
+ * 
+ * Dependencies:
+ * - Design Tokens (required)
+ * - Google Fonts: Lato
+ * 
+ * Usage:
+ * - Placed below headline banners (e.g., "Resources")
+ * - Provides context subheading (e.g., "The Latest From Our Blog")
+ * - "Reverse" refers to white bg / blue text (vs typical blue bg / white text)
+ * 
+ * Last Modified: 2025-10-16
+ */
+
+/* ============================================
+   REVERSE SUBHEADING BANNER
+   ============================================ */
+
+.reverse-banner {
+    width: 100%;
+    height: 69px;
+    background-color: var(--color-white, #ffffff);
+    display: flex;
+    align-items: center;
+}
+
+.reverse-banner__container {
+    width: 100%;
+    max-width: var(--container-max-width, 1920px);
+    margin: 0 auto;
+    padding: 0 var(--space-10, 40px);
+}
+
+.reverse-banner__subheading {
+    color: var(--text-primary, #1b1464);
+    font-family: var(--font-heading, 'Lato'), sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 31.5px;
+    margin: 0;
+    text-align: left;
+}

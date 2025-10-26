@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Simple - Purposeful Media</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Master Stylesheet - includes all dependencies -->
+    <link rel="stylesheet" href="../../styles/master-styles.css">
+    
+    <style>
+        /* Demo page styles */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #f5f5f5;
+        }
+        
+        .demo-content {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .demo-content h1 {
+            color: #1b1464;
+            font-family: 'Lato', sans-serif;
+            margin-bottom: 20px;
+        }
+        
+        .demo-content p {
+            color: #51585e;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            line-height: 24px;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .variant-toggle {
+            margin-top: 20px;
+        }
+        
+        .variant-toggle button {
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .variant-toggle button:hover {
+            background: #d4af37;
+        }
+        
+        .variant-toggle button.active {
+            background: #d4af37;
+            color: #1b1464;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Content -->
+    <div class="demo-content">
+        <h1>Simple Footer Component</h1>
+        <p>This is a minimal footer with logo and attribution only. Toggle between default and reverse color schemes below.</p>
+        <div class="variant-toggle">
+            <button class="active" onclick="showVariant('default')">Default Scheme</button>
+            <button onclick="showVariant('reverse')">Reverse Scheme</button>
+        </div>
+    </div>
+
+    <!-- Footer Simple Component - Default Color Scheme -->
+    <footer class="footer-simple" data-color-scheme="default" id="footer-default">
+        <!-- Top border accent -->
+        <div class="footer-border"></div>
+        
+        <!-- Main footer content -->
+        <div class="footer-content">
+            <!-- Logo container - responsive sizing -->
+            <div class="footer-logo">
+                <picture>
+                    <!-- Desktop Plus and Desktop -->
+                    <source media="(min-width: 1150px)" 
+                            srcset="../../assets/svg/logos/purposeful-media-logo-white-desktop-lg.svg">
+                    <!-- Tablet -->
+                    <source media="(min-width: 768px)" 
+                            srcset="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg">
+                    <!-- Mobile (default) -->
+                    <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                         alt="Purposeful Media Promotions">
+                </picture>
+            </div>
+            
+            <!-- Sub-footer attribution -->
+            <div class="sub-footer">
+                <div class="attribution">
+                    <span class="copyright">© All rights reserved 2025</span>
+                    <span class="separator">|</span>
+                    <span class="company">Purposeful Media Promotions</span>
+                    <span class="separator">|</span>
+                    <a href="/policy" class="policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer Simple Component - Reverse Color Scheme -->
+    <footer class="footer-simple" data-color-scheme="reverse" id="footer-reverse" style="display: none;">
+        <!-- Top border accent -->
+        <div class="footer-border"></div>
+        
+        <!-- Main footer content -->
+        <div class="footer-content">
+            <!-- Logo container - responsive sizing -->
+            <div class="footer-logo">
+                <picture>
+                    <!-- Desktop Plus and Desktop -->
+                    <source media="(min-width: 1150px)" 
+                            srcset="../../assets/svg/logos/purposeful-media-logo-blue-desktop.svg">
+                    <!-- Tablet -->
+                    <source media="(min-width: 768px)" 
+                            srcset="../../assets/svg/logos/purposeful-media-logo-blue-tablet.svg">
+                    <!-- Mobile (default) -->
+                    <img src="../../assets/svg/logos/purposeful-media-logo-blue-mobile.svg" 
+                         alt="Purposeful Media Promotions">
+                </picture>
+            </div>
+            
+            <!-- Sub-footer attribution -->
+            <div class="sub-footer">
+                <div class="attribution">
+                    <span class="copyright">© All rights reserved 2025</span>
+                    <span class="separator">|</span>
+                    <span class="company">Purposeful Media Promotions</span>
+                    <span class="separator">|</span>
+                    <a href="/policy" class="policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Demo functionality to toggle between variants
+        function showVariant(variant) {
+            const defaultFooter = document.getElementById('footer-default');
+            const reverseFooter = document.getElementById('footer-reverse');
+            const buttons = document.querySelectorAll('.variant-toggle button');
+            
+            // Hide all footers
+            defaultFooter.style.display = 'none';
+            reverseFooter.style.display = 'none';
+            
+            // Remove active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected variant and mark button as active
+            if (variant === 'default') {
+                defaultFooter.style.display = 'block';
+                buttons[0].classList.add('active');
+            } else if (variant === 'reverse') {
+                reverseFooter.style.display = 'block';
+                buttons[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

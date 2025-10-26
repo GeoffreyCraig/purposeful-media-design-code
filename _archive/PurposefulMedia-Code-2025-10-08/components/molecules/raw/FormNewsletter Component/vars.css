@@ -1,0 +1,224 @@
+/* Figma Styles of your File */
+:root {
+  /* Colors */
+  /* Fonts */
+  /* Effects */
+  --shadow-none-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0);
+  --shadow-subtle-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+  --shadow-standard-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.15);
+  --shadow-medium-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.2);
+  --shadow-strong-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.25);
+}
+/* Figma Color Variables of your File */
+:root,
+[data-color-neutral-mode="mode-1"] {
+  /* mode-1 */
+  --50: #f6f6f7;
+  --100: #eceeef;
+  --200: #c7cbcf;
+  --300: #a2a9af;
+  --400: #868f97;
+  --500: #6c757d;
+  --600: #51585e;
+  --700: #363a3e;
+  --800: #1b1d1f;
+  --900: #0e0f10;
+  --1000: #000000;
+  --0: #ffffff;
+}
+
+:root,
+[data-color-primary-mode="mode-1"] {
+  /* mode-1 */
+  --50: #f0f3fd;
+  --100: #d1dcf9;
+  --200: #a3b8f3;
+  --300: #7595ed;
+  --400: #4872e7;
+  --500: #1d50de;
+  --600: #1740b0;
+  --700: #1b1464;
+  --800: #0b1f57;
+  --900: #06102b;
+}
+
+[data-color-accent-mode="mode-1"] {
+  /* mode-1 */
+  --50: #faf5e6;
+  --100: #f4ebcd;
+  --200: #ecdca8;
+  --300: #e4cd82;
+  --400: #dcbe5d;
+  --500: #d4af37;
+  --600: #b39226;
+  --700: #89701e;
+  --800: #524312;
+  --900: #292209;
+}
+
+[data-color-warning-mode="mode-1"] {
+  /* mode-1 */
+  --50: #fef1e8;
+  --100: #fedcc5;
+  --200: #fcc096;
+  --300: #fba468;
+  --400: #fa8839;
+  --500: #f97316;
+  --600: #d97706;
+  --700: #b45309;
+  --800: #92400e;
+  --900: #78350f;
+}
+
+:root,
+[data-color-error-mode="mode-1"] {
+  /* mode-1 */
+  --50: #fef2f2;
+  --100: #fee2e2;
+  --200: #fecaca;
+  --300: #fca5a5;
+  --400: #f87171;
+  --500: #ef4444;
+  --600: #dc2626;
+  --700: #b91c1c;
+  --800: #991b1b;
+  --900: #7f1d1d;
+}
+
+[data-color-dark-mode="mode-1"] {
+  /* mode-1 */
+  --50: #393d49;
+  --100: #363b47;
+  --200: #343844;
+  --300: #2f3440;
+  --400: #2d313e;
+  --500: #282d3a;
+  --600: #262a37;
+  --700: #242835;
+  --800: #1f2431;
+  --900: #131826;
+}
+
+[data-color-brand-mode="mode-1"] {
+  /* mode-1 */
+  --primary: var(--700);
+  --primary-light: var(--500);
+  --secondary: var(--500);
+  --tertiary: var(--500);
+  --50: #f2fcfc;
+  --100: #d7f5f5;
+  --200: #b0ebeb;
+  --300: #88e0e0;
+  --400: #61d6d6;
+  --500: #39cccc;
+  --600: #2ba9a9;
+  --700: #1e7575;
+  --800: #114141;
+  --900: #0a2727;
+}
+
+:root,
+[data-color-text-mode="mode-1"] {
+  /* mode-1 */
+  --reverse: var(--0);
+  --heading: var(--700);
+  --body: var(--600);
+  --muted: var(--200);
+  --dark: var(--600);
+  --error: var(--500);
+  --focus: var(--900);
+  --disabled: var(--300);
+}
+
+:root,
+[data-color-background-mode="mode-1"] {
+  /* mode-1 */
+  --primary: var(--0);
+  --secondary: var(--100);
+  --brand: var(--700);
+}
+
+:root,
+[data-color-borders-mode="mode-1"] {
+  /* mode-1 */
+  --subtle: var(--200);
+  --default: var(--300);
+  --strong: var(--600);
+  --primary: var(--700);
+  --accent: var(--500);
+  --teal: var(--500);
+}
+
+[data-color-gradient-mode="mode-1"] {
+  /* mode-1 */
+  --primary-start: var(--700);
+  --primary-end: var(--500);
+  --accent-start: var(--500);
+  --accent-end: #ffffff;
+  --teal-start: var(--500);
+  --teal-end: #ffffff;
+}
+
+:root,
+[data-color-state-mode="mode-1"] {
+  /* mode-1 */
+  --primary-default: var(--500);
+  --primary-hover: var(--300);
+  --primary-active: var(--700);
+  --primary-disabled: var(--300);
+  --reverse-default: var(--500);
+  --reverse-hover: var(--300);
+  --reverse-active: var(--600);
+  --reverse-disabled: var(--300);
+  --alternate-default: var(--500);
+  --alternate-hover: var(--300);
+  --alternate-active: var(--600);
+  --feedback-success: var(--500);
+  --feedback-warning: var(--500);
+  --feedback-error: var(--500);
+  --feedback-info: var(--500);
+  --status-loading: var(--400);
+  --status-selected: var(--100);
+  --feedback-success-bg: var(--50);
+  --feedback-warning-bg: var(--50);
+  --feedback-error-bg: var(--50);
+  --feedback-info-bg: var(--50);
+}
+
+:root,
+[data-color-buttons-primary-mode="mode-1"] {
+  /* mode-1 */
+  --default: var(--700);
+  --hover: var(--500);
+  --active: var(--900);
+  --disabled: var(--400);
+  --reverse: var(--0);
+}
+
+[data-color-buttons-secondary-mode="mode-1"] {
+  /* mode-1 */
+  --default: var(--500);
+  --hover: var(--400);
+  --active: var(--600);
+  --disabled: var(--400);
+}
+
+[data-color-buttons-tertiary-mode="mode-1"] {
+  /* mode-1 */
+  --default: var(--500);
+  --hover: var(--300);
+  --active: var(--700);
+  --disabled: var(--400);
+}
+
+[data-navigation-mode="mode-1"] {
+  /* mode-1 */
+  --menusimple: var(--0);
+  --hoversimple: var(--hover);
+  --menudrop: var(--default);
+  --hoverdrop: var(--hover);
+  --activedrop: var(--active);
+  --activesimple: var(--active);
+  --menudisabled: var(--disabled);
+  --accentsimple: var(--default);
+}

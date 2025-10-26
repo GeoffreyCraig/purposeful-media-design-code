@@ -1,0 +1,228 @@
+.break-point-mobile-open-state-open-current-sections-default,
+.break-point-mobile-open-state-open-current-sections-default * {
+  box-sizing: border-box;
+}
+.break-point-mobile-open-state-open-current-sections-default {
+  background: var(--secondary, #eceeef);
+  border-style: solid;
+  border-color: var(--accent, #d4af37);
+  border-width: 0px 0px 1px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 380px;
+  max-width: 768px;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.solutions-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.scrolling-list {
+  padding: var(--space-3, 12px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  position: relative;
+}
+.navigation {
+  background: var(--50, #faf5e6);
+  border-radius: var(--space-2, 8px);
+  padding: var(--space-3, 12px) var(--space-4, 16px) var(--space-3, 12px)
+    var(--space-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.h-6 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.menu {
+  background: var(--50, #faf5e6);
+  border-radius: var(--space-2, 8px);
+  padding: var(--space-0, 0px) var(--space-3, 12px) var(--space-0, 0px)
+    var(--space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 48px;
+  position: relative;
+}
+.buttons-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5, 20px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  overflow: hidden;
+}
+.icon-close-default-med-1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  overflow: visible;
+}
+.drop-down-sticky {
+  background: var(--secondary, #eceeef);
+  padding: var(--space-4, 16px) var(--space-2, 8px) var(--space-4, 16px)
+    var(--space-2, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 380px;
+  position: relative;
+  overflow: hidden;
+}
+.drop-down {
+  border-style: solid;
+  border-color: var(--accent, #d4af37);
+  border-width: 2px 0px 0px 0px;
+  padding: 0px var(--space-16, 64px) 0px var(--space-8, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.sticky-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.overview {
+  padding: var(--space-3, 12px) 0px var(--space-3, 12px) 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.strategy {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.method {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.benefits {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.resources {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.faq {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.get-started {
+  background: var(--50, #faf5e6);
+  border-radius: var(--space-2, 8px);
+  padding: var(--space-3, 12px) var(--space-2, 8px) var(--space-3, 12px)
+    var(--space-2, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.h-5 {
+  color: var(--activesimple, #b39226);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}

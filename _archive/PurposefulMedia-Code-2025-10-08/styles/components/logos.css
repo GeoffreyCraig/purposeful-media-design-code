@@ -1,0 +1,132 @@
+/* Purposeful Media Design System - Logo Component */
+/* ============================================== */
+
+/* Base Logo Styles */
+.logo {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Logo Sizes */
+.logo--small {
+    height: 32px;
+    width: auto;
+}
+
+.logo--medium {
+    height: 48px;
+    width: auto;
+}
+
+.logo--large {
+    height: 64px;
+    width: auto;
+}
+
+.logo--xlarge {
+    height: 96px;
+    width: auto;
+}
+
+.logo--xxlarge {
+    height: 128px;
+    width: auto;
+}
+
+/* Logo Variants */
+.logo--horizontal {
+    /* Horizontal logo layout */
+}
+
+.logo--vertical {
+    /* Vertical logo layout */
+}
+
+.logo--icon-only {
+    /* Icon-only version */
+}
+
+.logo--full {
+    /* Full logo with text */
+}
+
+/* Logo in Header */
+.header .logo {
+    flex-shrink: 0;
+}
+
+.header .logo--header {
+    height: 40px;
+}
+
+/* Logo in Footer */
+.footer .logo {
+    flex-shrink: 0;
+}
+
+.footer .logo--footer {
+    height: 32px;
+}
+
+/* Logo in Hero Sections */
+.hero .logo {
+    margin-bottom: var(--space-6);
+}
+
+.hero .logo--hero {
+    height: 80px;
+}
+
+/* Logo States */
+.logo--hover:hover {
+    opacity: 0.9;
+}
+
+.logo--clickable {
+    cursor: pointer;
+}
+
+.logo--clickable:hover {
+    opacity: 0.8;
+}
+
+.logo--clickable:active {
+    transform: scale(0.98);
+}
+
+/* Logo with Background */
+.logo--on-dark {
+    filter: brightness(0) invert(1); /* Makes logo white */
+}
+
+.logo--on-light {
+    /* Default logo colors */
+}
+
+/* Responsive Logo Adjustments */
+@media (max-width: 767px) {
+    .logo--hero {
+        height: 60px;
+    }
+    
+    .logo--xlarge {
+        height: 80px;
+    }
+    
+    .logo--xxlarge {
+        height: 96px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo--hero {
+        height: 48px;
+    }
+    
+    .logo--large {
+        height: 48px;
+    }
+}
+

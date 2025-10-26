@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card/BlogPost Component - Molecules</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Component: Card/BlogPost
+         * Purpose: Display individual blog post previews
+         * Breakpoints: Mobile (380-767px), Tablet (768-1149px), Desktop (1150-1919px), DesktopPlus (1920px+)
+         * States: Default, Hover, Active, Disabled
+         */
+        
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        /* Demo Container */
+        .demo-container {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .demo-grid {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Base Card Styles */
+        .card-blogpost {
+            background-color: white;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        /* Card Top Section */
+        .card-blogpost__top {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .card-blogpost__title {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #1b1464;
+            line-height: 1.45;
+            transition: color 0.3s ease;
+        }
+        
+        .card-blogpost__meta {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            line-height: 18px;
+            color: #1b1464;
+            transition: color 0.3s ease;
+        }
+        
+        /* Content Area */
+        .card-blogpost__content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-bottom: 20px;
+        }
+        
+        .card-blogpost__excerpt {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            color: #51585e;
+        }
+        
+        .card-blogpost__read-more {
+            color: #1d50de;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        
+        /* State: Hover */
+        .card-blogpost:hover:not(.card-blogpost--disabled) {
+            background-color: #faf5e6;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-blogpost:hover:not(.card-blogpost--disabled) .card-blogpost__title,
+        .card-blogpost:hover:not(.card-blogpost--disabled) .card-blogpost__meta {
+            color: #51585e;
+        }
+        
+        .card-blogpost:hover:not(.card-blogpost--disabled) .card-blogpost__read-more {
+            color: #39cccc;
+        }
+        
+        /* State: Active */
+        .card-blogpost:active:not(.card-blogpost--disabled),
+        .card-blogpost.card-blogpost--active {
+            background-color: #f4ebcd;
+            box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.15);
+            transform: scale(0.99);
+        }
+        
+        .card-blogpost:active:not(.card-blogpost--disabled) .card-blogpost__title,
+        .card-blogpost.card-blogpost--active .card-blogpost__title,
+        .card-blogpost:active:not(.card-blogpost--disabled) .card-blogpost__meta,
+        .card-blogpost.card-blogpost--active .card-blogpost__meta {
+            color: #51585e;
+        }
+        
+        .card-blogpost:active:not(.card-blogpost--disabled) .card-blogpost__read-more,
+        .card-blogpost.card-blogpost--active .card-blogpost__read-more {
+            color: #2ba9a9;
+        }
+        
+        /* State: Disabled */
+        .card-blogpost--disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .card-blogpost--disabled .card-blogpost__title,
+        .card-blogpost--disabled .card-blogpost__meta {
+            color: #a2a9af;
+        }
+        
+        .card-blogpost--disabled .card-blogpost__excerpt {
+            color: #a2a9af;
+        }
+        
+        .card-blogpost--disabled .card-blogpost__read-more {
+            color: #a2a9af;
+        }
+        
+        /* Mobile Breakpoint: 380-767px */
+        @media (max-width: 767px) {
+            .card-blogpost__title {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+        
+        /* Tablet Breakpoint: 768-1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .card-blogpost__title {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* Desktop and DesktopPlus Breakpoints: 1150px+ */
+        @media (min-width: 1150px) {
+            .card-blogpost__title {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+        }
+        
+        /* Grid Layout Responsive Adjustments */
+        @media (min-width: 768px) {
+            .demo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1150px) {
+            .demo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 1120px;
+            }
+        }
+        
+        /* Utility Classes for States Demo */
+        .states-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .states-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1150px) {
+            .states-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; margin-bottom: 40px;">Card/BlogPost Component</h1>
+        
+        <!-- Default Cards Grid -->
+        <div class="demo-section">
+            <div class="demo-label">Blog Post Cards - Default State (Responsive)</div>
+            <div class="demo-grid">
+                <!-- Card 1 -->
+                <article class="card-blogpost">
+                    <div class="card-blogpost__top">
+                        <h3 class="card-blogpost__title">
+                            Essential Email Marketing Strategies for B2B Success in 2025
+                        </h3>
+                        <div class="card-blogpost__meta">
+                            Category: Email Marketing | Date: September 18, 2025 | Author: Purposeful Media
+                        </div>
+                    </div>
+                    <div class="card-blogpost__content">
+                        <p class="card-blogpost__excerpt">
+                            Discover proven email marketing strategies that drive B2B engagement and conversions. Learn how to craft compelling subject lines, segment your audience effectively, and leverage automation to nurture leads through the sales funnel. Our comprehensive guide covers the latest trends and best practices... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                        </p>
+                    </div>
+                </article>
+                
+                <!-- Card 2 -->
+                <article class="card-blogpost">
+                    <div class="card-blogpost__top">
+                        <h3 class="card-blogpost__title">
+                            How to Create Lead Magnets That Actually Convert
+                        </h3>
+                        <div class="card-blogpost__meta">
+                            Category: Content Marketing | Date: September 15, 2025 | Author: Geoffrey Craig
+                        </div>
+                    </div>
+                    <div class="card-blogpost__content">
+                        <p class="card-blogpost__excerpt">
+                            Learn the secrets to creating lead magnets that your B2B audience can't resist. From choosing the right format to crafting compelling value propositions, this guide walks you through the entire process of developing high-converting lead generation assets. Discover what makes prospects exchange their contact information... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                        </p>
+                    </div>
+                </article>
+                
+                <!-- Card 3 -->
+                <article class="card-blogpost">
+                    <div class="card-blogpost__top">
+                        <h3 class="card-blogpost__title">
+                            Webinar Production Guide: From Planning to Post-Event Nurture
+                        </h3>
+                        <div class="card-blogpost__meta">
+                            Category: Webinar Marketing | Date: September 10, 2025 | Author: Purposeful Media
+                        </div>
+                    </div>
+                    <div class="card-blogpost__content">
+                        <p class="card-blogpost__excerpt">
+                            Master the art of webinar production with our complete guide. From initial planning and promotion to live production and post-event follow-up, we cover every aspect of running successful B2B webinars. Learn how to engage your audience, generate qualified leads, and convert attendees into customers... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+        
+        <!-- States Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Component States</div>
+            <div class="states-grid">
+                <!-- Default State -->
+                <article class="card-blogpost">
+                    <div class="card-blogpost__top">
+                        <h3 class="card-blogpost__title">
+                            Default State
+                        </h3>
+                        <div class="card-blogpost__meta">
+                            Category: Demo | Date: Today | Author: System
+                        </div>
+                    </div>
+                    <div class="card-blogpost__content">
+                        <p class="card-blogpost__excerpt">
+                            This card shows the default state with standard styling. Hover over me to see the hover state... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                        </p>
+                    </div>
+                </article>
+                
+                <!-- Hover State (simulated) -->
+                <article class="card-blogpost" style="background-color: #faf5e6; box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);">
+                    <div class="card-blogpost__top">
+                        <h3 class="card-blogpost__title" style="color: #51585e;">
+                            Hover State
+                        </h3>
+                        <div class="card-blogpost__meta" style="color: #51585e;">
+                            Category: Demo | Date: Today | Author: System
+                        </div>
+                    </div>
+                    <div class="card-blogpost__content">
+                        <p class="card-blogpost__excerpt">
+                            This shows the hover state with cream background and shadow... <a href="#" class="card-blogpost__read-more" style="color: #39cccc;">[Read more]</a>
+                        </p>
+                    </div>
+                </article>
+                
+                <!-- Active State -->
+                <article class="card-blogpost card-blogpost--active">
+                    <div class="card-blogpost__top">
+                        <h3 class="card-blogpost__title">
+                            Active State
+                        </h3>
+                        <div class="card-blogpost__meta">
+                            Category: Demo | Date: Today | Author: System
+                        </div>
+                    </div>
+                    <div class="card-blogpost__content">
+                        <p class="card-blogpost__excerpt">
+                            This shows the active/pressed state with darker background... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                        </p>
+                    </div>
+                </article>
+                
+                <!-- Disabled State -->
+                <article class="card-blogpost card-blogpost--disabled">
+                    <div class="card-blogpost__top">
+                        <h3 class="card-blogpost__title">
+                            Disabled State
+                        </h3>
+                        <div class="card-blogpost__meta">
+                            Category: Demo | Date: Today | Author: System
+                        </div>
+                    </div>
+                    <div class="card-blogpost__content">
+                        <p class="card-blogpost__excerpt">
+                            This shows the disabled state with reduced opacity... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+        
+        <!-- Responsive Demo Info -->
+        <div class="demo-section" style="background: #f0f3fd; padding: 20px; border-radius: 8px;">
+            <h3 style="color: #1b1464; margin-bottom: 10px;">Responsive Behavior</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;">📱 <strong>Mobile (380-767px):</strong> Title: 16px, single column layout</li>
+                <li style="margin-bottom: 8px;">📱 <strong>Tablet (768-1149px):</strong> Title: 18px, two column grid</li>
+                <li style="margin-bottom: 8px;">💻 <strong>Desktop (1150-1919px):</strong> Title: 21px, two column grid</li>
+                <li>🖥️ <strong>DesktopPlus (1920px+):</strong> Title: 21px, two column grid, max-width container</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Card/BlogPost Component JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for demo purposes
+            const cards = document.querySelectorAll('.card-blogpost:not(.card-blogpost--disabled)');
+            
+            cards.forEach(card => {
+                // Prevent link default behavior in demo
+                const readMoreLink = card.querySelector('.card-blogpost__read-more');
+                if (readMoreLink) {
+                    readMoreLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        console.log('Read more clicked for:', card.querySelector('.card-blogpost__title').textContent.trim());
+                    });
+                }
+                
+                // Add click handler for entire card
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking the read more link
+                    if (!e.target.classList.contains('card-blogpost__read-more')) {
+                        console.log('Card clicked:', this.querySelector('.card-blogpost__title').textContent.trim());
+                    }
+                });
+            });
+            
+            // Log component load
+            console.log('Card/BlogPost component loaded successfully');
+            console.log('Current viewport width:', window.innerWidth);
+            
+            // Log breakpoint on resize
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    const width = window.innerWidth;
+                    let breakpoint;
+                    
+                    if (width < 768) {
+                        breakpoint = 'Mobile';
+                    } else if (width < 1150) {
+                        breakpoint = 'Tablet';
+                    } else if (width < 1920) {
+                        breakpoint = 'Desktop';
+                    } else {
+                        breakpoint = 'DesktopPlus';
+                    }
+                    
+                    console.log(`Breakpoint: ${breakpoint} (${width}px)`);
+                }, 250);
+            });
+        });
+    </script>
+</body>
+</html>

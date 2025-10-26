@@ -1,0 +1,210 @@
+/**
+ * Component: Pillar Sticky Menu
+ * Type: Organism
+ * Description: Sticky navigation menu for Pillar pages with smooth scroll
+ *              and active section tracking
+ * 
+ * Dependencies:
+ * - Design Tokens (required)
+ * - Google Fonts: Lato
+ * - JavaScript for active tracking and smooth scroll
+ * 
+ * Usage:
+ * - Placed below hero section on Pillar pages
+ * - Sticks to top of viewport when scrolling
+ * - Desktop: Horizontal menu with separators
+ * - Mobile: Current section + "Get Started" button only
+ * 
+ * Last Modified: 2025-10-16
+ */
+
+/* ============================================
+   PILLAR STICKY MENU COMPONENT
+   ============================================ */
+
+.pillar-sticky-menu {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--secondary-100, #eceeef);
+    border-bottom: 1px solid var(--accent-500, #d4af37);
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.pillar-sticky-menu.hidden {
+    transform: translateY(-100%);
+}
+
+/* Desktop/Tablet Menu (768px+) */
+.pillar-sticky-menu__desktop {
+    display: none;
+    padding: var(--space-1, 4px) var(--space-2, 8px);
+}
+
+.pillar-sticky-menu__inner {
+    max-width: var(--container-max-width, 1920px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    gap: var(--space-2, 8px);
+}
+
+.pillar-sticky-menu__item {
+    color: var(--text-primary, #1b1464);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-heading, 'Lato'), sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 24px;
+    padding: var(--space-2, 8px) var(--space-4, 16px);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.pillar-sticky-menu__item:hover {
+    opacity: 0.8;
+}
+
+.pillar-sticky-menu__item.active {
+    background: var(--accent-100, #faf5e6);
+    border-radius: var(--radius-medium, 8px);
+}
+
+.pillar-sticky-menu__separator {
+    color: var(--text-primary, #1b1464);
+    font-family: var(--font-heading, 'Lato'), sans-serif;
+    font-weight: 900;
+    font-size: 21px;
+    line-height: 30.5px;
+    user-select: none;
+}
+
+.pillar-sticky-menu__start {
+    background: var(--accent-100, #faf5e6);
+    border-radius: var(--radius-medium, 8px);
+    padding: var(--space-2, 8px) var(--space-4, 16px);
+    color: var(--text-primary, #1b1464);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-heading, 'Lato'), sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 27px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.pillar-sticky-menu__start:hover {
+    background: var(--accent-600, #b39226);
+    color: var(--text-reverse, #ffffff);
+}
+
+/* Mobile Menu (767px and below) */
+.pillar-sticky-menu__mobile {
+    display: none;
+    position: relative;
+}
+
+.pillar-sticky-menu__mobile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3, 12px);
+    min-height: 60px;
+}
+
+.pillar-sticky-menu__mobile-current {
+    background: var(--accent-100, #faf5e6);
+    border-radius: var(--radius-medium, 8px);
+    padding: var(--space-3, 12px) var(--space-4, 16px);
+    color: var(--text-primary, #1b1464);
+    text-transform: uppercase;
+    font-family: var(--font-heading, 'Lato'), sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 24px;
+    flex: 1;
+    margin-right: var(--space-2, 8px);
+}
+
+.pillar-sticky-menu__mobile-start {
+    background: var(--accent-100, #faf5e6);
+    border: none;
+    border-radius: var(--radius-medium, 8px);
+    padding: var(--space-3, 12px) var(--space-4, 16px);
+    color: var(--text-primary, #1b1464);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-heading, 'Lato'), sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.pillar-sticky-menu__mobile-start:hover {
+    background: var(--accent-600, #b39226);
+    color: var(--text-reverse, #ffffff);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Desktop: 768px and above */
+@media screen and (min-width: 768px) {
+    .pillar-sticky-menu__desktop {
+        display: block;
+    }
+    
+    .pillar-sticky-menu__mobile {
+        display: none;
+    }
+}
+
+/* Mobile: 767px and below */
+@media screen and (max-width: 767px) {
+    .pillar-sticky-menu__desktop {
+        display: none;
+    }
+    
+    .pillar-sticky-menu__mobile {
+        display: block;
+    }
+}
+
+/* Mobile Small: 380px and below */
+@media screen and (max-width: 380px) {
+    .pillar-sticky-menu__mobile-bar {
+        padding: var(--space-2, 8px);
+    }
+    
+    .pillar-sticky-menu__mobile-current {
+        font-size: 14px;
+        padding: var(--space-2, 8px) var(--space-3, 12px);
+    }
+    
+    .pillar-sticky-menu__mobile-start {
+        font-size: 14px;
+        padding: var(--space-2, 8px) var(--space-3, 12px);
+    }
+}
+
+/* DesktopPlus: 1920px and above */
+@media screen and (min-width: 1920px) {
+    .pillar-sticky-menu__inner {
+        padding: 0 var(--space-5, 20px);
+    }
+}
+

@@ -1,0 +1,66 @@
+.form-input-field,
+.form-input-field * {
+  box-sizing: border-box;
+}
+.form-input-field {
+  background: #ffffff;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: var(--default, #a2a9af);
+  border-width: 1px;
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.form-text-18-18-h {
+  color: var(--disabled, #a2a9af);
+  text-align: left;
+  font-family: "OpenSans-LightItalic", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 300;
+  font-style: italic;
+  position: relative;
+  flex: 1;
+}
+/* variant styles */
+.form-input-field.state-default .form-text-18-18-h,
+.form-input-field:focus .form-text-18-18-h,
+.form-input-field.state-focus .form-text-18-18-h {
+  color: var(--body, #51585e);
+  font-family: "OpenSans-Regular", sans-serif;
+  font-weight: 400;
+  font-style: unset;
+}
+.form-input-field:focus,
+.form-input-field.state-focus {
+  border-color: var(--feedback-info, #1d50de);
+  gap: 0px;
+}
+.form-input-field.state-error {
+  background: var(--50, #fef2f2);
+  border-color: var(--error, #ef4444);
+  gap: 0px;
+}
+.form-input-field.state-error .form-text-18-18-h {
+  color: var(--error, #ef4444);
+  font-family: "OpenSans-Regular", sans-serif;
+  font-weight: 400;
+  font-style: unset;
+}
+.form-input-field.state-disabled {
+  background: var(--100, #eceeef);
+  gap: 0px;
+}
+.form-input-field.state-disabled .form-text-18-18-h {
+  font-family: "OpenSans-Regular", sans-serif;
+  font-weight: 400;
+  font-style: unset;
+}

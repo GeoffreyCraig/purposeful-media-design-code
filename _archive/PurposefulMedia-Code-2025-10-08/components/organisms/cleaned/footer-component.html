@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purposeful Media - Footer Component</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/tokens/unified-design-tokens.css">
+    <link rel="stylesheet" href="../../styles/utilities/utility-classes.css">
+    <link rel="stylesheet" href="../atoms/cleaned/button-component.css">
+    <link rel="stylesheet" href="../molecules/cleaned/form-component.css">
+    <style>
+        /* ===== FOOTER COMPONENT SYSTEM ===== */
+        .footer {
+            /* Base Footer Styles */
+            background: var(--brand);
+            border-top: var(--border-accent);
+            color: var(--text-reverse);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* ===== FOOTER VARIANTS ===== */
+        .footer--main {
+            background: var(--brand);
+        }
+        
+        .footer--simple {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-top: var(--border-default);
+            padding: var(--space-8) var(--container-desktop-padding);
+        }
+        
+        .footer--dark {
+            background: var(--active);
+            color: var(--text-reverse);
+            border-top: var(--border-accent);
+        }
+        
+        /* ===== FOOTER SECTIONS ===== */
+        .footer__main {
+            padding: var(--space-12) var(--container-desktop-padding);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+        
+        .footer__content {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--space-8);
+            align-items: start;
+        }
+        
+        .footer__logo {
+            flex-shrink: 0;
+            width: 215px;
+            height: 113px;
+        }
+        
+        .footer__logo svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--text-reverse);
+        }
+        
+        .footer__nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-8);
+        }
+        
+        /* ===== FOOTER NAVIGATION ===== */
+        .footer__nav-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        
+        .footer__nav-title {
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-bold);
+            color: var(--text-reverse);
+            font-size: var(--text-h4);
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .footer__nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .footer__nav-item {
+            display: block;
+        }
+        
+        .footer__nav-link {
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-bold);
+            color: var(--text-reverse);
+            font-size: var(--text-h5);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            display: block;
+        }
+        
+        .footer__nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .footer__nav-link--disabled {
+            color: var(--text-disabled);
+            cursor: not-allowed;
+        }
+        
+        .footer__nav-link--disabled:hover {
+            color: var(--text-disabled);
+        }
+        
+        /* ===== FOOTER NEWSLETTER ===== */
+        .footer__newsletter {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-small);
+            padding: var(--space-8) var(--space-6);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+            max-width: 320px;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .footer__newsletter-title {
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-bold);
+            color: var(--heading);
+            font-size: var(--text-h3);
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .footer__newsletter-description {
+            font-family: var(--font-primary), var(--font-fallback);
+            color: var(--text-secondary);
+            font-size: var(--text-body);
+            line-height: var(--line-height-body);
+            margin: 0;
+        }
+        
+        /* ===== FOOTER SUB-FOOTER ===== */
+        .footer__sub {
+            background: var(--active);
+            padding: var(--space-3) var(--container-desktop-padding);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        
+        .footer__copyright {
+            font-family: var(--font-primary), var(--font-fallback);
+            color: var(--text-muted);
+            font-size: var(--text-small);
+            margin: 0;
+        }
+        
+        .footer__separator {
+            color: var(--text-muted);
+            font-size: var(--text-small);
+        }
+        
+        .footer__policy-link {
+            font-family: var(--font-primary), var(--font-fallback);
+            color: var(--text-muted);
+            font-size: var(--text-small);
+            text-decoration: underline;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer__policy-link:hover {
+            color: var(--text-reverse);
+        }
+        
+        /* ===== FOOTER LAYOUTS ===== */
+        .footer--centered .footer__content {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: var(--space-8);
+        }
+        
+        .footer--centered .footer__nav {
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer--centered .footer__newsletter {
+            margin: 0 auto;
+        }
+        
+        /* ===== FOOTER SIZES ===== */
+        .footer--compact .footer__main {
+            padding: var(--space-6) var(--container-desktop-padding);
+        }
+        
+        .footer--compact .footer__nav {
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+        }
+        
+        .footer--expanded .footer__main {
+            padding: var(--space-16) var(--container-desktop-padding);
+        }
+        
+        .footer--expanded .footer__nav {
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-10);
+        }
+        
+        /* ===== RESPONSIVE BEHAVIOR ===== */
+        @media (max-width: 767px) {
+            .footer__main {
+                padding: var(--space-6) var(--container-mobile-padding);
+            }
+            
+            .footer__content {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+                text-align: center;
+            }
+            
+            .footer__logo {
+                width: 171px;
+                height: 90px;
+                margin: 0 auto;
+            }
+            
+            .footer__nav {
+                grid-template-columns: 1fr;
+                gap: var(--space-6);
+            }
+            
+            .footer__nav-section {
+                text-align: center;
+            }
+            
+            .footer__newsletter {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            
+            .footer__sub {
+                padding: var(--space-3) var(--container-mobile-padding);
+                flex-direction: column;
+                gap: var(--space-1);
+            }
+            
+            .footer__separator {
+                display: none;
+            }
+            
+            .footer--compact .footer__nav,
+            .footer--expanded .footer__nav {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .footer__main {
+                padding: var(--space-8) var(--container-desktop-padding);
+            }
+            
+            .footer__content {
+                grid-template-columns: auto 1fr;
+                gap: var(--space-6);
+            }
+            
+            .footer__nav {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-6);
+            }
+            
+            .footer--compact .footer__nav {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer--expanded .footer__nav {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .footer {
+                background: white !important;
+                color: black !important;
+                border-top: 1px solid black !important;
+            }
+            
+            .footer__nav-title,
+            .footer__nav-link,
+            .footer__newsletter-title {
+                color: black !important;
+            }
+            
+            .footer__newsletter {
+                background: white !important;
+                border: 1px solid black !important;
+                box-shadow: none !important;
+            }
+            
+            .footer__sub {
+                background: #f5f5f5 !important;
+            }
+        }
+        
+        /* ===== DEMO STYLES ===== */
+        .demo-section {
+            margin-bottom: var(--space-8);
+            padding: var(--space-6);
+            border: var(--border-default);
+            border-radius: var(--radius-medium);
+            background: var(--bg-secondary);
+        }
+        
+        .demo-title {
+            color: var(--heading);
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-bold);
+            font-size: var(--text-h3);
+            margin-bottom: var(--space-4);
+        }
+        
+        .demo-label {
+            font-size: var(--text-small);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2);
+            font-weight: var(--weight-bold);
+        }
+        
+        /* Container for demo */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-8);
+        }
+        
+        /* Logo SVG for demo */
+        .footer-logo {
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="text-h1 text-center mb-8">Footer Component System</h1>
+        <p class="text-body text-center mb-8">Purposeful Media Design System - Refactored Footer Components</p>
+
+        <!-- Main Footer -->
+        <section class="demo-section">
+            <h2 class="demo-title">Main Footer</h2>
+            <div class="demo-label">Complete footer with logo, navigation, and newsletter signup</div>
+            <footer class="footer footer--main">
+                <div class="footer__main">
+                    <div class="footer__content">
+                        <div class="footer__logo">
+                            <svg class="footer-logo" viewBox="0 0 215 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_8829_40947)">
+                                    <path d="M9.70209 0.316902C11.64 0.316902 13.3037 0.559635 14.6934 1.03836C16.083 1.51708 17.2305 2.17786 18.1293 3.02068C19.0281 3.8635 19.691 4.85466 20.1181 6.0009C20.5452 7.14714 20.762 8.38103 20.762 9.70932C20.762 11.1455 20.5389 12.4603 20.099 13.6537C19.6592 14.8539 18.9835 15.8788 18.0783 16.7283C17.1731 17.5847 16.0257 18.2522 14.636 18.7309C13.2463 19.2096 11.6017 19.4524 9.70209 19.4524H6.38094V29.0605H0V0.316902H9.70209ZM9.70209 14.4224C11.3659 14.4224 12.5579 14.0111 13.291 13.1818C14.0177 12.3524 14.3874 11.1927 14.3874 9.70932C14.3874 9.04855 14.2918 8.4552 14.1069 7.91579C13.9157 7.37639 13.6288 6.91115 13.2463 6.52682C12.8639 6.13575 12.3794 5.83908 11.7929 5.63006C11.2065 5.42104 10.5117 5.31316 9.70847 5.31316H6.38732V14.4291H9.70847L9.70209 14.4224Z" fill="currentColor"/>
+                                    <path d="M32.7653 23.7946C33.6195 23.7946 34.3844 23.6462 35.0601 23.3496C35.7358 23.0529 36.3032 22.6281 36.7685 22.0752C37.2338 21.5223 37.5908 20.8481 37.8331 20.0524C38.0753 19.2568 38.2028 18.3533 38.2028 17.3419V0.316902H44.5837V17.3419C44.5837 19.1017 44.3096 20.72 43.7614 22.1966C43.2132 23.6732 42.4291 24.9408 41.4092 26.0061C40.3893 27.0715 39.1526 27.9008 37.6928 28.4942C36.233 29.0875 34.5884 29.3842 32.7653 29.3842C30.9421 29.3842 29.2784 29.0875 27.8186 28.4942C26.3588 27.9008 25.1222 27.0715 24.1022 26.0061C23.0823 24.9408 22.3046 23.6732 21.7628 22.1966C21.2209 20.7267 20.9532 19.1085 20.9532 17.3419V0.316902H27.3341V17.3217C27.3341 18.3331 27.4553 19.2366 27.7039 20.0322C27.9525 20.8278 28.3031 21.5021 28.7684 22.0617C29.2338 22.6214 29.8011 23.0462 30.4768 23.3428C31.1525 23.6395 31.9111 23.7878 32.7716 23.7878L32.7653 23.7946Z" fill="currentColor"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_8829_40947">
+                                        <rect width="214.313" height="112.5" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        
+                        <div class="footer__nav">
+                            <div class="footer__nav-section">
+                                <h3 class="footer__nav-title">Services</h3>
+                                <ul class="footer__nav-list">
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Email Marketing</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Webinar Production</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Inbound Marketing</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link footer__nav-link--disabled">Succession Planning [Coming Soon]</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link footer__nav-link--disabled">Business Unit Growth [Coming Soon]</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="footer__nav-section">
+                                <h3 class="footer__nav-title">Resources</h3>
+                                <ul class="footer__nav-list">
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Read Our Blog</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Thought Leadership</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link footer__nav-link--disabled">Pricing [Coming Soon]</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="footer__nav-section">
+                                <h3 class="footer__nav-title">Company</h3>
+                                <ul class="footer__nav-list">
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">About Us</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Contact Us</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Privacy Policy</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link footer__nav-link--disabled">Affiliates [Coming Soon]</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="footer__newsletter">
+                                <h3 class="footer__newsletter-title">Stay Connected</h3>
+                                <p class="footer__newsletter-description">
+                                    Share your email address and get our B2B marketing strategies and digital transformation in your inbox.
+                                </p>
+                                <form class="form form--newsletter form--inline">
+                                    <div class="form__field">
+                                        <label for="footer-email" class="form__label form__label--required">Email Address</label>
+                                        <input type="email" id="footer-email" class="form__input" placeholder="Enter your email">
+                                    </div>
+                                    <button type="submit" class="btn btn--primary btn--medium">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer__sub">
+                    <p class="footer__copyright">© All rights reserved 2025</p>
+                    <span class="footer__separator">|</span>
+                    <p class="footer__copyright">Purposeful Media Promotions</p>
+                    <span class="footer__separator">|</span>
+                    <a href="#" class="footer__policy-link">Policy Statement</a>
+                </div>
+            </footer>
+        </section>
+
+        <!-- Simple Footer -->
+        <section class="demo-section">
+            <h2 class="demo-title">Simple Footer</h2>
+            <div class="demo-label">Minimal footer with logo and basic links</div>
+            <footer class="footer footer--simple footer--centered">
+                <div class="footer__main">
+                    <div class="footer__content">
+                        <div class="footer__logo">
+                            <svg class="footer-logo" viewBox="0 0 215 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.70209 0.316902C11.64 0.316902 13.3037 0.559635 14.6934 1.03836C16.083 1.51708 17.2305 2.17786 18.1293 3.02068C19.0281 3.8635 19.691 4.85466 20.1181 6.0009C20.5452 7.14714 20.762 8.38103 20.762 9.70932C20.762 11.1455 20.5389 12.4603 20.099 13.6537C19.6592 14.8539 18.9835 15.8788 18.0783 16.7283C17.1731 17.5847 16.0257 18.2522 14.636 18.7309C13.2463 19.2096 11.6017 19.4524 9.70209 19.4524H6.38094V29.0605H0V0.316902H9.70209ZM9.70209 14.4224C11.3659 14.4224 12.5579 14.0111 13.291 13.1818C14.0177 12.3524 14.3874 11.1927 14.3874 9.70932C14.3874 9.04855 14.2918 8.4552 14.1069 7.91579C13.9157 7.37639 13.6288 6.91115 13.2463 6.52682C12.8639 6.13575 12.3794 5.83908 11.7929 5.63006C11.2065 5.42104 10.5117 5.31316 9.70847 5.31316H6.38732V14.4291H9.70847L9.70209 14.4224Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="footer__nav">
+                            <div class="footer__nav-section">
+                                <ul class="footer__nav-list">
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">About</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Services</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer__sub">
+                    <p class="footer__copyright">© 2025 Purposeful Media Promotions. All rights reserved.</p>
+                </div>
+            </footer>
+        </section>
+
+        <!-- Compact Footer -->
+        <section class="demo-section">
+            <h2 class="demo-title">Compact Footer</h2>
+            <div class="demo-label">Smaller footer for pages with limited space</div>
+            <footer class="footer footer--main footer--compact">
+                <div class="footer__main">
+                    <div class="footer__content">
+                        <div class="footer__logo">
+                            <svg class="footer-logo" viewBox="0 0 215 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.70209 0.316902C11.64 0.316902 13.3037 0.559635 14.6934 1.03836C16.083 1.51708 17.2305 2.17786 18.1293 3.02068C19.0281 3.8635 19.691 4.85466 20.1181 6.0009C20.5452 7.14714 20.762 8.38103 20.762 9.70932C20.762 11.1455 20.5389 12.4603 20.099 13.6537C19.6592 14.8539 18.9835 15.8788 18.0783 16.7283C17.1731 17.5847 16.0257 18.2522 14.636 18.7309C13.2463 19.2096 11.6017 19.4524 9.70209 19.4524H6.38094V29.0605H0V0.316902H9.70209ZM9.70209 14.4224C11.3659 14.4224 12.5579 14.0111 13.291 13.1818C14.0177 12.3524 14.3874 11.1927 14.3874 9.70932C14.3874 9.04855 14.2918 8.4552 14.1069 7.91579C13.9157 7.37639 13.6288 6.91115 13.2463 6.52682C12.8639 6.13575 12.3794 5.83908 11.7929 5.63006C11.2065 5.42104 10.5117 5.31316 9.70847 5.31316H6.38732V14.4291H9.70847L9.70209 14.4224Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="footer__nav">
+                            <div class="footer__nav-section">
+                                <h3 class="footer__nav-title">Quick Links</h3>
+                                <ul class="footer__nav-list">
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Services</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Resources</a>
+                                    </li>
+                                    <li class="footer__nav-item">
+                                        <a href="#" class="footer__nav-link">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer__sub">
+                    <p class="footer__copyright">© 2025 Purposeful Media Promotions</p>
+                    <span class="footer__separator">|</span>
+                    <a href="#" class="footer__policy-link">Privacy Policy</a>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <script>
+        // Interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Newsletter form handling
+            const newsletterForms = document.querySelectorAll('.footer .form');
+            newsletterForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    if (email) {
+                        alert(`Newsletter subscription successful for: ${email}`);
+                        this.reset();
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                });
+            });
+            
+            // Footer navigation link handlers
+            const footerLinks = document.querySelectorAll('.footer__nav-link:not(.footer__nav-link--disabled)');
+            footerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Footer link clicked:', this.textContent.trim());
+                    alert(`Navigating to: ${this.textContent.trim()}`);
+                });
+            });
+            
+            // Policy link handler
+            const policyLinks = document.querySelectorAll('.footer__policy-link');
+            policyLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Policy link clicked');
+                    alert('Opening policy document...');
+                });
+            });
+            
+            // Disabled link prevention
+            const disabledLinks = document.querySelectorAll('.footer__nav-link--disabled');
+            disabledLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Disabled link clicked:', this.textContent.trim());
+                    alert('This feature is coming soon!');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BREADBOARD TEST: Banner Header Component</title>
+    
+    <!-- 
+    ============================================================================
+    BREADBOARD TEST: BANNER HEADER COMPONENT
+    ============================================================================
+    
+    Purpose: Test header functionality across all breakpoints and states
+    Component: organisms/banner-header-main
+    Date: October 10, 2025 (Week 41, Friday)
+    MVW Phase: Phase 1 - Component Breadboarding
+    
+    CRITICAL ISSUE TO FIX:
+    - Desktop dropdown menus not working when integrated with master-styles.css
+    
+    Test Checklist:
+    □ Desktop (1920px+) dropdown functionality
+    □ Desktop (1150-1919px) dropdown functionality  
+    □ Tablet (768-1149px) hamburger menu
+    □ Mobile (380-767px) accordion menu
+    □ All hover states
+    □ All active/current page states
+    □ Logo responsive sizing
+    □ Touch targets (44px minimum)
+    □ Keyboard navigation
+    □ Screen reader compatibility
+    
+    ============================================================================
+    -->
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Master Styles - Commented out to isolate component testing -->
+    <!-- <link rel="stylesheet" href="../../styles/master-styles.css"> -->
+    
+    <!-- Test Page Specific Styles -->
+    <style>
+        /* ============================================
+           TEST PAGE INFRASTRUCTURE
+           ============================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        /* Test Controls Panel */
+        .test-controls {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 16px;
+            border-radius: 0 0 0 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+            max-width: 300px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .test-controls h3 {
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            color: #D4AF37;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+        
+        .test-controls .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            gap: 12px;
+        }
+        
+        .test-controls .label {
+            color: #888;
+        }
+        
+        .test-controls .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .test-controls .breakpoint {
+            font-size: 13px;
+            font-weight: bold;
+            color: #DCBE5D;
+        }
+        
+        .test-controls button {
+            background: #1B1464;
+            color: white;
+            border: 1px solid #D4AF37;
+            padding: 8px 12px;
+            margin: 4px 0;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 11px;
+            width: 100%;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .test-controls button:hover {
+            background: #D4AF37;
+            color: #1B1464;
+        }
+        
+        .test-controls .debug-info {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #333;
+            font-size: 11px;
+            color: #aaa;
+        }
+        
+        .test-controls .debug-info.error {
+            color: #ff5555;
+        }
+        
+        .test-controls .debug-info.success {
+            color: #50fa7b;
+        }
+        
+        /* Test Container */
+        .test-container {
+            margin-top: 0;
+            background: white;
+        }
+        
+        .test-section {
+            border-bottom: 4px solid #ddd;
+            position: relative;
+        }
+        
+        .test-label {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(27, 20, 100, 0.9);
+            color: white;
+            padding: 4px 12px;
+            font-family: monospace;
+            font-size: 11px;
+            font-weight: bold;
+            z-index: 5;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        .test-notes {
+            background: #fff9e6;
+            border-left: 4px solid #D4AF37;
+            padding: 20px;
+            margin: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .test-notes h4 {
+            margin: 0 0 12px 0;
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .test-notes ul {
+            margin: 8px 0 8px 20px;
+        }
+        
+        .test-notes code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #1B1464;
+        }
+        
+        /* Dropdown Debugger Overlay */
+        .dropdown-debugger {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid red;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 11px;
+            z-index: 9998;
+            display: none;
+            max-width: 400px;
+            border-radius: 4px;
+        }
+        
+        .dropdown-debugger.active {
+            display: block;
+        }
+        
+        .dropdown-debugger h4 {
+            margin: 0 0 8px 0;
+            color: red;
+            font-size: 12px;
+        }
+        
+        /* Content spacer to show header in context */
+        .content-spacer {
+            height: 100vh;
+            background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Lato', sans-serif;
+            font-size: 24px;
+            color: #888;
+        }
+        
+        /* ============================================
+           COMPONENT CSS OVERRIDES FOR TESTING
+           (Only if master-styles.css conflicts)
+           ============================================ */
+        
+        /* Banner Header Main */
+        .banner-header-main {
+            width: 100%;
+            height: 125px;
+            background-color: #1b1464;
+            border-bottom: 4px solid #d4af37;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+            overflow: visible !important; /* CRITICAL for dropdowns */
+        }
+        
+        .banner-header-main__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .banner-header-main__logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-header-main__logo-link:hover {
+            opacity: 0.85;
+        }
+        
+        .banner-header-main__logo {
+            display: none;
+            height: auto;
+        }
+        
+        .banner-header-main__menu-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+            overflow: visible !important; /* CRITICAL */
+            position: relative;
+        }
+        
+        /* Main Menu */
+        .main-menu {
+            background-color: transparent;
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            position: relative;
+            overflow: visible !important; /* CRITICAL */
+        }
+        
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(40px, 5vw, 80px);
+            padding: 0;
+            min-height: auto;
+            overflow: visible !important; /* CRITICAL */
+            position: relative;
+        }
+        
+        .desktop-nav .menu-item {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        .desktop-nav .menu-item-dropdown {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            z-index: 1001;
+        }
+        
+        .desktop-nav .menu-text {
+            display: inline-block;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        
+        .desktop-nav .menu-item:hover,
+        .desktop-nav .menu-item-dropdown:hover .menu-text {
+            color: #DCBE5D;
+        }
+        
+        .desktop-nav .menu-item.active,
+        .desktop-nav .menu-item-dropdown.active .menu-text {
+            color: #B39226;
+        }
+        
+        /* CRITICAL: Desktop Dropdown Container */
+        .dropdown-container {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 280px;
+            z-index: 9999 !important; /* VERY HIGH */
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            margin-top: 12px;
+        }
+        
+        /* Show dropdown when open - CRITICAL */
+        .dropdown-container.open {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+        
+        /* Desktop Dropdown Menu */
+        .dropdown-menu {
+            background-color: #ECEEEF !important;
+            border-radius: 8px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important;
+            padding: 32px;
+            padding-right: 64px;
+            display: block !important;
+            font-family: 'Lato', sans-serif;
+            min-height: 150px;
+            position: relative;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dropdown-menu:hover {
+            background-color: #F4EBCD !important;
+        }
+        
+        .menu-item-dropdown.active .dropdown-menu {
+            background-color: #F4EBCD !important;
+        }
+        
+        .dropdown-menu .dropdown-item {
+            display: block !important;
+            color: #1B1464 !important;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin: 0 0 16px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            font-weight: 800;
+            background-color: transparent;
+        }
+        
+        .dropdown-menu .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dropdown-menu .dropdown-item:hover {
+            color: #1D50DE !important;
+        }
+        
+        .dropdown-menu .dropdown-item.active {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+            color: #1B1464 !important;
+            margin-left: -32px;
+            margin-right: -64px;
+            padding-left: 48px;
+            padding-right: 80px;
+            border-radius: 4px;
+        }
+        
+        /* Mobile/Tablet Navigation */
+        .mobile-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0;
+            min-height: auto;
+        }
+        
+        .hamburger-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+        }
+        
+        .hamburger-button svg,
+        .hamburger-button img {
+            width: 45px;
+            height: auto;
+        }
+        
+        .hamburger-icon {
+            display: block;
+        }
+        
+        .close-icon {
+            display: none;
+        }
+        
+        .menu-open .hamburger-icon {
+            display: none;
+        }
+        
+        .menu-open .close-icon {
+            display: block;
+        }
+        
+        /* Mobile Accordion Menu */
+        .mobile-accordion {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ECEEEF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .mobile-accordion.active {
+            display: block;
+            max-height: 800px;
+            padding: 20px 24px;
+        }
+        
+        .mobile-accordion:hover {
+            background-color: #F4EBCD !important;
+        }
+        
+        .mobile-accordion.has-active-page {
+            background-color: #F4EBCD !important;
+        }
+        
+        .mobile-accordion .accordion-section {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-accordion .accordion-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mobile-accordion .accordion-header {
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 45px;
+            cursor: pointer;
+            padding: 10px 10px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        .mobile-accordion .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .mobile-accordion .accordion-header.active {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        .mobile-accordion .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion .accordion-content.active {
+            max-height: 300px;
+            padding-top: 10px;
+        }
+        
+        .mobile-accordion .accordion-item {
+            display: block;
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 10px 10px 10px 30px;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        .mobile-accordion .accordion-item:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .mobile-accordion .accordion-item.active {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+        
+        /* Mobile: 380-767px */
+        @media (max-width: 767px) {
+            .banner-header-main {
+                height: 125px;
+            }
+            
+            .banner-header-main__container {
+                padding: 0 24px;
+                height: 100%;
+            }
+            
+            .banner-header-main__logo--mobile {
+                display: block;
+                width: 179px;
+                height: 89px;
+                object-fit: contain;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .hamburger-button {
+                width: 54px;
+                height: 54px;
+            }
+            
+            .banner-header-main .mobile-accordion {
+                position: fixed;
+                top: 129px;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+            
+            .banner-header-main .mobile-accordion.active {
+                padding: 20px 24px;
+            }
+        }
+        
+        /* Tablet: 768-1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--tablet {
+                display: block;
+                width: 417px;
+                height: 89px;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .banner-header-main .mobile-accordion {
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+            
+            .banner-header-main .mobile-accordion.active {
+                padding: 24px;
+            }
+        }
+        
+        /* Desktop: 1150-1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .banner-header-main__container {
+                padding: 0 36px 0 24px;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 460px;
+                height: 89px;
+            }
+            
+            .banner-header-main__menu-container {
+                max-width: 886px;
+                min-width: 615px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 48px;
+            }
+            
+            .desktop-nav .menu-item,
+            .desktop-nav .menu-item-dropdown {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .dropdown-menu .dropdown-item {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* DesktopPlus: 1920px+ */
+        @media (min-width: 1920px) {
+            .banner-header-main__container {
+                max-width: 1900px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 481px;
+                height: 93px;
+            }
+            
+            .banner-header-main__menu-container {
+                width: 894px;
+                padding-right: 32px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Controls Panel -->
+    <div class="test-controls">
+        <h3>🧪 HEADER BREADBOARD</h3>
+        
+        <div class="info-row">
+            <span class="label">Screen:</span>
+            <span class="value" id="screenWidth">0</span><span class="value">px</span>
+        </div>
+        
+        <div class="info-row">
+            <span class="label">Breakpoint:</span>
+        </div>
+        <div class="breakpoint" id="breakpointName">Loading...</div>
+        
+        <div class="info-row" style="margin-top: 12px;">
+            <span class="label">Dropdowns:</span>
+            <span class="value" id="dropdownStatus">Checking...</span>
+        </div>
+        
+        <button onclick="testDropdowns()">🔍 Test Dropdowns</button>
+        <button onclick="simulateActive('solutions')">Set "Solutions" Active</button>
+        <button onclick="simulateActive('resources')">Set "Resources" Active</button>
+        <button onclick="clearActive()">Clear Active States</button>
+        <button onclick="toggleDebugger()">Toggle Dropdown Debugger</button>
+        
+        <div class="debug-info" id="debugInfo">
+            Ready to test...
+        </div>
+    </div>
+    
+    <!-- Dropdown Debugger -->
+    <div class="dropdown-debugger" id="dropdownDebugger">
+        <h4>⚠️ DROPDOWN DEBUGGER</h4>
+        <div id="debuggerContent"></div>
+    </div>
+    
+    <!-- Test Container -->
+    <div class="test-container">
+        
+        <!-- Test Section 1: DEFAULT STATE -->
+        <section class="test-section">
+            <div class="test-label">TEST 1: DEFAULT STATE (All Breakpoints)</div>
+            
+            <header class="banner-header-main">
+                <div class="banner-header-main__container">
+                    <!-- Logo -->
+                    <a href="/" class="banner-header-main__logo-link" aria-label="Purposeful Media Promotions Home">
+                        <!-- Mobile Logo -->
+                        <img 
+                            src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                            alt="Purposeful Media Promotions" 
+                            class="banner-header-main__logo banner-header-main__logo--mobile"
+                        >
+                        <!-- Tablet Logo -->
+                        <img 
+                            src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg" 
+                            alt="Purposeful Media Promotions" 
+                            class="banner-header-main__logo banner-header-main__logo--tablet"
+                        >
+                        <!-- Desktop/DesktopPlus Logo -->
+                        <img 
+                            src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg" 
+                            alt="Purposeful Media Promotions" 
+                            class="banner-header-main__logo banner-header-main__logo--desktop"
+                        >
+                    </a>
+                    
+                    <!-- Menu Container -->
+                    <div class="banner-header-main__menu-container">
+                        <nav class="main-menu" role="navigation" aria-label="Main navigation">
+                            
+                            <!-- Desktop Navigation -->
+                            <div class="desktop-nav">
+                                <a href="/" class="menu-item" data-page="home">Home</a>
+                                
+                                <div class="menu-item-dropdown" data-page="solutions">
+                                    <span class="menu-text">Solutions</span>
+                                    <div class="dropdown-container">
+                                        <div class="dropdown-menu">
+                                            <a href="/email-management" class="dropdown-item">Email Management</a>
+                                            <a href="/content-creation" class="dropdown-item">Content Creation</a>
+                                            <a href="/webinar-production" class="dropdown-item">Webinar Production</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="menu-item-dropdown" data-page="resources">
+                                    <span class="menu-text">Resources</span>
+                                    <div class="dropdown-container">
+                                        <div class="dropdown-menu">
+                                            <a href="/resource-library" class="dropdown-item">Resource Library</a>
+                                            <a href="/about-us" class="dropdown-item">About Us</a>
+                                            <a href="/blog" class="dropdown-item">Blog</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <a href="/contact" class="menu-item" data-page="contact">Contact</a>
+                            </div>
+                            
+                            <!-- Mobile/Tablet Navigation -->
+                            <div class="mobile-nav">
+                                <button class="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                                    <svg class="hamburger-icon" width="45" height="54" viewBox="0 0 45 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect y="3" width="45" height="8" rx="4" fill="white"/>
+                                        <rect y="23" width="45" height="8" rx="4" fill="white"/>
+                                        <rect y="43" width="45" height="8" rx="4" fill="white"/>
+                                    </svg>
+                                    <svg class="close-icon" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="5" y="36" width="45" height="8" rx="4" transform="rotate(-45 5 36)" fill="white"/>
+                                        <rect x="10.66" y="4.31" width="45" height="8" rx="4" transform="rotate(45 10.66 4.31)" fill="white"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- Mobile Accordion Menu -->
+                            <div class="mobile-accordion">
+                                <div class="accordion-section">
+                                    <a href="/" class="accordion-header no-dropdown" data-page="home">Home</a>
+                                </div>
+                                
+                                <div class="accordion-section">
+                                    <div class="accordion-header" data-accordion="solutions">Solutions</div>
+                                    <div class="accordion-content" id="solutions-content">
+                                        <a href="/email-management" class="accordion-item">Email Management</a>
+                                        <a href="/content-creation" class="accordion-item">Content Creation</a>
+                                        <a href="/webinar-production" class="accordion-item">Webinar Production</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-section">
+                                    <div class="accordion-header" data-accordion="resources">Resources</div>
+                                    <div class="accordion-content" id="resources-content">
+                                        <a href="/resource-library" class="accordion-item">Resource Library</a>
+                                        <a href="/about-us" class="accordion-item">About Us</a>
+                                        <a href="/blog" class="accordion-item">Blog</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="accordion-section">
+                                    <a href="/contact" class="accordion-header no-dropdown" data-page="contact">Contact</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="test-notes">
+                <h4>Test Instructions:</h4>
+                <ul>
+                    <li><strong>Desktop (1150px+):</strong> Click "Solutions" or "Resources" to test dropdown. Hover should change text color to gold.</li>
+                    <li><strong>Tablet (768-1149px):</strong> Click hamburger icon. Accordion should expand. Click "Solutions" or "Resources" to reveal subitems.</li>
+                    <li><strong>Mobile (380-767px):</strong> Click hamburger icon. Full-width accordion should overlay. Test sub-item expansion.</li>
+                    <li><strong>Hover States:</strong> All menu items should change color on hover (gold #DCBE5D)</li>
+                    <li><strong>Active States:</strong> Use test control buttons to simulate current page states</li>
+                </ul>
+                
+                <h4>Known Issues to Check:</h4>
+                <ul>
+                    <li>❌ Desktop dropdowns not appearing (z-index conflict?)</li>
+                    <li>❌ Dropdown getting cut off by <code>overflow: hidden</code> parent?</li>
+                    <li>❌ Click event not firing on <code>.menu-text</code>?</li>
+                    <li>❌ CSS specificity overriding <code>.dropdown-container.open</code> styles?</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Content Spacer -->
+        <div class="content-spacer">
+            <p>Scroll down to see header behavior in context</p>
+        </div>
+    </div>
+    
+    <!-- JavaScript for Component + Testing -->
+    <script>
+        // ============================================
+        // BREAKPOINT MONITOR
+        // ============================================
+        function updateBreakpoint() {
+            try {
+                const width = window.innerWidth;
+                const screenWidthEl = document.getElementById('screenWidth');
+                const breakpointNameEl = document.getElementById('breakpointName');
+                
+                if (screenWidthEl) screenWidthEl.textContent = width;
+                
+                let breakpoint = 'Unknown';
+                if (width < 380) breakpoint = 'Small Mobile (<380px)';
+                else if (width >= 380 && width <= 767) breakpoint = 'Mobile (380-767px)';
+                else if (width >= 768 && width <= 1149) breakpoint = 'Tablet (768-1149px)';
+                else if (width >= 1150 && width <= 1919) breakpoint = 'Desktop (1150-1919px)';
+                else if (width >= 1920) breakpoint = 'Desktop Plus (1920px+)';
+                
+                if (breakpointNameEl) breakpointNameEl.textContent = breakpoint;
+                
+                console.log('✅ Breakpoint updated:', breakpoint, 'at', width + 'px');
+            } catch (error) {
+                console.error('❌ Breakpoint monitor error:', error);
+            }
+        }
+        
+        // Initialize breakpoint monitor with error handling
+        try {
+            updateBreakpoint();
+            window.addEventListener('resize', updateBreakpoint);
+            console.log('✅ Breakpoint monitor initialized');
+        } catch (error) {
+            console.error('❌ Failed to initialize breakpoint monitor:', error);
+        }
+        
+        // ============================================
+        // DROPDOWN TEST FUNCTION
+        // ============================================
+        function testDropdowns() {
+            const debugInfo = document.getElementById('debugInfo');
+            const dropdownStatus = document.getElementById('dropdownStatus');
+            let results = [];
+            
+            // Find all dropdowns
+            const dropdowns = document.querySelectorAll('.dropdown-container');
+            
+            if (dropdowns.length === 0) {
+                debugInfo.innerHTML = '❌ No dropdowns found!';
+                debugInfo.className = 'debug-info error';
+                dropdownStatus.textContent = 'NOT FOUND';
+                return;
+            }
+            
+            dropdowns.forEach((dropdown, index) => {
+                const parent = dropdown.closest('.menu-item-dropdown');
+                const menuText = parent ? parent.querySelector('.menu-text') : null;
+                const computedStyle = window.getComputedStyle(dropdown);
+                
+                results.push(`
+                    Dropdown ${index + 1}:<br>
+                    - Parent: ${parent ? parent.dataset.page : 'none'}<br>
+                    - Z-index: ${computedStyle.zIndex}<br>
+                    - Opacity: ${computedStyle.opacity}<br>
+                    - Visibility: ${computedStyle.visibility}<br>
+                    - Pointer Events: ${computedStyle.pointerEvents}<br>
+                    - Position: ${computedStyle.position}<br>
+                    - Has .open class: ${dropdown.classList.contains('open')}<br>
+                `);
+            });
+            
+            debugInfo.innerHTML = results.join('<br>');
+            debugInfo.className = 'debug-info success';
+            dropdownStatus.textContent = `${dropdowns.length} found`;
+        }
+        
+        // ============================================
+        // ACTIVE STATE SIMULATION
+        // ============================================
+        function simulateActive(section) {
+            clearActive();
+            const dropdown = document.querySelector(`.menu-item-dropdown[data-page="${section}"]`);
+            if (dropdown) {
+                dropdown.classList.add('active');
+                const mobileAccordion = document.querySelector('.mobile-accordion');
+                if (mobileAccordion) {
+                    mobileAccordion.classList.add('has-active-page');
+                }
+            }
+            document.getElementById('debugInfo').innerHTML = `✓ Set "${section}" as active page`;
+            document.getElementById('debugInfo').className = 'debug-info success';
+        }
+        
+        function clearActive() {
+            document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.has-active-page').forEach(el => el.classList.remove('has-active-page'));
+            document.getElementById('debugInfo').innerHTML = '✓ Cleared all active states';
+            document.getElementById('debugInfo').className = 'debug-info';
+        }
+        
+        // ============================================
+        // DROPDOWN DEBUGGER TOGGLE
+        // ============================================
+        function toggleDebugger() {
+            const debugger = document.getElementById('dropdownDebugger');
+            const debuggerContent = document.getElementById('debuggerContent');
+            
+            if (debugger.classList.contains('active')) {
+                debugger.classList.remove('active');
+            } else {
+                debugger.classList.add('active');
+                
+                // Show live dropdown state
+                setInterval(() => {
+                    const dropdowns = document.querySelectorAll('.dropdown-container');
+                    let content = '';
+                    
+                    dropdowns.forEach((dd, i) => {
+                        const isOpen = dd.classList.contains('open');
+                        const style = window.getComputedStyle(dd);
+                        content += `Dropdown ${i + 1}: ${isOpen ? '✅ OPEN' : '❌ CLOSED'}<br>`;
+                        content += `Opacity: ${style.opacity} | Visibility: ${style.visibility}<br><br>`;
+                    });
+                    
+                    debuggerContent.innerHTML = content;
+                }, 100);
+            }
+        }
+        
+        // ============================================
+        // COMPONENT FUNCTIONALITY
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM loaded, initializing header component...');
+            
+            try {
+            
+            // Desktop dropdown functionality
+            const menuDropdowns = document.querySelectorAll('.desktop-nav .menu-item-dropdown');
+            
+            menuDropdowns.forEach(item => {
+                const menuText = item.querySelector('.menu-text');
+                const dropdown = item.querySelector('.dropdown-container');
+                
+                if (menuText && dropdown) {
+                    
+                    menuText.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        console.log('🖱️ Menu clicked:', item.dataset.page);
+                        
+                        // Close all other dropdowns first
+                        document.querySelectorAll('.dropdown-container').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('open');
+                                console.log('Closing other dropdown');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        const wasOpen = dropdown.classList.contains('open');
+                        dropdown.classList.toggle('open');
+                        console.log('Dropdown now:', dropdown.classList.contains('open') ? 'OPEN' : 'CLOSED');
+                        
+                        // Update debug info
+                        document.getElementById('debugInfo').innerHTML = 
+                            `Dropdown "${item.dataset.page}": ${dropdown.classList.contains('open') ? 'OPENED' : 'CLOSED'}`;
+                        document.getElementById('debugInfo').className = 'debug-info success';
+                    });
+                }
+            });
+            
+            // Click outside to close all dropdowns
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-item-dropdown')) {
+                    document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside
+            document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Mobile menu toggle
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const mobileAccordion = document.querySelector('.mobile-accordion');
+            const mainMenu = document.querySelector('.main-menu');
+            
+            if (hamburgerButton) {
+                hamburgerButton.addEventListener('click', function() {
+                    const isOpen = mobileAccordion.classList.contains('active');
+                    
+                    if (isOpen) {
+                        mobileAccordion.classList.remove('active');
+                        mainMenu.classList.remove('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        mobileAccordion.classList.add('active');
+                        mainMenu.classList.add('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            }
+            
+            // Accordion functionality for mobile
+            document.querySelectorAll('.accordion-header[data-accordion]').forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionId = this.dataset.accordion;
+                    const content = document.getElementById(accordionId + '-content');
+                    
+                    if (content) {
+                        // Close all other accordions
+                        document.querySelectorAll('.accordion-content').forEach(otherContent => {
+                            if (otherContent !== content) {
+                                otherContent.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current accordion
+                        content.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    // Close mobile menu if switching to desktop
+                    if (window.innerWidth >= 1150) {
+                        if (mobileAccordion) {
+                            mobileAccordion.classList.remove('active');
+                        }
+                        if (mainMenu) {
+                            mainMenu.classList.remove('menu-open');
+                        }
+                        if (hamburgerButton) {
+                            hamburgerButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                }, 250);
+            });
+            
+            // Auto-run dropdown test on load
+            setTimeout(() => {
+                testDropdowns();
+            }, 500);
+            
+            console.log('✅ Header component initialization complete');
+            
+            } catch (error) {
+                console.error('❌ Header component initialization failed:', error);
+                document.getElementById('debugInfo').innerHTML = '❌ Component initialization failed: ' + error.message;
+                document.getElementById('debugInfo').className = 'debug-info error';
+            }
+        });
+    </script>
+</body>
+</html>
+

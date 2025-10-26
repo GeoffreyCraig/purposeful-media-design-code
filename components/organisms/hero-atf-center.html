@@ -1,0 +1,391 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero ATF Center - Image/Video Component</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <style>
+        /* Component-Specific Styles for Hero ATF Center */
+        
+        /* Base Hero Container */
+        .hero-atf-center {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(
+                0deg,
+                var(--primary-700, #1b1464) 0%,
+                var(--accent-500, #d4af37) 50%
+            );
+            border-bottom: 4px solid var(--accent-500, #d4af37);
+        }
+
+        /* Media Container (for both images and videos) */
+        .hero-media-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-media-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                0deg,
+                rgba(27, 20, 100, 0.85) 0%,
+                rgba(212, 175, 55, 0.4) 50%,
+                rgba(212, 175, 55, 0.2) 100%
+            );
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Media Elements */
+        .hero-media-container img,
+        .hero-media-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Content Container */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            max-width: 554px;
+            padding: 0 var(--space-5, 20px);
+        }
+
+        /* Typography */
+        .hero-headline {
+            color: var(--neutrals-50, #ffffff);
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 36px;
+            line-height: 54px;
+            text-transform: uppercase;
+            margin: 0 0 var(--space-6, 24px) 0;
+            text-align: center;
+        }
+
+        .hero-subheadline {
+            color: var(--neutrals-50, #ffffff);
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 24px;
+            margin: 0 0 var(--space-8, 32px) 0;
+            text-align: center;
+        }
+
+        /* Button */
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-500, #d4af37);
+            color: var(--primary-700, #1b1464);
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 18px;
+            text-transform: uppercase;
+            padding: var(--space-4, 16px) var(--space-20, 80px);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background: var(--accent-600, #b39226);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Breakpoints */
+        
+        /* DesktopPlus: 1920px and wider */
+        @media (min-width: 1920px) {
+            .hero-atf-center {
+                min-height: 1051px;
+                padding: var(--space-4, 16px) var(--space-10, 40px) var(--space-20, 80px);
+            }
+            
+            .hero-content {
+                margin-bottom: 198px; /* Adjusted from bottom: 278px to account for padding */
+            }
+        }
+
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .hero-atf-center {
+                height: calc(100vw * 0.6426); /* Maintains aspect ratio 1919:1233 */
+                min-height: 739px;
+                max-height: 1233px;
+                padding: var(--space-4, 16px) var(--space-10, 40px) var(--space-20, 80px);
+            }
+            
+            .hero-content {
+                margin-bottom: calc(100vw * 0.176); /* Proportional to viewport */
+                max-width: 554px;
+            }
+
+            .hero-button {
+                padding: var(--space-3, 12px) var(--space-16, 64px);
+            }
+        }
+
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .hero-atf-center {
+                height: calc(100vw * 0.6426); /* Maintains aspect ratio */
+                min-height: 493px;
+                max-height: 738px;
+                padding: var(--space-3, 12px) var(--space-8, 32px) var(--space-16, 64px);
+            }
+            
+            .hero-content {
+                margin-bottom: calc(100vw * 0.15);
+                max-width: 480px;
+            }
+
+            .hero-headline {
+                font-size: 32px;
+                line-height: 48px;
+                margin-bottom: var(--space-5, 20px);
+            }
+
+            .hero-subheadline {
+                font-size: 16px;
+                line-height: 22px;
+                margin-bottom: var(--space-6, 24px);
+            }
+
+            .hero-button {
+                padding: var(--space-3, 12px) var(--space-12, 48px);
+                font-size: 16px;
+            }
+        }
+
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .hero-atf-center {
+                height: 600px; /* Fixed height for mobile */
+                min-height: 500px;
+                padding: var(--space-3, 12px) var(--space-5, 20px) var(--space-12, 48px);
+            }
+            
+            .hero-content {
+                margin-bottom: var(--space-16, 64px);
+                max-width: 320px;
+            }
+
+            .hero-headline {
+                font-size: 28px;
+                line-height: 42px;
+                margin-bottom: var(--space-4, 16px);
+            }
+
+            .hero-subheadline {
+                font-size: 14px;
+                line-height: 20px;
+                margin-bottom: var(--space-5, 20px);
+            }
+
+            .hero-button {
+                padding: var(--space-3, 12px) var(--space-10, 40px);
+                font-size: 14px;
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        /* Video-specific styles */
+        video.hero-media {
+            pointer-events: none; /* Prevents video controls from showing */
+        }
+
+        /* Fallback gradient when no media is provided */
+        .hero-atf-center.no-media .hero-media-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero ATF Center Component -->
+<section class="hero-atf-center" id="heroATFCenter" aria-label="Hero Section">
+    
+    <!-- Media Container - Supports both Image and Video -->
+    <div class="hero-media-container" id="heroMediaContainer">
+        <!-- Option 1: Image (uncomment to use) -->
+      <!--<img src="../../assets/images/shutterstock_2284126663 copy.jpg" alt="Hero background" class="hero-media" loading="eager"> -->
+        
+        <!-- Option 2: Video (uncomment to use) -->
+        <!-- <video class="hero-media" autoplay muted loop playsinline>
+            <source src="path-to-your-video.mp4" type="video/mp4">
+            <source src="path-to-your-video.webm" type="video/webm">
+        </video> -->
+        
+        <!-- Placeholder for demo - replace with actual media -->
+        <!-- Remove this div and uncomment one of the options above for production -->
+        <div style="width: 100%; height: 100%; background: #666; display: flex; align-items: center; justify-content: center; color: #999; font-family: sans-serif; font-size: 24px;">Image/Video Placeholder</div>
+    </div>
+    
+    <!-- Content Container -->
+    <div class="hero-content">
+        <h1 class="hero-headline" contenteditable="false">
+            H1 Headline 36 54h
+        </h1>
+        <p class="hero-subheadline" contenteditable="false">
+            CTA Centered
+        </p>
+        <a href="#" class="hero-button" role="button" aria-label="Call to action">
+            Button Text
+        </a>
+    </div>
+    
+</section>
+
+<!-- JavaScript for Video Handling -->
+<script>
+    // Hero Media Handler
+    const HeroMediaHandler = {
+        init() {
+            this.container = document.getElementById('heroMediaContainer');
+            this.hero = document.getElementById('heroATFCenter');
+            
+            // Check if media exists
+            const media = this.container.querySelector('img, video');
+            if (!media || media.tagName === 'DIV') {
+                // No real media, add no-media class for fallback gradient
+                this.hero.classList.add('no-media');
+            }
+            
+            // Handle video-specific functionality
+            const video = this.container.querySelector('video');
+            if (video) {
+                this.setupVideo(video);
+            }
+        },
+        
+        setupVideo(video) {
+            // Ensure video plays silently and loops
+            video.muted = true;
+            video.loop = true;
+            video.playsinline = true;
+            
+            // Auto-play handling with fallback
+            const playVideo = () => {
+                video.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                    // If autoplay fails, add play on user interaction
+                    document.addEventListener('click', () => {
+                        video.play();
+                    }, { once: true });
+                });
+            };
+            
+            // Start playing when video is ready
+            if (video.readyState >= 3) {
+                playVideo();
+            } else {
+                video.addEventListener('loadeddata', playVideo);
+            }
+            
+            // Optimize for mobile
+            if (window.matchMedia('(max-width: 767px)').matches) {
+                video.setAttribute('preload', 'metadata');
+            }
+        },
+        
+        // Method to dynamically change media
+        changeMedia(type, src, alt = '') {
+            this.container.innerHTML = '';
+            this.hero.classList.remove('no-media');
+            
+            if (type === 'image') {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = alt;
+                img.className = 'hero-media';
+                img.loading = 'eager';
+                this.container.appendChild(img);
+            } else if (type === 'video') {
+                const video = document.createElement('video');
+                video.className = 'hero-media';
+                video.autoplay = true;
+                video.muted = true;
+                video.loop = true;
+                video.playsinline = true;
+                
+                const source = document.createElement('source');
+                source.src = src;
+                source.type = 'video/mp4';
+                video.appendChild(source);
+                
+                this.container.appendChild(video);
+                this.setupVideo(video);
+            }
+        }
+    };
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => HeroMediaHandler.init());
+    } else {
+        HeroMediaHandler.init();
+    }
+</script>
+
+<!-- Usage Examples -->
+<!-- 
+To use with an image:
+1. Replace the placeholder div with:
+   <img src="../../assets/your-hero-image.jpg" alt="Hero background" class="hero-media" loading="eager">
+
+To use with a video:
+1. Replace the placeholder div with:
+   <video class="hero-media" autoplay muted loop playsinline>
+       <source src="../../assets/your-hero-video.mp4" type="video/mp4">
+       <source src="../../assets/your-hero-video.webm" type="video/webm">
+   </video>
+
+To dynamically change media via JavaScript:
+   HeroMediaHandler.changeMedia('image', '../../assets/new-image.jpg', 'New hero image');
+   HeroMediaHandler.changeMedia('video', '../../assets/new-video.mp4');
+
+To use without media (gradient only):
+1. Simply remove the img or video element, the component will detect this and show only the gradient
+-->
+
+</body>
+</html>

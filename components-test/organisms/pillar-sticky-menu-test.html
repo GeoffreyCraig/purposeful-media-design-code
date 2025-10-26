@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pillar Sticky Menu - Test Component</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    
+    <style>
+        /* Component Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        /**
+         * Component: Pillar Sticky Menu
+         * Type: Organism
+         * Description: Sticky navigation menu for Pillar pages with smooth scroll
+         *              and active section tracking
+         * 
+         * Dependencies:
+         * - Design Tokens (required)
+         * - Google Fonts: Lato
+         * 
+         * Usage:
+         * - Placed below hero section on Pillar pages
+         * - Sticks to top of viewport when scrolling
+         * - Desktop: Horizontal menu with separators
+         * - Mobile: Current section + "Get Started" button only
+         */
+        
+        /* ============================================
+           PILLAR STICKY MENU COMPONENT
+           ============================================ */
+        
+        .pillar-sticky-menu {
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--secondary-100, #eceeef);
+            border-bottom: 1px solid var(--accent-500, #d4af37);
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .pillar-sticky-menu.hidden {
+            transform: translateY(-100%);
+        }
+        
+        /* Desktop/Tablet Menu (768px+) */
+        .pillar-sticky-menu__desktop {
+            display: none;
+            padding: var(--space-1, 4px) var(--space-2, 8px);
+        }
+        
+        .pillar-sticky-menu__inner {
+            max-width: var(--container-max-width, 1920px);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            gap: var(--space-2, 8px);
+        }
+        
+        .pillar-sticky-menu__item {
+            color: var(--text-primary, #1b1464);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            font-size: 16px;
+            line-height: 24px;
+            padding: var(--space-2, 8px) var(--space-4, 16px);
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .pillar-sticky-menu__item:hover {
+            opacity: 0.8;
+        }
+        
+        .pillar-sticky-menu__item.active {
+            background: var(--accent-100, #faf5e6);
+            border-radius: var(--radius-medium, 8px);
+        }
+        
+        .pillar-sticky-menu__separator {
+            color: var(--text-primary, #1b1464);
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            font-size: 21px;
+            line-height: 30.5px;
+            user-select: none;
+        }
+        
+        .pillar-sticky-menu__start {
+            background: var(--accent-100, #faf5e6);
+            border-radius: var(--radius-medium, 8px);
+            padding: var(--space-2, 8px) var(--space-4, 16px);
+            color: var(--text-primary, #1b1464);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 27px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .pillar-sticky-menu__start:hover {
+            background: var(--accent-600, #b39226);
+            color: var(--text-reverse, #ffffff);
+        }
+        
+        /* Mobile Menu (767px and below) */
+        .pillar-sticky-menu__mobile {
+            display: none;
+            position: relative;
+        }
+        
+        .pillar-sticky-menu__mobile-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-3, 12px);
+            min-height: 60px;
+        }
+        
+        .pillar-sticky-menu__mobile-current {
+            background: var(--accent-100, #faf5e6);
+            border-radius: var(--radius-medium, 8px);
+            padding: var(--space-3, 12px) var(--space-4, 16px);
+            color: var(--text-primary, #1b1464);
+            text-transform: uppercase;
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            font-size: 16px;
+            line-height: 24px;
+            flex: 1;
+            margin-right: var(--space-2, 8px);
+        }
+        
+        .pillar-sticky-menu__mobile-start {
+            background: var(--accent-100, #faf5e6);
+            border: none;
+            border-radius: var(--radius-medium, 8px);
+            padding: var(--space-3, 12px) var(--space-4, 16px);
+            color: var(--text-primary, #1b1464);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            font-size: 16px;
+            line-height: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .pillar-sticky-menu__mobile-start:hover {
+            background: var(--accent-600, #b39226);
+            color: var(--text-reverse, #ffffff);
+        }
+        
+        /* Responsive Media Queries */
+        @media screen and (min-width: 768px) {
+            .pillar-sticky-menu__desktop {
+                display: block;
+            }
+            
+            .pillar-sticky-menu__mobile {
+                display: none;
+            }
+        }
+        
+        @media screen and (max-width: 767px) {
+            .pillar-sticky-menu__desktop {
+                display: none;
+            }
+            
+            .pillar-sticky-menu__mobile {
+                display: block;
+            }
+        }
+        
+        @media screen and (max-width: 380px) {
+            .pillar-sticky-menu__mobile-bar {
+                padding: var(--space-2, 8px);
+            }
+            
+            .pillar-sticky-menu__mobile-current {
+                font-size: 14px;
+                padding: var(--space-2, 8px) var(--space-3, 12px);
+            }
+            
+            .pillar-sticky-menu__mobile-start {
+                font-size: 14px;
+                padding: var(--space-2, 8px) var(--space-3, 12px);
+            }
+        }
+        
+        @media screen and (min-width: 1920px) {
+            .pillar-sticky-menu__inner {
+                padding: 0 var(--space-5, 20px);
+            }
+        }
+        
+        /* Demo Styles */
+        .demo-container {
+            padding: 40px 20px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        .breakpoint-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .breakpoint-header {
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .breakpoint-content {
+            background: #ffffff;
+            position: relative;
+            overflow-x: auto;
+        }
+        
+        /* Demo section content */
+        .demo-section-content {
+            padding: 80px 20px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; text-align: center; margin-bottom: 40px;">
+            Pillar Sticky Menu - Test Component
+        </h1>
+        
+        <!-- Component Info -->
+        <div style="background: #d4af37; color: white; padding: 20px; border-radius: 8px; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="margin-bottom: 10px;">Component Features:</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>Desktop:</strong> Full horizontal menu with 7 items + separators + "Get Started"</li>
+                <li><strong>Mobile:</strong> Simplified - Shows current section + "Get Started" button only</li>
+                <li><strong>Sticky Behavior:</strong> CSS position: sticky (scrolls naturally, then sticks)</li>
+                <li><strong>Active Tracking:</strong> Highlights current section based on scroll position</li>
+                <li><strong>Smooth Scroll:</strong> Animated scroll to sections with sticky menu offset</li>
+            </ul>
+        </div>
+        
+        <!-- Desktop Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Desktop (768px+)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Desktop View - Full horizontal menu with separators</div>
+                <div class="breakpoint-content" style="min-width: 1200px;">
+                    <!-- Component: Pillar Sticky Menu -->
+                    <!-- Type: Organism -->
+                    <!-- Usage: Sticky navigation for Pillar pages -->
+                    <nav class="pillar-sticky-menu" id="pillarStickyMenu" role="navigation" aria-label="Page sections navigation">
+                        <!-- Desktop/Tablet Menu -->
+                        <div class="pillar-sticky-menu__desktop">
+                            <div class="pillar-sticky-menu__inner">
+                                <a href="#overview" class="pillar-sticky-menu__item active" data-section="overview">Overview</a>
+                                <span class="pillar-sticky-menu__separator" aria-hidden="true">&gt;</span>
+                                <a href="#strategy" class="pillar-sticky-menu__item" data-section="strategy">Strategy</a>
+                                <span class="pillar-sticky-menu__separator" aria-hidden="true">&gt;</span>
+                                <a href="#method" class="pillar-sticky-menu__item" data-section="method">Method</a>
+                                <span class="pillar-sticky-menu__separator" aria-hidden="true">&gt;</span>
+                                <a href="#benefits" class="pillar-sticky-menu__item" data-section="benefits">Benefits</a>
+                                <span class="pillar-sticky-menu__separator" aria-hidden="true">&gt;</span>
+                                <a href="#resources" class="pillar-sticky-menu__item" data-section="resources">Resources</a>
+                                <span class="pillar-sticky-menu__separator" aria-hidden="true">&gt;</span>
+                                <a href="#faq" class="pillar-sticky-menu__item" data-section="faq">FAQ</a>
+                                <span class="pillar-sticky-menu__separator" aria-hidden="true">&gt;</span>
+                                <a href="#start" class="pillar-sticky-menu__start">Get Started</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Menu (Not visible on desktop) -->
+                        <div class="pillar-sticky-menu__mobile">
+                            <div class="pillar-sticky-menu__mobile-bar">
+                                <div class="pillar-sticky-menu__mobile-current" id="currentSectionMobile">Overview</div>
+                                <a href="#start" class="pillar-sticky-menu__mobile-start">Get Started</a>
+                            </div>
+                        </div>
+                    </nav>
+                    
+                    <div class="demo-section-content">
+                        <p>Scroll down to see sticky behavior (in full page implementation)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Mobile (≤767px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Mobile View - Current section + "Get Started" only</div>
+                <div class="breakpoint-content" style="width: 500px;">
+                    <nav class="pillar-sticky-menu" role="navigation" aria-label="Page sections navigation">
+                        <!-- Desktop Menu (Not visible on mobile) -->
+                        <div class="pillar-sticky-menu__desktop" style="display: none;">
+                            <!-- Desktop content hidden on mobile -->
+                        </div>
+                        
+                        <!-- Mobile Menu -->
+                        <div class="pillar-sticky-menu__mobile" style="display: block;">
+                            <div class="pillar-sticky-menu__mobile-bar">
+                                <div class="pillar-sticky-menu__mobile-current">Strategy</div>
+                                <a href="#start" class="pillar-sticky-menu__mobile-start">Get Started</a>
+                            </div>
+                        </div>
+                    </nav>
+                    
+                    <div class="demo-section-content">
+                        <p>Current section updates as you scroll</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Small Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Mobile Small (≤380px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Mobile Small View - Reduced padding and font sizes</div>
+                <div class="breakpoint-content" style="width: 360px;">
+                    <nav class="pillar-sticky-menu" role="navigation" aria-label="Page sections navigation">
+                        <div class="pillar-sticky-menu__mobile" style="display: block;">
+                            <div class="pillar-sticky-menu__mobile-bar">
+                                <div class="pillar-sticky-menu__mobile-current">Benefits</div>
+                                <a href="#start" class="pillar-sticky-menu__mobile-start">Get Started</a>
+                            </div>
+                        </div>
+                    </nav>
+                    
+                    <div class="demo-section-content">
+                        <p>Optimized for smaller screens</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Specifications -->
+        <div style="background: #f0f3fd; padding: 30px; border-radius: 8px; max-width: 1200px; margin: 40px auto 0;">
+            <h3 style="color: #1b1464; margin-bottom: 20px;">Technical Specifications</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Desktop Behavior</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>✅ 7 menu items with "&gt;" separators</li>
+                        <li>✅ "Get Started" button highlighted</li>
+                        <li>✅ Active section has light gold background</li>
+                        <li>✅ Hover states on all items</li>
+                        <li>✅ Smooth scroll with offset calculation</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Mobile Behavior</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>✅ Only shows current section name</li>
+                        <li>✅ "Get Started" button always visible</li>
+                        <li>✅ No dropdown menu (simplified UX)</li>
+                        <li>✅ Updates automatically on scroll</li>
+                        <li>✅ Reduced padding for small screens</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Sticky Behavior</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>✅ CSS position: sticky (no JS needed)</li>
+                        <li>✅ Appears below hero initially</li>
+                        <li>✅ Sticks to top when scrolling down</li>
+                        <li>✅ Z-index: 1000 (above content)</li>
+                        <li>✅ Shadow for depth perception</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">Menu Items</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>1. Overview</li>
+                        <li>2. Strategy</li>
+                        <li>3. Method</li>
+                        <li>4. Benefits</li>
+                        <li>5. Resources</li>
+                        <li>6. FAQ</li>
+                        <li>7. Get Started</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for Menu Functionality -->
+    <script>
+        /**
+         * Pillar Sticky Menu - JavaScript Functionality
+         * Handles active section tracking and smooth scrolling
+         */
+        (function() {
+            'use strict';
+            
+            // Elements
+            const stickyMenu = document.getElementById('pillarStickyMenu');
+            const currentSectionMobile = document.getElementById('currentSectionMobile');
+            
+            // All menu items
+            const desktopMenuItems = document.querySelectorAll('.pillar-sticky-menu__item[data-section]');
+            const startButtons = document.querySelectorAll('.pillar-sticky-menu__start, .pillar-sticky-menu__mobile-start');
+            
+            // Desktop menu smooth scroll
+            desktopMenuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        e.preventDefault();
+                        smoothScrollTo(targetSection);
+                    }
+                });
+            });
+            
+            // Get Started button smooth scroll
+            startButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const targetSection = document.getElementById('start');
+                    if (targetSection) {
+                        e.preventDefault();
+                        smoothScrollTo(targetSection);
+                    }
+                });
+            });
+            
+            // Smooth scroll helper function
+            function smoothScrollTo(target) {
+                if (!stickyMenu) return;
+                
+                const menuHeight = stickyMenu.offsetHeight;
+                const targetPosition = target.offsetTop - menuHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // Update active section on scroll
+            function updateActiveSection() {
+                const sections = document.querySelectorAll('section[id]');
+                if (sections.length === 0 || !stickyMenu) return;
+                
+                const scrollPosition = window.scrollY + stickyMenu.offsetHeight + 10;
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = sectionId;
+                    }
+                });
+                
+                // Default to first section if none matched
+                if (!currentSection && sections.length > 0) {
+                    currentSection = sections[0].getAttribute('id');
+                }
+                
+                // Update desktop menu active state
+                desktopMenuItems.forEach(item => {
+                    if (item.getAttribute('data-section') === currentSection) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Update mobile current section display
+                const sectionNames = {
+                    'overview': 'Overview',
+                    'strategy': 'Strategy',
+                    'method': 'Method',
+                    'benefits': 'Benefits',
+                    'resources': 'Resources',
+                    'faq': 'FAQ',
+                    'start': 'Get Started'
+                };
+                
+                if (currentSectionMobile && sectionNames[currentSection]) {
+                    currentSectionMobile.textContent = sectionNames[currentSection];
+                }
+            }
+            
+            // Scroll event listener with debounce
+            let scrollTimer = null;
+            window.addEventListener('scroll', function() {
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(updateActiveSection, 10);
+            });
+            
+            // Initialize
+            updateActiveSection();
+        })();
+    </script>
+</body>
+</html>
+

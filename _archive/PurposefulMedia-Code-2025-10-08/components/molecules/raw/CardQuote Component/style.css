@@ -1,0 +1,271 @@
+.card-quote,
+.card-quote * {
+  box-sizing: border-box;
+}
+.card-quote {
+  background: #ffffff;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  height: 600px;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.quote {
+  border-radius: 16px;
+  border-style: solid;
+  border-color: var(--secondary, #d4af37);
+  border-width: 1px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  box-shadow: var(
+    --shadow-standard-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.15)
+  );
+  overflow: hidden;
+}
+.quote2 {
+  padding: 29px 50px 29px 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 516px;
+  position: relative;
+  overflow: hidden;
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-SemiboldItalic", sans-serif;
+  font-size: 52px;
+  line-height: 78px;
+  font-weight: 600;
+  font-style: italic;
+  position: relative;
+  flex: 1;
+}
+/* variant styles */
+.card-quote.color-gray {
+  background: var(--secondary, #eceeef);
+}
+.card-quote.color-gray.size-large,
+.card-quote.color-reverse.size-large,
+.card-quote.color-default.purpose-testimonial.size-large {
+  align-self: stretch;
+}
+.card-quote.color-gray .content,
+.card-quote.color-reverse .content {
+  border-radius: 16px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  box-shadow: var(
+    --shadow-standard-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.15)
+  );
+  overflow: hidden;
+}
+.card-quote.purpose-pull-quote .content {
+  flex-direction: row;
+  gap: 10px;
+}
+.card-quote.color-gray.purpose-pull-quote.size-large .content,
+.card-quote.color-gray.purpose-pull-quote.size-medium .content {
+  border-color: var(--tertiary, #39cccc);
+}
+.card-quote.color-gray .quote,
+.card-quote.color-reverse .quote,
+.card-quote.color-default.size-mobile .quote {
+  border-radius: unset;
+  border-style: unset;
+  border-color: unset;
+  border-width: unset;
+  box-shadow: unset;
+}
+.card-quote.color-gray.purpose-pull-quote .quote,
+.card-quote.color-reverse.purpose-pull-quote .quote,
+.card-quote.color-default.purpose-pull-quote.size-mobile .quote,
+.card-quote.purpose-testimonial.size-large .quote {
+  padding: 29px 50px 29px 50px;
+  align-self: unset;
+}
+.card-quote.color-gray.size-large .quote,
+.card-quote.color-reverse.size-large .quote {
+  flex-shrink: 0;
+  width: 516px;
+  flex: unset;
+}
+.card-quote.color-reverse {
+  background: var(--brand, #1b1464);
+}
+.card-quote.color-reverse.purpose-pull-quote.size-large,
+.card-quote.color-reverse.purpose-pull-quote.size-medium {
+  box-shadow: var(
+    --shadow-strong-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.25)
+  );
+}
+.card-quote.color-reverse.purpose-pull-quote.size-large .content,
+.card-quote.color-reverse.purpose-pull-quote.size-medium .content {
+  border-color: var(--primary, #ffffff);
+}
+.card-quote.color-reverse
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+  color: var(--muted, #c7cbcf);
+}
+.card-quote.size-medium {
+  height: 400px;
+}
+.card-quote.color-default .content {
+  border-radius: 16px;
+  border-style: solid;
+  border-color: var(--secondary, #d4af37);
+  border-width: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  box-shadow: var(
+    --shadow-standard-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.15)
+  );
+  overflow: hidden;
+}
+.card-quote.color-default.size-medium .quote {
+  padding: 29px 50px 29px 50px;
+  border-radius: unset;
+  border-style: unset;
+  border-color: unset;
+  border-width: unset;
+  box-shadow: unset;
+}
+.card-quote.color-default.purpose-pull-quote.size-medium .quote {
+  align-self: unset;
+}
+.card-quote.size-medium
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+  font-size: 30px;
+  line-height: 45px;
+}
+.card-quote.size-mobile {
+  width: 320px;
+  height: 320px;
+}
+.card-quote.size-mobile
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit {
+  font-size: 24px;
+  line-height: 36px;
+}
+.card-quote.color-gray.size-mobile .content,
+.card-quote.color-reverse.size-mobile .content,
+.card-quote.color-gray.purpose-testimonial.size-medium .content,
+.card-quote.color-reverse.purpose-testimonial.size-medium .content {
+  border-color: var(--secondary, #d4af37);
+}
+.card-quote.purpose-testimonial .content {
+  flex-direction: column;
+}
+.card-quote.color-default.size-large .content,
+.card-quote.purpose-testimonial.size-medium .content {
+  gap: 10px;
+}
+.card-quote.color-default.purpose-testimonial .quote,
+.card-quote.color-gray.purpose-testimonial.size-mobile .quote,
+.card-quote.color-reverse.purpose-testimonial.size-mobile .quote {
+  flex-shrink: 0;
+  flex: unset;
+}
+.card-quote.color-default.purpose-testimonial.size-large .quote {
+  width: 516px;
+  border-radius: unset;
+  border-style: unset;
+  border-color: unset;
+  border-width: unset;
+  box-shadow: unset;
+}
+.card-quote.color-default .source,
+.card-quote.color-gray .source,
+.card-quote.color-reverse .source {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  position: relative;
+}
+.card-quote.size-large .source {
+  gap: 10px;
+  width: 327px;
+}
+.card-quote.color-default .paragraph-text-18-27-h,
+.card-quote.color-gray .paragraph-text-18-27-h {
+  color: var(--body, #51585e);
+  text-align: right;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.card-quote.color-gray.purpose-testimonial.size-large .content,
+.card-quote.color-reverse.purpose-testimonial.size-large .content {
+  border-color: var(--secondary, #d4af37);
+  gap: 10px;
+}
+.card-quote.color-reverse .paragraph-text-18-27-h {
+  color: var(--muted, #c7cbcf);
+  text-align: right;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.card-quote.size-medium .source {
+  padding: 0px 8px 0px 8px;
+  gap: 10px;
+  width: 327px;
+}
+.card-quote.color-gray.purpose-testimonial.size-medium .quote,
+.card-quote.color-reverse.purpose-testimonial.size-medium .quote {
+  padding: 29px 50px 29px 50px;
+  flex-shrink: 0;
+  flex: unset;
+}
+.card-quote.purpose-testimonial.size-mobile .content {
+  gap: 4px;
+}
+.card-quote.purpose-testimonial.size-mobile .quote {
+  padding: 20px 40px 20px 40px;
+}
+.card-quote.size-mobile .source {
+  padding: 0px 16px 0px 16px;
+  gap: 0px;
+  align-self: stretch;
+}

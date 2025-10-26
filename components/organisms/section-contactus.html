@@ -1,0 +1,182 @@
+<!-- Section/ContactUs - Contact Form Page Section Component -->
+<!-- Purposeful Media Design System - Organism Component -->
+<!-- 
+  USAGE: This component can be included directly in any page.
+  The CSS links below are required for proper styling.
+  If these styles are already loaded in your page template,
+  you can remove the duplicate links.
+-->
+
+<!-- Required Styles -->
+<link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+<link rel="stylesheet" href="../../styles/organisms-section-contactus.css">
+
+<!-- Google Fonts (if not already loaded) -->
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+<section class="section-contactus" data-component="Section/ContactUs">
+  <div class="section-container">
+    <div class="contact-form-wrapper">
+      
+      <!-- Form Title -->
+      <h2 class="form-title">Get in Touch</h2>
+      
+      <!-- Form Intro -->
+      <p class="form-intro">Ready to transform your marketing? Tell us what's on your mind.</p>
+      
+      <!-- Contact Form -->
+      <form class="contact-form" id="contact-form">
+        
+        <!-- Name Fields Row -->
+        <div class="form-row name-row">
+          <!-- First Name -->
+          <div class="form-field">
+            <label for="first-name" class="form-label">First Name</label>
+            <input type="text" 
+                   id="first-name" 
+                   name="firstName" 
+                   class="form-input" 
+                   placeholder=""
+                   aria-describedby="first-name-help">
+            <span id="first-name-help" class="form-help">How do you prefer to be addressed?</span>
+          </div>
+          
+          <!-- Last Name -->
+          <div class="form-field">
+            <label for="last-name" class="form-label">Last Name</label>
+            <input type="text" 
+                   id="last-name" 
+                   name="lastName" 
+                   class="form-input" 
+                   placeholder=""
+                   aria-describedby="last-name-help">
+            <span id="last-name-help" class="form-help">What is your last name?</span>
+          </div>
+        </div>
+        
+        <!-- Email Field -->
+        <div class="form-field">
+          <label for="email" class="form-label">Email Address<span class="required">*</span></label>
+          <input type="email" 
+                 id="email" 
+                 name="email" 
+                 class="form-input" 
+                 placeholder=""
+                 required
+                 aria-required="true"
+                 aria-describedby="email-help">
+          <span id="email-help" class="form-help">*This field is required.</span>
+        </div>
+        
+        <!-- Phone Field -->
+        <div class="form-field form-field--phone">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" 
+                 id="phone" 
+                 name="phone" 
+                 class="form-input" 
+                 placeholder=""
+                 aria-describedby="phone-help">
+          <span id="phone-help" class="form-help">What is your contact phone number?</span>
+        </div>
+        
+        <!-- Company Field -->
+        <div class="form-field">
+          <label for="company" class="form-label">Company</label>
+          <input type="text" 
+                 id="company" 
+                 name="company" 
+                 class="form-input" 
+                 placeholder=""
+                 aria-describedby="company-help">
+          <span id="company-help" class="form-help">What is your company?</span>
+        </div>
+        
+        <!-- Message Field -->
+        <div class="form-field form-field--message">
+          <label for="message" class="form-label">Your Message</label>
+          <textarea id="message" 
+                    name="message" 
+                    class="form-textarea" 
+                    rows="4"
+                    placeholder=""
+                    aria-describedby="message-help"></textarea>
+          <span id="message-help" class="form-help">Please write your message</span>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">
+            <span class="btn-text">Send Message</span>
+          </button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript for Form Handling -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact-form');
+  
+  if (form) {
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      
+      // Basic validation
+      if (!data.email) {
+        showError('Please enter your email address');
+        return;
+      }
+      
+      // Here you would integrate with your backend or email service
+      console.log('Form submitted:', data);
+      
+      // For now, just show a success message
+      showSuccess('Thank you for your message! We\'ll get back to you soon.');
+      
+      // Reset form
+      form.reset();
+    });
+    
+    // Add input focus/blur handlers for better UX
+    const inputs = form.querySelectorAll('.form-input, .form-textarea');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.classList.add('is-focused');
+      });
+      
+      input.addEventListener('blur', function() {
+        this.parentElement.classList.remove('is-focused');
+        if (this.value) {
+          this.parentElement.classList.add('has-value');
+        } else {
+          this.parentElement.classList.remove('has-value');
+        }
+      });
+      
+      // Check for existing values on load
+      if (input.value) {
+        input.parentElement.classList.add('has-value');
+      }
+    });
+  }
+  
+  function showError(message) {
+    // You can implement a toast notification here
+    alert(message);
+  }
+  
+  function showSuccess(message) {
+    // You can implement a success toast here
+    alert(message);
+  }
+});
+</script>

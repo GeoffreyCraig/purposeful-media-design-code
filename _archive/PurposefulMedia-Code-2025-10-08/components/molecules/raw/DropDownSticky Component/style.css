@@ -1,0 +1,167 @@
+.drop-down-sticky,
+.drop-down-sticky * {
+  box-sizing: border-box;
+}
+.drop-down-sticky {
+  background: var(--secondary, #eceeef);
+  padding: var(--space-4, 16px) var(--space-2, 8px) var(--space-4, 16px)
+    var(--space-2, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.drop-down {
+  border-style: solid;
+  border-color: var(--accent, #d4af37);
+  border-width: 2px 0px 0px 0px;
+  padding: 0px var(--space-16, 64px) 0px var(--space-8, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.sticky-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.overview {
+  padding: var(--space-3, 12px) 0px var(--space-3, 12px) 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.h-6 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.strategy {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.method {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.benefits {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.resources {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.faq {
+  padding: var(--space-3, 12px) var(--space-0, 0px) var(--space-3, 12px)
+    var(--space-0, 0px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.get-started {
+  background: var(--50, #faf5e6);
+  border-radius: var(--space-2, 8px);
+  padding: var(--space-3, 12px) var(--space-2, 8px) var(--space-3, 12px)
+    var(--space-2, 8px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.h-5 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+/* variant styles */
+.drop-down-sticky.current-section-overview .h-6,
+.drop-down-sticky.current-section-get-started .h-5 {
+  color: var(--activesimple, #b39226);
+}
+.drop-down-sticky.current-section-overview .h-62 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.drop-down-sticky.current-section-strategy .h-62,
+.drop-down-sticky.current-section-method .h-62,
+.drop-down-sticky.current-section-benefits .h-62,
+.drop-down-sticky.current-section-resources .h-62,
+.drop-down-sticky.current-section-faq .h-62 {
+  color: var(--activesimple, #b39226);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}

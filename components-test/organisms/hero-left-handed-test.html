@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Left-Handed Hero Section - Test Component</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    
+    <style>
+        /**
+         * Component: Left-Handed Hero
+         * Type: Organism
+         * Description: Hero section with left-aligned CTA and diagonal gradient background
+         *              from accent gold (top right) to primary blue (bottom left)
+         * 
+         * Dependencies:
+         * - Design Tokens (required)
+         * - Google Fonts: Lato, Open Sans
+         * 
+         * Usage:
+         * - Used on Blog page template
+         * - Fixed-image ATF with CTA floating above
+         * - Diagonal gradient background
+         */
+        
+        /* Component Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        /* ============================================
+           LEFT-HANDED HERO SECTION
+           ============================================ */
+        
+        .hero-left-handed {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(
+                135deg,
+                var(--color-accent-500, #d4af37) 0%,
+                var(--color-primary-700, #1b1464) 100%
+            );
+            border-bottom: 4px solid var(--color-accent-500, #d4af37);
+            overflow: hidden;
+        }
+        
+        /* Outer wrapper for DesktopPlus centering */
+        .hero-left-handed__outer {
+            width: 100%;
+            background-color: #ECEEEF;
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Image Container */
+        .hero-left-handed__image-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        
+        .hero-left-handed__image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        
+        /* CTA Section - Absolutely Positioned */
+        .hero-left-handed__cta {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-4, 16px);
+            text-align: left;
+            background: rgba(27, 20, 100, 0.85);
+            padding: var(--space-6, 24px);
+            border-radius: var(--radius-medium, 8px);
+            max-width: 600px;
+        }
+        
+        .hero-left-handed__headline {
+            color: var(--text-reverse, #ffffff);
+            font-family: var(--font-primary, 'Lato'), sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .hero-left-handed__text {
+            color: var(--text-reverse, #ffffff);
+            font-family: var(--font-secondary, 'Open Sans'), sans-serif;
+            font-weight: 400;
+            margin: 0;
+        }
+        
+        /* Button - Secondary Style */
+        .hero-left-handed__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #D4AF37;
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid #D4AF37;
+            border-radius: 4px;
+            padding: 16px 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .hero-left-handed__button:hover:not(:disabled) {
+            background-color: #E4CD82;
+            border-color: #E4CD82;
+        }
+        
+        .hero-left-handed__button:active:not(:disabled) {
+            background-color: #B39226;
+            border-color: #B39226;
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .hero-left-handed__image-wrapper {
+                padding: 0; /* Full bleed on mobile */
+            }
+            
+            .hero-left-handed__cta {
+                top: 50%;
+                left: 24px;
+                transform: translateY(-50%);
+                padding: var(--space-3, 12px);
+                max-width: calc(100% - 48px);
+            }
+            
+            .hero-left-handed__headline {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .hero-left-handed__text {
+                font-size: 14px;
+                line-height: 21px;
+            }
+            
+            .hero-left-handed__button {
+                font-size: 14px;
+                padding: 12px 20px;
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .hero-left-handed__image-wrapper {
+                padding: 12px 40px 64px 40px;
+            }
+            
+            .hero-left-handed__cta {
+                top: 50%;
+                left: 48px;
+                transform: translateY(-50%);
+                padding: var(--space-4, 16px);
+            }
+            
+            .hero-left-handed__headline {
+                font-size: 30px;
+                line-height: 45px;
+            }
+            
+            .hero-left-handed__text {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            
+            .hero-left-handed__button {
+                font-size: 16px;
+                padding: 16px 24px;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .hero-left-handed__image-wrapper {
+                padding: 16px 40px 80px 40px;
+            }
+            
+            .hero-left-handed__cta {
+                top: 50%;
+                left: 240px;
+                transform: translateY(-50%);
+            }
+            
+            .hero-left-handed__headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .hero-left-handed__text {
+                font-size: 21px;
+                line-height: 31.5px;
+            }
+            
+            .hero-left-handed__button {
+                font-size: 18px;
+                padding: 16px 24px;
+            }
+        }
+        
+        /* DesktopPlus: 1920px and above */
+        @media (min-width: 1920px) {
+            .hero-left-handed__outer {
+                background-color: #ECEEEF;
+            }
+            
+            .hero-left-handed {
+                width: 1920px;
+                max-width: 1920px;
+            }
+            
+            .hero-left-handed__image-wrapper {
+                padding: 16px 40px 80px 40px;
+            }
+            
+            .hero-left-handed__cta {
+                top: 50%;
+                left: 240px;
+                transform: translateY(-50%);
+            }
+            
+            .hero-left-handed__headline {
+                font-size: 48px;
+                line-height: 72px;
+            }
+            
+            .hero-left-handed__text {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .hero-left-handed__button {
+                font-size: 21px;
+                padding: 20px 32px;
+            }
+        }
+        
+        /* Demo Styles */
+        .demo-container {
+            padding: 40px 20px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        .breakpoint-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .breakpoint-header {
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .breakpoint-content {
+            background: #ffffff;
+            position: relative;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; text-align: center; margin-bottom: 40px;">
+            Left-Handed Hero Section - Test Component
+        </h1>
+        
+        <!-- Component Info -->
+        <div style="background: #d4af37; color: white; padding: 20px; border-radius: 8px; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="margin-bottom: 10px;">Component Features:</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>Diagonal Gradient:</strong> Gold (top right) → Navy Blue (bottom left)</li>
+                <li><strong>Left-Aligned CTA:</strong> Positioned left with responsive offsets</li>
+                <li><strong>CTA Structure:</strong> Headline → Text → Secondary Button</li>
+                <li><strong>Centered Vertically:</strong> CTA centered for height at all breakpoints</li>
+                <li><strong>Accessibility:</strong> Full keyboard navigation, ARIA labels, focus states</li>
+            </ul>
+        </div>
+        
+        <!-- DesktopPlus Demo -->
+        <div class="demo-section">
+            <div class="demo-label">DesktopPlus (1920px+)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">DesktopPlus View - 1920px+</div>
+                <div class="breakpoint-content" style="min-width: 1920px;">
+                    <!-- Component: Left-Handed Hero -->
+                    <!-- Type: Organism -->
+                    <!-- Usage: Hero section for Blog page with left-aligned CTA -->
+                    <div class="hero-left-handed__outer">
+                        <section class="hero-left-handed" aria-label="Page Hero Section">
+                            <!-- Image Section -->
+                            <div class="hero-left-handed__image-wrapper">
+                                <img 
+                                    src="../../assets/images/shutterstock_538184980.jpg" 
+                                    alt="Blog Hero Image" 
+                                    class="hero-left-handed__image"
+                                    loading="eager"
+                                >
+                                
+                                <!-- CTA Section - Absolutely Positioned Over Image -->
+                                <div class="hero-left-handed__cta">
+                                    <h1 class="hero-left-handed__headline">
+                                        Insights & Strategies
+                                    </h1>
+                                    <p class="hero-left-handed__text">
+                                        Expert perspectives on B2B marketing, content strategy, and digital growth.
+                                    </p>
+                                    <a 
+                                        href="#blog-posts" 
+                                        class="hero-left-handed__button" 
+                                        role="button"
+                                        aria-label="Scroll to Blog Posts section"
+                                    >
+                                        Explore Articles
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Desktop Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Desktop (1150-1919px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Desktop View - 1150-1919px</div>
+                <div class="breakpoint-content" style="width: 1400px;">
+                    <section class="hero-left-handed" aria-label="Page Hero Section">
+                        <div class="hero-left-handed__image-wrapper">
+                            <img 
+                                src="../../assets/images/shutterstock_538184980.jpg" 
+                                alt="Blog Hero Image" 
+                                class="hero-left-handed__image"
+                                loading="eager"
+                            >
+                            
+                            <!-- CTA Section - Absolutely Positioned Over Image -->
+                            <div class="hero-left-handed__cta">
+                                <h1 class="hero-left-handed__headline">
+                                    Marketing Insights
+                                </h1>
+                                <p class="hero-left-handed__text">
+                                    Stay informed with the latest B2B marketing strategies and best practices.
+                                </p>
+                                <a href="#blog-posts" class="hero-left-handed__button" role="button">
+                                    Explore Articles
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tablet Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Tablet (768-1149px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Tablet View - 768-1149px</div>
+                <div class="breakpoint-content" style="width: 900px;">
+                    <section class="hero-left-handed" aria-label="Page Hero Section">
+                        <div class="hero-left-handed__image-wrapper">
+                            <img 
+                                src="../../assets/images/shutterstock_538184980.jpg" 
+                                alt="Blog Hero Image" 
+                                class="hero-left-handed__image"
+                                loading="eager"
+                            >
+                            
+                            <!-- CTA Section - Absolutely Positioned Over Image -->
+                            <div class="hero-left-handed__cta">
+                                <h2 class="hero-left-handed__headline">
+                                    Latest Articles
+                                </h2>
+                                <p class="hero-left-handed__text">
+                                    Expert insights on marketing strategy and execution.
+                                </p>
+                                <a href="#blog-posts" class="hero-left-handed__button" role="button">
+                                    Explore Articles
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Mobile (380-767px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Mobile View - 380-767px</div>
+                <div class="breakpoint-content" style="width: 500px;">
+                    <section class="hero-left-handed" aria-label="Page Hero Section">
+                        <div class="hero-left-handed__image-wrapper">
+                            <img 
+                                src="../../assets/images/shutterstock_538184980.jpg" 
+                                alt="Blog Hero Image" 
+                                class="hero-left-handed__image"
+                                loading="eager"
+                            >
+                            
+                            <!-- CTA Section - Absolutely Positioned Over Image -->
+                            <div class="hero-left-handed__cta">
+                                <h3 class="hero-left-handed__headline">
+                                    Our Blog
+                                </h3>
+                                <p class="hero-left-handed__text">
+                                    Marketing insights and strategies.
+                                </p>
+                                <a href="#blog-posts" class="hero-left-handed__button" role="button">
+                                    Read Now
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Specifications -->
+        <div style="background: #f0f3fd; padding: 30px; border-radius: 8px; max-width: 1200px; margin: 40px auto 0;">
+            <h3 style="color: #1b1464; margin-bottom: 20px;">Technical Specifications</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">📱 Mobile (380-767px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>CTA Left: 24px</li>
+                        <li>Headline: 24px/36px</li>
+                        <li>Text: 14px/21px</li>
+                        <li>Button: 14px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">📱 Tablet (768-1149px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>CTA Left: 48px</li>
+                        <li>Headline: 30px/45px</li>
+                        <li>Text: 16px/24px</li>
+                        <li>Button: 16px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">💻 Desktop (1150-1919px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>CTA Left: 240px</li>
+                        <li>Headline: 36px/54px</li>
+                        <li>Text: 21px/31.5px</li>
+                        <li>Button: 18px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">🖥️ DesktopPlus (1920px+)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>CTA Left: 240px</li>
+                        <li>Headline: 48px/72px</li>
+                        <li>Text: 24px/36px</li>
+                        <li>Button: 21px</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

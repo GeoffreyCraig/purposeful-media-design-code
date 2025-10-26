@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purposeful Media - Card Component</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/tokens/unified-design-tokens.css">
+    <link rel="stylesheet" href="../../styles/utilities/utility-classes.css">
+    <style>
+        /* ===== CARD COMPONENT SYSTEM ===== */
+        .card {
+            /* Base Card Styles */
+            background: var(--bg-primary);
+            border-radius: var(--card-border-radius);
+            padding: var(--card-padding);
+            box-shadow: var(--card-shadow);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            width: 100%;
+            max-width: 100%;
+            
+            /* Focus Management */
+            outline: none;
+        }
+        
+        .card:focus-visible {
+            outline: var(--focus-ring-width) solid var(--focus-ring-color);
+            outline-offset: var(--focus-ring-offset);
+        }
+        
+        /* ===== CARD VARIANTS ===== */
+        /* Blog Post Card */
+        .card--blog {
+            border: var(--border-default);
+        }
+        
+        .card--blog:hover {
+            background: var(--bg-secondary);
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-2px);
+        }
+        
+        /* Resource Card */
+        .card--resource {
+            border: var(--border-accent);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+        
+        .card--resource:hover {
+            box-shadow: var(--shadow-strong);
+            transform: translateY(-4px);
+        }
+        
+        /* Stats Card */
+        .card--stats {
+            background: var(--gradient-brand);
+            color: var(--text-reverse);
+            text-align: center;
+            border: none;
+        }
+        
+        .card--stats:hover {
+            background: linear-gradient(135deg, var(--active) 0%, var(--hover) 100%);
+            transform: scale(1.02);
+        }
+        
+        /* Quote Card */
+        .card--quote {
+            border-left: var(--border-primary);
+            background: var(--bg-secondary);
+            font-style: italic;
+        }
+        
+        .card--quote:hover {
+            border-left-color: var(--accent);
+            background: var(--bg-primary);
+        }
+        
+        /* Teaser Card */
+        .card--teaser {
+            border: var(--border-thin) solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card--teaser::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .card--teaser:hover::before {
+            background: var(--hover-light);
+        }
+        
+        /* ===== CARD SIZES ===== */
+        .card--small {
+            padding: var(--space-3);
+            gap: var(--space-2);
+        }
+        
+        .card--medium {
+            padding: var(--space-4);
+            gap: var(--space-3);
+        }
+        
+        .card--large {
+            padding: var(--space-6);
+            gap: var(--space-4);
+        }
+        
+        /* ===== CARD SECTIONS ===== */
+        .card__header {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
+        
+        .card__title {
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-bold);
+            color: var(--heading);
+            line-height: var(--line-height-heading);
+            font-size: var(--text-h4);
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .card__meta {
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-regular);
+            color: var(--text-secondary);
+            font-size: var(--text-small);
+            line-height: var(--line-height-body);
+        }
+        
+        .card__content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        
+        .card__excerpt {
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-regular);
+            color: var(--text-primary);
+            font-size: var(--text-body);
+            line-height: var(--line-height-body);
+            margin: 0;
+        }
+        
+        .card__read-more {
+            color: var(--hover);
+            font-weight: var(--weight-bold);
+            text-decoration: none;
+            font-size: var(--text-body);
+            transition: color var(--transition-fast);
+        }
+        
+        .card__read-more:hover {
+            color: var(--brand);
+            text-decoration: underline;
+        }
+        
+        .card__footer {
+            margin-top: auto;
+            padding-top: var(--space-3);
+            border-top: var(--border-default);
+        }
+        
+        .card__actions {
+            display: flex;
+            gap: var(--space-2);
+            justify-content: flex-end;
+        }
+        
+        /* ===== CARD STATES ===== */
+        .card--disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .card--disabled:hover {
+            transform: none;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .card--loading {
+            position: relative;
+        }
+        
+        .card--loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: card-shimmer 1.5s infinite;
+        }
+        
+        @keyframes card-shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* ===== CARD GRID SYSTEM ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            width: 100%;
+        }
+        
+        .card-grid--2-cols {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .card-grid--3-cols {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .card-grid--4-cols {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        /* ===== RESPONSIVE BEHAVIOR ===== */
+        @media (max-width: 767px) {
+            .card {
+                padding: var(--space-3);
+                gap: var(--space-2);
+            }
+            
+            .card__title {
+                font-size: var(--text-h5);
+            }
+            
+            .card__excerpt {
+                font-size: var(--text-body-mobile);
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
+            }
+            
+            .card-grid--2-cols,
+            .card-grid--3-cols,
+            .card-grid--4-cols {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .card-grid--3-cols,
+            .card-grid--4-cols {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .card {
+                background: white !important;
+                color: black !important;
+                border: 1px solid black !important;
+                box-shadow: none !important;
+                break-inside: avoid;
+                margin-bottom: var(--space-4);
+            }
+            
+            .card:hover {
+                transform: none !important;
+            }
+        }
+        
+        /* ===== DEMO STYLES ===== */
+        .demo-section {
+            margin-bottom: var(--space-8);
+            padding: var(--space-6);
+            border: var(--border-default);
+            border-radius: var(--radius-medium);
+            background: var(--bg-secondary);
+        }
+        
+        .demo-title {
+            color: var(--heading);
+            font-family: var(--font-primary), var(--font-fallback);
+            font-weight: var(--weight-bold);
+            font-size: var(--text-h3);
+            margin-bottom: var(--space-4);
+        }
+        
+        .demo-label {
+            font-size: var(--text-small);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2);
+            font-weight: var(--weight-bold);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: var(--space-8);">
+        <h1 class="text-h1 text-center mb-8">Card Component System</h1>
+        <p class="text-body text-center mb-8">Purposeful Media Design System - Refactored Card Components</p>
+
+        <!-- Blog Card Examples -->
+        <section class="demo-section">
+            <h2 class="demo-title">Blog Post Cards</h2>
+            <div class="demo-label">Standard blog post layout with title, meta, and excerpt</div>
+            <div class="card-grid card-grid--2-cols">
+                <article class="card card--blog card--medium">
+                    <header class="card__header">
+                        <h3 class="card__title">Strategic Marketing for Small Businesses</h3>
+                        <div class="card__meta">Category: Email Marketing | Date: July 17, 2025 | Author: Purposeful Media</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique...
+                        </p>
+                        <a href="#" class="card__read-more">[Read more]</a>
+                    </div>
+                </article>
+                
+                <article class="card card--blog card--medium">
+                    <header class="card__header">
+                        <h3 class="card__title">Building Brand Awareness Through Content</h3>
+                        <div class="card__meta">Category: Content Strategy | Date: July 15, 2025 | Author: Purposeful Media</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">
+                            Discover how to create compelling content that resonates with your audience and builds lasting brand awareness. Learn the key strategies that successful brands use...
+                        </p>
+                        <a href="#" class="card__read-more">[Read more]</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Resource Cards -->
+        <section class="demo-section">
+            <h2 class="demo-title">Resource Cards</h2>
+            <div class="demo-label">Resource and download cards with accent styling</div>
+            <div class="card-grid card-grid--3-cols">
+                <div class="card card--resource card--medium">
+                    <header class="card__header">
+                        <h3 class="card__title">Marketing Playbook</h3>
+                        <div class="card__meta">PDF Download • 24 pages</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">
+                            Complete guide to modern marketing strategies for growing businesses.
+                        </p>
+                    </div>
+                    <footer class="card__footer">
+                        <div class="card__actions">
+                            <button class="btn btn--primary btn--small">Download</button>
+                        </div>
+                    </footer>
+                </div>
+                
+                <div class="card card--resource card--medium">
+                    <header class="card__header">
+                        <h3 class="card__title">ROI Calculator</h3>
+                        <div class="card__meta">Interactive Tool</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">
+                            Calculate your marketing return on investment with our comprehensive tool.
+                        </p>
+                    </div>
+                    <footer class="card__footer">
+                        <div class="card__actions">
+                            <button class="btn btn--accent btn--small">Launch Tool</button>
+                        </div>
+                    </footer>
+                </div>
+                
+                <div class="card card--resource card--medium">
+                    <header class="card__header">
+                        <h3 class="card__title">Case Study Template</h3>
+                        <div class="card__meta">Word Document • Template</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">
+                            Professional template for creating compelling case studies.
+                        </p>
+                    </div>
+                    <footer class="card__footer">
+                        <div class="card__actions">
+                            <button class="btn btn--outline btn--small">Get Template</button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Cards -->
+        <section class="demo-section">
+            <h2 class="demo-title">Statistics Cards</h2>
+            <div class="demo-label">Highlight key metrics and achievements</div>
+            <div class="card-grid card-grid--4-cols">
+                <div class="card card--stats card--small">
+                    <div class="card__content">
+                        <div class="text-h1 mb-2">150+</div>
+                        <div class="text-body">Happy Clients</div>
+                    </div>
+                </div>
+                
+                <div class="card card--stats card--small">
+                    <div class="card__content">
+                        <div class="text-h1 mb-2">98%</div>
+                        <div class="text-body">Success Rate</div>
+                    </div>
+                </div>
+                
+                <div class="card card--stats card--small">
+                    <div class="card__content">
+                        <div class="text-h1 mb-2">5+</div>
+                        <div class="text-body">Years Experience</div>
+                    </div>
+                </div>
+                
+                <div class="card card--stats card--small">
+                    <div class="card__content">
+                        <div class="text-h1 mb-2">24/7</div>
+                        <div class="text-body">Support</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Cards -->
+        <section class="demo-section">
+            <h2 class="demo-title">Quote Cards</h2>
+            <div class="demo-label">Testimonials and inspirational quotes</div>
+            <div class="card-grid">
+                <blockquote class="card card--quote card--large">
+                    <div class="card__content">
+                        <p class="card__excerpt">
+                            "Purposeful Media transformed our marketing approach completely. Their strategic thinking and attention to detail helped us achieve 300% growth in just 6 months."
+                        </p>
+                        <cite class="text-small text-muted mt-3">
+                            — Sarah Johnson, CEO at TechStart Inc.
+                        </cite>
+                    </div>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Teaser Cards -->
+        <section class="demo-section">
+            <h2 class="demo-title">Teaser Cards</h2>
+            <div class="demo-label">Preview content with prominent call-to-action</div>
+            <div class="card-grid card-grid--2-cols">
+                <div class="card card--teaser card--medium">
+                    <header class="card__header">
+                        <h3 class="card__title">Free Marketing Audit</h3>
+                        <div class="card__meta">Limited Time Offer</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">
+                            Get a comprehensive analysis of your current marketing efforts and discover opportunities for improvement.
+                        </p>
+                    </div>
+                    <footer class="card__footer">
+                        <div class="card__actions">
+                            <button class="btn btn--primary btn--medium">Claim Your Audit</button>
+                        </div>
+                    </footer>
+                </div>
+                
+                <div class="card card--teaser card--medium">
+                    <header class="card__header">
+                        <h3 class="card__title">Schedule Consultation</h3>
+                        <div class="card__meta">30-minute Discovery Call</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">
+                            Book a free consultation to discuss your marketing goals and how we can help you achieve them.
+                        </p>
+                    </div>
+                    <footer class="card__footer">
+                        <div class="card__actions">
+                            <button class="btn btn--accent btn--medium">Book Now</button>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </section>
+
+        <!-- Card States -->
+        <section class="demo-section">
+            <h2 class="demo-title">Card States</h2>
+            <div class="demo-label">Loading, disabled, and interactive states</div>
+            <div class="card-grid card-grid--3-cols">
+                <div class="card card--blog card--medium">
+                    <header class="card__header">
+                        <h3 class="card__title">Normal State</h3>
+                        <div class="card__meta">Interactive and ready</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">This card is in its normal interactive state.</p>
+                    </div>
+                </div>
+                
+                <div class="card card--blog card--medium card--loading">
+                    <header class="card__header">
+                        <h3 class="card__title">Loading State</h3>
+                        <div class="card__meta">Content loading...</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">This card shows a loading animation.</p>
+                    </div>
+                </div>
+                
+                <div class="card card--blog card--medium card--disabled">
+                    <header class="card__header">
+                        <h3 class="card__title">Disabled State</h3>
+                        <div class="card__meta">Not available</div>
+                    </header>
+                    <div class="card__content">
+                        <p class="card__excerpt">This card is disabled and non-interactive.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Card click handlers
+            const cards = document.querySelectorAll('.card:not(.card--disabled)');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking on buttons or links
+                    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') {
+                        return;
+                    }
+                    
+                    console.log('Card clicked:', this.querySelector('.card__title')?.textContent);
+                });
+                
+                // Make cards focusable for keyboard navigation
+                card.setAttribute('tabindex', '0');
+                
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+            
+            // Read more link handlers
+            const readMoreLinks = document.querySelectorAll('.card__read-more');
+            readMoreLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    alert('Read more clicked for: ' + this.closest('.card').querySelector('.card__title').textContent);
+                });
+            });
+            
+            // Button handlers in cards
+            const cardButtons = document.querySelectorAll('.card .btn');
+            cardButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const cardTitle = this.closest('.card').querySelector('.card__title').textContent;
+                    const buttonText = this.textContent.trim();
+                    alert(`${buttonText} clicked for: ${cardTitle}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

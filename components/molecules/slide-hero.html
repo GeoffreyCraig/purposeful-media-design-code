@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide/Hero Component</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-slides.css">
+    
+    <style>
+        /* Component-specific styles for Slide/Hero */
+        .slide-hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--neutral-200, #eceeef);
+        }
+        
+        /* Video/Image Port */
+        .hero-video-port {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-video-port video,
+        .hero-video-port img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Hero Gradient Overlay */
+        .hero-gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(27, 20, 100, 0.2) 0%,
+                rgba(255, 255, 255, 0.2) 100%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Content Overlay (for text/buttons if needed) */
+        .hero-content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .slide-hero-container[data-show-content="true"] .hero-content-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* Hero Text Content */
+        .hero-title {
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            font-size: 48px;
+            line-height: 1.2;
+            color: var(--white, #ffffff);
+            text-align: center;
+            margin: 0 0 20px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-body, 'Open Sans'), sans-serif;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 1.5;
+            color: var(--white, #ffffff);
+            text-align: center;
+            margin: 0 0 40px 0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+        }
+        
+        .hero-cta-button {
+            padding: 16px 32px;
+            background: var(--primary-700, #1b1464);
+            color: var(--white, #ffffff);
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-body, 'Open Sans'), sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-cta-button:hover {
+            background: var(--primary-600, #1740b0);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(27, 20, 100, 0.3);
+        }
+        
+        /* Breakpoint-specific heights */
+        .slide-hero-container[data-breakpoint="desktopplus"] {
+            height: 100vh;
+            min-height: 720px;
+            max-height: 1080px;
+        }
+        
+        .slide-hero-container[data-breakpoint="desktop"] {
+            height: 647px;
+        }
+        
+        .slide-hero-container[data-breakpoint="tablet"] {
+            height: 432px;
+        }
+        
+        .slide-hero-container[data-breakpoint="mobile"] {
+            height: 285px;
+        }
+        
+        /* States */
+        .hero-video-port[data-state="loading"] {
+            background: var(--neutral-200, #eceeef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-video-port[data-state="error"] {
+            background: var(--error-100, #fee2e2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-video-port[data-state="ready"] {
+            background: transparent;
+        }
+        
+        /* Loading Animation */
+        .hero-loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--neutral-300, #a2a9af);
+            border-top-color: var(--primary-500, #1d50de);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Error Icon */
+        .hero-error-icon {
+            width: 60px;
+            height: 60px;
+            color: var(--error-500, #ef4444);
+        }
+        
+        /* Play Button Overlay (for video heroes) */
+        .hero-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3;
+            border: none;
+        }
+        
+        .hero-play-button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-play-button svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--primary-700, #1b1464);
+            margin-left: 4px; /* Visual centering for play icon */
+        }
+        
+        .slide-hero-container[data-playing="true"] .hero-play-button {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 767px) {
+            /* Mobile */
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+                margin-bottom: 24px;
+            }
+            
+            .hero-cta-button {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+            
+            .hero-content-overlay {
+                padding: 20px;
+            }
+            
+            .hero-play-button {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .hero-play-button svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            /* Tablet */
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .hero-subtitle {
+                font-size: 20px;
+            }
+            
+            .hero-content-overlay {
+                padding: 30px;
+            }
+        }
+        
+        /* Parallax Effect */
+        .hero-parallax {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        /* Ken Burns Effect for Images */
+        @keyframes kenburns {
+            0% {
+                transform: scale(1) translateX(0) translateY(0);
+            }
+            100% {
+                transform: scale(1.1) translateX(-20px) translateY(-10px);
+            }
+        }
+        
+        .hero-kenburns img {
+            animation: kenburns 20s ease-out infinite alternate;
+        }
+        
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-content-overlay.animated > * {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .hero-content-overlay.animated > *:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .hero-content-overlay.animated > *:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .hero-content-overlay.animated > *:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Demo Container -->
+    <div style="padding: 40px; background: #f5f5f5;">
+        <h1 style="margin-bottom: 40px; font-family: 'Lato', sans-serif;">Slide/Hero Component</h1>
+        
+        <!-- Controls -->
+        <div style="margin-bottom: 20px; padding: 20px; background: white; border-radius: 8px;">
+            <h3>Controls</h3>
+            <label>Breakpoint: 
+                <select id="breakpoint" onchange="updateHeroSlide()">
+                    <option value="desktopplus">DesktopPlus</option>
+                    <option value="desktop">Desktop</option>
+                    <option value="tablet">Tablet</option>
+                    <option value="mobile">Mobile</option>
+                </select>
+            </label>
+            
+            <label style="margin-left: 20px;">State: 
+                <select id="slideState" onchange="updateHeroSlide()">
+                    <option value="ready">Ready</option>
+                    <option value="loading">Loading</option>
+                    <option value="error">Error</option>
+                </select>
+            </label>
+            
+            <label style="margin-left: 20px;">Content Type: 
+                <select id="contentType" onchange="updateHeroSlide()">
+                    <option value="image">Image</option>
+                    <option value="video">Video</option>
+                    <option value="color">Color Only</option>
+                </select>
+            </label>
+            
+            <label style="margin-left: 20px;">
+                <input type="checkbox" id="showContent" onchange="updateHeroSlide()"> Show Content Overlay
+            </label>
+            
+            <label style="margin-left: 20px;">
+                <input type="checkbox" id="kenburns" onchange="updateHeroSlide()"> Ken Burns Effect
+            </label>
+        </div>
+        
+        <!-- Component Instance -->
+        <div style="height: 600px; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            <div class="slide-hero-container" id="slideHeroDemo" data-breakpoint="desktopplus" data-playing="false" data-show-content="false" style="height: 100%;">
+                <!-- Video/Image Port -->
+                <div class="hero-video-port" id="heroPort" data-state="ready">
+                    <!-- Default Image -->
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234872e7'/%3E%3Cstop offset='100%25' style='stop-color:%231b1464'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23g)'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-family='sans-serif' font-size='48'%3EHero Background%3C/text%3E%3C/svg%3E" 
+                         alt="Hero background" 
+                         id="heroMedia">
+                    
+                    <!-- Loading Spinner -->
+                    <div class="hero-loading-spinner" style="display: none;"></div>
+                    
+                    <!-- Error Icon -->
+                    <svg class="hero-error-icon" viewBox="0 0 60 60" fill="none" style="display: none;">
+                        <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
+                        <path d="M30 18v16M30 42h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                
+                <!-- Gradient Overlay -->
+                <div class="hero-gradient-overlay"></div>
+                
+                <!-- Content Overlay -->
+                <div class="hero-content-overlay animated">
+                    <h1 class="hero-title">Welcome to Excellence</h1>
+                    <p class="hero-subtitle">Transform your business with our comprehensive digital solutions</p>
+                    <button class="hero-cta-button">Get Started Today</button>
+                </div>
+                
+                <!-- Play Button (for video) -->
+                <button class="hero-play-button" id="heroPlayBtn" style="display: none;" aria-label="Play video">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Breakpoint Examples -->
+        <div style="margin-top: 60px;">
+            <h2 style="margin-bottom: 30px; font-family: 'Lato', sans-serif;">All Breakpoints</h2>
+            <div style="display: grid; gap: 30px;">
+                
+                <!-- DesktopPlus Example -->
+                <div>
+                    <h4>DesktopPlus (1920px+)</h4>
+                    <div style="height: 400px; position: relative; overflow: hidden; border-radius: 8px;">
+                        <div class="slide-hero-container" data-breakpoint="desktopplus" style="height: 100%;">
+                            <div class="hero-video-port" data-state="ready">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='400'%3E%3Crect width='1920' height='400' fill='%231b1464'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-family='sans-serif' font-size='32'%3EDesktopPlus Hero%3C/text%3E%3C/svg%3E" 
+                                     alt="DesktopPlus hero">
+                            </div>
+                            <div class="hero-gradient-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Example -->
+                <div>
+                    <h4>Desktop (1150-1919px)</h4>
+                    <div style="height: 300px; position: relative; overflow: hidden; border-radius: 8px;">
+                        <div class="slide-hero-container" data-breakpoint="desktop" style="height: 100%;">
+                            <div class="hero-video-port" data-state="ready">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1150' height='300'%3E%3Crect width='1150' height='300' fill='%231740b0'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-family='sans-serif' font-size='28'%3EDesktop Hero%3C/text%3E%3C/svg%3E" 
+                                     alt="Desktop hero">
+                            </div>
+                            <div class="hero-gradient-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tablet Example -->
+                <div>
+                    <h4>Tablet (768-1149px)</h4>
+                    <div style="height: 250px; position: relative; overflow: hidden; border-radius: 8px;">
+                        <div class="slide-hero-container" data-breakpoint="tablet" style="height: 100%;">
+                            <div class="hero-video-port" data-state="ready">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='768' height='250'%3E%3Crect width='768' height='250' fill='%231d50de'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-family='sans-serif' font-size='24'%3ETablet Hero%3C/text%3E%3C/svg%3E" 
+                                     alt="Tablet hero">
+                            </div>
+                            <div class="hero-gradient-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Example -->
+                <div>
+                    <h4>Mobile (380-767px)</h4>
+                    <div style="height: 200px; position: relative; overflow: hidden; border-radius: 8px;">
+                        <div class="slide-hero-container" data-breakpoint="mobile" style="height: 100%;">
+                            <div class="hero-video-port" data-state="ready">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='380' height='200'%3E%3Crect width='380' height='200' fill='%234872e7'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-family='sans-serif' font-size='20'%3EMobile Hero%3C/text%3E%3C/svg%3E" 
+                                     alt="Mobile hero">
+                            </div>
+                            <div class="hero-gradient-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content Examples -->
+        <div style="margin-top: 60px;">
+            <h2 style="margin-bottom: 30px; font-family: 'Lato', sans-serif;">Content Variations</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                
+                <!-- With Content Overlay -->
+                <div>
+                    <h4>With Content Overlay</h4>
+                    <div style="height: 300px; position: relative; overflow: hidden; border-radius: 8px;">
+                        <div class="slide-hero-container" data-breakpoint="desktop" data-show-content="true" style="height: 100%;">
+                            <div class="hero-video-port" data-state="ready">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300'%3E%3Crect width='800' height='300' fill='%2339cccc'/%3E%3C/svg%3E" 
+                                     alt="Content overlay example">
+                            </div>
+                            <div class="hero-gradient-overlay"></div>
+                            <div class="hero-content-overlay animated">
+                                <h1 class="hero-title" style="font-size: 32px;">Hero Title</h1>
+                                <p class="hero-subtitle" style="font-size: 18px;">Supporting subtitle text</p>
+                                <button class="hero-cta-button" style="padding: 12px 24px; font-size: 16px;">Call to Action</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- With Video -->
+                <div>
+                    <h4>With Video Controls</h4>
+                    <div style="height: 300px; position: relative; overflow: hidden; border-radius: 8px;">
+                        <div class="slide-hero-container" data-breakpoint="desktop" data-playing="false" style="height: 100%;">
+                            <div class="hero-video-port" data-state="ready">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300'%3E%3Crect width='800' height='300' fill='%23d4af37'/%3E%3C/svg%3E" 
+                                     alt="Video hero example">
+                            </div>
+                            <div class="hero-gradient-overlay"></div>
+                            <button class="hero-play-button" aria-label="Play video">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loading State -->
+                <div>
+                    <h4>Loading State</h4>
+                    <div style="height: 300px; position: relative; overflow: hidden; border-radius: 8px;">
+                        <div class="slide-hero-container" data-breakpoint="desktop" style="height: 100%;">
+                            <div class="hero-video-port" data-state="loading">
+                                <div class="hero-loading-spinner"></div>
+                            </div>
+                            <div class="hero-gradient-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Error State -->
+                <div>
+                    <h4>Error State</h4>
+                    <div style="height: 300px; position: relative; overflow: hidden; border-radius: 8px;">
+                        <div class="slide-hero-container" data-breakpoint="desktop" style="height: 100%;">
+                            <div class="hero-video-port" data-state="error">
+                                <svg class="hero-error-icon" viewBox="0 0 60 60" fill="none">
+                                    <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M30 18v16M30 42h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="hero-gradient-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // SlideHero Component Class
+        class SlideHero {
+            constructor(element) {
+                this.element = element;
+                this.videoPort = element.querySelector('.hero-video-port');
+                this.contentOverlay = element.querySelector('.hero-content-overlay');
+                this.playButton = element.querySelector('.hero-play-button');
+                this.media = element.querySelector('img, video');
+                
+                this.breakpoint = 'desktopplus';
+                this.state = 'ready';
+                this.contentType = 'image';
+                this.isPlaying = false;
+                this.showContent = false;
+                
+                this.init();
+            }
+            
+            init() {
+                // Initialize from data attributes
+                this.breakpoint = this.element.dataset.breakpoint || 'desktopplus';
+                this.showContent = this.element.dataset.showContent === 'true';
+                this.isPlaying = this.element.dataset.playing === 'true';
+                this.state = this.videoPort?.dataset.state || 'ready';
+                
+                // Set up event listeners
+                this.setupEventListeners();
+                
+                // Set up parallax effect if supported
+                this.setupParallax();
+            }
+            
+            setupEventListeners() {
+                // Play button for video heroes
+                if (this.playButton) {
+                    this.playButton.addEventListener('click', () => {
+                        this.playVideo();
+                    });
+                }
+                
+                // Keyboard navigation
+                this.element.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        if (this.playButton && this.playButton.style.display !== 'none') {
+                            e.preventDefault();
+                            this.playVideo();
+                        }
+                    }
+                });
+                
+                // Video events
+                if (this.media && this.media.tagName === 'VIDEO') {
+                    this.media.addEventListener('ended', () => {
+                        this.stopVideo();
+                    });
+                }
+            }
+            
+            setupParallax() {
+                if (window.matchMedia('(min-width: 1150px)').matches) {
+                    let ticking = false;
+                    
+                    const updateParallax = () => {
+                        const scrolled = window.pageYOffset;
+                        const parallaxSpeed = 0.5;
+                        
+                        if (this.media) {
+                            this.media.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                        }
+                        
+                        ticking = false;
+                    };
+                    
+                    window.addEventListener('scroll', () => {
+                        if (!ticking) {
+                            window.requestAnimationFrame(updateParallax);
+                            ticking = true;
+                        }
+                    });
+                }
+            }
+            
+            setState(state) {
+                const validStates = ['loading', 'ready', 'error'];
+                if (validStates.includes(state) && this.videoPort) {
+                    this.state = state;
+                    this.videoPort.dataset.state = state;
+                    
+                    // Show/hide appropriate elements
+                    const spinner = this.videoPort.querySelector('.hero-loading-spinner');
+                    const errorIcon = this.videoPort.querySelector('.hero-error-icon');
+                    
+                    if (spinner) spinner.style.display = state === 'loading' ? 'block' : 'none';
+                    if (errorIcon) errorIcon.style.display = state === 'error' ? 'block' : 'none';
+                    if (this.media) this.media.style.display = state === 'ready' ? 'block' : 'none';
+                    
+                    // Handle button state
+                    if (this.playButton) {
+                        this.playButton.disabled = state !== 'ready';
+                        this.playButton.style.opacity = state === 'ready' ? '1' : '0.5';
+                    }
+                }
+            }
+            
+            setBreakpoint(breakpoint) {
+                const validBreakpoints = ['mobile', 'tablet', 'desktop', 'desktopplus'];
+                if (validBreakpoints.includes(breakpoint)) {
+                    this.breakpoint = breakpoint;
+                    this.element.dataset.breakpoint = breakpoint;
+                }
+            }
+            
+            setContentType(type) {
+                this.contentType = type;
+                
+                if (type === 'video' && this.playButton) {
+                    this.playButton.style.display = 'block';
+                } else if (this.playButton) {
+                    this.playButton.style.display = 'none';
+                }
+                
+                // Update media element
+                if (type === 'video') {
+                    this.createVideoElement();
+                } else if (type === 'image') {
+                    this.createImageElement();
+                } else {
+                    // Color only - remove media
+                    if (this.media) {
+                        this.media.style.display = 'none';
+                    }
+                }
+            }
+            
+            createVideoElement() {
+                // In a real implementation, would create/replace with video element
+                // For demo, we'll keep the image but treat it as video placeholder
+                if (this.media) {
+                    this.media.style.display = 'block';
+                }
+            }
+            
+            createImageElement() {
+                // Ensure image is displayed
+                if (this.media) {
+                    this.media.style.display = 'block';
+                }
+            }
+            
+            showContentOverlay(show = true) {
+                this.showContent = show;
+                this.element.dataset.showContent = show.toString();
+            }
+            
+            playVideo() {
+                if (this.state === 'ready' && !this.isPlaying) {
+                    this.isPlaying = true;
+                    this.element.dataset.playing = 'true';
+                    
+                    if (this.playButton) {
+                        this.playButton.style.opacity = '0';
+                        this.playButton.style.pointerEvents = 'none';
+                    }
+                    
+                    // In real implementation, would play actual video
+                    console.log('Playing hero video');
+                    
+                    // Simulate video ending after 5 seconds for demo
+                    setTimeout(() => {
+                        this.stopVideo();
+                    }, 5000);
+                }
+            }
+            
+            stopVideo() {
+                this.isPlaying = false;
+                this.element.dataset.playing = 'false';
+                
+                if (this.playButton) {
+                    this.playButton.style.opacity = '1';
+                    this.playButton.style.pointerEvents = 'auto';
+                }
+                
+                console.log('Stopped hero video');
+            }
+            
+            loadMedia(url, type = 'image') {
+                this.setState('loading');
+                
+                if (type === 'image') {
+                    const img = new Image();
+                    img.onload = () => {
+                        if (this.media) {
+                            this.media.src = url;
+                        }
+                        this.setState('ready');
+                    };
+                    img.onerror = () => {
+                        this.setState('error');
+                    };
+                    img.src = url;
+                } else if (type === 'video') {
+                    // Would handle video loading
+                    this.setState('ready');
+                }
+            }
+            
+            enableKenBurns(enable = true) {
+                if (this.videoPort) {
+                    if (enable) {
+                        this.videoPort.classList.add('hero-kenburns');
+                    } else {
+                        this.videoPort.classList.remove('hero-kenburns');
+                    }
+                }
+            }
+        }
+        
+        // Demo Controls
+        function updateHeroSlide() {
+            const breakpoint = document.getElementById('breakpoint').value;
+            const state = document.getElementById('slideState').value;
+            const contentType = document.getElementById('contentType').value;
+            const showContent = document.getElementById('showContent').checked;
+            const kenburns = document.getElementById('kenburns').checked;
+            
+            const demoElement = document.getElementById('slideHeroDemo');
+            const heroPort = document.getElementById('heroPort');
+            const heroMedia = document.getElementById('heroMedia');
+            const playBtn = document.getElementById('heroPlayBtn');
+            
+            // Update breakpoint
+            demoElement.dataset.breakpoint = breakpoint;
+            
+            // Update state
+            heroPort.dataset.state = state;
+            
+            // Handle state visuals
+            const spinner = heroPort.querySelector('.hero-loading-spinner');
+            const errorIcon = heroPort.querySelector('.hero-error-icon');
+            
+            spinner.style.display = state === 'loading' ? 'block' : 'none';
+            errorIcon.style.display = state === 'error' ? 'block' : 'none';
+            heroMedia.style.display = state === 'ready' ? 'block' : 'none';
+            
+            // Update content type
+            if (contentType === 'video') {
+                playBtn.style.display = 'block';
+            } else if (contentType === 'image') {
+                playBtn.style.display = 'none';
+            } else {
+                // Color only
+                heroMedia.style.display = 'none';
+                playBtn.style.display = 'none';
+            }
+            
+            // Update content overlay
+            demoElement.dataset.showContent = showContent.toString();
+            
+            // Ken Burns effect
+            if (kenburns && contentType === 'image') {
+                heroPort.classList.add('hero-kenburns');
+            } else {
+                heroPort.classList.remove('hero-kenburns');
+            }
+        }
+        
+        // Initialize all hero components on page
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroes = document.querySelectorAll('.slide-hero-container');
+            heroes.forEach(hero => {
+                // Skip the demo hero as it has manual controls
+                if (hero.id !== 'slideHeroDemo') {
+                    new SlideHero(hero);
+                }
+            });
+            
+            // Demo play button
+            const demoPlayBtn = document.getElementById('heroPlayBtn');
+            if (demoPlayBtn) {
+                demoPlayBtn.addEventListener('click', () => {
+                    const demoElement = document.getElementById('slideHeroDemo');
+                    const isPlaying = demoElement.dataset.playing === 'true';
+                    
+                    if (!isPlaying) {
+                        demoElement.dataset.playing = 'true';
+                        demoPlayBtn.style.opacity = '0';
+                        demoPlayBtn.style.pointerEvents = 'none';
+                        
+                        // Simulate video playing
+                        setTimeout(() => {
+                            demoElement.dataset.playing = 'false';
+                            demoPlayBtn.style.opacity = '1';
+                            demoPlayBtn.style.pointerEvents = 'auto';
+                        }, 3000);
+                    }
+                });
+            }
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const overlay = entry.target.querySelector('.hero-content-overlay');
+                    if (overlay) {
+                        overlay.classList.add('animated');
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all hero containers
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroes = document.querySelectorAll('.slide-hero-container');
+            heroes.forEach(hero => {
+                observer.observe(hero);
+            });
+        });
+    </script>
+</body>
+</html>

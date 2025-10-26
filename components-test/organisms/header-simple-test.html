@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEADER BREADBOARD - SIMPLE VERSION</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+        }
+        
+        /* Simple Test Controls */
+        .test-controls {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+            max-width: 250px;
+        }
+        
+        .test-controls h3 {
+            margin: 0 0 10px 0;
+            color: #D4AF37;
+            font-size: 14px;
+        }
+        
+        .test-controls .info {
+            margin-bottom: 5px;
+        }
+        
+        .test-controls .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .test-controls button {
+            background: #1B1464;
+            color: white;
+            border: 1px solid #D4AF37;
+            padding: 8px;
+            margin: 3px 0;
+            cursor: pointer;
+            font-size: 11px;
+            width: 100%;
+            border-radius: 4px;
+        }
+        
+        .test-controls button:hover {
+            background: #D4AF37;
+            color: #1B1464;
+        }
+        
+        /* Header Styles - Isolated */
+        .banner-header-main {
+            width: 100%;
+            height: 125px;
+            background-color: #1b1464;
+            border-bottom: 4px solid #d4af37;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+            overflow: visible !important;
+        }
+        
+        .banner-header-main__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .banner-header-main__logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-header-main__logo {
+            display: none;
+            height: auto;
+        }
+        
+        .banner-header-main__menu-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+            overflow: visible !important;
+            position: relative;
+        }
+        
+        .main-menu {
+            background-color: transparent;
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            position: relative;
+            overflow: visible !important;
+        }
+        
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 60px;
+            padding: 0;
+            position: relative;
+            overflow: visible !important;
+        }
+        
+        .desktop-nav .menu-item {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        .desktop-nav .menu-item-dropdown {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            z-index: 1001;
+        }
+        
+        .desktop-nav .menu-text {
+            display: inline-block;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        
+        .desktop-nav .menu-item:hover,
+        .desktop-nav .menu-item-dropdown:hover .menu-text {
+            color: #DCBE5D;
+        }
+        
+        /* Active State - Active Gold #B39226 */
+        .desktop-nav .menu-item.active,
+        .desktop-nav .menu-item-dropdown.active .menu-text {
+            color: #B39226 !important;
+        }
+        
+        /* Mobile/Tablet Active State */
+        .mobile-accordion .accordion-header.active,
+        .mobile-accordion .accordion-item.active {
+            color: #B39226 !important;
+            font-weight: 900;
+        }
+        
+        /* CRITICAL: Desktop Dropdown */
+        .dropdown-container {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 280px;
+            z-index: 9999 !important;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            margin-top: 12px;
+        }
+        
+        .dropdown-container.open {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+        
+        .dropdown-menu {
+            background-color: #ECEEEF !important;
+            border-radius: 8px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important;
+            padding: 32px;
+            padding-right: 64px;
+            font-family: 'Lato', sans-serif;
+            min-height: 150px;
+            position: relative;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dropdown-menu:hover {
+            background-color: #F4EBCD !important;
+        }
+        
+        .dropdown-menu .dropdown-item {
+            display: block !important;
+            color: #1B1464 !important;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin: 0 0 16px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            font-weight: 800;
+            background-color: transparent;
+        }
+        
+        .dropdown-menu .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dropdown-menu .dropdown-item:hover {
+            color: #1D50DE !important;
+        }
+        
+        /* Mobile/Tablet Navigation */
+        .mobile-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0;
+        }
+        
+        .hamburger-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+        }
+        
+        .hamburger-button svg {
+            width: 45px;
+            height: auto;
+        }
+        
+        .hamburger-icon {
+            display: block;
+        }
+        
+        .close-icon {
+            display: none;
+        }
+        
+        .menu-open .hamburger-icon {
+            display: none;
+        }
+        
+        .menu-open .close-icon {
+            display: block;
+        }
+        
+        /* Mobile Accordion */
+        .mobile-accordion {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ECEEEF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion.active {
+            display: block;
+            max-height: 800px;
+            padding: 20px 24px;
+        }
+        
+        .mobile-accordion .accordion-header {
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 45px;
+            cursor: pointer;
+            padding: 10px;
+            margin: 0 -10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        .mobile-accordion .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .mobile-accordion .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion .accordion-content.active {
+            max-height: 300px;
+            padding-top: 10px;
+        }
+        
+        .mobile-accordion .accordion-item {
+            display: block;
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 10px 10px 10px 30px;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        .mobile-accordion .accordion-item:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Responsive Breakpoints */
+        @media (max-width: 767px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--mobile {
+                display: block;
+                width: 179px;
+                height: 89px;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .banner-header-main .mobile-accordion {
+                position: fixed;
+                top: 129px;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--tablet {
+                display: block;
+                width: 417px;
+                height: 89px;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .banner-header-main .mobile-accordion {
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .banner-header-main__container {
+                padding: 0 36px 0 24px;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 460px;
+                height: 89px;
+            }
+            
+            .banner-header-main__menu-container {
+                max-width: 886px;
+                min-width: 615px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 48px;
+            }
+            
+            .desktop-nav .menu-item,
+            .desktop-nav .menu-item-dropdown {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .dropdown-menu .dropdown-item {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        @media (min-width: 1920px) {
+            .banner-header-main__container {
+                max-width: 1900px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 481px;
+                height: 93px;
+            }
+            
+            .banner-header-main__menu-container {
+                width: 894px;
+                padding-right: 32px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 80px;
+            }
+        }
+        
+        /* Test Content */
+        .test-content {
+            padding: 40px;
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Simple Test Controls -->
+    <div class="test-controls">
+        <h3>🧪 HEADER TEST</h3>
+        <div class="info">Screen: <span class="value" id="screenWidth">0</span>px</div>
+        <div class="info">Breakpoint: <span class="value" id="breakpointName">Loading...</span></div>
+        <div class="info">Dropdowns: <span class="value" id="dropdownCount">0</span></div>
+        
+        <button onclick="testDropdowns()">🔍 Test Dropdowns</button>
+        <button onclick="simulateActive('home')">🏠 Set Home Active</button>
+        <button onclick="simulateActive('solutions')">💼 Set Solutions Active</button>
+        <button onclick="simulateActive('resources')">📚 Set Resources Active</button>
+        <button onclick="simulateActive('contact')">✉️ Set Contact Active</button>
+        <button onclick="clearActive()">❌ Clear Active States</button>
+        <button onclick="showDebugInfo()">🐛 Show Debug Info</button>
+    </div>
+    
+    <!-- Header Component -->
+    <header class="banner-header-main">
+        <div class="banner-header-main__container">
+            <!-- Logo -->
+            <a href="/" class="banner-header-main__logo-link" aria-label="Purposeful Media Promotions Home">
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--mobile"
+                >
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--tablet"
+                >
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--desktop"
+                >
+            </a>
+            
+            <!-- Menu Container -->
+            <div class="banner-header-main__menu-container">
+                <nav class="main-menu" role="navigation" aria-label="Main navigation">
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="desktop-nav">
+                        <a href="/" class="menu-item" data-page="home">Home</a>
+                        
+                        <div class="menu-item-dropdown" data-page="solutions">
+                            <span class="menu-text">Solutions</span>
+                            <div class="dropdown-container">
+                                <div class="dropdown-menu">
+                                    <a href="/email-management" class="dropdown-item">Email Management</a>
+                                    <a href="/content-creation" class="dropdown-item">Content Creation</a>
+                                    <a href="/webinar-production" class="dropdown-item">Webinar Production</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item-dropdown" data-page="resources">
+                            <span class="menu-text">Resources</span>
+                            <div class="dropdown-container">
+                                <div class="dropdown-menu">
+                                    <a href="/resource-library" class="dropdown-item">Resource Library</a>
+                                    <a href="/about-us" class="dropdown-item">About Us</a>
+                                    <a href="/blog" class="dropdown-item">Blog</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="/contact" class="menu-item" data-page="contact">Contact</a>
+                    </div>
+                    
+                    <!-- Mobile/Tablet Navigation -->
+                    <div class="mobile-nav">
+                        <button class="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                            <svg class="hamburger-icon" width="45" height="54" viewBox="0 0 45 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="3" width="45" height="8" rx="4" fill="white"/>
+                                <rect y="23" width="45" height="8" rx="4" fill="white"/>
+                                <rect y="43" width="45" height="8" rx="4" fill="white"/>
+                            </svg>
+                            <svg class="close-icon" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="5" y="36" width="45" height="8" rx="4" transform="rotate(-45 5 36)" fill="white"/>
+                                <rect x="10.66" y="4.31" width="45" height="8" rx="4" transform="rotate(45 10.66 4.31)" fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Accordion Menu -->
+                    <div class="mobile-accordion">
+                        <div class="accordion-section">
+                            <a href="/" class="accordion-header no-dropdown" data-page="home">Home</a>
+                        </div>
+                        
+                        <div class="accordion-section">
+                            <div class="accordion-header" data-accordion="solutions">Solutions</div>
+                            <div class="accordion-content" id="solutions-content">
+                                <a href="/email-management" class="accordion-item">Email Management</a>
+                                <a href="/content-creation" class="accordion-item">Content Creation</a>
+                                <a href="/webinar-production" class="accordion-item">Webinar Production</a>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-section">
+                            <div class="accordion-header" data-accordion="resources">Resources</div>
+                            <div class="accordion-content" id="resources-content">
+                                <a href="/resource-library" class="accordion-item">Resource Library</a>
+                                <a href="/about-us" class="accordion-item">About Us</a>
+                                <a href="/blog" class="accordion-item">Blog</a>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-section">
+                            <a href="/contact" class="accordion-header no-dropdown" data-page="contact">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Test Content -->
+    <div class="test-content">
+        <div>
+            <h2>Header Breadboard Test</h2>
+            <p>Resize browser window to test different breakpoints</p>
+            <p>Click "Solutions" or "Resources" to test dropdown functionality</p>
+        </div>
+    </div>
+    
+    <script>
+        // Simple breakpoint monitor
+        function updateBreakpoint() {
+            const width = window.innerWidth;
+            document.getElementById('screenWidth').textContent = width;
+            
+            let breakpoint = 'Unknown';
+            if (width < 380) breakpoint = 'Small Mobile';
+            else if (width >= 380 && width <= 767) breakpoint = 'Mobile';
+            else if (width >= 768 && width <= 1149) breakpoint = 'Tablet';
+            else if (width >= 1150 && width <= 1919) breakpoint = 'Desktop';
+            else if (width >= 1920) breakpoint = 'Desktop Plus';
+            
+            document.getElementById('breakpointName').textContent = breakpoint;
+        }
+        
+        // Initialize
+        updateBreakpoint();
+        window.addEventListener('resize', updateBreakpoint);
+        
+        // Dropdown test function
+        function testDropdowns() {
+            const dropdowns = document.querySelectorAll('.dropdown-container');
+            document.getElementById('dropdownCount').textContent = dropdowns.length;
+            
+            console.log('Found', dropdowns.length, 'dropdowns');
+            dropdowns.forEach((dd, i) => {
+                console.log(`Dropdown ${i + 1}:`, dd.classList.contains('open') ? 'OPEN' : 'CLOSED');
+            });
+        }
+        
+        // Active state simulation for testing
+        function simulateActive(section) {
+            // Clear all active states
+            document.querySelectorAll('.menu-item, .menu-item-dropdown, .accordion-header, .accordion-item').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Set active on desktop menu
+            const desktopItem = document.querySelector(`.desktop-nav .menu-item[data-page="${section}"], .desktop-nav .menu-item-dropdown[data-page="${section}"]`);
+            if (desktopItem) {
+                desktopItem.classList.add('active');
+                console.log(`✅ Set desktop ${section} as active`);
+            }
+            
+            // Set active on mobile menu
+            const mobileItem = document.querySelector(`.mobile-accordion .accordion-header[data-page="${section}"], .mobile-accordion .accordion-header[data-accordion="${section}"]`);
+            if (mobileItem) {
+                mobileItem.classList.add('active');
+                console.log(`✅ Set mobile ${section} as active`);
+            }
+        }
+        
+        function clearActive() {
+            document.querySelectorAll('.menu-item, .menu-item-dropdown, .accordion-header, .accordion-item').forEach(el => {
+                el.classList.remove('active');
+            });
+            console.log('✅ Cleared all active states');
+        }
+        
+        function showDebugInfo() {
+            console.log('=== DEBUG INFO ===');
+            console.log('Screen width:', window.innerWidth);
+            console.log('Dropdowns found:', document.querySelectorAll('.dropdown-container').length);
+            console.log('Desktop nav visible:', window.getComputedStyle(document.querySelector('.desktop-nav')).display);
+            console.log('Mobile nav visible:', window.getComputedStyle(document.querySelector('.mobile-nav')).display);
+        }
+        
+        // Set active page based on current URL
+        function setActivePage() {
+            const currentPath = window.location.pathname;
+            console.log('Current path:', currentPath);
+            
+            // Remove all active states first
+            document.querySelectorAll('.menu-item, .menu-item-dropdown, .accordion-header, .accordion-item').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Map paths to menu items
+            const pathMap = {
+                '/': 'home',
+                '/email-management': 'solutions',
+                '/content-creation': 'solutions',
+                '/webinar-production': 'solutions',
+                '/resource-library': 'resources',
+                '/about-us': 'resources',
+                '/blog': 'resources',
+                '/contact': 'contact'
+            };
+            
+            const activePage = pathMap[currentPath] || 'home';
+            console.log('Active page:', activePage);
+            
+            // Set active state on desktop menu
+            const desktopItem = document.querySelector(`.desktop-nav .menu-item[data-page="${activePage}"], .desktop-nav .menu-item-dropdown[data-page="${activePage}"]`);
+            if (desktopItem) {
+                desktopItem.classList.add('active');
+                console.log('✅ Set desktop active:', activePage);
+            }
+            
+            // Set active state on mobile menu
+            const mobileItem = document.querySelector(`.mobile-accordion .accordion-header[data-page="${activePage}"], .mobile-accordion .accordion-header[data-accordion="${activePage}"]`);
+            if (mobileItem) {
+                mobileItem.classList.add('active');
+                console.log('✅ Set mobile active:', activePage);
+            }
+            
+            // If on a subpage, also mark the specific accordion item
+            const subpageItem = document.querySelector(`.mobile-accordion .accordion-item[href="${currentPath}"]`);
+            if (subpageItem) {
+                subpageItem.classList.add('active');
+                console.log('✅ Set subpage active:', currentPath);
+            }
+        }
+        
+        // Component functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM loaded, initializing header...');
+            
+            // Set active page on load
+            setActivePage();
+            
+            // Desktop dropdown functionality
+            const menuDropdowns = document.querySelectorAll('.desktop-nav .menu-item-dropdown');
+            console.log('Found', menuDropdowns.length, 'desktop dropdowns');
+            
+            menuDropdowns.forEach(item => {
+                const menuText = item.querySelector('.menu-text');
+                const dropdown = item.querySelector('.dropdown-container');
+                
+                if (menuText && dropdown) {
+                    menuText.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        console.log('🖱️ Clicked menu:', item.dataset.page);
+                        
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown-container').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        const wasOpen = dropdown.classList.contains('open');
+                        dropdown.classList.toggle('open');
+                        console.log('Dropdown now:', dropdown.classList.contains('open') ? 'OPEN' : 'CLOSED');
+                    });
+                }
+            });
+            
+            // Click outside to close
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-item-dropdown')) {
+                    document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside
+            document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Mobile menu toggle
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const mobileAccordion = document.querySelector('.mobile-accordion');
+            const mainMenu = document.querySelector('.main-menu');
+            
+            if (hamburgerButton) {
+                hamburgerButton.addEventListener('click', function() {
+                    const isOpen = mobileAccordion.classList.contains('active');
+                    
+                    if (isOpen) {
+                        mobileAccordion.classList.remove('active');
+                        mainMenu.classList.remove('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        mobileAccordion.classList.add('active');
+                        mainMenu.classList.add('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            }
+            
+            // Accordion functionality
+            document.querySelectorAll('.accordion-header[data-accordion]').forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionId = this.dataset.accordion;
+                    const content = document.getElementById(accordionId + '-content');
+                    
+                    if (content) {
+                        // Close all other accordions
+                        document.querySelectorAll('.accordion-content').forEach(otherContent => {
+                            if (otherContent !== content) {
+                                otherContent.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current accordion
+                        content.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Auto-test dropdowns on load
+            setTimeout(() => {
+                testDropdowns();
+            }, 500);
+            
+            console.log('✅ Header component ready');
+        });
+    </script>
+</body>
+</html>

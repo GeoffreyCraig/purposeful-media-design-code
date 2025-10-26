@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Purposeful Media Promotions - Strategic inbound marketing for B2B companies. Expert guidance, proven results, purposeful growth.">
+    <meta name="author" content="Purposeful Media Promotions">
+    <title>Purposeful Media Promotions | Strategic B2B Inbound Marketing</title>
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Design System Styles (Consolidated) -->
+    <link rel="stylesheet" href="../dist/css/purposeful-main.min.css">
+    
+    <!-- Front Page Template Styles -->
+    <link rel="stylesheet" href="../styles/templates/front-page.css">
+    
+    <!-- Favicon (add when ready) -->
+    <!-- <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico"> -->
+</head>
+<body>
+    
+    <!-- ==============================================
+         HEADER / NAVIGATION
+         Organism: Banner Header Main
+         ============================================== -->
+    <header class="header-main">
+        <div class="banner-header-main">
+            <div class="banner-header-main__container">
+                <!-- Logo -->
+                <a href="/" class="banner-header-main__logo-link" aria-label="Purposeful Media Promotions Home">
+                    <!-- Mobile Logo -->
+                    <img 
+                        src="../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                        alt="Purposeful Media Promotions" 
+                        class="banner-header-main__logo banner-header-main__logo--mobile"
+                    >
+                    <!-- Tablet Logo -->
+                    <img 
+                        src="../assets/svg/logos/purposeful-media-logo-white-tablet.svg" 
+                        alt="Purposeful Media Promotions" 
+                        class="banner-header-main__logo banner-header-main__logo--tablet"
+                    >
+                    <!-- Desktop/DesktopPlus Logo -->
+                    <img 
+                        src="../assets/svg/logos/purposeful-media-logo-white-desktop.svg" 
+                        alt="Purposeful Media Promotions" 
+                        class="banner-header-main__logo banner-header-main__logo--desktop"
+                    >
+                </a>
+                
+                <!-- Menu Container -->
+                <div class="banner-header-main__menu-container">
+                    <nav class="main-menu" role="navigation" aria-label="Main navigation">
+                        <!-- Desktop Navigation -->
+                        <div class="desktop-nav">
+                            <a href="/" class="menu-item active" data-page="home">Home</a>
+                            
+                            <div class="menu-item-dropdown" data-page="solutions">
+                                <span class="menu-text" data-dropdown="solutions">Solutions</span>
+                                <div class="dropdown-container" data-dropdown-id="solutions">
+                                    <div class="dropdown-menu">
+                                        <a href="/email-management" class="dropdown-item">Email Management</a>
+                                        <a href="/content-creation" class="dropdown-item">Content Creation</a>
+                                        <a href="/webinar-production" class="dropdown-item">Webinar Production</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-item-dropdown" data-page="resources">
+                                <span class="menu-text" data-dropdown="resources">Resources</span>
+                                <div class="dropdown-container" data-dropdown-id="resources">
+                                    <div class="dropdown-menu">
+                                        <a href="/resource-library" class="dropdown-item">Resource Library</a>
+                                        <a href="/about-us" class="dropdown-item">About Us</a>
+                                        <a href="/blog" class="dropdown-item">Blog</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="/contact" class="menu-item" data-page="contact">Contact</a>
+                        </div>
+                        
+                        <!-- Mobile/Tablet Navigation -->
+                        <div class="mobile-nav">
+                            <button class="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                                <svg class="hamburger-icon" width="46" height="54" viewBox="0 0 46 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="0.135254" y="3" width="45" height="8" rx="4" fill="white"/>
+                                    <rect x="0.135254" y="23" width="45" height="8" rx="4" fill="white"/>
+                                    <rect x="0.135254" y="43" width="45" height="8" rx="4" fill="white"/>
+                                </svg>
+                                <svg class="close-icon" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="5.13525" y="35.9706" width="45" height="8" rx="4" transform="rotate(-45 5.13525 35.9706)" fill="white"/>
+                                    <rect x="10.7916" y="4.31421" width="45" height="8" rx="4" transform="rotate(45 10.7916 4.31421)" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Mobile Accordion Menu -->
+                        <div class="mobile-accordion">
+                            <div class="accordion-section">
+                                <a href="/" class="accordion-header no-dropdown active" data-page="home">Home</a>
+                            </div>
+                            
+                            <div class="accordion-section">
+                                <div class="accordion-header" data-accordion="solutions">Solutions</div>
+                                <div class="accordion-content" id="solutions-content">
+                                    <a href="/email-management" class="accordion-item">Email Management</a>
+                                    <a href="/content-creation" class="accordion-item">Content Creation</a>
+                                    <a href="/webinar-production" class="accordion-item">Webinar Production</a>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-section">
+                                <div class="accordion-header" data-accordion="resources">Resources</div>
+                                <div class="accordion-content" id="resources-content">
+                                    <a href="/resource-library" class="accordion-item">Resource Library</a>
+                                    <a href="/about-us" class="accordion-item">About Us</a>
+                                    <a href="/blog" class="accordion-item">Blog</a>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-section">
+                                <a href="/contact" class="accordion-header no-dropdown" data-page="contact">Contact</a>
+                            </div>
+                        </div>
+        </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- ==============================================
+         HERO SECTION
+         Organism: Hero Simple Default
+         ============================================== -->
+    <section class="hero-simple" role="banner" aria-label="Page Header">
+        <div class="hero-simple__content">
+            <h1 class="hero-simple__headline">Strategic Growth Through Purposeful Marketing</h1>
+        </div>
+    </section>
+    
+    <!-- ==============================================
+         MAIN CONTENT
+         ============================================== -->
+    <main id="main-content" role="main">
+        
+        <!-- ==============================================
+             VALUE PROPOSITION SECTION
+             Organism: Text Block (Narrative Layout)
+             ============================================== -->
+        <section class="text-block text-block--narrative" style="background-color: #FFFFFF; padding: 80px 0;">
+            <div class="text-block__container">
+                <article class="text-block__content">
+                    
+                    <header class="text-block__header" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                        <h2 class="headline headline--h2">Transform Your B2B Marketing Strategy</h2>
+                        <p class="paragraph paragraph--lead">
+                            We help B2B companies attract qualified leads, nurture relationships, and accelerate growth through strategic inbound marketing. Our proven methodology combines data-driven insights with purposeful execution.
+                        </p>
+                    </header>
+                    
+                </article>
+            </div>
+        </section>
+        
+        <!-- ==============================================
+             SERVICES SECTION
+             Organism: Text Block with Icon Grid
+             ============================================== -->
+        <section class="text-block text-block--pillar" style="background-color: #F6F6F7; padding: 80px 0;">
+            <div class="text-block__container">
+                <article class="text-block__content">
+                    
+                    <header class="text-block__header" style="text-align: center;">
+                        <h2 class="headline headline--h2">The Inbound Methodology</h2>
+                        <p class="paragraph paragraph--lead">
+                            Our comprehensive approach to B2B marketing success
+                        </p>
+                    </header>
+                    
+                    <!-- Icon Grid: Attract, Engage, Delight -->
+                    <div class="text-block__icon-grid">
+                        <div class="text-block__icon-grid-item">
+                            <div class="icon-display icon-display--large" data-icon="attract" data-color="navy"></div>
+                            <h3 class="headline headline--h4">Attract</h3>
+                            <p class="paragraph paragraph--default">
+                                Draw in the right prospects with valuable content and strategic positioning that establishes your brand as a trusted industry authority.
+                            </p>
+                        </div>
+                        
+                        <div class="text-block__icon-grid-item">
+                            <div class="icon-display icon-display--large" data-icon="engage" data-color="navy"></div>
+                            <h3 class="headline headline--h4">Engage</h3>
+                            <p class="paragraph paragraph--default">
+                                Build meaningful relationships through personalized content and strategic nurturing that addresses specific pain points and business challenges.
+                            </p>
+                        </div>
+                        
+                        <div class="text-block__icon-grid-item">
+                            <div class="icon-display icon-display--large" data-icon="delight" data-color="navy"></div>
+                            <h3 class="headline headline--h4">Delight</h3>
+                            <p class="paragraph paragraph--default">
+                                Empower customers to succeed with ongoing support, valuable resources, and strategic guidance that drives long-term partnership growth.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </article>
+            </div>
+        </section>
+        
+        <!-- ==============================================
+             KEY SERVICES SECTION
+             Organism: Text Block with Icon List
+             ============================================== -->
+        <section class="text-block text-block--narrative" style="background-color: #FFFFFF; padding: 80px 0;">
+            <div class="text-block__container">
+                <article class="text-block__content">
+                    
+                    <header class="text-block__header">
+                        <h2 class="headline headline--h2">How We Help You Grow</h2>
+                        <p class="paragraph paragraph--lead">
+                            Comprehensive inbound marketing services designed for B2B success
+                        </p>
+                    </header>
+                    
+                    <section class="text-block__section">
+                        <h3 class="headline headline--h3">Strategic Marketing Services</h3>
+                        
+                        <ul class="text-block__icon-list">
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">
+                                    <strong>Inbound Strategy Development:</strong> Custom roadmaps aligned with your business goals, target audience, and competitive landscape
+                                </span>
+                            </li>
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">
+                                    <strong>Content Creation & Optimization:</strong> High-quality blogs, whitepapers, case studies, and resources that attract and convert qualified leads
+                                </span>
+                            </li>
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">
+                                    <strong>Marketing Automation:</strong> Streamlined lead nurturing, email campaigns, and workflow optimization for maximum efficiency
+                                </span>
+                            </li>
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">
+                                    <strong>Analytics & Reporting:</strong> Data-driven insights that demonstrate ROI and inform strategic decision-making
+                                </span>
+                            </li>
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">
+                                    <strong>SEO & Technical Optimization:</strong> Improve visibility, drive organic traffic, and ensure technical excellence across all digital properties
+                                </span>
+                            </li>
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">
+                                    <strong>HubSpot Implementation:</strong> Expert setup, integration, and optimization of the HubSpot platform for your unique business needs
+                                </span>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                </article>
+            </div>
+        </section>
+        
+        <!-- ==============================================
+             RESULTS/STATS SECTION
+             Organism: Text Block with Highlight Boxes
+             ============================================== -->
+        <section class="text-block text-block--narrative" style="background-color: #1B1464; color: #FFFFFF; padding: 80px 0;">
+            <div class="text-block__container">
+                <article class="text-block__content">
+                    
+                    <header class="text-block__header" style="text-align: center;">
+                        <h2 class="headline headline--h2" style="color: #FFFFFF;">Proven Results That Matter</h2>
+                        <p class="paragraph paragraph--lead" style="color: #FFFFFF;">
+                            Our strategic approach delivers measurable impact for B2B companies
+                        </p>
+                    </header>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin: 60px 0;">
+                        
+                        <div style="text-align: center; padding: 40px 20px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                            <div class="icon-display icon-display--medium" data-icon="roi" data-color="white" style="margin: 0 auto 20px;"></div>
+                            <p class="paragraph paragraph--large" style="color: #D4AF37; font-weight: 700; margin-bottom: 8px;">300%</p>
+                            <p class="paragraph paragraph--default" style="color: #FFFFFF;">Average increase in qualified leads</p>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 40px 20px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                            <div class="icon-display icon-display--medium" data-icon="momentum" data-color="white" style="margin: 0 auto 20px;"></div>
+                            <p class="paragraph paragraph--large" style="color: #D4AF37; font-weight: 700; margin-bottom: 8px;">2.5x</p>
+                            <p class="paragraph paragraph--default" style="color: #FFFFFF;">Improvement in conversion rates</p>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 40px 20px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                            <div class="icon-display icon-display--medium" data-icon="efficiency" data-color="white" style="margin: 0 auto 20px;"></div>
+                            <p class="paragraph paragraph--large" style="color: #D4AF37; font-weight: 700; margin-bottom: 8px;">45%</p>
+                            <p class="paragraph paragraph--default" style="color: #FFFFFF;">Reduction in customer acquisition cost</p>
+                        </div>
+                        
+                    </div>
+                    
+                </article>
+            </div>
+        </section>
+        
+        <!-- ==============================================
+             TESTIMONIAL/QUOTE SECTION
+             Organism: Text Block with Blockquote
+             ============================================== -->
+        <section class="text-block text-block--narrative" style="background-color: #F6F6F7; padding: 80px 0;">
+            <div class="text-block__container">
+                <article class="text-block__content">
+                    
+                    <blockquote class="text-block__quote">
+                        <div class="quote-container">
+                            <p class="quote quote--large">
+                                "Partnering with Purposeful Media transformed our approach to marketing. Their strategic guidance and execution excellence helped us generate 3x more qualified leads while significantly improving our close rates. The ROI speaks for itself."
+                            </p>
+                            <cite class="quote-attribution">
+                                <span class="quote-attribution__name">Sarah Thompson</span>
+                                <span class="quote-attribution__role">, VP of Marketing, TechCorp Industries</span>
+                            </cite>
+                        </div>
+                    </blockquote>
+                    
+                </article>
+            </div>
+        </section>
+        
+        <!-- ==============================================
+             FEATURED RESOURCES/BLOG SECTION
+             Organism: Blog Group (WordPress-driven)
+             Note: This will be populated by WordPress REST API
+             ============================================== -->
+        <section class="section-blog-group" style="background-color: #FFFFFF; padding: 80px 0;">
+            <div class="section-blog-group__container">
+                
+                <header class="section-blog-group__header" style="text-align: center; margin-bottom: 60px;">
+                    <h2 class="headline headline--h2">Latest Insights & Resources</h2>
+                    <p class="paragraph paragraph--lead">
+                        Strategic guidance and expertise to help you grow
+                    </p>
+                </header>
+                
+                <!-- Blog cards will be populated by blog-group-adapter.js -->
+                <div class="section-blog-group__grid" id="homepage-blog-group">
+                    <!-- WordPress REST API will populate 3-4 recent posts here -->
+                    <p class="paragraph paragraph--default" style="text-align: center; color: #6C757D;">
+                        Loading latest articles...
+                    </p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="/blog" class="button button--primary button--large">
+                        View All Articles
+                    </a>
+                </div>
+                
+            </div>
+        </section>
+        
+        <!-- ==============================================
+             CALL TO ACTION SECTION
+             Organism: Text Block with CTA
+             ============================================== -->
+        <section class="text-block text-block--narrative" style="background: linear-gradient(135deg, #1B1464 0%, #36448F 100%); color: #FFFFFF; padding: 100px 0;">
+            <div class="text-block__container">
+                <article class="text-block__content" style="text-align: center;">
+                    
+                    <div class="icon-display icon-display--xlarge" data-icon="strategy" data-color="white" style="margin: 0 auto 40px;"></div>
+                    
+                    <h2 class="headline headline--h2" style="color: #FFFFFF; margin-bottom: 24px;">
+                        Ready to Transform Your Marketing?
+                    </h2>
+                    
+                    <p class="paragraph paragraph--lead" style="color: #FFFFFF; margin-bottom: 40px;">
+                        Let's discuss how strategic inbound marketing can accelerate your business growth. Schedule a complimentary consultation to explore opportunities.
+                    </p>
+                    
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <a href="/contact" class="button button--secondary button--large">
+                            Schedule Consultation
+                        </a>
+                        <a href="/resources" class="button button--ghost-secondary button--large">
+                            Download Free Resources
+                        </a>
+                    </div>
+                    
+                </article>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- ==============================================
+         FOOTER
+         Organism: Footer Responsive
+         ============================================== -->
+    <footer class="footer-responsive" role="contentinfo">
+        <!-- DESKTOP/TABLET FOOTER (768px and up) -->
+        <div class="footer-main" data-breakpoint="responsive">
+            <div class="footer-container">
+                <!-- Logo Section -->
+                <div class="footer-logo-section">
+                    <img src="../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                         alt="Purposeful Media Promotions" 
+                         class="footer-logo">
+                </div>
+
+                <!-- Footer Content Columns -->
+                <div class="footer-content">
+                    <!-- Column 1: Services -->
+                    <div class="footer-column" data-column="services">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Services</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a></li>
+                                    <li><a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a></li>
+                                    <li><a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a></li>
+                                    <li><span class="footer-menu-link disabled">Succession Planning [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Business Unit Growth [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Who We Serve -->
+                    <div class="footer-column" data-column="who-we-serve">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Who We Serve</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><span class="footer-menu-link disabled">Revenue Growth [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Preparing for Exit [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Plan a Webinar [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Resources -->
+                    <div class="footer-column" data-column="resources">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Resources</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/blog" class="footer-menu-link">Read Our Blog</a></li>
+                                    <li><a href="/resources/thought-leadership" class="footer-menu-link">Thought Leadership</a></li>
+                                    <li><span class="footer-menu-link disabled">Pricing [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Company & Newsletter -->
+                    <div class="footer-column" data-column="company-newsletter">
+                        <!-- Company Menu -->
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Company</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/about" class="footer-menu-link">About Us</a></li>
+                                    <li><a href="/contact" class="footer-menu-link">Contact Us</a></li>
+                                    <li><a href="/privacy" class="footer-menu-link">Privacy Policy</a></li>
+                                    <li><span class="footer-menu-link disabled">Affiliates [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Newsletter Form -->
+                        <div class="footer-newsletter">
+                          <form class="form-newsletter">
+                                <h4 class="form-newsletter__title">Stay Connected</h4>
+                                <p class="form-newsletter__description">
+                                    Share your email address and get our B2B marketing strategies and digital transformation inspirations in your inbox.
+                                </p>
+                                <div class="form-newsletter__field">
+                                    <label for="footer-email" class="form-newsletter__label">Email Address*</label>
+                                    <input type="email" 
+                                           id="footer-email" 
+                                           class="form-newsletter__input" 
+                                           placeholder="Enter your email"
+                                           required>
+                                    <span class="form-newsletter__helper">*This field is required.</span>
+                                </div>
+                                <div class="form-newsletter__submit-wrapper">
+                                    <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attribution Sub-footer -->
+            <div class="footer-attribution">
+                <div class="footer-attribution-content">
+                    <span class="footer-copyright">© All rights reserved 2025</span>
+                    <span class="footer-divider">|</span>
+                    <span class="footer-company">Purposeful Media Promotions</span>
+                    <span class="footer-divider">|</span>
+                    <a href="/policy" class="footer-policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE FOOTER (767px and below) -->
+        <div class="footer-mobile">
+            <div class="footer-mobile__top">
+                <img src="../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                     alt="Purposeful Media Promotions" 
+                     class="footer-mobile__logo">
+            </div>
+            
+            <nav class="footer-mobile__nav">
+                <!-- Services -->
+                <div class="footer-mobile__nav-item" data-dropdown="services">
+                    <span class="footer-mobile__nav-text">Services</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Services Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-services">
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/email-marketing" class="dropdown-mobile__link">Email Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/webinar-production" class="dropdown-mobile__link">Webinar Production</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/inbound-marketing" class="dropdown-mobile__link">Inbound Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Succession Planning</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Business Unit Growth</span>
+                    </div>
+                </div>
+                
+                <!-- Who We Serve -->
+                <div class="footer-mobile__nav-item" data-dropdown="who-we-serve">
+                    <span class="footer-mobile__nav-text">Who We Serve</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Who We Serve Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-who-we-serve">	
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Revenue Growth</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Preparing for Exit</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Plan a Webinar</span>
+                    </div>
+                </div>
+                
+                <!-- Resources -->
+                <div class="footer-mobile__nav-item" data-dropdown="resources">
+                    <span class="footer-mobile__nav-text">Resources</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Resources Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-resources">
+                    <div class="dropdown-mobile__item">
+                        <a href="/blog" class="dropdown-mobile__link">Read Our Blog</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/resources/thought-leadership" class="dropdown-mobile__link">Thought Leadership</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Pricing</span>
+                    </div>
+                </div>
+                
+                <!-- Company -->
+                <div class="footer-mobile__nav-item" data-dropdown="company">
+                    <span class="footer-mobile__nav-text">Company</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Company Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-company">
+                    <div class="dropdown-mobile__item">
+                        <a href="/about" class="dropdown-mobile__link">About Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/contact" class="dropdown-mobile__link">Contact Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/privacy" class="dropdown-mobile__link">Privacy Policy</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Affiliates [Coming Soon]</span>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Newsletter Form for Mobile -->
+            <div class="footer-mobile__newsletter">
+                <form class="form-newsletter form-newsletter--size-mobile">
+                    <h4 class="form-newsletter__title">Stay Connected</h4>
+                    <p class="form-newsletter__description">
+                        Get B2B marketing strategies and digital transformation inspiration in your inbox.
+                    </p>
+                    <div class="form-newsletter__field">
+                        <label for="footer-mobile-email" class="form-newsletter__label">Email Address*</label>
+                        <input type="email" 
+                               id="footer-mobile-email" 
+                               class="form-newsletter__input" 
+                               placeholder="Enter your email"
+                               required>
+                        <span class="form-newsletter__helper">*This field is required.</span>
+                    </div>
+                    <div class="form-newsletter__submit-wrapper">
+                        <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="footer-mobile__attribution">
+                <div class="footer-mobile__attribution-content">
+                    <div class="footer-mobile__company">Purposeful Media Promotions</div>
+                    <a href="/policy" class="footer-mobile__policy">Policy Statement</a>
+                    <div class="footer-mobile__copyright">© All rights reserved 2025</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- ==============================================
+         SCRIPTS
+         ============================================== -->
+    
+    <!-- Main Design System JS -->
+    <script src="../dist/js/purposeful-main.min.js"></script>
+    
+    <!-- Page-Specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize icon display
+            const icons = document.querySelectorAll('.icon-display');
+            icons.forEach(icon => {
+                const iconName = icon.getAttribute('data-icon');
+                const color = icon.getAttribute('data-color');
+                if (iconName && color) {
+                    icon.classList.add(`icon--${iconName}-${color}`);
+                }
+            });
+            
+            // Header navigation - Desktop dropdown functionality using data attributes
+            const menuItems = document.querySelectorAll('.menu-text[data-dropdown]');
+            
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const dropdownId = item.getAttribute('data-dropdown');
+                    const dropdown = document.querySelector(`.dropdown-container[data-dropdown-id="${dropdownId}"]`);
+                    
+                    if (dropdown) {
+                        // Toggle active state on clicked dropdown
+                        const isOpen = dropdown.classList.contains('active');
+                        
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown-container').forEach(card => {
+                            card.classList.remove('active');
+                        });
+                        
+                        // Open this dropdown if it wasn't already open
+                        if (!isOpen) {
+                            dropdown.classList.add('active');
+                        }
+                    }
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.desktop-nav')) {
+                    document.querySelectorAll('.dropdown-container').forEach(card => {
+                        card.classList.remove('active');
+                    });
+                }
+            });
+            
+            // Mobile menu toggle
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const mobileAccordion = document.querySelector('.mobile-accordion');
+            const mainMenu = document.querySelector('.main-menu');
+            
+            if (hamburgerButton) {
+                hamburgerButton.addEventListener('click', function() {
+                    const isOpen = mobileAccordion.classList.contains('active');
+                    mobileAccordion.classList.toggle('active', !isOpen);
+                    mainMenu.classList.toggle('menu-open', !isOpen);
+                    hamburgerButton.setAttribute('aria-expanded', !isOpen);
+                });
+            }
+            
+            // Mobile accordion functionality
+            document.querySelectorAll('.accordion-header[data-accordion]').forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionId = this.dataset.accordion;
+                    const content = document.getElementById(accordionId + '-content');
+                    if (content) {
+                        content.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Initialize homepage blog section with WordPress REST API
+            if (typeof BlogGroupAdapter !== 'undefined') {
+                BlogGroupAdapter.init('frontpage', '#homepage-blog-group', {
+                    postsPerPage: 3,
+                    showExcerpt: true,
+                    showAuthor: false,
+                    showDate: true
+                });
+            }
+        });
+    </script>
+    
+</body>
+</html>
+
+

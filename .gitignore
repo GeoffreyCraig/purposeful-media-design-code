@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.production
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+*.log
+
+# Backup files
+*.bak
+*.backup
+*-backup/
+BACKUP-*/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Large media files (uncomment if needed)
+# *.mp4
+# *.mov
+# *.avi

@@ -1,0 +1,140 @@
+/* Purposeful Media Design System - Links Component */
+/* ============================================== */
+
+/* Base Link Container */
+.link,
+.link * {
+    box-sizing: border-box;
+}
+
+.link {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-2);
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Link Text Styles */
+.link__text {
+    color: var(--muted);
+    text-align: left;
+    font-family: var(--font-primary), sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    text-decoration: underline;
+    position: relative;
+}
+
+/* Link Types */
+.link.type-text-link .link__text {
+    font-family: var(--font-primary), sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 600;
+}
+
+.link.type-menu-link .link__text {
+    text-align: left;
+    font-family: var(--font-primary), sans-serif;
+    font-size: 21px;
+    line-height: 21px;
+    font-weight: 700;
+    position: relative;
+}
+
+/* Link Colors - Primary */
+.link.color-primary.state-default .link__text {
+    color: var(--heading);
+}
+
+.link.color-primary:hover .link__text,
+.link.color-primary.state-hover .link__text {
+    color: #1d50de; /* Hover state - lighter blue */
+}
+
+.link.color-primary.state-active .link__text {
+    color: #06102b; /* Active state - darker blue */
+}
+
+/* Link Colors - Accent */
+.link.color-accent.state-default .link__text {
+    color: var(--accent);
+}
+
+.link.color-accent:hover .link__text,
+.link.color-accent.state-hover .link__text {
+    color: #dcbe5d; /* Hover state - lighter gold */
+}
+
+.link.color-accent.state-active .link__text {
+    color: #b39226; /* Active state - darker gold */
+}
+
+/* Link Colors - Reverse */
+.link.state-reverse .link__text {
+    color: var(--reverse);
+}
+
+/* Link Colors - Disabled */
+.link.color-disabled .link__text {
+    color: #868f97; /* Disabled state */
+}
+
+/* Link Layout Variants */
+.link.color-primary.state-default.type-menu-link,
+.link.state-reverse {
+    justify-content: center;
+}
+
+/* Link States */
+.link:hover {
+    cursor: pointer;
+}
+
+.link.color-disabled {
+    cursor: not-allowed;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .link.type-text-link .link__text {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    
+    .link.type-menu-link .link__text {
+        font-size: 18px;
+        line-height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .link.type-text-link .link__text {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    
+    .link.type-menu-link .link__text {
+        font-size: 16px;
+        line-height: 16px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

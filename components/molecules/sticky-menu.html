@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Menu Component - Purposeful Media</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-forms.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =================================================================
+           STICKY MENU COMPONENT STYLES
+           Component: Sticky Menu
+           Version: 1.0
+           Last Modified: 2025-09-20
+           ================================================================= */
+        
+        /* Base Component Styles */
+        .pm-sticky-menu {
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--pm-secondary, #eceeef);
+            border-bottom: 1px solid var(--pm-accent, #d4af37);
+            box-shadow: 4px 4px 12px 0px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .pm-sticky-menu.hidden {
+            transform: translateY(-100%);
+        }
+        
+        /* Desktop/Tablet Menu (768px - 1920px) */
+        .pm-sticky-menu-desktop {
+            display: none;
+            padding: 4px 8px;
+        }
+        
+        .pm-sticky-menu-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            gap: 10px;
+        }
+        
+        .pm-sticky-menu-item {
+            color: var(--pm-heading, #1b1464);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 16px;
+            line-height: 24px;
+            padding: 8px 16px;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .pm-sticky-menu-item:hover {
+            opacity: 0.8;
+        }
+        
+        .pm-sticky-menu-item.active {
+            background: var(--pm-light-gold, #faf5e6);
+            border-radius: 8px;
+        }
+        
+        .pm-sticky-menu-separator {
+            color: var(--pm-heading, #1b1464);
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 21px;
+            line-height: 30.5px;
+            user-select: none;
+        }
+        
+        .pm-sticky-menu-start {
+            background: var(--pm-light-gold, #faf5e6);
+            border-radius: 8px;
+            padding: 8px 16px;
+            color: var(--pm-heading, #1b1464);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 27px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .pm-sticky-menu-start:hover {
+            background: var(--pm-active-gold, #b39226);
+            color: white;
+        }
+        
+        /* Mobile Menu (767px and below) */
+        .pm-sticky-menu-mobile {
+            display: none;
+            position: relative;
+        }
+        
+        .pm-sticky-menu-mobile-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            min-height: 60px;
+        }
+        
+        .pm-sticky-menu-mobile-current {
+            background: var(--pm-light-gold, #faf5e6);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: var(--pm-heading, #1b1464);
+            text-transform: uppercase;
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        
+        .pm-sticky-menu-mobile-toggle {
+            background: var(--pm-light-gold, #faf5e6);
+            border: none;
+            border-radius: 8px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pm-sticky-menu-mobile-toggle:hover {
+            background: var(--pm-active-gold, #b39226);
+        }
+        
+        /* Hamburger Icon */
+        .pm-sticky-menu-hamburger {
+            width: 24px;
+            height: 20px;
+            position: relative;
+        }
+        
+        .pm-sticky-menu-hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--pm-heading, #1b1464);
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transition: 0.25s ease-in-out;
+        }
+        
+        .pm-sticky-menu-hamburger span:nth-child(1) {
+            top: 0px;
+        }
+        
+        .pm-sticky-menu-hamburger span:nth-child(2) {
+            top: 8px;
+        }
+        
+        .pm-sticky-menu-hamburger span:nth-child(3) {
+            top: 16px;
+        }
+        
+        /* Close Icon State */
+        .pm-sticky-menu-mobile-toggle.open .pm-sticky-menu-hamburger span:nth-child(1) {
+            top: 8px;
+            transform: rotate(45deg);
+        }
+        
+        .pm-sticky-menu-mobile-toggle.open .pm-sticky-menu-hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .pm-sticky-menu-mobile-toggle.open .pm-sticky-menu-hamburger span:nth-child(3) {
+            top: 8px;
+            transform: rotate(-45deg);
+        }
+        
+        /* Mobile Dropdown */
+        .pm-sticky-menu-dropdown {
+            display: none;
+            background: var(--pm-secondary, #eceeef);
+            padding: 16px 8px;
+            border-top: 2px solid var(--pm-accent, #d4af37);
+        }
+        
+        .pm-sticky-menu-dropdown.open {
+            display: block;
+        }
+        
+        .pm-sticky-menu-dropdown-inner {
+            padding-left: 32px;
+            padding-right: 64px;
+        }
+        
+        .pm-sticky-menu-dropdown-item {
+            display: block;
+            padding: 12px 0;
+            color: var(--pm-heading, #1b1464);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 16px;
+            line-height: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .pm-sticky-menu-dropdown-item:hover {
+            padding-left: 8px;
+            opacity: 0.8;
+        }
+        
+        .pm-sticky-menu-dropdown-item.active {
+            padding-left: 8px;
+            padding-right: 8px;
+            background: var(--pm-light-gold, #faf5e6);
+            border-radius: 8px;
+        }
+        
+        .pm-sticky-menu-dropdown-item.start {
+            background: var(--pm-light-gold, #faf5e6);
+            border-radius: 8px;
+            padding: 12px 8px;
+            color: var(--pm-active-gold, #b39226);
+            font-size: 18px;
+            line-height: 27px;
+        }
+        
+        .pm-sticky-menu-dropdown-item.start:hover {
+            background: var(--pm-active-gold, #b39226);
+            color: white;
+        }
+        
+        /* Responsive Media Queries */
+        @media screen and (min-width: 768px) {
+            .pm-sticky-menu-desktop {
+                display: block;
+            }
+            
+            .pm-sticky-menu-mobile {
+                display: none;
+            }
+        }
+        
+        @media screen and (max-width: 767px) {
+            .pm-sticky-menu-desktop {
+                display: none;
+            }
+            
+            .pm-sticky-menu-mobile {
+                display: block;
+            }
+            
+            .pm-sticky-menu-dropdown-inner {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+        
+        @media screen and (max-width: 380px) {
+            .pm-sticky-menu-mobile-bar {
+                padding: 8px;
+            }
+            
+            .pm-sticky-menu-mobile-current {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+        }
+        
+        @media screen and (min-width: 1920px) {
+            .pm-sticky-menu-inner {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ==================================================================
+         STICKY MENU COMPONENT
+         ================================================================== -->
+    <nav class="pm-sticky-menu" id="stickyMenu" role="navigation" aria-label="Page sections navigation">
+        
+        <!-- Desktop/Tablet Menu -->
+        <div class="pm-sticky-menu-desktop">
+            <div class="pm-sticky-menu-inner">
+                <a href="#overview" class="pm-sticky-menu-item active" data-section="overview">Overview</a>
+                <span class="pm-sticky-menu-separator">&gt;</span>
+                <a href="#strategy" class="pm-sticky-menu-item" data-section="strategy">Strategy</a>
+                <span class="pm-sticky-menu-separator">&gt;</span>
+                <a href="#method" class="pm-sticky-menu-item" data-section="method">Method</a>
+                <span class="pm-sticky-menu-separator">&gt;</span>
+                <a href="#benefits" class="pm-sticky-menu-item" data-section="benefits">Benefits</a>
+                <span class="pm-sticky-menu-separator">&gt;</span>
+                <a href="#resources" class="pm-sticky-menu-item" data-section="resources">Resources</a>
+                <span class="pm-sticky-menu-separator">&gt;</span>
+                <a href="#faq" class="pm-sticky-menu-item" data-section="faq">FAQ</a>
+                <span class="pm-sticky-menu-separator">&gt;</span>
+                <a href="#start" class="pm-sticky-menu-start">Get Started</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="pm-sticky-menu-mobile">
+            <div class="pm-sticky-menu-mobile-bar">
+                <div class="pm-sticky-menu-mobile-current" id="currentSectionMobile">Overview</div>
+                <button class="pm-sticky-menu-mobile-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <div class="pm-sticky-menu-hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+            
+            <!-- Mobile Dropdown -->
+            <div class="pm-sticky-menu-dropdown" id="mobileDropdown">
+                <div class="pm-sticky-menu-dropdown-inner">
+                    <a href="#overview" class="pm-sticky-menu-dropdown-item active" data-section="overview">Overview</a>
+                    <a href="#strategy" class="pm-sticky-menu-dropdown-item" data-section="strategy">Strategy</a>
+                    <a href="#method" class="pm-sticky-menu-dropdown-item" data-section="method">Method</a>
+                    <a href="#benefits" class="pm-sticky-menu-dropdown-item" data-section="benefits">Benefits</a>
+                    <a href="#resources" class="pm-sticky-menu-dropdown-item" data-section="resources">Resources</a>
+                    <a href="#faq" class="pm-sticky-menu-dropdown-item" data-section="faq">FAQ</a>
+                    <a href="#start" class="pm-sticky-menu-dropdown-item start">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- ==================================================================
+         JAVASCRIPT
+         ================================================================== -->
+    <script>
+        /**
+         * Sticky Menu Component JavaScript
+         * Version: 1.0
+         * Last Modified: 2025-09-20
+         */
+        (function() {
+            'use strict';
+            
+            // Elements
+            const stickyMenu = document.getElementById('stickyMenu');
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            const mobileDropdown = document.getElementById('mobileDropdown');
+            const currentSectionMobile = document.getElementById('currentSectionMobile');
+            
+            // All menu items (desktop and mobile)
+            const desktopMenuItems = document.querySelectorAll('.pm-sticky-menu-item[data-section]');
+            const mobileMenuItems = document.querySelectorAll('.pm-sticky-menu-dropdown-item[data-section]');
+            
+            // Mobile menu toggle
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    const isOpen = mobileDropdown.classList.contains('open');
+                    
+                    if (isOpen) {
+                        mobileDropdown.classList.remove('open');
+                        mobileToggle.classList.remove('open');
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                    } else {
+                        mobileDropdown.classList.add('open');
+                        mobileToggle.classList.add('open');
+                        mobileToggle.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            }
+            
+            // Close mobile menu when clicking a link
+            mobileMenuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Close dropdown
+                    mobileDropdown.classList.remove('open');
+                    mobileToggle.classList.remove('open');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                    
+                    // Smooth scroll (if sections exist on page)
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        e.preventDefault();
+                        const menuHeight = stickyMenu.offsetHeight;
+                        const targetPosition = targetSection.offsetTop - menuHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Desktop menu smooth scroll
+            desktopMenuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        e.preventDefault();
+                        const menuHeight = stickyMenu.offsetHeight;
+                        const targetPosition = targetSection.offsetTop - menuHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Get Started button smooth scroll
+            document.querySelectorAll('.pm-sticky-menu-start').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const targetSection = document.getElementById('start');
+                    if (targetSection) {
+                        e.preventDefault();
+                        const menuHeight = stickyMenu.offsetHeight;
+                        const targetPosition = targetSection.offsetTop - menuHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update active section on scroll
+            function updateActiveSection() {
+                const sections = document.querySelectorAll('section[id]');
+                if (sections.length === 0) return; // Exit if no sections on page
+                
+                const scrollPosition = window.scrollY + stickyMenu.offsetHeight + 10;
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = sectionId;
+                    }
+                });
+                
+                // Default to first section if none matched
+                if (!currentSection && sections.length > 0) {
+                    currentSection = sections[0].getAttribute('id');
+                }
+                
+                // Update desktop menu
+                desktopMenuItems.forEach(item => {
+                    if (item.getAttribute('data-section') === currentSection) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Update mobile menu
+                mobileMenuItems.forEach(item => {
+                    if (item.getAttribute('data-section') === currentSection) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Update mobile current section display
+                const sectionNames = {
+                    'overview': 'Overview',
+                    'strategy': 'Strategy',
+                    'method': 'Method',
+                    'benefits': 'Benefits',
+                    'resources': 'Resources',
+                    'faq': 'FAQ',
+                    'start': 'Get Started'
+                };
+                
+                if (currentSectionMobile && sectionNames[currentSection]) {
+                    currentSectionMobile.textContent = sectionNames[currentSection];
+                }
+            }
+            
+            // Hide/show menu on scroll (optional behavior)
+            let lastScrollTop = 0;
+            let scrollTimer = null;
+            
+            function handleScroll() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Optional: Hide menu when scrolling down, show when scrolling up
+                // Uncomment below to enable this behavior
+                /*
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down - hide menu
+                    stickyMenu.classList.add('hidden');
+                } else {
+                    // Scrolling up - show menu
+                    stickyMenu.classList.remove('hidden');
+                }
+                */
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                
+                // Update active section with debounce
+                clearTimeout(scrollTimer);
+                scrollTimer = setTimeout(updateActiveSection, 10);
+            }
+            
+            // Event listeners
+            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('resize', function() {
+                // Close mobile menu on resize to desktop
+                if (window.innerWidth >= 768 && mobileDropdown) {
+                    mobileDropdown.classList.remove('open');
+                    if (mobileToggle) {
+                        mobileToggle.classList.remove('open');
+                        mobileToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+            
+            // Initialize
+            updateActiveSection();
+        })();
+    </script>
+    
+</body>
+</html>

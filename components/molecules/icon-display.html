@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Display Molecule - Purposeful Media</title>
+    
+    <!-- Import stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/molecules-icon-display.css">
+    
+    <style>
+        /* Demo styles only */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .demo-section h2 {
+            color: #1B1464;
+            border-bottom: 2px solid #D4AF37;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .demo-item {
+            text-align: center;
+            padding: 20px 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        .demo-item p {
+            margin: 10px 0 0 0;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .demo-row {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        .demo-dark {
+            background: #1B1464;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .demo-accent {
+            background: #D4AF37;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .demo-code {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px;
+            border-left: 4px solid #D4AF37;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-section">
+        <h2>Icon Display Molecule Component</h2>
+        <p>A flexible, reusable icon component with size and color variants. Use this molecule anywhere you need to display an icon from the Purposeful Media sprite sheets.</p>
+    </div>
+    
+    <!-- Size Variants Demo -->
+    <div class="demo-section">
+        <h2>Size Variants</h2>
+        <div class="demo-row">
+            <div>
+                <div class="icon-display icon-display--small" data-icon="email" data-color="navy"></div>
+                <p>Small (30px)</p>
+            </div>
+            <div>
+                <div class="icon-display icon-display--medium" data-icon="email" data-color="navy"></div>
+                <p>Medium (60px)</p>
+            </div>
+            <div>
+                <div class="icon-display icon-display--large" data-icon="email" data-color="navy"></div>
+                <p>Large (90px)</p>
+            </div>
+            <div>
+                <div class="icon-display icon-display--xlarge" data-icon="email" data-color="navy"></div>
+                <p>X-Large (120px)</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Color Variants Demo -->
+    <div class="demo-section">
+        <h2>Color Variants</h2>
+        <div class="demo-row">
+            <div>
+                <div class="icon-display icon-display--large" data-icon="strategy" data-color="navy"></div>
+                <p>Navy</p>
+            </div>
+            <div>
+                <div class="icon-display icon-display--large" data-icon="strategy" data-color="gray"></div>
+                <p>Gray</p>
+            </div>
+            <div>
+                <div class="icon-display icon-display--large" data-icon="strategy" data-color="dark"></div>
+                <p>Dark</p>
+            </div>
+            <div class="demo-dark" style="padding: 20px;">
+                <div class="icon-display icon-display--large" data-icon="strategy" data-color="white"></div>
+                <p style="color: white;">White</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- All Available Icons -->
+    <div class="demo-section">
+        <h2>Available Icons - Navy Variant</h2>
+        <div class="demo-grid">
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="accelerate" data-color="navy"></div>
+                <p>accelerate</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="attract" data-color="navy"></div>
+                <p>attract</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="contact" data-color="navy"></div>
+                <p>contact</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="delight" data-color="navy"></div>
+                <p>delight</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="download" data-color="navy"></div>
+                <p>download</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="efficiency" data-color="navy"></div>
+                <p>efficiency</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="email" data-color="navy"></div>
+                <p>email</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="engage" data-color="navy"></div>
+                <p>engage</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="exit" data-color="navy"></div>
+                <p>exit</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="expertise" data-color="navy"></div>
+                <p>expertise</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="inbound" data-color="navy"></div>
+                <p>inbound</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="momentum" data-color="navy"></div>
+                <p>momentum</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="news" data-color="navy"></div>
+                <p>news</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="persona" data-color="navy"></div>
+                <p>persona</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="professional" data-color="navy"></div>
+                <p>professional</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="roi" data-color="navy"></div>
+                <p>roi</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="schedule" data-color="navy"></div>
+                <p>schedule</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="strategy" data-color="navy"></div>
+                <p>strategy</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="unit" data-color="navy"></div>
+                <p>unit</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="value" data-color="navy"></div>
+                <p>value</p>
+            </div>
+            <div class="demo-item">
+                <div class="icon-display icon-display--medium" data-icon="webinar" data-color="navy"></div>
+                <p>webinar</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Usage Examples -->
+    <div class="demo-section">
+        <h2>Usage Examples</h2>
+        
+        <h3>Basic Usage</h3>
+        <div class="demo-code">
+&lt;div class="icon-display icon-display--medium" data-icon="email" data-color="navy"&gt;&lt;/div&gt;
+        </div>
+        
+        <h3>With JavaScript Control</h3>
+        <div class="demo-code">
+// Change icon dynamically
+const iconElement = document.querySelector('.icon-display');
+iconElement.setAttribute('data-icon', 'webinar');
+iconElement.setAttribute('data-color', 'gold');
+        </div>
+        
+        <h3>Size Classes</h3>
+        <ul>
+            <li><code>icon-display--small</code> - 30px × 30px</li>
+            <li><code>icon-display--medium</code> - 60px × 60px</li>
+            <li><code>icon-display--large</code> - 90px × 90px</li>
+            <li><code>icon-display--xlarge</code> - 120px × 120px</li>
+        </ul>
+        
+        <h3>Color Options</h3>
+        <ul>
+            <li><code>data-color="navy"</code> - Navy blue (#1B1464)</li>
+            <li><code>data-color="gray"</code> - Gray (#6C757D)</li>
+            <li><code>data-color="dark"</code> - Dark (#54595F)</li>
+            <li><code>data-color="white"</code> - White (#FFFFFF)</li>
+        </ul>
+    </div>
+    
+    <!-- Interactive Demo -->
+    <div class="demo-section">
+        <h2>Interactive Demo</h2>
+        <div style="display: flex; gap: 30px; align-items: flex-start;">
+            <div style="flex: 1;">
+                <h4>Controls:</h4>
+                <div style="margin-bottom: 15px;">
+                    <label>Icon:</label><br>
+                    <select id="iconSelector" onchange="updateDemoIcon()">
+                        <option value="email">Email</option>
+                        <option value="webinar">Webinar</option>
+                        <option value="strategy">Strategy</option>
+                        <option value="roi">ROI</option>
+                        <option value="persona">Persona</option>
+                        <option value="inbound">Inbound</option>
+                        <option value="attract">Attract</option>
+                        <option value="engage">Engage</option>
+                        <option value="delight">Delight</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label>Size:</label><br>
+                    <select id="sizeSelector" onchange="updateDemoIcon()">
+                        <option value="small">Small</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="large">Large</option>
+                        <option value="xlarge">X-Large</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label>Color:</label><br>
+                    <select id="colorSelector" onchange="updateDemoIcon()">
+                        <option value="navy">Navy</option>
+                        <option value="gray">Gray</option>
+                        <option value="dark">Dark</option>
+                        <option value="white">White</option>
+                    </select>
+                </div>
+            </div>
+            <div style="flex: 1; display: flex; justify-content: center; align-items: center; min-height: 200px; background: #f5f5f5; border-radius: 8px;" id="demoContainer">
+                <div id="demoIcon" class="icon-display icon-display--medium" data-icon="email" data-color="navy"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize icon display with JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply initial styles based on data attributes
+            const icons = document.querySelectorAll('.icon-display');
+            icons.forEach(icon => {
+                updateIconDisplay(icon);
+            });
+        });
+        
+        function updateIconDisplay(element) {
+            const icon = element.getAttribute('data-icon');
+            const color = element.getAttribute('data-color');
+            
+            // Apply the appropriate class based on data attributes
+            element.className = element.className.replace(/icon--\S+/g, '');
+            element.classList.add(`icon--${icon}-${color}`);
+        }
+        
+        // Interactive demo functions
+        function updateDemoIcon() {
+            const icon = document.getElementById('iconSelector').value;
+            const size = document.getElementById('sizeSelector').value;
+            const color = document.getElementById('colorSelector').value;
+            const demoIcon = document.getElementById('demoIcon');
+            const container = document.getElementById('demoContainer');
+            
+            // Update classes
+            demoIcon.className = `icon-display icon-display--${size}`;
+            demoIcon.setAttribute('data-icon', icon);
+            demoIcon.setAttribute('data-color', color);
+            
+            // Apply the icon class
+            demoIcon.classList.add(`icon--${icon}-${color}`);
+            
+            // Update background for white icons
+            if (color === 'white') {
+                container.style.background = '#1B1464';
+            } else {
+                container.style.background = '#f5f5f5';
+            }
+        }
+        
+        // Initial setup
+        updateDemoIcon();
+    </script>
+</body>
+</html>

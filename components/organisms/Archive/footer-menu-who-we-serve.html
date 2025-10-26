@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Menu Who We Serve Module - Purposeful Media</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            /* Colors */
+            --color-primary-700: #1b1464;
+            --color-white: #ffffff;
+            --color-neutral-400: #868f97;
+            --color-accent-500: #d4af37;
+            
+            /* Spacing */
+            --space-0: 0px;
+            --space-3: 12px;
+            --space-4: 16px;
+        }
+        
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #2a2a2a;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* Footer Menu Module Styles */
+        .footer-menu {
+            background: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-0);
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-menu__container {
+            background: var(--color-primary-700);
+            padding: var(--space-3);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-0);
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-menu__header {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-self: stretch;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .footer-menu__title {
+            color: var(--color-white);
+            text-align: left;
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 900;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .footer-menu__items {
+            padding: var(--space-3);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-self: stretch;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .footer-menu__item {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-self: stretch;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .footer-menu__link {
+            color: var(--color-white);
+            text-align: left;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 21px;
+            line-height: 21px;
+            font-weight: 700;
+            position: relative;
+            flex: 1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-menu__link:hover {
+            color: var(--color-accent-500);
+        }
+
+        .footer-menu__link--disabled {
+            color: var(--color-neutral-400);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        /* Demo Container Styles */
+        .demo-container {
+            background: #f6f6f7;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .demo-title {
+            color: #1b1464;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .demo-description {
+            color: #6c757d;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .demo-note {
+            background: #fef1e8;
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin-top: 40px;
+            border-radius: 4px;
+        }
+        
+        .demo-note h3 {
+            color: #1b1464;
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .demo-note p {
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">Footer Menu Module: Who We Serve</h1>
+        <p class="demo-description">
+            This is the "Who We Serve" menu module component for the main footer. 
+            Currently, all items are marked as "Coming Soon" and displayed in the disabled state.
+        </p>
+        
+        <!-- Who We Serve Menu Module -->
+        <div class="footer-menu">
+            <div class="footer-menu__container">
+                <div class="footer-menu__header">
+                    <h3 class="footer-menu__title">Who We Serve</h3>
+                </div>
+                <nav class="footer-menu__items">
+                    <div class="footer-menu__item">
+                        <span class="footer-menu__link footer-menu__link--disabled">
+                            Revenue Growth [Coming Soon]
+                        </span>
+                    </div>
+                    <div class="footer-menu__item">
+                        <span class="footer-menu__link footer-menu__link--disabled">
+                            Preparing for Exit [Coming Soon]
+                        </span>
+                    </div>
+                    <div class="footer-menu__item">
+                        <span class="footer-menu__link footer-menu__link--disabled">
+                            Plan a Webinar [Coming Soon]
+                        </span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="demo-note">
+            <h3>Implementation Notes:</h3>
+            <p>• All items currently in disabled state (gray text #868f97)</p>
+            <p>• Will transition to active links when content becomes available</p>
+            <p>• Maintains consistent width and styling with Services module</p>
+            <p>• Typography: Lato 900 for title (30px), Open Sans 700 for links (21px)</p>
+            <p>• Figma Node ID: 4521:516</p>
+        </div>
+        
+        <h2 style="color: #1b1464; font-size: 24px; margin-top: 40px; margin-bottom: 20px; font-family: 'Lato', sans-serif;">
+            Preview in Footer Context (4-Column Layout)
+        </h2>
+        
+        <div class="demo-grid">
+            <!-- Services Column (from previous component) -->
+            <div class="footer-menu">
+                <div class="footer-menu__container">
+                    <div class="footer-menu__header">
+                        <h3 class="footer-menu__title">Services</h3>
+                    </div>
+                    <nav class="footer-menu__items">
+                        <div class="footer-menu__item">
+                            <a href="/services/email-marketing" class="footer-menu__link">
+                                Email Marketing
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <a href="/services/webinar-production" class="footer-menu__link">
+                                Webinar Production
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <a href="/services/inbound-marketing" class="footer-menu__link">
+                                Inbound Marketing
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Succession Planning [Coming Soon]
+                            </span>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Business Unit Growth [Coming Soon]
+                            </span>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Who We Serve Column -->
+            <div class="footer-menu">
+                <div class="footer-menu__container">
+                    <div class="footer-menu__header">
+                        <h3 class="footer-menu__title">Who We Serve</h3>
+                    </div>
+                    <nav class="footer-menu__items">
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Revenue Growth [Coming Soon]
+                            </span>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Preparing for Exit [Coming Soon]
+                            </span>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Plan a Webinar [Coming Soon]
+                            </span>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Placeholder for Resources column -->
+            <div style="background: #363a3e; height: 280px; display: flex; align-items: center; justify-content: center; color: #868f97; font-size: 14px; text-align: center; padding: 20px;">
+                Resources<br>Menu Module<br>(To be implemented)
+            </div>
+            
+            <!-- Placeholder for Company/Newsletter column -->
+            <div style="background: #363a3e; height: 280px; display: flex; align-items: center; justify-content: center; color: #868f97; font-size: 14px; text-align: center; padding: 20px;">
+                Company Menu /<br>Newsletter Form<br>(To be implemented)
+            </div>
+        </div>
+    </div>
+</body>
+</html>

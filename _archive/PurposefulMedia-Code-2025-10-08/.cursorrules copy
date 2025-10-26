@@ -1,0 +1,548 @@
+# Purposeful Media Design System - Cursor Rules
+*AI Assistant Configuration for Figma-to-Code Workflow*
+
+## Project Overview
+
+This is a comprehensive design system for Purposeful Media's website, following atomic design methodology and optimized for WordPress deployment. The system emphasizes maintainability, consistency, and accessibility.
+
+**Key Principles:**
+- Atomic design: atoms → molecules → organisms → templates
+- Component-based architecture with reusable patterns
+- Data-attribute driven variant control
+- Mobile-first responsive design
+- WordPress-compatible (build process for production optimization)
+
+---
+
+## Project Phases & Development Strategy
+
+### Phase 1: Minimum Viable Website (MVW) - **Current Focus**
+**Timeline:** Q4 2025  
+**Goal:** Quick soft launch with core functionality  
+**Integrations:** Google Console, HubSpot, Semrush  
+**Optimization Level:** "Good enough" - prioritize speed to launch over perfection
+
+**Development Priorities:**
+- ✅ Core functionality working
+- ✅ Basic WordPress integration  
+- ✅ Simple CSS/JS bundling and minification
+- ✅ Essential SEO setup
+- ✅ Speed run deployment to Bluehost sandbox (test homepage first)
+- ⏸️ Skip for Phase 1: Advanced optimization, conditional loading, critical CSS
+
+**Deployment Strategy:**
+- Build homepage template first
+- Speed run deployment to Bluehost WordPress sandbox
+- Document blockers and solutions
+- Establish repeatable deployment process
+- Use learnings to deploy remaining templates
+
+### Phase 2: Full Functionality
+**Timeline:** Q1 2026  
+**Goal:** Audience engagement and contact capture  
+**Focus:** Forms, CTAs, analytics, lead nurturing  
+**Optimization Level:** Production-ready performance  
+
+**Add in Phase 2:**
+- Conditional CSS/JS loading per page type
+- Advanced caching strategies
+- Critical CSS extraction
+- Performance fine-tuning based on real traffic data
+- A/B testing infrastructure
+
+### Phase 3: Scale & Expansion
+**Timeline:** 2026+  
+**Goal:** Expanded page count, advanced features  
+**Consideration:** Possible migration to HubSpot CMS  
+**Decision Point:** Evaluate WordPress vs HubSpot CMS based on scale and needs
+
+### Development Philosophy
+- **MVW First:** Launch with "good enough" before "perfect"
+- **Iterate Based on Data:** Optimize in Phase 2 after measuring real usage
+- **Platform Agnostic:** Keep code portable for potential CMS migration  
+- **Measure Impact:** Prioritize conversions and user experience over vanity metrics
+- **Document Everything:** Especially during first deployments (create reusable processes)
+
+---
+
+## Active Development Directory
+
+**⚠️ IMPORTANT:** The primary working directory is:
+```
+~/Library/CloudStorage/Dropbox/PURPOSEFUL MEDIA PROMOTIONS/WEBSITE PROJECT/Development Files/
+```
+
+**Directory Structure:**
+```
+Development Files/
+├── components/
+│   ├── atoms/          # Basic elements (buttons, headlines, labels, links)
+│   ├── molecules/      # Simple combinations (cards, forms, navigation, icon-display)
+│   └── organisms/      # Complex sections (heroes, headers, footers, sections)
+├── styles/
+│   ├── variables-v2.0-20250915.css  # Design tokens (primary reference)
+│   ├── atoms-master.css
+│   ├── molecules-*.css              # Individual molecule stylesheets
+│   └── organisms-*.css              # Individual organism stylesheets
+├── assets/
+│   ├── images/         # JPG, PNG images
+│   ├── svg/
+│   │   ├── decorative-icons/       # purposeful-sprite-symbolic.svg
+│   │   └── ui-icons/               # purposeful-sprite-ui.svg
+│   └── videos/
+└── scripts/
+    ├── blog-group-adapter.js       # WordPress integration
+    ├── footer-mobile.js
+    ├── hero-carousel.js
+    └── section-faq-group.js
+```
+
+**Legacy Directory (Reference Only):**
+`~/Library/CloudStorage/Dropbox/.../PurposefulMedia-Code/` - Do not use for active development.
+
+---
+
+## Component Standards
+
+### Icon Display System (CRITICAL)
+
+**Standard Implementation:**
+All decorative icons MUST use the `icon-display` molecule with this exact format:
+
+```html
+<div class="icon-display icon-display--[size]" data-icon="[name]" data-color="[color]"></div>
+```
+
+**Do NOT use:**
+- Custom background-position classes
+- Hardcoded icon positioning
+- Non-standard class names like `banner-icon-responsive`
+
+**Sizes:**
+- `icon-display--small` - 30px
+- `icon-display--medium` - 60px (default)
+- `icon-display--large` - 90px
+- `icon-display--xlarge` - 120px
+
+**Colors:**
+- `navy` - #1B1464 (use with white/gray backgrounds)
+- `gray` - #6C757D
+- `dark` - #54595F
+- `white` - #FFFFFF (use with dark backgrounds, overlays)
+
+**Available Icons (21 total):**
+accelerate, attract, contact, delight, download, efficiency, email, engage, exit, expertise, inbound, momentum, news, persona, professional, roi, schedule, strategy, unit, value, webinar
+
+**Icon Architecture (Important):**
+- Symbolic icons are **multi-color** (main color + gold accents + optional teal accents)
+- Cannot use CSS filters for color changes (would lose accent colors)
+- Pre-rendered color variants in sprite sheet is the correct approach
+- Current CSS file size (40KB) is justified for 21 icons × 4 colors × 4 sizes
+- After gzip compression: 40KB → ~8KB (acceptable for multi-color system)
+
+**Dependencies:**
+- CSS: `molecules-icon-display.css` (40KB unminified - do not attempt filter optimization)
+- Sprite: `assets/svg/decorative-icons/purposeful-sprite-symbolic.svg`
+
+**JavaScript Pattern:**
+```javascript
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const icons = document.querySelectorAll('.icon-display');
+    icons.forEach(icon => {
+        const iconName = icon.getAttribute('data-icon');
+        const color = icon.getAttribute('data-color');
+        if (iconName && color) {
+            icon.classList.add(`icon--${iconName}-${color}`);
+        }
+    });
+});
+
+// Dynamic updates
+function updateIcon(element, iconName, color) {
+    element.setAttribute('data-icon', iconName);
+    element.setAttribute('data-color', color);
+    element.className = `icon-display icon-display--medium icon--${iconName}-${color}`;
+}
+```
+
+**Context-Specific Sizing:**
+For components needing custom icon sizes (e.g., banner spacer with 45px), use context-based CSS overrides:
+
+```css
+.component-name .icon-display {
+    width: 45px !important;
+    height: 45px !important;
+    background-size: 270px 720px !important;
+}
+/* Also override background-position for each icon at custom size */
+```
+
+---
+
+## Design Tokens
+
+**Source:** `styles/variables-v2.0-20250915.css`
+
+### Colors
+```css
+--color-primary-700: #1B1464;      /* Navy blue (brand) */
+--color-accent-500: #D4AF37;       /* Gold (accent) */
+--color-accent-400: #DCBE5D;       /* Light gold (hover) */
+--color-accent-600: #B39226;       /* Dark gold (active) */
+--color-neutral-600: #54595F;      /* Dark gray (text) */
+--color-neutral-100: #ECEEEF;      /* Light gray (backgrounds) */
+--color-neutral-200: #C7CBCF;      /* Medium gray (muted text) */
+--color-white: #FFFFFF;            /* White */
+```
+
+**Usage:**
+- Primary brand elements: Navy (#1B1464)
+- CTAs, buttons, accents: Gold (#D4AF37)
+- Body text: Dark gray (#54595F)
+- Backgrounds: White or Light gray (#ECEEEF)
+- Reversed sections: White text on Navy background
+
+### Spacing (8px Grid System)
+```css
+--space-0: 0;
+--space-1: 4px;      /* 0.5x base */
+--space-2: 8px;      /* 1x base */
+--space-3: 12px;     /* 1.5x base */
+--space-4: 16px;     /* 2x base */
+--space-5: 20px;     /* 2.5x base */
+--space-6: 24px;     /* 3x base */
+--space-8: 32px;     /* 4x base */
+--space-10: 40px;    /* 5x base */
+--space-12: 48px;    /* 6x base */
+--space-16: 64px;    /* 8x base */
+```
+
+**Never use arbitrary spacing values.** Always reference the spacing scale.
+
+### Typography
+
+**Fonts:**
+- Primary: `'Lato', sans-serif` (Headings, buttons, labels)
+  - Heavy: 900 (H1, H2, uppercase text)
+  - Bold: 700 (buttons, emphasis)
+  - Regular: 400 (navigation)
+- Secondary: `'Open Sans', sans-serif` (Body text, paragraphs)
+  - Semibold: 600 (subtitles)
+  - Regular: 400 (body copy)
+
+**Desktop Sizes:**
+- H1: 36px / 54px line-height
+- H2: 30px / 45px line-height
+- H3: 24px / 36px line-height
+- Body: 18px / 27px line-height
+- Small: 16px / 24px line-height
+
+**Mobile Sizes:**
+- H1: 30px / 45px line-height
+- H2: 24px / 36px line-height
+- H3: 20px / 30px line-height
+- Body: 16px / 24px line-height
+- Small: 14px / 21px line-height
+
+### Breakpoints & Responsive Strategy
+
+**Core Breakpoints:**
+```css
+/* Mobile */
+@media (max-width: 767px) { /* Full width, no padding */ }
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1149px) { /* 40px padding */ }
+
+/* Desktop */
+@media (min-width: 1150px) and (max-width: 1919px) { /* 40px padding */ }
+
+/* Desktop Plus */
+@media (min-width: 1920px) { /* 40px padding, max-width: 1920px */ }
+```
+
+**Container Behavior:**
+- Mobile (< 768px): Full width, padding: 0
+- Desktop (≥ 768px): max-width: 1920px, padding: 0 40px, margin: 0 auto
+
+**Approach:** Mobile-first design with progressive enhancement
+
+---
+
+## Code Preferences
+
+### CSS
+
+**Methodology:** BEM (Block Element Modifier)
+```css
+.card-resources { }                    /* Block */
+.card-resources__header { }            /* Element */
+.card-resources__header--centered { }  /* Modifier */
+```
+
+**Principles:**
+- Component-scoped styles (avoid global)
+- Use design tokens via CSS variables
+- Mobile-first media queries
+- Semantic class names
+- One component per file (e.g., `molecules-card-resources.css`)
+
+**Version Headers:**
+```css
+/* ====================================
+   COMPONENT NAME
+   Component: Category/Type/Name
+   Version: 1.1
+   Last Updated: 2025-10-06
+   
+   Description: Brief component description
+   Variants: List variants
+   States: Default, Hover, Active, Disabled
+   
+   Changelog v1.1:
+   - List of changes made in this version
+   ==================================== */
+```
+
+### JavaScript
+
+**Requirements:**
+- Vanilla JS only (no frameworks)
+- WordPress-compatible (no build step)
+- ES6+ syntax acceptable (modern WordPress supports it)
+- Initialize on `DOMContentLoaded`
+
+**Patterns:**
+```javascript
+// Data-attribute driven
+document.addEventListener('DOMContentLoaded', function() {
+    const elements = document.querySelectorAll('[data-component]');
+    elements.forEach(element => {
+        const componentType = element.getAttribute('data-component');
+        const variant = element.getAttribute('data-variant');
+        // Initialize based on attributes
+    });
+});
+```
+
+**WordPress Integration:**
+- Scripts in `/scripts/` directory are WordPress adapters
+- Use `blog-group-adapter.js` pattern for dynamic content
+- Handle WordPress REST API responses
+- Graceful degradation if JS fails
+
+### HTML
+
+**Standards:**
+- Semantic HTML5 elements (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`)
+- Proper heading hierarchy (h1 → h2 → h3, no skipping)
+- Data attributes for variant control
+- No inline styles (use classes)
+- Self-documenting structure with comments
+
+**Accessibility:**
+- Meaningful alt text for images
+- Focus states for interactive elements (`:focus` styles)
+- ARIA labels only when semantic HTML insufficient
+- Color contrast: WCAG AA minimum
+- Touch targets: 44×44px minimum on mobile
+
+**Asset Paths:**
+- Relative paths from component: `../../assets/images/`
+- Consistent across all files for easy WordPress integration
+
+---
+
+## Component Architecture
+
+### Versioning
+
+Update version number and changelog in CSS header comment when modifying:
+
+```css
+/* Version: 1.1
+   Last Updated: 2025-10-06
+   
+   Changelog v1.1:
+   - Replaced custom icon sprite system with icon-display molecule
+   - Simplified icon implementation using data-attributes
+   - Removed 40+ lines of icon positioning CSS
+*/
+```
+
+### File Naming
+
+**HTML Components:**
+```
+component-name.html          # Main component
+component-name-variant.html  # Named variant
+```
+
+**CSS Files:**
+```
+atoms-master.css             # Compiled atoms
+molecules-card-resources.css # Individual molecule
+organisms-hero.css           # Individual organism
+```
+
+### Component Structure
+
+**Example: Card Component**
+```html
+<div class="card-resources" data-component="card-resources">
+    <img class="card-resources__thumbnail" src="..." alt="...">
+    <div class="card-resources__overlay"></div>
+    <div class="card-resources__content">
+        <div class="card-resources__header">
+            <div class="icon-display icon-display--large" data-icon="roi" data-color="white"></div>
+            <h3 class="card-resources__heading">Title</h3>
+        </div>
+        <p class="card-resources__cta">Description text</p>
+        <a href="#" class="card-resources__button">
+            <span class="card-resources__button-text">Button Text</span>
+        </a>
+    </div>
+</div>
+```
+
+**Data Attributes for Variants:**
+```html
+<div class="card-paragraph-options" 
+     data-breakpoint="desktop" 
+     data-color="default" 
+     data-show-icon="true">
+```
+
+---
+
+## Testing & Quality Assurance
+
+### Pre-Deployment Checklist
+
+**Visual Testing:**
+- [ ] Test at all breakpoints (mobile, tablet, desktop, desktop+)
+- [ ] Verify icon display in browser inspector
+- [ ] Check typography scaling
+- [ ] Test button states (hover, active, focus)
+- [ ] Verify color contrast
+
+**Code Quality:**
+- [ ] Run linter (no errors)
+- [ ] Validate HTML
+- [ ] Check for console errors
+- [ ] Test with JavaScript disabled (graceful degradation)
+
+**Accessibility:**
+- [ ] Keyboard navigation works
+- [ ] Focus states visible
+- [ ] Alt text present and meaningful
+- [ ] Semantic HTML used
+
+**Browser Testing:**
+- Chrome (primary)
+- Firefox
+- Safari
+- Edge
+
+---
+
+## Known Issues & Phase 2 Priorities
+
+### Current Known Issues
+1. **Banner spacer layout** - Needs redesign (Phase 2)
+   - Component works functionally but layout needs improvement
+   - File: `components/molecules/card-bannerspacer-headlinesubtitle.html`
+
+### Phase 2 Priorities
+1. Banner spacer component redesign
+2. Additional component refinements based on WordPress integration
+3. WordPress theme integration testing
+4. Performance optimization
+5. Cross-browser compatibility testing
+
+---
+
+## Workflow Notes
+
+### Development Process
+
+**Component Creation:**
+1. Export from Figma using MCP plugin
+2. Clean up generated HTML/CSS
+3. Convert to design system tokens
+4. Add responsive behavior
+5. Test at all breakpoints
+6. Document in component file
+7. Version and update changelog
+
+**Component Refactoring:**
+1. Identify pattern to standardize (e.g., icon-display)
+2. Update component to use standard pattern
+3. Test thoroughly
+4. Update version and changelog
+5. Update documentation
+
+### Git Workflow
+- Commit atomic changes
+- Use descriptive commit messages
+- Version major component updates
+- Archive old versions in `/Archive/` subdirectories
+
+---
+
+## Communication Preferences
+
+### Working with AI Assistants
+
+**Preferred:**
+- Use absolute paths in commands: `/Users/geoffreycraig/Library/CloudStorage/...`
+- Test components in browser after refactoring
+- Flag design/layout issues early
+- Explain reasoning for architectural decisions
+- Provide examples of patterns to follow
+
+**Avoid:**
+- Arbitrary spacing values (use tokens)
+- Creating helper scripts (use standard tools)
+- Inline styles
+- Framework dependencies (vanilla only)
+- Build process requirements
+
+### Context Management
+
+This `.cursorrules` file provides core context. For complex tasks:
+- Reference specific component files
+- Check existing patterns before creating new ones
+- Ask clarifying questions about design intent
+- Validate assumptions before proceeding
+
+---
+
+## Reference Files
+
+**Key Documentation:**
+- `styles/variables-v2.0-20250915.css` - Design tokens
+- `components/molecules/icon-display.html` - Icon system reference
+- `components/molecules/card-resources.html` - Standard card pattern
+- `components/molecules/card-paragraph-options.html` - Data-attribute variants
+
+**WordPress Integration:**
+- `scripts/blog-group-adapter.js` - REST API integration pattern
+- `scripts/hero-carousel.js` - Interactive component pattern
+
+---
+
+## Version History
+
+**v1.0** - Initial rules (pre-October 2025)
+- Basic design system structure
+- Figma integration notes
+
+**v1.1** - 2025-10-07
+- Added active development directory paths
+- Documented icon-display molecule standard
+- Added component refactoring patterns
+- Included Phase 2 priorities
+- Enhanced communication preferences
+- Added comprehensive testing checklist

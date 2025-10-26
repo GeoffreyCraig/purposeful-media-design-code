@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Menu Company Module - Purposeful Media</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            /* Colors */
+            --color-primary-700: #1b1464;
+            --color-white: #ffffff;
+            --color-neutral-400: #868f97;
+            --color-accent-500: #d4af37;
+            
+            /* Spacing */
+            --space-0: 0px;
+            --space-3: 12px;
+            --space-4: 16px;
+        }
+        
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #2a2a2a;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        /* Footer Menu Module Styles */
+        .footer-menu {
+            background: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-0);
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-shrink: 0;
+            width: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-menu__container {
+            background: var(--color-primary-700);
+            padding: var(--space-3);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-0);
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-self: stretch;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-menu__header {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-self: stretch;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .footer-menu__title {
+            color: var(--color-white);
+            text-align: left;
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 900;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .footer-menu__items {
+            padding: var(--space-3);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-self: stretch;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .footer-menu__item {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-self: stretch;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .footer-menu__link {
+            color: var(--color-white);
+            text-align: left;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 21px;
+            line-height: 21px;
+            font-weight: 700;
+            position: relative;
+            flex: 1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-menu__link:hover {
+            color: var(--color-accent-500);
+        }
+
+        .footer-menu__link--disabled {
+            color: var(--color-neutral-400);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        /* Demo Container Styles */
+        .demo-container {
+            background: #f6f6f7;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .demo-title {
+            color: #1b1464;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .demo-description {
+            color: #6c757d;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .demo-note {
+            background: #fef1e8;
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin-top: 40px;
+            border-radius: 4px;
+        }
+        
+        .demo-note h3 {
+            color: #1b1464;
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .demo-note p {
+            color: #6c757d;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+        
+        .demo-success {
+            background: #d4f5d4;
+            border-left: 4px solid #39cccc;
+            padding: 15px;
+            margin-top: 40px;
+            border-radius: 4px;
+        }
+        
+        .demo-success h3 {
+            color: #1b1464;
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-family: 'Lato', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">Footer Menu Module: Company</h1>
+        <p class="demo-description">
+            This is the Company menu module component for the main footer. 
+            It contains essential company information links and policies.
+        </p>
+        
+        <!-- Company Menu Module -->
+        <div class="footer-menu">
+            <div class="footer-menu__container">
+                <div class="footer-menu__header">
+                    <h3 class="footer-menu__title">Company</h3>
+                </div>
+                <nav class="footer-menu__items">
+                    <div class="footer-menu__item">
+                        <a href="/about" class="footer-menu__link">
+                            About Us
+                        </a>
+                    </div>
+                    <div class="footer-menu__item">
+                        <a href="/contact" class="footer-menu__link">
+                            Contact Us
+                        </a>
+                    </div>
+                    <div class="footer-menu__item">
+                        <a href="/privacy" class="footer-menu__link">
+                            Privacy Policy
+                        </a>
+                    </div>
+                    <div class="footer-menu__item">
+                        <span class="footer-menu__link footer-menu__link--disabled">
+                            Affiliates [Coming Soon]
+                        </span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="demo-note">
+            <h3>Implementation Notes:</h3>
+            <p>• Three active links: About Us, Contact Us, Privacy Policy</p>
+            <p>• One disabled item: Affiliates [Coming Soon]</p>
+            <p>• Fixed width: 240px to maintain consistent column sizing</p>
+            <p>• Typography: Lato 900 for title (30px), Open Sans 700 for links (21px)</p>
+            <p>• Figma Node ID: 4516:542</p>
+        </div>
+        
+        <h2 style="color: #1b1464; font-size: 24px; margin-top: 40px; margin-bottom: 20px; font-family: 'Lato', sans-serif;">
+            Complete Footer Menu Modules (4-Column Layout)</h2>
+        
+        <div class="demo-grid">
+            <!-- Services Column -->
+            <div class="footer-menu">
+                <div class="footer-menu__container">
+                    <div class="footer-menu__header">
+                        <h3 class="footer-menu__title">Services</h3>
+                    </div>
+                    <nav class="footer-menu__items">
+                        <div class="footer-menu__item">
+                            <a href="/services/email-marketing" class="footer-menu__link">
+                                Email Marketing
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <a href="/services/webinar-production" class="footer-menu__link">
+                                Webinar Production
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <a href="/services/inbound-marketing" class="footer-menu__link">
+                                Inbound Marketing
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Succession Planning [Coming Soon]
+                            </span>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Business Unit Growth [Coming Soon]
+                            </span>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Who We Serve Column -->
+            <div class="footer-menu">
+                <div class="footer-menu__container">
+                    <div class="footer-menu__header">
+                        <h3 class="footer-menu__title">Who We Serve</h3>
+                    </div>
+                    <nav class="footer-menu__items">
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Revenue Growth [Coming Soon]
+                            </span>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Preparing for Exit [Coming Soon]
+                            </span>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Plan a Webinar [Coming Soon]
+                            </span>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Resources Column -->
+            <div class="footer-menu">
+                <div class="footer-menu__container">
+                    <div class="footer-menu__header">
+                        <h3 class="footer-menu__title">Resources</h3>
+                    </div>
+                    <nav class="footer-menu__items">
+                        <div class="footer-menu__item">
+                            <a href="/blog" class="footer-menu__link">
+                                Read Our Blog
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Thought Leadership [Coming Soon]
+                            </span>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Pricing [Coming Soon]
+                            </span>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Company Column -->
+            <div class="footer-menu">
+                <div class="footer-menu__container">
+                    <div class="footer-menu__header">
+                        <h3 class="footer-menu__title">Company</h3>
+                    </div>
+                    <nav class="footer-menu__items">
+                        <div class="footer-menu__item">
+                            <a href="/about" class="footer-menu__link">
+                                About Us
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <a href="/contact" class="footer-menu__link">
+                                Contact Us
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <a href="/privacy" class="footer-menu__link">
+                                Privacy Policy
+                            </a>
+                        </div>
+                        <div class="footer-menu__item">
+                            <span class="footer-menu__link footer-menu__link--disabled">
+                                Affiliates [Coming Soon]
+                            </span>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-success">
+            <h3>🎉 All Footer Menu Modules Complete!</h3>
+            <p style="color: #6c757d; font-size: 16px; line-height: 1.6;">
+                All four menu modules are now ready for integration into the main footer component:
+            </p>
+            <ul style="color: #6c757d; font-size: 15px; line-height: 1.8; margin-top: 10px;">
+                <li><strong>Services</strong> - Email, Webinar, Inbound Marketing + Coming Soon items</li>
+                <li><strong>Who We Serve</strong> - All Coming Soon (Revenue Growth, Exit Planning, Webinar Planning)</li>
+                <li><strong>Resources</strong> - Blog link active, Thought Leadership and Pricing coming soon</li>
+                <li><strong>Company</strong> - About, Contact, Privacy active, Affiliates coming soon</li>
+            </ul>
+            <p style="color: #6c757d; font-size: 16px; line-height: 1.6; margin-top: 15px;">
+                Next step: Integrate with newsletter form to create the complete footer organism component.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "purposeful-media-design-system",
+  "version": "1.0.0",
+  "description": "Build process for Purposeful Media Design System - Phase 1 MVW",
+  "scripts": {
+    "build:css": "postcss styles/master-styles.css -o dist/css/purposeful-main.min.css --map",
+    "build:js": "terser scripts/blog-group-adapter.js scripts/resources-section-adapter.js scripts/hero-carousel.js scripts/section-faq-group.js scripts/footer-mobile.js -o dist/js/purposeful-main.min.js --compress --mangle --source-map",
+    "build": "npm run build:css && npm run build:js",
+    "watch:css": "npm run build:css -- --watch",
+    "watch:js": "npm run build:js -- --watch",
+    "watch": "npm run watch:css & npm run watch:js",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "design-system",
+    "wordpress",
+    "purposeful-media"
+  ],
+  "author": "Purposeful Media Promotions",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^15.1.0",
+    "terser": "^5.24.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
+
+

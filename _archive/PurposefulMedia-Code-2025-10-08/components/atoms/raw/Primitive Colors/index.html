@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  
+  
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="primitive-colors">
+    <div class="neutral">
+      <div class="content">
+        <div class="neutral2">Neutral</div>
+        <div
+          class="these-colors-are-used-as-supporting-secondary-colors-in-backgrounds-text-colors-seperators-models-etc"
+        >
+          These colors are used as supporting secondary colors in backgrounds,
+          text colors, seperators, models, etc
+        </div>
+      </div>
+      <div class="colors">
+        <div class="light-off-white-f-6-f-6-f-7">
+          <div class="shade">50</div>
+          <div class="hex-code">#f6f6f7</div>
+          <div class="preview"></div>
+        </div>
+        <div class="off-white-eceeef">
+          <div class="shade">100</div>
+          <div class="hex-code2">#eceeef</div>
+          <div class="preview2"></div>
+        </div>
+        <div class="lightest-gray-c-7-cbcf">
+          <div class="shade">200</div>
+          <div class="hex-code3">#c7cbcf</div>
+          <div class="preview3"></div>
+        </div>
+        <div class="light-gray-a-2-a-9-af">
+          <div class="shade">300</div>
+          <div class="hex-code4">#a2a9af</div>
+          <div class="preview4"></div>
+        </div>
+        <div class="granite-gray-868-f-97">
+          <div class="shade">400</div>
+          <div class="hex-code">#868f97</div>
+          <div class="preview5"></div>
+        </div>
+        <div class="slate-gray-6-c-757-d">
+          <div class="shade">500</div>
+          <div class="hex-code4">#6c757d</div>
+          <div class="preview6"></div>
+        </div>
+        <div class="charcoal-gray-51585-e">
+          <div class="shade">600</div>
+          <div class="hex-code5">#51585e</div>
+          <div class="preview7"></div>
+        </div>
+        <div class="dark-gray-363-a-3-e">
+          <div class="shade">700</div>
+          <div class="hex-code4">#363a3e</div>
+          <div class="preview8"></div>
+        </div>
+        <div class="darkest-gray-1-b-1-d-1-f">
+          <div class="shade">800</div>
+          <div class="hex-code6">#1b1d1f</div>
+          <div class="preview9"></div>
+        </div>
+      </div>
+    </div>
+    <div class="primary">
+      <div class="content">
+        <div class="primary2">Primary</div>
+        <div
+          class="the-primary-color-palette-is-used-across-all-the-interactive-elements-such-as-cta-s-links-inputs-active-states-etc"
+        >
+          The primary color palette is used across all the interactive elements
+          such as CTA’s, links, inputs, active states, etc
+        </div>
+      </div>
+      <div class="colors2">
+        <div class="light-white-blue-f-0-f-3-fd">
+          <div class="shade">50</div>
+          <div class="hex-code2">#f0f3fd</div>
+          <div class="preview10"></div>
+        </div>
+        <div class="white-blue-100-d-1-dcf-9">
+          <div class="shade">100</div>
+          <div class="hex-code4">#d1dcf9</div>
+          <div class="preview11"></div>
+        </div>
+        <div class="dead-link-blue-a-3-b-8-f-3">
+          <div class="shade">200</div>
+          <div class="hex-code4">#a3b8f3</div>
+          <div class="preview12"></div>
+        </div>
+        <div class="faded-blue-7595-ed">
+          <div class="shade">300</div>
+          <div class="hex-code2">#7595ed</div>
+          <div class="preview13"></div>
+        </div>
+        <div class="on-hover-blue-4872-e-7">
+          <div class="shade">400</div>
+          <div class="hex-code">#4872e7</div>
+          <div class="preview14"></div>
+        </div>
+        <div class="accent-blue-1-d-50-de">
+          <div class="shade">500</div>
+          <div class="hex-code2">#1d50de</div>
+          <div class="preview15"></div>
+        </div>
+        <div class="light-navy-1740-b-0">
+          <div class="shade">600</div>
+          <div class="hex-code5">#1740b0</div>
+          <div class="preview16"></div>
+        </div>
+        <div class="primary-navy-blue-1-b-1464">
+          <div class="shade2">700</div>
+          <div class="hex-code7">#1b1464</div>
+          <div class="preview17"></div>
+        </div>
+        <div class="dark-navy-blue-0-b-1-f-57">
+          <div class="shade">800</div>
+          <div class="hex-code5">#0b1f57</div>
+          <div class="preview18"></div>
+        </div>
+        <div class="near-black-blue-06102-b">
+          <div class="shade">900</div>
+          <div class="hex-code8">#06102b</div>
+          <div class="preview19"></div>
+        </div>
+      </div>
+    </div>
+    <div class="accent">
+      <div class="content">
+        <div class="accent-gold">Accent Gold</div>
+        <div
+          class="the-secondary-color-palette-is-used-alongside-the-primary-to-indicate-to-the-user-it-s-the-secondary-focus"
+        >
+          The secondary color palette is used alongside the primary to indicate to
+          the user it’s the secondary focus.
+        </div>
+      </div>
+      <div class="colors2">
+        <div class="gold-50-faf-5-e-6">
+          <div class="shade">50</div>
+          <div class="hex-code">#faf5e6</div>
+          <div class="preview20"></div>
+        </div>
+        <div class="gold-100-f-4-ebcd">
+          <div class="shade">100</div>
+          <div class="hex-code9">#f4ebcd</div>
+          <div class="preview21"></div>
+        </div>
+        <div class="gold-200-ecdca-8">
+          <div class="shade">200</div>
+          <div class="hex-code10">#ecdca8</div>
+          <div class="preview22"></div>
+        </div>
+        <div class="gold-300-e-4-cd-82">
+          <div class="shade">300</div>
+          <div class="hex-code9">#e4cd82</div>
+          <div class="preview23"></div>
+        </div>
+        <div class="gold-400-dcbe-5-d">
+          <div class="shade">400</div>
+          <div class="hex-code3">#dcbe5d</div>
+          <div class="preview24"></div>
+        </div>
+        <div class="accent-gold-d-4-af-37">
+          <div class="shade">500</div>
+          <div class="hex-code4">#D4AF37</div>
+          <div class="preview25"></div>
+        </div>
+        <div class="gold-600-b-39226">
+          <div class="shade">600</div>
+          <div class="hex-code2">#b39226</div>
+          <div class="preview26"></div>
+        </div>
+        <div class="gold-700-89701-e">
+          <div class="shade">700</div>
+          <div class="hex-code5">#89701e</div>
+          <div class="preview27"></div>
+        </div>
+        <div class="gold-800-524312">
+          <div class="shade">800</div>
+          <div class="hex-code">#524312</div>
+          <div class="preview28"></div>
+        </div>
+        <div class="gold-900-292209">
+          <div class="shade">900</div>
+          <div class="hex-code11">#292209</div>
+          <div class="preview29"></div>
+        </div>
+      </div>
+    </div>
+    <div class="success">
+      <div class="content">
+        <div class="accent-teal">Accent Teal</div>
+        <div
+          class="the-secondary-color-palette-is-used-alongside-the-primary-to-indicate-to-the-user-it-s-the-secondary-focus2"
+        >
+          The secondary color palette is used alongside the primary to indicate to
+          the user it’s the secondary focus.
+        </div>
+      </div>
+      <div class="colors2">
+        <div class="accent-teal-50-f-2-fcfc">
+          <div class="shade">50</div>
+          <div class="hex-code4">#f2fcfc</div>
+          <div class="preview30"></div>
+        </div>
+        <div class="accent-teal-100-d-7-f-5-f-5">
+          <div class="shade">100</div>
+          <div class="hex-code11">#d7f5f5</div>
+          <div class="preview31"></div>
+        </div>
+        <div class="accent-teal-200-b-0-ebeb">
+          <div class="shade">200</div>
+          <div class="hex-code2">#b0ebeb</div>
+          <div class="preview32"></div>
+        </div>
+        <div class="accent-teal-300-88-e-0-e-0">
+          <div class="shade">300</div>
+          <div class="hex-code11">#88e0e0</div>
+          <div class="preview33"></div>
+        </div>
+        <div class="accent-teal-400-61-d-6-d-6">
+          <div class="shade">400</div>
+          <div class="hex-code2">#61d6d6</div>
+          <div class="preview34"></div>
+        </div>
+        <div class="accent-teal-39-cccc">
+          <div class="shade">500</div>
+          <div class="hex-code12">#39CCCC</div>
+          <div class="preview35"></div>
+        </div>
+        <div class="accent-teal-600-2-ba-9-a-9">
+          <div class="shade">600</div>
+          <div class="hex-code4">#2ba9a9</div>
+          <div class="preview36"></div>
+        </div>
+        <div class="accent-teal-700-1-e-7575">
+          <div class="shade">700</div>
+          <div class="hex-code13">#1e7575</div>
+          <div class="preview37"></div>
+        </div>
+        <div class="accent-teal-800-114141">
+          <div class="shade">800</div>
+          <div class="hex-code14">#114141</div>
+          <div class="preview38"></div>
+        </div>
+        <div class="accent-teal-900-0-a-2727">
+          <div class="shade">900</div>
+          <div class="hex-code11">#0a2727</div>
+          <div class="preview39"></div>
+        </div>
+      </div>
+    </div>
+    <div class="warning">
+      <div class="content">
+        <div class="warning2">Warning</div>
+        <div
+          class="these-colors-depict-an-emotion-of-holding-generally-used-across-warning-or-on-hold-states"
+        >
+          These colors depict an emotion of holding. Generally used across warning
+          or on-hold states.
+        </div>
+      </div>
+      <div class="colors2">
+        <div class="orange-50-fef-1-e-8">
+          <div class="shade">50</div>
+          <div class="hex-code13">#fef1e8</div>
+          <div class="preview40"></div>
+        </div>
+        <div class="orange-100-fedcc-5">
+          <div class="shade">100</div>
+          <div class="hex-code3">#fedcc5</div>
+          <div class="preview41"></div>
+        </div>
+        <div class="orange-200-fcc-096">
+          <div class="shade">200</div>
+          <div class="hex-code9">#fcc096</div>
+          <div class="preview42"></div>
+        </div>
+        <div class="orange-300-fba-468">
+          <div class="shade">300</div>
+          <div class="hex-code4">#fba468</div>
+          <div class="preview43"></div>
+        </div>
+        <div class="orange-400-fa-8839">
+          <div class="shade">400</div>
+          <div class="hex-code11">#fa8839</div>
+          <div class="preview44"></div>
+        </div>
+        <div class="orange-500-f-97316">
+          <div class="shade">500</div>
+          <div class="hex-code5">#F97316</div>
+          <div class="preview45"></div>
+        </div>
+        <div class="color">
+          <div class="shade">600</div>
+          <div class="hex-code2">#D97706</div>
+          <div class="preview46"></div>
+        </div>
+        <div class="color2">
+          <div class="shade">700</div>
+          <div class="hex-code4">#B45309</div>
+          <div class="preview47"></div>
+        </div>
+        <div class="color3">
+          <div class="shade">800</div>
+          <div class="hex-code2">#92400E</div>
+          <div class="preview48"></div>
+        </div>
+        <div class="color4">
+          <div class="shade">900</div>
+          <div class="hex-code11">#78350F</div>
+          <div class="preview49"></div>
+        </div>
+      </div>
+    </div>
+    <div class="error">
+      <div class="content">
+        <div class="error2">Error</div>
+        <div
+          class="these-colors-depict-an-emotion-of-negativity-generally-used-across-error-states"
+        >
+          These colors depict an emotion of negativity. Generally used across
+          error states.
+        </div>
+      </div>
+      <div class="colors2">
+        <div class="color5">
+          <div class="shade">200</div>
+          <div class="hex-code3">#FECACA</div>
+          <div class="preview50"></div>
+        </div>
+        <div class="color6">
+          <div class="shade">300</div>
+          <div class="hex-code9">#FCA5A5</div>
+          <div class="preview51"></div>
+        </div>
+        <div class="color7">
+          <div class="shade">400</div>
+          <div class="hex-code15">#F87171</div>
+          <div class="preview52"></div>
+        </div>
+        <div class="color8">
+          <div class="shade">500</div>
+          <div class="hex-code2">#EF4444</div>
+          <div class="preview53"></div>
+        </div>
+        <div class="color9">
+          <div class="shade">600</div>
+          <div class="hex-code9">#DC2626</div>
+          <div class="preview54"></div>
+        </div>
+        <div class="color10">
+          <div class="shade">700</div>
+          <div class="hex-code11">#B91C1C</div>
+          <div class="preview55"></div>
+        </div>
+        <div class="color11">
+          <div class="shade">800</div>
+          <div class="hex-code5">#991B1B</div>
+          <div class="preview56"></div>
+        </div>
+        <div class="color12">
+          <div class="shade">900</div>
+          <div class="hex-code5">#7F1D1D</div>
+          <div class="preview57"></div>
+        </div>
+        <div class="color13">
+          <div class="shade">50</div>
+          <div class="hex-code">#FEF2F2</div>
+          <div class="preview58"></div>
+        </div>
+        <div class="color14">
+          <div class="shade">100</div>
+          <div class="hex-code">#FEE2E2</div>
+          <div class="preview59"></div>
+        </div>
+      </div>
+    </div>
+    <div class="shades">
+      <div class="content">
+        <div class="shades2">Shades</div>
+        <div
+          class="these-colors-are-used-as-supporting-secondary-colors-in-backgrounds-text-colors-seperators-models-etc2"
+        >
+          These colors are used as supporting secondary colors in backgrounds,
+          text colors, seperators, models, etc
+        </div>
+      </div>
+      <div class="colors3">
+        <div class="color15">
+          <div class="shade">0</div>
+          <div class="hex-code5">#FFFFFF</div>
+          <div class="preview60"></div>
+        </div>
+        <div class="color16">
+          <div class="shade">100</div>
+          <div class="hex-code2">#000000</div>
+          <div class="preview61"></div>
+        </div>
+      </div>
+    </div>
+    <div class="dark-mode">
+      <div class="content">
+        <div class="dark-mode2">Dark mode</div>
+        <div
+          class="these-colors-depict-an-emotion-of-negativity-generally-used-across-error-states2"
+        >
+          These colors depict an emotion of negativity. Generally used across
+          error states.
+        </div>
+      </div>
+      <div class="colors2">
+        <div class="color17">
+          <div class="shade">200</div>
+          <div class="hex-code4">#343844</div>
+          <div class="preview62"></div>
+        </div>
+        <div class="color18">
+          <div class="shade">300</div>
+          <div class="hex-code2">#2F3440</div>
+          <div class="preview63"></div>
+        </div>
+        <div class="color19">
+          <div class="shade">400</div>
+          <div class="hex-code11">#2D313E</div>
+          <div class="preview64"></div>
+        </div>
+        <div class="color20">
+          <div class="shade">500</div>
+          <div class="hex-code4">#282D3A</div>
+          <div class="preview65"></div>
+        </div>
+        <div class="color21">
+          <div class="shade">600</div>
+          <div class="hex-code2">#262A37</div>
+          <div class="preview66"></div>
+        </div>
+        <div class="color22">
+          <div class="shade">700</div>
+          <div class="hex-code11">#242835</div>
+          <div class="preview67"></div>
+        </div>
+        <div class="color23">
+          <div class="shade">800</div>
+          <div class="hex-code13">#1F2431</div>
+          <div class="preview68"></div>
+        </div>
+        <div class="color24">
+          <div class="shade">900</div>
+          <div class="hex-code13">#131826</div>
+          <div class="preview69"></div>
+        </div>
+        <div class="color25">
+          <div class="shade">50</div>
+          <div class="hex-code9">#393D49</div>
+          <div class="preview70"></div>
+        </div>
+        <div class="color26">
+          <div class="shade">100</div>
+          <div class="hex-code2">#363B47</div>
+          <div class="preview71"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

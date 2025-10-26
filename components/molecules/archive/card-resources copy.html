@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card/Resources Component - Purposeful Media</title>
+    
+    <!-- Import existing stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    
+    <style>
+        /* ====================================
+           CARD/RESOURCES COMPONENT STYLES
+           Component: Molecule/Card/Resources
+           Version: 1.0
+           Last Updated: 2025-09-19
+           
+           Description: Resource promotion card with thumbnail background,
+                        decorative icon, headline, CTA text, and button
+           Variants: Single fixed size (350x453px portrait)
+           States: Default, Hover, Active (through button component)
+           ==================================== */
+        
+        /* Base Card Container */
+        .card-resources {
+            box-sizing: border-box;
+            position: relative;
+            width: 350px;
+            height: 453px;
+            border-radius: 16px;
+            border: 4px solid var(--color-accent-500, #D4AF37);
+            overflow: hidden;
+            background-color: var(--color-neutral-100, #ECEEEF); /* Fallback */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Thumbnail Background */
+        .card-resources__thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        /* Semi-transparent Overlay for Readability */
+        .card-resources__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(27, 20, 100, 0.25); /* #1B1464 at 25% opacity */
+            z-index: 2;
+        }
+        
+        /* Content Container */
+        .card-resources__content {
+            box-sizing: border-box;
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 12px 48px 12px;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Header Section (Icon + Headline) */
+        .card-resources__header {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: flex-start;
+            width: 286px;
+            height: 90px;
+            flex-shrink: 0;
+        }
+        
+        /* Decorative Icon Container */
+        .card-resources__icon {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        
+        /* SVG Sprite Implementation - Using Background Image */
+        .card-resources__icon-sprite {
+            display: none; /* Hide the SVG element */
+        }
+        
+        /* Use background image for icon display */
+        .card-resources__icon {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            flex-shrink: 0;
+            overflow: hidden;
+            background-image: url('../../assets/svg/decorative-icons/purposeful-sprite-symbolic.svg');
+            background-size: 540px 1440px; /* Scaled sprite: 1536*(90/256) x 4096*(90/256) */
+            background-repeat: no-repeat;
+            /* Default icon: accelerate-white */
+            background-position: 0px -1080px; /* Row 13, Col 1 */
+        }
+        
+        /* Icon position classes for different icons */
+        .card-resources__icon--accelerate-white { background-position: 0px -1080px; }
+        .card-resources__icon--attract-white { background-position: -90px -1080px; }
+        .card-resources__icon--contact-white { background-position: -180px -1080px; }
+        .card-resources__icon--delight-white { background-position: -270px -1080px; }
+        .card-resources__icon--download-white { background-position: -360px -1080px; }
+        .card-resources__icon--efficiency-white { background-position: -450px -1080px; }
+        .card-resources__icon--email-white { background-position: 0px -1170px; }
+        .card-resources__icon--engage-white { background-position: -90px -1170px; }
+        .card-resources__icon--expertise-white { background-position: -270px -1170px; }
+        .card-resources__icon--inbound-white { background-position: -360px -1170px; }
+        .card-resources__icon--momentum-white { background-position: -450px -1170px; }
+        .card-resources__icon--persona-white { background-position: -90px -1260px; }
+        .card-resources__icon--roi-white { background-position: -270px -1260px; }
+        .card-resources__icon--strategy-white { background-position: -450px -1260px; }
+        .card-resources__icon--value-white { background-position: -90px -1350px; }
+        .card-resources__icon--webinar-white { background-position: -180px -1350px; }
+        
+        /* Headline Styles */
+        .card-resources__heading {
+            flex: 1 1 0;
+            font-family: var(--font-primary), 'Lato', sans-serif;
+            font-weight: 900; /* Heavy */
+            font-size: 21px;
+            line-height: 30.5px;
+            font-style: normal;
+            text-transform: uppercase;
+            color: var(--color-white, #FFFFFF);
+            margin: 0;
+        }
+        
+        /* CTA Paragraph Section */
+        .card-resources__cta {
+            font-family: var(--font-secondary), 'Open Sans', sans-serif;
+            font-weight: 400; /* Regular */
+            font-size: 18px;
+            line-height: 27px;
+            font-style: normal;
+            text-align: center;
+            color: var(--color-white, #FFFFFF);
+            width: 286px;
+            margin: 0;
+        }
+        
+        /* Button Section */
+        .card-resources__button {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 64px;
+            background-color: var(--color-accent-500, #D4AF37);
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            flex-shrink: 0;
+        }
+        
+        /* Button Text */
+        .card-resources__button-text {
+            font-family: var(--font-primary), 'Lato', sans-serif;
+            font-weight: 700; /* Bold */
+            font-size: 18px;
+            line-height: 18px;
+            font-style: normal;
+            text-transform: uppercase;
+            text-align: center;
+            white-space: nowrap;
+            color: var(--color-primary-700, #1B1464);
+            margin: 0;
+        }
+        
+        /* Button States */
+        .card-resources__button:hover {
+            background-color: var(--color-accent-400, #DCBE5D);
+        }
+        
+        .card-resources__button:active {
+            background-color: var(--color-accent-600, #B39226);
+        }
+        
+        .card-resources__button:disabled,
+        .card-resources__button[aria-disabled="true"] {
+            background-color: var(--color-accent-400, #DCBE5D);
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Focus state for accessibility */
+        .card-resources__button:focus {
+            outline: 2px solid var(--color-accent-500, #D4AF37);
+            outline-offset: 2px;
+        }
+        
+        /* Demo Styles (for preview only) */
+        .demo-container {
+            padding: 40px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            font-family: var(--font-secondary), 'Open Sans', sans-serif;
+        }
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .demo-title {
+            font-family: var(--font-primary), 'Lato', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary-700, #1B1464);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            color: var(--color-neutral-500, #6C757D);
+            margin-bottom: 10px;
+        }
+        
+        .demo-item {
+            width: max-content;
+        }
+        
+        .demo-icon-selector {
+            margin-bottom: 20px;
+        }
+        
+        .demo-icon-selector label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--color-primary-700, #1B1464);
+            font-weight: 600;
+        }
+        
+        .demo-icon-selector select {
+            padding: 8px 12px;
+            border: 1px solid var(--color-neutral-300, #A2A9AF);
+            border-radius: 4px;
+            font-size: 14px;
+            width: 200px;
+        }
+        
+        .demo-notes {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            line-height: 1.6;
+            color: var(--color-neutral-600, #51585E);
+        }
+        
+        .demo-notes h3 {
+            color: var(--color-primary-700, #1B1464);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .demo-notes code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .demo-notes pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">Card/Resources Component</h1>
+        
+        <!-- Interactive Demo Section -->
+        <div class="demo-section">
+            <h2 class="demo-title">Interactive Demo</h2>
+            
+            <div class="demo-icon-selector">
+                <label for="iconSelector">Select Icon:</label>
+                <select id="iconSelector" onchange="updateIcon(this.value)">
+                    <option value="accelerate-white">Accelerate</option>
+                    <option value="attract-white">Attract</option>
+                    <option value="contact-white">Contact</option>
+                    <option value="delight-white">Delight</option>
+                    <option value="download-white">Download</option>
+                    <option value="efficiency-white">Efficiency</option>
+                    <option value="email-white">Email</option>
+                    <option value="engage-white">Engage</option>
+                    <option value="expertise-white">Expertise</option>
+                    <option value="inbound-white">Inbound</option>
+                    <option value="momentum-white">Momentum</option>
+                    <option value="persona-white">Persona</option>
+                    <option value="roi-white">ROI</option>
+                    <option value="strategy-white">Strategy</option>
+                    <option value="value-white">Value</option>
+                    <option value="webinar-white">Webinar</option>
+                </select>
+            </div>
+            
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">Default State</div>
+                    <div class="card-resources" id="demoCard">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon card-resources__icon--roi-white">
+                                </div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#download" class="card-resources__button">
+                                <span class="card-resources__button-text">Button Text</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div class="demo-item">
+                    <div class="demo-label">An Unnecessary Duplicate Example</div>
+                    <div class="card-resources">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="card-resources__icon">
+                                </div>
+                                <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <a href="#case-study" class="card-resources__button">
+                                <span class="card-resources__button-text">Button Text</span>
+                            </a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        
+        <!-- Usage Notes -->
+        <div class="demo-section">
+            <div class="demo-notes">
+                <h2 class="demo-title">Usage Notes</h2>
+                
+                <h3>Component Structure</h3>
+                <ul>
+                    <li><strong>Fixed Size:</strong> 350px × 453px (portrait letter aspect ratio)</li>
+                    <li><strong>Gold Border:</strong> 4px solid border using accent-500 color</li>
+                    <li><strong>Overlay:</strong> Semi-transparent navy overlay (25% opacity) for text readability</li>
+                    <li><strong>Three Content Sections:</strong> Header (icon + headline), CTA paragraph, and button</li>
+                </ul>
+                
+                <h3>Icon System</h3>
+                <ul>
+                    <li>Uses SVG sprite sheet: <code>purposeful-sprite-symbolic.svg</code></li>
+                    <li>Icons are 256×256px in the sprite, scaled to 90×90px for display</li>
+                    <li>Default icon: accelerate-white</li>
+                    <li>Icon positioning uses transform translate based on sprite positions</li>
+                </ul>
+                
+                <h3>Typography</h3>
+                <ul>
+                    <li><strong>Headline:</strong> Lato Heavy, 21px, uppercase, white</li>
+                    <li><strong>CTA Text:</strong> Open Sans Regular, 18px, centered, white</li>
+                    <li><strong>Button:</strong> Lato Bold, 18px, uppercase, navy on gold background</li>
+                </ul>
+                
+                <h3>Button States</h3>
+                <ul>
+                    <li><strong>Default:</strong> Gold background (#D4AF37)</li>
+                    <li><strong>Hover:</strong> Light gold (#DCBE5D)</li>
+                    <li><strong>Active:</strong> Dark gold (#B39226)</li>
+                    <li><strong>Disabled:</strong> Light gold with 50% opacity</li>
+                    <li><strong>Focus:</strong> Gold outline for accessibility</li>
+                </ul>
+                
+                <h3>Implementation Example</h3>
+                <pre>
+&lt;div class="card-resources"&gt;
+    &lt;img class="card-resources__thumbnail" 
+         src="path/to/ebook-cover.jpg" 
+         alt="eBook Title"&gt;
+    &lt;div class="card-resources__overlay"&gt;&lt;/div&gt;
+    &lt;div class="card-resources__content"&gt;
+        &lt;div class="card-resources__header"&gt;
+            &lt;div class="card-resources__icon"&gt;
+                &lt;svg class="card-resources__icon-sprite"&gt;
+                    &lt;use href="path/to/sprite.svg#sprite"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;h3 class="card-resources__heading"&gt;
+                Your Resource Title
+            &lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;p class="card-resources__cta"&gt;
+            Your call-to-action text here
+        &lt;/p&gt;
+        &lt;a href="/landing-page" class="card-resources__button"&gt;
+            &lt;span class="card-resources__button-text"&gt;
+                Download Now
+            &lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                
+                <h3>CSS Dependencies</h3>
+                <ul>
+                    <li>Requires <code>variables-v2.0-20250915.css</code> for color and typography tokens</li>
+                    <li>References <code>atoms-master.css</code> for base atomic styles</li>
+                    <li>Sprite sheet must be located at specified path for icons to display</li>
+                </ul>
+                
+                <h3>Accessibility Considerations</h3>
+                <ul>
+                    <li>Always include meaningful alt text for thumbnail images</li>
+                    <li>Button includes focus state for keyboard navigation</li>
+                    <li>Color contrast meets WCAG AA standards with overlay</li>
+                    <li>Semantic HTML structure with proper heading hierarchy</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Icon position mappings for background-position (scaled to 90px)
+        const iconPositions = {
+            'accelerate-white': '0px -1080px',
+            'attract-white': '-90px -1080px',
+            'contact-white': '-180px -1080px',
+            'delight-white': '-270px -1080px',
+            'download-white': '-360px -1080px',
+            'efficiency-white': '-450px -1080px',
+            'email-white': '0px -1170px',
+            'engage-white': '-90px -1170px',
+            'expertise-white': '-270px -1170px',
+            'inbound-white': '-360px -1170px',
+            'momentum-white': '-450px -1170px',
+            'persona-white': '-90px -1260px',
+            'roi-white': '-270px -1260px',
+            'strategy-white': '-450px -1260px',
+            'value-white': '-90px -1350px',
+            'webinar-white': '-180px -1350px'
+        };
+        
+        // Function to update icon based on selection
+        function updateIcon(iconName) {
+            // Get all icon containers
+            const iconContainers = document.querySelectorAll('.card-resources__icon');
+            const position = iconPositions[iconName];
+            
+            if (position && iconContainers.length > 0) {
+                // Update the first icon container (demo card)
+                iconContainers[0].style.backgroundPosition = position;
+                
+                // Update the icon class for CSS fallback
+                iconContainers[0].className = 'card-resources__icon card-resources__icon--' + iconName;
+            }
+        }
+        
+        // Initialize with default icon
+        document.addEventListener('DOMContentLoaded', function() {
+            updateIcon('accelerate-white');
+        });
+    </script>
+</body>
+</html>

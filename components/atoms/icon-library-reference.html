@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Library Reference - Purposeful Media</title>
+    <style>
+        :root {
+            --color-primary: #1B1464;
+            --color-accent: #D4AF37;
+            --color-teal: #39CCCC;
+            --color-gray: #6C757D;
+            --color-dark: #0B1F57;
+            --bg-light: #F7FAFC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 2rem;
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+
+        .subtitle {
+            color: var(--color-gray);
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+
+        /* Section styles */
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        /* Icon grid */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .icon-card {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .icon-display {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-display img {
+            max-width: 48px;
+            max-height: 48px;
+        }
+
+        .icon-name {
+            font-size: 0.75rem;
+            color: var(--color-gray);
+            word-break: break-word;
+        }
+
+        /* Color variant tabs */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+            color: var(--color-gray);
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: inherit;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            color: var(--color-primary);
+        }
+
+        .tab.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Background colors for different icon sets */
+        .bg-blue { background: var(--color-primary) !important; }
+        .bg-dark { background: var(--color-dark) !important; }
+        .bg-gray { background: var(--color-gray) !important; }
+        .bg-white { background: white !important; border: 1px solid #e0e0e0; }
+
+        /* Path display */
+        .path-info {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: var(--color-dark);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+
+        /* Organization proposal */
+        .proposal {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .proposal h3 {
+            color: #155724;
+            margin-bottom: 1rem;
+        }
+
+        .proposal pre {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Purposeful Media Icon Library</h1>
+        <p class="subtitle">Complete reference of all available icons</p>
+
+        <!-- Statistics -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">21</div>
+                <div class="stat-label">Decorative Icons</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Color Variants</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">84</div>
+                <div class="stat-label">Total Decorative Files</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24</div>
+                <div class="stat-label">UI Icons (planned)</div>
+            </div>
+        </div>
+
+        <!-- Current Organization -->
+        <div class="section">
+            <h2>📁 Current File Organization</h2>
+            <div class="path-info">
+                <strong>Decorative Icons:</strong><br>
+                /BRAND ASSETS/Logos & Identity/Iconography/Exports/SVG/<br><br>
+                <strong>UI Icons:</strong><br>
+                /BRAND ASSETS/Logos & Identity/Iconography/Exports/SVG/Navigation Icons/<br>
+                /BRAND ASSETS/Logos & Identity/Iconography/Exports/SVG/Tablet and Mobile Menu Icons/
+            </div>
+        </div>
+
+        <!-- Proposed Organization -->
+        <div class="proposal">
+            <h3>✅ Proposed Organization for Phase 1</h3>
+            <pre>/Development Files/assets/svg/
+├── decorative-icons/
+│   ├── blue/         (21 files)
+│   ├── white/        (21 files)
+│   ├── gray/         (21 files)
+│   ├── dark/         (21 files)
+│   └── sprite/       (future sprite sheet)
+└── ui-icons/
+    ├── navigation/   (arrows, play, pause)
+    ├── menu/         (hamburger, close)
+    ├── bullets/      (diamonds, checkmarks)
+    └── sprite/       (future sprite sheet)</pre>
+        </div>
+
+        <!-- Decorative Icons -->
+        <div class="section">
+            <h2>🎨 Decorative Icons (21 × 4 colors)</h2>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="showColorVariant('blue')">Blue</button>
+                <button class="tab" onclick="showColorVariant('white')">White</button>
+                <button class="tab" onclick="showColorVariant('gray')">Gray</button>
+                <button class="tab" onclick="showColorVariant('dark')">Dark</button>
+            </div>
+
+            <div id="decorative-grid" class="icon-grid">
+                <!-- Icons will be listed here -->
+            </div>
+        </div>
+
+        <!-- UI Icons -->
+        <div class="section">
+            <h2>🔧 UI Icons</h2>
+            
+            <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Menu Icons</h3>
+            <div class="icon-grid" style="margin-bottom: 2rem;">
+                <div class="icon-card">
+                    <div class="icon-display bg-blue">
+                        <div style="width: 32px; height: 32px; background: white;">
+                            <!-- Hamburger icon placeholder -->
+                            <svg viewBox="0 0 24 24" width="32" height="32">
+                                <rect x="3" y="6" width="18" height="2" fill="#1B1464"/>
+                                <rect x="3" y="11" width="18" height="2" fill="#1B1464"/>
+                                <rect x="3" y="16" width="18" height="2" fill="#1B1464"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="icon-name">hamburger-default</div>
+                </div>
+                <div class="icon-card">
+                    <div class="icon-display bg-blue">
+                        <div style="width: 32px; height: 32px; background: white;">
+                            <!-- Close icon placeholder -->
+                            <svg viewBox="0 0 24 24" width="32" height="32">
+                                <line x1="6" y1="6" x2="18" y2="18" stroke="#1B1464" stroke-width="2"/>
+                                <line x1="18" y1="6" x2="6" y2="18" stroke="#1B1464" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="icon-name">close-default</div>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Navigation Icons</h3>
+            <div class="icon-grid">
+                <div class="icon-card">
+                    <div class="icon-display">
+                        <svg viewBox="0 0 24 24" width="32" height="32">
+                            <path d="M8 5l7 7-7 7" stroke="#1B1464" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="icon-name">navigation-arrow</div>
+                </div>
+                <div class="icon-card">
+                    <div class="icon-display">
+                        <svg viewBox="0 0 24 24" width="32" height="32">
+                            <polygon points="8,5 19,12 8,19" fill="#1B1464"/>
+                        </svg>
+                    </div>
+                    <div class="icon-name">navigation-play</div>
+                </div>
+                <div class="icon-card">
+                    <div class="icon-display">
+                        <svg viewBox="0 0 24 24" width="32" height="32">
+                            <rect x="7" y="5" width="4" height="14" fill="#1B1464"/>
+                            <rect x="13" y="5" width="4" height="14" fill="#1B1464"/>
+                        </svg>
+                    </div>
+                    <div class="icon-name">navigation-pause</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Notes -->
+        <div class="section" style="background: #f8f9fa;">
+            <h2>📋 Implementation Status</h2>
+            
+            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Phase 1 (MVW Launch):</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                <li>✅ Use individual SVG files (ready to use)</li>
+                <li>✅ Copy files as needed to Development folder</li>
+                <li>✅ Simple, works immediately</li>
+            </ul>
+
+            <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Phase 2 (Post-Launch):</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>📋 Rebuild sprite sheets with 256px grid cells</li>
+                <li>📋 Add transparent rectangles in Illustrator</li>
+                <li>📋 Export with proper positioning preserved</li>
+                <li>📋 Implement CSS sprite technique</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Decorative icon names
+        const decorativeIcons = [
+            'accelerate', 'attract', 'contact', 'delight', 'download',
+            'efficiency', 'email', 'engage', 'exit', 'expertise',
+            'inbound', 'momentum', 'news', 'persona', 'pro',
+            'roi', 'schedule', 'strategy', 'unit', 'value', 'webinar'
+        ];
+
+        // Show color variant
+        function showColorVariant(color) {
+            // Update active tab
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Generate icon grid
+            const grid = document.getElementById('decorative-grid');
+            const bgClass = color === 'white' ? 'bg-gray' : 'bg-white';
+            
+            grid.innerHTML = decorativeIcons.map(icon => `
+                <div class="icon-card">
+                    <div class="icon-display ${bgClass}">
+                        <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;">
+                            <!-- Placeholder for ${icon} -->
+                            <div style="width: 40px; height: 40px; border-radius: 4px; background: ${getColorHex(color)};"></div>
+                        </div>
+                    </div>
+                    <div class="icon-name">${icon}-${color}</div>
+                </div>
+            `).join('');
+        }
+
+        function getColorHex(color) {
+            const colors = {
+                'blue': '#1B1464',
+                'white': '#FFFFFF',
+                'gray': '#6C757D',
+                'dark': '#0B1F57'
+            };
+            return colors[color] || '#000000';
+        }
+
+        // Initialize with blue icons
+        showColorVariant('blue');
+
+        // Log summary
+        console.log('Icon Library Summary:');
+        console.log('=====================');
+        console.log('Decorative Icons: 21 unique × 4 colors = 84 files');
+        console.log('UI Icons: ~24 planned for sprite sheet');
+        console.log('Total Icon Assets: ~108 files');
+    </script>
+</body>
+</html>

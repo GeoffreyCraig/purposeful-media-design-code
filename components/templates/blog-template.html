@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Purposeful Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/tokens/unified-design-tokens.css">
+    <link rel="stylesheet" href="../../styles/utilities/utility-classes.css">
+    <link rel="stylesheet" href="../../components/atoms/cleaned/button-component.css">
+    <link rel="stylesheet" href="../../components/molecules/cleaned/card-component.css">
+    <link rel="stylesheet" href="../../components/molecules/cleaned/form-component.css">
+    <link rel="stylesheet" href="../../components/organisms/cleaned/hero-component.css">
+    <link rel="stylesheet" href="../../components/organisms/cleaned/footer-component.css">
+    <style>
+        /* ===== BLOG TEMPLATE SYSTEM ===== */
+        .blog-page {
+            /* Base Template Styles */
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== TEMPLATE SECTIONS ===== */
+        .blog-page__header {
+            /* Header Section */
+            background: var(--brand);
+            color: var(--text-reverse);
+            padding: var(--space-4) var(--container-desktop-padding);
+            border-bottom: var(--border-accent);
+        }
+
+        .blog-page__hero {
+            /* Hero Section */
+            flex: 1;
+            min-height: 40vh;
+        }
+
+        .blog-page__content {
+            /* Main Content Area */
+            flex: 1;
+            padding: var(--space-16) var(--container-desktop-padding);
+            background: var(--bg-primary);
+        }
+
+        .blog-page__footer {
+            /* Footer Section */
+            margin-top: auto;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .blog-page__intro {
+            /* Introduction Section */
+            text-align: center;
+            margin-bottom: var(--space-16);
+        }
+
+        .blog-page__posts {
+            /* Blog Posts Section */
+            margin-bottom: var(--space-16);
+        }
+
+        .blog-page__sidebar {
+            /* Sidebar Section */
+            background: var(--bg-secondary);
+            padding: var(--space-16) var(--container-desktop-padding);
+            margin: var(--space-16) 0;
+        }
+
+        .blog-page__newsletter {
+            /* Newsletter Section */
+            background: var(--gradient-brand);
+            color: var(--text-reverse);
+            padding: var(--space-16) var(--container-desktop-padding);
+            margin: var(--space-16) 0;
+        }
+
+        /* ===== BLOG LAYOUT ===== */
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--space-16);
+            align-items: start;
+        }
+
+        .blog-main {
+            /* Main blog content area */
+        }
+
+        .blog-sidebar {
+            /* Sidebar content area */
+        }
+
+        /* ===== BLOG POSTS ===== */
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+        }
+
+        .blog-post {
+            /* Individual blog post */
+            margin-bottom: var(--space-8);
+        }
+
+        /* ===== PAGINATION ===== */
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-2);
+            margin-top: var(--space-16);
+        }
+
+        .pagination-button {
+            padding: var(--space-2) var(--space-4);
+            border: 1px solid var(--border-default);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .pagination-button:hover {
+            background: var(--brand);
+            color: var(--text-reverse);
+            border-color: var(--brand);
+        }
+
+        .pagination-button--active {
+            background: var(--brand);
+            color: var(--text-reverse);
+            border-color: var(--brand);
+        }
+
+        .pagination-button--disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 767px) {
+            .blog-page__header,
+            .blog-page__content,
+            .blog-page__sidebar,
+            .blog-page__newsletter {
+                padding: var(--space-8) var(--container-mobile-padding);
+            }
+
+            .blog-page__hero {
+                min-height: 30vh;
+            }
+
+            .blog-layout {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+
+            .blog-posts {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        .blog-page__skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--brand);
+            color: var(--text-reverse);
+            padding: 8px;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            z-index: 1000;
+        }
+
+        .blog-page__skip-link:focus {
+            top: 6px;
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .blog-page__header,
+            .blog-page__footer,
+            .blog-page__sidebar,
+            .blog-page__newsletter {
+                display: none;
+            }
+            
+            .blog-page__content {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="blog-page__skip-link">Skip to main content</a>
+
+    <!-- Blog Page Template -->
+    <div class="blog-page">
+        <!-- Header Section -->
+        <header class="blog-page__header" role="banner">
+            <div class="container">
+                <nav class="navigation" role="navigation" aria-label="Main navigation">
+                    <div class="navigation__brand">
+                        <h1 class="text-h2 text-reverse">Purposeful Media</h1>
+                    </div>
+                    <ul class="navigation__menu" role="menubar">
+                        <li role="none"><a href="#home" role="menuitem" class="text-reverse">Home</a></li>
+                        <li role="none"><a href="#about" role="menuitem" class="text-reverse">About</a></li>
+                        <li role="none"><a href="#services" role="menuitem" class="text-reverse">Services</a></li>
+                        <li role="none"><a href="#blog" role="menuitem" class="text-reverse">Blog</a></li>
+                        <li role="none"><a href="#contact" role="menuitem" class="text-reverse">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="blog-page__hero" role="banner">
+            <div class="hero hero--simple hero--medium hero--center">
+                <div class="hero__content">
+                    <div class="hero__text">
+                        <h1 class="hero__title text-h1 text-reverse">Marketing Insights & Strategy</h1>
+                        <p class="hero__subtitle text-body text-reverse">Expert insights, industry trends, and strategic marketing advice</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main id="main-content" class="blog-page__content" role="main">
+            <!-- Introduction Section -->
+            <section class="blog-page__intro" aria-labelledby="intro-heading">
+                <div class="container">
+                    <h2 id="intro-heading" class="text-h2 text-center mb-6">Latest Insights</h2>
+                    <p class="text-body text-center text-secondary mb-8">
+                        Stay updated with the latest marketing trends, strategies, and insights from our team of experts.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Blog Posts Section -->
+            <section class="blog-page__posts" aria-labelledby="posts-heading">
+                <div class="container">
+                    <h2 id="posts-heading" class="text-h2 mb-8">Recent Posts</h2>
+                    <div class="blog-layout">
+                        <div class="blog-main">
+                            <div class="blog-posts">
+                                <!-- Blog Post 1 -->
+                                <article class="blog-post">
+                                    <div class="card card--blog card--large">
+                                        <div class="card__header">
+                                            <div class="card__image">
+                                                <img src="http://localhost:3845/assets/blog-post-1.jpg" alt="Strategic Marketing Planning" class="card__image-img">
+                                            </div>
+                                            <div class="card__meta">
+                                                <span class="card__date text-small text-secondary">March 15, 2024</span>
+                                                <span class="card__category text-small text-brand">Strategy</span>
+                                            </div>
+                                            <h3 class="card__title text-h3">The Future of Strategic Marketing Planning</h3>
+                                        </div>
+                                        <div class="card__content">
+                                            <p class="card__description text-body">
+                                                Discover how data-driven marketing strategies are reshaping the industry and learn 
+                                                the key principles for developing effective marketing plans that drive real results.
+                                            </p>
+                                        </div>
+                                        <div class="card__actions">
+                                            <button class="btn btn--primary btn--small">Read More</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Blog Post 2 -->
+                                <article class="blog-post">
+                                    <div class="card card--blog card--large">
+                                        <div class="card__header">
+                                            <div class="card__image">
+                                                <img src="http://localhost:3845/assets/blog-post-2.jpg" alt="Creative Campaign Development" class="card__image-img">
+                                            </div>
+                                            <div class="card__meta">
+                                                <span class="card__date text-small text-secondary">March 12, 2024</span>
+                                                <span class="card__category text-small text-brand">Creative</span>
+                                            </div>
+                                            <h3 class="card__title text-h3">Creative Campaign Development: From Concept to Execution</h3>
+                                        </div>
+                                        <div class="card__content">
+                                            <p class="card__description text-body">
+                                                Explore the creative process behind successful marketing campaigns and learn how 
+                                                to develop compelling creative concepts that resonate with your target audience.
+                                            </p>
+                                        </div>
+                                        <div class="card__actions">
+                                            <button class="btn btn--primary btn--small">Read More</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Blog Post 3 -->
+                                <article class="blog-post">
+                                    <div class="card card--blog card--large">
+                                        <div class="card__header">
+                                            <div class="card__image">
+                                                <img src="http://localhost:3845/assets/blog-post-3.jpg" alt="Marketing Analytics and Performance" class="card__image-img">
+                                            </div>
+                                            <div class="card__meta">
+                                                <span class="card__date text-small text-secondary">March 10, 2024</span>
+                                                <span class="card__category text-small text-brand">Analytics</span>
+                                            </div>
+                                            <h3 class="card__title text-h3">Marketing Analytics: Measuring What Matters</h3>
+                                        </div>
+                                        <div class="card__content">
+                                            <p class="card__description text-body">
+                                                Learn how to effectively measure and analyze marketing performance using key metrics 
+                                                and data-driven insights to optimize your campaigns for maximum ROI.
+                                            </p>
+                                        </div>
+                                        <div class="card__actions">
+                                            <button class="btn btn--primary btn--small">Read More</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Blog Post 4 -->
+                                <article class="blog-post">
+                                    <div class="card card--blog card--large">
+                                        <div class="card__header">
+                                            <div class="card__image">
+                                                <img src="http://localhost:3845/assets/blog-post-4.jpg" alt="Digital Marketing Trends" class="card__image-img">
+                                            </div>
+                                            <div class="card__meta">
+                                                <span class="card__date text-small text-secondary">March 8, 2024</span>
+                                                <span class="card__category text-small text-brand">Trends</span>
+                                            </div>
+                                            <h3 class="card__title text-h3">Digital Marketing Trends to Watch in 2024</h3>
+                                        </div>
+                                        <div class="card__content">
+                                            <p class="card__description text-body">
+                                                Stay ahead of the curve with our analysis of emerging digital marketing trends 
+                                                and technologies that will shape the industry in 2024 and beyond.
+                                            </p>
+                                        </div>
+                                        <div class="card__actions">
+                                            <button class="btn btn--primary btn--small">Read More</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Blog Post 5 -->
+                                <article class="blog-post">
+                                    <div class="card card--blog card--large">
+                                        <div class="card__header">
+                                            <div class="card__image">
+                                                <img src="http://localhost:3845/assets/blog-post-5.jpg" alt="Brand Development Strategy" class="card__image-img">
+                                            </div>
+                                            <div class="card__meta">
+                                                <span class="card__date text-small text-secondary">March 5, 2024</span>
+                                                <span class="card__category text-small text-brand">Branding</span>
+                                            </div>
+                                            <h3 class="card__title text-h3">Building a Strong Brand Identity in the Digital Age</h3>
+                                        </div>
+                                        <div class="card__content">
+                                            <p class="card__description text-body">
+                                                Discover the essential elements of brand development and learn how to create 
+                                                a compelling brand identity that stands out in today's competitive digital landscape.
+                                            </p>
+                                        </div>
+                                        <div class="card__actions">
+                                            <button class="btn btn--primary btn--small">Read More</button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Blog Post 6 -->
+                                <article class="blog-post">
+                                    <div class="card card--blog card--large">
+                                        <div class="card__header">
+                                            <div class="card__image">
+                                                <img src="http://localhost:3845/assets/blog-post-6.jpg" alt="Content Marketing Strategy" class="card__image-img">
+                                            </div>
+                                            <div class="card__meta">
+                                                <span class="card__date text-small text-secondary">March 3, 2024</span>
+                                                <span class="card__category text-small text-brand">Content</span>
+                                            </div>
+                                            <h3 class="card__title text-h3">Content Marketing Strategy: Engaging Your Audience</h3>
+                                        </div>
+                                        <div class="card__content">
+                                            <p class="card__description text-body">
+                                                Learn how to develop an effective content marketing strategy that engages your 
+                                                audience, builds trust, and drives meaningful business results.
+                                            </p>
+                                        </div>
+                                        <div class="card__actions">
+                                            <button class="btn btn--primary btn--small">Read More</button>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <!-- Pagination -->
+                            <nav class="blog-pagination" aria-label="Blog pagination">
+                                <a href="#" class="pagination-button pagination-button--disabled" aria-label="Previous page">Previous</a>
+                                <a href="#" class="pagination-button pagination-button--active" aria-label="Page 1, current page">1</a>
+                                <a href="#" class="pagination-button" aria-label="Page 2">2</a>
+                                <a href="#" class="pagination-button" aria-label="Page 3">3</a>
+                                <a href="#" class="pagination-button" aria-label="Next page">Next</a>
+                            </nav>
+                        </div>
+
+                        <!-- Sidebar -->
+                        <aside class="blog-sidebar" role="complementary">
+                            <div class="sidebar-section">
+                                <h3 class="text-h3 mb-4">Categories</h3>
+                                <ul class="sidebar-list">
+                                    <li><a href="#strategy" class="sidebar-link">Strategy</a></li>
+                                    <li><a href="#creative" class="sidebar-link">Creative</a></li>
+                                    <li><a href="#analytics" class="sidebar-link">Analytics</a></li>
+                                    <li><a href="#trends" class="sidebar-link">Trends</a></li>
+                                    <li><a href="#branding" class="sidebar-link">Branding</a></li>
+                                    <li><a href="#content" class="sidebar-link">Content</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="sidebar-section">
+                                <h3 class="text-h3 mb-4">Recent Posts</h3>
+                                <div class="sidebar-posts">
+                                    <article class="sidebar-post">
+                                        <h4 class="text-h4"><a href="#post-1" class="sidebar-link">Strategic Marketing Planning</a></h4>
+                                        <p class="text-small text-secondary">March 15, 2024</p>
+                                    </article>
+                                    <article class="sidebar-post">
+                                        <h4 class="text-h4"><a href="#post-2" class="sidebar-link">Creative Campaign Development</a></h4>
+                                        <p class="text-small text-secondary">March 12, 2024</p>
+                                    </article>
+                                    <article class="sidebar-post">
+                                        <h4 class="text-h4"><a href="#post-3" class="sidebar-link">Marketing Analytics</a></h4>
+                                        <p class="text-small text-secondary">March 10, 2024</p>
+                                    </article>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-section">
+                                <h3 class="text-h3 mb-4">Newsletter</h3>
+                                <p class="text-body mb-4">Stay updated with our latest insights and strategies.</p>
+                                <form class="form form--newsletter">
+                                    <div class="form__field">
+                                        <label for="newsletter-email" class="form__label">Email Address</label>
+                                        <input type="email" id="newsletter-email" name="email" class="form__input" required>
+                                    </div>
+                                    <div class="form__actions">
+                                        <button type="submit" class="btn btn--primary btn--small">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+            <section class="blog-page__newsletter" aria-labelledby="newsletter-heading">
+                <div class="container">
+                    <h2 id="newsletter-heading" class="text-h2 text-center mb-4">Stay Connected</h2>
+                    <p class="text-body text-center mb-8">
+                        Subscribe to our newsletter for the latest marketing insights and strategies delivered to your inbox.
+                    </p>
+                    <div class="text-center">
+                        <form class="form form--newsletter-inline">
+                            <div class="form__field">
+                                <label for="newsletter-email-inline" class="form__label text-reverse">Email Address</label>
+                                <input type="email" id="newsletter-email-inline" name="email" class="form__input" required>
+                            </div>
+                            <div class="form__actions">
+                                <button type="submit" class="btn btn--accent btn--large">Subscribe Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="blog-page__footer">
+            <div class="footer footer--main">
+                <div class="footer__content">
+                    <div class="footer__brand">
+                        <h3 class="footer__title text-h3 text-reverse">Purposeful Media</h3>
+                        <p class="footer__description text-body text-reverse">
+                            Strategic marketing solutions that drive real business growth.
+                        </p>
+                    </div>
+                    <div class="footer__links">
+                        <div class="footer__section">
+                            <h4 class="footer__section-title text-h4 text-reverse">Services</h4>
+                            <ul class="footer__list">
+                                <li><a href="#strategy" class="footer__link text-reverse">Strategic Planning</a></li>
+                                <li><a href="#creative" class="footer__link text-reverse">Creative Execution</a></li>
+                                <li><a href="#analytics" class="footer__link text-reverse">Performance Analytics</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer__section">
+                            <h4 class="footer__section-title text-h4 text-reverse">Company</h4>
+                            <ul class="footer__list">
+                                <li><a href="#about" class="footer__link text-reverse">About Us</a></li>
+                                <li><a href="#team" class="footer__link text-reverse">Our Team</a></li>
+                                <li><a href="#contact" class="footer__link text-reverse">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright text-small text-reverse">
+                        © 2024 Purposeful Media. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Blog Page Template JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Blog post card interactions
+            const blogPosts = document.querySelectorAll('.blog-post .card');
+            blogPosts.forEach(card => {
+                card.addEventListener('click', function() {
+                    const postTitle = this.querySelector('.card__title').textContent;
+                    console.log(`Blog post clicked: ${postTitle}`);
+                    
+                    // Add visual feedback
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Sidebar category filtering
+            const categoryLinks = document.querySelectorAll('.sidebar-section .sidebar-link');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.textContent.trim();
+                    console.log(`Category clicked: ${category}`);
+                    
+                    // Add visual feedback
+                    this.style.color = 'var(--brand)';
+                    setTimeout(() => {
+                        this.style.color = '';
+                    }, 300);
+                });
+            });
+
+            // Newsletter form submissions
+            const newsletterForms = document.querySelectorAll('.form--newsletter, .form--newsletter-inline');
+            newsletterForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = this.querySelector('input[type="email"]').value;
+                    const submitButton = this.querySelector('.btn');
+                    const originalText = submitButton.textContent;
+                    
+                    // Show loading state
+                    submitButton.classList.add('btn--loading');
+                    submitButton.textContent = 'Subscribing...';
+                    submitButton.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        // Reset button
+                        submitButton.classList.remove('btn--loading');
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                        
+                        // Show success message
+                        showNewsletterSuccess(this);
+                        
+                        // Reset form
+                        this.reset();
+                    }, 2000);
+                });
+            });
+
+            // Pagination interactions
+            const paginationButtons = document.querySelectorAll('.pagination-button');
+            paginationButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (!this.classList.contains('pagination-button--disabled')) {
+                        const pageNumber = this.textContent.trim();
+                        console.log(`Pagination clicked: ${pageNumber}`);
+                        
+                        // Add visual feedback
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 150);
+                    }
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('keyboard-navigation');
+                }
+            });
+
+            document.addEventListener('mousedown', function() {
+                document.body.classList.remove('keyboard-navigation');
+            });
+        });
+
+        // Newsletter success message
+        function showNewsletterSuccess(form) {
+            const successMessage = document.createElement('div');
+            successMessage.className = 'form__success';
+            successMessage.textContent = 'Thank you for subscribing! Check your email for confirmation.';
+            successMessage.setAttribute('role', 'alert');
+            
+            form.appendChild(successMessage);
+            
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+                successMessage.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

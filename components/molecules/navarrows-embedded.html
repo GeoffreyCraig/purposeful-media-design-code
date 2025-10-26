@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Arrow Pairs Component - Embedded SVG</title>
+    
+    <!-- External CSS References -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    
+    <style>
+        /* Hide the embedded sprite */
+        .svg-sprite-container {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        /* Component Base Styles */
+        .nav-arrow-pairs {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Individual Arrow Button */
+        .nav-arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hover State */
+        .nav-arrow:hover:not(:disabled),
+        .nav-arrow--active {
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Disabled State */
+        .nav-arrow:disabled,
+        .nav-arrow--disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* Icon Styling */
+        .arrow-icon {
+            display: block;
+            width: 24px;
+            height: 28px;
+        }
+
+        .arrow-icon path {
+            fill: #1b1464; /* Navy blue */
+        }
+
+        /* Arrow Directions using CSS transforms */
+        .arrow-icon--left {
+            transform: rotate(-90deg);
+        }
+
+        .arrow-icon--right {
+            transform: rotate(90deg);
+        }
+
+        .arrow-icon--down {
+            transform: rotate(180deg);
+        }
+
+        .arrow-icon--up {
+            transform: rotate(0deg);
+        }
+
+        /* Position Variants */
+        .nav-arrow-pairs--inside {
+            /* Default positioning for inside carousel */
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            pointer-events: none;
+            padding: 0 10px; /* Padding instead of left/right positioning */
+        }
+
+        .nav-arrow-pairs--inside .nav-arrow {
+            pointer-events: auto;
+        }
+
+        .nav-arrow-pairs--outside {
+            /* For positioning outside carousel content */
+            position: relative;
+            margin: 0 -60px; /* Negative margin to position outside */
+        }
+
+        /* Alternative: Overlay positioning for better edge alignment */
+        .nav-arrow-pairs--overlay {
+            position: absolute;
+            left: -24px; /* Half the arrow width */
+            right: -24px; /* Half the arrow width */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .nav-arrow-pairs--overlay .nav-arrow {
+            pointer-events: auto;
+        }
+
+        /* Hidden arrows based on show properties */
+        .nav-arrow--hidden {
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* Component Demo Styles */
+        .component-demo {
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+        }
+
+        .demo-container {
+            position: relative;
+            width: 600px; /* Increased from 400px */
+            height: 200px;
+            background: #e0e0e0;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .demo-label {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden SVG Sprite (embedded in page) -->
+    <div class="svg-sprite-container">
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Arrow Icon -->
+                <symbol id="icon-arrow" viewBox="0 0 256.37 255.92">
+                    <path d="M207.11,107.29l-59.43-66.54c-.66-.81-1.37-1.59-2.18-2.31-2.45-2.18-5.29-3.63-8.27-4.39-.05-.01-.09-.03-.14-.04-.45-.11-.9-.19-1.35-.27-.2-.04-.4-.08-.6-.11-.3-.04-.6-.07-.91-.1-.36-.04-.71-.08-1.07-.09-.15,0-.29,0-.44,0-4.86-.12-9.77,1.52-13.69,5.01-.81.72-1.52,1.5-2.18,2.31l-59.44,66.54c-7.3,8.17-6.58,20.7,1.59,28,3.79,3.37,8.51,5.04,13.21,5.04,5.45,0,10.87-2.24,14.79-6.62l25.52-28.57v97.54c0,10.95,8.88,19.83,19.83,19.83v-.02c10.95,0,19.83-8.88,19.83-19.83v-97.32l25.34,28.37c3.91,4.38,9.34,6.62,14.79,6.62,4.7,0,9.42-1.67,13.21-5.04,8.17-7.3,8.88-19.83,1.59-28Z"/>
+                </symbol>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Component Demonstrations -->
+    <div class="component-demo">
+        <h2>Navigation Arrow Pairs Component</h2>
+
+        <!-- Inside Position Variants -->
+        <div class="demo-section">
+            <h3>Inside Position</h3>
+            
+            <!-- Both arrows hidden -->
+            <div class="demo-container">
+                <div class="nav-arrow-pairs nav-arrow-pairs--inside" 
+                     data-show-left="no" 
+                     data-show-right="no" 
+                     data-position="inside"
+                     data-node-id="3343:151">
+                    <button class="nav-arrow nav-arrow--left nav-arrow--hidden" aria-label="Previous" disabled>
+                        <svg class="arrow-icon arrow-icon--left">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow nav-arrow--right nav-arrow--hidden" aria-label="Next" disabled>
+                        <svg class="arrow-icon arrow-icon--right">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                </div>
+                <span>Content Area</span>
+            </div>
+            <p class="demo-label">Show Left=No, Show Right=No</p>
+
+            <!-- Left active, right hidden -->
+            <div class="demo-container">
+                <div class="nav-arrow-pairs nav-arrow-pairs--inside" 
+                     data-show-left="yes" 
+                     data-show-right="no" 
+                     data-position="inside"
+                     data-node-id="3339:235">
+                    <button class="nav-arrow nav-arrow--left nav-arrow--active" aria-label="Previous">
+                        <svg class="arrow-icon arrow-icon--left">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow nav-arrow--right nav-arrow--hidden" aria-label="Next" disabled>
+                        <svg class="arrow-icon arrow-icon--right">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                </div>
+                <span>Content Area</span>
+            </div>
+            <p class="demo-label">Show Left=Yes, Show Right=No</p>
+
+            <!-- Left hidden, right active -->
+            <div class="demo-container">
+                <div class="nav-arrow-pairs nav-arrow-pairs--inside" 
+                     data-show-left="no" 
+                     data-show-right="yes" 
+                     data-position="inside"
+                     data-node-id="3344:160">
+                    <button class="nav-arrow nav-arrow--left nav-arrow--hidden" aria-label="Previous" disabled>
+                        <svg class="arrow-icon arrow-icon--left">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow nav-arrow--right nav-arrow--active" aria-label="Next">
+                        <svg class="arrow-icon arrow-icon--right">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                </div>
+                <span>Content Area</span>
+            </div>
+            <p class="demo-label">Show Left=No, Show Right=Yes</p>
+
+            <!-- Both arrows active -->
+            <div class="demo-container">
+                <div class="nav-arrow-pairs nav-arrow-pairs--inside" 
+                     data-show-left="yes" 
+                     data-show-right="yes" 
+                     data-position="inside"
+                     data-node-id="3344:171">
+                    <button class="nav-arrow nav-arrow--left nav-arrow--active" aria-label="Previous">
+                        <svg class="arrow-icon arrow-icon--left">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow nav-arrow--right nav-arrow--active" aria-label="Next">
+                        <svg class="arrow-icon arrow-icon--right">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                </div>
+                <span>Content Area</span>
+            </div>
+            <p class="demo-label">Show Left=Yes, Show Right=Yes</p>
+        </div>
+
+        <!-- Functional Example -->
+        <div class="demo-section">
+            <h3>Functional Carousel Example</h3>
+            <div class="demo-container">
+                <div id="carousel-arrows" 
+                     class="nav-arrow-pairs nav-arrow-pairs--inside" 
+                     data-show-left="no" 
+                     data-show-right="yes" 
+                     data-position="inside">
+                    <button class="nav-arrow nav-arrow--left nav-arrow--hidden" aria-label="Previous" data-direction="prev" disabled>
+                        <svg class="arrow-icon arrow-icon--left">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                    <button class="nav-arrow nav-arrow--right nav-arrow--active" aria-label="Next" data-direction="next">
+                        <svg class="arrow-icon arrow-icon--right">
+                            <use href="#icon-arrow"></use>
+                        </svg>
+                    </button>
+                </div>
+                <span id="slide-indicator">Slide 1 of 3</span>
+            </div>
+            <p class="demo-label">Click arrows to navigate (simulated)</p>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * NavArrowPairs Component JavaScript
+         * Manages carousel navigation arrow states and interactions
+         */
+        
+        class NavArrowPairs {
+            constructor(element, options = {}) {
+                this.element = element;
+                this.leftArrow = element.querySelector('.nav-arrow--left');
+                this.rightArrow = element.querySelector('.nav-arrow--right');
+                
+                // Options
+                this.currentSlide = options.currentSlide || 0;
+                this.totalSlides = options.totalSlides || 3;
+                this.onNavigate = options.onNavigate || (() => {});
+                
+                // Initialize
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.updateArrowStates();
+            }
+
+            bindEvents() {
+                if (this.leftArrow) {
+                    this.leftArrow.addEventListener('click', () => this.navigate('prev'));
+                }
+                
+                if (this.rightArrow) {
+                    this.rightArrow.addEventListener('click', () => this.navigate('next'));
+                }
+            }
+
+            navigate(direction) {
+                let newSlide = this.currentSlide;
+                
+                if (direction === 'prev' && this.currentSlide > 0) {
+                    newSlide = this.currentSlide - 1;
+                } else if (direction === 'next' && this.currentSlide < this.totalSlides - 1) {
+                    newSlide = this.currentSlide + 1;
+                }
+
+                if (newSlide !== this.currentSlide) {
+                    this.currentSlide = newSlide;
+                    this.updateArrowStates();
+                    
+                    // Trigger callback
+                    this.onNavigate({
+                        currentSlide: this.currentSlide,
+                        totalSlides: this.totalSlides,
+                        direction: direction
+                    });
+
+                    // Dispatch custom event
+                    this.element.dispatchEvent(new CustomEvent('navigate', {
+                        detail: {
+                            currentSlide: this.currentSlide,
+                            totalSlides: this.totalSlides,
+                            direction: direction
+                        }
+                    }));
+                }
+            }
+
+            updateArrowStates() {
+                const showLeft = this.currentSlide > 0;
+                const showRight = this.currentSlide < this.totalSlides - 1;
+                
+                // Update data attributes
+                this.element.dataset.showLeft = showLeft ? 'yes' : 'no';
+                this.element.dataset.showRight = showRight ? 'yes' : 'no';
+                
+                // Update left arrow
+                if (this.leftArrow) {
+                    if (showLeft) {
+                        this.leftArrow.classList.add('nav-arrow--active');
+                        this.leftArrow.classList.remove('nav-arrow--hidden');
+                        this.leftArrow.disabled = false;
+                    } else {
+                        this.leftArrow.classList.remove('nav-arrow--active');
+                        this.leftArrow.classList.add('nav-arrow--hidden');
+                        this.leftArrow.disabled = true;
+                    }
+                }
+                
+                // Update right arrow
+                if (this.rightArrow) {
+                    if (showRight) {
+                        this.rightArrow.classList.add('nav-arrow--active');
+                        this.rightArrow.classList.remove('nav-arrow--hidden');
+                        this.rightArrow.disabled = false;
+                    } else {
+                        this.rightArrow.classList.remove('nav-arrow--active');
+                        this.rightArrow.classList.add('nav-arrow--hidden');
+                        this.rightArrow.disabled = true;
+                    }
+                }
+            }
+
+            setSlide(slideIndex) {
+                if (slideIndex >= 0 && slideIndex < this.totalSlides) {
+                    this.currentSlide = slideIndex;
+                    this.updateArrowStates();
+                }
+            }
+
+            setPosition(position) {
+                this.element.classList.remove('nav-arrow-pairs--inside', 'nav-arrow-pairs--outside');
+                this.element.classList.add(`nav-arrow-pairs--${position}`);
+                this.element.dataset.position = position;
+            }
+        }
+
+        // Initialize functional example
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselArrows = document.getElementById('carousel-arrows');
+            const slideIndicator = document.getElementById('slide-indicator');
+            
+            if (carouselArrows) {
+                const navArrows = new NavArrowPairs(carouselArrows, {
+                    currentSlide: 0,
+                    totalSlides: 3,
+                    onNavigate: (data) => {
+                        // Update slide indicator
+                        if (slideIndicator) {
+                            slideIndicator.textContent = `Slide ${data.currentSlide + 1} of ${data.totalSlides}`;
+                        }
+                        console.log('Navigated to slide:', data.currentSlide);
+                    }
+                });
+            }
+        });
+
+        /**
+         * Factory function for creating NavArrowPairs programmatically
+         */
+        function createNavArrowPairs(config = {}) {
+            const {
+                showLeft = 'no',
+                showRight = 'no',
+                position = 'inside'
+            } = config;
+
+            const container = document.createElement('div');
+            container.className = `nav-arrow-pairs nav-arrow-pairs--${position}`;
+            container.dataset.showLeft = showLeft;
+            container.dataset.showRight = showRight;
+            container.dataset.position = position;
+
+            // Create left arrow
+            const leftArrow = document.createElement('button');
+            leftArrow.className = 'nav-arrow nav-arrow--left';
+            if (showLeft === 'yes') {
+                leftArrow.classList.add('nav-arrow--active');
+            } else {
+                leftArrow.classList.add('nav-arrow--hidden');
+                leftArrow.disabled = true;
+            }
+            leftArrow.setAttribute('aria-label', 'Previous');
+            leftArrow.dataset.direction = 'prev';
+            
+            // Add SVG icon to left arrow
+            leftArrow.innerHTML = `
+                <svg class="arrow-icon arrow-icon--left">
+                    <use href="#icon-arrow"></use>
+                </svg>
+            `;
+
+            // Create right arrow
+            const rightArrow = document.createElement('button');
+            rightArrow.className = 'nav-arrow nav-arrow--right';
+            if (showRight === 'yes') {
+                rightArrow.classList.add('nav-arrow--active');
+            } else {
+                rightArrow.classList.add('nav-arrow--hidden');
+                rightArrow.disabled = true;
+            }
+            rightArrow.setAttribute('aria-label', 'Next');
+            rightArrow.dataset.direction = 'next';
+            
+            // Add SVG icon to right arrow
+            rightArrow.innerHTML = `
+                <svg class="arrow-icon arrow-icon--right">
+                    <use href="#icon-arrow"></use>
+                </svg>
+            `;
+
+            container.appendChild(leftArrow);
+            container.appendChild(rightArrow);
+
+            return container;
+        }
+
+        // Export for use in other components
+        if (typeof module !== 'undefined' && module.exports) {
+            module.exports = { NavArrowPairs, createNavArrowPairs };
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play/Pause Button Component - Embedded SVG</title>
+    
+    <!-- External CSS References -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    
+    <style>
+        /* Hide the embedded sprite */
+        .svg-sprite-container {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        /* Component Base Styles */
+        .play-pause-button {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+        }
+
+        /* Icon Container */
+        .play-pause-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Size Variations */
+        .play-pause-button--medium .play-pause-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .play-pause-button--small .play-pause-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* SVG Icon Implementation */
+        .icon-sprite {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Icon sizes */
+        .icon-play--medium {
+            width: 21px;
+            height: 24px;
+        }
+
+        .icon-play--small {
+            width: 17px;
+            height: 20px;
+        }
+
+        .icon-pause--medium {
+            width: 16px;
+            height: 24px;
+        }
+
+        .icon-pause--small {
+            width: 14px;
+            height: 20px;
+        }
+
+        /* Style Variations */
+        
+        /* Ghost Style */
+        .play-pause-button--ghost {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .play-pause-button--ghost:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .play-pause-button--ghost:active {
+            background-color: rgba(212, 175, 55, 0.4);
+        }
+
+        /* Solid Style */
+        .play-pause-button--solid {
+            background-color: #ffffff;
+        }
+
+        .play-pause-button--solid:hover {
+            background-color: #d4af37;
+        }
+
+        .play-pause-button--solid:active {
+            background-color: #b39226;
+        }
+
+        /* Interactive States Classes */
+        .play-pause-button--hover-state {
+            background-color: rgba(212, 175, 55, 0.2) !important;
+        }
+
+        .play-pause-button--ghost.play-pause-button--hover-state {
+            background-color: rgba(212, 175, 55, 0.2) !important;
+        }
+
+        .play-pause-button--solid.play-pause-button--hover-state {
+            background-color: #d4af37 !important;
+        }
+
+        .play-pause-button--pressed-state {
+            background-color: rgba(212, 175, 55, 0.4) !important;
+        }
+
+        .play-pause-button--ghost.play-pause-button--pressed-state {
+            background-color: rgba(212, 175, 55, 0.4) !important;
+        }
+
+        .play-pause-button--solid.play-pause-button--pressed-state {
+            background-color: #b39226 !important;
+        }
+
+        /* Icon Color Styling */
+        .play-pause-button--ghost .icon-sprite path {
+            fill: #1b1464; /* Navy blue for ghost style */
+        }
+
+        .play-pause-button--solid .icon-sprite path {
+            fill: #1b1464; /* Navy blue default */
+        }
+
+        .play-pause-button--solid:hover .icon-sprite path {
+            fill: #ffffff; /* White on hover */
+        }
+
+        .play-pause-button--solid:active .icon-sprite path {
+            fill: #ffffff; /* White on active */
+        }
+
+        /* Component Wrapper for Demo */
+        .component-demo {
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .component-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .component-label {
+            font-size: 10px;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden SVG Sprite (embedded in page) -->
+    <div class="svg-sprite-container">
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Play Icon -->
+                <symbol id="icon-play" viewBox="0 0 256.37 255.92">
+                    <path d="M81.36,217.09c-4.75,0-9.55-1.2-13.85-3.63-8.8-4.98-14.23-14.3-14.23-24.45V54.24c0-10.11,5.43-19.47,14.23-24.45,8.8-4.98,19.62-4.83,28.26.37l112.31,67.39c8.46,5.09,13.63,14.23,13.63,24.07s-5.17,19.02-13.63,24.07l-112.31,67.39c-4.45,2.66-9.43,4.01-14.45,4.01h.04ZM109.44,103.84v35.6l29.65-17.78-29.65-17.78v-.04Z"/>
+                </symbol>
+                
+                <!-- Pause Icon -->
+                <symbol id="icon-pause" viewBox="0 0 256.37 255.92">
+                    <path d="M93.12,217.09c-15.42,0-27.93-12.51-27.93-27.93V55.09c0-15.42,12.51-27.93,27.93-27.93s27.93,12.51,27.93,27.93v134.07c0,15.42-12.51,27.93-27.93,27.93Z"/>
+                    <path d="M168.72,217.09c-15.42,0-27.93-12.51-27.93-27.93V55.09c0-15.42,12.51-27.93,27.93-27.93s27.93,12.51,27.93,27.93v134.07c0,15.42-12.51,27.93-27.93,27.93Z"/>
+                </symbol>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Component Demo Grid -->
+    <div class="component-demo">
+        <h2>Play/Pause Button Component Variations</h2>
+        
+        <div class="component-grid">
+            <!-- Paused State Buttons -->
+            
+            <!-- Medium Ghost Paused -->
+            <div class="component-item">
+                <button class="play-pause-button play-pause-button--medium play-pause-button--ghost" 
+                        data-state="paused" 
+                        data-size="medium" 
+                        data-style="ghost"
+                        data-node-id="3551:46">
+                    <div class="play-pause-icon">
+                        <svg class="icon-sprite icon-play icon-play--medium">
+                            <use href="#icon-play"></use>
+                        </svg>
+                    </div>
+                </button>
+                <span class="component-label">Paused/Med/Ghost</span>
+            </div>
+
+            <!-- Small Ghost Paused -->
+            <div class="component-item">
+                <button class="play-pause-button play-pause-button--small play-pause-button--ghost" 
+                        data-state="paused" 
+                        data-size="small" 
+                        data-style="ghost"
+                        data-node-id="3552:37">
+                    <div class="play-pause-icon">
+                        <svg class="icon-sprite icon-play icon-play--small">
+                            <use href="#icon-play"></use>
+                        </svg>
+                    </div>
+                </button>
+                <span class="component-label">Paused/Sm/Ghost</span>
+            </div>
+
+            <!-- Medium Solid Paused -->
+            <div class="component-item">
+                <button class="play-pause-button play-pause-button--medium play-pause-button--solid" 
+                        data-state="paused" 
+                        data-size="medium" 
+                        data-style="solid"
+                        data-node-id="3552:45">
+                    <div class="play-pause-icon">
+                        <svg class="icon-sprite icon-play icon-play--medium">
+                            <use href="#icon-play"></use>
+                        </svg>
+                    </div>
+                </button>
+                <span class="component-label">Paused/Med/Solid</span>
+            </div>
+
+            <!-- Small Solid Paused -->
+            <div class="component-item">
+                <button class="play-pause-button play-pause-button--small play-pause-button--solid" 
+                        data-state="paused" 
+                        data-size="small" 
+                        data-style="solid"
+                        data-node-id="3553:39">
+                    <div class="play-pause-icon">
+                        <svg class="icon-sprite icon-play icon-play--small">
+                            <use href="#icon-play"></use>
+                        </svg>
+                    </div>
+                </button>
+                <span class="component-label">Paused/Sm/Solid</span>
+            </div>
+
+            <!-- Playing State Buttons -->
+            
+            <!-- Medium Ghost Playing -->
+            <div class="component-item">
+                <button class="play-pause-button play-pause-button--medium play-pause-button--ghost" 
+                        data-state="playing" 
+                        data-size="medium" 
+                        data-style="ghost"
+                        data-node-id="3552:26">
+                    <div class="play-pause-icon">
+                        <svg class="icon-sprite icon-pause icon-pause--medium">
+                            <use href="#icon-pause"></use>
+                        </svg>
+                    </div>
+                </button>
+                <span class="component-label">Playing/Med/Ghost</span>
+            </div>
+
+            <!-- Small Ghost Playing -->
+            <div class="component-item">
+                <button class="play-pause-button play-pause-button--small play-pause-button--ghost" 
+                        data-state="playing" 
+                        data-size="small" 
+                        data-style="ghost"
+                        data-node-id="3552:41">
+                    <div class="play-pause-icon">
+                        <svg class="icon-sprite icon-pause icon-pause--small">
+                            <use href="#icon-pause"></use>
+                        </svg>
+                    </div>
+                </button>
+                <span class="component-label">Playing/Sm/Ghost</span>
+            </div>
+
+            <!-- Medium Solid Playing -->
+            <div class="component-item">
+                <button class="play-pause-button play-pause-button--medium play-pause-button--solid" 
+                        data-state="playing" 
+                        data-size="medium" 
+                        data-style="solid"
+                        data-node-id="3553:54">
+                    <div class="play-pause-icon">
+                        <svg class="icon-sprite icon-pause icon-pause--medium">
+                            <use href="#icon-pause"></use>
+                        </svg>
+                    </div>
+                </button>
+                <span class="component-label">Playing/Med/Solid</span>
+            </div>
+
+            <!-- Small Solid Playing -->
+            <div class="component-item">
+                <button class="play-pause-button play-pause-button--small play-pause-button--solid" 
+                        data-state="playing" 
+                        data-size="small" 
+                        data-style="solid"
+                        data-node-id="3553:60">
+                    <div class="play-pause-icon">
+                        <svg class="icon-sprite icon-pause icon-pause--small">
+                            <use href="#icon-pause"></use>
+                        </svg>
+                    </div>
+                </button>
+                <span class="component-label">Playing/Sm/Solid</span>
+            </div>
+        </div>
+
+        <!-- Functional Example -->
+        <div style="margin-top: 40px; text-align: center;">
+            <h3>Functional Example</h3>
+            <button id="functional-play-pause" 
+                    class="play-pause-button play-pause-button--medium play-pause-button--solid" 
+                    data-state="paused" 
+                    data-size="medium" 
+                    data-style="solid">
+                <div class="play-pause-icon">
+                    <svg class="icon-sprite icon-play icon-play--medium">
+                        <use href="#icon-play"></use>
+                    </svg>
+                </div>
+            </button>
+            <p style="margin-top: 10px; color: #666;">Click to toggle play/pause</p>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * PlayPause Button Component JavaScript
+         * Handles state toggling and icon switching
+         */
+        
+        class PlayPauseButton {
+            constructor(element) {
+                this.element = element;
+                this.iconContainer = element.querySelector('.play-pause-icon');
+                this.state = element.dataset.state || 'paused';
+                this.size = element.dataset.size || 'medium';
+                
+                this.bindEvents();
+            }
+
+            bindEvents() {
+                this.element.addEventListener('click', this.handleClick.bind(this));
+            }
+
+            handleClick(event) {
+                event.preventDefault();
+                this.toggleState();
+            }
+
+            toggleState() {
+                if (this.state === 'paused') {
+                    this.setState('playing');
+                } else {
+                    this.setState('paused');
+                }
+            }
+
+            setState(newState) {
+                this.state = newState;
+                this.element.dataset.state = newState;
+                
+                // Update icon
+                if (newState === 'playing') {
+                    // Replace with pause icon
+                    this.iconContainer.innerHTML = `
+                        <svg class="icon-sprite icon-pause icon-pause--${this.size}">
+                            <use href="#icon-pause"></use>
+                        </svg>
+                    `;
+                } else {
+                    // Replace with play icon
+                    this.iconContainer.innerHTML = `
+                        <svg class="icon-sprite icon-play icon-play--${this.size}">
+                            <use href="#icon-play"></use>
+                        </svg>
+                    `;
+                }
+
+                // Dispatch custom event
+                this.element.dispatchEvent(new CustomEvent('statechange', {
+                    detail: { state: newState }
+                }));
+            }
+
+            // Programmatic control methods
+            play() {
+                this.setState('playing');
+            }
+
+            pause() {
+                this.setState('paused');
+            }
+
+            // Apply interactive state classes
+            setInteractiveState(state) {
+                this.element.classList.remove('play-pause-button--hover-state', 'play-pause-button--pressed-state');
+                
+                if (state === 'hover') {
+                    this.element.classList.add('play-pause-button--hover-state');
+                } else if (state === 'pressed') {
+                    this.element.classList.add('play-pause-button--pressed-state');
+                }
+            }
+        }
+
+        // Initialize functional example
+        document.addEventListener('DOMContentLoaded', function() {
+            const functionalButton = document.getElementById('functional-play-pause');
+            if (functionalButton) {
+                const playPauseInstance = new PlayPauseButton(functionalButton);
+                
+                // Log state changes
+                functionalButton.addEventListener('statechange', function(event) {
+                    console.log('PlayPause state changed to:', event.detail.state);
+                });
+            }
+        });
+
+        /**
+         * Factory function for creating PlayPause buttons programmatically
+         */
+        function createPlayPauseButton(config = {}) {
+            const {
+                state = 'paused',
+                size = 'medium',
+                style = 'ghost',
+                interactive = 'default'
+            } = config;
+
+            const button = document.createElement('button');
+            button.className = `play-pause-button play-pause-button--${size} play-pause-button--${style}`;
+            button.dataset.state = state;
+            button.dataset.size = size;
+            button.dataset.style = style;
+
+            const iconContainer = document.createElement('div');
+            iconContainer.className = 'play-pause-icon';
+
+            const iconType = state === 'playing' ? 'pause' : 'play';
+            
+            iconContainer.innerHTML = `
+                <svg class="icon-sprite icon-${iconType} icon-${iconType}--${size}">
+                    <use href="#icon-${iconType}"></use>
+                </svg>
+            `;
+
+            button.appendChild(iconContainer);
+
+            return new PlayPauseButton(button);
+        }
+
+        // Export for use in other components
+        if (typeof module !== 'undefined' && module.exports) {
+            module.exports = { PlayPauseButton, createPlayPauseButton };
+        }
+    </script>
+</body>
+</html>

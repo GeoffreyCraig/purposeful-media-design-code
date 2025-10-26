@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Simple Default - Purposeful Media</title>
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Hero Simple Container */
+        .hero-simple {
+            position: relative;
+            width: 100%;
+            height: 124px;
+            background: linear-gradient(180deg, var(--color-accent-500) 0%, var(--color-primary-700) 100%);
+            border-bottom: 4px solid var(--color-accent-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        /* Content Container */
+        .hero-simple__content {
+            position: relative;
+            width: calc(100% - 80px); /* 40px margin on each side */
+            max-width: 1840px; /* 1920px - 80px total margins */
+            height: 100%;
+            background-color: var(--color-primary-700);
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+            margin: 0 40px;
+        }
+        
+        /* Headline */
+        .hero-simple__headline {
+            font-family: var(--font-primary);
+            font-size: var(--text-h1-size);
+            line-height: var(--text-h1-height);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-white);
+            letter-spacing: -0.02em;
+        }
+        
+        /* DesktopPlus: 1920px and wider */
+        @media (min-width: 1920px) {
+            .hero-simple {
+                /* Container expands to fill viewport */
+                width: 100%;
+            }
+            
+            .hero-simple__content {
+                /* Content stays fixed width with 40px margins */
+                width: 1840px;
+                max-width: 1840px;
+                margin: 0 40px;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .hero-simple {
+                /* Both containers expand and contract together */
+                width: 100%;
+            }
+            
+            .hero-simple__content {
+                /* Content container with 40px margins on each side */
+                width: calc(100% - 80px);
+                max-width: calc(100% - 80px);
+                margin: 0 40px;
+            }
+        }
+        
+        /* Tablet: 848px to 1149px - full 40px margins */
+        @media (min-width: 848px) and (max-width: 1149px) {
+            .hero-simple {
+                /* Outer container contracts */
+                width: 100%;
+            }
+            
+            .hero-simple__content {
+                /* Content with 40px margins */
+                width: calc(100% - 80px);
+                margin: 0 40px;
+                padding: 0 40px;
+            }
+            
+            .hero-simple__headline {
+                font-size: var(--text-h2-size);
+                line-height: var(--text-h2-height);
+            }
+        }
+        
+        /* Tablet transition: 768px to 848px - smooth margin reduction */
+        @media (min-width: 768px) and (max-width: 848px) {
+            .hero-simple {
+                width: 100%;
+            }
+            
+            .hero-simple__content {
+                /* Content stays at 768px min-width */
+                min-width: 768px;
+                width: 768px;
+                /* Margins reduce smoothly: at 848px = 40px, at 768px = 0px */
+                /* Using calc to create smooth transition */
+                margin: 0 calc((100vw - 768px) / 2);
+                padding: 0 40px;
+            }
+            
+            .hero-simple__headline {
+                font-size: var(--text-h2-size);
+                line-height: var(--text-h2-height);
+            }
+        }
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .hero-simple {
+                /* At mobile, the gradient background is hidden */
+                background: var(--color-primary-700);
+            }
+            
+            .hero-simple__content {
+                /* Content fills entire width */
+                width: 100%;
+                min-width: unset;
+                padding: 0 20px;
+                margin: 0;
+            }
+            
+            .hero-simple__headline {
+                font-size: var(--text-h3-size);
+                line-height: var(--text-h3-height);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Simple Default Component -->
+    <section class="hero-simple" role="banner" aria-label="Page Header">
+        <div class="hero-simple__content">
+            <h1 class="hero-simple__headline">Your Page Headline Here</h1>
+        </div>
+    </section>
+    
+    <!-- Demo content to show responsiveness -->
+    <div style="padding: 40px; background: #f5f5f5; font-family: var(--font-secondary);">
+        <h2 style="margin-bottom: 20px; color: var(--color-primary-700);">Hero Simple Default Component</h2>
+        <p style="margin-bottom: 10px;">This hero section features:</p>
+        <ul style="margin-left: 20px;">
+            <li>Fixed height of 124px across all breakpoints</li>
+            <li>Gold to blue gradient background with responsive margins</li>
+            <li>4px gold bottom border</li>
+            <li>Smooth margin transition from 848px to 768px</li>
+            <li>Responsive text sizing</li>
+        </ul>
+        <p style="margin-top: 20px;">Resize your browser to see the responsive behavior:</p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li><strong>DesktopPlus (1920px+):</strong> Fixed 1840px content width with 40px margins showing gradient</li>
+            <li><strong>Desktop (1150-1919px):</strong> Both containers scale with 40px margins maintained</li>
+            <li><strong>Tablet (848-1149px):</strong> 40px margins maintained, gradient visible</li>
+            <li><strong>Tablet (768-848px):</strong> Smooth margin reduction from 40px to 0px</li>
+            <li><strong>Mobile (380-767px):</strong> Solid blue background, smaller text, no margins</li>
+        </ul>
+    </div>
+    
+    <script>
+        // Optional: Add resize listener for development/testing
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            let breakpoint = 'Mobile';
+            let marginSize = 0;
+            
+            if (width >= 1920) {
+                breakpoint = 'DesktopPlus';
+                marginSize = 40;
+            } else if (width >= 1150) {
+                breakpoint = 'Desktop';
+                marginSize = 40;
+            } else if (width >= 848) {
+                breakpoint = 'Tablet (full margins)';
+                marginSize = 40;
+            } else if (width >= 768) {
+                breakpoint = 'Tablet (transition)';
+                // Calculate the current margin based on viewport width
+                marginSize = Math.round((width - 768) / 2);
+            }
+            
+            console.log(`Current viewport: ${width}px (${breakpoint}) - Margin: ${marginSize}px each side`);
+        }
+        
+        // Initial check
+        updateViewportInfo();
+        
+        // Update on resize
+        window.addEventListener('resize', updateViewportInfo);
+    </script>
+</body>
+</html>

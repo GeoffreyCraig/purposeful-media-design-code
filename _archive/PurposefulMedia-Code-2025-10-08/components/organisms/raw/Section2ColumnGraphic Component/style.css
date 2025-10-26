@@ -1,0 +1,518 @@
+.content-2-column-graphic,
+.content-2-column-graphic * {
+  box-sizing: border-box;
+}
+.content-2-column-graphic {
+  padding: var(--space-8, 32px) var(--space-24, 96px) var(--space-8, 32px)
+    var(--space-24, 96px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-5, 20px);
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 1920px;
+  max-width: 1920px;
+  position: relative;
+  overflow: hidden;
+}
+.text-column {
+  padding: var(--space-16, 64px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-5, 20px);
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.card-paragraph-options {
+  background: var(--primary, #ffffff);
+  border-radius: 4px;
+  padding: var(--space-16, 64px) 32px 64px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 600px;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.headline {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.h-2 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.paragraph-text-18-27-h {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  width: 536px;
+  height: 378px;
+}
+.buttons-button {
+  background: var(--default, #d4af37);
+  border-radius: 4px;
+  padding: 16px 80px 16px 80px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 50px;
+  position: relative;
+}
+.label {
+  color: var(--heading, #1b1464);
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+/* variant styles */
+.content-2-column-graphic.break-point-desktop {
+  min-width: 1150px;
+  max-width: 1919px;
+}
+.content-2-column-graphic.break-point-desktop .card-paragraph-options,
+.content-2-column-graphic.break-point-tablet .card-paragraph-options,
+.content-2-column-graphic.break-point-desktop-plus.orientation-two-columns
+  .card-paragraph-options {
+  padding: var(--space-16, 64px) 32px var(--space-16, 64px) 32px;
+}
+.content-2-column-graphic.break-point-desktop.orientation-left
+  .card-paragraph-options {
+  width: 500px;
+}
+.content-2-column-graphic.break-point-desktop .paragraph-text-18-27-h {
+  flex: 1;
+  width: 436px;
+  height: unset;
+}
+.content-2-column-graphic.break-point-desktop.orientation-left .buttons-button {
+  background: var(--hover, #dcbe5d);
+}
+.content-2-column-graphic.break-point-tablet {
+  min-width: 768px;
+  max-width: 1149px;
+}
+.content-2-column-graphic.break-point-tablet.orientation-left {
+  width: 100%;
+}
+.content-2-column-graphic.break-point-tablet.orientation-left .text-column {
+  padding: var(--space-8, 32px) var(--space-16, 64px) var(--space-8, 32px)
+    var(--space-16, 64px);
+}
+.content-2-column-graphic.break-point-tablet.orientation-left
+  .card-paragraph-options {
+  width: 400px;
+}
+.content-2-column-graphic.break-point-tablet .h-3 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.content-2-column-graphic.break-point-tablet .paragraph-text-18-27-h,
+.content-2-column-graphic.break-point-desktop-plus.orientation-two-columns
+  .paragraph-text-18-27-h {
+  flex: 1;
+  height: unset;
+}
+.content-2-column-graphic.break-point-tablet.orientation-left
+  .paragraph-text-18-27-h {
+  width: 336px;
+}
+.content-2-column-graphic.break-point-tablet.orientation-left .buttons-button {
+  padding: 12px 64px 12px 64px;
+  height: 42px;
+}
+.content-2-column-graphic.break-point-mobile {
+  gap: 20px;
+  justify-content: flex-start;
+  min-width: 380px;
+  max-width: 767px;
+}
+.content-2-column-graphic.break-point-mobile.orientation-left {
+  padding: var(--space-4, 16px) var(--space-12, 48px) var(--space-4, 16px)
+    var(--space-12, 48px);
+}
+.content-2-column-graphic.break-point-mobile .text-column,
+.content-2-column-graphic.break-point-desktop-plus.orientation-two-columns
+  .text-column {
+  flex-shrink: 0;
+  flex: unset;
+}
+.content-2-column-graphic.break-point-mobile.orientation-left .text-column {
+  padding: var(--space-10, 40px) var(--space-6, 24px) var(--space-10, 40px)
+    var(--space-6, 24px);
+}
+.content-2-column-graphic.break-point-mobile .card-paragraph-options {
+  padding: var(--space-16, 64px) 32px var(--space-16, 64px) 32px;
+  width: 320px;
+}
+.content-2-column-graphic.break-point-mobile .headline {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.content-2-column-graphic.break-point-mobile .h-4 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.content-2-column-graphic.orientation-left .h-4 {
+  width: 256px;
+}
+.content-2-column-graphic.break-point-mobile .paragraph-text-18-27-h {
+  flex: 1;
+  width: 256px;
+  height: unset;
+}
+.content-2-column-graphic.break-point-mobile .buttons-button {
+  padding: 8px 64px 8px 64px;
+  height: 34px;
+}
+.content-2-column-graphic.break-point-desktop-plus.orientation-two-columns,
+.content-2-column-graphic.break-point-desktop.orientation-two-columns {
+  padding: var(--space-0, 0px) var(--space-16, 64px) var(--space-0, 0px)
+    var(--space-16, 64px);
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: unset;
+}
+.content-2-column-graphic.break-point-desktop-plus .right-column {
+  padding: var(--space-16, 64px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-5, 20px);
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.content-2-column-graphic.break-point-desktop-plus .card-paragraph-options2 {
+  background: var(--primary, #ffffff);
+  border-radius: 4px;
+  padding: var(--space-16, 64px) 32px var(--space-16, 64px) 32px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 32px);
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  width: 600px;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.content-2-column-graphic.break-point-desktop-plus
+  .risus-in-hendrerit-gravida-rutrum-quisque-imperdiet-massa-tincidunt-nunc-pulvinar-sapien-et-ligula-malesuada-nunc-vel-risus-commodo-vitae-auctor-eu-augue-ut-lectus-arcu-bibendum-vitae-sapien-pellentesque-habitant-morbi-tristique-senectus-sit-amet-cursus-sit-amet-egestas-purus-viverra-accumsan-in-nisl-nisi-tempus-egestas-sed-sed-risus-pretium-quam {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+  width: 536px;
+}
+.content-2-column-graphic.break-point-desktop-plus .buttons-button2,
+.content-2-column-graphic.break-point-desktop .buttons-button2,
+.content-2-column-graphic.break-point-tablet .buttons-button2 {
+  background: var(--default, #1b1464);
+  border-radius: 4px;
+  padding: 16px 80px 16px 80px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 50px;
+  position: relative;
+}
+.content-2-column-graphic.break-point-desktop-plus .label2,
+.content-2-column-graphic.break-point-desktop .label2,
+.content-2-column-graphic.break-point-tablet .label2,
+.content-2-column-graphic.break-point-mobile .label2 {
+  color: var(--reverse, #ffffff);
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+.content-2-column-graphic.break-point-desktop.orientation-two-columns
+  .card-paragraph-options {
+  flex: 1;
+  max-width: 600px;
+  flex-shrink: unset;
+  width: unset;
+}
+.content-2-column-graphic.break-point-desktop .paragraph {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.content-2-column-graphic.break-point-desktop
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-risus-in-hendrerit-gravida-rutrum-quisque-imperdiet-massa-tincidunt-nunc-pulvinar-sapien-et-ligula-malesuada-nunc-vel-risus-commodo-vitae-auctor-eu-augue-ut-lectus-arcu-bibendum-vitae-sapien-pellentesque-habitant-morbi-tristique-senectus-sit-amet-cursus-sit-amet-egestas-purus-viverra-accumsan-in-nisl-nisi-tempus-egestas-sed-sed-risus-pretium-quam {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.content-2-column-graphic.break-point-desktop.orientation-two-columns
+  .buttons-button {
+  width: 283px;
+  height: unset;
+}
+.content-2-column-graphic.break-point-desktop .right-column {
+  padding: var(--space-16, 64px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-5, 20px);
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  position: relative;
+}
+.content-2-column-graphic.break-point-desktop .card-paragraph-options2 {
+  background: var(--primary, #ffffff);
+  border-radius: 4px;
+  padding: var(--space-16, 64px) 32px var(--space-16, 64px) 32px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 32px);
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  max-width: 600px;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.content-2-column-graphic.break-point-desktop
+  .risus-in-hendrerit-gravida-rutrum-quisque-imperdiet-massa-tincidunt-nunc-pulvinar-sapien-et-ligula-malesuada-nunc-vel-risus-commodo-vitae-auctor-eu-augue-ut-lectus-arcu-bibendum-vitae-sapien-pellentesque-habitant-morbi-tristique-senectus-sit-amet-cursus-sit-amet-egestas-purus-viverra-accumsan-in-nisl-nisi-tempus-egestas-sed-sed-risus-pretium-quam {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  flex: 1;
+}
+.content-2-column-graphic.break-point-tablet.orientation-two-columns {
+  padding: var(--space-0, 0px) var(--space-16, 64px) var(--space-0, 0px)
+    var(--space-16, 64px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.content-2-column-graphic.break-point-tablet.orientation-two-columns
+  .text-column {
+  align-self: stretch;
+  flex-shrink: 0;
+  flex: unset;
+}
+.content-2-column-graphic.break-point-tablet.orientation-two-columns
+  .card-paragraph-options {
+  width: 376px;
+  max-width: 376px;
+}
+.content-2-column-graphic.break-point-tablet.orientation-two-columns
+  .paragraph-text-18-27-h {
+  width: 312px;
+}
+.content-2-column-graphic.break-point-tablet .right-column {
+  padding: var(--space-16, 64px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-5, 20px);
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.content-2-column-graphic.break-point-tablet .card-paragraph-options2 {
+  background: var(--primary, #ffffff);
+  border-radius: 4px;
+  padding: 32px 32px var(--space-8, 32px) 32px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 32px);
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  width: 376px;
+  max-width: 376px;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.content-2-column-graphic.break-point-tablet
+  .risus-in-hendrerit-gravida-rutrum-quisque-imperdiet-massa-tincidunt-nunc-pulvinar-sapien-et-ligula-malesuada-nunc-vel-risus-commodo-vitae-auctor-eu-augue-ut-lectus-arcu-bibendum-vitae-sapien-pellentesque-habitant-morbi-tristique-senectus-sit-amet-cursus-sit-amet-egestas-purus-viverra-accumsan-in-nisl-nisi-tempus-egestas-sed-sed-risus-pretium-quam {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+  width: 312px;
+}
+.content-2-column-graphic.break-point-mobile.orientation-two-columns {
+  padding: var(--space-0, 0px) var(--space-6, 24px) var(--space-0, 0px)
+    var(--space-6, 24px);
+  flex-direction: column;
+  align-items: center;
+}
+.content-2-column-graphic.break-point-mobile.orientation-two-columns
+  .text-column {
+  padding: var(--space-16, 64px) var(--space-4, 16px) var(--space-16, 64px)
+    var(--space-4, 16px);
+  align-self: stretch;
+}
+.content-2-column-graphic.break-point-mobile .headline2 {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.content-2-column-graphic.break-point-mobile .right-column {
+  padding: var(--space-16, 64px) var(--space-4, 16px) var(--space-16, 64px)
+    var(--space-4, 16px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-8, 32px);
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.content-2-column-graphic.break-point-mobile .card-paragraph-options2 {
+  background: var(--primary, #ffffff);
+  border-radius: 4px;
+  padding: var(--space-16, 64px) 32px var(--space-16, 64px) 32px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 32px);
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  width: 320px;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    4px 4px 12px 0px rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.content-2-column-graphic.break-point-mobile .h-42 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+  width: 256px;
+}
+.content-2-column-graphic.break-point-mobile
+  .risus-in-hendrerit-gravida-rutrum-quisque-imperdiet-massa-tincidunt-nunc-pulvinar-sapien-et-ligula-malesuada-nunc-vel-risus-commodo-vitae-auctor-eu-augue-ut-lectus-arcu-bibendum-vitae-sapien-pellentesque-habitant-morbi-tristique-senectus-sit-amet-cursus-sit-amet-egestas-purus-viverra-accumsan-in-nisl-nisi-tempus-egestas-sed-sed-risus-pretium-quam {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+  width: 256px;
+}
+.content-2-column-graphic.break-point-mobile .buttons-button2 {
+  background: var(--default, #1b1464);
+  border-radius: 4px;
+  padding: 8px 64px 8px 64px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 34px;
+  position: relative;
+}

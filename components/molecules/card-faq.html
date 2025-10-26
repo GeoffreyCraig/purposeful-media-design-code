@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card/FAQ Component - Molecules</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Component: Card/FAQ
+         * Purpose: Accordion-style FAQ entries with expandable answers
+         * Breakpoints: Mobile (380-767px), Tablet (768-1149px), Desktop (1150-1919px), DesktopPlus (1920px+)
+         * States: Default (closed), Hover (closed), Open (expanded)
+         */
+        
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        /* Demo Container */
+        .demo-container {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Base FAQ Card Styles */
+        .card-faq {
+            display: flex;
+            flex-direction: column;
+            padding: 16px 12px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Question Section */
+        .card-faq__question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            user-select: none;
+        }
+        
+        .card-faq__question-text {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 21px;
+            line-height: 30.5px;
+            color: #51585e;
+            flex: 1;
+            padding-right: 12px;
+        }
+        
+        /* Arrow Icon */
+        .card-faq__arrow {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 45px;
+            color: #51585e;
+            width: 45px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            transform-origin: center;
+        }
+        
+        /* Answer Section */
+        .card-faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .card-faq__answer-content {
+            padding: 8px 8px 8px 32px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            color: #51585e;
+        }
+        
+        /* State: Hover (closed) */
+        .card-faq:not(.card-faq--open) .card-faq__question:hover {
+            background-color: #f4ebcd;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* State: Open */
+        .card-faq--open .card-faq__arrow {
+            transform: rotate(90deg);
+        }
+        
+        .card-faq--open .card-faq__answer {
+            max-height: 500px; /* Adjust based on content */
+            opacity: 1;
+        }
+        
+        .card-faq--open .card-faq__question {
+            background-color: transparent;
+        }
+        
+        /* Mobile Breakpoint: 380-767px */
+        @media (max-width: 767px) {
+            .card-faq {
+                padding: 8px 12px;
+            }
+        }
+        
+        /* Tablet Breakpoint: 768-1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .card-faq {
+                padding: 12px 12px 12px 24px;
+            }
+        }
+        
+        /* FAQ Group Container */
+        .faq-group {
+            max-width: 1120px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .faq-group .card-faq {
+            border-bottom: 1px solid #eceeef;
+        }
+        
+        .faq-group .card-faq:last-child {
+            border-bottom: none;
+        }
+        
+        /* Accessibility */
+        .card-faq__question:focus {
+            outline: 2px solid #1d50de;
+            outline-offset: 2px;
+        }
+        
+        /* Print styles */
+        @media print {
+            .card-faq--open .card-faq__answer {
+                max-height: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; margin-bottom: 40px;">Card/FAQ Component</h1>
+        
+        <!-- FAQ Accordion Demo -->
+        <div class="demo-section">
+            <div class="demo-label">FAQ Accordion - Interactive Demo</div>
+            <div class="faq-group">
+                <!-- FAQ Item 1 -->
+                <div class="card-faq">
+                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-1">
+                        <div class="card-faq__question-text">
+                            What digital marketing services do you offer for B2B companies?
+                        </div>
+                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                    </div>
+                    <div class="card-faq__answer" id="faq-answer-1" aria-hidden="true">
+                        <div class="card-faq__answer-content">
+                            We specialize in comprehensive B2B digital marketing services including email marketing management, webinar production and promotion, lead magnet creation (eBooks, guides, templates), content repurposing across channels, and SEO optimization. Our focus is on generating qualified leads through strategic content and campaigns.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="card-faq">
+                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-2">
+                        <div class="card-faq__question-text">
+                            How do you help improve email deliverability and engagement?
+                        </div>
+                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                    </div>
+                    <div class="card-faq__answer" id="faq-answer-2" aria-hidden="true">
+                        <div class="card-faq__answer-content">
+                            We implement proven strategies to improve email deliverability including reputation remediation, list hygiene, authentication setup (SPF, DKIM, DMARC), and engagement optimization. We also configure HubSpot email platforms to maximize deliverability while creating compelling content that drives opens and clicks.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="card-faq">
+                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-3">
+                        <div class="card-faq__question-text">
+                            What makes your approach different from other marketing agencies?
+                        </div>
+                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                    </div>
+                    <div class="card-faq__answer" id="faq-answer-3" aria-hidden="true">
+                        <div class="card-faq__answer-content">
+                            We combine AI efficiencies with human marketing expertise, specializing in technically complex B2B industries. Our unique approach involves using the same marketing tools and processes for our own business that we implement for clients, ensuring proven, tested strategies. We focus on delivering measurable marketing outcomes and market-qualified leads.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 (Initially Open for Demo) -->
+                <div class="card-faq card-faq--open">
+                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="true" aria-controls="faq-answer-4">
+                        <div class="card-faq__question-text">
+                            Who is your ideal B2B client?
+                        </div>
+                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                    </div>
+                    <div class="card-faq__answer" id="faq-answer-4" aria-hidden="false">
+                        <div class="card-faq__answer-content">
+                            Our ideal clients are small to mid-size B2B companies with complex products or services, particularly in industrial, engineering, and SaaS sectors. We work best with business owners planning an exit within 5-7 years, senior executives seeking to modernize their marketing, and professionals looking to establish thought leadership in their industry.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="card-faq">
+                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-5">
+                        <div class="card-faq__question-text">
+                            How do you measure marketing success and ROI?
+                        </div>
+                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                    </div>
+                    <div class="card-faq__answer" id="faq-answer-5" aria-hidden="true">
+                        <div class="card-faq__answer-content">
+                            We track success through key metrics including market-qualified leads (MQLs), email engagement rates, webinar attendance and conversion, content downloads, and ultimately revenue attribution. We use tools like Google Analytics, HubSpot, and SEMrush to provide transparent reporting on campaign performance and ROI.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- States Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Component States</div>
+            <div style="display: grid; gap: 20px; background: white; padding: 20px; border-radius: 12px;">
+                <!-- Default State -->
+                <div class="card-faq">
+                    <div class="card-faq__question" style="pointer-events: none;">
+                        <div class="card-faq__question-text">
+                            Default State (Closed)
+                        </div>
+                        <div class="card-faq__arrow">›</div>
+                    </div>
+                </div>
+                
+                <!-- Hover State -->
+                <div class="card-faq">
+                    <div class="card-faq__question" style="background-color: #f4ebcd; box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1); pointer-events: none;">
+                        <div class="card-faq__question-text">
+                            Hover State (Closed)
+                        </div>
+                        <div class="card-faq__arrow">›</div>
+                    </div>
+                </div>
+                
+                <!-- Open State -->
+                <div class="card-faq" style="pointer-events: none;">
+                    <div class="card-faq__question">
+                        <div class="card-faq__question-text">
+                            Open State (Expanded)
+                        </div>
+                        <div class="card-faq__arrow" style="transform: rotate(90deg);">›</div>
+                    </div>
+                    <div class="card-faq__answer" style="max-height: 500px; opacity: 1;">
+                        <div class="card-faq__answer-content">
+                            This is the expanded answer state showing the full content.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Responsive Demo Info -->
+        <div class="demo-section" style="background: #f0f3fd; padding: 20px; border-radius: 8px;">
+            <h3 style="color: #1b1464; margin-bottom: 10px;">Responsive & Accessibility Features</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;">📱 <strong>Mobile (380-767px):</strong> Compact padding (8px 12px)</li>
+                <li style="margin-bottom: 8px;">📱 <strong>Tablet (768-1149px):</strong> Medium padding (12px)</li>
+                <li style="margin-bottom: 8px;">💻 <strong>Desktop/DesktopPlus (1150px+):</strong> Full padding (16px 12px)</li>
+                <li style="margin-bottom: 8px;">♿ <strong>Accessibility:</strong> Keyboard navigation, ARIA labels, focus indicators</li>
+                <li>🎯 <strong>Interaction:</strong> Click or Enter/Space to toggle, smooth animations</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Card/FAQ Component JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all FAQ items
+            const faqItems = document.querySelectorAll('.card-faq');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.card-faq__question');
+                const answer = item.querySelector('.card-faq__answer');
+                const arrow = item.querySelector('.card-faq__arrow');
+                
+                // Skip if this is a demo state item
+                if (!answer) return;
+                
+                // Toggle function
+                function toggleFAQ() {
+                    const isOpen = item.classList.contains('card-faq--open');
+                    
+                    // Close all other FAQ items (optional accordion behavior)
+                    // Comment out these lines if you want multiple items open at once
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('card-faq--open')) {
+                            otherItem.classList.remove('card-faq--open');
+                            const otherQuestion = otherItem.querySelector('.card-faq__question');
+                            const otherAnswer = otherItem.querySelector('.card-faq__answer');
+                            if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+                            if (otherAnswer) otherAnswer.setAttribute('aria-hidden', 'true');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isOpen) {
+                        item.classList.remove('card-faq--open');
+                        question.setAttribute('aria-expanded', 'false');
+                        answer.setAttribute('aria-hidden', 'true');
+                        console.log('FAQ closed:', question.querySelector('.card-faq__question-text').textContent.trim());
+                    } else {
+                        item.classList.add('card-faq--open');
+                        question.setAttribute('aria-expanded', 'true');
+                        answer.setAttribute('aria-hidden', 'false');
+                        console.log('FAQ opened:', question.querySelector('.card-faq__question-text').textContent.trim());
+                    }
+                }
+                
+                // Click handler
+                question.addEventListener('click', toggleFAQ);
+                
+                // Keyboard handler
+                question.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleFAQ();
+                    }
+                });
+            });
+            
+            // Calculate and set max-height for smooth animations
+            function calculateMaxHeights() {
+                faqItems.forEach(item => {
+                    const answerContent = item.querySelector('.card-faq__answer-content');
+                    const answer = item.querySelector('.card-faq__answer');
+                    
+                    if (answerContent && answer) {
+                        // Temporarily show to calculate height
+                        const originalMaxHeight = answer.style.maxHeight;
+                        answer.style.maxHeight = 'none';
+                        const contentHeight = answerContent.scrollHeight + 20; // Add some padding
+                        answer.style.maxHeight = originalMaxHeight;
+                        
+                        // Update CSS variable or inline style
+                        if (item.classList.contains('card-faq--open')) {
+                            answer.style.maxHeight = contentHeight + 'px';
+                        }
+                    }
+                });
+            }
+            
+            // Calculate on load and resize
+            calculateMaxHeights();
+            window.addEventListener('resize', calculateMaxHeights);
+            
+            // Log component load
+            console.log('Card/FAQ component loaded successfully');
+            console.log('FAQ items found:', faqItems.length);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANNER HEADLINE BREADBOARD TEST</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+        
+        /* ============================================
+           BANNER HEADLINE COMPONENT
+           ============================================ */
+        
+        .banner-headline-section {
+            width: 100%;
+            height: 80px;
+            background-color: #1B1464; /* Primary blue */
+            border-bottom: 4px solid #D4AF37; /* Accent gold */
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+        }
+        
+        .banner-headline-section__content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .banner-headline {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin: 0;
+            text-align: left; /* Left-aligned at all breakpoints */
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+        
+        /* DesktopPlus: 1920px and wider */
+        @media (min-width: 1920px) {
+            .banner-headline-section__content {
+                max-width: 1920px;
+                margin: 0 auto;
+            }
+            
+            .banner-headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .banner-headline-section__content {
+                max-width: 1920px;
+                margin: 0 auto;
+            }
+            
+            .banner-headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .banner-headline-section__content {
+                max-width: 1150px;
+                margin: 0 auto;
+            }
+            
+            .banner-headline {
+                font-size: 30px;
+                line-height: 45px;
+            }
+        }
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .banner-headline {
+                font-size: 24px;
+                line-height: 36px;
+                text-align: left; /* Fixed: Left-aligned, not center */
+            }
+            
+            .banner-headline-section__content {
+                justify-content: flex-start; /* Fixed: Left-aligned, not center */
+            }
+        }
+        
+        /* Test Info Bar */
+        .test-info {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        
+        .test-info .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        /* Content spacer */
+        .content-spacer {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .content-spacer h2 {
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            margin-bottom: 16px;
+        }
+        
+        .content-spacer p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .spec-list {
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .spec-list li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Info Bar -->
+    <div class="test-info">
+        <div>Screen: <span class="value" id="screenWidth">0</span>px</div>
+        <div>Breakpoint: <span class="value" id="breakpointName">-</span></div>
+        <div>Heading: <span class="value" id="headingLevel">-</span></div>
+        <div>Font Size: <span class="value" id="fontSize">-</span></div>
+    </div>
+    
+    <!-- Banner Headline Component -->
+    <section class="banner-headline-section">
+        <div class="banner-headline-section__content">
+            <h1 class="banner-headline" id="bannerHeadline">Welcome</h1>
+        </div>
+    </section>
+    
+    <!-- Test Content Below Banner -->
+    <div class="content-spacer">
+        <div>
+            <h2>Banner Headline Breadboard Test</h2>
+            <p><strong>Component Specifications:</strong></p>
+            <ul class="spec-list">
+                <li>✓ Full width at all breakpoints</li>
+                <li>✓ 80px height</li>
+                <li>✓ Primary blue (#1B1464) background</li>
+                <li>✓ Accent gold (#D4AF37) 4px bottom border</li>
+                <li>✓ 16px left/right padding, 12px top/bottom padding</li>
+                <li>✓ Text: Left-aligned at ALL breakpoints</li>
+                <li>✓ DesktopPlus & Desktop: H1 (36px / 54px)</li>
+                <li>✓ Tablet: H2 (30px / 45px)</li>
+                <li>✓ Mobile: H3 (24px / 36px)</li>
+            </ul>
+            <p style="margin-top: 20px;"><strong>Testing Instructions:</strong><br>
+            Resize your browser to test all 4 breakpoints:<br>
+            Mobile: 380-767px | Tablet: 768-1149px | Desktop: 1150-1919px | DesktopPlus: 1920px+</p>
+            <p style="margin-top: 12px; font-weight: bold; color: #1B1464;">
+            ✅ FIX APPLIED: Mobile text is now LEFT-aligned (was incorrectly centered in demo)
+            </p>
+        </div>
+    </div>
+    
+    <!-- Breakpoint Monitor Script -->
+    <script>
+        function updateInfo() {
+            const width = window.innerWidth;
+            const headline = document.getElementById('bannerHeadline');
+            
+            document.getElementById('screenWidth').textContent = width;
+            
+            let breakpoint = '';
+            let headingLevel = '';
+            let fontSize = '';
+            
+            if (width < 380) {
+                breakpoint = 'Small Mobile';
+                headingLevel = 'H3';
+                fontSize = '24px / 36px';
+            } else if (width >= 380 && width <= 767) {
+                breakpoint = 'Mobile';
+                headingLevel = 'H3';
+                fontSize = '24px / 36px';
+            } else if (width >= 768 && width <= 1149) {
+                breakpoint = 'Tablet';
+                headingLevel = 'H2';
+                fontSize = '30px / 45px';
+            } else if (width >= 1150 && width <= 1919) {
+                breakpoint = 'Desktop';
+                headingLevel = 'H1';
+                fontSize = '36px / 54px';
+            } else if (width >= 1920) {
+                breakpoint = 'Desktop Plus';
+                headingLevel = 'H1';
+                fontSize = '36px / 54px';
+            }
+            
+            document.getElementById('breakpointName').textContent = breakpoint;
+            document.getElementById('headingLevel').textContent = headingLevel;
+            document.getElementById('fontSize').textContent = fontSize;
+            
+            // Get computed styles
+            const computedStyle = window.getComputedStyle(headline);
+            const actualFontSize = computedStyle.fontSize;
+            const actualLineHeight = computedStyle.lineHeight;
+            const actualTextAlign = computedStyle.textAlign;
+            
+            console.log('Breakpoint:', breakpoint);
+            console.log('Font size:', actualFontSize);
+            console.log('Line height:', actualLineHeight);
+            console.log('Text align:', actualTextAlign);
+        }
+        
+        updateInfo();
+        window.addEventListener('resize', updateInfo);
+        
+        console.log('✅ Banner headline test initialized');
+    </script>
+</body>
+</html>
+

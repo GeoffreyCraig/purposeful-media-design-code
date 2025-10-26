@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Footer Component - Refined</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="vars.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .demo-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-title {
+            color: #1B1464;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .demo-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .controls {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .controls h3 {
+            margin: 0 0 10px 0;
+            color: #1B1464;
+            font-size: 16px;
+        }
+        
+        .control-group {
+            margin-bottom: 10px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .control-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .state-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f4f8;
+            border-radius: 8px;
+            border-left: 4px solid #1B1464;
+        }
+        
+        .state-info h4 {
+            margin: 0 0 10px 0;
+            color: #1B1464;
+            font-size: 16px;
+        }
+        
+        .state-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">Mobile Footer Component</h1>
+        <p class="demo-description">
+            Refined mobile footer with active state indicators.<br>
+            Background stays #1B1464, text/arrows change to #B39226 when active.
+        </p>
+        
+        <div class="controls">
+            <h3>Test Active States</h3>
+            <div class="control-group">
+                <label for="activeItem">Select item to activate:</label>
+                <select id="activeItem">
+                    <option value="none">None (All inactive)</option>
+                    <option value="email-marketing">Email Marketing</option>
+                    <option value="webinar-production">Webinar Production</option>
+                    <option value="inbound-marketing">Inbound Marketing</option>
+                    <option value="succession-planning">Succession Planning</option>
+                    <option value="business-unit-growth">Business Unit Growth</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="drop-down-mobile-footer-menu">
+            <div class="navigation">
+                <div class="nav-item email-marketing" data-active="false">
+                    <div class="headline">
+                        <div class="h-4">Email Marketing</div>
+                        <div class="arrow">→</div>
+                    </div>
+                </div>
+                <div class="nav-item webinar-production" data-active="false">
+                    <div class="headline">
+                        <div class="h-4">Webinar Production</div>
+                        <div class="arrow">→</div>
+                    </div>
+                </div>
+                <div class="nav-item inbound-marketing" data-active="false">
+                    <div class="headline">
+                        <div class="h-4">Inbound Marketing</div>
+                        <div class="arrow">→</div>
+                    </div>
+                </div>
+                <div class="nav-item succession-planning" data-active="false">
+                    <div class="headline">
+                        <div class="h-42">[Succession Planning - Coming Soon]</div>
+                        <div class="arrow">→</div>
+                    </div>
+                </div>
+                <div class="nav-item business-unit-growth" data-active="false">
+                    <div class="headline">
+                        <div class="h-42">[Business Unit Growth - Coming Soon]</div>
+                        <div class="arrow">→</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="state-info">
+            <h4>Implementation Notes:</h4>
+            <p>
+                • Background remains #1B1464 (no hover effects)<br>
+                • Text and arrows are #FFFFFF by default<br>
+                • Active items show #B39226 color for text and arrows<br>
+                • Mobile-optimized with touch-friendly interactions
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const activeItemSelect = document.getElementById('activeItem');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            function updateActiveState() {
+                const selectedItem = activeItemSelect.value;
+                
+                // Reset all items to inactive
+                navItems.forEach(item => {
+                    item.setAttribute('data-active', 'false');
+                });
+                
+                // Activate selected item
+                if (selectedItem !== 'none') {
+                    const targetItem = document.querySelector(`.${selectedItem}`);
+                    if (targetItem) {
+                        targetItem.setAttribute('data-active', 'true');
+                    }
+                }
+            }
+            
+            // Listen for changes
+            activeItemSelect.addEventListener('change', updateActiveState);
+            
+            // Initialize
+            updateActiveState();
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

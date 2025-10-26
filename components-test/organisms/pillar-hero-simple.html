@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pillar Hero - Simple Test</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+        }
+        
+        /* Outer wrapper for DesktopPlus centering */
+        .hero-pillar__outer {
+            width: 100%;
+            background-color: #ECEEEF;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-pillar {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(180deg, #d4af37 0%, #1b1464 100%);
+            border-bottom: 4px solid #d4af37;
+            overflow: hidden;
+        }
+        
+        .hero-pillar__image-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        
+        .hero-pillar__image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        
+        /* CTA - Absolutely Positioned */
+        .hero-pillar__cta {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            text-align: center;
+            background: rgba(27, 20, 100, 0.85);
+            padding: 24px;
+            border-radius: 8px;
+            max-width: 90%;
+        }
+        
+        .hero-pillar__headline {
+            color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        .hero-pillar__text {
+            color: #ffffff;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            margin: 0;
+            max-width: 600px;
+        }
+        
+        .hero-pillar__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #D4AF37;
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid #D4AF37;
+            border-radius: 4px;
+            padding: 16px 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .hero-pillar__button:hover:not(:disabled) {
+            background-color: #E4CD82;
+            border-color: #E4CD82;
+        }
+        
+        .hero-pillar__button:active:not(:disabled) {
+            background-color: #B39226;
+            border-color: #B39226;
+        }
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .hero-pillar__image-wrapper {
+                padding: 0;
+            }
+            
+            .hero-pillar__cta {
+                bottom: 50%;
+                transform: translate(-50%, 50%);
+                padding: 12px;
+                max-width: 85%;
+            }
+            
+            .hero-pillar__headline {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .hero-pillar__text {
+                font-size: 14px;
+                line-height: 21px;
+            }
+            
+            .hero-pillar__button {
+                font-size: 14px;
+                padding: 12px 20px;
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .hero-pillar__image-wrapper {
+                padding: 12px 40px 64px 40px;
+            }
+            
+            .hero-pillar__cta {
+                bottom: 50%;
+                transform: translate(-50%, 50%);
+                padding: 16px;
+            }
+            
+            .hero-pillar__headline {
+                font-size: 30px;
+                line-height: 45px;
+            }
+            
+            .hero-pillar__text {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            
+            .hero-pillar__button {
+                font-size: 16px;
+                padding: 16px 24px;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .hero-pillar__image-wrapper {
+                padding: 16px 40px 80px 40px;
+            }
+            
+            .hero-pillar__cta {
+                bottom: 280px;
+            }
+            
+            .hero-pillar__headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .hero-pillar__text {
+                font-size: 21px;
+                line-height: 31.5px;
+            }
+            
+            .hero-pillar__button {
+                font-size: 18px;
+                padding: 16px 24px;
+            }
+        }
+        
+        /* DesktopPlus: 1920px and above */
+        @media (min-width: 1920px) {
+            .hero-pillar__outer {
+                background-color: #ECEEEF;
+            }
+            
+            .hero-pillar {
+                width: 1920px;
+                max-width: 1920px;
+            }
+            
+            .hero-pillar__image-wrapper {
+                padding: 16px 40px 80px 40px;
+            }
+            
+            .hero-pillar__cta {
+                bottom: 280px;
+            }
+            
+            .hero-pillar__headline {
+                font-size: 48px;
+                line-height: 72px;
+            }
+            
+            .hero-pillar__text {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .hero-pillar__button {
+                font-size: 21px;
+                padding: 20px 32px;
+            }
+        }
+        
+        /* Viewport indicator */
+        .viewport-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+        }
+        
+        .viewport-info .value {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Viewport Size Indicator -->
+    <div class="viewport-info">
+        <div>Width: <span class="value" id="width">0</span>px</div>
+        <div>Breakpoint: <span class="value" id="breakpoint">-</span></div>
+    </div>
+    
+    <!-- Component: Pillar Hero -->
+    <div class="hero-pillar__outer">
+        <section class="hero-pillar" aria-label="Page Hero Section">
+            <div class="hero-pillar__image-wrapper">
+                <img 
+                    src="../../assets/images/pillar-page-image.jpg" 
+                    alt="Email Marketing Solutions" 
+                    class="hero-pillar__image"
+                    loading="eager"
+                >
+                
+                <!-- CTA Section - Absolutely Positioned Over Image -->
+                <div class="hero-pillar__cta">
+                    <h1 class="hero-pillar__headline">
+                        Email Marketing Solutions
+                    </h1>
+                    <p class="hero-pillar__text">
+                        Comprehensive strategies to boost engagement, improve deliverability, and drive measurable results for your B2B business.
+                    </p>
+                    <a 
+                        href="#overview" 
+                        class="hero-pillar__button" 
+                        role="button"
+                        aria-label="Scroll to Overview section"
+                    >
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            document.getElementById('width').textContent = width;
+            
+            let breakpoint = '';
+            if (width <= 767) {
+                breakpoint = 'Mobile';
+            } else if (width <= 1149) {
+                breakpoint = 'Tablet';
+            } else if (width <= 1919) {
+                breakpoint = 'Desktop';
+            } else {
+                breakpoint = 'DesktopPlus';
+            }
+            
+            document.getElementById('breakpoint').textContent = breakpoint;
+        }
+        
+        updateViewportInfo();
+        window.addEventListener('resize', updateViewportInfo);
+    </script>
+</body>
+</html>
+
+
+
+
+
+

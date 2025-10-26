@@ -1,0 +1,108 @@
+.form-item,
+.form-item * {
+  box-sizing: border-box;
+}
+.form-item {
+  padding: 4px 0px 4px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 79px;
+  position: relative;
+  overflow: hidden;
+}
+.label {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.label-text {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+}
+.form-input-field {
+  background: #ffffff;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: var(--default, #a2a9af);
+  border-width: 1px;
+  padding: 4px 8px 4px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.form-text-18-18-h {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.helper-text {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 327px;
+  position: relative;
+}
+.helper-text-12-12-h-italic {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Italic", sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  font-style: italic;
+  position: relative;
+  flex: 1;
+}
+/* variant styles */
+.form-item.state-default .email-address,
+.form-item.state-error .email-address,
+.form-item.state-default .name,
+.form-item.state-default .phone-number,
+.form-item.state-error .phone-number,
+.form-item.state-required .email-address,
+.form-item.state-required .name,
+.form-item.state-required .phone-number {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+}
+.form-item.state-error .form-input-field {
+  background: var(--50, #fef2f2);
+  border-color: var(--error, #ef4444);
+  gap: 0px;
+}
+.form-item.state-error .form-text-18-18-h {
+  color: var(--error, #ef4444);
+}

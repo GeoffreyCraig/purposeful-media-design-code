@@ -1,0 +1,138 @@
+/* =============================================
+   PURPOSEFUL MEDIA DESIGN TOKENS - MASTER FILE
+   Extracted from Figma Atomic Components
+   ============================================= */
+
+/* =============== COLOR TOKENS =============== */
+:root {
+  /* Primary Brand Colors */
+  --color-brand: #1B1464;             /* Navy - Primary brand color */
+  --color-accent: #D4AF37;            /* Gold - Primary accent */
+  
+  /* Interactive Color States */
+  --color-hover-light: #DCBE5D;       /* Light gold - hover state */
+  --color-hover-dark: #B39226;        /* Dark gold - active state */
+  --color-hover-blue: #1D50DE;        /* Bright blue - dropdown hover */
+  --color-active-dark: #06102B;       /* Very dark navy - dropdown active */
+  
+  /* Neutral Colors */
+  --color-white: #FFFFFF;
+  --color-muted: #C7CBCF;             /* Light gray - secondary text */
+  --color-disabled: #868F97;          /* Medium gray - disabled state */
+  
+  /* Semantic Aliases */
+  --color-primary: var(--color-brand);
+  --color-secondary: var(--color-accent);
+  --color-text-primary: var(--color-brand);
+  --color-text-reverse: var(--color-white);
+  --color-text-muted: var(--color-muted);
+  --color-text-disabled: var(--color-disabled);
+}
+
+/* =============== SPACING TOKENS =============== */
+:root {
+  /* Base 4px Grid System */
+  --space-xs: 4px;      /* Extra small */
+  --space-sm: 8px;      /* Small */
+  --space-md: 12px;     /* Medium */
+  --space-lg: 16px;     /* Large */
+  --space-xl: 24px;     /* Extra large */
+  --space-2xl: 32px;    /* 2x Extra large */
+  --space-3xl: 48px;    /* 3x Extra large */
+  --space-4xl: 64px;    /* 4x Extra large */
+}
+
+/* =============== RADIUS TOKENS =============== */
+:root {
+  --radius-none: 0;
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 12px;
+  --radius-round: 999px;              /* Pill shape */
+}
+
+/* =============== SHADOW TOKENS =============== */
+:root {
+  --shadow-none: none;
+  --shadow-subtle: 4px 4px 12px rgba(0, 0, 0, 0.10);
+  --shadow-standard: 4px 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-medium: 4px 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-strong: 4px 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* =============== BORDER TOKENS =============== */
+:root {
+  --border-none: 0;
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 4px;
+  --border-style: solid;
+  
+  /* Common Borders */
+  --border-default: var(--border-thin) var(--border-style);
+  --border-accent: 4px solid var(--color-accent);
+  --border-primary: 4px solid var(--color-primary);
+}
+
+/* =============== TYPOGRAPHY TOKENS =============== */
+:root {
+  /* Font Families */
+  --font-heading: 'Lato', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Font Sizes (from Navigation component) */
+  --font-size-h1: 36px;
+  --font-size-h2: 30px;
+  --font-size-h3: 24px;
+  --font-size-h4: 21px;
+  --font-size-h5: 18px;
+  --font-size-h6: 16px;
+  
+  /* Line Heights */
+  --line-height-h1: 54px;
+  --line-height-h2: 45px;
+  --line-height-h3: 36px;
+  --line-height-h4: 30.5px;
+  --line-height-h5: 27px;
+  --line-height-h6: 24px;
+}
+
+/* =============== BREAKPOINT TOKENS =============== */
+:root {
+  /* Responsive Breakpoints */
+  --breakpoint-mobile-min: 380px;
+  --breakpoint-mobile-max: 767px;
+  --breakpoint-tablet-min: 768px;
+  --breakpoint-tablet-max: 1149px;
+  --breakpoint-desktop-min: 1150px;
+  --breakpoint-desktop-max: 1919px;
+  --breakpoint-desktop-plus-min: 1920px;
+  
+  /* Container Widths */
+  --container-mobile: 100%;
+  --container-tablet: 100%;
+  --container-desktop: 100%;
+  --container-max: 1920px;
+}
+
+/* =============== BANNER/SPACER TOKENS =============== */
+:root {
+  /* Heights by Breakpoint */
+  --banner-height-desktop: 80px;
+  --banner-height-tablet: 60px;
+  --banner-height-mobile: 48px;
+  --banner-height-with-subtitle: 120px;
+  
+  /* Paddings */
+  --banner-padding-y: 12px;
+  --banner-padding-x: 16px;
+  
+  /* Gradients */
+  --gradient-spacer: linear-gradient(180deg, white 0%, #1B1464 100%);
+}

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide/Image Component</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    
+    <style>
+        /* Component-specific styles */
+        .slide-image-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        /* Slide Frame Base */
+        .slide-frame {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* Aspect Ratios */
+        .aspect-16-9 { aspect-ratio: 16/9; }
+        .aspect-4-3 { aspect-ratio: 4/3; }
+        .aspect-1-1 { aspect-ratio: 1/1; }
+        .aspect-flex { min-height: 156px; }
+        
+        /* States */
+        .slide-frame[data-state="loading"] {
+            background-color: var(--neutral-200, #eceeef);
+        }
+        
+        .slide-frame[data-state="ready"] {
+            background-color: transparent;
+        }
+        
+        .slide-frame[data-state="error"] {
+            background-color: var(--error-100, #fee2e2);
+        }
+        
+        .slide-frame[data-state="focus"] {
+            background-color: transparent;
+            box-shadow: 0 0 0 3px var(--primary-500, #1d50de);
+        }
+        
+        /* Caption Overlay */
+        .caption-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 0) 0%, 
+                var(--primary-700, #1b1464) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .slide-image-container:hover .caption-overlay,
+        .slide-image-container[data-show-caption="true"] .caption-overlay {
+            opacity: 1;
+        }
+        
+        /* Caption Content */
+        .slide-headline {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 21px;
+            line-height: 30.5px;
+            color: white;
+            text-transform: uppercase;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        
+        .slide-paragraph {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 27px;
+            color: white;
+            text-align: center;
+            max-width: 100%;
+        }
+        
+        /* Responsive Breakpoints */
+        @media (max-width: 767px) {
+            /* Mobile */
+            .slide-headline {
+                font-size: 18px;
+                line-height: 26px;
+            }
+            
+            .slide-paragraph {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            
+            .caption-overlay {
+                padding: 12px;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            /* Tablet */
+            .slide-headline {
+                font-size: 19px;
+                line-height: 28px;
+            }
+            
+            .slide-paragraph {
+                font-size: 17px;
+                line-height: 25.5px;
+            }
+        }
+        
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            /* Desktop */
+            /* Default sizes apply */
+        }
+        
+        @media (min-width: 1920px) {
+            /* DesktopPlus */
+            /* Default sizes apply */
+        }
+        
+        /* Loading Animation */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .slide-frame[data-state="loading"] {
+            background: linear-gradient(
+                90deg,
+                var(--neutral-200, #eceeef) 25%,
+                var(--neutral-100, #f6f6f7) 50%,
+                var(--neutral-200, #eceeef) 75%
+            );
+            background-size: 2000px 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        /* Error State Icon */
+        .error-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            display: none;
+        }
+        
+        .slide-frame[data-state="error"] .error-icon {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Demo Container -->
+    <div style="padding: 40px; background: #f5f5f5;">
+        <h1 style="margin-bottom: 40px; font-family: 'Lato', sans-serif;">Slide/Image Component</h1>
+        
+        <!-- Controls -->
+        <div style="margin-bottom: 20px; padding: 20px; background: white; border-radius: 8px;">
+            <h3>Controls</h3>
+            <label>Aspect Ratio: 
+                <select id="aspectRatio" onchange="updateSlide()">
+                    <option value="16-9">16:9</option>
+                    <option value="4-3">4:3</option>
+                    <option value="1-1">1:1</option>
+                    <option value="flex">Flex</option>
+                </select>
+            </label>
+            
+            <label style="margin-left: 20px;">State: 
+                <select id="slideState" onchange="updateSlide()">
+                    <option value="ready">Ready</option>
+                    <option value="loading">Loading</option>
+                    <option value="error">Error</option>
+                    <option value="focus">Focus</option>
+                </select>
+            </label>
+            
+            <label style="margin-left: 20px;">
+                <input type="checkbox" id="showCaption" onchange="updateSlide()"> Show Caption
+            </label>
+        </div>
+        
+        <!-- Component Instance -->
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="slide-image-container" id="slideImageDemo" data-show-caption="false">
+                <div class="slide-frame aspect-16-9" data-state="ready" id="slideFrame">
+                    <!-- Placeholder image - would be replaced with actual image -->
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3EImage Placeholder%3C/text%3E%3C/svg%3E" 
+                         alt="Slide image" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    
+                    <!-- Error Icon (hidden by default) -->
+                    <svg class="error-icon" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#ef4444" stroke-width="2"/>
+                        <path d="M24 14v14M24 34h.01" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                
+                <!-- Caption Overlay -->
+                <div class="caption-overlay">
+                    <h4 class="slide-headline">Slide Headline Here</h4>
+                    <p class="slide-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Multiple Examples Grid -->
+        <div style="margin-top: 60px;">
+            <h2 style="margin-bottom: 30px; font-family: 'Lato', sans-serif;">All Aspect Ratios</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                
+                <!-- 16:9 Example -->
+                <div>
+                    <h4>16:9 Aspect Ratio</h4>
+                    <div class="slide-image-container" data-show-caption="true">
+                        <div class="slide-frame aspect-16-9" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3E16:9%3C/text%3E%3C/svg%3E" 
+                                 alt="16:9 slide" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="caption-overlay">
+                            <h4 class="slide-headline">16:9 Headline</h4>
+                            <p class="slide-paragraph">Widescreen format perfect for video</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 4:3 Example -->
+                <div>
+                    <h4>4:3 Aspect Ratio</h4>
+                    <div class="slide-image-container" data-show-caption="true">
+                        <div class="slide-frame aspect-4-3" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3E4:3%3C/text%3E%3C/svg%3E" 
+                                 alt="4:3 slide" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="caption-overlay">
+                            <h4 class="slide-headline">4:3 Headline</h4>
+                            <p class="slide-paragraph">Classic presentation format</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 1:1 Example -->
+                <div>
+                    <h4>1:1 Aspect Ratio</h4>
+                    <div class="slide-image-container" data-show-caption="true">
+                        <div class="slide-frame aspect-1-1" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3E1:1%3C/text%3E%3C/svg%3E" 
+                                 alt="1:1 slide" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="caption-overlay">
+                            <h4 class="slide-headline">1:1 Headline</h4>
+                            <p class="slide-paragraph">Square format for social media</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Flex Example -->
+                <div>
+                    <h4>Flex Aspect Ratio</h4>
+                    <div class="slide-image-container" data-show-caption="true">
+                        <div class="slide-frame aspect-flex" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300'%3E%3Crect width='800' height='300' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3EFlex%3C/text%3E%3C/svg%3E" 
+                                 alt="Flex slide" 
+                                 style="width: 100%; height: 156px; object-fit: cover;">
+                        </div>
+                        <div class="caption-overlay">
+                            <h4 class="slide-headline">Flex Headline</h4>
+                            <p class="slide-paragraph">Flexible height format</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- State Examples -->
+        <div style="margin-top: 60px;">
+            <h2 style="margin-bottom: 30px; font-family: 'Lato', sans-serif;">All States</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                
+                <!-- Loading State -->
+                <div>
+                    <h4>Loading</h4>
+                    <div class="slide-image-container">
+                        <div class="slide-frame aspect-16-9" data-state="loading"></div>
+                        <div class="caption-overlay">
+                            <h4 class="slide-headline">Loading...</h4>
+                            <p class="slide-paragraph">Content is loading</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ready State -->
+                <div>
+                    <h4>Ready</h4>
+                    <div class="slide-image-container">
+                        <div class="slide-frame aspect-16-9" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%2339cccc'/%3E%3C/svg%3E" 
+                                 alt="Ready state" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="caption-overlay">
+                            <h4 class="slide-headline">Ready</h4>
+                            <p class="slide-paragraph">Content loaded</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Error State -->
+                <div>
+                    <h4>Error</h4>
+                    <div class="slide-image-container">
+                        <div class="slide-frame aspect-16-9" data-state="error">
+                            <svg class="error-icon" viewBox="0 0 48 48" fill="none">
+                                <circle cx="24" cy="24" r="22" stroke="#ef4444" stroke-width="2"/>
+                                <path d="M24 14v14M24 34h.01" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="caption-overlay">
+                            <h4 class="slide-headline">Error</h4>
+                            <p class="slide-paragraph">Failed to load</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Focus State -->
+                <div>
+                    <h4>Focus</h4>
+                    <div class="slide-image-container">
+                        <div class="slide-frame aspect-16-9" data-state="focus">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%231d50de'/%3E%3C/svg%3E" 
+                                 alt="Focus state" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="caption-overlay">
+                            <h4 class="slide-headline">Focused</h4>
+                            <p class="slide-paragraph">Has keyboard focus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // SlideImage Component Class
+        class SlideImage {
+            constructor(element) {
+                this.element = element;
+                this.frame = element.querySelector('.slide-frame');
+                this.overlay = element.querySelector('.caption-overlay');
+                this.headline = element.querySelector('.slide-headline');
+                this.paragraph = element.querySelector('.slide-paragraph');
+                
+                this.state = 'ready';
+                this.aspectRatio = '16-9';
+                this.showCaption = false;
+                this.imageUrl = null;
+                
+                this.init();
+            }
+            
+            init() {
+                // Initialize from data attributes
+                this.state = this.frame.dataset.state || 'ready';
+                this.showCaption = this.element.dataset.showCaption === 'true';
+                
+                // Extract aspect ratio from class
+                const aspectClasses = ['aspect-16-9', 'aspect-4-3', 'aspect-1-1', 'aspect-flex'];
+                aspectClasses.forEach(className => {
+                    if (this.frame.classList.contains(className)) {
+                        this.aspectRatio = className.replace('aspect-', '');
+                    }
+                });
+                
+                // Set up event listeners
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                // Keyboard navigation
+                this.element.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.handleInteraction();
+                    }
+                });
+                
+                // Focus management
+                this.element.addEventListener('focus', () => {
+                    this.setState('focus');
+                });
+                
+                this.element.addEventListener('blur', () => {
+                    if (this.state === 'focus') {
+                        this.setState('ready');
+                    }
+                });
+            }
+            
+            setState(state) {
+                const validStates = ['loading', 'ready', 'error', 'focus'];
+                if (validStates.includes(state)) {
+                    this.state = state;
+                    this.frame.dataset.state = state;
+                    
+                    // Handle state-specific behavior
+                    switch(state) {
+                        case 'loading':
+                            this.startLoading();
+                            break;
+                        case 'ready':
+                            this.stopLoading();
+                            break;
+                        case 'error':
+                            this.showError();
+                            break;
+                    }
+                }
+            }
+            
+            setAspectRatio(ratio) {
+                // Remove current aspect class
+                this.frame.classList.remove('aspect-16-9', 'aspect-4-3', 'aspect-1-1', 'aspect-flex');
+                
+                // Add new aspect class
+                this.frame.classList.add(`aspect-${ratio}`);
+                this.aspectRatio = ratio;
+            }
+            
+            setCaption(headline, paragraph) {
+                if (headline) this.headline.textContent = headline;
+                if (paragraph) this.paragraph.textContent = paragraph;
+            }
+            
+            showCaption(show = true) {
+                this.showCaption = show;
+                this.element.dataset.showCaption = show.toString();
+            }
+            
+            loadImage(url) {
+                this.setState('loading');
+                
+                const img = new Image();
+                img.onload = () => {
+                    // Replace placeholder with loaded image
+                    const existingImg = this.frame.querySelector('img');
+                    if (existingImg) {
+                        existingImg.src = url;
+                    } else {
+                        const newImg = document.createElement('img');
+                        newImg.src = url;
+                        newImg.alt = 'Slide image';
+                        newImg.style.cssText = 'width: 100%; height: 100%; object-fit: cover;';
+                        this.frame.appendChild(newImg);
+                    }
+                    
+                    this.setState('ready');
+                    this.imageUrl = url;
+                };
+                
+                img.onerror = () => {
+                    this.setState('error');
+                };
+                
+                img.src = url;
+            }
+            
+            startLoading() {
+                // Loading animation is handled by CSS
+                this.element.setAttribute('aria-busy', 'true');
+            }
+            
+            stopLoading() {
+                this.element.setAttribute('aria-busy', 'false');
+            }
+            
+            showError() {
+                console.error('Failed to load slide image');
+                this.element.setAttribute('aria-invalid', 'true');
+            }
+            
+            handleInteraction() {
+                // Toggle caption on interaction
+                this.showCaption(!this.showCaption);
+            }
+        }
+        
+        // Demo Controls
+        function updateSlide() {
+            const aspectRatio = document.getElementById('aspectRatio').value;
+            const state = document.getElementById('slideState').value;
+            const showCaption = document.getElementById('showCaption').checked;
+            
+            const demoElement = document.getElementById('slideImageDemo');
+            const slideFrame = document.getElementById('slideFrame');
+            
+            // Update aspect ratio
+            slideFrame.classList.remove('aspect-16-9', 'aspect-4-3', 'aspect-1-1', 'aspect-flex');
+            slideFrame.classList.add(`aspect-${aspectRatio}`);
+            
+            // Update state
+            slideFrame.dataset.state = state;
+            
+            // Update caption visibility
+            demoElement.dataset.showCaption = showCaption.toString();
+        }
+        
+        // Initialize all slide components on page
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide-image-container');
+            slides.forEach(slide => {
+                // Skip the demo slide as it has manual controls
+                if (slide.id !== 'slideImageDemo') {
+                    new SlideImage(slide);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!-- Navigation Component -->
+<!-- Atomic Typography Element -->
+<!-- Usage: Navigation links in headers, footers, and menus -->
+
+<a href="#" class="navigation">Navigation</a>
+
+<style>
+/* Navigation Component Styles */
+.navigation {
+  /* Typography */
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  line-height: 1.25rem; /* 20px */
+  letter-spacing: 0;
+  text-decoration: underline;
+  
+  /* Colors */
+  color: var(--token-primary-700, #1B1464);
+  
+  /* Layout */
+  display: inline-flex;
+  align-items: flex-start;
+  
+  /* Reset */
+  padding: 0;
+  margin: 0;
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+/* State Variations */
+.navigation:hover {
+  color: var(--token-accent-500, #D4AF37);
+  text-decoration: none;
+}
+
+.navigation:active {
+  color: var(--token-accent-600, #B39226);
+}
+
+.navigation:focus {
+  outline: 2px solid var(--token-accent-500, #D4AF37);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.navigation:visited {
+  /* Maintains primary color rather than default purple */
+  color: var(--token-primary-700, #1B1464);
+}
+
+/* Utility variant for light backgrounds */
+.navigation--light {
+  color: var(--token-neutral-50, #F6F6F7);
+}
+
+.navigation--light:hover {
+  color: var(--token-accent-400, #DCBE5D);
+}
+
+.navigation--light:visited {
+  color: var(--token-neutral-50, #F6F6F7);
+}
+
+/* CSS Variables (for reference) */
+/* 
+:root {
+  --token-primary-700: #1B1464;
+  --token-accent-500: #D4AF37;
+  --token-accent-600: #B39226;
+  --token-accent-400: #DCBE5D;
+  --token-neutral-50: #F6F6F7;
+}
+*/
+</style>

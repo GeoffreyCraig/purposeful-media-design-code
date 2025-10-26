@@ -1,0 +1,180 @@
+.menu-footer-mod,
+.menu-footer-mod * {
+  box-sizing: border-box;
+}
+.menu-footer-mod {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 240px;
+  position: relative;
+  overflow: hidden;
+}
+.section {
+  background: var(--brand, #1b1464);
+  padding: var(--space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.services {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 172px;
+  position: relative;
+}
+.h-2 {
+  color: var(--reverse, #ffffff);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.nav-list {
+  padding: var(--space-3, 12px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.email-marketing {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.menu-link-state-21-21-h {
+  color: var(--menusimple, #ffffff);
+  text-align: left;
+  font-family: "OpenSans-Bold", sans-serif;
+  font-size: 21px;
+  line-height: 21px;
+  font-weight: 700;
+  position: relative;
+  flex: 1;
+}
+.webinar-production {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.inbound-marketing {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.succession-planning {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.menu-link-state-21-21-h2 {
+  color: var(--disabled, #868f97);
+  text-align: left;
+  font-family: "OpenSans-Bold", sans-serif;
+  font-size: 21px;
+  line-height: 21px;
+  font-weight: 700;
+  position: relative;
+  flex: 1;
+}
+.business-unit-growth {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+/* variant styles */
+.menu-footer-mod.section-who-served .navigation,
+.menu-footer-mod.section-resources .navigation,
+.menu-footer-mod.section-company .navigation {
+  align-self: stretch;
+}
+.menu-footer-mod.section-who-served .who-we-serve,
+.menu-footer-mod.section-resources .resources,
+.menu-footer-mod.section-company .company {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.menu-footer-mod.section-who-served .revenue-growth,
+.menu-footer-mod.section-who-served .preparing-for-exit,
+.menu-footer-mod.section-who-served .plan-a-webinar,
+.menu-footer-mod.section-resources .blog,
+.menu-footer-mod.section-resources .thought-leadership,
+.menu-footer-mod.section-resources .pricing,
+.menu-footer-mod.section-company .about-us,
+.menu-footer-mod.section-company .contact-us,
+.menu-footer-mod.section-company .privacy-policy,
+.menu-footer-mod.section-company .affiliates {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.menu-footer-mod.section-who-served .menu-link-state-21-21-h {
+  color: var(--disabled, #868f97);
+}

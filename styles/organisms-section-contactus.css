@@ -1,0 +1,400 @@
+/* ============================================
+   Section/ContactUs - Contact Form Page Section
+   Purposeful Media Design System
+   Version: 1.0
+   
+   Breakpoints:
+   - Mobile: 380-767px
+   - Tablet: 768-1149px  
+   - Desktop: 1150-1919px
+   - DesktopPlus: 1920px+
+   ============================================ */
+
+/* Import dependencies */
+@import url('../styles/variables-v2.0-20250915.css');
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+.section-contactus {
+  background-color: var(--color-neutral-100); /* #ECEEEF */
+  padding: 64px 20px;
+  width: 100%;
+  position: relative;
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-form-wrapper {
+  background-color: var(--color-neutral-100);
+  border-radius: 4px;
+  box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.15);
+  padding: 24px 27px 32px;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+.form-title {
+  font-family: 'Lato', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+  color: var(--color-primary-700); /* #1B1464 */
+  text-transform: uppercase;
+  margin: 0 0 11px 0;
+  white-space: nowrap;
+}
+
+.form-intro {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: var(--color-neutral-600); /* #51585E */
+  margin: 0 0 11px 0;
+}
+
+/* ============================================
+   FORM STRUCTURE
+   ============================================ */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px; /* Increased gap to prevent overlap */
+  width: 100%;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+  position: relative;
+  width: 100%;
+  min-height: 79px;
+}
+
+.form-row .form-field {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 350px; /* Reasonable max width for name fields */
+}
+
+.form-row.name-row {
+  justify-content: flex-start; /* Align name fields to the left */
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+.form-label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 18px;
+  color: var(--color-neutral-600);
+  white-space: nowrap;
+}
+
+.form-label .required {
+  color: var(--color-neutral-600);
+  margin-left: 2px;
+}
+
+.form-input,
+.form-textarea {
+  background: white;
+  border: 1px solid var(--color-neutral-300); /* #A2A9AF */
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  color: var(--color-neutral-600);
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 24px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-700);
+}
+
+.form-help {
+  font-family: 'Open Sans', sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--color-neutral-600);
+  display: block;
+}
+
+/* ============================================
+   FORM ACTIONS
+   ============================================ */
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 32px;
+  width: 100%;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 80px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background-color: var(--color-primary-700);
+  color: white;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-600);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(27, 20, 100, 0.2);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(27, 20, 100, 0.2);
+}
+
+/* ============================================
+   FIELD STATES
+   ============================================ */
+
+.form-field.is-focused .form-input,
+.form-field.is-focused .form-textarea {
+  border-color: var(--color-primary-700);
+  box-shadow: 0 0 0 3px rgba(27, 20, 100, 0.1);
+}
+
+.form-field.has-error .form-input,
+.form-field.has-error .form-textarea {
+  border-color: var(--color-error-600);
+}
+
+.form-field.has-error .form-help {
+  color: var(--color-error-600);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+  .section-contactus {
+    padding: 64px 16px;
+  }
+  
+  .contact-form-wrapper {
+    padding: 24px 16px 32px;
+  }
+  
+  .form-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  
+  .form-intro {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  /* Stack name fields on mobile */
+  .form-row.name-row {
+    flex-direction: column;
+    gap: 11px; /* Smaller gap when stacked */
+  }
+  
+  .form-row .form-field {
+    max-width: 100%; /* Full width on mobile */
+  }
+  
+  .form-field--phone {
+    max-width: 300px;
+  }
+  
+  .form-field--message {
+    max-width: 100%;
+  }
+  
+  .btn {
+    padding: 14px 40px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  /* Adjust help text for mobile */
+  .form-help {
+    white-space: normal;
+  }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+  .section-contactus {
+    padding: 64px 32px;
+  }
+  
+  .contact-form-wrapper {
+    max-width: 900px;
+  }
+  
+  .form-field--phone {
+    max-width: 300px;
+  }
+  
+  .form-field--message {
+    max-width: 547px;
+  }
+}
+
+/* Desktop: 1150-1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+  .section-contactus {
+    padding: 64px 40px;
+  }
+  
+  .contact-form-wrapper {
+    max-width: 1100px;
+  }
+  
+  .form-field--phone {
+    max-width: 300px;
+  }
+  
+  .form-field--message {
+    max-width: 547px;
+  }
+}
+
+/* Desktop Plus: 1920px+ */
+@media (min-width: 1920px) {
+  .section-contactus {
+    padding: 64px;
+  }
+  
+  .contact-form-wrapper {
+    max-width: 1200px;
+  }
+  
+  .form-field--phone {
+    max-width: 300px;
+  }
+  
+  .form-field--message {
+    max-width: 547px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus states for keyboard navigation */
+.form-input:focus-visible,
+.form-textarea:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--color-primary-700);
+  outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .form-input,
+  .form-textarea {
+    border-width: 2px;
+  }
+  
+  .btn--primary {
+    border: 2px solid transparent;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .section-contactus {
+    background-color: white;
+    box-shadow: none;
+  }
+  
+  .contact-form-wrapper {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .btn {
+    display: none;
+  }
+}

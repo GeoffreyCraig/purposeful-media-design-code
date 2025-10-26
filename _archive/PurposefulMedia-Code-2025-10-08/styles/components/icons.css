@@ -1,0 +1,131 @@
+/* Purposeful Media Design System - Icon Component */
+/* ============================================== */
+
+/* Base Icon Styles */
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    fill: currentColor;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Icon Sizes */
+.icon--small {
+    width: 16px;
+    height: 16px;
+}
+
+.icon--medium {
+    width: 20px;
+    height: 20px;
+}
+
+.icon--large {
+    width: 24px;
+    height: 24px;
+}
+
+.icon--xlarge {
+    width: 32px;
+    height: 32px;
+}
+
+.icon--xxlarge {
+    width: 48px;
+    height: 48px;
+}
+
+/* Icon Colors */
+.icon--brand {
+    fill: var(--brand);
+}
+
+.icon--accent {
+    fill: var(--accent);
+}
+
+.icon--reverse {
+    fill: var(--reverse);
+}
+
+.icon--dark {
+    fill: var(--dark);
+}
+
+.icon--muted {
+    fill: var(--muted);
+}
+
+.icon--error {
+    fill: var(--error);
+}
+
+.icon--success {
+    fill: var(--success);
+}
+
+/* Icon States */
+.icon--hover:hover {
+    transform: scale(1.1);
+}
+
+.icon--clickable {
+    cursor: pointer;
+}
+
+.icon--clickable:hover {
+    opacity: 0.8;
+}
+
+.icon--clickable:active {
+    transform: scale(0.95);
+}
+
+/* Icon in Buttons */
+.btn .icon {
+    flex-shrink: 0;
+}
+
+.btn--small .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.btn--medium .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.btn--large .icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Icon Groups */
+.icon-group {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+}
+
+.icon-group--vertical {
+    flex-direction: column;
+}
+
+.icon-group--centered {
+    justify-content: center;
+}
+
+/* Responsive Icon Adjustments */
+@media (max-width: 767px) {
+    .icon--xxlarge {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .icon--xlarge {
+        width: 28px;
+        height: 28px;
+    }
+}
+

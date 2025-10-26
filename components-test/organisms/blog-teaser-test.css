@@ -1,0 +1,163 @@
+/**
+ * Component: Blog Teaser Group
+ * Type: Organism
+ * Description: Single-column blog teaser section with 2 post cards
+ * 
+ * Dependencies:
+ * - Design Tokens (required)
+ * - Google Fonts: Lato, Open Sans
+ * - Blog Post Card molecule
+ * 
+ * Usage:
+ * - Displays 2 recent blog posts with placeholder content
+ * - Used on Pillar pages after "Latest From Our Blog" banner
+ * 
+ * Last Modified: 2025-10-16
+ */
+
+/* ============================================
+   BLOG TEASER GROUP
+   ============================================ */
+
+.blog-teaser {
+    width: 100%;
+    background-color: var(--secondary-100, #eceeef);
+}
+
+.blog-teaser__container {
+    width: 100%;
+    max-width: var(--container-max-width, 1920px);
+    margin: 0 auto;
+}
+
+.blog-teaser__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 16px);
+}
+
+/* Blog Post Card */
+.card-blogpost {
+    background-color: var(--color-white, #ffffff);
+    padding: var(--space-3, 12px) var(--space-4, 16px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 16px);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card-blogpost:hover {
+    background-color: var(--accent-100, #faf5e6);
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card-blogpost__top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1, 4px);
+}
+
+.card-blogpost__title {
+    font-family: var(--font-heading, 'Lato'), sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-primary, #1b1464);
+    line-height: 1.45;
+    transition: color 0.3s ease;
+}
+
+.card-blogpost:hover .card-blogpost__title {
+    color: var(--text-secondary, #51585e);
+}
+
+.card-blogpost__meta {
+    font-family: var(--font-body, 'Open Sans'), sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--text-primary, #1b1464);
+    transition: color 0.3s ease;
+}
+
+.card-blogpost:hover .card-blogpost__meta {
+    color: var(--text-secondary, #51585e);
+}
+
+.card-blogpost__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3, 12px);
+    padding-bottom: var(--space-5, 20px);
+}
+
+.card-blogpost__excerpt {
+    font-family: var(--font-body, 'Open Sans'), sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--text-secondary, #51585e);
+}
+
+.card-blogpost__read-more {
+    color: #1d50de;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.card-blogpost:hover .card-blogpost__read-more {
+    color: #39cccc;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Mobile: 380px to 767px */
+@media (max-width: 767px) {
+    .blog-teaser {
+        padding: var(--space-8, 32px) var(--space-4, 16px);
+    }
+    
+    .card-blogpost__title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+/* Tablet: 768px to 1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .blog-teaser {
+        padding: var(--space-12, 48px) var(--space-8, 32px);
+    }
+    
+    .card-blogpost__title {
+        font-size: 18px;
+        line-height: 27px;
+    }
+}
+
+/* Desktop: 1150px to 1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .blog-teaser {
+        padding: var(--space-16, 64px) var(--space-10, 40px);
+    }
+    
+    .card-blogpost__title {
+        font-size: 21px;
+        line-height: 30.5px;
+    }
+}
+
+/* DesktopPlus: 1920px and above */
+@media (min-width: 1920px) {
+    .blog-teaser {
+        padding: var(--space-20, 80px) var(--space-10, 40px);
+    }
+    
+    .card-blogpost__title {
+        font-size: 21px;
+        line-height: 30.5px;
+    }
+}
+

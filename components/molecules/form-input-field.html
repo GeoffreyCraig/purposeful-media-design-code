@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input Field Component</title>
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <style>
+        /* Form Input Field Component Styles */
+        .form-input-field {
+            --input-padding-y: 4px;
+            --input-padding-x: 8px;
+            --input-border-radius: 4px;
+            --input-border-width: 1px;
+            --input-font-size: 18px;
+            --input-line-height: 18px;
+            
+            position: relative;
+            width: 100%;
+            min-height: 28px; /* Based on padding + line-height */
+        }
+
+        .form-input-field__input {
+            width: 100%;
+            padding: var(--input-padding-y) var(--input-padding-x);
+            border: var(--input-border-width) solid var(--neutrals-300, #a2a9af);
+            border-radius: var(--input-border-radius);
+            background: var(--white, #ffffff);
+            font-family: var(--font-family-body);
+            font-size: var(--input-font-size);
+            line-height: var(--input-line-height);
+            font-weight: 400;
+            color: var(--neutrals-600, #51585e);
+            transition: all 0.2s ease;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        /* Placeholder styling for unfilled state */
+        .form-input-field__input::placeholder {
+            color: var(--neutrals-300, #a2a9af);
+            font-weight: 300;
+            font-style: italic;
+            opacity: 1;
+        }
+
+        /* Focus state */
+        .form-input-field__input:focus {
+            border-color: var(--primary-500, #1d50de);
+            box-shadow: 0 0 0 2px rgba(29, 80, 222, 0.1);
+        }
+
+        /* Disabled state */
+        .form-input-field__input:disabled {
+            background-color: var(--neutrals-100, #eceeef);
+            color: var(--neutrals-300, #a2a9af);
+            cursor: not-allowed;
+        }
+
+        /* Error state */
+        .form-input-field--error .form-input-field__input {
+            border-color: var(--error-500, #ef4444);
+            background-color: var(--error-50, #fef2f2);
+            color: var(--error-500, #ef4444);
+        }
+
+        .form-input-field--error .form-input-field__input:focus {
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+        }
+
+        /* Error message */
+        .form-input-field__error-message {
+            display: none;
+            color: var(--error-500, #ef4444);
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 4px;
+        }
+
+        .form-input-field--error .form-input-field__error-message {
+            display: block;
+        }
+
+        /* Demo styles */
+        .demo-container {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            font-family: var(--font-family-body);
+        }
+
+        .demo-section {
+            margin-bottom: 24px;
+        }
+
+        .demo-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--neutrals-700, #363a3e);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Form Input Field Component</h1>
+        
+        <!-- Unfilled State (Default with placeholder) -->
+        <div class="demo-section">
+            <label class="demo-label">Unfilled State</label>
+            <div class="form-input-field">
+                <input 
+                    type="text" 
+                    class="form-input-field__input" 
+                    placeholder="Write your input here"
+                >
+            </div>
+        </div>
+
+        <!-- Default State (With value) -->
+        <div class="demo-section">
+            <label class="demo-label">Default State (With Value)</label>
+            <div class="form-input-field">
+                <input 
+                    type="text" 
+                    class="form-input-field__input" 
+                    value="This is user input"
+                >
+            </div>
+        </div>
+
+        <!-- Focus State (Interactive) -->
+        <div class="demo-section">
+            <label class="demo-label">Focus State (Click to focus)</label>
+            <div class="form-input-field">
+                <input 
+                    type="text" 
+                    class="form-input-field__input" 
+                    value="This is user input"
+                >
+            </div>
+        </div>
+
+        <!-- Error State -->
+        <div class="demo-section">
+            <label class="demo-label">Error State</label>
+            <div class="form-input-field form-input-field--error">
+                <input 
+                    type="text" 
+                    class="form-input-field__input" 
+                    value="Error"
+                >
+                <div class="form-input-field__error-message">
+                    Please correct the error in this field
+                </div>
+            </div>
+        </div>
+
+        <!-- Disabled State -->
+        <div class="demo-section">
+            <label class="demo-label">Disabled State</label>
+            <div class="form-input-field">
+                <input 
+                    type="text" 
+                    class="form-input-field__input" 
+                    value="This field is disabled"
+                    disabled
+                >
+            </div>
+        </div>
+
+        <!-- Interactive Demo -->
+        <div class="demo-section">
+            <h2>Interactive Demo</h2>
+            <label class="demo-label">Try typing in this field:</label>
+            <div class="form-input-field" id="interactive-demo">
+                <input 
+                    type="text" 
+                    class="form-input-field__input" 
+                    placeholder="Type something..."
+                    id="interactive-input"
+                >
+                <div class="form-input-field__error-message">
+                    Field cannot be empty
+                </div>
+            </div>
+            <button onclick="toggleError()" style="margin-top: 8px;">Toggle Error State</button>
+            <button onclick="toggleDisabled()" style="margin-left: 8px;">Toggle Disabled</button>
+        </div>
+    </div>
+
+    <script>
+        // Interactive demo functions
+        function toggleError() {
+            const container = document.getElementById('interactive-demo');
+            const input = document.getElementById('interactive-input');
+            
+            container.classList.toggle('form-input-field--error');
+            
+            if (container.classList.contains('form-input-field--error')) {
+                input.value = 'Error';
+            } else {
+                input.value = '';
+            }
+        }
+
+        function toggleDisabled() {
+            const input = document.getElementById('interactive-input');
+            input.disabled = !input.disabled;
+            
+            if (input.disabled) {
+                input.value = 'This field is disabled';
+            } else {
+                input.value = '';
+            }
+        }
+
+        // Add real-time validation example
+        document.getElementById('interactive-input').addEventListener('blur', function() {
+            const container = document.getElementById('interactive-demo');
+            
+            if (this.value.trim() === '' && !this.disabled) {
+                container.classList.add('form-input-field--error');
+            } else {
+                container.classList.remove('form-input-field--error');
+            }
+        });
+    </script>
+</body>
+</html>

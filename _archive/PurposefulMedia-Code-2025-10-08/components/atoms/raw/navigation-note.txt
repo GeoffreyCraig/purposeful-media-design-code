@@ -1,0 +1,19 @@
+<!-- Navigation Component HTML - Saved separately due to length -->
+<!-- This component contains extensive menu item variations across H1-H6 sizes -->
+<!-- with different states: Default, Hover, Active, Disabled, AccentDefault -->
+<!-- and different types: Simple, DropDown, Accordion, Footer -->
+
+<!-- Key color variables discovered from inline styles: -->
+<!-- MenuSimple: white -->
+<!-- HoverSimple: #DCBE5D -->
+<!-- ActiveSimple: #B39226 -->
+<!-- MenuDisabled: #868F97 -->
+<!-- MenuDrop: #1B1464 -->
+<!-- HoverDrop: #1D50DE -->
+<!-- ActiveDrop: #06102B -->
+<!-- AccentSimple: #D4AF37 -->
+<!-- Heading: #1B1464 -->
+<!-- Reverse: white -->
+<!-- Muted: #C7CBCF -->
+
+<!-- Full HTML saved in navigation.html -->

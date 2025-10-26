@@ -1,0 +1,537 @@
+.section-blog-group,
+.section-blog-group * {
+  box-sizing: border-box;
+}
+.section-blog-group {
+  background: var(--primary, #ffffff);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  min-width: 1920px;
+  position: relative;
+  overflow: hidden;
+}
+.blog-cards {
+  padding: var(--space-1, 4px) var(--space-16, 64px) var(--space-1, 4px)
+    var(--space-16, 64px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.card-blog-post {
+  background: #ffffff;
+  padding: var(--space-3, 12px) var(--space-4, 16px) var(--space-3, 12px)
+    var(--space-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--container-padding-x, 16px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+  max-width: 1920px;
+  position: relative;
+}
+.card-top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.title {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+  height: 31px;
+}
+.date-and-author {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+}
+.content-area {
+  padding: var(--space-0, 0px) 0px var(--space-5, 20px) 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-tempus-egestas-sed-read-more {
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  height: 81px;
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-tempus-egestas-sed-read-more-span {
+  color: var(--body, #51585e);
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-tempus-egestas-sed-read-more-span2 {
+  color: var(--feedback-info, #1d50de);
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-tempus-egestas-sed-read-more-span {
+  color: var(--body, #51585e);
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-tempus-egestas-sed-read-more-span2 {
+  color: var(--feedback-info, #1d50de);
+}
+/* variant styles */
+.section-blog-group.break-point-desktop {
+  width: 100%;
+  min-width: 1150px;
+  max-width: 1919px;
+  align-self: unset;
+}
+.section-blog-group.break-point-tablet {
+  width: 100%;
+  min-width: 768px;
+  max-width: 1149px;
+  align-self: unset;
+}
+.section-blog-group.break-point-tablet.scrolling-blog-teaser,
+.section-blog-group.break-point-mobile.scrolling-blog-teaser {
+  padding: var(--space-0, 0px) var(--space-0, 0px) var(--space-8, 32px)
+    var(--space-0, 0px);
+}
+.section-blog-group.break-point-tablet .card-blog-post {
+  gap: var(--space-4, 16px);
+  max-width: 1149px;
+}
+.section-blog-group.break-point-tablet .title {
+  font-size: 18px;
+  line-height: 27px;
+  height: unset;
+}
+.section-blog-group.break-point-tablet.scrolling-blog-teaser .content-area,
+.section-blog-group.break-point-mobile.scrolling-blog-teaser .content-area,
+.section-blog-group.break-point-mobile.scrolling-front-page .content-area {
+  padding: 0px 0px var(--space-5, 20px) 0px;
+}
+.section-blog-group.break-point-tablet .paragraph-text-18-27-h,
+.section-blog-group.break-point-mobile .paragraph-text-18-27-h {
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+}
+.section-blog-group.scrolling-blog-teaser .paragraph-text-18-27-h,
+.section-blog-group.break-point-mobile.scrolling-front-page
+  .paragraph-text-18-27-h {
+  align-self: stretch;
+}
+.section-blog-group.break-point-tablet.scrolling-blog-teaser
+  .paragraph-text-18-27-h {
+  height: 81px;
+}
+.section-blog-group.break-point-tablet .title2 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+  height: 27px;
+}
+.section-blog-group.break-point-mobile {
+  min-width: 380px;
+  max-width: 767px;
+  align-self: unset;
+}
+.section-blog-group.break-point-mobile.scrolling-blog-teaser .blog-cards {
+  padding: var(--space-1, 4px) var(--space-4, 16px) var(--space-1, 4px)
+    var(--space-4, 16px);
+}
+.section-blog-group.break-point-mobile .card-blog-post {
+  gap: var(--space-4, 16px);
+  min-width: 380px;
+  max-width: 767px;
+}
+.section-blog-group.break-point-mobile .title {
+  font-size: 16px;
+  line-height: 24px;
+  height: unset;
+}
+.section-blog-group.break-point-mobile.scrolling-blog-teaser .date-and-author,
+.section-blog-group.break-point-tablet.scrolling-front-page
+  .paragraph-text-18-27-h,
+.section-blog-group.break-point-tablet.scrolling-infinite
+  .paragraph-text-18-27-h,
+.section-blog-group.break-point-mobile.scrolling-front-page .date-and-author,
+.section-blog-group.break-point-mobile.scrolling-infinite
+  .paragraph-text-18-27-h,
+.section-blog-group.break-point-mobile.scrolling-infinite .date-and-author2 {
+  flex: 1;
+}
+.section-blog-group.break-point-mobile.scrolling-blog-teaser
+  .paragraph-text-18-27-h,
+.section-blog-group.break-point-mobile.scrolling-front-page
+  .paragraph-text-18-27-h2 {
+  height: 135px;
+}
+.section-blog-group.break-point-desktop-plus.scrolling-front-page,
+.section-blog-group.break-point-desktop-plus.scrolling-infinite {
+  align-items: center;
+}
+.section-blog-group.scrolling-front-page .blog-cards,
+.section-blog-group.break-point-desktop-plus.scrolling-infinite .blog-cards,
+.section-blog-group.break-point-desktop.scrolling-infinite .blog-cards,
+.section-blog-group.break-point-tablet.scrolling-infinite .blog-cards {
+  padding: var(--space-4, 16px) var(--space-16, 64px) var(--space-4, 16px)
+    var(--space-16, 64px);
+}
+.section-blog-group.break-point-desktop-plus.scrolling-front-page .title,
+.section-blog-group.scrolling-front-page
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-tempus-egestas-sed-read-more,
+.section-blog-group.scrolling-infinite
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-tempus-egestas-sed-read-more {
+  height: unset;
+}
+.section-blog-group.break-point-desktop-plus .title2 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+  height: 31px;
+}
+.section-blog-group.break-point-desktop-plus
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-tempus-egestas-sed-read-more2,
+.section-blog-group.break-point-desktop
+  .lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna-tempus-egestas-sed-read-more2 {
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  height: 81px;
+}
+.section-blog-group.break-point-desktop-plus .blog-footer,
+.section-blog-group.break-point-desktop .blog-footer,
+.section-blog-group.break-point-tablet .blog-footer {
+  padding: var(--space-4, 16px) var(--space-20, 80px) var(--space-20, 80px)
+    var(--space-20, 80px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-blog-group.break-point-desktop-plus .pagination,
+.section-blog-group.break-point-desktop .pagination,
+.section-blog-group.break-point-tablet .pagination,
+.section-blog-group.break-point-mobile .pagination {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  width: 327px;
+}
+.section-blog-group.break-point-desktop .post-card,
+.section-blog-group.break-point-tablet .post-card {
+  padding: var(--space-3, 12px) var(--space-4, 16px) var(--space-3, 12px)
+    var(--space-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-blog-group.break-point-desktop .header,
+.section-blog-group.break-point-tablet .header,
+.section-blog-group.break-point-mobile .header {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-blog-group.break-point-desktop .insert-the-title,
+.section-blog-group.break-point-tablet .insert-the-title {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.section-blog-group.break-point-desktop .h-4 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.section-blog-group.break-point-desktop.scrolling-infinite .date-and-author,
+.section-blog-group.break-point-tablet.scrolling-front-page .date-and-author,
+.section-blog-group.break-point-tablet.scrolling-infinite .date-and-author {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 327px;
+  color: unset;
+  text-align: unset;
+  font-family: unset;
+  font-size: unset;
+  line-height: unset;
+  font-weight: unset;
+  align-self: unset;
+}
+.section-blog-group.break-point-desktop .paragraph,
+.section-blog-group.break-point-tablet .paragraph {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-blog-group.break-point-desktop .paragraph-text-12-18-h,
+.section-blog-group.break-point-tablet .paragraph-text-12-18-h {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+}
+.section-blog-group.break-point-desktop.scrolling-infinite .content-area,
+.section-blog-group.break-point-tablet.scrolling-front-page .content-area,
+.section-blog-group.break-point-tablet.scrolling-infinite .content-area,
+.section-blog-group.break-point-mobile.scrolling-infinite .content-area {
+  padding: unset;
+}
+.section-blog-group.break-point-desktop .paragraph2,
+.section-blog-group.break-point-tablet .paragraph2,
+.section-blog-group.break-point-mobile .paragraph2 {
+  border-style: solid;
+  border-color: var(--secondary, #eceeef);
+  border-width: 0px 0px 1px 0px;
+  padding: 0px 0px var(--space-5, 20px) 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-blog-group.break-point-desktop .paragraph-text-18-27-h {
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.section-blog-group.break-point-desktop .date-and-author2,
+.section-blog-group.break-point-tablet .date-and-author2,
+.section-blog-group.break-point-mobile .date-and-author2 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+}
+.section-blog-group.break-point-desktop .content-area2 {
+  padding: var(--space-0, 0px) 0px var(--space-5, 20px) 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-blog-group.break-point-desktop .title2 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 21px;
+  line-height: 30.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+}
+.section-blog-group.break-point-tablet .h-5 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.section-blog-group.break-point-tablet .content-area2,
+.section-blog-group.break-point-mobile .content-area2 {
+  padding: 0px 0px var(--space-5, 20px) 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-blog-group.break-point-tablet .paragraph-text-18-27-h2,
+.section-blog-group.break-point-mobile .paragraph-text-18-27-h2 {
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+}
+.section-blog-group.break-point-mobile.scrolling-front-page,
+.section-blog-group.break-point-mobile.scrolling-infinite {
+  width: 100%;
+}
+.section-blog-group.break-point-mobile.scrolling-front-page .date-and-author2 {
+  height: 18px;
+}
+.section-blog-group.break-point-mobile .blog-footer {
+  padding: var(--space-1, 4px) var(--space-20, 80px) var(--space-12, 48px)
+    var(--space-20, 80px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  align-items: flex-start;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-blog-group.break-point-mobile.scrolling-infinite .blog-cards {
+  padding: var(--space-4, 16px);
+}
+.section-blog-group.break-point-mobile .post-card {
+  padding: var(--space-3, 12px) var(--space-4, 16px) var(--space-3, 12px)
+    var(--space-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.section-blog-group.break-point-mobile .insert-the-title,
+.section-blog-group.break-point-mobile .paragraph {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.section-blog-group.break-point-mobile .h-6 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  flex: 1;
+}
+.section-blog-group.break-point-mobile.scrolling-infinite .date-and-author {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0px);
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  color: unset;
+  text-align: unset;
+  font-family: unset;
+  font-size: unset;
+  line-height: unset;
+  font-weight: unset;
+}
+.section-blog-group.break-point-mobile .paragraph-text-12-18-h {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}

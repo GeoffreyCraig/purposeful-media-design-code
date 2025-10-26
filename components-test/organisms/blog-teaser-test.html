@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Teaser Group - Test Component</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Design Tokens -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    
+    <style>
+        /* Component Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #eceeef;
+        }
+        
+        /**
+         * Component: Blog Teaser Group
+         * Type: Organism
+         * Description: Single-column blog teaser section with 2 post cards
+         * 
+         * Dependencies:
+         * - Design Tokens (required)
+         * - Google Fonts: Lato, Open Sans
+         * - Blog Post Card molecule
+         * 
+         * Usage:
+         * - Displays 2 recent blog posts with placeholder content
+         * - Used on Pillar pages after "Latest From Our Blog" banner
+         */
+        
+        /* ============================================
+           BLOG TEASER GROUP
+           ============================================ */
+        
+        .blog-teaser {
+            width: 100%;
+            background-color: var(--secondary-100, #eceeef);
+        }
+        
+        .blog-teaser__container {
+            width: 100%;
+            max-width: var(--container-max-width, 1920px);
+            margin: 0 auto;
+        }
+        
+        .blog-teaser__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4, 16px);
+        }
+        
+        /* Blog Post Card */
+        .card-blogpost {
+            background-color: var(--color-white, #ffffff);
+            padding: var(--space-3, 12px) var(--space-4, 16px);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4, 16px);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .card-blogpost:hover {
+            background-color: var(--accent-100, #faf5e6);
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-blogpost__top {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1, 4px);
+        }
+        
+        .card-blogpost__title {
+            font-family: var(--font-heading, 'Lato'), sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text-primary, #1b1464);
+            line-height: 1.45;
+            transition: color 0.3s ease;
+        }
+        
+        .card-blogpost:hover .card-blogpost__title {
+            color: var(--text-secondary, #51585e);
+        }
+        
+        .card-blogpost__meta {
+            font-family: var(--font-body, 'Open Sans'), sans-serif;
+            font-size: 12px;
+            line-height: 18px;
+            color: var(--text-primary, #1b1464);
+            transition: color 0.3s ease;
+        }
+        
+        .card-blogpost:hover .card-blogpost__meta {
+            color: var(--text-secondary, #51585e);
+        }
+        
+        .card-blogpost__content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3, 12px);
+            padding-bottom: var(--space-5, 20px);
+        }
+        
+        .card-blogpost__excerpt {
+            font-family: var(--font-body, 'Open Sans'), sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            color: var(--text-secondary, #51585e);
+        }
+        
+        .card-blogpost__read-more {
+            color: #1d50de;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .card-blogpost:hover .card-blogpost__read-more {
+            color: #39cccc;
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+        
+        /* Mobile: 380px to 767px */
+        @media (max-width: 767px) {
+            .blog-teaser {
+                padding: var(--space-8, 32px) var(--space-4, 16px);
+            }
+            
+            .card-blogpost__title {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+        
+        /* Tablet: 768px to 1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .blog-teaser {
+                padding: var(--space-12, 48px) var(--space-8, 32px);
+            }
+            
+            .card-blogpost__title {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* Desktop: 1150px to 1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .blog-teaser {
+                padding: var(--space-16, 64px) var(--space-10, 40px);
+            }
+            
+            .card-blogpost__title {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+        }
+        
+        /* DesktopPlus: 1920px and above */
+        @media (min-width: 1920px) {
+            .blog-teaser {
+                padding: var(--space-20, 80px) var(--space-10, 40px);
+            }
+            
+            .card-blogpost__title {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+        }
+        
+        /* Demo Styles */
+        .demo-container {
+            padding: 40px 20px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        .breakpoint-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .breakpoint-header {
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .breakpoint-content {
+            background: #eceeef;
+            position: relative;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; text-align: center; margin-bottom: 40px;">
+            Blog Teaser Group - Test Component
+        </h1>
+        
+        <!-- Component Info -->
+        <div style="background: #d4af37; color: white; padding: 20px; border-radius: 8px; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="margin-bottom: 10px;">Component Features:</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>Single Column:</strong> 2 blog post cards stacked vertically</li>
+                <li><strong>Placeholder Content:</strong> Sample blog posts for MVW Phase 1</li>
+                <li><strong>Card Hover States:</strong> Cream background with shadow on hover</li>
+                <li><strong>Responsive Typography:</strong> Title scales from 16px to 21px</li>
+                <li><strong>Max Width:</strong> 1200px content area</li>
+            </ul>
+        </div>
+        
+        <!-- Desktop Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Desktop (1150px+)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Desktop View - Two blog post cards in single column</div>
+                <div class="breakpoint-content" style="min-width: 1200px;">
+                    <!-- Component: Blog Teaser Group -->
+                    <!-- Type: Organism -->
+                    <!-- Usage: Displays 2 recent blog posts on Pillar pages -->
+                    <section class="blog-teaser" aria-label="Recent blog posts">
+                        <div class="blog-teaser__container">
+                            <div class="blog-teaser__inner">
+                                
+                                <!-- Blog Post Card 1 -->
+                                <article class="card-blogpost">
+                                    <div class="card-blogpost__top">
+                                        <h3 class="card-blogpost__title">
+                                            Essential Email Marketing Strategies for B2B Success
+                                        </h3>
+                                        <div class="card-blogpost__meta">
+                                            Category: Email Marketing | Date: October 10, 2025 | Author: Purposeful Media
+                                        </div>
+                                    </div>
+                                    <div class="card-blogpost__content">
+                                        <p class="card-blogpost__excerpt">
+                                            Discover proven email marketing strategies that drive B2B engagement and conversions. Learn how to craft compelling subject lines, segment your audience effectively, and leverage automation to nurture leads through the sales funnel. Our comprehensive guide covers deliverability best practices, A/B testing methodologies, and analytics tracking to maximize your email marketing ROI... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                                        </p>
+                                    </div>
+                                </article>
+                                
+                                <!-- Blog Post Card 2 -->
+                                <article class="card-blogpost">
+                                    <div class="card-blogpost__top">
+                                        <h3 class="card-blogpost__title">
+                                            How to Create Content That Converts Technical Audiences
+                                        </h3>
+                                        <div class="card-blogpost__meta">
+                                            Category: Content Strategy | Date: October 5, 2025 | Author: Geoffrey Craig
+                                        </div>
+                                    </div>
+                                    <div class="card-blogpost__content">
+                                        <p class="card-blogpost__excerpt">
+                                            Creating content for technical B2B audiences requires a unique approach. Learn how to balance technical depth with accessibility, use data effectively to support your arguments, and structure content that guides prospects through complex decision-making processes. This guide includes specific tactics for engineering, software, and industrial sectors... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                                        </p>
+                                    </div>
+                                </article>
+                                
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Mobile (≤767px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Mobile View - Smaller padding and typography</div>
+                <div class="breakpoint-content" style="width: 500px;">
+                    <section class="blog-teaser">
+                        <div class="blog-teaser__container">
+                            <div class="blog-teaser__inner">
+                                
+                                <article class="card-blogpost">
+                                    <div class="card-blogpost__top">
+                                        <h3 class="card-blogpost__title">
+                                            Email Marketing Strategies
+                                        </h3>
+                                        <div class="card-blogpost__meta">
+                                            Email Marketing | Oct 10, 2025
+                                        </div>
+                                    </div>
+                                    <div class="card-blogpost__content">
+                                        <p class="card-blogpost__excerpt">
+                                            Discover proven strategies for B2B email success... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                                        </p>
+                                    </div>
+                                </article>
+                                
+                                <article class="card-blogpost">
+                                    <div class="card-blogpost__top">
+                                        <h3 class="card-blogpost__title">
+                                            Content for Technical Audiences
+                                        </h3>
+                                        <div class="card-blogpost__meta">
+                                            Content Strategy | Oct 5, 2025
+                                        </div>
+                                    </div>
+                                    <div class="card-blogpost__content">
+                                        <p class="card-blogpost__excerpt">
+                                            Learn to create content that converts technical buyers... <a href="#" class="card-blogpost__read-more">[Read more]</a>
+                                        </p>
+                                    </div>
+                                </article>
+                                
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Specifications -->
+        <div style="background: #f0f3fd; padding: 30px; border-radius: 8px; max-width: 1200px; margin: 40px auto 0;">
+            <h3 style="color: #1b1464; margin-bottom: 20px;">Technical Specifications</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">📱 Mobile (≤767px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>Padding: 32px 16px</li>
+                        <li>Title: 16px/24px (900)</li>
+                        <li>Meta: 12px/18px</li>
+                        <li>Excerpt: 18px/27px</li>
+                        <li>Card gap: 16px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">📱 Tablet (768-1149px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>Padding: 48px 32px</li>
+                        <li>Title: 18px/27px (900)</li>
+                        <li>Meta: 12px/18px</li>
+                        <li>Excerpt: 18px/27px</li>
+                        <li>Card gap: 16px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">💻 Desktop (1150-1919px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>Padding: 64px 40px</li>
+                        <li>Title: 21px/30.5px (900)</li>
+                        <li>Meta: 12px/18px</li>
+                        <li>Excerpt: 18px/27px</li>
+                        <li>Card gap: 16px</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #1b1464; margin-bottom: 10px;">🖥️ DesktopPlus (≥1920px)</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                        <li>Padding: 80px 40px</li>
+                        <li>Title: 21px/30.5px (900)</li>
+                        <li>Meta: 12px/18px</li>
+                        <li>Excerpt: 18px/27px</li>
+                        <li>Max-width: 1200px</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,165 @@
+.paragraph-faq,
+.paragraph-faq * {
+  box-sizing: border-box;
+}
+.paragraph-faq {
+  padding: var(--space-4, 1rem) var(--space-3, 0.75rem) var(--space-4, 1rem)
+    var(--space-3, 0.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0rem);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.question {
+  background: var(--100, transparent);
+  border-radius: 0.5rem;
+  padding: var(--space-2, 0.5rem) var(--space-6, 1.5rem) var(--space-2, 0.5rem)
+    var(--space-3, 0.75rem);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.h-4 {
+  color: var(--dark, #51585e);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 1.3125rem;
+  line-height: 1.90625rem;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+.h-2 {
+  color: var(--dark, #51585e);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 1.875rem;
+  line-height: 2.8125rem;
+  font-weight: 400;
+  position: relative;
+}
+/* variant styles */
+.paragraph-faq.break-point-desktop:hover .question,
+.paragraph-faq.break-point-desktop.state-hover .question,
+.paragraph-faq.state-open .question,
+.paragraph-faq.break-point-tablet.state-default .question,
+.paragraph-faq.break-point-tablet:hover .question,
+.paragraph-faq.break-point-tablet.state-hover .question,
+.paragraph-faq.break-point-mobile.state-default {
+  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem) var(--space-2, 0.5rem)
+    var(--space-3, 0.75rem);
+}
+.paragraph-faq:hover .question,
+.paragraph-faq.state-hover .question {
+  background: var(--100, #f4ebcd);
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    0.25rem 0.25rem 0.75rem 0rem rgba(0, 0, 0, 0.1)
+  );
+}
+.paragraph-faq:hover .h-2,
+.paragraph-faq.state-hover .h-2,
+.paragraph-faq.state-open .h-2 {
+  transform-origin: 0 0;
+  transform: rotate(90deg) scale(1, 1);
+}
+.paragraph-faq.break-point-desktop.state-open {
+  justify-content: space-between;
+  flex: 1;
+  gap: unset;
+  flex-shrink: unset;
+}
+.paragraph-faq.break-point-desktop .answer {
+  border-radius: 0.5rem;
+  padding: var(--space-2, 0.5rem) var(--space-2, 0.5rem) var(--space-2, 0.5rem)
+    var(--space-8, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0rem);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.paragraph-faq.break-point-desktop
+  .turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna,
+.paragraph-faq.break-point-tablet
+  .turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna,
+.paragraph-faq.break-point-mobile
+  .turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+  flex: 1;
+}
+.paragraph-faq.break-point-tablet.state-default {
+  padding: var(--space-3, 0.75rem) var(--space-6, 1.5rem)
+    var(--space-3, 0.75rem) var(--space-3, 0.75rem);
+}
+.paragraph-faq.break-point-tablet:hover,
+.paragraph-faq.break-point-tablet.state-hover {
+  padding: var(--space-3, 0.75rem);
+}
+.paragraph-faq.break-point-tablet.state-open {
+  padding: var(--space-3, 0.75rem);
+  gap: 0rem;
+}
+.paragraph-faq.break-point-tablet .answer {
+  border-radius: 0.5rem;
+  padding: var(--space-2, 0.5rem) var(--space-2, 0.5rem) var(--space-2, 0.5rem)
+    var(--space-6, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0rem);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.paragraph-faq.break-point-mobile {
+  min-width: 23.75rem;
+}
+.paragraph-faq.break-point-mobile:hover,
+.paragraph-faq.break-point-mobile.state-hover,
+.paragraph-faq.break-point-mobile:hover .question,
+.paragraph-faq.break-point-mobile.state-hover .question {
+  padding: var(--space-0, 0rem) var(--space-3, 0.75rem) var(--space-3, 0.75rem)
+    var(--space-3, 0.75rem);
+}
+.paragraph-faq.break-point-mobile.state-open {
+  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem) var(--space-2, 0.5rem)
+    var(--space-3, 0.75rem);
+  justify-content: space-between;
+  flex: 1;
+  gap: unset;
+  flex-shrink: unset;
+}
+.paragraph-faq.break-point-mobile .answer {
+  border-radius: 0.5rem;
+  padding: var(--space-2, 0.5rem) var(--space-2, 0.5rem) var(--space-2, 0.5rem)
+    var(--space-5, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0rem);
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}

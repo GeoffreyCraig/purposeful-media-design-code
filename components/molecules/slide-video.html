@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide/Video Component</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-slides.css">
+    
+    <style>
+        /* Component-specific styles for Slide/Video */
+        .slide-video-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        /* Video-specific overlay */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(27, 20, 100, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .slide-video-container:hover .video-overlay {
+            background: rgba(27, 20, 100, 0.4);
+        }
+        
+        /* Play/Pause Button Styles */
+        .play-pause-button {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            position: relative;
+        }
+        
+        .play-pause-button:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
+        
+        .play-pause-button:active {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(0.98);
+        }
+        
+        .play-pause-button.solid {
+            background: rgba(255, 255, 255, 1);
+        }
+        
+        .play-pause-button.small {
+            width: 48px;
+            height: 48px;
+            padding: 8px;
+        }
+        
+        /* Icon styles */
+        .play-pause-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary-700, #1b1464);
+        }
+        
+        .play-pause-button.small .play-pause-icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Video element styles */
+        .slide-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Hide controls when playing */
+        .slide-video-container[data-playing="true"] .video-overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .slide-video-container:hover .video-overlay,
+        .slide-video-container[data-playing="false"] .video-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* Progress bar */
+        .video-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .slide-video-container:hover .video-progress,
+        .slide-video-container[data-playing="true"] .video-progress {
+            opacity: 1;
+        }
+        
+        .video-progress-bar {
+            height: 100%;
+            background: var(--primary-500, #1d50de);
+            width: 0;
+            transition: width 0.1s linear;
+        }
+        
+        /* Loading spinner for video */
+        .video-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            display: none;
+        }
+        
+        .slide-frame[data-state="loading"] .video-loading {
+            display: block;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            .play-pause-button {
+                width: 48px;
+                height: 48px;
+            }
+            
+            .play-pause-icon {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Demo Container -->
+    <div style="padding: 40px; background: #f5f5f5;">
+        <h1 style="margin-bottom: 40px; font-family: 'Lato', sans-serif;">Slide/Video Component</h1>
+        
+        <!-- Controls -->
+        <div style="margin-bottom: 20px; padding: 20px; background: white; border-radius: 8px;">
+            <h3>Controls</h3>
+            <label>Aspect Ratio: 
+                <select id="aspectRatio" onchange="updateVideoSlide()">
+                    <option value="16-9">16:9</option>
+                    <option value="4-3">4:3</option>
+                    <option value="1-1">1:1</option>
+                    <option value="flex">Flex</option>
+                </select>
+            </label>
+            
+            <label style="margin-left: 20px;">State: 
+                <select id="slideState" onchange="updateVideoSlide()">
+                    <option value="ready">Ready</option>
+                    <option value="loading">Loading</option>
+                    <option value="error">Error</option>
+                    <option value="focus">Focus</option>
+                </select>
+            </label>
+            
+            <label style="margin-left: 20px;">Button Style: 
+                <select id="buttonStyle" onchange="updateVideoSlide()">
+                    <option value="ghost">Ghost</option>
+                    <option value="solid">Solid</option>
+                </select>
+            </label>
+            
+            <label style="margin-left: 20px;">Button Size: 
+                <select id="buttonSize" onchange="updateVideoSlide()">
+                    <option value="medium">Medium</option>
+                    <option value="small">Small</option>
+                </select>
+            </label>
+        </div>
+        
+        <!-- Component Instance -->
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="slide-video-container" id="slideVideoDemo" data-playing="false">
+                <div class="slide-frame aspect-16-9" data-state="ready" id="videoFrame">
+                    <!-- Video element (using placeholder for demo) -->
+                    <video class="slide-video" id="demoVideo" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3EVideo Placeholder%3C/text%3E%3C/svg%3E">
+                        <source src="#" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                    <!-- Loading spinner -->
+                    <svg class="video-loading" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="20" stroke="var(--primary-500, #1d50de)" stroke-width="4" stroke-dasharray="60 30" />
+                    </svg>
+                    
+                    <!-- Error Icon -->
+                    <svg class="error-icon" viewBox="0 0 48 48" fill="none" style="display: none;">
+                        <circle cx="24" cy="24" r="22" stroke="#ef4444" stroke-width="2"/>
+                        <path d="M24 14v14M24 34h.01" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                
+                <!-- Video Overlay with Play/Pause Button -->
+                <div class="video-overlay">
+                    <button class="play-pause-button" id="playPauseBtn" aria-label="Play video">
+                        <!-- Play Icon -->
+                        <svg class="play-pause-icon play-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <!-- Pause Icon (hidden by default) -->
+                        <svg class="play-pause-icon pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="video-progress">
+                    <div class="video-progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Multiple Examples Grid -->
+        <div style="margin-top: 60px;">
+            <h2 style="margin-bottom: 30px; font-family: 'Lato', sans-serif;">All Aspect Ratios</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                
+                <!-- 16:9 Example -->
+                <div>
+                    <h4>16:9 Aspect Ratio</h4>
+                    <div class="slide-video-container" data-playing="false">
+                        <div class="slide-frame aspect-16-9" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3E16:9 Video%3C/text%3E%3C/svg%3E" 
+                                 alt="16:9 video placeholder" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="video-overlay">
+                            <button class="play-pause-button" aria-label="Play video">
+                                <svg class="play-pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 4:3 Example -->
+                <div>
+                    <h4>4:3 Aspect Ratio</h4>
+                    <div class="slide-video-container" data-playing="false">
+                        <div class="slide-frame aspect-4-3" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3E4:3 Video%3C/text%3E%3C/svg%3E" 
+                                 alt="4:3 video placeholder" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="video-overlay">
+                            <button class="play-pause-button" aria-label="Play video">
+                                <svg class="play-pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 1:1 Example -->
+                <div>
+                    <h4>1:1 Aspect Ratio</h4>
+                    <div class="slide-video-container" data-playing="false">
+                        <div class="slide-frame aspect-1-1" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3E1:1 Video%3C/text%3E%3C/svg%3E" 
+                                 alt="1:1 video placeholder" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="video-overlay">
+                            <button class="play-pause-button solid" aria-label="Play video">
+                                <svg class="play-pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Flex Example -->
+                <div>
+                    <h4>Flex Aspect Ratio</h4>
+                    <div class="slide-video-container" data-playing="false">
+                        <div class="slide-frame aspect-flex" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300'%3E%3Crect width='800' height='300' fill='%23c7cbcf'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='sans-serif' font-size='24'%3EFlex Video%3C/text%3E%3C/svg%3E" 
+                                 alt="Flex video placeholder" 
+                                 style="width: 100%; height: 156px; object-fit: cover;">
+                        </div>
+                        <div class="video-overlay">
+                            <button class="play-pause-button small" aria-label="Play video">
+                                <svg class="play-pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- State Examples -->
+        <div style="margin-top: 60px;">
+            <h2 style="margin-bottom: 30px; font-family: 'Lato', sans-serif;">All States</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                
+                <!-- Loading State -->
+                <div>
+                    <h4>Loading</h4>
+                    <div class="slide-video-container" data-playing="false">
+                        <div class="slide-frame aspect-16-9" data-state="loading">
+                            <svg class="video-loading" viewBox="0 0 48 48" fill="none">
+                                <circle cx="24" cy="24" r="20" stroke="var(--primary-500, #1d50de)" stroke-width="4" stroke-dasharray="60 30" />
+                            </svg>
+                        </div>
+                        <div class="video-overlay">
+                            <button class="play-pause-button" disabled aria-label="Loading">
+                                <svg class="play-pause-icon" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ready State -->
+                <div>
+                    <h4>Ready</h4>
+                    <div class="slide-video-container" data-playing="false">
+                        <div class="slide-frame aspect-16-9" data-state="ready">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%2339cccc'/%3E%3C/svg%3E" 
+                                 alt="Ready state" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="video-overlay">
+                            <button class="play-pause-button" aria-label="Play video">
+                                <svg class="play-pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Error State -->
+                <div>
+                    <h4>Error</h4>
+                    <div class="slide-video-container" data-playing="false">
+                        <div class="slide-frame aspect-16-9" data-state="error">
+                            <svg class="error-icon" viewBox="0 0 48 48" fill="none" style="display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <circle cx="24" cy="24" r="22" stroke="#ef4444" stroke-width="2"/>
+                                <path d="M24 14v14M24 34h.01" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="video-overlay" style="background: rgba(239, 68, 68, 0.1);">
+                            <button class="play-pause-button" disabled aria-label="Error">
+                                <svg class="play-pause-icon" viewBox="0 0 24 24" fill="currentColor" opacity="0.3">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Focus State -->
+                <div>
+                    <h4>Focus</h4>
+                    <div class="slide-video-container" data-playing="false">
+                        <div class="slide-frame aspect-16-9" data-state="focus">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='450'%3E%3Crect width='800' height='450' fill='%231d50de'/%3E%3C/svg%3E" 
+                                 alt="Focus state" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="video-overlay">
+                            <button class="play-pause-button solid" aria-label="Play video">
+                                <svg class="play-pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // SlideVideo Component Class
+        class SlideVideo {
+            constructor(element) {
+                this.element = element;
+                this.frame = element.querySelector('.slide-frame');
+                this.video = element.querySelector('video');
+                this.overlay = element.querySelector('.video-overlay');
+                this.playPauseBtn = element.querySelector('.play-pause-button');
+                this.playIcon = element.querySelector('.play-icon');
+                this.pauseIcon = element.querySelector('.pause-icon');
+                this.progressBar = element.querySelector('.video-progress-bar');
+                
+                this.state = 'ready';
+                this.aspectRatio = '16-9';
+                this.isPlaying = false;
+                this.videoUrl = null;
+                
+                this.init();
+            }
+            
+            init() {
+                // Initialize from data attributes
+                this.state = this.frame.dataset.state || 'ready';
+                this.isPlaying = this.element.dataset.playing === 'true';
+                
+                // Extract aspect ratio from class
+                const aspectClasses = ['aspect-16-9', 'aspect-4-3', 'aspect-1-1', 'aspect-flex'];
+                aspectClasses.forEach(className => {
+                    if (this.frame.classList.contains(className)) {
+                        this.aspectRatio = className.replace('aspect-', '');
+                    }
+                });
+                
+                // Set up event listeners
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                // Play/Pause button
+                if (this.playPauseBtn) {
+                    this.playPauseBtn.addEventListener('click', () => {
+                        this.togglePlayPause();
+                    });
+                }
+                
+                // Video events
+                if (this.video) {
+                    this.video.addEventListener('play', () => {
+                        this.onPlay();
+                    });
+                    
+                    this.video.addEventListener('pause', () => {
+                        this.onPause();
+                    });
+                    
+                    this.video.addEventListener('ended', () => {
+                        this.onEnded();
+                    });
+                    
+                    this.video.addEventListener('timeupdate', () => {
+                        this.updateProgress();
+                    });
+                    
+                    this.video.addEventListener('loadstart', () => {
+                        this.setState('loading');
+                    });
+                    
+                    this.video.addEventListener('canplay', () => {
+                        this.setState('ready');
+                    });
+                    
+                    this.video.addEventListener('error', () => {
+                        this.setState('error');
+                    });
+                }
+                
+                // Keyboard controls
+                this.element.addEventListener('keydown', (e) => {
+                    switch(e.key) {
+                        case ' ':
+                        case 'Enter':
+                            e.preventDefault();
+                            this.togglePlayPause();
+                            break;
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            this.seek(-5);
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            this.seek(5);
+                            break;
+                        case 'Escape':
+                            this.pause();
+                            break;
+                    }
+                });
+                
+                // Focus management
+                this.element.addEventListener('focus', () => {
+                    this.setState('focus');
+                });
+                
+                this.element.addEventListener('blur', () => {
+                    if (this.state === 'focus' && !this.isPlaying) {
+                        this.setState('ready');
+                    }
+                });
+                
+                // Click on video to toggle
+                if (this.video) {
+                    this.video.addEventListener('click', () => {
+                        this.togglePlayPause();
+                    });
+                }
+            }
+            
+            setState(state) {
+                const validStates = ['loading', 'ready', 'error', 'focus'];
+                if (validStates.includes(state)) {
+                    this.state = state;
+                    this.frame.dataset.state = state;
+                    
+                    // Handle state-specific behavior
+                    switch(state) {
+                        case 'loading':
+                            this.element.setAttribute('aria-busy', 'true');
+                            if (this.playPauseBtn) {
+                                this.playPauseBtn.disabled = true;
+                            }
+                            break;
+                        case 'ready':
+                            this.element.setAttribute('aria-busy', 'false');
+                            if (this.playPauseBtn) {
+                                this.playPauseBtn.disabled = false;
+                            }
+                            break;
+                        case 'error':
+                            this.element.setAttribute('aria-invalid', 'true');
+                            if (this.playPauseBtn) {
+                                this.playPauseBtn.disabled = true;
+                            }
+                            console.error('Failed to load video');
+                            break;
+                    }
+                }
+            }
+            
+            setAspectRatio(ratio) {
+                // Remove current aspect class
+                this.frame.classList.remove('aspect-16-9', 'aspect-4-3', 'aspect-1-1', 'aspect-flex');
+                
+                // Add new aspect class
+                this.frame.classList.add(`aspect-${ratio}`);
+                this.aspectRatio = ratio;
+            }
+            
+            togglePlayPause() {
+                if (this.isPlaying) {
+                    this.pause();
+                } else {
+                    this.play();
+                }
+            }
+            
+            play() {
+                if (this.video && this.state === 'ready') {
+                    // For demo, we'll just simulate playing
+                    this.isPlaying = true;
+                    this.element.dataset.playing = 'true';
+                    
+                    if (this.playIcon && this.pauseIcon) {
+                        this.playIcon.style.display = 'none';
+                        this.pauseIcon.style.display = 'block';
+                    }
+                    
+                    if (this.playPauseBtn) {
+                        this.playPauseBtn.setAttribute('aria-label', 'Pause video');
+                    }
+                    
+                    // In real implementation, would call:
+                    // this.video.play();
+                    
+                    // Simulate progress for demo
+                    this.simulateProgress();
+                }
+            }
+            
+            pause() {
+                this.isPlaying = false;
+                this.element.dataset.playing = 'false';
+                
+                if (this.playIcon && this.pauseIcon) {
+                    this.playIcon.style.display = 'block';
+                    this.pauseIcon.style.display = 'none';
+                }
+                
+                if (this.playPauseBtn) {
+                    this.playPauseBtn.setAttribute('aria-label', 'Play video');
+                }
+                
+                // In real implementation, would call:
+                // if (this.video) this.video.pause();
+                
+                // Stop progress simulation
+                if (this.progressInterval) {
+                    clearInterval(this.progressInterval);
+                }
+            }
+            
+            onPlay() {
+                this.isPlaying = true;
+                this.element.dataset.playing = 'true';
+            }
+            
+            onPause() {
+                this.isPlaying = false;
+                this.element.dataset.playing = 'false';
+            }
+            
+            onEnded() {
+                this.isPlaying = false;
+                this.element.dataset.playing = 'false';
+                
+                if (this.playIcon && this.pauseIcon) {
+                    this.playIcon.style.display = 'block';
+                    this.pauseIcon.style.display = 'none';
+                }
+                
+                // Reset progress
+                if (this.progressBar) {
+                    this.progressBar.style.width = '0%';
+                }
+            }
+            
+            updateProgress() {
+                if (this.video && this.progressBar) {
+                    const progress = (this.video.currentTime / this.video.duration) * 100;
+                    this.progressBar.style.width = `${progress}%`;
+                }
+            }
+            
+            simulateProgress() {
+                // Demo progress animation
+                if (this.progressBar) {
+                    let progress = 0;
+                    this.progressInterval = setInterval(() => {
+                        progress += 1;
+                        this.progressBar.style.width = `${progress}%`;
+                        
+                        if (progress >= 100) {
+                            clearInterval(this.progressInterval);
+                            this.onEnded();
+                        }
+                    }, 100);
+                }
+            }
+            
+            seek(seconds) {
+                if (this.video) {
+                    this.video.currentTime = Math.max(0, 
+                        Math.min(this.video.duration, this.video.currentTime + seconds));
+                }
+            }
+            
+            loadVideo(url) {
+                if (this.video) {
+                    this.setState('loading');
+                    this.video.src = url;
+                    this.video.load();
+                    this.videoUrl = url;
+                }
+            }
+            
+            setButtonStyle(style) {
+                if (this.playPauseBtn) {
+                    this.playPauseBtn.classList.remove('ghost', 'solid');
+                    this.playPauseBtn.classList.add(style);
+                }
+            }
+            
+            setButtonSize(size) {
+                if (this.playPauseBtn) {
+                    this.playPauseBtn.classList.remove('small', 'medium');
+                    this.playPauseBtn.classList.add(size);
+                }
+            }
+        }
+        
+        // Demo Controls
+        function updateVideoSlide() {
+            const aspectRatio = document.getElementById('aspectRatio').value;
+            const state = document.getElementById('slideState').value;
+            const buttonStyle = document.getElementById('buttonStyle').value;
+            const buttonSize = document.getElementById('buttonSize').value;
+            
+            const demoElement = document.getElementById('slideVideoDemo');
+            const videoFrame = document.getElementById('videoFrame');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            
+            // Update aspect ratio
+            videoFrame.classList.remove('aspect-16-9', 'aspect-4-3', 'aspect-1-1', 'aspect-flex');
+            videoFrame.classList.add(`aspect-${aspectRatio}`);
+            
+            // Update state
+            videoFrame.dataset.state = state;
+            
+            // Update button style
+            playPauseBtn.classList.remove('ghost', 'solid');
+            if (buttonStyle === 'solid') {
+                playPauseBtn.classList.add('solid');
+            }
+            
+            // Update button size
+            playPauseBtn.classList.remove('small', 'medium');
+            if (buttonSize === 'small') {
+                playPauseBtn.classList.add('small');
+            }
+            
+            // Disable button in certain states
+            playPauseBtn.disabled = (state === 'loading' || state === 'error');
+        }
+        
+        // Initialize all video slide components on page
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoSlides = document.querySelectorAll('.slide-video-container');
+            videoSlides.forEach(slide => {
+                // Skip the demo slide as it has manual controls
+                if (slide.id !== 'slideVideoDemo') {
+                    new SlideVideo(slide);
+                }
+            });
+            
+            // Demo play button functionality
+            const demoPlayBtn = document.getElementById('playPauseBtn');
+            const demoContainer = document.getElementById('slideVideoDemo');
+            const progressBar = document.getElementById('progressBar');
+            
+            if (demoPlayBtn) {
+                let isPlaying = false;
+                let progressInterval;
+                
+                demoPlayBtn.addEventListener('click', () => {
+                    isPlaying = !isPlaying;
+                    demoContainer.dataset.playing = isPlaying.toString();
+                    
+                    const playIcon = demoPlayBtn.querySelector('.play-icon');
+                    const pauseIcon = demoPlayBtn.querySelector('.pause-icon');
+                    
+                    if (isPlaying) {
+                        playIcon.style.display = 'none';
+                        pauseIcon.style.display = 'block';
+                        demoPlayBtn.setAttribute('aria-label', 'Pause video');
+                        
+                        // Simulate progress
+                        let progress = 0;
+                        progressInterval = setInterval(() => {
+                            progress += 2;
+                            progressBar.style.width = `${progress}%`;
+                            
+                            if (progress >= 100) {
+                                clearInterval(progressInterval);
+                                isPlaying = false;
+                                demoContainer.dataset.playing = 'false';
+                                playIcon.style.display = 'block';
+                                pauseIcon.style.display = 'none';
+                                progressBar.style.width = '0%';
+                                demoPlayBtn.setAttribute('aria-label', 'Play video');
+                            }
+                        }, 100);
+                    } else {
+                        playIcon.style.display = 'block';
+                        pauseIcon.style.display = 'none';
+                        demoPlayBtn.setAttribute('aria-label', 'Play video');
+                        
+                        if (progressInterval) {
+                            clearInterval(progressInterval);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Frame Component</title>
+    
+    <!-- External CSS References -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    
+    <style>
+        /* Component Base Styles */
+        .slide-frame {
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Aspect Ratio Containers */
+        .slide-frame--aspect-16-9 {
+            aspect-ratio: 16 / 9;
+        }
+
+        .slide-frame--aspect-4-3 {
+            aspect-ratio: 4 / 3;
+        }
+
+        .slide-frame--aspect-1-1 {
+            aspect-ratio: 1 / 1;
+        }
+
+        .slide-frame--aspect-flex {
+            /* Flex height adapts to content */
+            height: auto;
+            min-height: 200px;
+        }
+
+        /* State Variations */
+        
+        /* Loading State */
+        .slide-frame--loading {
+            background-color: #eceeef;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Ready State */
+        .slide-frame--ready {
+            background-color: transparent;
+        }
+
+        /* Error State */
+        .slide-frame--error {
+            background-color: #fee2e2;
+        }
+
+        /* Focus State */
+        .slide-frame--focus {
+            background-color: transparent;
+        }
+
+        .slide-frame--focus::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        /* Breakpoint-specific sizing (for demonstration) */
+        .slide-frame--desktop-plus {
+            max-width: 1920px;
+        }
+
+        .slide-frame--desktop {
+            max-width: 1150px;
+        }
+
+        .slide-frame--tablet {
+            max-width: 768px;
+        }
+
+        .slide-frame--mobile {
+            max-width: 380px;
+        }
+
+        /* Content Placeholder */
+        .slide-frame__content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Error Message */
+        .slide-frame__error-message {
+            color: #991b1b;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Loading Skeleton */
+        .slide-frame__skeleton {
+            width: 80%;
+            height: 60%;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+
+        @keyframes skeleton-loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Component Demo Styles */
+        .component-demo {
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .demo-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .demo-label {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Responsive container for demo */
+        .demo-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Component Demonstrations -->
+    <div class="component-demo">
+        <h2>Slide Frame Component</h2>
+
+        <!-- 16:9 Aspect Ratio Examples -->
+        <div class="demo-section">
+            <h3>16:9 Aspect Ratio - All States</h3>
+            <div class="demo-grid">
+                <!-- Loading State -->
+                <div class="demo-item">
+                    <div class="demo-container">
+                        <div class="slide-frame slide-frame--aspect-16-9 slide-frame--loading slide-frame--desktop-plus"
+                             data-aspect-ratio="16:9"
+                             data-breakpoint="desktop-plus"
+                             data-state="loading"
+                             data-node-id="3478:9240">
+                            <div class="slide-frame__content">
+                                <div class="slide-frame__skeleton"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="demo-label">Loading State</p>
+                </div>
+
+                <!-- Ready State -->
+                <div class="demo-item">
+                    <div class="demo-container">
+                        <div class="slide-frame slide-frame--aspect-16-9 slide-frame--ready slide-frame--desktop-plus"
+                             data-aspect-ratio="16:9"
+                             data-breakpoint="desktop-plus"
+                             data-state="ready"
+                             data-node-id="3478:9241">
+                            <div class="slide-frame__content">
+                                <span style="color: #666;">Content Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="demo-label">Ready State</p>
+                </div>
+
+                <!-- Error State -->
+                <div class="demo-item">
+                    <div class="demo-container">
+                        <div class="slide-frame slide-frame--aspect-16-9 slide-frame--error slide-frame--desktop-plus"
+                             data-aspect-ratio="16:9"
+                             data-breakpoint="desktop-plus"
+                             data-state="error"
+                             data-node-id="3478:9242">
+                            <div class="slide-frame__content">
+                                <div class="slide-frame__error-message">Error loading content</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="demo-label">Error State</p>
+                </div>
+
+                <!-- Focus State -->
+                <div class="demo-item">
+                    <div class="demo-container">
+                        <div class="slide-frame slide-frame--aspect-16-9 slide-frame--focus slide-frame--desktop-plus"
+                             data-aspect-ratio="16:9"
+                             data-breakpoint="desktop-plus"
+                             data-state="focus"
+                             data-node-id="3478:9243">
+                            <div class="slide-frame__content">
+                                <span style="color: #666;">Focused</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="demo-label">Focus State</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Different Aspect Ratios -->
+        <div class="demo-section">
+            <h3>Different Aspect Ratios</h3>
+            <div class="demo-grid">
+                <!-- 4:3 -->
+                <div class="demo-item">
+                    <div class="demo-container">
+                        <div class="slide-frame slide-frame--aspect-4-3 slide-frame--ready slide-frame--desktop"
+                             data-aspect-ratio="4:3"
+                             data-breakpoint="desktop"
+                             data-state="ready"
+                             data-node-id="3484:9163">
+                            <div class="slide-frame__content">
+                                <span style="color: #666;">4:3 Aspect</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="demo-label">4:3 Aspect Ratio</p>
+                </div>
+
+                <!-- 1:1 -->
+                <div class="demo-item">
+                    <div class="demo-container">
+                        <div class="slide-frame slide-frame--aspect-1-1 slide-frame--ready slide-frame--desktop"
+                             data-aspect-ratio="1:1"
+                             data-breakpoint="desktop"
+                             data-state="ready"
+                             data-node-id="3486:40">
+                            <div class="slide-frame__content">
+                                <span style="color: #666;">1:1 Square</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="demo-label">1:1 Aspect Ratio</p>
+                </div>
+
+                <!-- Flex -->
+                <div class="demo-item">
+                    <div class="demo-container">
+                        <div class="slide-frame slide-frame--aspect-flex slide-frame--ready slide-frame--desktop"
+                             data-aspect-ratio="flex"
+                             data-breakpoint="desktop"
+                             data-state="ready"
+                             data-node-id="3487:30">
+                            <div class="slide-frame__content">
+                                <div style="padding: 40px;">
+                                    <p style="color: #666;">Flex height content</p>
+                                    <p style="color: #666;">Adapts to content</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="demo-label">Flex Aspect Ratio</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Functional Example -->
+        <div class="demo-section">
+            <h3>Functional State Management Example</h3>
+            <div style="background: white; padding: 40px; border-radius: 8px;">
+                <div class="demo-container">
+                    <div id="functional-frame" 
+                         class="slide-frame slide-frame--aspect-16-9 slide-frame--loading slide-frame--desktop"
+                         data-aspect-ratio="16:9"
+                         data-breakpoint="desktop"
+                         data-state="loading">
+                        <div class="slide-frame__content">
+                            <div class="slide-frame__skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button onclick="frameController.setState('loading')" style="margin: 5px;">Loading</button>
+                    <button onclick="frameController.setState('ready')" style="margin: 5px;">Ready</button>
+                    <button onclick="frameController.setState('error')" style="margin: 5px;">Error</button>
+                    <button onclick="frameController.setState('focus')" style="margin: 5px;">Focus</button>
+                </div>
+                <p style="text-align: center; margin-top: 10px; color: #666;">Current State: <span id="state-indicator">loading</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * SlideFrame Component JavaScript
+         * Manages slide container states and aspect ratios
+         */
+        
+        class SlideFrame {
+            constructor(element, options = {}) {
+                this.element = element;
+                this.contentElement = element.querySelector('.slide-frame__content');
+                
+                // Configuration
+                this.aspectRatio = options.aspectRatio || element.dataset.aspectRatio || '16:9';
+                this.breakpoint = options.breakpoint || element.dataset.breakpoint || 'desktop';
+                this.state = options.state || element.dataset.state || 'loading';
+                this.onStateChange = options.onStateChange || (() => {});
+                
+                this.init();
+            }
+
+            init() {
+                this.applyAspectRatio();
+                this.applyBreakpoint();
+                this.setState(this.state);
+            }
+
+            applyAspectRatio() {
+                // Remove all aspect ratio classes
+                this.element.classList.remove(
+                    'slide-frame--aspect-16-9',
+                    'slide-frame--aspect-4-3',
+                    'slide-frame--aspect-1-1',
+                    'slide-frame--aspect-flex'
+                );
+                
+                // Apply new aspect ratio
+                const aspectClass = this.getAspectRatioClass(this.aspectRatio);
+                this.element.classList.add(aspectClass);
+                this.element.dataset.aspectRatio = this.aspectRatio;
+            }
+
+            getAspectRatioClass(ratio) {
+                const ratioMap = {
+                    '16:9': 'slide-frame--aspect-16-9',
+                    '4:3': 'slide-frame--aspect-4-3',
+                    '1:1': 'slide-frame--aspect-1-1',
+                    'flex': 'slide-frame--aspect-flex'
+                };
+                return ratioMap[ratio] || 'slide-frame--aspect-16-9';
+            }
+
+            applyBreakpoint() {
+                // Remove all breakpoint classes
+                this.element.classList.remove(
+                    'slide-frame--desktop-plus',
+                    'slide-frame--desktop',
+                    'slide-frame--tablet',
+                    'slide-frame--mobile'
+                );
+                
+                // Apply new breakpoint
+                const breakpointClass = this.getBreakpointClass(this.breakpoint);
+                this.element.classList.add(breakpointClass);
+                this.element.dataset.breakpoint = this.breakpoint;
+            }
+
+            getBreakpointClass(breakpoint) {
+                const breakpointMap = {
+                    'desktop-plus': 'slide-frame--desktop-plus',
+                    'desktop': 'slide-frame--desktop',
+                    'tablet': 'slide-frame--tablet',
+                    'mobile': 'slide-frame--mobile'
+                };
+                return breakpointMap[breakpoint] || 'slide-frame--desktop';
+            }
+
+            setState(newState) {
+                const previousState = this.state;
+                
+                // Remove all state classes
+                this.element.classList.remove(
+                    'slide-frame--loading',
+                    'slide-frame--ready',
+                    'slide-frame--error',
+                    'slide-frame--focus'
+                );
+                
+                // Apply new state
+                this.state = newState;
+                this.element.classList.add(`slide-frame--${newState}`);
+                this.element.dataset.state = newState;
+                
+                // Update content based on state
+                this.updateContent(newState);
+                
+                // Trigger callback
+                this.onStateChange({
+                    currentState: newState,
+                    previousState: previousState,
+                    aspectRatio: this.aspectRatio,
+                    breakpoint: this.breakpoint
+                });
+                
+                // Dispatch custom event
+                this.element.dispatchEvent(new CustomEvent('statechange', {
+                    detail: {
+                        currentState: newState,
+                        previousState: previousState
+                    }
+                }));
+            }
+
+            updateContent(state) {
+                if (!this.contentElement) return;
+                
+                switch(state) {
+                    case 'loading':
+                        this.contentElement.innerHTML = '<div class="slide-frame__skeleton"></div>';
+                        break;
+                    case 'ready':
+                        // Content would be set by parent component
+                        if (!this.contentElement.querySelector('.slide-content')) {
+                            this.contentElement.innerHTML = '<span style="color: #666;">Content Ready</span>';
+                        }
+                        break;
+                    case 'error':
+                        this.contentElement.innerHTML = '<div class="slide-frame__error-message">Error loading content</div>';
+                        break;
+                    case 'focus':
+                        if (!this.contentElement.querySelector('.slide-content')) {
+                            this.contentElement.innerHTML = '<span style="color: #666;">Focused</span>';
+                        }
+                        break;
+                }
+            }
+
+            setAspectRatio(ratio) {
+                this.aspectRatio = ratio;
+                this.applyAspectRatio();
+            }
+
+            setBreakpoint(breakpoint) {
+                this.breakpoint = breakpoint;
+                this.applyBreakpoint();
+            }
+
+            // Method to insert custom content
+            setContent(content) {
+                if (this.contentElement) {
+                    if (typeof content === 'string') {
+                        this.contentElement.innerHTML = content;
+                    } else if (content instanceof Node) {
+                        this.contentElement.innerHTML = '';
+                        this.contentElement.appendChild(content);
+                    }
+                }
+            }
+
+            // Method to handle responsive breakpoints automatically
+            handleResponsive() {
+                const width = window.innerWidth;
+                let breakpoint;
+                
+                if (width >= 1920) {
+                    breakpoint = 'desktop-plus';
+                } else if (width >= 1150) {
+                    breakpoint = 'desktop';
+                } else if (width >= 768) {
+                    breakpoint = 'tablet';
+                } else {
+                    breakpoint = 'mobile';
+                }
+                
+                if (breakpoint !== this.breakpoint) {
+                    this.setBreakpoint(breakpoint);
+                }
+            }
+        }
+
+        // Initialize functional example
+        let frameController;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const functionalFrame = document.getElementById('functional-frame');
+            const stateIndicator = document.getElementById('state-indicator');
+            
+            if (functionalFrame) {
+                frameController = new SlideFrame(functionalFrame, {
+                    onStateChange: (data) => {
+                        if (stateIndicator) {
+                            stateIndicator.textContent = data.currentState;
+                        }
+                        console.log('Frame state changed:', data);
+                    }
+                });
+                
+                // Make controller globally available for demo buttons
+                window.frameController = frameController;
+            }
+        });
+
+        /**
+         * Factory function for creating SlideFrame programmatically
+         */
+        function createSlideFrame(config = {}) {
+            const {
+                aspectRatio = '16:9',
+                breakpoint = 'desktop',
+                state = 'loading'
+            } = config;
+
+            const frame = document.createElement('div');
+            frame.className = 'slide-frame';
+            frame.dataset.aspectRatio = aspectRatio;
+            frame.dataset.breakpoint = breakpoint;
+            frame.dataset.state = state;
+
+            const content = document.createElement('div');
+            content.className = 'slide-frame__content';
+            frame.appendChild(content);
+
+            return new SlideFrame(frame, config);
+        }
+
+        // Export for use in other components
+        if (typeof module !== 'undefined' && module.exports) {
+            module.exports = { SlideFrame, createSlideFrame };
+        }
+    </script>
+</body>
+</html>

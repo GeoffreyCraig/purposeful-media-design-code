@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Icon Display Molecule - Purposeful Media</title>
+    
+    <!-- Import stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/molecules-ui-icon-display.css">
+    
+    <style>
+        /* Demo styles only */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .demo-section h2 {
+            color: #1B1464;
+            border-bottom: 2px solid #D4AF37;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+        }
+        
+        .demo-section h3 {
+            color: #1B1464;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .demo-item {
+            text-align: center;
+            padding: 20px 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .demo-item p {
+            margin: 0;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .demo-row {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            flex-wrap: wrap;
+        }
+        
+        .demo-dark {
+            background: #1B1464;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .demo-teal {
+            background: #39CCCC;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .demo-code {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px;
+            border-left: 4px solid #D4AF37;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .demo-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #1B1464;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .demo-button:hover {
+            background: #D4AF37;
+            color: #1B1464;
+        }
+        
+        .interactive-demo {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .interactive-controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .control-group label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #1B1464;
+        }
+        
+        .control-group select {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .icon-preview {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+            background: white;
+            border-radius: 8px;
+            border: 2px dashed #ccc;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: #1B1464;
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #d14;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-section">
+        <h2>UI Icon Display Molecule Component</h2>
+        <p>A flexible, reusable UI icon component with size, color, and direction variants. Use this molecule for navigation icons, buttons, and interactive elements throughout the site.</p>
+        
+        <p><strong>Key Features:</strong></p>
+        <ul>
+            <li>9 UI icons optimized for interface elements</li>
+            <li>5 color variants (navy, gold, gray, white, teal)</li>
+            <li>4 size variants (16px, 24px, 32px, 48px)</li>
+            <li>Arrow icon with directional rotation support</li>
+            <li>CSS filter-based coloring (single sprite sheet)</li>
+            <li>Optional interactive hover states</li>
+        </ul>
+    </div>
+    
+    <!-- Size Variants Demo -->
+    <div class="demo-section">
+        <h2>Size Variants</h2>
+        <div class="demo-row">
+            <div>
+                <div class="ui-icon-display ui-icon-display--small" data-icon="search" data-color="navy"></div>
+                <p>Small (16px)</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--medium" data-icon="search" data-color="navy"></div>
+                <p>Medium (24px)</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--large" data-icon="search" data-color="navy"></div>
+                <p>Large (32px)</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="search" data-color="navy"></div>
+                <p>X-Large (48px)</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Color Variants Demo -->
+    <div class="demo-section">
+        <h2>Color Variants</h2>
+        <div class="demo-row">
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="check" data-color="navy"></div>
+                <p>Navy</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="check" data-color="gold"></div>
+                <p>Gold</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="check" data-color="gray"></div>
+                <p>Gray</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="check" data-color="teal"></div>
+                <p>Teal</p>
+            </div>
+            <div class="demo-dark">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="check" data-color="white"></div>
+                <p style="color: white; margin-top: 10px;">White</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Arrow Direction Demo -->
+    <div class="demo-section">
+        <h2>Arrow Direction Variants</h2>
+        <p>The arrow icon supports rotation via <code>data-direction</code> attribute.</p>
+        <div class="demo-row">
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="navy" data-direction="up"></div>
+                <p>Up</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="navy" data-direction="right"></div>
+                <p>Right</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="navy" data-direction="down"></div>
+                <p>Down</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="navy" data-direction="left"></div>
+                <p>Left</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- All Available Icons -->
+    <div class="demo-section">
+        <h2>Available Icons - Navy Variant</h2>
+        <div class="demo-grid">
+            <div class="demo-item">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="search" data-color="navy"></div>
+                <p>search</p>
+            </div>
+            <div class="demo-item">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="navy"></div>
+                <p>arrow-up</p>
+            </div>
+            <div class="demo-item">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="play" data-color="navy"></div>
+                <p>play</p>
+            </div>
+            <div class="demo-item">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="pause" data-color="navy"></div>
+                <p>pause</p>
+            </div>
+            <div class="demo-item">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="hamburger" data-color="navy"></div>
+                <p>hamburger</p>
+            </div>
+            <div class="demo-item">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="close" data-color="navy"></div>
+                <p>close</p>
+            </div>
+            <div class="demo-item">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="diamond" data-color="navy"></div>
+                <p>diamond</p>
+            </div>
+            <div class="demo-item">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="check" data-color="navy"></div>
+                <p>check</p>
+            </div>
+            <div class="demo-item">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="dot" data-color="navy"></div>
+                <p>dot</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Interactive Hover Demo -->
+    <div class="demo-section">
+        <h2>Interactive Icons with Hover States</h2>
+        <p>Add <code>ui-icon-display--interactive</code> class for hover color changes.</p>
+        <div class="demo-row">
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge ui-icon-display--interactive" data-icon="search" data-color="navy"></div>
+                <p>Hover to see gold</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge ui-icon-display--interactive" data-icon="play" data-color="gray"></div>
+                <p>Hover to see navy</p>
+            </div>
+            <div>
+                <div class="ui-icon-display ui-icon-display--xlarge ui-icon-display--interactive" data-icon="close" data-color="teal"></div>
+                <p>Hover to see navy</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Button Examples -->
+    <div class="demo-section">
+        <h2>Usage in Buttons</h2>
+        <div class="demo-row">
+            <button class="demo-button">
+                <span class="ui-icon-display ui-icon-display--small" data-icon="search" data-color="white"></span>
+                <span>Search</span>
+            </button>
+            
+            <button class="demo-button">
+                <span class="ui-icon-display ui-icon-display--small" data-icon="play" data-color="white"></span>
+                <span>Play Video</span>
+            </button>
+            
+            <button class="demo-button">
+                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="white"></span>
+                <span>Confirm</span>
+            </button>
+            
+            <button class="demo-button">
+                <span>Next</span>
+                <span class="ui-icon-display ui-icon-display--small" data-icon="arrow-up" data-color="white" data-direction="right"></span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Interactive Demo -->
+    <div class="demo-section">
+        <h2>Interactive Demo</h2>
+        <div class="interactive-demo">
+            <div class="interactive-controls">
+                <div class="control-group">
+                    <label for="iconSelect">Icon:</label>
+                    <select id="iconSelect">
+                        <option value="search">Search</option>
+                        <option value="arrow-up">Arrow</option>
+                        <option value="play">Play</option>
+                        <option value="pause">Pause</option>
+                        <option value="hamburger">Hamburger</option>
+                        <option value="close">Close</option>
+                        <option value="diamond">Diamond</option>
+                        <option value="check">Check</option>
+                        <option value="dot">Dot</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="sizeSelect">Size:</label>
+                    <select id="sizeSelect">
+                        <option value="small">Small (16px)</option>
+                        <option value="medium" selected>Medium (24px)</option>
+                        <option value="large">Large (32px)</option>
+                        <option value="xlarge">X-Large (48px)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="colorSelect">Color:</label>
+                    <select id="colorSelect">
+                        <option value="navy">Navy</option>
+                        <option value="gold">Gold</option>
+                        <option value="gray">Gray</option>
+                        <option value="white">White</option>
+                        <option value="teal">Teal</option>
+                    </select>
+                </div>
+                
+                <div class="control-group" id="directionGroup" style="display: none;">
+                    <label for="directionSelect">Direction:</label>
+                    <select id="directionSelect">
+                        <option value="up">Up</option>
+                        <option value="right">Right</option>
+                        <option value="down">Down</option>
+                        <option value="left">Left</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="icon-preview" id="iconPreview">
+                <div class="ui-icon-display ui-icon-display--medium" data-icon="search" data-color="navy" id="demoIcon"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Reference Table -->
+    <div class="demo-section">
+        <h2>Quick Reference</h2>
+        
+        <h3>Available Icons (9 total)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Icon Name</th>
+                    <th>data-icon Value</th>
+                    <th>Special Features</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Search</td><td><code>search</code></td><td>-</td></tr>
+                <tr><td>Arrow Up</td><td><code>arrow-up</code></td><td>Supports <code>data-direction</code></td></tr>
+                <tr><td>Play</td><td><code>play</code></td><td>-</td></tr>
+                <tr><td>Pause</td><td><code>pause</code></td><td>-</td></tr>
+                <tr><td>Hamburger</td><td><code>hamburger</code></td><td>Menu icon</td></tr>
+                <tr><td>Close</td><td><code>close</code></td><td>X icon</td></tr>
+                <tr><td>Diamond</td><td><code>diamond</code></td><td>Bullet/marker</td></tr>
+                <tr><td>Check</td><td><code>check</code></td><td>Checkmark</td></tr>
+                <tr><td>Dot</td><td><code>dot</code></td><td>Circle/indicator</td></tr>
+            </tbody>
+        </table>
+        
+        <h3>Available Sizes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Size Class</th>
+                    <th>Dimensions</th>
+                    <th>Use Case</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><code>ui-icon-display--small</code></td><td>16px × 16px</td><td>Inline text, small buttons</td></tr>
+                <tr><td><code>ui-icon-display--medium</code></td><td>24px × 24px</td><td>Standard buttons, navigation</td></tr>
+                <tr><td><code>ui-icon-display--large</code></td><td>32px × 32px</td><td>Headers, prominent buttons</td></tr>
+                <tr><td><code>ui-icon-display--xlarge</code></td><td>48px × 48px</td><td>Hero sections, floating buttons</td></tr>
+            </tbody>
+        </table>
+        
+        <h3>Available Colors</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Color Name</th>
+                    <th>data-color Value</th>
+                    <th>Hex Code</th>
+                    <th>Use Case</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Navy</td><td><code>navy</code></td><td>#1B1464</td><td>Primary brand color</td></tr>
+                <tr><td>Gold</td><td><code>gold</code></td><td>#D4AF37</td><td>Accent/CTA elements</td></tr>
+                <tr><td>Gray</td><td><code>gray</code></td><td>#6C757D</td><td>Neutral/secondary actions</td></tr>
+                <tr><td>White</td><td><code>white</code></td><td>#FFFFFF</td><td>Dark backgrounds, reversed sections</td></tr>
+                <tr><td>Teal</td><td><code>teal</code></td><td>#39CCCC</td><td>Secondary accent, links</td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Usage Examples -->
+    <div class="demo-section">
+        <h2>Code Examples</h2>
+        
+        <h3>Basic Usage</h3>
+        <div class="demo-code">&lt;div class="ui-icon-display ui-icon-display--medium" data-icon="search" data-color="navy"&gt;&lt;/div&gt;</div>
+        
+        <h3>Arrow with Direction</h3>
+        <div class="demo-code">&lt;div class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gold" data-direction="right"&gt;&lt;/div&gt;</div>
+        
+        <h3>Interactive Icon</h3>
+        <div class="demo-code">&lt;div class="ui-icon-display ui-icon-display--medium ui-icon-display--interactive" data-icon="close" data-color="gray"&gt;&lt;/div&gt;</div>
+        
+        <h3>In a Button</h3>
+        <div class="demo-code">&lt;button class="my-button"&gt;
+    &lt;span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="white"&gt;&lt;/span&gt;
+    &lt;span&gt;Confirm&lt;/span&gt;
+&lt;/button&gt;</div>
+        
+        <h3>JavaScript Initialization</h3>
+        <div class="demo-code">// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const icons = document.querySelectorAll('.ui-icon-display');
+    icons.forEach(icon => {
+        const iconName = icon.getAttribute('data-icon');
+        const color = icon.getAttribute('data-color');
+        if (iconName && color) {
+            // Icons are styled via CSS - no JS classes needed
+            // Optional: Add any custom initialization here
+        }
+    });
+});</div>
+        
+        <h3>Dynamic Icon Update</h3>
+        <div class="demo-code">function updateIcon(element, iconName, color, direction = null) {
+    element.setAttribute('data-icon', iconName);
+    element.setAttribute('data-color', color);
+    
+    // Update size class if needed
+    element.className = `ui-icon-display ui-icon-display--medium`;
+    
+    // Add direction for arrows
+    if (direction && iconName === 'arrow-up') {
+        element.setAttribute('data-direction', direction);
+    }
+}</div>
+    </div>
+    
+    <script>
+        // Initialize all ui-icon-display elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const icons = document.querySelectorAll('.ui-icon-display');
+            console.log(`Initialized ${icons.length} UI icons`);
+        });
+        
+        // Interactive demo controller
+        const iconSelect = document.getElementById('iconSelect');
+        const sizeSelect = document.getElementById('sizeSelect');
+        const colorSelect = document.getElementById('colorSelect');
+        const directionSelect = document.getElementById('directionSelect');
+        const directionGroup = document.getElementById('directionGroup');
+        const demoIcon = document.getElementById('demoIcon');
+        const iconPreview = document.getElementById('iconPreview');
+        
+        function updateDemoIcon() {
+            const icon = iconSelect.value;
+            const size = sizeSelect.value;
+            const color = colorSelect.value;
+            const direction = directionSelect.value;
+            
+            // Show/hide direction control for arrow icon
+            if (icon === 'arrow-up') {
+                directionGroup.style.display = 'flex';
+            } else {
+                directionGroup.style.display = 'none';
+            }
+            
+            // Update icon attributes
+            demoIcon.setAttribute('data-icon', icon);
+            demoIcon.setAttribute('data-color', color);
+            demoIcon.className = `ui-icon-display ui-icon-display--${size}`;
+            
+            if (icon === 'arrow-up') {
+                demoIcon.setAttribute('data-direction', direction);
+            } else {
+                demoIcon.removeAttribute('data-direction');
+            }
+            
+            // Update preview background for white icons
+            if (color === 'white') {
+                iconPreview.style.background = '#1B1464';
+            } else {
+                iconPreview.style.background = 'white';
+            }
+        }
+        
+        // Attach event listeners
+        iconSelect.addEventListener('change', updateDemoIcon);
+        sizeSelect.addEventListener('change', updateDemoIcon);
+        colorSelect.addEventListener('change', updateDemoIcon);
+        directionSelect.addEventListener('change', updateDemoIcon);
+        
+        // Initial setup
+        updateDemoIcon();
+    </script>
+</body>
+</html>
+

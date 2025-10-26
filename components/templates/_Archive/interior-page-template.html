@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Purposeful Media Promotions - Strategic B2B marketing solutions for sustainable business growth.">
+    <meta name="author" content="Purposeful Media Promotions">
+    <title>Interior Page - Purposeful Media Promotions</title>
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Design System Styles (Consolidated) -->
+    <link rel="stylesheet" href="../../dist/css/purposeful-main.min.css">
+    
+    <!-- Interior Page Template Styles -->
+    <link rel="stylesheet" href="../../styles/templates/interior-page.css">
+    
+    <!-- Banner Header Component Styles (Inline - from working component) -->
+    <style>
+        /* Banner Header Main - WORKING VERSION */
+        .banner-header-main {
+            width: 100%;
+            height: 125px;
+            background-color: #1b1464;
+            border-bottom: 4px solid #d4af37;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+            overflow: visible !important;
+        }
+        
+        .banner-header-main__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .banner-header-main__logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-header-main__logo-link:hover {
+            opacity: 0.85;
+        }
+        
+        .banner-header-main__logo {
+            display: none;
+            height: auto;
+        }
+        
+        .banner-header-main__menu-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+            overflow: visible !important;
+            position: relative;
+        }
+        
+        .main-menu {
+            background-color: transparent;
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            position: relative;
+            overflow: visible !important;
+        }
+        
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(40px, 5vw, 80px);
+            padding: 0;
+            min-height: auto;
+            overflow: visible !important;
+            position: relative;
+        }
+        
+        .desktop-nav .menu-item {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        .desktop-nav .menu-item-dropdown {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            z-index: 1001;
+        }
+        
+        .desktop-nav .menu-text {
+            display: inline-block;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        
+        .desktop-nav .menu-item:hover,
+        .desktop-nav .menu-item-dropdown:hover .menu-text {
+            color: #DCBE5D;
+        }
+        
+        .desktop-nav .menu-item.active,
+        .desktop-nav .menu-item-dropdown.active .menu-text {
+            color: #B39226;
+        }
+        
+        .dropdown-container {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 280px;
+            z-index: 9999 !important;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            margin-top: 12px;
+        }
+        
+        .dropdown-container.open {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+        
+        .dropdown-menu {
+            background-color: #ECEEEF !important;
+            border-radius: 8px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important;
+            padding: 32px;
+            padding-right: 64px;
+            display: block !important;
+            font-family: 'Lato', sans-serif;
+            min-height: 150px;
+            position: relative;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dropdown-menu:hover {
+            background-color: #F4EBCD !important;
+        }
+        
+        .menu-item-dropdown.active .dropdown-menu {
+            background-color: #F4EBCD !important;
+        }
+        
+        .dropdown-menu .dropdown-item {
+            display: block !important;
+            color: #1B1464 !important;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin: 0 0 16px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            font-weight: 800;
+            background-color: transparent;
+        }
+        
+        .dropdown-menu .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dropdown-menu .dropdown-item:hover {
+            color: #1D50DE !important;
+        }
+        
+        .dropdown-menu .dropdown-item.active {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+            color: #1B1464 !important;
+            margin-left: -32px;
+            margin-right: -64px;
+            padding-left: 48px;
+            padding-right: 80px;
+            border-radius: 4px;
+        }
+        
+        .dropdown-menu .dropdown-item.active:hover {
+            color: #1D50DE !important;
+        }
+        
+        .mobile-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0;
+            min-height: auto;
+        }
+        
+        .hamburger-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+        }
+        
+        .hamburger-button svg {
+            width: 45px;
+            height: auto;
+        }
+        
+        .hamburger-icon {
+            display: block;
+        }
+        
+        .close-icon {
+            display: none;
+        }
+        
+        .menu-open .hamburger-icon {
+            display: none;
+        }
+        
+        .menu-open .close-icon {
+            display: block;
+        }
+        
+        .mobile-accordion {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ECEEEF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .mobile-accordion.active {
+            display: block;
+            max-height: 800px;
+            padding: 20px 24px;
+        }
+        
+        .mobile-accordion:hover {
+            background-color: #F4EBCD !important;
+        }
+        
+        .mobile-accordion.has-active-page {
+            background-color: #F4EBCD !important;
+        }
+        
+        .mobile-accordion .accordion-section {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-accordion .accordion-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mobile-accordion .accordion-header {
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 45px;
+            cursor: pointer;
+            padding: 10px 10px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        .mobile-accordion .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .mobile-accordion .accordion-header.active {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        .mobile-accordion .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion .accordion-content.active {
+            max-height: 300px;
+            padding-top: 10px;
+        }
+        
+        .mobile-accordion .accordion-item {
+            display: block;
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 10px 10px 10px 30px;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        .mobile-accordion .accordion-item:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .mobile-accordion .accordion-item.active {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        /* Logo responsive display */
+        .banner-header-main__logo--mobile {
+            display: block;
+            width: 179px;
+            height: 89px;
+            object-fit: contain;
+        }
+        
+        .banner-header-main__logo--tablet {
+            display: none;
+            width: 417px;
+            height: 89px;
+        }
+        
+        .banner-header-main__logo--desktop {
+            display: none;
+            width: 460px;
+            height: 89px;
+        }
+        
+        @media (max-width: 767px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+                height: 100%;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .banner-header-main .mobile-accordion {
+                position: fixed;
+                top: 129px;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--mobile { display: none; }
+            .banner-header-main__logo--tablet { display: block; }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .banner-header-main .mobile-accordion {
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .banner-header-main__container {
+                padding: 0 36px 0 24px;
+            }
+            
+            .banner-header-main__logo--tablet { display: none; }
+            .banner-header-main__logo--desktop { display: block; }
+            
+            .banner-header-main__menu-container {
+                max-width: 886px;
+                min-width: 615px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 48px;
+            }
+            
+            .desktop-nav .menu-item,
+            .desktop-nav .menu-item-dropdown {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .dropdown-menu .dropdown-item {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        @media (min-width: 1920px) {
+            .banner-header-main__container {
+                max-width: 1900px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            .banner-header-main__logo--tablet { display: none; }
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 481px;
+                height: 93px;
+            }
+            
+            .banner-header-main__menu-container {
+                width: 894px;
+                padding-right: 32px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 80px;
+            }
+        }
+        
+        /* Newsletter Button Styling - Apply Primary Button Design */
+        .form-newsletter__submit {
+            /* Base Button Styles */
+            display: inline-block;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid #1B1464;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            user-select: none;
+            
+            /* Primary Button Colors */
+            background-color: #1B1464;
+            color: #FFFFFF;
+            border-color: #1B1464;
+            
+            /* Button Size */
+            padding: 16px 24px;
+            min-width: 120px;
+        }
+        
+        .form-newsletter__submit:hover:not(:disabled) {
+            background-color: #36448F;
+            border-color: #36448F;
+        }
+        
+        .form-newsletter__submit:active:not(:disabled) {
+            background-color: #0B1F57;
+            border-color: #0B1F57;
+        }
+        
+        .form-newsletter__submit:disabled {
+            background-color: #E2E8F0;
+            color: #6C757D;
+            border-color: #E2E8F0;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="interior-page">
+    <!-- Header Section -->
+    <header class="header-main">
+        <!-- Banner Header Component -->
+        <div class="banner-header-main">
+            <div class="banner-header-main__container">
+                <!-- Logo -->
+                <a href="/" class="banner-header-main__logo-link" aria-label="Purposeful Media Promotions Home">
+                    <!-- Mobile Logo -->
+                    <img 
+                        src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                        alt="Purposeful Media Promotions" 
+                        class="banner-header-main__logo banner-header-main__logo--mobile"
+                    >
+                    <!-- Tablet Logo -->
+                    <img 
+                        src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg" 
+                        alt="Purposeful Media Promotions" 
+                        class="banner-header-main__logo banner-header-main__logo--tablet"
+                    >
+                    <!-- Desktop/DesktopPlus Logo -->
+                    <img 
+                        src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg" 
+                        alt="Purposeful Media Promotions" 
+                        class="banner-header-main__logo banner-header-main__logo--desktop"
+                    >
+                </a>
+                
+                <!-- Menu Container -->
+                <div class="banner-header-main__menu-container">
+                    <!-- Main Menu Component (Integrated) -->
+                    <nav class="main-menu" role="navigation" aria-label="Main navigation">
+                        
+                        <!-- Desktop Navigation -->
+                        <div class="desktop-nav">
+                            <a href="/" class="menu-item" data-page="home">Home</a>
+                            
+                            <div class="menu-item-dropdown" data-page="solutions">
+                                <span class="menu-text">Solutions</span>
+                                <div class="dropdown-container">
+                                    <div class="dropdown-menu">
+                                        <a href="/email-management" class="dropdown-item">Email Management</a>
+                                        <a href="/content-creation" class="dropdown-item">Content Creation</a>
+                                        <a href="/webinar-production" class="dropdown-item">Webinar Production</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-item-dropdown" data-page="resources">
+                                <span class="menu-text">Resources</span>
+                                <div class="dropdown-container">
+                                    <div class="dropdown-menu">
+                                        <a href="/resource-library" class="dropdown-item">Resource Library</a>
+                                        <a href="/about-us" class="dropdown-item">About Us</a>
+                                        <a href="/blog" class="dropdown-item">Blog</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="/contact" class="menu-item" data-page="contact">Contact</a>
+                        </div>
+                        
+                        <!-- Mobile/Tablet Navigation -->
+                        <div class="mobile-nav">
+                            <button class="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                                <svg class="hamburger-icon" width="46" height="54" viewBox="0 0 46 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="0.135254" y="3" width="45" height="8" rx="4" fill="white"/>
+                                    <rect x="0.135254" y="23" width="45" height="8" rx="4" fill="white"/>
+                                    <rect x="0.135254" y="43" width="45" height="8" rx="4" fill="white"/>
+                                </svg>
+                                <svg class="close-icon" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="5.13525" y="35.9706" width="45" height="8" rx="4" transform="rotate(-45 5.13525 35.9706)" fill="white"/>
+                                    <rect x="10.7916" y="4.31421" width="45" height="8" rx="4" transform="rotate(45 10.7916 4.31421)" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Mobile Accordion Menu -->
+                        <div class="mobile-accordion">
+                            <div class="accordion-section">
+                                <a href="/" class="accordion-header no-dropdown" data-page="home">Home</a>
+                            </div>
+                            
+                            <div class="accordion-section">
+                                <div class="accordion-header" data-accordion="solutions">Solutions</div>
+                                <div class="accordion-content" id="solutions-content">
+                                    <a href="/email-management" class="accordion-item">Email Management</a>
+                                    <a href="/content-creation" class="accordion-item">Content Creation</a>
+                                    <a href="/webinar-production" class="accordion-item">Webinar Production</a>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-section">
+                                <div class="accordion-header" data-accordion="resources">Resources</div>
+                                <div class="accordion-content" id="resources-content">
+                                    <a href="/resource-library" class="accordion-item">Resource Library</a>
+                                    <a href="/about-us" class="accordion-item">About Us</a>
+                                    <a href="/blog" class="accordion-item">Blog</a>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-section">
+                                <a href="/contact" class="accordion-header no-dropdown" data-page="contact">Contact</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1 class="hero-title">LOREM IPSUM DOLOR SIT AMET</h1>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Main Heading -->
+            <h1 class="main-heading">LOREM IPSUM DOLOR SIT AMET</h1>
+            
+            <!-- Content Sections -->
+            <div class="content-sections">
+                <!-- Section 1 -->
+                <section class="content-section">
+                    <h2 class="section-heading">SED DO EIUSMOD TEMPOR INCIDIDUNT</h2>
+                    <p class="section-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p class="section-text">
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </section>
+
+                <!-- Section 2 -->
+                <section class="content-section">
+                    <h2 class="section-heading">TURPIS EGESTAS INTEGER EGET ALIQUET NIBH PRAESENT TRISTIQUE</h2>
+                    <p class="section-text">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                    </p>
+                    <p class="section-text">
+                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </p>
+                </section>
+
+                <!-- Section 3 -->
+                <section class="content-section">
+                    <h2 class="section-heading">FERMENTUM POSUERE URNA NEC TINCIDUNT</h2>
+                    <p class="section-text">
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+                    </p>
+                    <ul class="section-list">
+                        <li>Similique sunt in culpa qui officia deserunt mollitia animi</li>
+                        <li>Id est laborum et dolorum fuga</li>
+                        <li>Et harum quidem rerum facilis est et expedita distinctio</li>
+                        <li>Nam libero tempore cum soluta nobis est eligendi</li>
+                    </ul>
+                </section>
+
+                <!-- Section 4 -->
+                <section class="content-section">
+                    <h2 class="section-heading">FERMENTUM POSUERE URNA NEC TINCIDUNT</h2>
+                    <p class="section-text">
+                        Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                    </p>
+                    <ul class="section-list">
+                        <li>Itaque earum rerum hic tenetur a sapiente delectus</li>
+                        <li>Ut aut reiciendis voluptatibus maiores alias</li>
+                        <li>Consequatur aut perferendis doloribus asperiores repellat</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Horizontal Separator -->
+            <div class="content-separator"></div>
+
+            <!-- Your Next Step Section -->
+            <section class="next-step-section">
+                <div class="next-step-content">
+                    <div class="next-step-icon">
+                                <!-- Contact icon using icon-display molecule -->
+                        <div class="icon-display" data-icon="contact" data-color="white"></div>
+                            </div>
+                    <div class="next-step-text">
+                        <!-- Headline -->
+                        <h2 class="next-step-title">YOUR NEXT STEP</h2>
+                            <!-- Subtitle -->
+                        <p class="next-step-subtitle">Book a free consultation or ask us any question.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Cards Section -->
+            <section class="content-cards">
+                <div class="cards-container">
+                    <!-- Card 1 -->
+                    <div class="content-card">
+                        <h3 class="card-heading">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR</h3>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        </p>
+                        <p class="card-text">
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                        </p>
+                        <button class="btn btn-accent">DOWNLOAD</button>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="content-card">
+                        <h3 class="card-heading">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR</h3>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        </p>
+                        <p class="card-text">
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                        </p>
+                        <button class="btn btn-brand">BOOK YOUR CALL</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer-responsive">
+        <!-- DESKTOP/TABLET FOOTER (768px and up) -->
+        <div class="footer-main" data-breakpoint="responsive">
+            <div class="footer-container">
+                <!-- Logo Section -->
+                <div class="footer-logo-section">
+                    <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                         alt="Purposeful Media Promotions" 
+                         class="footer-logo">
+                </div>
+
+                <!-- Footer Content Columns -->
+                <div class="footer-content">
+                    <!-- Column 1: Services -->
+                    <div class="footer-column" data-column="services">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Services</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a></li>
+                                    <li><a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a></li>
+                                    <li><a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a></li>
+                                    <li><span class="footer-menu-link disabled">Succession Planning [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Business Unit Growth [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Who We Serve -->
+                    <div class="footer-column" data-column="who-we-serve">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Who We Serve</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><span class="footer-menu-link disabled">Revenue Growth [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Preparing for Exit [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Plan a Webinar [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Resources -->
+                    <div class="footer-column" data-column="resources">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Resources</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/blog" class="footer-menu-link">Read Our Blog</a></li>
+                                    <li><a href="/resources/thought-leadership" class="footer-menu-link">Thought Leadership</a></li>
+                                    <li><span class="footer-menu-link disabled">Pricing [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Company & Newsletter -->
+                    <div class="footer-column" data-column="company-newsletter">
+                        <!-- Company Menu -->
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Company</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/about" class="footer-menu-link">About Us</a></li>
+                                    <li><a href="/contact" class="footer-menu-link">Contact Us</a></li>
+                                    <li><a href="/privacy" class="footer-menu-link">Privacy Policy</a></li>
+                                    <li><span class="footer-menu-link disabled">Affiliates [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Newsletter Form -->
+                        <div class="footer-newsletter">
+                          <form class="form-newsletter">
+                                <h4 class="form-newsletter__title">Stay Connected</h4>
+                                <p class="form-newsletter__description">
+                                    Share your email address and get our B2B marketing strategies and digital transformation inspirations in your inbox.
+                                </p>
+                                <div class="form-newsletter__field">
+                                    <label for="footer-email" class="form-newsletter__label">Email Address*</label>
+                                    <input type="email" 
+                                           id="footer-email" 
+                                           class="form-newsletter__input" 
+                                           placeholder="Enter your email"
+                                           required>
+                                    <span class="form-newsletter__helper">*This field is required.</span>
+                                </div>
+                                <div class="form-newsletter__submit-wrapper">
+                                    <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attribution Sub-footer -->
+            <div class="footer-attribution">
+                <div class="footer-attribution-content">
+                    <span class="footer-copyright">© All rights reserved 2025</span>
+                    <span class="footer-divider">|</span>
+                    <span class="footer-company">Purposeful Media Promotions</span>
+                    <span class="footer-divider">|</span>
+                    <a href="/policy" class="footer-policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE FOOTER (767px and below) -->
+        <div class="footer-mobile">
+            <div class="footer-mobile__top">
+                <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                     alt="Purposeful Media Promotions" 
+                     class="footer-mobile__logo">
+            </div>
+            
+            <nav class="footer-mobile__nav">
+                <!-- Services -->
+                <div class="footer-mobile__nav-item" data-dropdown="services">
+                    <span class="footer-mobile__nav-text">Services</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Services Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-services">
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/email-marketing" class="dropdown-mobile__link">Email Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/webinar-production" class="dropdown-mobile__link">Webinar Production</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/inbound-marketing" class="dropdown-mobile__link">Inbound Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Succession Planning</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Business Unit Growth</span>
+                    </div>
+                </div>
+                
+                <!-- Who We Serve -->
+                <div class="footer-mobile__nav-item" data-dropdown="who-we-serve">
+                    <span class="footer-mobile__nav-text">Who We Serve</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Who We Serve Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-who-we-serve">	
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Revenue Growth</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Preparing for Exit</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Plan a Webinar</span>
+                    </div>
+                </div>
+                
+                <!-- Resources -->
+                <div class="footer-mobile__nav-item" data-dropdown="resources">
+                    <span class="footer-mobile__nav-text">Resources</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Resources Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-resources">
+                    <div class="dropdown-mobile__item">
+                        <a href="/blog" class="dropdown-mobile__link">Read Our Blog</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/resources/thought-leadership" class="dropdown-mobile__link">Thought Leadership</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Pricing</span>
+                    </div>
+                </div>
+                
+                <!-- Company -->
+                <div class="footer-mobile__nav-item" data-dropdown="company">
+                    <span class="footer-mobile__nav-text">Company</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+                
+                <!-- Company Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-company">
+                    <div class="dropdown-mobile__item">
+                        <a href="/about" class="dropdown-mobile__link">About Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/contact" class="dropdown-mobile__link">Contact Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/privacy" class="dropdown-mobile__link">Privacy Policy</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Affiliates [Coming Soon]</span>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Newsletter Form for Mobile -->
+            <div class="footer-mobile__newsletter">
+                <form class="form-newsletter form-newsletter--size-mobile">
+                    <h4 class="form-newsletter__title">Stay Connected</h4>
+                    <p class="form-newsletter__description">
+                        Get B2B marketing strategies and digital transformation inspiration in your inbox.
+                    </p>
+                    <div class="form-newsletter__field">
+                        <label for="footer-mobile-email" class="form-newsletter__label">Email Address*</label>
+                        <input type="email" 
+                               id="footer-mobile-email" 
+                               class="form-newsletter__input" 
+                               placeholder="Enter your email"
+                               required>
+                        <span class="form-newsletter__helper">*This field is required.</span>
+                    </div>
+                    <div class="form-newsletter__submit-wrapper">
+                        <button type="submit" class="form-newsletter__submit">SUBSCRIBE</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="footer-mobile__attribution">
+                <div class="footer-mobile__attribution-content">
+                    <div class="footer-mobile__company">Purposeful Media Promotions</div>
+                    <a href="/policy" class="footer-mobile__policy">Policy Statement</a>
+                    <div class="footer-mobile__copyright">© All rights reserved 2025</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Design System JavaScript (Consolidated) -->
+    <script src="../../dist/js/purposeful-main.min.js"></script>
+    
+    <!-- Page-Specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize icon display for this page
+            const icons = document.querySelectorAll('.icon-display');
+            icons.forEach(icon => {
+                const iconName = icon.getAttribute('data-icon');
+                const color = icon.getAttribute('data-color');
+                if (iconName && color) {
+                    icon.classList.add(`icon--${iconName}-${color}`);
+                }
+            });
+            
+            // Desktop dropdown functionality (matching working component)
+            const menuDropdowns = document.querySelectorAll('.desktop-nav .menu-item-dropdown');
+            
+            menuDropdowns.forEach(item => {
+                const menuText = item.querySelector('.menu-text');
+                const dropdown = item.querySelector('.dropdown-container');
+                
+                if (menuText && dropdown) {
+                    menuText.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close all other dropdowns first
+                        document.querySelectorAll('.dropdown-container').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('open');
+                    });
+                }
+            });
+            
+            // Click outside to close all dropdowns
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-item-dropdown')) {
+                    document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside the dropdown menu
+            document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Mobile menu toggle
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const mobileAccordion = document.querySelector('.mobile-accordion');
+            const mainMenu = document.querySelector('.main-menu');
+            
+            if (hamburgerButton) {
+                hamburgerButton.addEventListener('click', function() {
+                    const isOpen = mobileAccordion.classList.contains('active');
+                    mobileAccordion.classList.toggle('active', !isOpen);
+                    mainMenu.classList.toggle('menu-open', !isOpen);
+                    hamburgerButton.setAttribute('aria-expanded', !isOpen);
+                });
+            }
+            
+            // Mobile accordion functionality
+            document.querySelectorAll('.accordion-header[data-accordion]').forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionId = this.dataset.accordion;
+                    const content = document.getElementById(accordionId + '-content');
+                    if (content) {
+                        content.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

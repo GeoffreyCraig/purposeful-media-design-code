@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card/BannerSpacer - Simple Variants</title>
+    
+    <!-- External CSS Files -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    
+    <style>
+        /* Base component structure for all Card/BannerSpacer variants */
+        .card-banner-spacer {
+            position: relative;
+            width: 100%;
+        }
+        
+        .banner-spacer-content {
+            padding: 12px 16px;
+            box-sizing: border-box;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            min-height: 40px; /* Ensure minimum height for spacer variant */
+        }
+        
+        /* ===========================================
+           VARIANT: Spacer (Gradient, no text)
+           =========================================== */
+        .card-banner-spacer.variant-spacer {
+            background: linear-gradient(to bottom, #ffffff 0%, #1b1464 100%);
+            min-height: 40px;
+        }
+        
+        .card-banner-spacer.variant-spacer .banner-spacer-content {
+            min-height: 40px;
+            padding: 20px 16px; /* Slightly more padding for visual space */
+        }
+        
+        /* ===========================================
+           VARIANT: HeadlineBanner (Navy bg, white text, gold bottom border)
+           =========================================== */
+        .card-banner-spacer.variant-headline-banner {
+            background-color: var(--color-brand, #1b1464);
+            border-bottom: 4px solid var(--color-accent, #d4af37);
+        }
+        
+        .variant-headline-banner .banner-headline {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900; /* Heavy */
+            text-transform: uppercase;
+            color: var(--color-reverse, #ffffff);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        /* ===========================================
+           VARIANT: HeadlineReverse (White bg, navy text, navy top border)
+           =========================================== */
+        .card-banner-spacer.variant-headline-reverse {
+            background-color: #ffffff;
+            border-top: 4px solid var(--color-brand, #1b1464);
+        }
+        
+        .variant-headline-reverse .banner-headline {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900; /* Heavy */
+            text-transform: uppercase;
+            color: var(--color-brand, #1b1464);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        /* ===========================================
+           RESPONSIVE TYPOGRAPHY
+           =========================================== */
+        
+        /* Desktop Plus (1920px+) */
+        @media (min-width: 1920px) {
+            .variant-headline-banner .banner-headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .variant-headline-reverse .banner-headline {
+                font-size: 30px;
+                line-height: 45px;
+            }
+            
+            .banner-spacer-content {
+                max-width: 1920px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* Desktop (1150px - 1919px) */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .variant-headline-banner .banner-headline {
+                font-size: 36px;
+                line-height: 54px;
+            }
+            
+            .variant-headline-reverse .banner-headline {
+                font-size: 30px;
+                line-height: 45px;
+            }
+            
+            .banner-spacer-content {
+                max-width: 1920px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* Tablet (768px - 1149px) */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .variant-headline-banner .banner-headline {
+                font-size: 30px;
+                line-height: 45px;
+            }
+            
+            .variant-headline-reverse .banner-headline {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .banner-spacer-content {
+                max-width: 1150px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* Mobile (up to 767px) */
+        @media (max-width: 767px) {
+            .variant-headline-banner .banner-headline,
+            .variant-headline-reverse .banner-headline {
+                font-size: 24px;
+                line-height: 36px;
+                text-align: center;
+            }
+            
+            .banner-spacer-content {
+                justify-content: center;
+            }
+        }
+        
+        /* ===========================================
+           DEMO STYLES (for testing/preview)
+           =========================================== */
+        .demo-container {
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .demo-label {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: #333;
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Container (remove in production) -->
+    <div class="demo-container">
+        
+        <!-- VARIANT 1: Spacer (Gradient) -->
+        <div class="demo-section">
+            <div class="demo-label">Variant: Spacer (Gradient)</div>
+            <div class="card-banner-spacer variant-spacer" data-component="card-banner-spacer" data-variant="spacer">
+                <div class="banner-spacer-content">
+                    <!-- Empty spacer - no content -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- VARIANT 2: HeadlineBanner -->
+        <div class="demo-section">
+            <div class="demo-label">Variant: HeadlineBanner (Navy/White/Gold)</div>
+            <div class="card-banner-spacer variant-headline-banner" data-component="card-banner-spacer" data-variant="headline-banner">
+                <div class="banner-spacer-content">
+                    <h1 class="banner-headline">H1 Headline 36 54h</h1>
+                </div>
+            </div>
+        </div>
+        
+        <!-- VARIANT 3: HeadlineReverse -->
+        <div class="demo-section">
+            <div class="demo-label">Variant: HeadlineReverse (White/Navy)</div>
+            <div class="card-banner-spacer variant-headline-reverse" data-component="card-banner-spacer" data-variant="headline-reverse">
+                <div class="banner-spacer-content">
+                    <h2 class="banner-headline">H2 Headline 30 45h</h2>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- JavaScript for dynamic variant switching (if needed) -->
+    <script>
+        // Card/BannerSpacer Simple Variants JavaScript
+        
+        /**
+         * Create a BannerSpacer component dynamically
+         * @param {string} variant - The variant type: 'spacer', 'headline-banner', or 'headline-reverse'
+         * @param {string} text - The headline text (not used for spacer variant)
+         * @param {string} headingLevel - The heading level: 'h1', 'h2', 'h3', etc.
+         * @returns {HTMLElement} The created banner spacer element
+         */
+        function createBannerSpacer(variant, text = '', headingLevel = 'h1') {
+            const wrapper = document.createElement('div');
+            wrapper.className = `card-banner-spacer variant-${variant}`;
+            wrapper.setAttribute('data-component', 'card-banner-spacer');
+            wrapper.setAttribute('data-variant', variant);
+            
+            const content = document.createElement('div');
+            content.className = 'banner-spacer-content';
+            
+            // Add headline for non-spacer variants
+            if (variant !== 'spacer' && text) {
+                const heading = document.createElement(headingLevel);
+                heading.className = 'banner-headline';
+                heading.textContent = text;
+                content.appendChild(heading);
+            }
+            
+            wrapper.appendChild(content);
+            return wrapper;
+        }
+        
+        /**
+         * Update an existing banner spacer's text
+         * @param {HTMLElement} element - The banner spacer element
+         * @param {string} newText - The new headline text
+         */
+        function updateBannerText(element, newText) {
+            const headline = element.querySelector('.banner-headline');
+            if (headline) {
+                headline.textContent = newText;
+            }
+        }
+        
+        /**
+         * Switch between variants on an existing element
+         * @param {HTMLElement} element - The banner spacer element
+         * @param {string} newVariant - The new variant type
+         */
+        function switchVariant(element, newVariant) {
+            // Remove existing variant classes
+            element.className = element.className.replace(/variant-[\w-]+/g, '');
+            
+            // Add new variant class
+            element.classList.add(`variant-${newVariant}`);
+            element.setAttribute('data-variant', newVariant);
+            
+            // Handle spacer variant (remove text)
+            if (newVariant === 'spacer') {
+                const headline = element.querySelector('.banner-headline');
+                if (headline) {
+                    headline.remove();
+                }
+            }
+        }
+        
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Card/BannerSpacer Simple Variants loaded');
+            
+            // Example: Add dynamic banners programmatically
+            // const container = document.querySelector('.demo-container');
+            // const newBanner = createBannerSpacer('headline-banner', 'Dynamic Banner Text', 'h2');
+            // container.appendChild(newBanner);
+        });
+    </script>
+</body>
+</html>	

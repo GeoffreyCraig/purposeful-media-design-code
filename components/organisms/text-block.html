@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Block Organism - Purposeful Media Design System</title>
+    
+    <!-- Dependencies -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-icon-display.css">
+    <link rel="stylesheet" href="../../styles/molecules-ui-icon-display.css">
+    <link rel="stylesheet" href="../../styles/organisms-text-block.css">
+</head>
+<body>
+    <!-- ========================================
+         TEXT BLOCK ORGANISM - NARRATIVE LAYOUT
+         ======================================== -->
+    <section class="text-block text-block--narrative" data-layout="narrative" data-breakpoint="desktop">
+        <div class="text-block__container">
+            <article class="text-block__content">
+                
+                <!-- Headline Examples -->
+                <header class="text-block__header">
+                    <h1 class="headline headline--h1">This is the Main Page Headline (H1)</h1>
+                    <p class="paragraph paragraph--lead">This is a lead paragraph that introduces the main content. It uses larger text to draw attention and provide context for what follows. Lead paragraphs are perfect for opening statements and summaries.</p>
+                </header>
+                
+                <!-- Section with H2 -->
+                <section class="text-block__section">
+                    <h2 class="headline headline--h2">Major Section Heading (H2)</h2>
+                    <p class="paragraph paragraph--default">This is a standard paragraph with default styling. It provides clear, readable body text at 18px with proper line height for optimal readability. Use this for most of your content paragraphs throughout the page.</p>
+                    
+                    <p class="paragraph paragraph--default">Multiple paragraphs flow naturally with appropriate spacing between them. The design system ensures consistent vertical rhythm and makes your content easy to scan and digest.</p>
+                </section>
+                
+                <!-- Subsection with H3 -->
+                <section class="text-block__section">
+                    <h3 class="headline headline--h3">Subsection Heading (H3)</h3>
+                    <p class="paragraph paragraph--default">Subsections help organize content into logical groups. This hierarchy makes it easy for readers to understand the structure of your content and find what they're looking for quickly.</p>
+                    
+                    <!-- Icon Integration Example - Symbolic Icon -->
+                    <div class="text-block__icon-callout">
+                        <div class="icon-display icon-display--medium" data-icon="expertise" data-color="navy"></div>
+                        <div class="text-block__icon-callout-content">
+                            <h4 class="headline headline--h4">Expert Insight with Icon (H4)</h4>
+                            <p class="paragraph paragraph--default">This callout demonstrates how symbolic icons from our icon-display molecule can be integrated into text blocks. Icons add visual interest and help break up long passages of text while reinforcing key concepts.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Lists with H4 -->
+                <section class="text-block__section">
+                    <h4 class="headline headline--h4">Detailed Subsection (H4)</h4>
+                    
+                    <!-- Unordered List -->
+                    <h5 class="headline headline--h5">Key Benefits (H5)</h5>
+                    <ul class="text-block__list text-block__list--unordered">
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default">Strategic approach to inbound marketing that attracts qualified leads</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default">Data-driven insights that inform decision-making and optimize performance</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default">Comprehensive content strategy that engages your audience at every stage</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default">Measurable ROI with transparent reporting and analytics</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Ordered List -->
+                    <h5 class="headline headline--h5">Implementation Process (H5)</h5>
+                    <ol class="text-block__list text-block__list--ordered">
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Discovery Phase:</strong> We analyze your current position, target audience, and competitive landscape to understand your unique challenges and opportunities.</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Strategy Development:</strong> Our team creates a customized roadmap aligned with your business goals, including content themes, channel selection, and KPIs.</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Content Creation:</strong> Expert writers and designers produce high-quality assets that resonate with your audience and support your objectives.</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Optimization & Reporting:</strong> Continuous monitoring, testing, and refinement ensure maximum performance and demonstrate clear ROI.</span>
+                        </li>
+                    </ol>
+                </section>
+                
+                <!-- Icon Bullet List Example -->
+                <section class="text-block__section">
+                    <h4 class="headline headline--h4">Services Overview with Icons</h4>
+                    <ul class="text-block__icon-list">
+                        <li class="text-block__icon-list-item">
+                            <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                            <span class="paragraph paragraph--default">Inbound marketing strategy and implementation</span>
+                        </li>
+                        <li class="text-block__icon-list-item">
+                            <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                            <span class="paragraph paragraph--default">Content development and optimization</span>
+                        </li>
+                        <li class="text-block__icon-list-item">
+                            <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                            <span class="paragraph paragraph--default">Marketing automation and lead nurturing</span>
+                        </li>
+                        <li class="text-block__icon-list-item">
+                            <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                            <span class="paragraph paragraph--default">Analytics and performance reporting</span>
+                        </li>
+                    </ul>
+                </section>
+                
+                <!-- Blockquote Example -->
+                <section class="text-block__section">
+                    <blockquote class="text-block__quote">
+                        <div class="quote-container">
+                            <p class="quote quote--large">"Working with this team has transformed our approach to digital marketing. The results speak for themselves: a 300% increase in qualified leads and significantly improved conversion rates."</p>
+                            <cite class="quote-attribution">
+                                <span class="quote-attribution__name">Sarah Thompson</span>
+                                <span class="quote-attribution__role">, VP of Marketing, TechCorp Industries</span>
+                            </cite>
+                        </div>
+                    </blockquote>
+                </section>
+                
+                <!-- H6 and Small Text -->
+                <section class="text-block__section">
+                    <h6 class="headline headline--h6">Additional Details (H6)</h6>
+                    <p class="paragraph paragraph--small">This is small paragraph text used for disclaimers, footnotes, or supplementary information that's important but not primary content. Font size is 12px with appropriate line height.</p>
+                </section>
+                
+                <!-- Inline Text Variations -->
+                <section class="text-block__section">
+                    <h3 class="headline headline--h3">Text Variations and Links</h3>
+                    <p class="paragraph paragraph--default">
+                        Paragraphs can include <strong>bold text for emphasis</strong>, <em>italic text for subtle emphasis</em>, and 
+                        <a href="#" class="text-link text-link--primary">inline text links</a> that follow brand styling. You can also include 
+                        <a href="#" class="text-link text-link--accent">accent-colored links</a> when appropriate.
+                    </p>
+                    
+                    <p class="paragraph paragraph--default">
+                        <span class="icon-display icon-display--small" data-icon="momentum" data-color="navy" style="vertical-align: middle; margin-right: 8px;"></span>
+                        Inline icons can be integrated directly into paragraphs to draw attention to key points or add visual elements without disrupting the reading flow.
+                    </p>
+                </section>
+                
+                <!-- Large Paragraph Variant -->
+                <section class="text-block__section">
+                    <p class="paragraph paragraph--large">This is a large paragraph variant, perfect for callouts, pull quotes, or emphasizing key takeaways. At 24px with semibold weight, it stands out while maintaining readability.</p>
+                </section>
+                
+            </article>
+        </div>
+    </section>
+    
+    <!-- ========================================
+         TEXT BLOCK ORGANISM - PILLAR PAGE LAYOUT
+         ======================================== -->
+    <section class="text-block text-block--pillar" data-layout="pillar" data-breakpoint="desktop" style="background-color: #F6F6F7; margin-top: 40px;">
+        <div class="text-block__container">
+            <article class="text-block__content">
+                
+                <header class="text-block__header">
+                    <h1 class="headline headline--h1">Ultimate Guide to Inbound Marketing</h1>
+                    <p class="paragraph paragraph--lead">A comprehensive resource covering everything you need to know about attracting, engaging, and delighting customers through strategic inbound marketing.</p>
+                </header>
+                
+                <!-- Table of Contents -->
+                <nav class="text-block__toc">
+                    <h2 class="headline headline--h4">In This Guide</h2>
+                    <ol class="text-block__toc-list">
+                        <li class="text-block__toc-item">
+                            <a href="#section-1" class="text-link text-link--primary">What is Inbound Marketing?</a>
+                        </li>
+                        <li class="text-block__toc-item">
+                            <a href="#section-2" class="text-link text-link--primary">The Inbound Methodology</a>
+                        </li>
+                        <li class="text-block__toc-item">
+                            <a href="#section-3" class="text-link text-link--primary">Building Your Strategy</a>
+                        </li>
+                        <li class="text-block__toc-item">
+                            <a href="#section-4" class="text-link text-link--primary">Measuring Success</a>
+                        </li>
+                    </ol>
+                </nav>
+                
+                <!-- Content Section with Icons -->
+                <section class="text-block__section" id="section-1">
+                    <h2 class="headline headline--h2">What is Inbound Marketing?</h2>
+                    
+                    <p class="paragraph paragraph--default">Inbound marketing is a business methodology that attracts customers by creating valuable content and experiences tailored to them. Unlike outbound marketing, which interrupts your audience with content they don't want, inbound marketing forms connections they're looking for and solves problems they already have.</p>
+                    
+                    <!-- Icon Grid Example -->
+                    <div class="text-block__icon-grid">
+                        <div class="text-block__icon-grid-item">
+                            <div class="icon-display icon-display--large" data-icon="attract" data-color="navy"></div>
+                            <h4 class="headline headline--h5">Attract</h4>
+                            <p class="paragraph paragraph--default">Draw in the right people with valuable content and conversations that establish you as a trusted advisor.</p>
+                        </div>
+                        <div class="text-block__icon-grid-item">
+                            <div class="icon-display icon-display--large" data-icon="engage" data-color="navy"></div>
+                            <h4 class="headline headline--h5">Engage</h4>
+                            <p class="paragraph paragraph--default">Present insights and solutions that align with their pain points and goals.</p>
+                        </div>
+                        <div class="text-block__icon-grid-item">
+                            <div class="icon-display icon-display--large" data-icon="delight" data-color="navy"></div>
+                            <h4 class="headline headline--h5">Delight</h4>
+                            <p class="paragraph paragraph--default">Provide help and support to empower customers to find success with their purchase.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="text-block__section" id="section-2">
+                    <h2 class="headline headline--h2">The Inbound Methodology</h2>
+                    <p class="paragraph paragraph--default">The inbound methodology is the approach to growing your organization by building meaningful, lasting relationships with consumers, prospects, and customers.</p>
+                    
+                    <h3 class="headline headline--h3">Core Principles</h3>
+                    <ul class="text-block__icon-list">
+                        <li class="text-block__icon-list-item">
+                            <span class="ui-icon-display ui-icon-display--small" data-icon="diamond" data-color="navy"></span>
+                            <span class="paragraph paragraph--default"><strong>Value-Driven Content:</strong> Create resources that genuinely help your audience solve problems</span>
+                        </li>
+                        <li class="text-block__icon-list-item">
+                            <span class="ui-icon-display ui-icon-display--small" data-icon="diamond" data-color="navy"></span>
+                            <span class="paragraph paragraph--default"><strong>Personalized Experiences:</strong> Tailor your messaging to different buyer personas and stages</span>
+                        </li>
+                        <li class="text-block__icon-list-item">
+                            <span class="ui-icon-display ui-icon-display--small" data-icon="diamond" data-color="navy"></span>
+                            <span class="paragraph paragraph--default"><strong>Data-Informed Decisions:</strong> Use analytics to understand what works and optimize accordingly</span>
+                        </li>
+                        <li class="text-block__icon-list-item">
+                            <span class="ui-icon-display ui-icon-display--small" data-icon="diamond" data-color="navy"></span>
+                            <span class="paragraph paragraph--default"><strong>Continuous Improvement:</strong> Test, learn, and refine your approach based on results</span>
+                        </li>
+                    </ul>
+                </section>
+                
+            </article>
+        </div>
+    </section>
+    
+    <!-- ========================================
+         TEXT BLOCK ORGANISM - TOPIC LAYOUT
+         ======================================== -->
+    <section class="text-block text-block--topic" data-layout="topic" data-breakpoint="desktop" style="margin-top: 40px;">
+        <div class="text-block__container">
+            <article class="text-block__content">
+                
+                <header class="text-block__header">
+                    <h1 class="headline headline--h1">Content Marketing Strategies for B2B</h1>
+                    <div class="text-block__meta">
+                        <span class="paragraph paragraph--small">Published: October 7, 2025</span>
+                        <span class="paragraph paragraph--small">Reading Time: 8 minutes</span>
+                        <span class="paragraph paragraph--small">Category: Strategy</span>
+                    </div>
+                </header>
+                
+                <section class="text-block__section">
+                    <p class="paragraph paragraph--lead">In today's digital landscape, content marketing has become essential for B2B companies looking to attract and convert qualified leads. This article explores proven strategies that drive results.</p>
+                    
+                    <h2 class="headline headline--h2">Why Content Marketing Matters</h2>
+                    <p class="paragraph paragraph--default">Content marketing is not just about creating blog posts—it's about establishing thought leadership, building trust, and guiding prospects through their buyer journey. Companies that excel at content marketing generate significantly more leads and enjoy higher conversion rates.</p>
+                    
+                    <!-- Mixed Content Example -->
+                    <div class="text-block__highlight">
+                        <div class="icon-display icon-display--medium" data-icon="roi" data-color="gold"></div>
+                        <div class="text-block__highlight-content">
+                            <p class="paragraph paragraph--large">Companies with blogs generate 67% more leads than those without.</p>
+                            <p class="paragraph paragraph--small">Source: Industry Research 2024</p>
+                        </div>
+                    </div>
+                    
+                    <h3 class="headline headline--h3">Key Components of Effective Content</h3>
+                    <ol class="text-block__list text-block__list--ordered">
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Audience Research:</strong> Understanding your target personas, their challenges, and information needs</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Strategic Planning:</strong> Developing a content calendar aligned with business objectives and buyer journey stages</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Quality Production:</strong> Creating well-researched, professionally written content that provides genuine value</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Distribution & Promotion:</strong> Ensuring content reaches the right audience through appropriate channels</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Performance Analysis:</strong> Measuring engagement, conversions, and ROI to inform future efforts</span>
+                        </li>
+                    </ol>
+                    
+                    <h3 class="headline headline--h3">Content Formats That Convert</h3>
+                    <p class="paragraph paragraph--default">Different content formats serve different purposes throughout the buyer journey. Here's a breakdown of what works best:</p>
+                    
+                    <ul class="text-block__list text-block__list--unordered">
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Blog Posts:</strong> Great for SEO, thought leadership, and addressing common questions</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Whitepapers & Guides:</strong> Perfect for lead generation and demonstrating deep expertise</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Case Studies:</strong> Showcase real results and build credibility with potential customers</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Webinars:</strong> Enable interactive engagement and position your team as experts</span>
+                        </li>
+                        <li class="text-block__list-item">
+                            <span class="paragraph paragraph--default"><strong>Video Content:</strong> Highly engaging format for explaining complex concepts</span>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section class="text-block__section">
+                    <h2 class="headline headline--h2">Getting Started</h2>
+                    <p class="paragraph paragraph--default">Ready to elevate your content marketing? Start by auditing your current content, identifying gaps, and developing a strategic plan aligned with your business goals. Remember: consistency and quality trump quantity every time.</p>
+                    
+                    <p class="paragraph paragraph--default">
+                        <a href="#" class="text-link text-link--accent">Download our Content Marketing Planning Template</a> to begin building your strategy today.
+                    </p>
+                </section>
+                
+                <!-- Helper Text Example -->
+                <footer class="text-block__footer">
+                    <p class="paragraph paragraph--helper">Note: This article is part of our ongoing series on digital marketing best practices. Subscribe to receive new insights delivered to your inbox weekly.</p>
+                </footer>
+                
+            </article>
+        </div>
+    </section>
+    
+    <!-- Demo Information Section -->
+    <section style="background-color: #1B1464; color: white; padding: 60px 20px; margin-top: 60px; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-family: 'Lato', sans-serif; font-size: 30px; margin-bottom: 20px;">Text Block Organism Documentation</h2>
+            <p style="font-family: 'Open Sans', sans-serif; font-size: 18px; line-height: 27px; margin-bottom: 20px;">
+                This component demonstrates all typography variants, list styles, icon integrations, and layout patterns available in the Purposeful Media Design System. It's fully responsive and WordPress-compatible.
+            </p>
+            <p style="font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 24px;">
+                <strong>Layouts:</strong> Narrative (blog posts), Pillar Page (comprehensive guides), Topic (focused articles)<br>
+                <strong>Typography:</strong> H1-H6, Lead/Default/Small paragraphs, Lists, Blockquotes<br>
+                <strong>Icons:</strong> Symbolic (icon-display) and UI (ui-icon-display) molecules<br>
+                <strong>Responsive:</strong> Mobile (380-767px), Tablet (768-1149px), Desktop (1150-1919px), Desktop+ (1920px+)
+            </p>
+        </div>
+    </section>
+    
+</body>
+</html>

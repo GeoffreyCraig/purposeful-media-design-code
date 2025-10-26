@@ -1,0 +1,416 @@
+/* ============================================
+   ORGANISMS - Section/FAQ Group
+   Purposeful Media Design System
+   Version: 1.0
+   Updated: October 2025
+   Dependencies: variables-v2.0-20250915.css, molecules-cards.css
+   
+   Component: Section/FAQ Group
+   Purpose: FAQ accordion section with responsive container
+   Breakpoints: Mobile, Tablet, Desktop, DesktopPlus
+   ============================================ */
+
+/* Import dependencies */
+@import url('variables-v2.0-20250915.css');
+
+/* ===========================================
+   Section: FAQ Group - Base Styles
+   =========================================== */
+
+.section-faq-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    /* Outer section can have optional background image or color */
+    background-color: transparent; /* Or white, or image */
+}
+
+/* FAQ Container - Centers content, provides padding */
+.section-faq-group .faq-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the inner items container */
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    /* This is the WHITE/transparent container that provides spacing */
+    background-color: transparent;
+}
+
+/* FAQ Items - Gray background container that hugs the cards */
+.section-faq-group .faq-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: var(--color-neutral-100, #eceeef);
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    /* Border radius will be set per breakpoint */
+}
+
+/* ===========================================
+   FAQ Card Component Integration
+   =========================================== */
+
+/* Base FAQ Card Styles (from molecules) */
+.section-faq-group .card-faq {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+.section-faq-group .card-faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+.section-faq-group .card-faq__question-text {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 21px;
+    line-height: 30.5px;
+    color: var(--color-neutral-600, #51585e);
+    flex: 1;
+    min-width: 0;
+}
+
+.section-faq-group .card-faq__arrow {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 45px;
+    color: var(--color-neutral-600, #51585e);
+    width: 45px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+    flex-shrink: 0;
+}
+
+.section-faq-group .card-faq__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    box-sizing: border-box;
+}
+
+.section-faq-group .card-faq__answer-content {
+    padding: 8px 8px 8px 32px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--color-neutral-600, #51585e);
+    box-sizing: border-box;
+}
+
+/* Hover State */
+.section-faq-group .card-faq:not(.card-faq--open) .card-faq__question:hover {
+    background-color: var(--color-accent-100, #f4ebcd);
+    box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Open State */
+.section-faq-group .card-faq--open .card-faq__arrow {
+    transform: rotate(90deg);
+}
+
+.section-faq-group .card-faq--open .card-faq__answer {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* ===========================================
+   DesktopPlus Breakpoint (1920px+)
+   =========================================== */
+
+.section-faq-group--desktop-plus {
+    min-width: 1920px;
+    width: 100%;
+    /* Optional: Add background image or pattern here */
+    /* background-image: url('../../assets/patterns/faq-background.svg'); */
+    /* background-position: center; */
+    /* background-size: cover; */
+}
+
+.section-faq-group--desktop-plus .faq-container {
+    max-width: 1200px;
+    width: 1200px;
+    padding: 24px 64px;
+    margin: 0 auto;
+}
+
+.section-faq-group--desktop-plus .faq-items {
+    width: auto; /* Don't fill the container width */
+    padding: 16px 80px;
+    border-radius: 64px;
+}
+
+.section-faq-group--desktop-plus .card-faq {
+    padding: 16px 12px;
+}
+
+/* Special handling for expanded card in DesktopPlus */
+.section-faq-group--desktop-plus .card-faq--open .card-faq__question {
+    padding-right: 12px;
+}
+
+.section-faq-group--desktop-plus .card-faq--open .card-faq__arrow {
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===========================================
+   Desktop Breakpoint (1150-1919px)
+   =========================================== */
+
+.section-faq-group--desktop {
+    width: 100%;
+}
+
+.section-faq-group--desktop .faq-container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 24px 64px;
+    margin: 0 auto;
+}
+
+.section-faq-group--desktop .faq-items {
+    width: 100%; /* Fill container at this breakpoint */
+    padding: 16px 96px;
+    border-radius: 64px;
+}
+
+.section-faq-group--desktop .card-faq {
+    padding: 16px 12px;
+}
+
+.section-faq-group--desktop .card-faq__question {
+    padding-left: 12px;
+    padding-right: 24px;
+}
+
+/* ===========================================
+   Tablet Breakpoint (768-1149px)
+   =========================================== */
+
+.section-faq-group--tablet {
+    width: 100%;
+}
+
+.section-faq-group--tablet .faq-container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 24px 64px;
+    margin: 0 auto;
+}
+
+.section-faq-group--tablet .faq-items {
+    width: 100%;
+    padding: 16px 48px;
+    border-radius: 48px; /* Reduced radius for tablet */
+}
+
+.section-faq-group--tablet .card-faq {
+    padding: 12px 12px 12px 12px;
+}
+
+.section-faq-group--tablet .card-faq__question {
+    padding: 8px 12px;
+}
+
+/* ===========================================
+   Mobile Breakpoint (380-767px)
+   =========================================== */
+
+.section-faq-group--mobile {
+    width: 100%;
+}
+
+.section-faq-group--mobile .faq-container {
+    max-width: 767px;
+    min-width: 380px;
+    width: 100%;
+    padding: 24px 16px; /* Reduced padding on mobile */
+    margin: 0 auto;
+}
+
+.section-faq-group--mobile .faq-items {
+    width: 100%;
+    padding: 16px 32px;
+    border-radius: 32px; /* Smallest radius for mobile */
+}
+
+.section-faq-group--mobile .card-faq {
+    padding: 8px 12px;
+}
+
+.section-faq-group--mobile .card-faq__question {
+    padding-left: 12px;
+    padding-right: 24px;
+}
+
+/* ===========================================
+   Auto-responsive Classes (Production)
+   =========================================== */
+
+/* These classes automatically apply the right styles based on viewport */
+@media (min-width: 1920px) {
+    .section-faq-group:not([data-breakpoint]) {
+        min-width: 1920px;
+    }
+    
+    .section-faq-group:not([data-breakpoint]) .faq-container {
+        max-width: 1200px;
+        width: 1200px;
+        padding: 24px 64px;
+        margin: 0 auto;
+    }
+    
+    .section-faq-group:not([data-breakpoint]) .faq-items {
+        width: auto;
+        padding: 16px 80px;
+        border-radius: 64px;
+    }
+    
+    .section-faq-group:not([data-breakpoint]) .card-faq {
+        padding: 16px 12px;
+    }
+}
+
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .section-faq-group:not([data-breakpoint]) .faq-container {
+        max-width: 1200px;
+        width: 100%;
+        padding: 24px 64px;
+        margin: 0 auto;
+    }
+    
+    .section-faq-group:not([data-breakpoint]) .faq-items {
+        width: 100%;
+        padding: 16px 96px;
+        border-radius: 64px;
+    }
+    
+    .section-faq-group:not([data-breakpoint]) .card-faq {
+        padding: 16px 12px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1149px) {
+    .section-faq-group:not([data-breakpoint]) .faq-container {
+        max-width: 1200px;
+        width: 100%;
+        padding: 24px 64px;
+        margin: 0 auto;
+    }
+    
+    .section-faq-group:not([data-breakpoint]) .faq-items {
+        width: 100%;
+        padding: 16px 48px;
+        border-radius: 48px;
+    }
+    
+    .section-faq-group:not([data-breakpoint]) .card-faq {
+        padding: 12px 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-faq-group:not([data-breakpoint]) .faq-container {
+        max-width: 767px;
+        min-width: 380px;
+        width: 100%;
+        padding: 24px 16px;
+        margin: 0 auto;
+    }
+    
+    .section-faq-group:not([data-breakpoint]) .faq-items {
+        width: 100%;
+        padding: 16px 32px;
+        border-radius: 32px;
+    }
+    
+    .section-faq-group:not([data-breakpoint]) .card-faq {
+        padding: 8px 12px;
+    }
+}
+
+/* ===========================================
+   Visual Debug Classes (Remove in production)
+   =========================================== */
+
+/* Uncomment these to see container boundaries during development */
+/*
+.section-faq-group {
+    border: 2px dashed red;
+}
+
+.section-faq-group .faq-container {
+    border: 2px dashed blue;
+}
+
+.section-faq-group .faq-items {
+    border: 2px solid green;
+}
+*/
+
+/* ===========================================
+   Accessibility Enhancements
+   =========================================== */
+
+.section-faq-group .card-faq__question:focus {
+    outline: 2px solid var(--color-primary-500, #1d50de);
+    outline-offset: 2px;
+}
+
+.section-faq-group .card-faq__question:focus-visible {
+    outline: 2px solid var(--color-primary-500, #1d50de);
+    outline-offset: 2px;
+}
+
+/* Skip animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .section-faq-group .card-faq__arrow,
+    .section-faq-group .card-faq__answer,
+    .section-faq-group .card-faq__question {
+        transition: none;
+    }
+}
+
+/* ===========================================
+   Print Styles
+   =========================================== */
+
+@media print {
+    .section-faq-group .card-faq--open .card-faq__answer {
+        max-height: none !important;
+        opacity: 1 !important;
+    }
+    
+    .section-faq-group .card-faq__arrow {
+        display: none;
+    }
+    
+    .section-faq-group .faq-items {
+        background-color: transparent;
+        border: 1px solid #ccc;
+    }
+}

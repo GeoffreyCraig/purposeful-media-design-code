@@ -1,0 +1,107 @@
+.slide-image,
+.slide-image * {
+  box-sizing: border-box;
+}
+.slide-image {
+  background: #ffffff;
+  border-radius: var(--space-2, 0.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.slide-frame {
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0, 0rem);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22rem;
+  height: 12.375rem;
+  position: relative;
+  overflow: hidden;
+}
+.caption-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(27, 20, 100, 1) 100%
+  );
+  padding: var(--space-4, 1rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 0.5rem);
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  width: 22rem;
+  height: 12.375rem;
+  position: absolute;
+  left: 0rem;
+  bottom: 0rem;
+  overflow: hidden;
+}
+.headline {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-0, 0rem);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.h-4 {
+  color: var(--reverse, #ffffff);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 1.3125rem;
+  line-height: 1.90625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+}
+.paragraph {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 20.4375rem;
+  position: relative;
+}
+.paragraph-text-18-27-h {
+  color: var(--reverse, #ffffff);
+  text-align: center;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  font-weight: 400;
+  position: relative;
+  flex: 1;
+}
+/* variant styles */
+.slide-image.aspect-ratio-4-3 .slide-frame,
+.slide-image.aspect-ratio-4-3 .caption-overlay {
+  height: 16.5rem;
+}
+.slide-image.aspect-ratio-1-1 .slide-frame,
+.slide-image.aspect-ratio-1-1 .caption-overlay {
+  height: 22rem;
+}
+.slide-image.aspect-ratio-flex .slide-frame,
+.slide-image.aspect-ratio-flex.break-point-desktop-plus .caption-overlay,
+.slide-image.aspect-ratio-flex.break-point-desktop .caption-overlay,
+.slide-image.aspect-ratio-flex.break-point-mobile .caption-overlay {
+  height: 9.75rem;
+}
+.slide-image.aspect-ratio-16-9.break-point-desktop {
+  align-self: unset;
+}

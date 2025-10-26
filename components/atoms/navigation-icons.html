@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Icons Component System - Purposeful Media</title>
+    <style>
+        /* Import brand colors from design tokens */
+        :root {
+            --color-primary: #1B1464;
+            --color-accent: #D4AF37;
+            --color-teal: #39CCCC;
+            --color-gray: #6C757D;
+            --color-white: #FFFFFF;
+            --color-dark: #0B1F57;
+            --bg-light: #F7FAFC;
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            padding: 2rem;
+            background-color: var(--bg-light);
+        }
+
+        /* =======================================
+           SPRITE ICON SYSTEM
+           ======================================= */
+        
+        /* Base icon class */
+        .ui-icon {
+            display: inline-block;
+            background-image: url('../../assets/svg/ui-icons/purposeful-sprite-ui.svg');
+            background-repeat: no-repeat;
+            background-size: 1536px 1024px; /* 6 columns x 4 rows of 256px icons */
+        }
+        /* Standard icon sizes - scale down from 256px source */
+        .ui-icon--small {
+            width: 16px;
+            height: 16px;
+            background-size: 96px 64px; /* 1536/16 = 96, 1024/16 = 64 */
+        }
+
+        .ui-icon--medium {
+            width: 24px;
+            height: 24px;
+            background-size: 144px 96px; /* 1536/10.67 = 144, 1024/10.67 = 96 */
+        }
+
+        .ui-icon--large {
+    		width: 32px;
+    		height: 32px;
+    		background-size: 384px 256px;  /* 2x bigger than before */
+		}
+
+        .ui-icon--xlarge {
+            width: 48px;
+            height: 48px;
+            background-size: 288px 192px; /* 1536/5.33 = 288, 1024/5.33 = 192 */
+        }
+
+        /* =======================================
+           ICON POSITIONING - ROW 1
+           ======================================= */
+        
+        /* Search Icons */
+        .ui-icon--search-blue.ui-icon--small { background-position: 0 0; }
+        .ui-icon--search-blue.ui-icon--medium { background-position: 0 0; }
+        .ui-icon--arrow-blue.ui-icon--large { background-position: -192px 0; }
+        .ui-icon--search-blue.ui-icon--xlarge { background-position: 0 0; }
+		
+        .ui-icon--search-white.ui-icon--small { background-position: -16px 0; }
+        .ui-icon--search-white.ui-icon--medium { background-position: -24px 0; }
+        .ui-icon--search-white.ui-icon--large { background-position: -32px 0; }
+        .ui-icon--search-white.ui-icon--xlarge { background-position: -48px 0; }
+
+        .ui-icon--search-gray.ui-icon--small { background-position: -32px 0; }
+        .ui-icon--search-gray.ui-icon--medium { background-position: -48px 0; }
+        .ui-icon--search-gray.ui-icon--large { background-position: -64px 0; }
+        .ui-icon--search-gray.ui-icon--xlarge { background-position: -96px 0; }
+
+        /* Arrow Icons */
+        .ui-icon--arrow-blue.ui-icon--small { background-position: -48px 0; }
+        .ui-icon--arrow-blue.ui-icon--medium { background-position: -72px 0; }
+        .ui-icon--arrow-blue.ui-icon--large { background-position: -96 0; }
+        .ui-icon--arrow-blue.ui-icon--xlarge { background-position: -144px 0; }
+
+        .ui-icon--arrow-gray.ui-icon--small { background-position: -64px 0; }
+        .ui-icon--arrow-gray.ui-icon--medium { background-position: -96px 0; }
+        .ui-icon--arrow-gray.ui-icon--large { background-position: -64px 0; }
+        .ui-icon--arrow-gray.ui-icon--xlarge { background-position: -192px 0; }
+
+        .ui-icon--arrow-ghost.ui-icon--small { background-position: -80px 0; }
+        .ui-icon--arrow-ghost.ui-icon--medium { background-position: -120px 0; }
+        .ui-icon--arrow-ghost.ui-icon--large { background-position: -160px 0; }
+        .ui-icon--arrow-ghost.ui-icon--xlarge { background-position: -240px 0; }
+
+        /* =======================================
+           ICON POSITIONING - ROW 2
+           ======================================= */
+        
+        /* Diamond Bullets */
+        .ui-icon--diamond-gold.ui-icon--small { background-position: 0 -16px; }
+        .ui-icon--diamond-gold.ui-icon--medium { background-position: 0 -24px; }
+        .ui-icon--diamond-gold.ui-icon--large { background-position: 0 -32px; }
+        .ui-icon--diamond-gold.ui-icon--xlarge { background-position: 0 -48px; }
+
+        .ui-icon--diamond-blue.ui-icon--small { background-position: -16px -16px; }
+        .ui-icon--diamond-blue.ui-icon--medium { background-position: -24px -24px; }
+        .ui-icon--diamond-blue.ui-icon--large { background-position: -32px -32px; }
+        .ui-icon--diamond-blue.ui-icon--xlarge { background-position: -48px -48px; }
+
+        .ui-icon--diamond-teal.ui-icon--small { background-position: -32px -16px; }
+        .ui-icon--diamond-teal.ui-icon--medium { background-position: -48px -24px; }
+        .ui-icon--diamond-teal.ui-icon--large { background-position: -64px -32px; }
+        .ui-icon--diamond-teal.ui-icon--xlarge { background-position: -96px -48px; }
+
+        .ui-icon--diamond-gray.ui-icon--small { background-position: -48px -16px; }
+        .ui-icon--diamond-gray.ui-icon--medium { background-position: -72px -24px; }
+        .ui-icon--diamond-gray.ui-icon--large { background-position: -96px -32px; }
+        .ui-icon--diamond-gray.ui-icon--xlarge { background-position: -144px -48px; }
+
+        /* Media Controls */
+        .ui-icon--play-button.ui-icon--small { background-position: -64px -16px; }
+        .ui-icon--play-button.ui-icon--medium { background-position: -96px -24px; }
+        .ui-icon--play-button.ui-icon--large { background-position: -128px -32px; }
+        .ui-icon--play-button.ui-icon--xlarge { background-position: -192px -48px; }
+
+        .ui-icon--pause-button.ui-icon--small { background-position: -80px -16px; }
+        .ui-icon--pause-button.ui-icon--medium { background-position: -120px -24px; }
+        .ui-icon--pause-button.ui-icon--large { background-position: -160px -32px; }
+        .ui-icon--pause-button.ui-icon--xlarge { background-position: -240px -48px; }
+
+        /* =======================================
+           ICON POSITIONING - ROW 3
+           ======================================= */
+        
+        /* Check Bullets */
+        .ui-icon--bullet-gold.ui-icon--small { background-position: 0 -32px; }
+        .ui-icon--bullet-gold.ui-icon--medium { background-position: 0 -48px; }
+        .ui-icon--bullet-gold.ui-icon--large { background-position: 0 -64px; }
+        .ui-icon--bullet-gold.ui-icon--xlarge { background-position: 0 -96px; }
+
+        .ui-icon--bullet-blue.ui-icon--small { background-position: -16px -32px; }
+        .ui-icon--bullet-blue.ui-icon--medium { background-position: -24px -48px; }
+        .ui-icon--bullet-blue.ui-icon--large { background-position: -32px -64px; }
+        .ui-icon--bullet-blue.ui-icon--xlarge { background-position: -48px -96px; }
+
+        .ui-icon--bullet-teal.ui-icon--small { background-position: -32px -32px; }
+        .ui-icon--bullet-teal.ui-icon--medium { background-position: -48px -48px; }
+        .ui-icon--bullet-teal.ui-icon--large { background-position: -64px -64px; }
+        .ui-icon--bullet-teal.ui-icon--xlarge { background-position: -96px -96px; }
+
+        .ui-icon--bullet-gray.ui-icon--small { background-position: -48px -32px; }
+        .ui-icon--bullet-gray.ui-icon--medium { background-position: -72px -48px; }
+        .ui-icon--bullet-gray.ui-icon--large { background-position: -96px -64px; }
+        .ui-icon--bullet-gray.ui-icon--xlarge { background-position: -144px -96px; }
+
+        /* Navigation Dots */
+        .ui-icon--dot-gray.ui-icon--small { background-position: -64px -32px; }
+        .ui-icon--dot-gray.ui-icon--medium { background-position: -96px -48px; }
+        .ui-icon--dot-gray.ui-icon--large { background-position: -128px -64px; }
+        .ui-icon--dot-gray.ui-icon--xlarge { background-position: -192px -96px; }
+
+        .ui-icon--dot-gold.ui-icon--small { background-position: -80px -32px; }
+        .ui-icon--dot-gold.ui-icon--medium { background-position: -120px -48px; }
+        .ui-icon--dot-gold.ui-icon--large { background-position: -160px -64px; }
+        .ui-icon--dot-gold.ui-icon--xlarge { background-position: -240px -96px; }
+
+        /* =======================================
+           ICON POSITIONING - ROW 4
+           ======================================= */
+        
+        /* Hamburger Menu Icons */
+        .ui-icon--burger-white.ui-icon--small { background-position: 0 -48px; }
+        .ui-icon--burger-white.ui-icon--medium { background-position: 0 -72px; }
+        .ui-icon--burger-white.ui-icon--large { background-position: 0 -96px; }
+        .ui-icon--burger-white.ui-icon--xlarge { background-position: 0 -144px; }
+
+        .ui-icon--burger-dark.ui-icon--small { background-position: -16px -48px; }
+        .ui-icon--burger-dark.ui-icon--medium { background-position: -24px -72px; }
+        .ui-icon--burger-dark.ui-icon--large { background-position: -32px -96px; }
+        .ui-icon--burger-dark.ui-icon--xlarge { background-position: -48px -144px; }
+
+        .ui-icon--burger-gold.ui-icon--small { background-position: -32px -48px; }
+        .ui-icon--burger-gold.ui-icon--medium { background-position: -48px -72px; }
+        .ui-icon--burger-gold.ui-icon--large { background-position: -64px -96px; }
+        .ui-icon--burger-gold.ui-icon--xlarge { background-position: -96px -144px; }
+
+        /* Close Icons */
+        .ui-icon--close-white.ui-icon--small { background-position: -48px -48px; }
+        .ui-icon--close-white.ui-icon--medium { background-position: -72px -72px; }
+        .ui-icon--close-white.ui-icon--large { background-position: -96px -96px; }
+        .ui-icon--close-white.ui-icon--xlarge { background-position: -144px -144px; }
+
+        .ui-icon--close-gold.ui-icon--small { background-position: -64px -48px; }
+        .ui-icon--close-gold.ui-icon--medium { background-position: -96px -72px; }
+        .ui-icon--close-gold.ui-icon--large { background-position: -128px -96px; }
+        .ui-icon--close-gold.ui-icon--xlarge { background-position: -192px -144px; }
+
+        .ui-icon--close-dark.ui-icon--small { background-position: -80px -48px; }
+        .ui-icon--close-dark.ui-icon--medium { background-position: -120px -72px; }
+        .ui-icon--close-dark.ui-icon--large { background-position: -160px -96px; }
+        .ui-icon--close-dark.ui-icon--xlarge { background-position: -240px -144px; }
+
+        /* =======================================
+           DEMO STYLES
+           ======================================= */
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .demo-section--dark {
+            background: var(--color-primary);
+        }
+
+        .demo-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-section--dark .demo-title {
+            color: white;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .demo-item {
+            text-align: center;
+        }
+
+        .demo-label {
+            display: block;
+            font-size: 12px;
+            color: var(--color-gray);
+            margin-top: 0.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-section--dark .demo-label {
+            color: var(--color-accent);
+        }
+
+        .icon-showcase {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 4px;
+            min-height: 60px;
+            min-width: 60px;
+        }
+
+        .demo-section--dark .icon-showcase {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .size-comparison {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="margin-bottom: 1rem; color: var(--color-primary); font-family: 'Lato', sans-serif; font-weight: 900;">
+            Purposeful Media - Navigation Icons Component System
+        </h1>
+        <p style="margin-bottom: 2rem; color: var(--color-gray); font-size: 16px;">
+            UI navigation icons from sprite sheet. Original size: 256x256px, displayed at various scales.
+        </p>
+
+        <!-- Search Icons -->
+        <div class="demo-section">
+            <h2 class="demo-title">Search Icons</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--search-blue ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Search Blue (32px)</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--search-gray ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Search Gray (32px)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="demo-section">
+            <h2 class="demo-title">Navigation Controls</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--arrow-blue ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Arrow Blue</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--arrow-gray ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Arrow Gray</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--arrow-ghost ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Arrow Ghost</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Media Controls -->
+        <div class="demo-section">
+            <h2 class="demo-title">Media Controls</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--play-button ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Play Button</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--pause-button ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Pause Button</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bullets & Dots -->
+        <div class="demo-section">
+            <h2 class="demo-title">Bullets  Navigation Dots</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--diamond-gold ui-icon--medium"></span>
+                    </div>
+                    <span class="demo-label">Diamond Gold</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--diamond-blue ui-icon--medium"></span>
+                    </div>
+                    <span class="demo-label">Diamond Blue</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--diamond-teal ui-icon--medium"></span>
+                    </div>
+                    <span class="demo-label">Diamond Teal</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--bullet-gold ui-icon--medium"></span>
+                    </div>
+                    <span class="demo-label">Bullet Gold</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--bullet-blue ui-icon--medium"></span>
+                    </div>
+                    <span class="demo-label">Bullet Blue</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--dot-gray ui-icon--small"></span>
+                    </div>
+                    <span class="demo-label">Dot Gray</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--dot-gold ui-icon--small"></span>
+                    </div>
+                    <span class="demo-label">Dot Gold</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Icons on Dark Background -->
+        <div class="demo-section demo-section--dark">
+            <h2 class="demo-title">Menu Icons (Dark Background)</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--burger-white ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Menu White</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--burger-gold ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Menu Gold</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--close-white ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Close White</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--close-gold ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Close Gold</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Size Comparison -->
+        <div class="demo-section">
+            <h2 class="demo-title">Size Variations</h2>
+            <div class="demo-item">
+                <p style="margin-bottom: 1rem; color: var(--color-gray);">Arrow icon at different sizes:</p>
+                <div class="size-comparison">
+                    <div style="text-align: center;">
+                        <div class="icon-showcase">
+                            <span class="ui-icon ui-icon--arrow-blue ui-icon--small"></span>
+                        </div>
+                        <span class="demo-label">Small (16px)</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="icon-showcase">
+                            <span class="ui-icon ui-icon--arrow-blue ui-icon--medium"></span>
+                        </div>
+                        <span class="demo-label">Medium (24px)</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="icon-showcase">
+                            <span class="ui-icon ui-icon--arrow-blue ui-icon--large"></span>
+                        </div>
+                        <span class="demo-label">Large (32px)</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="icon-showcase">
+                            <span class="ui-icon ui-icon--arrow-blue ui-icon--xlarge"></span>
+                        </div>
+                        <span class="demo-label">XLarge (48px)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Light Menu Icons -->
+        <div class="demo-section">
+            <h2 class="demo-title">Menu Icons (Light Background)</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--burger-dark ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Menu Dark</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--close-dark ui-icon--large"></span>
+                    </div>
+                    <span class="demo-label">Close Dark</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="ui-icon ui-icon--search-white ui-icon--large" style="background: var(--color-primary); border-radius: 4px; padding: 8px;"></span>
+                    </div>
+                    <span class="demo-label">Search White (on blue)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Add interactivity for testing
+        document.addEventListener('DOMContentLoaded', () => {
+            // Log sprite path for verification
+            console.log('Sprite sheet should be loaded from: ../../../assets/svg/ui-icons/purposeful-ui-sprite.svg');
+            
+            // Add click handlers to show icon info
+            const icons = document.querySelectorAll('.ui-icon');
+            icons.forEach(icon => {
+                icon.style.cursor = 'pointer';
+                icon.addEventListener('click', function() {
+                    const classes = Array.from(this.classList).join(' ');
+                    console.log('Icon classes:', classes);
+                    
+                    // Visual feedback
+                    this.style.opacity = '0.5';
+                    setTimeout(() => {
+                        this.style.opacity = '1';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

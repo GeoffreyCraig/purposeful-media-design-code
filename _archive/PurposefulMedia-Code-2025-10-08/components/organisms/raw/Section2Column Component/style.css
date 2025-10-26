@@ -1,0 +1,180 @@
+.content-2-column-contact,
+.content-2-column-contact * {
+  box-sizing: border-box;
+}
+.content-2-column-contact {
+  background: var(--secondary, #eceeef);
+  padding: 0.625rem var(--space-16, 4rem) 0.625rem var(--space-16, 4rem);
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-5, 1.25rem);
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+  min-width: 120rem;
+  max-width: 120rem;
+  position: relative;
+  overflow: hidden;
+}
+.column-group {
+  background: var(--primary, #ffffff);
+  padding: var(--space-4, 1rem) var(--space-16, 4rem) var(--space-4, 1rem)
+    var(--space-16, 4rem);
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 84.25rem;
+  position: relative;
+}
+.left-column {
+  background: var(--primary, #ffffff);
+  border-radius: 0.25rem;
+  padding: var(--space-10, 2.5rem) var(--space-12, 3rem) 4rem
+    var(--space-12, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    0.25rem 0.25rem 0.75rem 0rem rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}
+.h-2 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 1.875rem;
+  line-height: 2.8125rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+}
+.lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore-et-dolore-magna-aliqua-turpis-egestas-integer-eget-aliquet-nibh-praesent-tristique-fermentum-posuere-urna-nec-tincidunt-mi-sit-amet-mauris-commodo-quis-imperdiet-massa-ultricies-mi-quis-hendrerit-dolor-magna {
+  color: var(--body, #51585e);
+  text-align: left;
+  font-family: "OpenSans-Regular", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  font-weight: 400;
+  position: relative;
+  align-self: stretch;
+}
+.buttons-button {
+  background: var(--default, #1b1464);
+  border-radius: 0.25rem;
+  padding: 1rem 5rem 1rem 5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.label {
+  color: var(--reverse, #ffffff);
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+.image-column {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 37.5rem;
+  height: 65.4375rem;
+  position: relative;
+}
+/* variant styles */
+.content-2-column-contact.break-point-desktop {
+  min-width: 71.875rem;
+  width: unset;
+}
+.content-2-column-contact.break-point-desktop .column-group {
+  width: 71.75rem;
+}
+.content-2-column-contact.break-point-desktop .image-column {
+  width: 31.25rem;
+  height: 55.75rem;
+}
+.content-2-column-contact.break-point-tablet {
+  padding: 0.625rem var(--space-0, 0rem) 0.625rem var(--space-0, 0rem);
+  justify-content: flex-start;
+  min-width: 48rem;
+  max-width: 71.8125rem;
+  width: unset;
+}
+.content-2-column-contact.break-point-tablet .column-group {
+  width: 71.8125rem;
+}
+.content-2-column-contact.break-point-tablet .left-column {
+  min-width: 31.25rem;
+}
+.content-2-column-contact.break-point-tablet .h-3 {
+  color: var(--heading, #1b1464);
+  text-align: left;
+  font-family: "Lato-Heavy", sans-serif;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  align-self: stretch;
+}
+.content-2-column-contact.break-point-tablet .buttons-button {
+  padding: 0.75rem 4rem 0.75rem 4rem;
+}
+.content-2-column-contact.break-point-tablet .image-column {
+  width: 31.25rem;
+  height: 45.6875rem;
+}
+.content-2-column-contact.break-point-mobile {
+  padding: 0.625rem var(--space-0, 0rem) 0.625rem var(--space-0, 0rem);
+  justify-content: flex-start;
+  min-width: 23.75rem;
+  max-width: 47.9375rem;
+  width: unset;
+}
+.content-2-column-contact.break-point-mobile .column-group {
+  flex-direction: column;
+  flex: 1;
+  flex-shrink: unset;
+  width: unset;
+}
+.content-2-column-contact.break-point-mobile .bottom-column {
+  background: var(--primary, #ffffff);
+  border-radius: 0.25rem;
+  padding: var(--space-10, 2.5rem) var(--space-12, 3rem) 4rem
+    var(--space-12, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 31.25rem;
+  position: relative;
+  box-shadow: var(
+    --shadow-subtle-box-shadow,
+    0.25rem 0.25rem 0.75rem 0rem rgba(0, 0, 0, 0.1)
+  );
+  overflow: hidden;
+}

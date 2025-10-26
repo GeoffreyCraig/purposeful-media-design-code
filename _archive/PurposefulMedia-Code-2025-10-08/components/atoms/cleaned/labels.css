@@ -1,0 +1,226 @@
+/* ==========================================================================
+   LABEL COMPONENT STYLES
+   Purpose: Typography for buttons, form labels, and CTAs
+   Node ID: 1487:1198
+   ========================================================================== */
+
+/* Base Label Setup
+   ========================================================================== */
+   
+.label {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+  font-style: normal;
+  display: inline-block;
+}
+
+/* Text Transform Variants
+   ========================================================================== */
+
+.label.uppercase {
+  text-transform: uppercase;
+}
+
+/* Purpose/Context Variants
+   ========================================================================== */
+
+/* Button Text - Used in button components */
+.label.button {
+  font-weight: 700;
+}
+
+/* Form Labels - Used for form field labels */
+.label.form {
+  font-weight: 800;
+}
+
+/* CTA Text - Used in call-to-action areas */
+.label.cta {
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Color Variants for Button Text
+   ========================================================================== */
+
+.label.button.default {
+  color: #FFFFFF; /* White on colored background */
+}
+
+.label.button.light {
+  color: #C7CBCF; /* Muted gray */
+}
+
+.label.button.reverse {
+  color: #1B1464; /* Brand navy */
+}
+
+.label.button.ghost-secondary {
+  color: #D4AF37; /* Gold accent */
+}
+
+.label.button.ghost-tertiary {
+  color: #39CCCC; /* Teal accent */
+}
+
+/* Color Variants for Form Labels
+   ========================================================================== */
+
+.label.form.gray {
+  color: #51585E; /* Body text gray */
+}
+
+.label.form.dark {
+  color: #06102B; /* Active/focus dark */
+}
+
+.label.form.light {
+  color: #C7CBCF; /* Muted light gray */
+}
+
+.label.form.default {
+  color: #FFFFFF; /* White */
+}
+
+.label.form.reverse {
+  color: #1B1464; /* Brand navy */
+}
+
+/* Color Variants for CTA Text
+   ========================================================================== */
+
+.label.cta.gray {
+  color: #51585E; /* Body text gray */
+}
+
+.label.cta.dark {
+  color: #06102B; /* Active/focus dark */
+}
+
+.label.cta.light {
+  color: #C7CBCF; /* Muted light gray */
+}
+
+.label.cta.reverse {
+  color: #FFFFFF; /* White */
+}
+
+.label.cta.default {
+  color: #1B1464; /* Brand navy */
+}
+
+/* State Modifiers
+   ========================================================================== */
+
+/* Disabled state */
+.label.disabled,
+.label[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Required field indicator */
+.label.required::after {
+  content: ' *';
+  color: #EF4444;
+  font-weight: 700;
+}
+
+/* Error state */
+.label.error {
+  color: #EF4444;
+}
+
+/* Success state */
+.label.success {
+  color: #39CCCC;
+}
+
+/* Focus state for accessibility */
+.label:focus {
+  outline: 2px solid #1D50DE;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Utility Classes
+   ========================================================================== */
+
+/* Block level label */
+.label.block {
+  display: block;
+  width: 100%;
+}
+
+/* Inline with spacing */
+.label.inline {
+  display: inline;
+  margin-right: 8px;
+}
+
+/* Small variant */
+.label.small {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+/* Large variant */
+.label.large {
+  font-size: 21px;
+  line-height: 21px;
+}
+
+/* Icon support */
+.label.with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Responsive Adjustments
+   ========================================================================== */
+
+/* Mobile: 380px to 767px */
+@media (max-width: 767px) {
+  .label {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  
+  .label.small {
+    font-size: 12px;
+    line-height: 12px;
+  }
+  
+  .label.large {
+    font-size: 18px;
+    line-height: 18px;
+  }
+}
+
+/* Tablet: 768px to 1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+  .label {
+    font-size: 17px;
+    line-height: 17px;
+  }
+  
+  .label.large {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
+
+/* DesktopPlus: 1920px and wider */
+@media (min-width: 1920px) {
+  .label {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  
+  .label.large {
+    font-size: 23px;
+    line-height: 23px;
+  }
+}

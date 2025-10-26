@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section/FAQ Group Component - Organisms</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/organisms-sections-faq.css">
+    
+    <style>
+        /* Demo Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        /* Demo Container */
+        .demo-container {
+            padding: 40px 20px;
+        }
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        /* Breakpoint Visualization */
+        .breakpoint-wrapper {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .breakpoint-header {
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .breakpoint-content {
+            background: #ffffff;
+            min-height: 400px;
+            position: relative;
+            overflow-x: auto;
+        }
+        
+        /* Visual debug helpers - uncomment to see container boundaries */
+        /*
+        .debug .section-faq-group {
+            background: rgba(255, 0, 0, 0.05);
+            border: 2px dashed red;
+        }
+        
+        .debug .faq-container {
+            background: rgba(0, 0, 255, 0.05);
+            border: 2px dashed blue;
+        }
+        
+        .debug .faq-items {
+            background: #eceeef !important;
+            border: 2px solid green;
+        }
+        */
+        
+        /* Add specific styles for FAQ cards that aren't in the base component */
+        .section-faq-group .card-faq {
+            padding: 16px 12px;
+        }
+        
+        .section-faq-group .card-faq__question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: transparent;
+        }
+        
+        .section-faq-group .card-faq__question-text {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 21px;
+            line-height: 30.5px;
+            color: #51585e;
+            flex: 1;
+            padding-right: 12px;
+        }
+        
+        .section-faq-group .card-faq__arrow {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            line-height: 45px;
+            color: #51585e;
+            width: 45px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-faq-group .card-faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .section-faq-group .card-faq__answer-content {
+            padding: 8px 8px 8px 32px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            color: #51585e;
+        }
+        
+        /* State styles */
+        .section-faq-group .card-faq:not(.card-faq--open) .card-faq__question:hover {
+            background-color: #f4ebcd;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-faq-group .card-faq--open .card-faq__arrow {
+            transform: rotate(90deg);
+        }
+        
+        .section-faq-group .card-faq--open .card-faq__answer {
+            max-height: 500px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; text-align: center; margin-bottom: 40px;">
+            Section/FAQ Group Component
+        </h1>
+        
+        <!-- Container Structure Info -->
+        <div style="background: #d4af37; color: white; padding: 20px; border-radius: 8px; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="margin-bottom: 10px;">Container Structure:</h3>
+            <ol style="margin-left: 20px;">
+                <li><strong>Outer Section</strong> - Full width, optional background (transparent/white)</li>
+                <li><strong>FAQ Container</strong> - Centers content, provides padding (white/transparent)</li>
+                <li><strong>FAQ Items</strong> - Gray background (#eceeef) with rounded corners, hugs cards</li>
+            </ol>
+            <p style="margin-top: 10px;">The gray background should only wrap the FAQ cards with padding, not fill the entire container!</p>
+        </div>
+        
+        <!-- DesktopPlus Breakpoint Demo -->
+        <div class="demo-section">
+            <div class="demo-label">DesktopPlus (1920px+)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">DesktopPlus View - 1920px with centered 1200px container</div>
+                <div class="breakpoint-content" style="min-width: 1920px; background: #fafafa;">
+                    <section class="section-faq-group section-faq-group--desktop-plus" data-name="Section/FAQGroup" data-breakpoint="DesktopPlus" style="background: white;">
+                        <div class="faq-container" data-name="FAQContainer">
+                            <div class="faq-items" data-name="FAQItems">
+                                <!-- FAQ Card 1 -->
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            What digital marketing services do you offer for B2B companies?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We specialize in comprehensive B2B digital marketing services including email marketing management, webinar production and promotion, lead magnet creation (eBooks, guides, templates), content repurposing across channels, and SEO optimization.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ Card 2 -->
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            How do you help improve email deliverability and engagement?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We implement proven strategies to improve email deliverability including reputation remediation, list hygiene, authentication setup (SPF, DKIM, DMARC), and engagement optimization.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ Card 3 -->
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            What makes your approach different from other marketing agencies?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We combine AI efficiencies with human marketing expertise, specializing in technically complex B2B industries. Our unique approach involves using the same marketing tools and processes for our own business.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ Card 4 (Open by default for demo) -->
+                                <div class="card-faq card-faq--open" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="true">
+                                        <div class="card-faq__question-text">
+                                            Who is your ideal B2B client?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="false" style="max-height: 500px; opacity: 1;">
+                                        <div class="card-faq__answer-content">
+                                            Our ideal clients are small to mid-size B2B companies with complex products or services, particularly in industrial, engineering, and SaaS sectors. We work best with business owners planning an exit within 5-7 years.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- FAQ Card 5 -->
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            How do you measure marketing success and ROI?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We track success through key metrics including market-qualified leads (MQLs), email engagement rates, webinar attendance and conversion, content downloads, and ultimately revenue attribution.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Desktop Breakpoint Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Desktop (1150-1919px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Desktop View - Flexible Width (Gray fills container width)</div>
+                <div class="breakpoint-content" style="width: 1400px; background: #fafafa;">
+                    <section class="section-faq-group section-faq-group--desktop" data-name="Section/FAQGroup" data-breakpoint="Desktop" style="background: white;">
+                        <div class="faq-container" data-name="FAQContainer">
+                            <div class="faq-items" data-name="FAQItems">
+                                <!-- Same FAQ Cards (showing just 2 for brevity) -->
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            What digital marketing services do you offer for B2B companies?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We specialize in comprehensive B2B digital marketing services.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            How do you measure marketing success and ROI?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We track success through key metrics.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tablet Breakpoint Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Tablet (768-1149px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Tablet View - 48px corner radius</div>
+                <div class="breakpoint-content" style="width: 900px; background: #fafafa;">
+                    <section class="section-faq-group section-faq-group--tablet" data-name="Section/FAQGroup" data-breakpoint="Tablet">
+                        <div class="faq-container" data-name="FAQContainer">
+                            <div class="faq-items" data-name="FAQItems">
+                                <!-- Same FAQ Cards (showing just 2 for brevity) -->
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            What digital marketing services do you offer?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We specialize in comprehensive B2B digital marketing services.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            How do you measure success?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We track success through key metrics.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Breakpoint Demo -->
+        <div class="demo-section">
+            <div class="demo-label">Mobile (380-767px)</div>
+            <div class="breakpoint-wrapper">
+                <div class="breakpoint-header">Mobile View - 32px corner radius, reduced padding</div>
+                <div class="breakpoint-content" style="width: 500px; background: #fafafa;">
+                    <section class="section-faq-group section-faq-group--mobile" data-name="Section/FAQGroup" data-breakpoint="Mobile">
+                        <div class="faq-container" data-name="FAQContainer">
+                            <div class="faq-items" data-name="FAQItems">
+                                <!-- Same FAQ Cards (showing just 2 for brevity) -->
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            What services do you offer?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We specialize in B2B digital marketing.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-faq" data-name="Card/FAQ">
+                                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false">
+                                        <div class="card-faq__question-text">
+                                            How do you measure ROI?
+                                        </div>
+                                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                                    </div>
+                                    <div class="card-faq__answer" aria-hidden="true">
+                                        <div class="card-faq__answer-content">
+                                            We track key performance metrics.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Debug Mode Toggle -->
+        <div style="text-align: center; margin: 40px 0;">
+            <button onclick="document.body.classList.toggle('debug')" style="background: #1b1464; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+                Toggle Container Debug View
+            </button>
+        </div>
+        
+        <!-- Responsive Info -->
+        <div class="demo-section" style="background: #f0f3fd; padding: 30px; border-radius: 8px; max-width: 1200px; margin: 0 auto;">
+            <h3 style="color: #1b1464; margin-bottom: 20px;">Component Features</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 12px;">🖥️ <strong>DesktopPlus:</strong> 1920px+ outer container, gray box hugs cards (not full width)</li>
+                <li style="margin-bottom: 12px;">💻 <strong>Desktop:</strong> 1150-1919px, gray box fills container width</li>
+                <li style="margin-bottom: 12px;">📱 <strong>Tablet:</strong> 768-1149px with 48px corner radius on gray box</li>
+                <li style="margin-bottom: 12px;">📱 <strong>Mobile:</strong> 380-767px with 32px corner radius, reduced container padding</li>
+                <li style="margin-bottom: 12px;">🎨 <strong>Corner Radius:</strong> 64px (Desktop/Plus), 48px (Tablet), 32px (Mobile)</li>
+                <li style="margin-bottom: 12px;">📦 <strong>Container Structure:</strong> 3 layers - Section → Container → Items (gray)</li>
+                <li style="margin-bottom: 12px;">♿ <strong>Accessibility:</strong> Full keyboard navigation and ARIA support</li>
+                <li>✨ <strong>Interactions:</strong> Smooth accordion behavior with hover states</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Component JavaScript -->
+    <script src="../../scripts/section-faq-group.js"></script>
+    
+    <style>
+        /* Debug styles to visualize containers */
+        .debug .section-faq-group {
+            background: rgba(255, 0, 0, 0.05) !important;
+            border: 2px dashed red !important;
+            position: relative;
+        }
+        
+        .debug .section-faq-group::before {
+            content: "Outer Section";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: red;
+            color: white;
+            padding: 2px 8px;
+            font-size: 12px;
+            z-index: 10;
+        }
+        
+        .debug .faq-container {
+            background: rgba(0, 0, 255, 0.05) !important;
+            border: 2px dashed blue !important;
+            position: relative;
+        }
+        
+        .debug .faq-container::before {
+            content: "FAQ Container (padding)";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: blue;
+            color: white;
+            padding: 2px 8px;
+            font-size: 12px;
+            z-index: 10;
+        }
+        
+        .debug .faq-items {
+            border: 2px solid green !important;
+            position: relative;
+        }
+        
+        .debug .faq-items::before {
+            content: "FAQ Items (gray bg)";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: green;
+            color: white;
+            padding: 2px 8px;
+            font-size: 12px;
+            z-index: 10;
+        }
+    </style>
+</body>
+</html>

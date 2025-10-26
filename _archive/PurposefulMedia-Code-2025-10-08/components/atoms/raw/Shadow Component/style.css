@@ -1,0 +1,22 @@
+.shadow,
+.shadow * {
+  box-sizing: border-box;
+}
+.shadow {
+  background: #ffffff;
+  width: 200px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+}
+/* variant styles */
+.shadow.shadow-subtle {
+  box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+}
+.shadow.shadow-standard {
+  box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.15);
+}
+.shadow.shadow-medium,
+.shadow.shadow-strong {
+  box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.25);
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content 2-Column Contact - Test Both Variants</title>
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/organisms-content-2column-contact.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        /* Test wrapper to see different breakpoints */
+        .test-wrapper {
+            width: 100%;
+            position: relative;
+        }
+        
+        /* Divider between sections */
+        .section-divider {
+            height: 100px;
+            background: linear-gradient(90deg, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #666;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        
+        /* Breakpoint indicator */
+        .breakpoint-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(27, 20, 100, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            z-index: 9999;
+            font-family: monospace;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .indicator-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+        
+        .indicator-label {
+            margin-right: 15px;
+            opacity: 0.8;
+        }
+        
+        .indicator-value {
+            font-weight: bold;
+            color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <!-- Breakpoint Indicator -->
+    <div class="breakpoint-indicator">
+        <div class="indicator-row">
+            <span class="indicator-label">Width:</span>
+            <span class="indicator-value" id="width">0</span>
+        </div>
+        <div class="indicator-row">
+            <span class="indicator-label">Class:</span>
+            <span class="indicator-value" id="breakpoint">-</span>
+        </div>
+    </div>
+
+    <!-- Test Default Variant -->
+    <div class="test-wrapper">
+        <!-- Content/2ColumnContact Section Component - Default -->
+        <section class="content-2column-contact" role="region" aria-labelledby="contact-heading-default">
+            <!-- Optional Background Container for Desktop/DesktopPlus -->
+            <div class="section-background" aria-hidden="true"></div>
+            
+            <!-- Main Content Container -->
+            <div class="column-group">
+                <!-- Left Column: Contact Card -->
+                <div class="content-column left-column">
+                    <div class="contact-card">
+                        <h2 id="contact-heading-default" class="card-title">
+                            Get Your Free Marketing Strategy Guide
+                        </h2>
+                        
+                        <p class="card-description">
+                            Discover proven strategies to transform your B2B marketing from an operational expense into a revenue-generating mechanism. This comprehensive guide covers email marketing, content creation, and lead generation tactics specifically designed for small to mid-sized B2B companies.
+                        </p>
+                        
+                        <button type="button" class="btn btn-primary">
+                            <span class="btn-text">Download Now</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Image -->
+                <div class="content-column right-column">
+                    <div class="image-container">
+                        <img src="../../assets/images/sample-ebook-cover.jpg" 
+                             alt="Marketing Strategy Guide Cover" 
+                             class="ebook-image"
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        Reverse Variant Below
+    </div>
+
+    <!-- Test Reverse Variant -->
+    <div class="test-wrapper">
+        <!-- Content/2ColumnContact Section Component - Reverse -->
+        <section class="content-2column-contact reverse" role="region" aria-labelledby="contact-heading-reverse">
+            <!-- Optional Background Container for Desktop/DesktopPlus -->
+            <div class="section-background" aria-hidden="true"></div>
+            
+            <!-- Main Content Container -->
+            <div class="column-group">
+                <!-- Left Column: Image (in reverse mode) -->
+                <div class="content-column left-column">
+                    <div class="image-container">
+                        <img src="../../assets/images/sample-ebook-cover.jpg" 
+                             alt="Email Marketing Mastery Cover" 
+                             class="ebook-image"
+                             loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Right Column: Contact Card (in reverse mode) -->
+                <div class="content-column right-column">
+                    <div class="contact-card">
+                        <h2 id="contact-heading-reverse" class="card-title">
+                            Email Marketing Mastery for B2B Success
+                        </h2>
+                        
+                        <p class="card-description">
+                            Learn how to leverage email marketing to build trust, nurture leads, and drive conversions. This guide includes segmentation strategies, high-performing templates, and proven tactics to improve deliverability and engagement rates for B2B companies.
+                        </p>
+                        
+                        <button type="button" class="btn btn-primary">
+                            <span class="btn-text">Get Your Copy</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript for responsive behavior and testing -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Responsive breakpoint handler
+            const ContactSection = {
+                breakpoints: {
+                    mobile: 767,
+                    tablet: 1149,
+                    desktop: 1919
+                },
+                
+                init: function() {
+                    this.handleResize();
+                    window.addEventListener('resize', this.debounce(this.handleResize.bind(this), 250));
+                    
+                    // Update width indicator
+                    this.updateIndicator();
+                    window.addEventListener('resize', this.debounce(this.updateIndicator.bind(this), 100));
+                },
+                
+                handleResize: function() {
+                    const width = window.innerWidth;
+                    const sections = document.querySelectorAll('.content-2column-contact');
+                    
+                    let breakpointName = '';
+                    
+                    sections.forEach(section => {
+                        // Remove all breakpoint classes
+                        section.classList.remove('mobile', 'tablet', 'desktop', 'desktop-plus');
+                        
+                        // Add appropriate breakpoint class
+                        if (width <= this.breakpoints.mobile) {
+                            section.classList.add('mobile');
+                            breakpointName = 'mobile';
+                        } else if (width <= this.breakpoints.tablet) {
+                            section.classList.add('tablet');
+                            breakpointName = 'tablet';
+                        } else if (width <= this.breakpoints.desktop) {
+                            section.classList.add('desktop');
+                            breakpointName = 'desktop';
+                        } else {
+                            section.classList.add('desktop-plus');
+                            breakpointName = 'desktop-plus';
+                        }
+                    });
+                    
+                    // Update indicator
+                    document.getElementById('breakpoint').textContent = breakpointName;
+                },
+                
+                updateIndicator: function() {
+                    const width = window.innerWidth;
+                    document.getElementById('width').textContent = width + 'px';
+                },
+                
+                debounce: function(func, wait) {
+                    let timeout;
+                    return function executedFunction(...args) {
+                        const later = () => {
+                            clearTimeout(timeout);
+                            func(...args);
+                        };
+                        clearTimeout(timeout);
+                        timeout = setTimeout(later, wait);
+                    };
+                }
+            };
+            
+            // Initialize on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    ContactSection.init();
+                });
+            } else {
+                ContactSection.init();
+            }
+        })();
+    </script>
+</body>
+</html>

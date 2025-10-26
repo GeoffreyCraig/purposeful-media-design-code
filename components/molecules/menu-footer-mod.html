@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Menu Modules Component</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    
+    <style>
+        /* Footer Menu Module Styles - Designed to work within Footer/Main container */
+        
+        /* Individual Menu Module (for desktop/tablet layouts) */
+        .footer-menu-module {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .footer-menu-title {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .footer-menu-item {
+            margin: 0;
+        }
+        
+        .footer-menu-link {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 0.25rem 0;
+        }
+        
+        .footer-menu-link:hover {
+            color: var(--accent-500, #d4af37);
+        }
+        
+        .footer-menu-link:active {
+            color: var(--accent-600, #b39226);
+        }
+        
+        .footer-menu-link.disabled {
+            color: var(--neutral-400, #868f97);
+            pointer-events: none;
+            cursor: default;
+        }
+        
+        /* Mobile Accordion Menu Styles */
+        .footer-menu-mobile {
+            width: 100%;
+            display: none;
+        }
+        
+        .footer-accordion {
+            width: 100%;
+        }
+        
+        .footer-accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-accordion-item:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-accordion-header {
+            background: transparent;
+            border: none;
+            width: 100%;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-accordion-icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .footer-accordion-item.active .footer-accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .footer-accordion-item.active .footer-accordion-header {
+            color: var(--primary-700, #1b1464);
+        }
+        
+        .footer-accordion-item.active .footer-accordion-icon {
+            color: var(--primary-700, #1b1464);
+        }
+        
+        .footer-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: var(--accent-100, #f4ebcd);
+            margin: 0 -1rem;
+        }
+        
+        .footer-accordion-item.active .footer-accordion-content {
+            max-height: 500px;
+        }
+        
+        .footer-accordion-list {
+            list-style: none;
+            padding: 1rem;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .footer-accordion-content .footer-menu-link {
+            color: var(--primary-700, #1b1464);
+            font-size: 0.875rem;
+        }
+        
+        .footer-accordion-content .footer-menu-link:hover {
+            color: var(--accent-600, #b39226);
+        }
+        
+        .footer-accordion-content .footer-menu-link:active {
+            color: var(--accent-700, #89701e);
+        }
+        
+        .footer-accordion-content .footer-menu-link.disabled {
+            color: var(--neutral-400, #868f97);
+        }
+        
+        /* Demo wrapper to simulate Footer/Main container */
+        .footer-demo-wrapper {
+            background-color: var(--primary-700, #1b1464);
+            padding: 3rem 2rem;
+            width: 100%;
+        }
+        
+        .footer-demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 3rem;
+        }
+        
+        /* Responsive adjustments for demo */
+        @media (max-width: 1169px) {
+            .footer-demo-container .footer-menu-module:nth-child(4) {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .footer-demo-container {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+            
+            .footer-demo-container .footer-menu-module {
+                flex-basis: calc(50% - 1rem);
+            }
+            
+            .footer-demo-container .footer-menu-module:nth-child(4) {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 379px) {
+            .footer-demo-container {
+                display: none;
+            }
+            
+            .footer-menu-mobile {
+                display: block;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo wrapper simulating Footer/Main component -->
+    <div class="footer-demo-wrapper">
+        <!-- Desktop/Tablet Footer Menu Modules Container -->
+        <div class="footer-demo-container">
+            <!-- Services Module -->
+            <div class="footer-menu-module">
+                <h3 class="footer-menu-title">SERVICES</h3>
+                <ul class="footer-menu-list">
+                    <li class="footer-menu-item">
+                        <a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a>
+                    </li>
+                    <li class="footer-menu-item">
+                        <a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a>
+                    </li>
+                    <li class="footer-menu-item">
+                        <a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a>
+                    </li>
+                    <li class="footer-menu-item">
+                        <span class="footer-menu-link disabled">Succeeding Planning</span>
+                    </li>
+                    <li class="footer-menu-item">
+                        <span class="footer-menu-link disabled">Marketing Opening</span>
+                    </li>
+                    <li class="footer-menu-item">
+                        <span class="footer-menu-link disabled">Business Unit Growth Opening</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Who We Serve Module -->
+            <div class="footer-menu-module">
+                <h3 class="footer-menu-title">WHO WE SERVE</h3>
+                <ul class="footer-menu-list">
+                    <li class="footer-menu-item">
+                        <a href="/who-we-serve/forward-growth" class="footer-menu-link">Forward Growth Planning Needs</a>
+                    </li>
+                    <li class="footer-menu-item">
+                        <a href="/who-we-serve/preparing-for-exit" class="footer-menu-link">Preparing For Exit (Getting Tools)</a>
+                    </li>
+                    <li class="footer-menu-item">
+                        <a href="/who-we-serve/revenue-accelerator" class="footer-menu-link">Start a Revenue Accelerator</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Resources Module -->
+            <div class="footer-menu-module">
+                <h3 class="footer-menu-title">RESOURCES</h3>
+                <ul class="footer-menu-list">
+                    <li class="footer-menu-item">
+                        <a href="/blog" class="footer-menu-link">Read Our Blog</a>
+                    </li>
+                    <li class="footer-menu-item">
+                        <span class="footer-menu-link disabled">Insights</span>
+                    </li>
+                    <li class="footer-menu-item">
+                        <span class="footer-menu-link disabled">Thought Leadership</span>
+                    </li>
+                    <li class="footer-menu-item">
+                        <span class="footer-menu-link disabled">Templates & Tools</span>
+                    </li>
+                    <li class="footer-menu-item">
+                        <span class="footer-menu-link disabled">Pricing (Coming Soon!)</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Company Module -->
+            <div class="footer-menu-module">
+                <h3 class="footer-menu-title">COMPANY</h3>
+                <ul class="footer-menu-list">
+                    <li class="footer-menu-item">
+                        <a href="/about" class="footer-menu-link">About Us</a>
+                    </li>
+                    <li class="footer-menu-item">
+                        <a href="/contact" class="footer-menu-link">Contact Us</a>
+                    </li>
+                    <li class="footer-menu-item">
+                        <a href="/privacy" class="footer-menu-link">Privacy Policy</a>
+                    </li>
+                    <li class="footer-menu-item">
+                        <span class="footer-menu-link disabled">Affiliates (Coming Soon!)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Mobile Accordion Menu -->
+        <div class="footer-menu-mobile">
+            <div class="footer-accordion">
+                <!-- Services Accordion -->
+                <div class="footer-accordion-item">
+                    <button class="footer-accordion-header" aria-expanded="false">
+                        <span>SERVICES</span>
+                        <svg class="footer-accordion-icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div class="footer-accordion-content">
+                        <ul class="footer-accordion-list">
+                            <li class="footer-menu-item">
+                                <a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a>
+                            </li>
+                            <li class="footer-menu-item">
+                                <a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a>
+                            </li>
+                            <li class="footer-menu-item">
+                                <a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a>
+                            </li>
+                            <li class="footer-menu-item">
+                                <span class="footer-menu-link disabled">Succeeding Planning</span>
+                            </li>
+                            <li class="footer-menu-item">
+                                <span class="footer-menu-link disabled">Marketing Opening</span>
+                            </li>
+                            <li class="footer-menu-item">
+                                <span class="footer-menu-link disabled">Business Unit Growth Opening</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Who We Serve Accordion -->
+                <div class="footer-accordion-item">
+                    <button class="footer-accordion-header" aria-expanded="false">
+                        <span>WHO WE SERVE</span>
+                        <svg class="footer-accordion-icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div class="footer-accordion-content">
+                        <ul class="footer-accordion-list">
+                            <li class="footer-menu-item">
+                                <a href="/who-we-serve/forward-growth" class="footer-menu-link">Forward Growth Planning Needs</a>
+                            </li>
+                            <li class="footer-menu-item">
+                                <a href="/who-we-serve/preparing-for-exit" class="footer-menu-link">Preparing For Exit (Getting Tools)</a>
+                            </li>
+                            <li class="footer-menu-item">
+                                <a href="/who-we-serve/revenue-accelerator" class="footer-menu-link">Start a Revenue Accelerator</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Resources Accordion -->
+                <div class="footer-accordion-item">
+                    <button class="footer-accordion-header" aria-expanded="false">
+                        <span>RESOURCES</span>
+                        <svg class="footer-accordion-icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div class="footer-accordion-content">
+                        <ul class="footer-accordion-list">
+                            <li class="footer-menu-item">
+                                <a href="/blog" class="footer-menu-link">Read Our Blog</a>
+                            </li>
+                            <li class="footer-menu-item">
+                                <span class="footer-menu-link disabled">Insights</span>
+                            </li>
+                            <li class="footer-menu-item">
+                                <span class="footer-menu-link disabled">Thought Leadership</span>
+                            </li>
+                            <li class="footer-menu-item">
+                                <span class="footer-menu-link disabled">Templates & Tools</span>
+                            </li>
+                            <li class="footer-menu-item">
+                                <span class="footer-menu-link disabled">Pricing (Coming Soon!)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Company Accordion -->
+                <div class="footer-accordion-item">
+                    <button class="footer-accordion-header" aria-expanded="false">
+                        <span>COMPANY</span>
+                        <svg class="footer-accordion-icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div class="footer-accordion-content">
+                        <ul class="footer-accordion-list">
+                            <li class="footer-menu-item">
+                                <a href="/about" class="footer-menu-link">About Us</a>
+                            </li>
+                            <li class="footer-menu-item">
+                                <a href="/contact" class="footer-menu-link">Contact Us</a>
+                            </li>
+                            <li class="footer-menu-item">
+                                <a href="/privacy" class="footer-menu-link">Privacy Policy</a>
+                            </li>
+                            <li class="footer-menu-item">
+                                <span class="footer-menu-link disabled">Affiliates (Coming Soon!)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for Accordion Functionality -->
+    <script>
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.footer-accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionItem = this.parentElement;
+                    const wasActive = accordionItem.classList.contains('active');
+                    
+                    // Close all accordion items
+                    document.querySelectorAll('.footer-accordion-item').forEach(item => {
+                        item.classList.remove('active');
+                        item.querySelector('.footer-accordion-header').setAttribute('aria-expanded', 'false');
+                    });
+                    
+                    // Toggle current item
+                    if (!wasActive) {
+                        accordionItem.classList.add('active');
+                        this.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        });
+        
+        // Demo functionality for testing different states
+        function setFooterMenuState(state) {
+            const container = document.querySelector('.footer-demo-container');
+            const mobile = document.querySelector('.footer-menu-mobile');
+            
+            if (state === 'mobile') {
+                container.style.display = 'none';
+                mobile.style.display = 'block';
+            } else {
+                container.style.display = 'flex';
+                mobile.style.display = 'none';
+                
+                const modules = container.querySelectorAll('.footer-menu-module');
+                
+                if (state === 'desktop') {
+                    // Show 3 columns
+                    modules[3].style.display = 'none';
+                    container.style.flexWrap = 'nowrap';
+                } else if (state === 'tablet') {
+                    // Show 2 columns with wrap
+                    modules.forEach(m => m.style.display = 'block');
+                    container.style.flexWrap = 'wrap';
+                    modules.forEach(m => m.style.flexBasis = 'calc(50% - 1rem)');
+                } else { // desktopplus
+                    // Show all 4 columns
+                    modules.forEach(m => m.style.display = 'block');
+                    container.style.flexWrap = 'nowrap';
+                    modules.forEach(m => m.style.flexBasis = 'auto');
+                }
+            }
+        }
+    </script>
+    
+    <!-- Demo Controls -->
+    <div style="position: fixed; bottom: 20px; right: 20px; background: white; padding: 10px; border: 1px solid #ccc; border-radius: 4px; z-index: 9999;">
+        <h4 style="margin-top: 0; color: #333;">Test Footer Menu States</h4>
+        <button onclick="setFooterMenuState('desktopplus')" style="margin: 2px;">Desktop+ (4 cols)</button>
+        <button onclick="setFooterMenuState('desktop')" style="margin: 2px;">Desktop (3 cols)</button>
+        <button onclick="setFooterMenuState('tablet')" style="margin: 2px;">Tablet (2 cols)</button>
+        <button onclick="setFooterMenuState('mobile')" style="margin: 2px;">Mobile (Accordion)</button>
+    </div>
+</body>
+</html>
