@@ -1,0 +1,190 @@
+/* =================================================
+   BLOG CARD COMPONENT - MOLECULE
+   Component: card-blogpost.html
+   Purpose: Display blog post preview with title, metadata, excerpt, and read more link
+   States: Default, Hover, Active
+   Responsive: Mobile (380-767px), Tablet (768-1149px), Desktop (1150-1919px), DesktopPlus (1920px+)
+   Version: 1.0 - Fully Tokenized
+   Date: 2025-10-28
+   ================================================= */
+
+/* -------------------------------------------------
+   BASE CARD STYLES
+   ------------------------------------------------- */
+
+.blog-card {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4); /* 16px */
+    width: 100%;
+
+    /* Spacing */
+    padding: var(--space-3) var(--space-4); /* 12px 16px */
+
+    /* Visual */
+    background-color: var(--card-blog-bg-default);
+    box-shadow: var(--shadow-none);
+
+    /* Interactive */
+    cursor: pointer;
+    position: relative;
+
+    /* Transitions */
+    transition: background-color var(--transition-slow),
+                box-shadow var(--transition-slow),
+                transform var(--transition-base);
+}
+
+/* -------------------------------------------------
+   CARD TOP SECTION (Title + Meta)
+   ------------------------------------------------- */
+
+.blog-card__top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1); /* 4px */
+}
+
+.blog-card__title {
+    /* Typography */
+    font-family: var(--font-primary); /* Lato */
+    font-weight: var(--font-weight-black); /* 900 */
+    text-transform: uppercase;
+    line-height: 1.45;
+
+    /* Color */
+    color: var(--text-heading); /* Navy #1b1464 */
+
+    /* Transitions */
+    transition: color var(--transition-slow);
+}
+
+.blog-card__meta {
+    /* Typography */
+    font-family: var(--font-secondary); /* Open Sans */
+    font-size: var(--text-small-size); /* 12px */
+    line-height: var(--text-small-height); /* 18px */
+    font-weight: var(--font-weight-regular);
+
+    /* Color */
+    color: var(--text-heading); /* Navy #1b1464 */
+
+    /* Transitions */
+    transition: color var(--transition-slow);
+}
+
+/* -------------------------------------------------
+   CARD CONTENT SECTION (Excerpt + Read More)
+   ------------------------------------------------- */
+
+.blog-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3); /* 12px */
+    padding-bottom: var(--space-5); /* 20px */
+}
+
+.blog-card__excerpt {
+    /* Typography */
+    font-family: var(--font-secondary); /* Open Sans */
+    font-size: var(--text-default-size); /* 18px */
+    line-height: var(--text-default-height); /* 27px */
+    font-weight: var(--font-weight-regular);
+
+    /* Color */
+    color: var(--text-body); /* Gray #51585e */
+}
+
+.blog-card__read-more {
+    /* Typography */
+    font-family: var(--font-secondary);
+    font-size: var(--text-default-size);
+    font-weight: var(--font-weight-regular);
+
+    /* Color */
+    color: var(--card-blog-link-default); /* Blue #1d50de */
+
+    /* Visual */
+    text-decoration: none;
+
+    /* Transitions */
+    transition: color var(--transition-slow);
+}
+
+/* -------------------------------------------------
+   HOVER STATE
+   ------------------------------------------------- */
+
+.blog-card:hover {
+    background-color: var(--card-blog-bg-hover); /* Light gold #faf5e6 */
+    box-shadow: var(--shadow-subtle); /* 4px 4px 12px 0px rgba(0, 0, 0, 0.1) */
+}
+
+.blog-card:hover .blog-card__title,
+.blog-card:hover .blog-card__meta {
+    color: var(--text-body); /* Gray #51585e */
+}
+
+.blog-card:hover .blog-card__read-more {
+    color: var(--card-blog-link-hover); /* Teal #39cccc */
+}
+
+/* -------------------------------------------------
+   ACTIVE STATE
+   ------------------------------------------------- */
+
+.blog-card:active {
+    background-color: var(--card-blog-bg-default); /* White */
+    box-shadow: var(--shadow-subtle);
+    transform: scale(0.99);
+}
+
+.blog-card:active .blog-card__title,
+.blog-card:active .blog-card__meta {
+    color: var(--text-heading); /* Navy #1b1464 */
+}
+
+.blog-card:active .blog-card__read-more {
+    color: var(--card-blog-link-active); /* Dark blue #06102b */
+}
+
+/* -------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   ------------------------------------------------- */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    .blog-card__title {
+        font-size: var(--text-h6-size); /* 16px */
+        line-height: var(--text-h6-height); /* 24px */
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .blog-card__title {
+        font-size: var(--text-h5-size); /* 18px */
+        line-height: var(--text-h5-height); /* 27px */
+    }
+}
+
+/* Desktop: 1150-1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .blog-card__title {
+        font-size: var(--text-h4-size); /* 21px */
+        line-height: var(--text-h4-height); /* 31.5px */
+    }
+}
+
+/* DesktopPlus: 1920px+ */
+@media (min-width: 1920px) {
+    .blog-card__title {
+        font-size: var(--text-h4-size); /* 21px */
+        line-height: var(--text-h4-height); /* 31.5px */
+    }
+}
+
+/* =================================================
+   END OF BLOG CARD COMPONENT
+   ================================================= */

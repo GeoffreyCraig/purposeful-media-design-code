@@ -1,300 +1,44 @@
+<!-- Tokenized 2025-10-28 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card/BannerSpacer - HeadlineSubtitle Variant</title>
-    
-    <!-- External CSS Files -->
-    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
     <link rel="stylesheet" href="../../styles/atoms-master.css">
-    <link rel="stylesheet" href="../../styles/molecules-icon-display.css">
-    
-    <style>
-        /* Component-specific styles for Card/BannerSpacer HeadlineSubtitle  
-           Version: 1.1
-           Last Updated: 2025-10-06
-           
-           Changelog v1.1:
-           - Replaced custom icon sprite system with icon-display molecule
-           - Simplified icon implementation using data-attributes
-           - Removed complex icon sizing calculations
-        */
-        
-        /* Base component structure */
-        .card-banner-spacer {
-            position: relative;
-            width: 100%;
-            background-color: var(--color-brand, #1b1464);
-            border-bottom: 4px solid var(--color-accent, #d4af37);
-        }
-        
-        .banner-spacer-content {
-            padding: 12px 16px;
-            box-sizing: border-box;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            justify-content: flex-start;
-            width: 100%;
-        }
-        
-        .banner-spacer-header {
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            overflow: visible;
-        }
-        
-        .banner-headline-wrapper {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            justify-content: flex-start;
-            flex-shrink: 0;
-            width: 100%;
-        }
-        
-        /* Icon Display - Using icon-display molecule with responsive sizing */
-        /* Context-based overrides: any icon-display within banner gets responsive sizing */
-        
-        /* Mobile: Use Large size (90px) from icon-display */
-        @media (max-width: 767px) {
-            .card-banner-spacer .icon-display {
-                width: 90px !important;
-                height: 90px !important;
-                background-size: 540px 1440px !important;
-            }
-            
-            /* All icons - white color variant positions for 90px */
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="accelerate"] { background-position: 0px -1080px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="attract"] { background-position: -90px -1080px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="contact"] { background-position: -180px -1080px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="delight"] { background-position: -270px -1080px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="download"] { background-position: -360px -1080px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="efficiency"] { background-position: -450px -1080px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="email"] { background-position: 0px -1170px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="engage"] { background-position: -90px -1170px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="exit"] { background-position: -180px -1170px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="expertise"] { background-position: -270px -1170px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="inbound"] { background-position: -360px -1170px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="momentum"] { background-position: -450px -1170px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="news"] { background-position: 0px -1260px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="persona"] { background-position: -90px -1260px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="professional"] { background-position: -180px -1260px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="roi"] { background-position: -270px -1260px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="schedule"] { background-position: -360px -1260px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="strategy"] { background-position: -450px -1260px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="unit"] { background-position: 0px -1350px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="value"] { background-position: -90px -1350px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="webinar"] { background-position: -180px -1350px !important; }
-        }
-        
-        /* Tablet: Use Small size (30px) from icon-display */
-        @media (min-width: 768px) and (max-width: 1149px) {
-            .card-banner-spacer .icon-display {
-                width: 30px !important;
-                height: 30px !important;
-                background-size: 180px 480px !important;
-            }
-            
-            /* All icons - white color variant positions for 30px */
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="accelerate"] { background-position: 0px -360px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="attract"] { background-position: -30px -360px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="contact"] { background-position: -60px -360px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="delight"] { background-position: -90px -360px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="download"] { background-position: -120px -360px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="efficiency"] { background-position: -150px -360px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="email"] { background-position: 0px -390px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="engage"] { background-position: -30px -390px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="exit"] { background-position: -60px -390px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="expertise"] { background-position: -90px -390px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="inbound"] { background-position: -120px -390px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="momentum"] { background-position: -150px -390px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="news"] { background-position: 0px -420px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="persona"] { background-position: -30px -420px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="professional"] { background-position: -60px -420px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="roi"] { background-position: -90px -420px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="schedule"] { background-position: -120px -420px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="strategy"] { background-position: -150px -420px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="unit"] { background-position: 0px -450px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="value"] { background-position: -30px -450px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="webinar"] { background-position: -60px -450px !important; }
-        }
-        
-        /* Desktop & Desktop Plus: Custom 45px size (not in standard icon-display) */
-        @media (min-width: 1150px) {
-            .card-banner-spacer .icon-display {
-                width: 45px !important;
-                height: 45px !important;
-                background-size: 270px 720px !important;
-            }
-            
-            /* All icons - white color variant positions for 45px (custom calculations) */
-            /* Formula: original_position × (45/256) */
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="accelerate"] { background-position: 0px -540px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="attract"] { background-position: -45px -540px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="contact"] { background-position: -90px -540px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="delight"] { background-position: -135px -540px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="download"] { background-position: -180px -540px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="efficiency"] { background-position: -225px -540px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="email"] { background-position: 0px -585px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="engage"] { background-position: -45px -585px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="exit"] { background-position: -90px -585px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="expertise"] { background-position: -135px -585px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="inbound"] { background-position: -180px -585px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="momentum"] { background-position: -225px -585px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="news"] { background-position: 0px -630px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="persona"] { background-position: -45px -630px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="professional"] { background-position: -90px -630px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="roi"] { background-position: -135px -630px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="schedule"] { background-position: -180px -630px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="strategy"] { background-position: -225px -630px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="unit"] { background-position: 0px -675px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="value"] { background-position: -45px -675px !important; }
-            .card-banner-spacer .icon-display[data-color="white"][data-icon="webinar"] { background-position: -90px -675px !important; }
-        }
-        
-        /* Headline styles */
-        .banner-headline {
-            font-family: 'Lato', sans-serif;
-            font-weight: 900; /* Heavy */
-            text-transform: uppercase;
-            color: var(--color-reverse, #ffffff);
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        
-        /* Subtitle styles */
-        .banner-subtitle {
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 600; /* Semibold */
-            font-size: 24px;
-            line-height: 36px;
-            color: var(--color-muted, #c7cbcf);
-            flex: 1 1 auto;
-            width: 100%;
-        }
-        
-        /* Desktop Plus specific styles */
-        @media (min-width: 1920px) {
-            .banner-headline {
-                font-size: 36px;
-                line-height: 54px;
-            }
-            
-            .banner-subtitle {
-                white-space: normal;
-            }
-            
-            .banner-spacer-content {
-                max-width: 1920px;
-                margin: 0 auto;
-            }
-        }
-        
-        /* Desktop specific styles */
-        @media (min-width: 1150px) and (max-width: 1919px) {
-            .banner-headline {
-                font-size: 36px;
-                line-height: 54px;
-            }
-            
-            .banner-subtitle {
-                white-space: normal;
-            }
-            
-            .banner-spacer-content {
-                max-width: 1920px;
-                margin: 0 auto;
-            }
-        }
-        
-        /* Tablet specific styles */
-        @media (min-width: 768px) and (max-width: 1149px) {
-            .banner-headline {
-                font-size: 30px;
-                line-height: 45px;
-            }
-            
-            .banner-subtitle {
-                white-space: normal;
-            }
-            
-            .banner-spacer-content {
-                max-width: 1150px;
-                margin: 0 auto;
-            }
-        }
-        
-        /* Mobile specific styles */
-        @media (max-width: 767px) {
-            .banner-spacer-content {
-                flex-direction: column;
-                gap: 4px;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .banner-spacer-header {
-                align-items: center;
-                width: 100%;
-            }
-            
-            .banner-headline-wrapper {
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                gap: 10px;
-            }
-            
-            .banner-headline {
-                font-size: 24px;
-                line-height: 36px;
-                text-align: center;
-            }
-            
-            .banner-subtitle {
-                text-align: center;
-                white-space: normal;
-                flex-shrink: 0;
-                width: 100%;
-            }
-        }
-        
-    </style>
+    <link rel="stylesheet" href="../../styles/molecules-decorative-icon-display.css">
+    <link rel="stylesheet" href="../../styles/molecules-card-banner-spacer.css">
 </head>
 <body>
     <!-- Card/BannerSpacer - HeadlineSubtitle Variant -->
     <div class="card-banner-spacer" data-component="card-banner-spacer" data-variant="headline-subtitle">
         <div class="banner-spacer-content">
+            <!-- Icon - Using standard decorative-icon-display molecule (90px large size) -->
+            <div class="decorative-icon-display decorative-icon-display--large" data-icon="webinar" data-color="white"></div>
+
+            <!-- Text Container: Headline + Subtitle -->
             <div class="banner-spacer-header">
-                <div class="banner-headline-wrapper">
-                    <!-- Icon - Using standard icon-display molecule -->
-                    <div class="icon-display icon-display--medium" data-icon="webinar" data-color="white"></div>
-                    
-                    <!-- Headline -->
-                    <h1 class="banner-headline">H1 Headline 36 54h</h1>
-                </div>
-                
+                <!-- Headline -->
+                <h1 class="banner-headline">H1 Headline 36 54h</h1>
+
                 <!-- Subtitle -->
                 <p class="banner-subtitle">Turpis egestas integer eget aliquet nibh praesent tristique</p>
             </div>
         </div>
     </div>
     
-    <!-- JavaScript for icon-display initialization and dynamic changes -->
+    <!-- JavaScript for decorative-icon-display initialization and dynamic changes -->
     <script>
         // Card/BannerSpacer HeadlineSubtitle Component JavaScript
         
         /**
-         * Initialize icon-display elements on page load
+         * Initialize decorative-icon-display elements on page load
          */
         document.addEventListener('DOMContentLoaded', function() {
-            const icons = document.querySelectorAll('.icon-display');
+            const icons = document.querySelectorAll('.decorative-icon-display');
             icons.forEach(icon => {
                 const iconName = icon.getAttribute('data-icon');
                 const color = icon.getAttribute('data-color');
@@ -305,27 +49,25 @@
         });
         
         /**
-         * Update icon dynamically using standard icon-display molecule
-         * @param {HTMLElement|string} element - Icon element or selector
+         * Update banner icon dynamically
          * @param {string} iconName - Name of the icon (e.g., 'webinar', 'roi', 'strategy')
-         * @param {string} colorVariant - Color variant ('navy', 'gray', 'dark', 'white')
+         * @param {string} colorVariant - Color variant (default: 'white' for banners)
          */
-        function updateBannerIcon(element, iconName, colorVariant = 'white') {
-            const iconElement = typeof element === 'string' ? 
-                document.querySelector(element) : element;
-            
+        function updateBannerIcon(iconName, colorVariant = 'white') {
+            const iconElement = document.querySelector('.card-banner-spacer .decorative-icon-display');
+
             if (!iconElement) return;
-            
-            // Update data attributes (standard format)
+
+            // Update data attributes
             iconElement.setAttribute('data-icon', iconName);
             iconElement.setAttribute('data-color', colorVariant);
-            
-            // Update class for icon-display system (standard format)
-            iconElement.className = `icon-display icon-display--medium icon--${iconName}-${colorVariant}`;
+
+            // Update class for decorative-icon-display system
+            iconElement.className = `decorative-icon-display decorative-icon-display--large icon--${iconName}-${colorVariant}`;
         }
-        
+
         // Example usage:
-        // updateBannerIcon('.icon-display', 'strategy', 'white');
+        // updateBannerIcon('strategy', 'white');
     </script>
 </body>
 </html>

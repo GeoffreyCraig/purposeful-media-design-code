@@ -1,0 +1,255 @@
+/* ====================================
+   DECORATIVE ICON DISPLAY DEMO STYLES
+   Component: Molecule/Icon/Decorative-Display-Demo
+   Version: 1.0 (Tokenized)
+   Last Updated: 2025-10-28
+
+   Description: Demo page styles for decorative icon display component
+   Dependencies: variables-v4.0-20251027.css, molecules-decorative-icon-display.css
+
+   Note: These are demo-only styles. Remove in production.
+   ==================================== */
+
+/* ====================================
+   BASE DEMO STYLES
+   ==================================== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: var(--font-content);
+    margin: 0;
+    padding: var(--space-5);
+    background: var(--bg-secondary);
+    line-height: var(--text-default-height);
+}
+
+/* ====================================
+   DEMO SECTIONS
+   ==================================== */
+
+.demo-section {
+    background: var(--bg-primary);
+    padding: var(--space-8);
+    margin-bottom: var(--space-8);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-light);
+}
+
+.demo-section h2 {
+    color: var(--color-primary-700);
+    border-bottom: var(--space-half) solid var(--color-accent-500);
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-5);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+.demo-section h3 {
+    color: var(--text-heading);
+    margin-bottom: var(--space-3);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.demo-section h4 {
+    color: var(--text-heading);
+    margin-bottom: var(--space-2);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+.demo-section p {
+    color: var(--text-body);
+    line-height: var(--text-default-height);
+}
+
+.demo-section ul {
+    margin-left: var(--space-6);
+    color: var(--text-body);
+}
+
+.demo-section ul li {
+    margin-bottom: var(--space-2);
+}
+
+/* ====================================
+   DEMO GRID LAYOUT
+   ==================================== */
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+}
+
+.demo-item {
+    text-align: center;
+    padding: var(--space-5) var(--space-3);
+    background: var(--color-neutral-50);
+    border-radius: var(--radius-small);
+}
+
+.demo-item p {
+    margin: var(--space-3) 0 0 0;
+    font-size: var(--text-small-size);
+    color: var(--text-muted);
+}
+
+/* ====================================
+   DEMO ROW LAYOUT
+   ==================================== */
+
+.demo-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    margin-bottom: var(--space-5);
+    padding: var(--space-5);
+    background: var(--color-neutral-50);
+    border-radius: var(--radius-small);
+    flex-wrap: wrap;
+}
+
+.demo-row > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.demo-row p {
+    margin-top: var(--space-2);
+    font-size: var(--text-small-size);
+    color: var(--text-muted);
+}
+
+/* ====================================
+   DEMO BACKGROUNDS
+   ==================================== */
+
+.demo-dark {
+    background: var(--color-primary-700);
+    padding: var(--space-8);
+    border-radius: var(--radius-medium);
+}
+
+.demo-dark p {
+    color: var(--bg-primary);
+}
+
+.demo-accent {
+    background: var(--color-accent-500);
+    padding: var(--space-8);
+    border-radius: var(--radius-medium);
+}
+
+/* ====================================
+   DEMO CODE BLOCKS
+   ==================================== */
+
+.demo-code {
+    background: var(--bg-secondary);
+    padding: var(--space-4);
+    border-radius: var(--radius-small);
+    font-family: monospace;
+    font-size: var(--text-small-size);
+    border-left: var(--space-1) solid var(--color-accent-500);
+    margin: var(--space-5) 0;
+    overflow-x: auto;
+    color: var(--text-body);
+}
+
+/* ====================================
+   INTERACTIVE DEMO CONTROLS
+   ==================================== */
+
+.demo-controls-container {
+    display: flex;
+    gap: var(--space-8);
+    align-items: flex-start;
+}
+
+.demo-controls {
+    flex: 1;
+}
+
+.demo-control-group {
+    margin-bottom: var(--space-4);
+}
+
+.demo-control-group label {
+    display: block;
+    margin-bottom: var(--space-1);
+    color: var(--text-body);
+    font-weight: var(--font-weight-medium);
+}
+
+.demo-control-group select {
+    width: 100%;
+    padding: var(--space-2);
+    border: 1px solid var(--color-neutral-300);
+    border-radius: var(--radius-small);
+    background: var(--bg-primary);
+    color: var(--text-body);
+    font-family: var(--font-content);
+    font-size: var(--text-default-size);
+}
+
+.demo-display-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-medium);
+    padding: var(--space-5);
+}
+
+.demo-display-container.dark-bg {
+    background: var(--color-primary-700);
+}
+
+/* ====================================
+   RESPONSIVE ADJUSTMENTS
+   ==================================== */
+
+/* Tablet and below */
+@media (max-width: 1149px) {
+    .demo-controls-container {
+        flex-direction: column;
+    }
+
+    .demo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: var(--space-4);
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    body {
+        padding: var(--space-3);
+    }
+
+    .demo-section {
+        padding: var(--space-5);
+        margin-bottom: var(--space-5);
+    }
+
+    .demo-row {
+        gap: var(--space-4);
+    }
+
+    .demo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: var(--space-3);
+    }
+}

@@ -1,367 +1,17 @@
+<!-- Tokenized 2025-10-28 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card/ParagraphOptions Component - Purposeful Media</title>
-    
-    <!-- Import existing stylesheets -->
-    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
     <link rel="stylesheet" href="../../styles/atoms-master.css">
-    <link rel="stylesheet" href="../../styles/molecules-icon-display.css">
-    
-    <style>
-        /* ====================================
-           CARD/PARAGRAPH OPTIONS COMPONENT STYLES
-           Component: Molecule/Card/ParagraphOptions
-           Version: 1.1
-           Last Updated: 2025-10-06
-           
-           Description: Options card with decorative icon, heading, body text, and CTA button
-           Variants: 12 total (4 breakpoints × 3 colors)
-           - Breakpoints: DesktopPlus, Desktop, Tablet, Mobile
-           - Colors: Default (white), Gray, Reverse (navy)
-           Features: Boolean icon toggle with data-show-icon attribute
-           
-           Changelog v1.1:
-           - Replaced custom icon sprite system with icon-display molecule
-           - Simplified icon implementation using data-attributes
-           - Removed 40+ lines of icon positioning CSS
-           ==================================== */
-        
-        /* Base Card Styles */
-        .card-paragraph-options {
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            overflow: visible;
-            padding: 40px 48px 64px 48px;
-            position: relative;
-            border-radius: 4px;
-            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
-            width: 100%;
-        }
-        
-        /* Header section with icon and heading */
-        .card-paragraph-options__header {
-            display: flex;
-            align-items: center; /* Changed to center for better alignment */
-            gap: 24px; /* Reasonable gap between icon and heading */
-            width: 100%;
-            position: relative;
-        }
-        
-        /* Layout Variant - Vertical for mobile */
-        .card-paragraph-options[data-breakpoint="mobile"] {
-            text-align: center;
-        }
-        
-        .card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__header {
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        /* Color Variants */
-        .card-paragraph-options[data-color="default"] {
-            background-color: var(--white, #ffffff);
-        }
-        
-        .card-paragraph-options[data-color="gray"] {
-            background-color: var(--neutrals-100, #eceeef);
-        }
-        
-        .card-paragraph-options[data-color="reverse"] {
-            background-color: var(--primary-700, #1b1464);
-        }
-        
-        /* Icon Display - Now using icon-display molecule */
-        /* Icon styles are handled by molecules-icon-display.css */
-        /* Icons are 90px (large size) with navy or white color variants */
-        
-        /* Hide icon when data-show-icon="false" */
-        .card-paragraph-options[data-show-icon="false"] .icon-display {
-            display: none;
-        }
-        
-        /* When icon is hidden, remove the gap */
-        .card-paragraph-options[data-show-icon="false"] .card-paragraph-options__header {
-            gap: 0;
-        }
-        
-        /* Body Content Container (body text + button) */
-        .card-paragraph-options__content {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            width: 100%;
-        }
-        
-        /* Mobile: center content */
-        .card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__content {
-            align-items: center;
-        }
-        
-        /* Heading Styles */
-        .card-paragraph-options__heading {
-            font-family: 'Lato', sans-serif;
-            font-weight: 900; /* Heavy */
-            font-style: normal;
-            text-transform: uppercase;
-            flex: 1; /* Allow heading to take remaining space */
-        }
-        
-        .card-paragraph-options__heading p {
-            margin: 0;
-        }
-        
-        /* Heading Size Variants */
-        .card-paragraph-options[data-breakpoint="desktopplus"] .card-paragraph-options__heading,
-        .card-paragraph-options[data-breakpoint="desktop"] .card-paragraph-options__heading,
-        .card-paragraph-options[data-breakpoint="tablet"] .card-paragraph-options__heading {
-            font-size: 30px;
-        }
-        
-        .card-paragraph-options[data-breakpoint="desktopplus"] .card-paragraph-options__heading p,
-        .card-paragraph-options[data-breakpoint="desktop"] .card-paragraph-options__heading p,
-        .card-paragraph-options[data-breakpoint="tablet"] .card-paragraph-options__heading p {
-            line-height: 45px;
-        }
-        
-        .card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__heading {
-            font-size: 21px;
-        }
-        
-        .card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__heading p {
-            line-height: 30.5px;
-        }
-        
-        /* Heading Color Variants */
-        .card-paragraph-options[data-color="default"] .card-paragraph-options__heading,
-        .card-paragraph-options[data-color="gray"] .card-paragraph-options__heading {
-            color: var(--primary-700, #1b1464);
-        }
-        
-        .card-paragraph-options[data-color="reverse"] .card-paragraph-options__heading {
-            color: var(--white, #ffffff);
-        }
-        
-        /* Body Text Styles */
-        .card-paragraph-options__body {
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 400; /* Regular */
-            font-style: normal;
-            font-size: 18px;
-            width: 100%;
-        }
-        
-        .card-paragraph-options__body p {
-            margin: 0;
-            line-height: 27px;
-        }
-        
-        /* Body Color Variants */
-        .card-paragraph-options[data-color="default"] .card-paragraph-options__body,
-        .card-paragraph-options[data-color="gray"] .card-paragraph-options__body {
-            color: var(--neutrals-600, #51585e);
-        }
-        
-        .card-paragraph-options[data-color="reverse"] .card-paragraph-options__body {
-            color: var(--neutrals-200, #c7cbcf);
-        }
-        
-        /* Button Container */
-        .card-paragraph-options__button-container {
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
-        
-        .card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__button-container {
-            justify-content: center;
-            width: 100%;
-        }
-        
-        /* Button Styles - References atomic button component */
-        .card-paragraph-options__button {
-            box-sizing: border-box;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border-radius: 4px;
-            flex-shrink: 0;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        /* Button Size Variants */
-        .card-paragraph-options[data-breakpoint="desktopplus"] .card-paragraph-options__button,
-        .card-paragraph-options[data-breakpoint="desktop"] .card-paragraph-options__button,
-        .card-paragraph-options[data-breakpoint="tablet"] .card-paragraph-options__button {
-            padding: 16px 80px;
-        }
-        
-        .card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__button {
-            padding: 8px 64px;
-        }
-        
-        /* Button Color Variants */
-        .card-paragraph-options[data-color="default"] .card-paragraph-options__button,
-        .card-paragraph-options[data-color="gray"] .card-paragraph-options__button {
-            background-color: var(--primary-700, #1b1464);
-        }
-        
-        .card-paragraph-options[data-color="reverse"] .card-paragraph-options__button {
-            background-color: var(--accent-500, #d4af37);
-        }
-        
-        /* Button Text Styles */
-        .card-paragraph-options__button-text {
-            font-family: 'Lato', sans-serif;
-            font-weight: 700; /* Bold */
-            line-height: 0;
-            font-style: normal;
-            position: relative;
-            flex-shrink: 0;
-            font-size: 18px;
-            text-align: center;
-            white-space: nowrap;
-            text-transform: uppercase;
-        }
-        
-        .card-paragraph-options__button-text p {
-            margin: 0;
-            line-height: 18px;
-            white-space: pre;
-        }
-        
-        /* Button Text Color Variants */
-        .card-paragraph-options[data-color="default"] .card-paragraph-options__button-text,
-        .card-paragraph-options[data-color="gray"] .card-paragraph-options__button-text {
-            color: var(--white, #ffffff);
-        }
-        
-        .card-paragraph-options[data-color="reverse"] .card-paragraph-options__button-text {
-            color: var(--primary-700, #1b1464);
-        }
-        
-        /* Button Hover States */
-        .card-paragraph-options[data-color="default"] .card-paragraph-options__button:hover,
-        .card-paragraph-options[data-color="gray"] .card-paragraph-options__button:hover {
-            background-color: var(--primary-600, #1740b0);
-        }
-        
-        .card-paragraph-options[data-color="reverse"] .card-paragraph-options__button:hover {
-            background-color: var(--accent-400, #dcbe5d);
-        }
-        
-        /* Button Active States */
-        .card-paragraph-options[data-color="default"] .card-paragraph-options__button:active,
-        .card-paragraph-options[data-color="gray"] .card-paragraph-options__button:active {
-            background-color: var(--primary-800, #0b1f57);
-        }
-        
-        .card-paragraph-options[data-color="reverse"] .card-paragraph-options__button:active {
-            background-color: var(--accent-600, #b39226);
-        }
-        
-        /* Breakpoint-based Container Constraints */
-        .card-paragraph-options[data-breakpoint="desktopplus"] {
-            max-width: 600px; /* Large */
-        }
-        
-        .card-paragraph-options[data-breakpoint="desktop"] {
-            max-width: 500px; /* Medium */
-        }
-        
-        .card-paragraph-options[data-breakpoint="tablet"] {
-            max-width: 400px; /* Small */
-        }
-        
-        .card-paragraph-options[data-breakpoint="mobile"] {
-            max-width: 320px; /* Mobile */
-            padding: 40px 24px 64px 24px;
-        }
-        
-        /* No additional adjustments needed for mobile icon display */
-        
-        /* Demo Styles (for preview only) */
-        .demo-container {
-            padding: 40px;
-            background-color: #f5f5f5;
-            min-height: 100vh;
-        }
-        
-        .demo-section {
-            margin-bottom: 60px;
-        }
-        
-        .demo-title {
-            font-family: 'Lato', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: #1b1464;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-        
-        .demo-row {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .demo-item {
-            width: 100%;
-        }
-        
-        .demo-label {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            color: #6c757d;
-            margin-bottom: 10px;
-        }
-        
-        .demo-controls {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-        
-        .demo-control-group {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .demo-control-group label {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            color: #51585e;
-            min-width: 100px;
-        }
-        
-        .demo-control-group button {
-            padding: 8px 16px;
-            background: #1b1464;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: 'Lato', sans-serif;
-            font-size: 14px;
-        }
-        
-        .demo-control-group button:hover {
-            background: #1740b0;
-        }
-    </style>
+    <link rel="stylesheet" href="../../styles/molecules-decorative-icon-display.css">
+    <link rel="stylesheet" href="../../styles/molecules-card-paragraph-options.css">
+    <link rel="stylesheet" href="../../styles/molecules-card-paragraph-options-demo.css">
 </head>
 <body>
     <div class="demo-container">
@@ -392,7 +42,7 @@
                     <div class="demo-label">DesktopPlus</div>
                     <div class="card-paragraph-options" data-breakpoint="desktopplus" data-color="default" data-show-icon="true">
                         <div class="card-paragraph-options__header">
-                            <div class="icon-display icon-display--large" data-icon="accelerate" data-color="navy"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="accelerate" data-color="navy"></div>
                             <div class="card-paragraph-options__heading">
                                 <p>Strategic Marketing Solutions</p>
                             </div>
@@ -416,7 +66,7 @@
                     <div class="demo-label">Desktop</div>
                     <div class="card-paragraph-options" data-breakpoint="desktop" data-color="default" data-show-icon="true">
                         <div class="card-paragraph-options__header">
-                            <div class="icon-display icon-display--large" data-icon="accelerate" data-color="navy"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="accelerate" data-color="navy"></div>
                             <div class="card-paragraph-options__heading">
                                 <p>Strategic Marketing Solutions</p>
                             </div>
@@ -440,7 +90,7 @@
                     <div class="demo-label">Tablet</div>
                     <div class="card-paragraph-options" data-breakpoint="tablet" data-color="default" data-show-icon="true">
                         <div class="card-paragraph-options__header">
-                            <div class="icon-display icon-display--large" data-icon="accelerate" data-color="navy"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="accelerate" data-color="navy"></div>
                             <div class="card-paragraph-options__heading">
                                 <p>Strategic Marketing Solutions</p>
                             </div>
@@ -464,7 +114,7 @@
                     <div class="demo-label">Mobile</div>
                     <div class="card-paragraph-options" data-breakpoint="mobile" data-color="default" data-show-icon="true">
                         <div class="card-paragraph-options__header">
-                            <div class="icon-display icon-display--large" data-icon="accelerate" data-color="navy"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="accelerate" data-color="navy"></div>
                             <div class="card-paragraph-options__heading">
                                 <p>Strategic Marketing Solutions</p>
                             </div>
@@ -494,7 +144,7 @@
                     <div class="demo-label">Desktop - With Icon</div>
                     <div class="card-paragraph-options" data-breakpoint="desktop" data-color="gray" data-show-icon="true">
                         <div class="card-paragraph-options__header">
-                            <div class="icon-display icon-display--large" data-icon="efficiency" data-color="navy"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="efficiency" data-color="navy"></div>
                             <div class="card-paragraph-options__heading">
                                 <p>Maximize Your Marketing Efficiency</p>
                             </div>
@@ -518,7 +168,7 @@
                     <div class="demo-label">Desktop - Without Icon</div>
                     <div class="card-paragraph-options" data-breakpoint="desktop" data-color="gray" data-show-icon="false">
                         <div class="card-paragraph-options__header">
-                            <div class="icon-display icon-display--large" data-icon="efficiency" data-color="navy"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="efficiency" data-color="navy"></div>
                             <div class="card-paragraph-options__heading">
                                 <p>Maximize Your Marketing Efficiency</p>
                             </div>
@@ -548,7 +198,7 @@
                     <div class="demo-label">Desktop - With Icon</div>
                     <div class="card-paragraph-options" data-breakpoint="desktop" data-color="reverse" data-show-icon="true">
                         <div class="card-paragraph-options__header">
-                            <div class="icon-display icon-display--large" data-icon="roi" data-color="white"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="roi" data-color="white"></div>
                             <div class="card-paragraph-options__heading">
                                 <p>Proven ROI for B2B Success</p>
                             </div>
@@ -572,7 +222,7 @@
                     <div class="demo-label">Mobile - With Icon (Centered)</div>
                     <div class="card-paragraph-options" data-breakpoint="mobile" data-color="reverse" data-show-icon="true">
                         <div class="card-paragraph-options__header">
-                            <div class="icon-display icon-display--large" data-icon="roi" data-color="white"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="roi" data-color="white"></div>
                             <div class="card-paragraph-options__heading">
                                 <p>Proven ROI for B2B Success</p>
                             </div>
@@ -595,10 +245,10 @@
         </div>
         
         <!-- Usage Notes -->
-        <div class="demo-section" style="background: white; padding: 30px; border-radius: 8px;">
+        <div class="demo-section usage-notes">
             <h2 class="demo-title">Usage Notes</h2>
-            <div style="font-family: 'Open Sans', sans-serif; color: #51585e; line-height: 1.6;">
-                <h3 style="color: #1b1464; margin-top: 20px;">Component Structure</h3>
+            <div class="usage-notes-content">
+                <h3>Component Structure</h3>
                 <ul>
                     <li><strong>12 variants total:</strong> 4 breakpoints (DesktopPlus, Desktop, Tablet, Mobile) × 3 colors (Default, Gray, Reverse)</li>
                     <li><strong>Data attributes:</strong> 
@@ -608,16 +258,16 @@
                             <li><code>data-show-icon</code>: Boolean toggle for icon visibility ("true" or "false")</li>
                         </ul>
                     </li>
-                    <li><strong>Icon system:</strong> Uses icon-display molecule with data-attributes</li>
+                    <li><strong>Icon system:</strong> Uses decorative-icon-display molecule with data-attributes</li>
                 </ul>
-                
-                <h3 style="color: #1b1464; margin-top: 20px;">Layout Behavior</h3>
+
+                <h3>Layout Behavior</h3>
                 <ul>
                     <li><strong>DesktopPlus/Desktop/Tablet:</strong> Horizontal layout with icon on left</li>
                     <li><strong>Mobile:</strong> Vertical layout with centered icon and content</li>
                 </ul>
-                
-                <h3 style="color: #1b1464; margin-top: 20px;">Key Implementation Notes</h3>
+
+                <h3>Key Implementation Notes</h3>
                 <ul>
                     <li><strong>HTML Structure:</strong> The component now uses a two-section layout:
                         <ul>
@@ -625,10 +275,10 @@
                             <li><code>card-paragraph-options__content</code> - Contains body text and button</li>
                         </ul>
                     </li>
-                    <li><strong>Icon Display:</strong> Uses <code>icon-display</code> molecule with <code>data-icon</code> and <code>data-color</code> attributes</li>
+                    <li><strong>Icon Display:</strong> Uses <code>decorative-icon-display</code> molecule with <code>data-icon</code> and <code>data-color</code> attributes</li>
                     <li><strong>Icon Colors:</strong> Use <code>data-color="navy"</code> for default/gray backgrounds, <code>data-color="white"</code> for reverse</li>
                     <li><strong>Available Icons:</strong> accelerate, attract, contact, delight, download, efficiency, engage, email, expertise, inbound, momentum, persona, roi, strategy, value, webinar</li>
-                    <li><strong>Icon Size:</strong> Large variant (90×90px) from icon-display molecule</li>
+                    <li><strong>Icon Size:</strong> Large variant (90×90px) from decorative-icon-display molecule</li>
                     <li><strong>Card Sizes:</strong>
                         <ul>
                             <li>DesktopPlus: 600px (Large)</li>
@@ -638,15 +288,15 @@
                         </ul>
                     </li>
                 </ul>
-                
-                <h3 style="color: #1b1464; margin-top: 20px;">Implementation Example</h3>
-                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;">
+
+                <h3>Implementation Example</h3>
+                <pre>
 &lt;div class="card-paragraph-options" 
      data-breakpoint="desktop" 
      data-color="default" 
      data-show-icon="true"&gt;
     &lt;div class="card-paragraph-options__header"&gt;
-        &lt;div class="icon-display icon-display--large" 
+        &lt;div class="decorative-icon-display decorative-icon-display--large" 
              data-icon="accelerate" 
              data-color="navy"&gt;&lt;/div&gt;
         &lt;div class="card-paragraph-options__heading"&gt;
@@ -667,9 +317,9 @@
     &lt;/div&gt;
 &lt;/div&gt;
                 </pre>
-                
-                <h3 style="color: #1b1464; margin-top: 20px;">JavaScript Icon Control</h3>
-                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;">
+
+                <h3>JavaScript Icon Control</h3>
+                <pre>
 // Toggle icon visibility
 function toggleIcon(show) {
     document.querySelectorAll('.card-paragraph-options')
@@ -678,7 +328,7 @@ function toggleIcon(show) {
 
 // Change icon type (maintains color variant)
 function changeIcon(iconName) {
-    document.querySelectorAll('.icon-display')
+    document.querySelectorAll('.decorative-icon-display')
         .forEach(icon => {
             const card = icon.closest('.card-paragraph-options');
             const isReverse = card.getAttribute('data-color') === 'reverse';
@@ -686,7 +336,7 @@ function changeIcon(iconName) {
             
             icon.setAttribute('data-icon', iconName);
             icon.setAttribute('data-color', color);
-            icon.className = `icon-display icon-display--large icon--${iconName}-${color}`;
+            icon.className = `decorative-icon-display decorative-icon-display--large icon--${iconName}-${color}`;
         });
 }
                 </pre>
@@ -695,9 +345,9 @@ function changeIcon(iconName) {
     </div>
     
     <script>
-        // Initialize icon-display elements on page load
+        // Initialize decorative-icon-display elements on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const icons = document.querySelectorAll('.icon-display');
+            const icons = document.querySelectorAll('.decorative-icon-display');
             icons.forEach(icon => {
                 const iconName = icon.getAttribute('data-icon');
                 const color = icon.getAttribute('data-color');
@@ -716,7 +366,7 @@ function changeIcon(iconName) {
         }
         
         function changeIcon(iconName) {
-            const icons = document.querySelectorAll('.icon-display');
+            const icons = document.querySelectorAll('.decorative-icon-display');
             icons.forEach(icon => {
                 const card = icon.closest('.card-paragraph-options');
                 const isReverse = card.getAttribute('data-color') === 'reverse';
@@ -726,8 +376,8 @@ function changeIcon(iconName) {
                 icon.setAttribute('data-icon', iconName);
                 icon.setAttribute('data-color', color);
                 
-                // Update class for icon-display system
-                icon.className = `icon-display icon-display--large icon--${iconName}-${color}`;
+                // Update class for decorative-icon-display system
+                icon.className = `decorative-icon-display decorative-icon-display--large icon--${iconName}-${color}`;
             });
         }
     </script>

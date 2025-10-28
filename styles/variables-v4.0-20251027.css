@@ -183,29 +183,29 @@
   --font-weight-bold: 700;
   --font-weight-black: 900;
   
-  /* Headlines (Lato) */
-  --text-h1-size: 48px;
-  --text-h1-height: 48px;
+  /* Headlines (Lato) - Corrected sizes with 1.5x line heights */
+  --text-h1-size: 36px;
+  --text-h1-height: 54px;
   --text-h1-weight: var(--font-weight-bold);
-  
-  --text-h2-size: 36px;
-  --text-h2-height: 36px;
+
+  --text-h2-size: 30px;
+  --text-h2-height: 45px;
   --text-h2-weight: var(--font-weight-bold);
-  
-  --text-h3-size: 30px;
-  --text-h3-height: 30px;
+
+  --text-h3-size: 24px;
+  --text-h3-height: 36px;
   --text-h3-weight: var(--font-weight-bold);
-  
-  --text-h4-size: 24px;
-  --text-h4-height: 24px;
+
+  --text-h4-size: 21px;
+  --text-h4-height: 31.5px;
   --text-h4-weight: var(--font-weight-bold);
-  
-  --text-h5-size: 21px;
-  --text-h5-height: 21px;
+
+  --text-h5-size: 18px;
+  --text-h5-height: 27px;
   --text-h5-weight: var(--font-weight-bold);
-  
-  --text-h6-size: 18px;
-  --text-h6-height: 18px;
+
+  --text-h6-size: 16px;
+  --text-h6-height: 24px;
   --text-h6-weight: var(--font-weight-bold);
   
   /* Paragraphs (Open Sans) */
@@ -279,15 +279,15 @@
   --link-attribution-height: 21px;
   --link-attribution-weight: var(--font-weight-regular);
   
-  /* Responsive Typography (Mobile) */
-  --text-h1-mobile-size: 36px;
-  --text-h1-mobile-height: 36px;
-  
-  --text-h2-mobile-size: 30px;
-  --text-h2-mobile-height: 30px;
-  
-  --text-h3-mobile-size: 24px;
-  --text-h3-mobile-height: 24px;
+  /* Responsive Typography (Mobile) - Corrected with 1.5x line heights */
+  --text-h1-mobile-size: 30px;
+  --text-h1-mobile-height: 45px;
+
+  --text-h2-mobile-size: 24px;
+  --text-h2-mobile-height: 36px;
+
+  --text-h3-mobile-size: 21px;
+  --text-h3-mobile-height: 31.5px;
 }
 
 /* =================================================

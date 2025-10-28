@@ -61,8 +61,8 @@ function purposeful_media_enqueue_assets() {
     );
     
     wp_enqueue_style(
-        'molecules-icon-display',
-        $theme_uri . '/assets/css/molecules-icon-display.css',
+        'molecules-decorative-icon-display',
+        $theme_uri . '/assets/css/molecules-decorative-icon-display.css',
         array('purposeful-media-variables'),
         $theme_version
     );

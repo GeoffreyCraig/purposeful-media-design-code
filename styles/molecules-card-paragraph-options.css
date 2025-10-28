@@ -1,0 +1,389 @@
+/**
+ * Card/ParagraphOptions Component Styles
+ * Purposeful Media Promotions Design System
+ *
+ * Component: Molecule/Card/ParagraphOptions
+ * Description: Options card with decorative icon, heading, body text, and CTA button
+ * Variants: 12 total (4 breakpoints × 3 colors)
+ * - Breakpoints: DesktopPlus, Desktop, Tablet, Mobile
+ * - Colors: Default (white), Gray, Reverse (navy)
+ * Features: Boolean icon toggle with data-show-icon attribute
+ *
+ * Tokenized: 2025-10-28
+ * Version: 2.0
+ * Variables: v4.0-20251027
+ *
+ * Changelog v2.0:
+ * - Tokenized all hardcoded values to v4.0 design tokens
+ * - Updated icon class names to decorative-icon-display standard
+ * - Extracted all styles to external CSS
+ */
+
+/* ============================================
+   BASE CARD STYLES
+   ============================================ */
+
+.card-paragraph-options {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    overflow: visible;
+    padding: var(--space-10) var(--space-12) var(--space-16) var(--space-12);
+    position: relative;
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-standard);
+    width: 100%;
+}
+
+/* ============================================
+   HEADER SECTION (Icon + Heading)
+   ============================================ */
+
+.card-paragraph-options__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    width: 100%;
+    position: relative;
+}
+
+/* ============================================
+   LAYOUT VARIANTS BY BREAKPOINT
+   ============================================ */
+
+/* Mobile: Vertical layout with centered content */
+.card-paragraph-options[data-breakpoint="mobile"] {
+    text-align: center;
+}
+
+.card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__header {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+/* ============================================
+   COLOR VARIANTS
+   ============================================ */
+
+.card-paragraph-options[data-color="default"] {
+    background-color: var(--color-white);
+}
+
+.card-paragraph-options[data-color="gray"] {
+    background-color: var(--color-neutral-100);
+}
+
+.card-paragraph-options[data-color="reverse"] {
+    background-color: var(--color-primary-700);
+}
+
+/* ============================================
+   ICON DISPLAY CONTROL
+   ============================================ */
+
+/* Icon styles are handled by molecules-decorative-icon-display.css */
+/* Icons use the large size (90px) with navy or white color variants */
+
+/* Hide icon when data-show-icon="false" */
+.card-paragraph-options[data-show-icon="false"] .decorative-icon-display {
+    display: none;
+}
+
+/* Remove gap when icon is hidden */
+.card-paragraph-options[data-show-icon="false"] .card-paragraph-options__header {
+    gap: 0;
+}
+
+/* ============================================
+   CONTENT SECTION (Body + Button)
+   ============================================ */
+
+.card-paragraph-options__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    width: 100%;
+}
+
+/* Mobile: center content */
+.card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__content {
+    align-items: center;
+}
+
+/* ============================================
+   HEADING STYLES
+   ============================================ */
+
+.card-paragraph-options__heading {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-style: normal;
+    text-transform: uppercase;
+    flex: 1;
+}
+
+.card-paragraph-options__heading p {
+    margin: 0;
+}
+
+/* Heading Size Variants by Breakpoint */
+.card-paragraph-options[data-breakpoint="desktopplus"] .card-paragraph-options__heading,
+.card-paragraph-options[data-breakpoint="desktop"] .card-paragraph-options__heading,
+.card-paragraph-options[data-breakpoint="tablet"] .card-paragraph-options__heading {
+    font-size: var(--text-h3-size);
+}
+
+.card-paragraph-options[data-breakpoint="desktopplus"] .card-paragraph-options__heading p,
+.card-paragraph-options[data-breakpoint="desktop"] .card-paragraph-options__heading p,
+.card-paragraph-options[data-breakpoint="tablet"] .card-paragraph-options__heading p {
+    line-height: 45px;
+}
+
+.card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__heading {
+    font-size: var(--text-h5-size);
+}
+
+.card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__heading p {
+    line-height: 30.5px; /* 1.45 ratio for mobile heading */
+}
+
+/* Heading Color Variants */
+.card-paragraph-options[data-color="default"] .card-paragraph-options__heading,
+.card-paragraph-options[data-color="gray"] .card-paragraph-options__heading {
+    color: var(--color-primary-700);
+}
+
+.card-paragraph-options[data-color="reverse"] .card-paragraph-options__heading {
+    color: var(--color-white);
+}
+
+/* ============================================
+   BODY TEXT STYLES
+   ============================================ */
+
+.card-paragraph-options__body {
+    font-family: var(--font-secondary);
+    font-weight: var(--font-weight-regular);
+    font-style: normal;
+    font-size: var(--text-default-size);
+    width: 100%;
+}
+
+.card-paragraph-options__body p {
+    margin: 0;
+    line-height: var(--text-default-height);
+}
+
+/* Body Color Variants */
+.card-paragraph-options[data-color="default"] .card-paragraph-options__body,
+.card-paragraph-options[data-color="gray"] .card-paragraph-options__body {
+    color: var(--color-neutral-600);
+}
+
+.card-paragraph-options[data-color="reverse"] .card-paragraph-options__body {
+    color: var(--color-neutral-200);
+}
+
+/* ============================================
+   BUTTON CONTAINER
+   ============================================ */
+
+.card-paragraph-options__button-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__button-container {
+    justify-content: center;
+    width: 100%;
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.card-paragraph-options__button {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: var(--radius-small);
+    flex-shrink: 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+/* Button Size Variants by Breakpoint */
+.card-paragraph-options[data-breakpoint="desktopplus"] .card-paragraph-options__button,
+.card-paragraph-options[data-breakpoint="desktop"] .card-paragraph-options__button,
+.card-paragraph-options[data-breakpoint="tablet"] .card-paragraph-options__button {
+    padding: var(--space-4) var(--space-20);
+}
+
+.card-paragraph-options[data-breakpoint="mobile"] .card-paragraph-options__button {
+    padding: var(--space-2) var(--space-16);
+}
+
+/* Button Color Variants */
+.card-paragraph-options[data-color="default"] .card-paragraph-options__button,
+.card-paragraph-options[data-color="gray"] .card-paragraph-options__button {
+    background-color: var(--color-primary-700);
+}
+
+.card-paragraph-options[data-color="reverse"] .card-paragraph-options__button {
+    background-color: var(--color-accent-500);
+}
+
+/* ============================================
+   BUTTON TEXT STYLES
+   ============================================ */
+
+.card-paragraph-options__button-text {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    line-height: 0;
+    font-style: normal;
+    position: relative;
+    flex-shrink: 0;
+    font-size: var(--text-default-size);
+    text-align: center;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.card-paragraph-options__button-text p {
+    margin: 0;
+    line-height: var(--text-default-size);
+    white-space: pre;
+}
+
+/* Button Text Color Variants */
+.card-paragraph-options[data-color="default"] .card-paragraph-options__button-text,
+.card-paragraph-options[data-color="gray"] .card-paragraph-options__button-text {
+    color: var(--color-white);
+}
+
+.card-paragraph-options[data-color="reverse"] .card-paragraph-options__button-text {
+    color: var(--color-primary-700);
+}
+
+/* ============================================
+   BUTTON HOVER STATES
+   ============================================ */
+
+.card-paragraph-options[data-color="default"] .card-paragraph-options__button:hover,
+.card-paragraph-options[data-color="gray"] .card-paragraph-options__button:hover {
+    background-color: var(--color-primary-600);
+}
+
+.card-paragraph-options[data-color="reverse"] .card-paragraph-options__button:hover {
+    background-color: var(--color-accent-400);
+}
+
+/* ============================================
+   BUTTON ACTIVE STATES
+   ============================================ */
+
+.card-paragraph-options[data-color="default"] .card-paragraph-options__button:active,
+.card-paragraph-options[data-color="gray"] .card-paragraph-options__button:active {
+    background-color: var(--color-primary-800);
+}
+
+.card-paragraph-options[data-color="reverse"] .card-paragraph-options__button:active {
+    background-color: var(--color-accent-600);
+}
+
+/* ============================================
+   BREAKPOINT-BASED CONTAINER CONSTRAINTS
+   ============================================ */
+
+.card-paragraph-options[data-breakpoint="desktopplus"] {
+    max-width: 600px; /* Large */
+}
+
+.card-paragraph-options[data-breakpoint="desktop"] {
+    max-width: 500px; /* Medium */
+}
+
+.card-paragraph-options[data-breakpoint="tablet"] {
+    max-width: 400px; /* Small */
+}
+
+.card-paragraph-options[data-breakpoint="mobile"] {
+    max-width: 320px; /* Mobile */
+    padding: var(--space-10) var(--space-6) var(--space-16) var(--space-6);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS (Media Queries)
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (min-width: 380px) and (max-width: 767px) {
+    .card-paragraph-options {
+        max-width: 320px;
+        padding: var(--space-10) var(--space-6) var(--space-16) var(--space-6);
+        text-align: center;
+    }
+
+    .card-paragraph-options__header {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-5);
+    }
+
+    .card-paragraph-options__content {
+        align-items: center;
+    }
+
+    .card-paragraph-options__button-container {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .card-paragraph-options__heading {
+        font-size: var(--text-h5-size);
+    }
+
+    .card-paragraph-options__button {
+        padding: var(--space-2) var(--space-16);
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .card-paragraph-options {
+        max-width: 400px;
+    }
+
+    .card-paragraph-options__heading {
+        font-size: var(--text-h3-size);
+    }
+}
+
+/* Desktop: 1150-1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .card-paragraph-options {
+        max-width: 500px;
+    }
+
+    .card-paragraph-options__heading {
+        font-size: var(--text-h3-size);
+    }
+}
+
+/* DesktopPlus: 1920px+ */
+@media (min-width: 1920px) {
+    .card-paragraph-options {
+        max-width: 600px;
+    }
+
+    .card-paragraph-options__heading {
+        font-size: var(--text-h3-size);
+    }
+}
