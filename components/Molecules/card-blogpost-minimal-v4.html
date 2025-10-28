@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card/BlogPost - Minimal Test (Zero Inline Styles)</title>
+  
+  <!-- Import Variables v4.0 -->
+  <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+  
+  <!-- Import Component Styles -->
+  <link rel="stylesheet" href="../../styles/card-blogpost-test-v4.css">
+</head>
+<body>
+  <!-- ZERO INLINE STYLES - Pure token-based component -->
+  
+  <article 
+    class="card-blogpost" 
+    role="article"
+    tabindex="0"
+    aria-labelledby="blog-title-1"
+  >
+    <header class="card-blogpost-top">
+      <h3 id="blog-title-1" class="card-blogpost-title">
+        Email Marketing Best Practices
+      </h3>
+      <div 
+        class="card-blogpost-meta"
+        aria-label="Published in Marketing on October 15, 2025 by Geoffrey Craig"
+      >
+        <span>Marketing</span>
+        <span class="card-blogpost-meta-separator">|</span>
+        <time datetime="2025-10-15">Oct 15, 2025</time>
+        <span class="card-blogpost-meta-separator">|</span>
+        <span>Geoffrey Craig</span>
+      </div>
+    </header>
+    
+    <div class="card-blogpost-content">
+      <p class="card-blogpost-excerpt">
+        Discover proven strategies for improving email deliverability, 
+        engagement rates, and conversion metrics. Learn how to craft 
+        compelling subject lines that get opened and calls-to-action 
+        that drive results in your B2B campaigns.
+      </p>
+      <a 
+        href="#" 
+        class="card-blogpost-readmore"
+        aria-label="Read full article: Email Marketing Best Practices"
+      >
+        [Read more]
+      </a>
+    </div>
+  </article>
+  
+  <!-- Second card to test multiple instances -->
+  <article 
+    class="card-blogpost" 
+    role="article"
+    tabindex="0"
+    aria-labelledby="blog-title-2"
+  >
+    <header class="card-blogpost-top">
+      <h3 id="blog-title-2" class="card-blogpost-title">
+        Content Creation Workflows
+      </h3>
+      <div 
+        class="card-blogpost-meta"
+        aria-label="Published in Content on October 12, 2025 by Dana Morris"
+      >
+        <span>Content</span>
+        <span class="card-blogpost-meta-separator">|</span>
+        <time datetime="2025-10-12">Oct 12, 2025</time>
+        <span class="card-blogpost-meta-separator">|</span>
+        <span>Dana Morris</span>
+      </div>
+    </header>
+    
+    <div class="card-blogpost-content">
+      <p class="card-blogpost-excerpt">
+        Streamline your content production process with proven workflows 
+        that save time and maintain quality. From ideation to publication, 
+        learn the systems that keep your content marketing engine running 
+        smoothly and efficiently.
+      </p>
+      <a 
+        href="#" 
+        class="card-blogpost-readmore"
+        aria-label="Read full article: Content Creation Workflows"
+      >
+        [Read more]
+      </a>
+    </div>
+  </article>
+  
+  <!-- Disabled state test -->
+  <article 
+    class="card-blogpost disabled" 
+    role="article"
+    aria-disabled="true"
+    aria-labelledby="blog-title-3"
+  >
+    <header class="card-blogpost-top">
+      <h3 id="blog-title-3" class="card-blogpost-title">
+        Webinar Production Guide
+      </h3>
+      <div 
+        class="card-blogpost-meta"
+        aria-label="Published in Events on October 8, 2025 by Bill Robertson"
+      >
+        <span>Events</span>
+        <span class="card-blogpost-meta-separator">|</span>
+        <time datetime="2025-10-08">Oct 8, 2025</time>
+        <span class="card-blogpost-meta-separator">|</span>
+        <span>Bill Robertson</span>
+      </div>
+    </header>
+    
+    <div class="card-blogpost-content">
+      <p class="card-blogpost-excerpt">
+        Master the art of producing engaging webinars that convert 
+        attendees into qualified leads. From technical setup to 
+        post-event follow-up, this comprehensive guide covers every 
+        aspect of successful webinar management.
+      </p>
+      <a 
+        href="#" 
+        class="card-blogpost-readmore"
+        aria-label="Read full article: Webinar Production Guide"
+      >
+        [Read more]
+      </a>
+    </div>
+  </article>
+  
+</body>
+</html>

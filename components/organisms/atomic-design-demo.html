@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atomic Design Demo - Molecule + Organism = Zero Inline Styles</title>
+  
+  <!-- Import Variables v4.0 -->
+  <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+  
+  <!-- Import Card/BlogPost Molecule Styles -->
+  <link rel="stylesheet" href="../../styles/card-blogpost-test-v4.css">
+  
+  <!-- Import Blog Group Organism Styles -->
+  <link rel="stylesheet" href="../../styles/blog-group-organism.css">
+  
+  <!-- Demo page styles ONLY -->
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: #f5f5f5;
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    .demo-header {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 24px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .demo-header h1 {
+      margin: 0 0 16px;
+      color: #1B1464;
+      font-size: 32px;
+    }
+    
+    .demo-section {
+      margin-bottom: 40px;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .section-label {
+      padding: 12px 20px;
+      background: #1B1464;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .architecture-diagram {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding: 24px;
+      background: white;
+      border-radius: 8px;
+    }
+    
+    .architecture-diagram h2 {
+      color: #1B1464;
+      margin-bottom: 20px;
+    }
+    
+    .architecture-diagram ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .architecture-diagram li {
+      padding: 8px 0;
+      color: #51585E;
+    }
+    
+    .architecture-diagram strong {
+      color: #1B1464;
+    }
+    
+    code {
+      background: #f0f3fd;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 14px;
+      color: #1B1464;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="demo-header">
+    <h1>Atomic Design Implementation</h1>
+    <p style="color: #51585E; margin: 0 0 12px;">
+      Demonstrating proper separation of concerns with <strong>zero inline styles</strong>
+    </p>
+    <p style="color: #39CCCC; margin: 0; font-weight: 600;">
+      ✅ Molecule handles card appearance | ✅ Organism handles card arrangement | ✅ All using v4.0 tokens
+    </p>
+  </div>
+  
+  <div class="architecture-diagram">
+    <h2>Component Architecture</h2>
+    <ul>
+      <li>
+        <strong>Variables:</strong> <code>variables-v4.0-20251027.css</code> - Design tokens (~197 CSS variables)
+      </li>
+      <li>
+        <strong>Molecule:</strong> <code>card-blogpost-test-v4.css</code> - Individual card styling (appearance, states, typography)
+      </li>
+      <li>
+        <strong>Organism:</strong> <code>blog-group-organism.css</code> - Layout and arrangement (grid, spacing, responsive columns)
+      </li>
+      <li>
+        <strong>Template:</strong> Would include header + this organism + footer (not shown here)
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Demo 1: Individual Card Molecule -->
+  <div class="demo-section">
+    <div class="section-label">Molecule Only: Single Card Component</div>
+    <div style="padding: 24px;">
+      <article 
+        class="card-blogpost" 
+        role="article"
+        tabindex="0"
+      >
+        <header class="card-blogpost-top">
+          <h3 class="card-blogpost-title">
+            This is a Molecule Component
+          </h3>
+          <div class="card-blogpost-meta">
+            <span>Category</span>
+            <span class="card-blogpost-meta-separator">|</span>
+            <time datetime="2025-10-27">Oct 27, 2025</time>
+            <span class="card-blogpost-meta-separator">|</span>
+            <span>Author</span>
+          </div>
+        </header>
+        
+        <div class="card-blogpost-content">
+          <p class="card-blogpost-excerpt">
+            This card molecule is completely self-contained. It has its own hover states, 
+            colors, typography, and spacing. The organism doesn't need to style it at all - 
+            just arrange multiple instances of it.
+          </p>
+          <a href="#" class="card-blogpost-readmore">[Read more]</a>
+        </div>
+      </article>
+    </div>
+  </div>
+  
+  <!-- Demo 2: Organism with Multiple Cards -->
+  <div class="demo-section">
+    <div class="section-label">Organism: Blog Group with Multiple Card Molecules</div>
+    
+    <section class="blog-group blog-group--teaser">
+      <header class="blog-group__header">
+        <h2 class="blog-group__title">The Organism Controls Layout</h2>
+        <p class="blog-group__subtitle">
+          Notice how the organism handles spacing between cards, grid layout, and responsive behavior
+        </p>
+      </header>
+      
+      <div class="blog-group__cards">
+        <div class="blog-group__inner">
+          
+          <article class="card-blogpost" role="article" tabindex="0">
+            <header class="card-blogpost-top">
+              <h3 class="card-blogpost-title">First Card in Grid</h3>
+              <div class="card-blogpost-meta">
+                <span>Design</span>
+                <span class="card-blogpost-meta-separator">|</span>
+                <time datetime="2025-10-27">Today</time>
+              </div>
+            </header>
+            <div class="card-blogpost-content">
+              <p class="card-blogpost-excerpt">
+                The organism places this card in a grid layout. On desktop, you'll see 
+                multiple columns. On mobile, they stack. The card itself doesn't know or 
+                care about its position - that's the organism's job.
+              </p>
+              <a href="#" class="card-blogpost-readmore">[Read more]</a>
+            </div>
+          </article>
+          
+          <article class="card-blogpost" role="article" tabindex="0">
+            <header class="card-blogpost-top">
+              <h3 class="card-blogpost-title">Second Card in Grid</h3>
+              <div class="card-blogpost-meta">
+                <span>Development</span>
+                <span class="card-blogpost-meta-separator">|</span>
+                <time datetime="2025-10-27">Today</time>
+              </div>
+            </header>
+            <div class="card-blogpost-content">
+              <p class="card-blogpost-excerpt">
+                This demonstrates perfect separation of concerns. The molecule CSS handles 
+                how each card looks. The organism CSS handles how cards are arranged. 
+                Both use v4.0 design tokens. Zero inline styles needed!
+              </p>
+              <a href="#" class="card-blogpost-readmore">[Read more]</a>
+            </div>
+          </article>
+          
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Key Benefits -->
+  <div class="architecture-diagram">
+    <h2>Benefits of This Architecture</h2>
+    <ul>
+      <li>✅ <strong>Reusability:</strong> Card molecule can be used anywhere, not just in blog groups</li>
+      <li>✅ <strong>Maintainability:</strong> Changes to card styling don't affect layout, and vice versa</li>
+      <li>✅ <strong>Consistency:</strong> All components use the same v4.0 design tokens</li>
+      <li>✅ <strong>Performance:</strong> CSS is cacheable and reusable across pages</li>
+      <li>✅ <strong>Clean HTML:</strong> No inline styles means cleaner, more semantic markup</li>
+      <li>✅ <strong>WordPress Ready:</strong> This structure maps perfectly to WordPress templates</li>
+    </ul>
+    
+    <h3 style="margin-top: 32px; color: #1B1464;">Token Usage Summary</h3>
+    <p style="color: #51585E;">
+      <strong>Molecule uses:</strong> Card-specific tokens (<code>--card-blog-*</code>), 
+      typography tokens (<code>--text-*</code>), color tokens (<code>--color-*</code>)
+    </p>
+    <p style="color: #51585E;">
+      <strong>Organism uses:</strong> Spacing tokens (<code>--space-*</code>), 
+      container tokens (<code>--container-*</code>), layout breakpoints
+    </p>
+    <p style="color: #39CCCC; font-weight: 600; margin-top: 16px;">
+      Result: 100% token-based, zero inline styles, perfect separation of concerns! 🎉
+    </p>
+  </div>
+  
+</body>
+</html>

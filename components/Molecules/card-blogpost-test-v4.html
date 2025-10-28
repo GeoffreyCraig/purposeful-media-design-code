@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card/BlogPost Component Test - v4.0 Tokens</title>
+  
+  <!-- Import Variables v4.0 -->
+  <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+  
+  <!-- Import Component Styles -->
+  <link rel="stylesheet" href="../../styles/card-blogpost-test-v4.css">
+  
+</head>
+<body>
+  <div class="test-container">
+    <!-- Test Header -->
+    <header class="test-header">
+      <h1>Card/BlogPost Component - v4.0 Token Test</h1>
+      <p>Testing all interactive states with proper v4.0 design token usage</p>
+    </header>
+    
+    <!-- Test Section 1: All States -->
+    <section class="test-section">
+      <h2>State Testing</h2>
+      
+      <div class="test-grid">
+        <!-- Default State -->
+        <div>
+          <span class="state-label">Default State</span>
+          <article 
+            class="card-blogpost" 
+            role="article"
+            tabindex="0"
+            aria-labelledby="blog-title-1"
+          >
+            <header class="card-blogpost-top">
+              <h3 id="blog-title-1" class="card-blogpost-title">
+                Email Marketing Best Practices
+              </h3>
+              <div 
+                class="card-blogpost-meta"
+                aria-label="Published in Marketing on October 15, 2025 by Geoffrey Craig"
+              >
+                <span>Marketing</span>
+                <span class="card-blogpost-meta-separator">|</span>
+                <time datetime="2025-10-15">Oct 15, 2025</time>
+                <span class="card-blogpost-meta-separator">|</span>
+                <span>Geoffrey Craig</span>
+              </div>
+            </header>
+            
+            <div class="card-blogpost-content">
+              <p class="card-blogpost-excerpt">
+                Discover proven strategies for improving email deliverability, 
+                engagement rates, and conversion metrics. Learn how to craft 
+                compelling subject lines that get opened and calls-to-action 
+                that drive results in your B2B campaigns.
+              </p>
+              <a 
+                href="#" 
+                class="card-blogpost-readmore"
+                aria-label="Read full article: Email Marketing Best Practices"
+              >
+                [Read more]
+              </a>
+            </div>
+          </article>
+        </div>
+        
+        <!-- Hover State (simulated) -->
+        <div>
+          <span class="state-label">Hover State (Simulated)</span>
+          <article 
+            class="card-blogpost" 
+            style="background: var(--card-blog-bg-hover); box-shadow: var(--shadow-subtle);"
+            role="article"
+            aria-labelledby="blog-title-2"
+          >
+            <header class="card-blogpost-top">
+              <h3 id="blog-title-2" class="card-blogpost-title" style="color: var(--text-body);">
+                Content Creation Workflows
+              </h3>
+              <div 
+                class="card-blogpost-meta"
+                style="color: var(--text-body);"
+                aria-label="Published in Content on October 12, 2025 by Dana Morris"
+              >
+                <span>Content</span>
+                <span class="card-blogpost-meta-separator">|</span>
+                <time datetime="2025-10-12">Oct 12, 2025</time>
+                <span class="card-blogpost-meta-separator">|</span>
+                <span>Dana Morris</span>
+              </div>
+            </header>
+            
+            <div class="card-blogpost-content">
+              <p class="card-blogpost-excerpt">
+                Streamline your content production process with proven workflows 
+                that save time and maintain quality. From ideation to publication, 
+                learn the systems that keep your content marketing engine running 
+                smoothly and efficiently.
+              </p>
+              <a 
+                href="#" 
+                class="card-blogpost-readmore"
+                style="color: var(--card-blog-link-hover); text-decoration: underline;"
+                aria-label="Read full article: Content Creation Workflows"
+              >
+                [Read more]
+              </a>
+            </div>
+          </article>
+        </div>
+        
+        <!-- Disabled State -->
+        <div>
+          <span class="state-label">Disabled State</span>
+          <article 
+            class="card-blogpost disabled" 
+            role="article"
+            aria-disabled="true"
+            aria-labelledby="blog-title-3"
+          >
+            <header class="card-blogpost-top">
+              <h3 id="blog-title-3" class="card-blogpost-title">
+                Webinar Production Guide
+              </h3>
+              <div 
+                class="card-blogpost-meta"
+                aria-label="Published in Events on October 8, 2025 by Bill Robertson"
+              >
+                <span>Events</span>
+                <span class="card-blogpost-meta-separator">|</span>
+                <time datetime="2025-10-08">Oct 8, 2025</time>
+                <span class="card-blogpost-meta-separator">|</span>
+                <span>Bill Robertson</span>
+              </div>
+            </header>
+            
+            <div class="card-blogpost-content">
+              <p class="card-blogpost-excerpt">
+                Master the art of producing engaging webinars that convert 
+                attendees into qualified leads. From technical setup to 
+                post-event follow-up, this comprehensive guide covers every 
+                aspect of successful webinar management.
+              </p>
+              <a 
+                href="#" 
+                class="card-blogpost-readmore"
+                aria-label="Read full article: Webinar Production Guide"
+              >
+                [Read more]
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Test Section 2: Content Variations -->
+    <section class="test-section">
+      <h2>Content Length Testing</h2>
+      
+      <div class="test-grid">
+        <!-- Short Title -->
+        <article 
+          class="card-blogpost" 
+          role="article"
+          tabindex="0"
+          aria-labelledby="blog-title-4"
+        >
+          <header class="card-blogpost-top">
+            <h3 id="blog-title-4" class="card-blogpost-title">
+              SEO Basics
+            </h3>
+            <div class="card-blogpost-meta">
+              <span>SEO</span>
+              <span class="card-blogpost-meta-separator">|</span>
+              <time datetime="2025-10-25">Oct 25, 2025</time>
+              <span class="card-blogpost-meta-separator">|</span>
+              <span>Marketing Team</span>
+            </div>
+          </header>
+          
+          <div class="card-blogpost-content">
+            <p class="card-blogpost-excerpt">
+              Short excerpt to test minimal content layout.
+            </p>
+            <a href="#" class="card-blogpost-readmore">
+              [Read more]
+            </a>
+          </div>
+        </article>
+        
+        <!-- Long Title (tests truncation) -->
+        <article 
+          class="card-blogpost" 
+          role="article"
+          tabindex="0"
+          aria-labelledby="blog-title-5"
+        >
+          <header class="card-blogpost-top">
+            <h3 id="blog-title-5" class="card-blogpost-title">
+              Advanced Marketing Automation Strategies For Enterprise B2B Companies
+            </h3>
+            <div class="card-blogpost-meta">
+              <span>Automation</span>
+              <span class="card-blogpost-meta-separator">|</span>
+              <time datetime="2025-10-20">Oct 20, 2025</time>
+              <span class="card-blogpost-meta-separator">|</span>
+              <span>Technology Dept</span>
+            </div>
+          </header>
+          
+          <div class="card-blogpost-content">
+            <p class="card-blogpost-excerpt">
+              Very long excerpt text to test the line clamp functionality. 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Turpis egestas integer eget aliquet nibh praesent tristique. 
+              Blandit volutpat maecenas volutpat blandit aliquam etiam erat 
+              velit. This text should truncate after four lines with an 
+              ellipsis to indicate more content is available. Testing to 
+              ensure overflow handling works correctly across all browsers 
+              and devices in various viewport sizes.
+            </p>
+            <a href="#" class="card-blogpost-readmore">
+              [Read more]
+            </a>
+          </div>
+        </article>
+        
+        <!-- Typical Content -->
+        <article 
+          class="card-blogpost" 
+          role="article"
+          tabindex="0"
+          aria-labelledby="blog-title-6"
+        >
+          <header class="card-blogpost-top">
+            <h3 id="blog-title-6" class="card-blogpost-title">
+              Building Brand Authority
+            </h3>
+            <div class="card-blogpost-meta">
+              <span>Branding</span>
+              <span class="card-blogpost-meta-separator">|</span>
+              <time datetime="2025-10-18">Oct 18, 2025</time>
+              <span class="card-blogpost-meta-separator">|</span>
+              <span>Charles Norton</span>
+            </div>
+          </header>
+          
+          <div class="card-blogpost-content">
+            <p class="card-blogpost-excerpt">
+              Establish your company as a thought leader in your industry. 
+              Learn proven strategies for building trust, demonstrating 
+              expertise, and creating content that positions your brand as 
+              the go-to resource for your target audience.
+            </p>
+            <a href="#" class="card-blogpost-readmore">
+              [Read more]
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+    <!-- Test Section 3: Grid Layout (Organism Context) -->
+    <section class="test-section">
+      <h2>Organism Context: Blog Grid</h2>
+      <p style="color: #51585E; margin-bottom: 16px;">
+        Demonstrates cards in their natural organism context with proper spacing
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+        <article class="card-blogpost" role="article" tabindex="0">
+          <header class="card-blogpost-top">
+            <h3 class="card-blogpost-title">Inbound Marketing Fundamentals</h3>
+            <div class="card-blogpost-meta">
+              <span>Strategy</span>
+              <span class="card-blogpost-meta-separator">|</span>
+              <time datetime="2025-10-27">Oct 27, 2025</time>
+            </div>
+          </header>
+          <div class="card-blogpost-content">
+            <p class="card-blogpost-excerpt">
+              Master the flywheel methodology and learn how to attract, 
+              engage, and delight your customers with strategic content 
+              that drives sustainable business growth.
+            </p>
+            <a href="#" class="card-blogpost-readmore">[Read more]</a>
+          </div>
+        </article>
+        
+        <article class="card-blogpost" role="article" tabindex="0">
+          <header class="card-blogpost-top">
+            <h3 class="card-blogpost-title">Lead Nurturing Tactics</h3>
+            <div class="card-blogpost-meta">
+              <span>Sales</span>
+              <span class="card-blogpost-meta-separator">|</span>
+              <time datetime="2025-10-26">Oct 26, 2025</time>
+            </div>
+          </header>
+          <div class="card-blogpost-content">
+            <p class="card-blogpost-excerpt">
+              Transform cold leads into hot prospects with targeted nurturing 
+              campaigns. Discover email sequences, content offers, and timing 
+              strategies that move leads through the funnel.
+            </p>
+            <a href="#" class="card-blogpost-readmore">[Read more]</a>
+          </div>
+        </article>
+        
+        <article class="card-blogpost" role="article" tabindex="0">
+          <header class="card-blogpost-top">
+            <h3 class="card-blogpost-title">Analytics Dashboard Setup</h3>
+            <div class="card-blogpost-meta">
+              <span>Analytics</span>
+              <span class="card-blogpost-meta-separator">|</span>
+              <time datetime="2025-10-24">Oct 24, 2025</time>
+            </div>
+          </header>
+          <div class="card-blogpost-content">
+            <p class="card-blogpost-excerpt">
+              Configure your marketing analytics dashboard to track the metrics 
+              that matter. Learn which KPIs to monitor and how to set up 
+              automated reporting for data-driven decision making.
+            </p>
+            <a href="#" class="card-blogpost-readmore">[Read more]</a>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+    <!-- Token Verification -->
+    <section class="test-section">
+      <h2>Token Verification</h2>
+      <div style="background: white; padding: 24px; border-radius: 8px;">
+        <h3 style="margin-top: 0;">Computed Token Values</h3>
+        <p style="color: #51585E;">Open browser DevTools and inspect elements to verify:</p>
+        <ul style="color: #51585E;">
+          <li><strong>Default BG:</strong> Should be <code>#FFFFFF</code></li>
+          <li><strong>Hover BG:</strong> Should be <code>#FAF5E6</code></li>
+          <li><strong>Active BG:</strong> Should be <code>#F4EBCD</code></li>
+          <li><strong>Disabled BG:</strong> Should be <code>#ECEEEF</code></li>
+          <li><strong>Read More (default):</strong> Should be <code>#1D50DE</code></li>
+          <li><strong>Read More (hover):</strong> Should be <code>#39CCCC</code></li>
+          <li><strong>Title Color:</strong> Should be <code>#1B1464</code></li>
+          <li><strong>Body Color:</strong> Should be <code>#51585E</code></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  
+  <script>
+    // Simple console logging for token verification
+    console.log('=== v4.0 Token Test ===');
+    console.log('Testing Card/BlogPost component with v4.0 design tokens');
+    
+    // Get computed styles from first card
+    const card = document.querySelector('.card-blogpost');
+    const styles = getComputedStyle(card);
+    
+    console.log('Card Background:', styles.backgroundColor);
+    console.log('Card Padding:', styles.padding);
+    console.log('Card Transition:', styles.transition);
+    
+    const title = document.querySelector('.card-blogpost-title');
+    const titleStyles = getComputedStyle(title);
+    
+    console.log('Title Color:', titleStyles.color);
+    console.log('Title Font:', titleStyles.fontFamily);
+    console.log('Title Size:', titleStyles.fontSize);
+  </script>
+</body>
+</html>

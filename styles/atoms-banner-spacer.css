@@ -1,0 +1,150 @@
+/* =================================================
+   CARD/BANNER-SPACER COMPONENT STYLES
+   Version: 3.0 (External CSS)
+   Dependencies: variables-v4.0-20251027.css
+   File: atoms-banner-spacer.css
+   ================================================= */
+
+/* -------------------------------------------------
+   BASE STRUCTURE
+   ------------------------------------------------- */
+.card-banner-spacer {
+    position: relative;
+    width: 100%;
+}
+
+.banner-spacer-content {
+    padding: var(--space-3) var(--space-4);
+    box-sizing: border-box;
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: var(--button-height-small);
+}
+
+/* -------------------------------------------------
+   VARIANT: Spacer (Gradient, no text)
+   ------------------------------------------------- */
+.card-banner-spacer.variant-spacer {
+    background: linear-gradient(
+        to bottom,
+        var(--bg-primary) 0%,
+        var(--bg-brand) 100%
+    );
+    min-height: var(--button-height-small);
+}
+
+.card-banner-spacer.variant-spacer .banner-spacer-content {
+    min-height: var(--button-height-small);
+    padding: var(--space-5) var(--space-4);
+}
+
+/* -------------------------------------------------
+   VARIANT: HeadlineBanner (Navy bg, white text, gold bottom border)
+   ------------------------------------------------- */
+.card-banner-spacer.variant-headline-banner {
+    background-color: var(--banner-bg);
+    border-bottom: var(--space-1) solid var(--banner-accent);
+}
+
+.variant-headline-banner .banner-headline {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    text-transform: uppercase;
+    color: var(--banner-headline);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+/* -------------------------------------------------
+   VARIANT: HeadlineReverse (White bg, navy text, navy top border)
+   ------------------------------------------------- */
+.card-banner-spacer.variant-headline-reverse {
+    background-color: var(--bg-primary);
+    border-top: var(--space-1) solid var(--bg-brand);
+}
+
+.variant-headline-reverse .banner-headline {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    text-transform: uppercase;
+    color: var(--text-heading);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+/* -------------------------------------------------
+   RESPONSIVE TYPOGRAPHY
+   ------------------------------------------------- */
+
+/* Desktop Plus (1920px+) */
+@media (min-width: 1920px) {
+    .variant-headline-banner .banner-headline {
+        font-size: var(--banner-headline-size-desktop);
+        line-height: var(--banner-headline-height-desktop);
+    }
+    
+    .variant-headline-reverse .banner-headline {
+        font-size: var(--text-h3-size);
+        line-height: var(--banner-subheading-height);
+    }
+    
+    .banner-spacer-content {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+}
+
+/* Desktop (1150px - 1919px) */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .variant-headline-banner .banner-headline {
+        font-size: var(--banner-headline-size-desktop);
+        line-height: var(--banner-headline-height-desktop);
+    }
+    
+    .variant-headline-reverse .banner-headline {
+        font-size: var(--text-h3-size);
+        line-height: var(--banner-subheading-height);
+    }
+    
+    .banner-spacer-content {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+}
+
+/* Tablet (768px - 1149px) */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .variant-headline-banner .banner-headline {
+        font-size: var(--text-h3-size);
+        line-height: var(--banner-subheading-height);
+    }
+    
+    .variant-headline-reverse .banner-headline {
+        font-size: var(--text-h4-size);
+        line-height: var(--text-h2-size);
+    }
+    
+    .banner-spacer-content {
+        max-width: 1150px;
+        margin: 0 auto;
+    }
+}
+
+/* Mobile (up to 767px) */
+@media (max-width: 767px) {
+    .variant-headline-banner .banner-headline,
+    .variant-headline-reverse .banner-headline {
+        font-size: var(--banner-headline-size-mobile);
+        line-height: var(--banner-headline-height-mobile);
+        text-align: center;
+    }
+    
+    .banner-spacer-content {
+        justify-content: center;
+    }
+}

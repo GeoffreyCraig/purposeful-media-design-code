@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card/BannerSpacer - Clean Component</title>
+    
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/atoms-banner-spacer.css">
+    
+    <!-- Demo Styles (Remove in production) -->
+    <link rel="stylesheet" href="../../styles/demo-styles.css">
+</head>
+<body>
+    <!-- Demo Container (remove in production) -->
+    <div class="demo-container">
+        
+        <!-- VARIANT 1: Spacer (Gradient) -->
+        <div class="demo-section">
+            <div class="demo-label">Variant: Spacer (Gradient)</div>
+            <div class="card-banner-spacer variant-spacer" 
+                 data-component="card-banner-spacer" 
+                 data-variant="spacer"
+                 role="presentation" 
+                 aria-hidden="true">
+                <div class="banner-spacer-content">
+                    <!-- Empty spacer - no content -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- VARIANT 2: HeadlineBanner -->
+        <div class="demo-section">
+            <div class="demo-label">Variant: HeadlineBanner (Navy/White/Gold)</div>
+            <div class="card-banner-spacer variant-headline-banner" 
+                 data-component="card-banner-spacer" 
+                 data-variant="headline-banner">
+                <div class="banner-spacer-content">
+                    <h1 class="banner-headline">H1 Headline 36 54h</h1>
+                </div>
+            </div>
+        </div>
+        
+        <!-- VARIANT 3: HeadlineReverse -->
+        <div class="demo-section">
+            <div class="demo-label">Variant: HeadlineReverse (White/Navy)</div>
+            <div class="card-banner-spacer variant-headline-reverse" 
+                 data-component="card-banner-spacer" 
+                 data-variant="headline-reverse">
+                <div class="banner-spacer-content">
+                    <h2 class="banner-headline">H2 Headline 30 45h</h2>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- JavaScript for dynamic variant switching -->
+    <script src="../../scripts/atoms-banner-spacer.js"></script>
+</body>
+</html>

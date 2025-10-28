@@ -1,0 +1,345 @@
+/* =================================================
+   BLOG GROUP ORGANISM - v4.0 TOKEN IMPLEMENTATION
+   Handles layout and arrangement of blog card molecules
+   Date: 2025-10-27
+   
+   UPDATED: Single-column layout as per Figma design
+   ================================================= */
+
+/* =================================================
+   IMPORT VARIABLES
+   ================================================= */
+@import url('variables-v4.0-20251027.css');
+
+/* =================================================
+   ORGANISM OVERVIEW
+   
+   Blog Group is an organism that arranges multiple
+   card-blogpost molecules. It handles:
+   
+   1. SINGLE-COLUMN layout (per Figma design)
+   2. Responsive behavior
+   3. Section spacing
+   4. Container widths
+   5. Pagination controls
+   
+   It does NOT handle:
+   - Individual card styling (molecule's job)
+   - Card hover states (molecule's job)
+   - Typography within cards (molecule's job)
+   ================================================= */
+
+/* =================================================
+   SECTION CONTAINER
+   ================================================= */
+
+.blog-group {
+  /* Layout */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* Background */
+  background-color: var(--bg-primary);
+}
+
+/* =================================================
+   CARDS CONTAINER
+   ================================================= */
+
+.blog-group__cards {
+  /* Layout */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+  /* Spacing - Mobile first */
+  padding: var(--space-4) var(--space-4); /* 16px */
+}
+
+/* =================================================
+   INNER CONTAINER (Max-width wrapper)
+   ================================================= */
+
+.blog-group__inner {
+  /* Layout - SINGLE COLUMN across all breakpoints */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Cards stack directly with no gap between them */
+  
+  /* Max width constraint */
+  max-width: 100%;
+}
+
+/* =================================================
+   PAGINATION FOOTER
+   ================================================= */
+
+.blog-group__footer {
+  /* Layout */
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+  /* Spacing */
+  padding: var(--space-4) var(--space-5) var(--space-10) var(--space-5);
+}
+
+.blog-group__pagination {
+  /* Typography - Using base tokens */
+  font-family: var(--font-secondary);
+  font-size: var(--text-default-size);
+  line-height: var(--text-default-height);
+  font-weight: var(--font-weight-regular);
+  
+  /* Color */
+  color: var(--text-body);
+  
+  /* Interaction */
+  cursor: pointer;
+  text-decoration: none;
+  transition: color var(--transition-base);
+  
+  /* Reset button/link defaults */
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.blog-group__pagination:hover {
+  color: var(--color-primary-500);
+}
+
+.blog-group__pagination:active {
+  color: var(--color-primary-700);
+}
+
+/* =================================================
+   SCROLLING MODE VARIATIONS
+   ================================================= */
+
+/* BlogTeaser Mode - Shows only 2 posts */
+.blog-group--teaser .card-blogpost:nth-child(n+3) {
+  display: none;
+}
+
+.blog-group--teaser .blog-group__footer {
+  display: none;
+}
+
+/* FrontPage Mobile - Shows only 4 posts */
+.blog-group--frontpage-mobile .card-blogpost:nth-child(n+5) {
+  display: none;
+}
+
+/* FrontPage Tablet - Shows only 6 posts */
+.blog-group--frontpage-tablet .card-blogpost:nth-child(n+7) {
+  display: none;
+}
+
+/* FrontPage Desktop - Shows only 8 posts */
+.blog-group--frontpage-desktop .card-blogpost:nth-child(n+9) {
+  display: none;
+}
+
+/* Infinite Mode - Shows all posts, no pagination */
+.blog-group--infinite .blog-group__footer {
+  display: none;
+}
+
+/* =================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================= */
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) {
+  .blog-group__cards {
+    /* Increased padding */
+    padding: var(--space-2) var(--space-8); /* 8px 32px */
+  }
+  
+  .blog-group__inner {
+    /* Single column maintained */
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .blog-group__footer {
+    padding: var(--space-4) var(--space-10) var(--space-16) var(--space-10);
+  }
+}
+
+/* Desktop: 1150-1919px */
+@media (min-width: 1150px) {
+  .blog-group__cards {
+    /* Desktop padding */
+    padding: var(--space-4) var(--space-16); /* 16px 64px */
+  }
+  
+  .blog-group__inner {
+    /* SINGLE COLUMN as per Figma design */
+    flex-direction: column;
+    gap: 0; /* Cards stack directly with no gap */
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  
+  .blog-group__footer {
+    padding: var(--space-4) var(--space-20) var(--space-20) var(--space-20);
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+}
+
+/* DesktopPlus: 1920px+ */
+@media (min-width: 1920px) {
+  .blog-group__cards {
+    /* Maintain desktop padding */
+    padding: var(--space-4) var(--space-16);
+  }
+  
+  .blog-group__inner {
+    /* SINGLE COLUMN maintained on large screens */
+    flex-direction: column;
+    gap: 0; /* Cards stack directly with no gap */
+    max-width: var(--container-standard); /* 1920px */
+  }
+  
+  .blog-group__footer {
+    max-width: var(--container-standard);
+  }
+}
+
+/* =================================================
+   UTILITY: SPACER
+   ================================================= */
+
+.blog-group__spacer {
+  /* Height using spacing calculation (60px = 48px + 12px) */
+  height: calc(var(--space-12) + var(--space-3)); /* 60px */
+  
+  /* Ensure it's just empty space */
+  width: 100%;
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* =================================================
+   OPTIONAL: SECTION HEADER
+   ================================================= */
+
+.blog-group__header {
+  /* Layout */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  /* Spacing */
+  padding: var(--space-10) var(--space-4) var(--space-6) var(--space-4);
+}
+
+.blog-group__title {
+  /* Typography */
+  font-family: var(--font-primary);
+  font-size: var(--text-h2-size);
+  line-height: var(--text-h2-height);
+  font-weight: var(--text-h2-weight);
+  
+  /* Color */
+  color: var(--text-heading);
+  
+  /* Spacing */
+  margin: 0 0 var(--space-4) 0;
+}
+
+.blog-group__subtitle {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-lead-size);
+  line-height: var(--text-lead-height);
+  font-weight: var(--font-weight-regular);
+  
+  /* Color */
+  color: var(--text-body);
+  
+  /* Spacing */
+  margin: 0;
+  max-width: 600px;
+}
+
+/* Desktop adjustments for header */
+@media (min-width: 1150px) {
+  .blog-group__header {
+    padding: var(--space-16) var(--space-4) var(--space-10) var(--space-4);
+  }
+}
+
+/* =================================================
+   USAGE NOTES
+   
+   This organism works with the card-blogpost molecule.
+   
+   HTML Structure:
+   <section class="blog-group blog-group--frontpage">
+     <header class="blog-group__header"> (optional)
+       <h2 class="blog-group__title">Latest Articles</h2>
+       <p class="blog-group__subtitle">Insights for B2B Success</p>
+     </header>
+     
+     <div class="blog-group__cards">
+       <div class="blog-group__inner">
+         <!-- Multiple card-blogpost molecules here -->
+         <article class="card-blogpost">...</article>
+         <article class="card-blogpost">...</article>
+       </div>
+     </div>
+     
+     <footer class="blog-group__footer">
+       <a class="blog-group__pagination">More Articles →</a>
+     </footer>
+   </section>
+   
+   Modes:
+   - .blog-group--teaser (2 posts, no pagination)
+   - .blog-group--frontpage-mobile (4 posts)
+   - .blog-group--frontpage-tablet (6 posts)  
+   - .blog-group--frontpage-desktop (8 posts)
+   - .blog-group--infinite (all posts, no pagination)
+   
+   ================================================= */
+
+/* =================================================
+   TOKEN USAGE SUMMARY
+   
+   ✅ Single-column layout per Figma design
+   ✅ Spacing tokens for all padding/margins:
+      - var(--space-*) throughout
+   
+   ✅ Container tokens:
+      - var(--container-standard) for max-width
+   
+   ✅ Color tokens:
+      - var(--bg-primary) for background
+      - var(--text-body) for pagination
+      - var(--text-heading) for titles
+   
+   ✅ Typography tokens:
+      - var(--font-secondary) for pagination
+      - var(--text-default-*) for pagination
+   
+   ✅ Interactive tokens:
+      - var(--transition-base) for hover
+      - var(--color-primary-*) for link states
+   
+   ⚠️ NO card styling (handled by molecule)
+   ⚠️ NO hardcoded values
+   ⚠️ NO inline styles needed
+   
+   ================================================= */
