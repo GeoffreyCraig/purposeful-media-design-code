@@ -1,0 +1,337 @@
+/* =================================================
+   STICKY MENU COMPONENT - MOLECULE
+   Component: sticky-menu.html
+   Purpose: In-page navigation menu that sticks to top of viewport
+   States: Default, Active, Hover, Open (mobile)
+   Responsive: Mobile (380-767px), Tablet/Desktop (768px+)
+   Version: 1.0 - Fully Tokenized
+   Date: 2025-10-29
+   ================================================= */
+
+/* -------------------------------------------------
+   BASE STICKY MENU STYLES
+   ------------------------------------------------- */
+
+.pm-sticky-menu {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-neutral-100);
+    border-bottom: 1px solid var(--color-accent-500);
+    box-shadow: var(--shadow-subtle);
+    z-index: 1000;
+    transition: transform var(--transition-slow);
+}
+
+.pm-sticky-menu.hidden {
+    transform: translateY(-100%);
+}
+
+/* -------------------------------------------------
+   DESKTOP/TABLET MENU (768px+)
+   ------------------------------------------------- */
+
+.pm-sticky-menu-desktop {
+    display: none;
+    padding: var(--space-1) var(--space-2);
+}
+
+.pm-sticky-menu-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    gap: 10px;
+}
+
+/* -------------------------------------------------
+   DESKTOP MENU ITEMS
+   ------------------------------------------------- */
+
+.pm-sticky-menu-item {
+    color: var(--color-primary-700);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    padding: var(--space-2) var(--space-4);
+    position: relative;
+    transition: all var(--transition-slow);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.pm-sticky-menu-item:hover {
+    opacity: 0.8;
+}
+
+.pm-sticky-menu-item.active {
+    background: var(--color-accent-100);
+    border-radius: var(--radius-medium);
+}
+
+/* -------------------------------------------------
+   MENU SEPARATOR
+   ------------------------------------------------- */
+
+.pm-sticky-menu-separator {
+    color: var(--color-primary-700);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-h4-size);
+    line-height: 30.5px;
+    user-select: none;
+}
+
+/* -------------------------------------------------
+   GET STARTED BUTTON
+   ------------------------------------------------- */
+
+.pm-sticky-menu-start {
+    background: var(--color-accent-100);
+    border-radius: var(--radius-medium);
+    padding: var(--space-2) var(--space-4);
+    color: var(--color-primary-700);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    transition: all var(--transition-slow);
+    white-space: nowrap;
+}
+
+.pm-sticky-menu-start:hover {
+    background: var(--color-accent-600);
+    color: var(--color-white);
+}
+
+/* -------------------------------------------------
+   MOBILE MENU (767px and below)
+   ------------------------------------------------- */
+
+.pm-sticky-menu-mobile {
+    display: none;
+    position: relative;
+}
+
+.pm-sticky-menu-mobile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3);
+    min-height: 60px;
+}
+
+/* -------------------------------------------------
+   MOBILE CURRENT SECTION DISPLAY
+   ------------------------------------------------- */
+
+.pm-sticky-menu-mobile-current {
+    background: var(--color-accent-100);
+    border-radius: var(--radius-medium);
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-primary-700);
+    text-transform: uppercase;
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+}
+
+/* -------------------------------------------------
+   MOBILE TOGGLE BUTTON
+   ------------------------------------------------- */
+
+.pm-sticky-menu-mobile-toggle {
+    background: var(--color-accent-100);
+    border: none;
+    border-radius: var(--radius-medium);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-slow);
+}
+
+.pm-sticky-menu-mobile-toggle:hover {
+    background: var(--color-accent-600);
+}
+
+/* -------------------------------------------------
+   HAMBURGER ICON
+   ------------------------------------------------- */
+
+.pm-sticky-menu-hamburger {
+    width: 24px;
+    height: 20px;
+    position: relative;
+}
+
+.pm-sticky-menu-hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--color-primary-700);
+    border-radius: var(--radius-xsmall);
+    opacity: 1;
+    left: 0;
+    transition: 0.25s ease-in-out;
+}
+
+.pm-sticky-menu-hamburger span:nth-child(1) {
+    top: 0px;
+}
+
+.pm-sticky-menu-hamburger span:nth-child(2) {
+    top: 8px;
+}
+
+.pm-sticky-menu-hamburger span:nth-child(3) {
+    top: 16px;
+}
+
+/* -------------------------------------------------
+   HAMBURGER CLOSE STATE (X)
+   ------------------------------------------------- */
+
+.pm-sticky-menu-mobile-toggle.open .pm-sticky-menu-hamburger span:nth-child(1) {
+    top: 8px;
+    transform: rotate(45deg);
+}
+
+.pm-sticky-menu-mobile-toggle.open .pm-sticky-menu-hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.pm-sticky-menu-mobile-toggle.open .pm-sticky-menu-hamburger span:nth-child(3) {
+    top: 8px;
+    transform: rotate(-45deg);
+}
+
+/* -------------------------------------------------
+   MOBILE DROPDOWN
+   ------------------------------------------------- */
+
+.pm-sticky-menu-dropdown {
+    display: none;
+    background: var(--color-neutral-100);
+    padding: var(--space-4) var(--space-2);
+    border-top: 2px solid var(--color-accent-500);
+}
+
+.pm-sticky-menu-dropdown.open {
+    display: block;
+}
+
+.pm-sticky-menu-dropdown-inner {
+    padding-left: var(--space-8);
+    padding-right: var(--space-16);
+}
+
+/* -------------------------------------------------
+   MOBILE DROPDOWN ITEMS
+   ------------------------------------------------- */
+
+.pm-sticky-menu-dropdown-item {
+    display: block;
+    padding: var(--space-3) 0;
+    color: var(--color-primary-700);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    transition: all var(--transition-slow);
+}
+
+.pm-sticky-menu-dropdown-item:hover {
+    padding-left: var(--space-2);
+    opacity: 0.8;
+}
+
+.pm-sticky-menu-dropdown-item.active {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+    background: var(--color-accent-100);
+    border-radius: var(--radius-medium);
+}
+
+.pm-sticky-menu-dropdown-item.start {
+    background: var(--color-accent-100);
+    border-radius: var(--radius-medium);
+    padding: var(--space-3) var(--space-2);
+    color: var(--color-accent-600);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+}
+
+.pm-sticky-menu-dropdown-item.start:hover {
+    background: var(--color-accent-600);
+    color: var(--color-white);
+}
+
+/* -------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   ------------------------------------------------- */
+
+/* Tablet/Desktop: 768px+ */
+@media screen and (min-width: 768px) {
+    .pm-sticky-menu-desktop {
+        display: block;
+    }
+
+    .pm-sticky-menu-mobile {
+        display: none;
+    }
+}
+
+/* Mobile: 767px and below */
+@media screen and (max-width: 767px) {
+    .pm-sticky-menu-desktop {
+        display: none;
+    }
+
+    .pm-sticky-menu-mobile {
+        display: block;
+    }
+
+    .pm-sticky-menu-dropdown-inner {
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+    }
+}
+
+/* Mobile Small: 380px and below */
+@media screen and (max-width: 380px) {
+    .pm-sticky-menu-mobile-bar {
+        padding: var(--space-2);
+    }
+
+    .pm-sticky-menu-mobile-current {
+        font-size: var(--text-small-size);
+        padding: 10px var(--space-3);
+    }
+}
+
+/* DesktopPlus: 1920px+ */
+@media screen and (min-width: 1920px) {
+    .pm-sticky-menu-inner {
+        padding: 0 var(--space-5);
+    }
+}
+
+/* =================================================
+   END OF STICKY MENU COMPONENT
+   ================================================= */

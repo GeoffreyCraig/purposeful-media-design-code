@@ -174,17 +174,16 @@ This project uses **CSS background-image positioning with data attributes**, NOT
 - [x] Molecule: slide-frame.html (ARCHIVED - redundant, carousel structure integrated in hero-carousel organism)
 - [x] Molecule: buttons-navdotgroups.html (ARCHIVED - redundant, carousel indicators integrated in hero-carousel organism)
 - [x] Molecule: buttons-navarrowpairs.html (ARCHIVED - redundant, carousel nav integrated in hero-carousel organism)
-- [ ] Molecule: menu-footer-mod.html
+- [x] Molecule: menu-footer-mod.html (ARCHIVED - redundant, footer menu integrated in footer-unified organism)
 - [x] Molecule: main-menu-click.html (ARCHIVED - redundant, menu integrated in banner-header organism)
-- [ ] Molecule: sticky-menu.html
-- [ ] Molecule: card-faq.html
-- [ ] Molecule: card-blogpost.html
-- [ ] Molecule: card-teaser.html
-- [ ] Molecule: form-contact.html
-- [ ] Molecule: form-resource.html
-- [ ] Molecule: form-newsletter.html
-- [ ] Molecule: form-item.html
-- [ ] Molecule: form-input-field.html
+- [x] Molecule: sticky-menu.html (COMPLETED)
+- [x] Molecule: card-faq.html (COMPLETED)
+- [x] Molecule: card-teaser.html (COMPLETED)
+- [x] Molecule: form-contact.html (COMPLETED)
+- [x] Molecule: form-resource.html (COMPLETED)
+- [x] Molecule: form-newsletter.html (COMPLETED)
+- [x] Molecule: form-item.html (ARCHIVED - redundant, field containers integrated in production forms)
+- [x] Molecule: form-input-field.html (ARCHIVED - redundant, input fields integrated in production forms)
 - [ ] Organism: [component-name]
 
 ## Notes
@@ -194,11 +193,18 @@ This project uses **CSS background-image positioning with data attributes**, NOT
 - Maintain compatibility with existing templates
 
 ### Component Redundancy Rule
-**If a production organism component exists that integrates sub-component functionality, the standalone molecule prototypes are redundant and should be archived.**
+**If a production organism or molecule component exists that integrates sub-component functionality, the standalone prototypes are redundant and should be archived.**
 
 Examples:
 - `banner-header-main-mobile-fix-v3.html` (organism) integrates menu → archive `header-dropdown-menu.html` and `main-menu-click.html`
 - `hero-carousel.html` (organism) integrates slides → archive `slide-hero.html`, `slide-video.html`, `slide-image.html`
+- `footer-unified.html` (organism) integrates footer menu → archive `menu-footer-mod.html`
+- Production form components (`form-contact.html`, `form-resource.html`, `form-newsletter.html`) integrate field functionality → archive `form-input-field.html` and `form-item.html`
+
+**Form Component Integration:**
+- `form-input-field.html` - Basic input field with states (unfilled, focus, error, disabled)
+- `form-item.html` - Field wrapper with label + input + helper text
+- **Integrated into:** All production form components use `.form-[type]__input`, `.form-[type]__label`, `.form-[type]__helper` classes
 
 These Figma-to-HTML prototypes were useful during design but are not needed in production. Organisms will be tokenized during the organism layer phase.
 
