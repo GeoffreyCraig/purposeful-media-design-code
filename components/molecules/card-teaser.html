@@ -5,288 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card/Teaser Component - Purposeful Media</title>
     
-    <!-- Import existing stylesheets -->
-    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
-    <link rel="stylesheet" href="../../styles/atoms-master.css">
-    
-    <style>
-        /* ====================================
-           CARD/TEASER COMPONENT STYLES
-           Component: Molecule/Card/Teaser
-           Version: 1.0
-           Last Updated: 2025-09-18
-           
-           Description: Teaser card with heading, body text, and CTA button
-           Variants: 12 total (4 sizes × 3 colors)
-           - Sizes: Large, Medium, Small, Mobile
-           - Colors: Default (white), Gray, Reverse (navy)
-           ==================================== */
-        
-        /* Base Card Styles */
-        .card-teaser {
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            align-items: center;
-            justify-content: flex-start;
-            overflow: clip;
-            padding: 40px 48px 64px 48px;
-            position: relative;
-            border-radius: 4px;
-            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
-            width: 100%;
-        }
-        
-        /* Color Variants */
-        .card-teaser[data-color="default"] {
-            background-color: var(--white, #ffffff);
-        }
-        
-        .card-teaser[data-color="gray"] {
-            background-color: var(--neutrals-100, #eceeef);
-        }
-        
-        .card-teaser[data-color="reverse"] {
-            background-color: var(--primary-700, #1b1464);
-        }
-        
-        /* Heading Styles */
-        .card-teaser__heading {
-            font-family: 'Lato', sans-serif;
-            font-weight: 900; /* Heavy */
-            line-height: 0;
-            min-width: 100%;
-            font-style: normal;
-            position: relative;
-            flex-shrink: 0;
-            text-transform: uppercase;
-            width: min-content;
-        }
-        
-        .card-teaser__heading p {
-            margin: 0;
-        }
-        
-        /* Heading Size Variants */
-        .card-teaser[data-size="large"] .card-teaser__heading,
-        .card-teaser[data-size="medium"] .card-teaser__heading,
-        .card-teaser[data-size="small"] .card-teaser__heading {
-            font-size: 30px;
-        }
-        
-        .card-teaser[data-size="large"] .card-teaser__heading p,
-        .card-teaser[data-size="medium"] .card-teaser__heading p,
-        .card-teaser[data-size="small"] .card-teaser__heading p {
-            line-height: 45px;
-        }
-        
-        .card-teaser[data-size="mobile"] .card-teaser__heading {
-            font-size: 21px;
-        }
-        
-        .card-teaser[data-size="mobile"] .card-teaser__heading p {
-            line-height: 30.5px;
-        }
-        
-        /* Heading Color Variants */
-        .card-teaser[data-color="default"] .card-teaser__heading,
-        .card-teaser[data-color="gray"] .card-teaser__heading {
-            color: var(--primary-700, #1b1464);
-        }
-        
-        .card-teaser[data-color="reverse"] .card-teaser__heading {
-            color: var(--white, #ffffff);
-        }
-        
-        /* Body Text Styles */
-        .card-teaser__body {
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 400; /* Regular */
-            line-height: 0;
-            min-width: 100%;
-            font-style: normal;
-            position: relative;
-            flex-shrink: 0;
-            font-size: 18px;
-            width: min-content;
-        }
-        
-        .card-teaser__body p {
-            margin: 0;
-            line-height: 27px;
-        }
-        
-        /* Body Color Variants */
-        .card-teaser[data-color="default"] .card-teaser__body,
-        .card-teaser[data-color="gray"] .card-teaser__body {
-            color: var(--neutrals-600, #51585e);
-        }
-        
-        .card-teaser[data-color="reverse"] .card-teaser__body {
-            color: var(--neutrals-200, #c7cbcf);
-        }
-        
-        /* Button Styles - References atomic button component */
-        .card-teaser__button {
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border-radius: 4px;
-            flex-shrink: 0;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        /* Button Size Variants */
-        .card-teaser[data-size="large"] .card-teaser__button,
-        .card-teaser[data-size="medium"] .card-teaser__button,
-        .card-teaser[data-size="small"] .card-teaser__button {
-            padding: 16px 80px;
-        }
-        
-        .card-teaser[data-size="mobile"] .card-teaser__button {
-            padding: 8px 64px;
-        }
-        
-        /* Button Color Variants */
-        .card-teaser[data-color="default"] .card-teaser__button,
-        .card-teaser[data-color="gray"] .card-teaser__button {
-            background-color: var(--primary-700, #1b1464);
-        }
-        
-        .card-teaser[data-color="reverse"] .card-teaser__button {
-            background-color: var(--accent-500, #d4af37);
-        }
-        
-        /* Button Text Styles */
-        .card-teaser__button-text {
-            font-family: 'Lato', sans-serif;
-            font-weight: 700; /* Bold */
-            line-height: 0;
-            font-style: normal;
-            position: relative;
-            flex-shrink: 0;
-            font-size: 18px;
-            text-align: center;
-            white-space: nowrap;
-            text-transform: uppercase;
-        }
-        
-        .card-teaser__button-text p {
-            margin: 0;
-            line-height: 18px;
-            white-space: pre;
-        }
-        
-        /* Button Text Color Variants */
-        .card-teaser[data-color="default"] .card-teaser__button-text,
-        .card-teaser[data-color="gray"] .card-teaser__button-text {
-            color: var(--white, #ffffff);
-        }
-        
-        .card-teaser[data-color="reverse"] .card-teaser__button-text {
-            color: var(--primary-700, #1b1464);
-        }
-        
-        /* Button Hover States */
-        .card-teaser[data-color="default"] .card-teaser__button:hover,
-        .card-teaser[data-color="gray"] .card-teaser__button:hover {
-            background-color: var(--primary-600, #1740b0);
-        }
-        
-        .card-teaser[data-color="reverse"] .card-teaser__button:hover {
-            background-color: var(--accent-400, #dcbe5d);
-        }
-        
-        /* Button Active States */
-        .card-teaser[data-color="default"] .card-teaser__button:active,
-        .card-teaser[data-color="gray"] .card-teaser__button:active {
-            background-color: var(--primary-800, #0b1f57);
-        }
-        
-        .card-teaser[data-color="reverse"] .card-teaser__button:active {
-            background-color: var(--accent-600, #b39226);
-        }
-        
-        /* Size-based Container Constraints */
-        .card-teaser[data-size="large"] {
-            max-width: 600px;
-        }
-        
-        .card-teaser[data-size="medium"] {
-            max-width: 500px;
-        }
-        
-        .card-teaser[data-size="small"] {
-            max-width: 400px;
-        }
-        
-        .card-teaser[data-size="mobile"] {
-            max-width: 380px;
-        }
-        
-        /* Responsive Behavior */
-        @media (max-width: 767px) {
-            .card-teaser {
-                padding: 40px 24px 64px 24px;
-            }
-            
-            .card-teaser__heading {
-                font-size: 21px;
-            }
-            
-            .card-teaser__heading p {
-                line-height: 30.5px;
-            }
-            
-            .card-teaser__button {
-                padding: 8px 64px;
-            }
-        }
-        
-        /* Demo Styles (for preview only) */
-        .demo-container {
-            padding: 40px;
-            background-color: #f5f5f5;
-            min-height: 100vh;
-        }
-        
-        .demo-section {
-            margin-bottom: 60px;
-        }
-        
-        .demo-title {
-            font-family: 'Lato', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: #1b1464;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-        
-        .demo-row {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .demo-item {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .demo-label {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            color: #6c757d;
-            margin-bottom: 10px;
-        }
-    </style>
+    <!-- Design System Variables -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+
+    <!-- Card Teaser Component Styles -->
+    <link rel="stylesheet" href="../../styles/molecules-card-teaser.css">
+
+    <!-- Demo Styles -->
+    <link rel="stylesheet" href="../../styles/molecules-card-teaser-demo.css">
 </head>
 <body>
     <div class="demo-container">
@@ -449,17 +175,17 @@
         </div>
         
         <!-- Usage Notes -->
-        <div class="demo-section" style="background: white; padding: 30px; border-radius: 8px;">
-            <h2 class="demo-title">Usage Notes</h2>
-            <div style="font-family: 'Open Sans', sans-serif; color: #51585e; line-height: 1.6;">
-                <h3 style="color: #1b1464; margin-top: 20px;">Component Structure</h3>
+        <div class="demo-section usage-notes-section">
+            <h2>Usage Notes</h2>
+            <div class="usage-notes-content">
+                <h3>Component Structure</h3>
                 <ul>
                     <li><strong>12 variants total:</strong> 4 sizes (Large, Medium, Small, Mobile) × 3 colors (Default, Gray, Reverse)</li>
                     <li><strong>Data attributes:</strong> Use data-size and data-color to control variants</li>
                     <li><strong>Button component:</strong> References atomic button styles with hover and active states</li>
                 </ul>
                 
-                <h3 style="color: #1b1464; margin-top: 20px;">Size Variants</h3>
+                <h3>Size Variants</h3>
                 <ul>
                     <li><strong>Large:</strong> Max-width 600px, full text sizing</li>
                     <li><strong>Medium:</strong> Max-width 500px, same text as Large</li>
@@ -467,22 +193,22 @@
                     <li><strong>Mobile:</strong> Max-width 380px, reduced heading size (21px), compact button padding</li>
                 </ul>
                 
-                <h3 style="color: #1b1464; margin-top: 20px;">Color Schemes</h3>
+                <h3>Color Schemes</h3>
                 <ul>
                     <li><strong>Default:</strong> White background, navy text, navy button with white text</li>
                     <li><strong>Gray:</strong> Light gray background (#eceeef), navy text, navy button with white text</li>
                     <li><strong>Reverse:</strong> Navy background, white heading, muted body text (#c7cbcf), gold button with navy text</li>
                 </ul>
                 
-                <h3 style="color: #1b1464; margin-top: 20px;">CSS Dependencies</h3>
+                <h3>CSS Dependencies</h3>
                 <ul>
                     <li>Requires variables from <code>variables-v2.0-20250915.css</code></li>
                     <li>Button states reference atomic button component styles</li>
                     <li>Typography uses Lato (headings/buttons) and Open Sans (body text)</li>
                 </ul>
                 
-                <h3 style="color: #1b1464; margin-top: 20px;">Implementation Example</h3>
-                <pre style="background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto;">
+                <h3>Implementation Example</h3>
+                <pre>
 &lt;div class="card-teaser" data-size="large" data-color="default"&gt;
     &lt;div class="card-teaser__heading"&gt;
         &lt;p&gt;Your Heading Text&lt;/p&gt;

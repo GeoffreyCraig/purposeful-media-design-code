@@ -1,0 +1,361 @@
+/* =================================================
+   SLIDE HERO COMPONENT - MOLECULE
+   Component: slide-hero.html
+   Purpose: Full-width hero slide with video/image support, gradient overlay, and content
+   States: Loading, Ready, Error, Playing
+   Responsive: Mobile (380-767px), Tablet (768-1149px), Desktop (1150-1919px), DesktopPlus (1920px+)
+   Version: 1.0 - Fully Tokenized
+   Date: 2025-10-29
+   ================================================= */
+
+/* -------------------------------------------------
+   BASE CONTAINER
+   ------------------------------------------------- */
+
+.slide-hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--color-neutral-200);
+}
+
+/* -------------------------------------------------
+   VIDEO/IMAGE PORT
+   ------------------------------------------------- */
+
+.hero-video-port {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-video-port video,
+.hero-video-port img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* -------------------------------------------------
+   GRADIENT OVERLAY
+   ------------------------------------------------- */
+
+.hero-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(27, 20, 100, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* -------------------------------------------------
+   CONTENT OVERLAY
+   ------------------------------------------------- */
+
+.hero-content-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-10);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+}
+
+.slide-hero-container[data-show-content="true"] .hero-content-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* -------------------------------------------------
+   HERO TEXT CONTENT
+   ------------------------------------------------- */
+
+.hero-title {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-h2-size);
+    line-height: 1.2;
+    color: var(--color-white);
+    text-align: center;
+    margin: 0 0 var(--space-5) 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-family: var(--font-secondary);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--text-large-size);
+    line-height: 1.5;
+    color: var(--color-white);
+    text-align: center;
+    margin: 0 0 var(--space-10) 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+}
+
+.hero-cta-button {
+    padding: var(--space-4) var(--space-8);
+    background: var(--color-primary-700);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-medium);
+    font-family: var(--font-secondary);
+    font-size: var(--text-default-size);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-slow);
+}
+
+.hero-cta-button:hover {
+    background: var(--color-primary-600);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(27, 20, 100, 0.3);
+}
+
+/* -------------------------------------------------
+   BREAKPOINT-SPECIFIC HEIGHTS
+   ------------------------------------------------- */
+
+.slide-hero-container[data-breakpoint="desktopplus"] {
+    height: 100vh;
+    min-height: 720px;
+    max-height: 1080px;
+}
+
+.slide-hero-container[data-breakpoint="desktop"] {
+    height: 647px;
+}
+
+.slide-hero-container[data-breakpoint="tablet"] {
+    height: 432px;
+}
+
+.slide-hero-container[data-breakpoint="mobile"] {
+    height: 285px;
+}
+
+/* -------------------------------------------------
+   STATE VARIATIONS
+   ------------------------------------------------- */
+
+.hero-video-port[data-state="loading"] {
+    background: var(--color-neutral-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video-port[data-state="error"] {
+    background: var(--color-error-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video-port[data-state="ready"] {
+    background: transparent;
+}
+
+/* -------------------------------------------------
+   LOADING SPINNER
+   ------------------------------------------------- */
+
+.hero-loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--color-neutral-300);
+    border-top-color: var(--color-primary-500);
+    border-radius: var(--radius-round);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* -------------------------------------------------
+   ERROR ICON
+   ------------------------------------------------- */
+
+.hero-error-icon {
+    width: 60px;
+    height: 60px;
+    color: var(--color-error-500);
+}
+
+/* -------------------------------------------------
+   PLAY BUTTON (for video heroes)
+   ------------------------------------------------- */
+
+.hero-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-slow);
+    z-index: 3;
+    border: none;
+}
+
+.hero-play-button:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-play-button svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--color-primary-700);
+    margin-left: 4px; /* Visual centering for play icon */
+}
+
+.slide-hero-container[data-playing="true"] .hero-play-button {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* -------------------------------------------------
+   KEN BURNS EFFECT (for images)
+   ------------------------------------------------- */
+
+@keyframes kenburns {
+    0% {
+        transform: scale(1) translateX(0) translateY(0);
+    }
+    100% {
+        transform: scale(1.1) translateX(-20px) translateY(-10px);
+    }
+}
+
+.hero-kenburns img {
+    animation: kenburns 20s ease-out infinite alternate;
+}
+
+/* -------------------------------------------------
+   PARALLAX EFFECT
+   ------------------------------------------------- */
+
+.hero-parallax {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* -------------------------------------------------
+   FADE IN ANIMATION
+   ------------------------------------------------- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content-overlay.animated > * {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.hero-content-overlay.animated > *:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.hero-content-overlay.animated > *:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.hero-content-overlay.animated > *:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* -------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   ------------------------------------------------- */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    .hero-title {
+        font-size: var(--text-h3-size);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-h5-size);
+        margin-bottom: var(--space-6);
+    }
+
+    .hero-cta-button {
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-h6-size);
+    }
+
+    .hero-content-overlay {
+        padding: var(--space-5);
+    }
+
+    .hero-play-button {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hero-play-button svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .hero-title {
+        font-size: var(--text-h2-size);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-lead-size);
+    }
+
+    .hero-content-overlay {
+        padding: var(--space-8);
+    }
+}
+
+/* Desktop: 1150-1919px - Base styles work well */
+
+/* DesktopPlus: 1920px+ - Base styles scale appropriately */
+
+/* =================================================
+   END OF SLIDE HERO COMPONENT
+   ================================================= */

@@ -165,17 +165,17 @@ This project uses **CSS background-image positioning with data attributes**, NOT
 - [x] Molecule: card-paragraph-options.html (COMPLETED)
 - [x] Molecule: card-bannerspacer-headlinesubtitle.html (COMPLETED)
 - [x] Molecule: card-blogpost.html (COMPLETED - tokenized and consolidated)
-- [ ] Molecule: header-dropdown-menu.html
-- [ ] Molecule: slide-hero.html
-- [ ] Molecule: slide-video.html
-- [ ] Molecule: slide-image.html
-- [ ] Molecule: navarrows-embedded.html
-- [ ] Molecule: playpause-embedded.html
-- [ ] Molecule: slide-frame.html
-- [ ] Molecule: buttons-navdotgroups.html
-- [ ] Molecule: buttons-navarrowpairs.html
+- [x] Molecule: header-dropdown-menu.html (ARCHIVED - redundant, menu integrated in banner-header organism)
+- [x] Molecule: slide-hero.html (ARCHIVED - redundant, slides integrated in hero-carousel organism)
+- [x] Molecule: slide-video.html (ARCHIVED - redundant, integrated in hero-carousel organism)
+- [x] Molecule: slide-image.html (ARCHIVED - redundant, integrated in hero-carousel organism)
+- [x] Molecule: navarrows-embedded.html (ARCHIVED - redundant, carousel nav integrated in hero-carousel organism)
+- [x] Molecule: playpause-embedded.html (ARCHIVED - redundant, carousel controls integrated in hero-carousel organism)
+- [x] Molecule: slide-frame.html (ARCHIVED - redundant, carousel structure integrated in hero-carousel organism)
+- [x] Molecule: buttons-navdotgroups.html (ARCHIVED - redundant, carousel indicators integrated in hero-carousel organism)
+- [x] Molecule: buttons-navarrowpairs.html (ARCHIVED - redundant, carousel nav integrated in hero-carousel organism)
 - [ ] Molecule: menu-footer-mod.html
-- [ ] Molecule: main-menu-click.html
+- [x] Molecule: main-menu-click.html (ARCHIVED - redundant, menu integrated in banner-header organism)
 - [ ] Molecule: sticky-menu.html
 - [ ] Molecule: card-faq.html
 - [ ] Molecule: card-blogpost.html
@@ -193,6 +193,15 @@ This project uses **CSS background-image positioning with data attributes**, NOT
 - Geoffrey reviews all changes before committing
 - Maintain compatibility with existing templates
 
+### Component Redundancy Rule
+**If a production organism component exists that integrates sub-component functionality, the standalone molecule prototypes are redundant and should be archived.**
+
+Examples:
+- `banner-header-main-mobile-fix-v3.html` (organism) integrates menu → archive `header-dropdown-menu.html` and `main-menu-click.html`
+- `hero-carousel.html` (organism) integrates slides → archive `slide-hero.html`, `slide-video.html`, `slide-image.html`
+
+These Figma-to-HTML prototypes were useful during design but are not needed in production. Organisms will be tokenized during the organism layer phase.
+
 ---
-Last Updated: October 28, 2025
+Last Updated: October 29, 2025
 Variables Version: v4.0-20251027

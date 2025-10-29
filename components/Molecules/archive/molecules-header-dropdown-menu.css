@@ -1,0 +1,196 @@
+/* =================================================
+   HEADER DROPDOWN MENU COMPONENT - MOLECULE
+   Component: header-dropdown-menu.html
+   Purpose: Dropdown navigation menu for header with submenu support
+   States: Default, Hover, Active, Expanded
+   Responsive: Mobile (380-767px), Tablet (768-1149px), Desktop (1150-1919px), DesktopPlus (1920px+)
+   Version: 1.0 - Fully Tokenized
+   Date: 2025-10-29
+   ================================================= */
+
+/* -------------------------------------------------
+   BASE MENU CONTAINER
+   ------------------------------------------------- */
+
+.header-dropdown-menu {
+    background-color: var(--color-white);
+    border-radius: var(--radius-small);
+    padding: 0;
+    min-width: 250px;
+    box-shadow: var(--shadow-standard);
+}
+
+/* -------------------------------------------------
+   MENU LIST
+   ------------------------------------------------- */
+
+.header-dropdown-menu__list {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-2) 0;
+}
+
+/* -------------------------------------------------
+   MENU ITEMS
+   ------------------------------------------------- */
+
+.header-dropdown-menu__item {
+    margin: 0;
+}
+
+/* -------------------------------------------------
+   MENU LINKS
+   ------------------------------------------------- */
+
+.header-dropdown-menu__link {
+    display: block;
+    padding: var(--space-3) var(--space-6);
+    color: var(--color-darkest);
+    font-family: var(--font-primary);
+    font-size: var(--text-h6-size);
+    font-weight: var(--font-weight-regular);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+/* Hover state */
+.header-dropdown-menu__link:hover {
+    background-color: var(--color-off-white);
+    color: var(--color-primary-700);
+}
+
+/* Active/Current page state */
+.header-dropdown-menu__link--active {
+    color: var(--color-primary-700);
+    font-weight: var(--font-weight-bold);
+}
+
+.header-dropdown-menu__link--active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--space-1);
+    background-color: var(--color-accent-500);
+}
+
+/* -------------------------------------------------
+   SEPARATOR
+   ------------------------------------------------- */
+
+.header-dropdown-menu__separator {
+    height: 1px;
+    background-color: var(--color-light);
+    margin: var(--space-2) 0;
+}
+
+/* -------------------------------------------------
+   SUBMENU FUNCTIONALITY
+   ------------------------------------------------- */
+
+.header-dropdown-menu__item--has-submenu {
+    position: relative;
+}
+
+.header-dropdown-menu__submenu-toggle {
+    position: absolute;
+    right: var(--space-6);
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--space-5);
+    height: var(--space-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* -------------------------------------------------
+   SUBMENU ICON (UI Sprite Arrow)
+   Icon: arrow-up from UI sprite
+   Size: 12px × 12px
+   Sprite calculation:
+   - Full sprite: 1536px × 512px (6 cols × 2 rows, 256px each)
+   - Scale factor: 12/256 = 0.046875
+   - Scaled sprite: 72px × 24px
+   - Arrow position: Icon #2, offset -12px 0
+   ------------------------------------------------- */
+
+.header-dropdown-menu__submenu-icon {
+    width: var(--space-3);
+    height: var(--space-3);
+    background-image: url('../assets/svg/ui-icons/purposeful-sprite-ui.svg');
+    background-repeat: no-repeat;
+    background-size: 72px 24px;
+    background-position: -12px 0;
+    transform: rotate(90deg); /* Point right */
+    transition: transform var(--transition-base);
+}
+
+.header-dropdown-menu__item--expanded .header-dropdown-menu__submenu-icon {
+    transform: rotate(180deg); /* Point down when expanded */
+}
+
+/* -------------------------------------------------
+   SUBMENU LIST
+   ------------------------------------------------- */
+
+.header-dropdown-menu__submenu {
+    display: none;
+    background-color: var(--color-off-white);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header-dropdown-menu__item--expanded .header-dropdown-menu__submenu {
+    display: block;
+}
+
+.header-dropdown-menu__submenu .header-dropdown-menu__link {
+    padding-left: var(--space-12);
+    font-size: var(--label-form-size);
+}
+
+/* -------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   ------------------------------------------------- */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    .header-dropdown-menu {
+        border-radius: 0;
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .header-dropdown-menu__link {
+        padding: var(--space-4) var(--space-5);
+        font-size: var(--text-h5-size);
+    }
+
+    .header-dropdown-menu__submenu .header-dropdown-menu__link {
+        padding-left: var(--space-10);
+        font-size: var(--text-h6-size);
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .header-dropdown-menu {
+        width: 250px;
+    }
+}
+
+/* Desktop: 1150-1919px - Base styles work well */
+
+/* DesktopPlus: 1920px+ - Base styles scale appropriately */
+
+/* =================================================
+   END OF HEADER DROPDOWN MENU COMPONENT
+   ================================================= */

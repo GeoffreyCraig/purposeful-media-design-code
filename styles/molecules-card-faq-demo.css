@@ -1,0 +1,168 @@
+/**
+ * Card/FAQ Demo Styles
+ * Purposeful Media Promotions Design System
+ *
+ * Demo and documentation styles for Card/FAQ molecule component
+ * Tokenized: 2025-10-29
+ * Version: 1.0
+ * Variables: v4.0-20251027
+ */
+
+/* ============================================
+   GLOBAL RESET (Demo Page Only)
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-secondary);
+    padding: var(--space-5);
+    background-color: var(--bg-secondary);
+}
+
+/* ============================================
+   DEMO CONTAINER
+   ============================================ */
+
+.demo-container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: var(--space-5);
+}
+
+/* ============================================
+   DEMO PAGE TITLE
+   ============================================ */
+
+.demo-page-title {
+    font-family: var(--font-primary);
+    font-size: var(--text-h2-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-10);
+}
+
+/* ============================================
+   DEMO SECTIONS
+   ============================================ */
+
+.demo-section {
+    margin-bottom: var(--space-10);
+}
+
+.demo-label {
+    font-family: var(--font-secondary);
+    font-size: var(--label-form-size);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-3);
+    color: var(--text-heading);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   STATES DEMO CONTAINER
+   ============================================ */
+
+.demo-states-grid {
+    display: grid;
+    gap: var(--space-5);
+    background: var(--bg-primary);
+    padding: var(--space-5);
+    border-radius: var(--radius-large);
+}
+
+/* Demo state items - disable pointer events */
+.demo-state-item {
+    pointer-events: none;
+}
+
+/* Demo hover state (pre-styled) */
+.demo-state-hover .card-faq__question {
+    background-color: var(--color-accent-100);
+    box-shadow: var(--shadow-standard);
+}
+
+/* Demo open state (pre-styled) */
+.demo-state-open .card-faq__arrow {
+    transform: rotate(90deg);
+}
+
+.demo-state-open .card-faq__answer {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* ============================================
+   RESPONSIVE INFO SECTION
+   ============================================ */
+
+.demo-info-section {
+    background: var(--color-accent-50);
+    padding: var(--space-5);
+    border-radius: var(--radius-medium);
+}
+
+.demo-info-section h3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-h4-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-3);
+}
+
+.demo-info-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.demo-info-section li {
+    font-family: var(--font-secondary);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    color: var(--text-body);
+    margin-bottom: var(--space-2);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (min-width: 380px) and (max-width: 767px) {
+    body {
+        padding: var(--space-3);
+    }
+
+    .demo-container {
+        padding: var(--space-3);
+    }
+
+    .demo-page-title {
+        font-size: var(--text-h3-size);
+        margin-bottom: var(--space-8);
+    }
+
+    .demo-states-grid {
+        padding: var(--space-4);
+    }
+
+    .demo-info-section {
+        padding: var(--space-4);
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    body {
+        padding: var(--space-4);
+    }
+}
+
+/* Desktop: 1150-1919px - Base styles work well */
+
+/* DesktopPlus: 1920px+ - Base styles scale appropriately */

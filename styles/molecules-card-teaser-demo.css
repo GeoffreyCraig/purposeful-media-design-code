@@ -1,0 +1,168 @@
+/**
+ * Card/Teaser Demo Styles
+ * Purposeful Media Promotions Design System
+ *
+ * Demo and documentation styles for Card/Teaser molecule component
+ * Tokenized: 2025-10-29
+ * Version: 1.0
+ * Variables: v4.0-20251027
+ */
+
+/* ============================================
+   DEMO CONTAINER
+   ============================================ */
+
+.demo-container {
+    padding: var(--space-10);
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+}
+
+/* ============================================
+   DEMO SECTIONS
+   ============================================ */
+
+.demo-section {
+    margin-bottom: 60px;
+}
+
+.demo-title {
+    font-family: var(--font-primary);
+    font-size: var(--text-large-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-8);
+    text-transform: uppercase;
+}
+
+/* ============================================
+   DEMO GRID LAYOUT
+   ============================================ */
+
+.demo-row {
+    display: flex;
+    gap: var(--space-8);
+    margin-bottom: var(--space-8);
+    flex-wrap: wrap;
+}
+
+.demo-item {
+    flex: 1;
+    min-width: 300px;
+}
+
+.demo-label {
+    font-family: var(--font-secondary);
+    font-size: var(--label-form-size);
+    color: var(--text-muted);
+    margin-bottom: var(--space-3);
+}
+
+/* ============================================
+   USAGE NOTES SECTION
+   ============================================ */
+
+.usage-notes-section {
+    background: var(--bg-primary);
+    padding: var(--space-8);
+    border-radius: var(--radius-medium);
+}
+
+.usage-notes-section h2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-large-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-8);
+    text-transform: uppercase;
+}
+
+.usage-notes-content {
+    font-family: var(--font-secondary);
+    color: var(--color-neutral-700);
+    line-height: 1.6;
+}
+
+.usage-notes-content h3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-h5-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary-700);
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+}
+
+.usage-notes-content ul {
+    margin-left: var(--space-5);
+    margin-bottom: var(--space-4);
+}
+
+.usage-notes-content li {
+    margin-bottom: var(--space-2);
+}
+
+.usage-notes-content code {
+    font-family: 'Courier New', monospace;
+    font-size: var(--text-small-size);
+    background: var(--bg-secondary);
+    padding: 2px var(--space-1);
+    border-radius: var(--radius-small);
+}
+
+.usage-notes-content pre {
+    background: var(--bg-secondary);
+    padding: var(--space-4);
+    border-radius: var(--radius-small);
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: var(--text-small-size);
+    line-height: 1.4;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (min-width: 380px) and (max-width: 767px) {
+    .demo-container {
+        padding: var(--space-5);
+    }
+
+    .demo-title {
+        font-size: var(--text-lead-size);
+        margin-bottom: var(--space-6);
+    }
+
+    .demo-row {
+        flex-direction: column;
+        gap: var(--space-6);
+    }
+
+    .demo-item {
+        min-width: 100%;
+    }
+
+    .usage-notes-section {
+        padding: var(--space-5);
+    }
+
+    .usage-notes-content h3 {
+        font-size: var(--text-h6-size);
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .demo-container {
+        padding: var(--space-8);
+    }
+
+    .demo-row {
+        gap: var(--space-6);
+    }
+}
+
+/* Desktop: 1150-1919px - Base styles work well */
+
+/* DesktopPlus: 1920px+ - Base styles scale appropriately */
