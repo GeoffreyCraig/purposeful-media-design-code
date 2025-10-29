@@ -2,22 +2,22 @@
  * ORGANISMS - HEADERS
  * Purposeful Media Design System
  * BannerHeader Component Styles
- * 
+ *
  * Based on Figma specifications:
  * - Header height: 125px (desktop/tablet), 100px (mobile)
  * - Gold bottom border: 4px
  * - Menu text: 30px font, 45px line height, 800 weight
- * 
+ *
  * Breakpoints:
  * - Mobile: 380-767px
  * - Tablet: 768-1149px
  * - Desktop: 1150-1919px
  * - DesktopPlus: 1920px+
- * 
+ *
  * NOTE: Google Fonts should be loaded in HTML head, not through CSS imports
  */
 
-@import url('variables-v2.0-20250915.css');
+@import url('variables-v4.0-20251027.css');
 
 /* ============================================
    BANNER HEADER COMPONENT
@@ -27,12 +27,12 @@
 .banner-header {
     position: relative;
     width: 100%;
-    background-color: #1B1464;
+    background-color: var(--color-primary-700);
     height: 125px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 4px solid #D4AF37;
+    border-bottom: var(--space-1) solid var(--color-accent-500);
     z-index: 1000;
 }
 
@@ -61,10 +61,22 @@
 }
 
 .banner-header__logo-image {
-    display: block;
+    display: none;
     max-width: none;
-    height: 100%;
-    width: auto;
+    height: auto;
+}
+
+/* Show appropriate logo variant per breakpoint */
+.banner-header__logo-image--mobile {
+    display: none;
+}
+
+.banner-header__logo-image--tablet {
+    display: none;
+}
+
+.banner-header__logo-image--desktop {
+    display: none;
 }
 
 /* Menu Wrapper */
@@ -73,7 +85,7 @@
     align-items: center;
     justify-content: flex-end;
     flex-grow: 1;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* Menu Container */
@@ -81,8 +93,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #1B1464;
-    overflow: hidden;
+    background-color: var(--color-primary-700);
+    overflow: visible;
+    gap: 40px;
 }
 
 /* Menu Items */
@@ -95,26 +108,26 @@
     position: relative;
 }
 
-/* Menu Links - Based on Figma H2 Headline 30 45h */
+/* Menu Links - H2/30 Navigation Typography */
 .banner-header__menu-link {
-    font-family: 'Lato', sans-serif;
-    font-weight: 800; /* Heavy/Extra Bold */
-    font-size: 30px;
-    line-height: 45px;
-    text-transform: uppercase;
-    color: #FFFFFF;
+    font-family: var(--nav-font-family);
+    font-weight: var(--nav-font-weight);
+    font-size: var(--nav-h2-font-size);
+    line-height: var(--nav-h2-line-height);
+    text-transform: var(--nav-h2-text-transform);
+    color: var(--nav-h2-simple-default);
     text-decoration: none;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    white-space: nowrap;
+    text-shadow: var(--shadow-strong);
+    white-space: var(--nav-h2-white-space);
     transition: color 0.2s ease;
 }
 
 .banner-header__menu-link:hover {
-    color: #D4AF37;
+    color: var(--nav-h2-simple-hover);
 }
 
 .banner-header__menu-link--active {
-    color: #D4AF37;
+    color: var(--nav-h2-simple-active);
 }
 
 /* Dropdown Container */
@@ -122,38 +135,58 @@
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
-    background-color: #FFFFFF;
+    background-color: var(--dropdown-bg-default);
     min-width: 200px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
-    padding: 8px 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 1001;
+    box-shadow: var(--dropdown-box-shadow);
+    border-radius: var(--dropdown-border-radius);
+    padding: var(--dropdown-padding-block) var(--dropdown-padding-inline-end) var(--dropdown-padding-block) var(--dropdown-padding-inline-start);
+    display: none;
+    overflow: var(--dropdown-overflow);
+    z-index: var(--z-dropdown);
 }
 
-.banner-header__menu-item:hover .banner-header__dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+/* Dropdown Container on Hover */
+.banner-header__dropdown:hover {
+    background-color: var(--dropdown-bg-hover);
+}
+
+/* Dropdown Container with Active Link */
+.banner-header__dropdown:has(.banner-header__dropdown-link--active) {
+    background-color: var(--dropdown-bg-active);
 }
 
 .banner-header__dropdown-link {
     display: block;
-    padding: 12px 20px;
-    color: #2D3748;
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
+    margin-bottom: var(--dropdown-link-gap);
+    font-family: var(--dropdown-font-family);
+    font-weight: var(--dropdown-font-weight);
+    font-size: var(--dropdown-font-size);
+    line-height: var(--dropdown-line-height);
+    text-transform: var(--dropdown-text-transform);
+    white-space: var(--dropdown-white-space);
+    color: var(--dropdown-link-default);
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
+.banner-header__dropdown-link:last-child {
+    margin-bottom: 0;
+}
+
 .banner-header__dropdown-link:hover {
-    background-color: #F7FAFC;
-    color: #1B1464;
+    color: var(--dropdown-link-hover);
+    text-decoration: var(--dropdown-link-hover-decoration);
+    text-decoration-style: var(--dropdown-link-hover-decoration-style);
+}
+
+/* Active dropdown link */
+.banner-header__dropdown-link--active {
+    color: var(--dropdown-link-active);
+}
+
+/* Disabled sibling links when one is active */
+.banner-header__dropdown:has(.banner-header__dropdown-link--active) .banner-header__dropdown-link:not(.banner-header__dropdown-link--active) {
+    color: var(--dropdown-link-sibling-disabled);
 }
 
 /* Hamburger Menu Button */
@@ -172,7 +205,7 @@
 .banner-header__hamburger-icon {
     width: 45px;
     height: 53px;
-    background-image: url('../../assets/svg/ui-icons/purposeful-sprite-ui.svg');
+    background-image: url('../assets/svg/ui-icons/purposeful-sprite-ui.svg');
     background-size: 1536px 512px; /* Total sprite dimensions */
     background-position: -1024px 0; /* Hamburger position */
     filter: brightness(0) saturate(100%) invert(100%); /* Makes it white */
@@ -189,14 +222,21 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-standard);
     display: none;
-    z-index: 1000;
+    z-index: var(--z-dropdown);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--dropdown-transition-duration) var(--dropdown-transition-timing),
+                opacity var(--dropdown-transition-duration) var(--dropdown-transition-timing);
+    opacity: 0;
 }
 
 .banner-header__mobile-menu--active {
     display: block;
+    max-height: 800px;
+    opacity: 1;
 }
 
 /* Mobile Menu Styles */
@@ -207,24 +247,26 @@
 .mobile-menu__link {
     display: block;
     padding: 16px 24px;
-    color: #2D3748;
-    font-family: 'Lato', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
+    font-family: var(--nav-font-family);
+    font-weight: var(--nav-font-weight);
+    font-size: var(--nav-h4-font-size);
+    line-height: var(--nav-h4-line-height);
+    text-transform: var(--nav-h4-text-transform);
+    color: var(--nav-h4-dropdown-default);
     text-decoration: none;
-    border-bottom: 1px solid #E2E8F0;
+    border-bottom: 1px solid var(--color-light);
     transition: all 0.2s ease;
 }
 
 .mobile-menu__link:hover {
-    background-color: #F7FAFC;
-    color: #1B1464;
+    background-color: var(--color-off-white);
+    color: var(--nav-h4-dropdown-hover);
 }
 
 .mobile-menu__link--active {
-    color: #1B1464;
-    font-weight: 700;
-    border-left: 4px solid #D4AF37;
+    color: var(--nav-h4-dropdown-active);
+    font-weight: var(--nav-font-weight);
+    border-left: var(--space-1) solid var(--color-accent-500);
 }
 
 .mobile-menu__submenu {
@@ -232,7 +274,7 @@
 }
 
 .mobile-menu__submenu-items {
-    background-color: #F7FAFC;
+    background-color: var(--color-off-white);
     display: none;
 }
 
@@ -243,17 +285,19 @@
 .mobile-menu__sublink {
     display: block;
     padding: 12px 24px 12px 48px;
-    color: #6C757D;
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
+    font-family: var(--nav-font-family);
+    font-weight: var(--nav-font-weight);
+    font-size: var(--nav-h5-font-size);
+    line-height: var(--nav-h5-line-height);
+    text-transform: var(--nav-h5-text-transform);
+    color: var(--nav-h5-simple-default);
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
 .mobile-menu__sublink:hover {
-    color: #1B1464;
-    background-color: #ECEEEF;
+    color: var(--nav-h5-simple-hover);
+    background-color: var(--color-neutral-100);
 }
 
 /* CTA Container for Landing Page Variants */
@@ -265,16 +309,59 @@
 
 /* Phone Link Styling */
 .banner-header__phone {
-    color: #FFFFFF;
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--color-accent-500);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: opacity 0.3s ease;
+    font-size: 36px;
+    line-height: 1.2;
 }
 
 .banner-header__phone:hover {
-    color: #D4AF37;
+    opacity: 0.85;
+}
+
+/* Button Styling for CTA Headers */
+.banner-header__button {
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid transparent;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* Button Size - Medium */
+.banner-header__button--medium {
+    font-size: 16px;
+    padding: var(--padding-button);
+    min-width: 120px;
+}
+
+/* Button Type - Secondary (Gold) */
+.banner-header__button--secondary {
+    background-color: var(--button-secondary-bg);
+    color: var(--color-primary-700);
+    border-color: var(--button-secondary-bg);
+}
+
+.banner-header__button--secondary:hover {
+    background-color: var(--button-secondary-hover);
+    border-color: var(--button-secondary-hover);
+}
+
+.banner-header__button--secondary:active {
+    background-color: var(--button-secondary-active);
+    border-color: var(--button-secondary-active);
 }
 
 /* ============================================
@@ -285,16 +372,23 @@
         max-width: 1900px;
         padding: 0 10px;
     }
-    
+
     .banner-header__logo {
         width: 481px;
         height: 93px;
     }
-    
+
+    /* Show desktop logo only (larger size for DesktopPlus) */
+    .banner-header__logo-image--desktop {
+        display: block;
+        width: 481px;
+        height: 93px;
+    }
+
     .banner-header__menu-wrapper {
         padding: 0 32px;
     }
-    
+
     .banner-header__menu {
         width: 894px;
     }
@@ -308,12 +402,24 @@
         padding-left: 24px;
         padding-right: 36px;
     }
-    
+
     .banner-header__logo {
         width: 460px;
         height: 89px;
     }
-    
+
+    /* Show desktop logo only */
+    .banner-header__logo-image--desktop {
+        display: block;
+        width: 460px;
+        height: 89px;
+    }
+
+    /* Phone number responsive sizing */
+    .banner-header__phone {
+        font-size: 32px;
+    }
+
     .banner-header__menu {
         min-width: 615px;
         max-width: 886px;
@@ -328,19 +434,94 @@
     .banner-header__container {
         padding: 0 24px;
     }
-    
+
     .banner-header__logo {
         width: 289px;
         height: 62px;
     }
-    
+
+    /* Show tablet logo only */
+    .banner-header__logo-image--tablet {
+        display: block;
+        width: 417.26px;
+        height: 89px;
+    }
+
+    /* Phone number responsive sizing */
+    .banner-header__phone {
+        font-size: 24px;
+    }
+
     /* Hide desktop menu, show hamburger */
     .banner-header__menu {
         display: none;
     }
-    
+
     .banner-header__hamburger {
         display: flex;
+    }
+
+    /* Tablet Mobile Menu - Card Style Dropdown */
+    .banner-header__mobile-menu {
+        width: var(--dropdown-tablet-card-width);
+        left: auto;
+        right: var(--dropdown-tablet-position-right);
+        background-color: var(--dropdown-tablet-card-bg-default);
+        border-radius: var(--dropdown-tablet-card-border-radius);
+        box-shadow: var(--dropdown-tablet-card-box-shadow);
+        overflow: var(--dropdown-tablet-card-overflow);
+    }
+
+    .banner-header__mobile-menu:hover {
+        background-color: var(--dropdown-tablet-card-bg-hover);
+    }
+
+    .mobile-menu {
+        padding: var(--dropdown-tablet-card-padding-block) var(--dropdown-tablet-card-padding-inline-end) var(--dropdown-tablet-card-padding-block) var(--dropdown-tablet-card-padding-inline-start);
+    }
+
+    .mobile-menu__link {
+        font-size: var(--dropdown-tablet-item-font-size);
+        line-height: var(--dropdown-tablet-item-line-height);
+        text-transform: var(--dropdown-tablet-item-text-transform);
+        min-height: var(--dropdown-tablet-item-min-height);
+        margin-bottom: var(--dropdown-tablet-card-gap-items);
+        padding: 0;
+        border-bottom: none;
+        /* Keep mobile menu link color states */
+        color: var(--nav-h4-dropdown-default);
+        background-color: transparent;
+    }
+
+    .mobile-menu__link:hover {
+        color: var(--nav-h4-dropdown-hover);
+        background-color: transparent;
+    }
+
+    .mobile-menu__link--active {
+        color: var(--nav-h4-dropdown-active);
+        background-color: transparent;
+    }
+
+    /* Submenu items inherit container background */
+    .mobile-menu__submenu-items {
+        background-color: transparent; /* Inherits from container hover */
+    }
+
+    .mobile-menu__sublink {
+        font-size: var(--dropdown-tablet-item-font-size);
+        line-height: var(--dropdown-tablet-item-line-height);
+        min-height: var(--dropdown-tablet-item-min-height);
+        margin-bottom: var(--dropdown-tablet-card-gap-items);
+        padding-left: 24px;
+        /* Keep mobile menu link color states */
+        color: var(--nav-h4-dropdown-default);
+        background-color: transparent;
+    }
+
+    .mobile-menu__sublink:hover {
+        color: var(--nav-h4-dropdown-hover);
+        background-color: transparent;
     }
 }
 
@@ -351,25 +532,44 @@
     .banner-header {
         height: 100px;
     }
-    
+
     .banner-header__container {
         padding: 0 20px;
     }
-    
+
     .banner-header__logo {
         width: 200px;
         height: 43px;
     }
-    
+
+    /* Show mobile logo only */
+    .banner-header__logo-image--mobile {
+        display: block;
+        width: 179.23px;
+        height: 89px;
+    }
+
+    /* Phone number responsive sizing */
+    .banner-header__phone {
+        font-size: 18px;
+    }
+
+    /* Button responsive sizing */
+    .banner-header__button--medium {
+        font-size: 14px;
+        padding: var(--padding-button-small);
+        min-width: 100px;
+    }
+
     /* Hide desktop menu, show hamburger */
     .banner-header__menu {
         display: none;
     }
-    
+
     .banner-header__hamburger {
         display: flex;
     }
-    
+
     .banner-header__hamburger-icon {
         width: 36px;
         height: 42px;

@@ -1,0 +1,121 @@
+@charset "UTF-8";
+/* CSS Document */
+/* ============================================
+   NAVIGATION TYPOGRAPHY
+   ============================================ */
+
+/* --- Navigation Typography: Font Properties --- */
+:root {
+  /* Base Navigation Font */
+  --nav-font-family: 'Lato', sans-serif;
+  --nav-font-weight: 800; /* Heavy */
+  --nav-font-style: normal;
+}
+
+/* --- Navigation Typography: H1/36pt Simple --- */
+:root {
+  --nav-h1-font-size: 36px;
+  --nav-h1-line-height: 54px; /* 1.5 ratio */
+  --nav-h1-text-transform: uppercase;
+  --nav-h1-white-space: nowrap;
+  
+  /* H1 Simple States */
+  --nav-h1-simple-default: #ffffff; /* --menusimple */
+  --nav-h1-simple-accent: #d4af37; /* --accentsimple, Gold */
+  --nav-h1-simple-hover: #dcbe5d; /* --hoversimple, Light Gold */
+  --nav-h1-simple-active: #b39226; /* --activesimple, Dark Gold */
+  --nav-h1-simple-disabled: #868f97; /* --menudisabled, Gray */
+}
+
+/* --- Navigation Typography: H2/30 Simple --- */
+:root {
+  --nav-h2-font-size: 30px;
+  --nav-h2-line-height: 45px; /* 1.5 ratio */
+  --nav-h2-text-transform: uppercase;
+  --nav-h2-white-space: nowrap;
+  
+  /* H2 Simple States - same color scheme as H1 */
+  --nav-h2-simple-default: #ffffff; /* --menusimple */
+  --nav-h2-simple-accent: #d4af37; /* --accentsimple */
+  --nav-h2-simple-hover: #dcbe5d; /* --hoversimple */
+  --nav-h2-simple-active: #b39226; /* --activesimple */
+  --nav-h2-simple-disabled: #868f97; /* --menudisabled */
+}
+
+/* --- Navigation Typography: H3/24 Simple --- */
+:root {
+  --nav-h3-font-size: 24px;
+  --nav-h3-line-height: 36px; /* 1.5 ratio */
+  --nav-h3-text-transform: uppercase;
+  --nav-h3-white-space: nowrap;
+  
+  /* H3 Simple States */
+  --nav-h3-simple-default: #ffffff; /* --reverse */
+  --nav-h3-simple-accent: #d4af37; /* --accentsimple */
+  --nav-h3-simple-hover: #dcbe5d; /* --hoversimple */
+  --nav-h3-simple-active: #b39226; /* --activesimple */
+  --nav-h3-simple-disabled: #868f97; /* --menudisabled */
+}
+
+/* --- Navigation Typography: H4/21 Drop Down & Footer --- */
+:root {
+  --nav-h4-font-size: 21px;
+  --nav-h4-line-height: 30.5px; /* ~1.45 ratio */
+  --nav-h4-text-transform: none; /* normal case */
+  --nav-h4-white-space: nowrap;
+  
+  /* H4 Dropdown States */
+  --nav-h4-dropdown-default: #1b1464; /* --menudrop, Navy */
+  --nav-h4-dropdown-hover: #1d50de; /* --hoverdrop, Bright Blue */
+  --nav-h4-dropdown-active: #06102b; /* --activedrop, Dark Navy */
+  --nav-h4-dropdown-disabled: #868f97; /* --menudisabled */
+  
+  /* H4 Dropdown Hover Decoration */
+  --nav-h4-dropdown-hover-decoration: underline;
+  --nav-h4-dropdown-hover-decoration-style: solid;
+  
+  /* H4 Footer States (same as dropdown default for all states) */
+  --nav-h4-footer-default: #1b1464; /* --menudrop */
+  --nav-h4-footer-hover: #1b1464; /* --menudrop */
+  --nav-h4-footer-active: #1b1464; /* --menudrop */
+  --nav-h4-footer-disabled: #868f97; /* --menudisabled */
+}
+
+/* --- Navigation Typography: H5/18 Simple --- */
+:root {
+  --nav-h5-font-size: 18px;
+  --nav-h5-line-height: 27px; /* 1.5 ratio */
+  --nav-h5-text-transform: uppercase;
+  --nav-h5-white-space: nowrap;
+  
+  /* H5 Simple States */
+  --nav-h5-simple-default: #1b1464; /* --heading, Navy */
+  --nav-h5-simple-accent: #d4af37; /* --accentsimple */
+  --nav-h5-simple-hover: #dcbe5d; /* --hoversimple */
+  --nav-h5-simple-active: #b39226; /* --activesimple */
+  --nav-h5-simple-disabled: #868f97; /* --menudisabled */
+}
+
+/* --- Navigation Typography: H6/16 Simple --- */
+:root {
+  --nav-h6-font-size: 16px;
+  --nav-h6-line-height: 24px; /* 1.5 ratio */
+  --nav-h6-text-transform: uppercase;
+  --nav-h6-white-space: nowrap;
+  
+  /* H6 Simple States */
+  --nav-h6-simple-default: #1b1464; /* --heading, Navy */
+  --nav-h6-simple-accent: #d4af37; /* --accentsimple */
+  --nav-h6-simple-hover: #dcbe5d; /* --hoversimple */
+  --nav-h6-simple-active: #b39226; /* --activesimple */
+  --nav-h6-simple-disabled: #868f97; /* --menudisabled */
+}
+
+/* --- Navigation Typography: Accordion (H2/30 variant) --- */
+:root {
+  --nav-accordion-font-size: 30px;
+  --nav-accordion-line-height: 45px;
+  --nav-accordion-text-transform: uppercase;
+  /* Uses same color states as H2 Simple */
+}
+

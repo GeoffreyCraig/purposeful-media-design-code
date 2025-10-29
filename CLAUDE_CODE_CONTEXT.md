@@ -179,12 +179,34 @@ This project uses **CSS background-image positioning with data attributes**, NOT
 - [x] Molecule: sticky-menu.html (COMPLETED)
 - [x] Molecule: card-faq.html (COMPLETED)
 - [x] Molecule: card-teaser.html (COMPLETED)
+- [x] Molecule: card-resources.html (COMPLETED)
 - [x] Molecule: form-contact.html (COMPLETED)
 - [x] Molecule: form-resource.html (COMPLETED)
 - [x] Molecule: form-newsletter.html (COMPLETED)
 - [x] Molecule: form-item.html (ARCHIVED - redundant, field containers integrated in production forms)
 - [x] Molecule: form-input-field.html (ARCHIVED - redundant, input fields integrated in production forms)
-- [ ] Organism: [component-name]
+- [x] Organism: banner-header-lp-clean.html (COMPLETED - v4.0 tokenized)
+- [x] Organism: banner-header-lp-contact.html (COMPLETED - v4.0 tokenized)
+- [x] Organism: banner-header-lp-cta.html (COMPLETED - v4.0 tokenized)
+- [x] Organism: banner-header-main.html (COMPLETED - v4.0 tokenized, renamed from banner-header-main-mobile-fix-v3.html)
+- [x] Organism: blog-group-clean.html (COMPLETED - already tokenized with v4.0)
+- [ ] Organism: blog-group.html (redundant - use blog-group-clean.html)
+- [x] Organism: content-2column-contact.html (COMPLETED - v4.0 tokenized, all breakpoints)
+- [x] Organism: content-2column-graphic.html (COMPLETED - v4.0 tokenized, removed 300+ lines inline CSS)
+- [ ] Organism: footer-simple.html
+- [ ] Organism: footer-unified.html
+- [ ] Organism: hero-atf-center.html
+- [ ] Organism: hero-atf-left.html (new)
+- [ ] Organism: hero-atf-right.html (develop in Phase 2 MVW)
+- [ ] Organism: hero-carousel.html
+- [ ] Organism: hero-simple-default.html
+- [ ] Organism: hero-simple-reverse.html
+- [ ] Organism: section-contactus.html (include molecule: form-contact.html)
+- [ ] Organism: section-faq-group.html (include molecule: card-faq.html)
+- [ ] Organism: section-resources.html (include multiple instances of molecule: card-resource.html)
+- [ ] Organism: text-block.html (gather variables for text and pillar page)
+
+**Organism Layer Progress: 8/15 completed (53%)**
 
 ## Notes
 - This is Week 44 sprint work

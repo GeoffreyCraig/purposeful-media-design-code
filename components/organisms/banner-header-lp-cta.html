@@ -4,194 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banner Header - LP CTA</title>
-    
-    <!-- Import Lato for buttons -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Button Component Styles (from atoms) */
-        .button {
-            display: inline-block;
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            font-weight: 700;
-            line-height: 1;
-            text-align: center;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border: 2px solid transparent;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            user-select: none;
-        }
-
-        /* Button Size - Medium as default for header */
-        .button--medium {
-            font-size: 16px;
-            padding: 16px 24px;
-            min-width: 120px;
-        }
-
-        /* Button Type - Secondary (Gold) for CTA */
-        .button--secondary {
-            background-color: #D4AF37;
-            color: #1B1464;
-            border-color: #D4AF37;
-        }
-
-        .button--secondary:hover {
-            background-color: #E4CD82;
-            border-color: #E4CD82;
-        }
-
-        .button--secondary:active {
-            background-color: #B39226;
-            border-color: #B39226;
-        }
-
-        /* Banner Header LP-CTA */
-        .banner-header-lp-cta {
-            width: 100%;
-            height: 125px;
-            background-color: #1b1464;
-            border-bottom: 4px solid #d4af37;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Inner Container */
-        .banner-header-lp-cta__container {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* Logo Link */
-        .banner-header-lp-cta__logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .banner-header-lp-cta__logo-link:hover {
-            opacity: 0.85;
-        }
-
-        /* Logo Images - Hide/Show based on breakpoint */
-        .banner-header-lp-cta__logo {
-            display: none;
-            height: auto;
-        }
-
-        /* CTA Button Container */
-        .banner-header-lp-cta__cta {
-            display: flex;
-            align-items: center;
-        }
-
-        /* Mobile: 380-767px */
-        @media (max-width: 767px) {
-            .banner-header-lp-cta__container {
-                padding: 0 24px;
-            }
-
-            .banner-header-lp-cta__logo--mobile {
-                display: block;
-                width: 179.23px;
-                height: 89px;
-            }
-
-            /* Smaller button on mobile */
-            .button--medium {
-                font-size: 14px;
-                padding: 12px 20px;
-                min-width: 100px;
-            }
-        }
-
-        /* Tablet: 768-1149px */
-        @media (min-width: 768px) and (max-width: 1149px) {
-            .banner-header-lp-cta__container {
-                padding: 0 0px;
-            }
-
-            .banner-header-lp-cta__logo--tablet {
-                display: block;
-                width: 417.26px;
-                height: 89px;
-            }
-        }
-
-        /* Desktop: 1150-1919px */
-        @media (min-width: 1150px) and (max-width: 1919px) {
-            .banner-header-lp-cta__container {
-                padding: 0 36px 0 24px;
-            }
-
-            .banner-header-lp-cta__logo--desktop {
-                display: block;
-                width: 460px;
-                height: 89px;
-            }
-        }
-
-        /* DesktopPlus: 1920px+ */
-        @media (min-width: 1920px) {
-            .banner-header-lp-cta__container {
-                max-width: 1900px;
-                margin: 0 auto;
-                padding: 0;
-            }
-
-            .banner-header-lp-cta__logo--desktop {
-                display: block;
-                width: 481px;
-                height: 93px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../styles/organisms-headers.css">
 </head>
 <body>
     <!-- Banner Header LP-CTA Component -->
-    <header class="banner-header-lp-cta">
-        <div class="banner-header-lp-cta__container">
-            <!-- Logo -->
-            <a href="/" class="banner-header-lp-cta__logo-link" aria-label="Purposeful Media Promotions Home">
-                <!-- Mobile Logo -->
-                <img 
-                    src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
-                    alt="Purposeful Media Promotions" 
-                    class="banner-header-lp-cta__logo banner-header-lp-cta__logo--mobile"
-                >
-                <!-- Tablet Logo -->
-                <img 
-                    src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg" 
-                    alt="Purposeful Media Promotions" 
-                    class="banner-header-lp-cta__logo banner-header-lp-cta__logo--tablet"
-                >
-                <!-- Desktop/DesktopPlus Logo -->
-                <img 
-                    src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg" 
-                    alt="Purposeful Media Promotions" 
-                    class="banner-header-lp-cta__logo banner-header-lp-cta__logo--desktop"
-                >
-            </a>
-            
+    <header class="banner-header banner-header--lp-cta">
+        <div class="banner-header__container">
+            <div class="banner-header__logo">
+                <a href="/" class="banner-header__logo-link" aria-label="Purposeful Media Promotions Home">
+                    <!-- Mobile Logo: 380-767px -->
+                    <img
+                        src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg"
+                        alt="Purposeful Media Promotions"
+                        class="banner-header__logo-image banner-header__logo-image--mobile"
+                    >
+                    <!-- Tablet Logo: 768-1149px -->
+                    <img
+                        src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg"
+                        alt="Purposeful Media Promotions"
+                        class="banner-header__logo-image banner-header__logo-image--tablet"
+                    >
+                    <!-- Desktop/DesktopPlus Logo: 1150px+ -->
+                    <img
+                        src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg"
+                        alt="Purposeful Media Promotions"
+                        class="banner-header__logo-image banner-header__logo-image--desktop"
+                    >
+                </a>
+            </div>
+
             <!-- CTA Button -->
-            <div class="banner-header-lp-cta__cta">
-                <a href="#contact" class="button button--secondary button--medium">
+            <div class="banner-header__cta">
+                <a href="#contact" class="banner-header__button banner-header__button--secondary banner-header__button--medium">
                     Get Started
                 </a>
             </div>

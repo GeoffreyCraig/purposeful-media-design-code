@@ -1,0 +1,72 @@
+@charset "UTF-8";
+/* CSS Document */
+/* ============================================
+   TABLET DROPDOWN MENU VARIABLES (Card & Accordion)
+   ============================================ */
+
+/* --- Tablet Dropdown: Card Variant --- */
+:root {
+  /* Card Container Layout */
+  --dropdown-tablet-card-padding-block: 20px;
+  --dropdown-tablet-card-padding-inline-start: 24px;
+  --dropdown-tablet-card-padding-inline-end: 16px;
+  --dropdown-tablet-card-gap-sections: 20px; /* Gap between menu sections */
+  --dropdown-tablet-card-gap-items: 10px; /* Gap between items within section */
+  
+  /* Card Container Visual */
+  --dropdown-tablet-card-border-radius: 8px;
+  --dropdown-tablet-card-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+  --dropdown-tablet-card-overflow: clip;
+  --dropdown-tablet-card-bg-default: #eceeef; /* --secondary */
+  --dropdown-tablet-card-bg-hover: #f4ebcd; /* --100, Light Gold */
+  
+  /* Menu List Inner Padding */
+  --dropdown-tablet-card-list-padding: 10px;
+}
+
+/* --- Tablet Dropdown: Accordion Variant --- */
+:root {
+  /* Accordion Container Layout (same as Card except no overflow:clip on container) */
+  --dropdown-tablet-accordion-padding-block: 20px;
+  --dropdown-tablet-accordion-padding-inline-start: 24px;
+  --dropdown-tablet-accordion-padding-inline-end: 16px;
+  --dropdown-tablet-accordion-gap-sections: 20px;
+  --dropdown-tablet-accordion-gap-items: 10px;
+  
+  /* Accordion Container Visual */
+  --dropdown-tablet-accordion-border-radius: 8px;
+  --dropdown-tablet-accordion-bg-default: #eceeef; /* --secondary */
+  --dropdown-tablet-accordion-bg-hover: #f4ebcd; /* --100, Light Gold */
+  
+  /* Accordion Menu List Inner Padding */
+  --dropdown-tablet-accordion-list-padding: 10px;
+}
+
+/* --- Tablet Dropdown: Typography --- */
+:root {
+  /* Section Headings (H2/30 - Uppercase) */
+  --dropdown-tablet-heading-font-size: 30px;
+  --dropdown-tablet-heading-line-height: 45px;
+  --dropdown-tablet-heading-text-transform: uppercase;
+  --dropdown-tablet-heading-color: #1b1464; /* --menudrop, Navy */
+  
+  /* Menu Items (H4/21 - Normal case) */
+  --dropdown-tablet-item-font-size: 21px;
+  --dropdown-tablet-item-line-height: 30.5px;
+  --dropdown-tablet-item-text-transform: none;
+  --dropdown-tablet-item-color-default: #1b1464; /* --menudrop */
+  --dropdown-tablet-item-color-hover: #1d50de; /* --hoverdrop, Bright Blue */
+  --dropdown-tablet-item-min-height: 44px;
+}
+
+/* --- Tablet Dropdown: Positioning --- */
+:root {
+  /* Position relative to banner header */
+  --dropdown-tablet-position-top: 100px; /* From banner top border */
+  --dropdown-tablet-position-right: 45px; /* From banner right border */
+  
+  /* Width - Geoffrey's estimate */
+  --dropdown-tablet-width-min: 250px;
+  --dropdown-tablet-width-max: 325px;
+  /* Consider: width: clamp(250px, 30vw, 325px); for responsive scaling */
+}

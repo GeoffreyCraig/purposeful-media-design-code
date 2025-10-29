@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Header - Main with Menu</title>
+    <link rel="stylesheet" href="../../styles/organisms-headers.css">
+</head>
+<body>
+    <!-- Banner Header Main Component -->
+    <header class="banner-header">
+        <div class="banner-header__container">
+            <div class="banner-header__logo">
+                <a href="/" class="banner-header__logo-link" aria-label="Purposeful Media Promotions Home">
+                    <!-- Mobile Logo: 380-767px -->
+                    <img
+                        src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg"
+                        alt="Purposeful Media Promotions"
+                        class="banner-header__logo-image banner-header__logo-image--mobile"
+                    >
+                    <!-- Tablet Logo: 768-1149px -->
+                    <img
+                        src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg"
+                        alt="Purposeful Media Promotions"
+                        class="banner-header__logo-image banner-header__logo-image--tablet"
+                    >
+                    <!-- Desktop/DesktopPlus Logo: 1150px+ -->
+                    <img
+                        src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg"
+                        alt="Purposeful Media Promotions"
+                        class="banner-header__logo-image banner-header__logo-image--desktop"
+                    >
+                </a>
+            </div>
+
+            <!-- Menu Wrapper -->
+            <div class="banner-header__menu-wrapper">
+                <!-- Desktop Navigation Menu -->
+                <nav class="banner-header__menu" role="navigation" aria-label="Main navigation">
+                    <!-- Home -->
+                    <div class="banner-header__menu-item">
+                        <a href="/" class="banner-header__menu-link" data-page="home">Home</a>
+                    </div>
+
+                    <!-- Solutions -->
+                    <div class="banner-header__menu-item">
+                        <span class="banner-header__menu-link">Solutions</span>
+                        <div class="banner-header__dropdown">
+                            <a href="/email-management" class="banner-header__dropdown-link">Email Management</a>
+                            <a href="/content-creation" class="banner-header__dropdown-link">Content Creation</a>
+                            <a href="/webinar-production" class="banner-header__dropdown-link">Webinar Production</a>
+                        </div>
+                    </div>
+
+                    <!-- Resources -->
+                    <div class="banner-header__menu-item">
+                        <span class="banner-header__menu-link">Resources</span>
+                        <div class="banner-header__dropdown">
+                            <a href="/resource-library" class="banner-header__dropdown-link">Resource Library</a>
+                            <a href="/about-us" class="banner-header__dropdown-link">About Us</a>
+                            <a href="/blog" class="banner-header__dropdown-link">Blog</a>
+                        </div>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="banner-header__menu-item">
+                        <a href="/contact" class="banner-header__menu-link" data-page="contact">Contact</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Hamburger Menu Button (Mobile/Tablet) -->
+            <button class="banner-header__hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <div class="banner-header__hamburger-icon"></div>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="banner-header__mobile-menu">
+            <nav class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+                <a href="/" class="mobile-menu__link" data-page="home">Home</a>
+
+                <div class="mobile-menu__submenu">
+                    <div class="mobile-menu__link mobile-menu__trigger">Solutions</div>
+                    <div class="mobile-menu__submenu-items">
+                        <a href="/email-management" class="mobile-menu__sublink">Email Management</a>
+                        <a href="/content-creation" class="mobile-menu__sublink">Content Creation</a>
+                        <a href="/webinar-production" class="mobile-menu__sublink">Webinar Production</a>
+                    </div>
+                </div>
+
+                <div class="mobile-menu__submenu">
+                    <div class="mobile-menu__link mobile-menu__trigger">Resources</div>
+                    <div class="mobile-menu__submenu-items">
+                        <a href="/resource-library" class="mobile-menu__sublink">Resource Library</a>
+                        <a href="/about-us" class="mobile-menu__sublink">About Us</a>
+                        <a href="/blog" class="mobile-menu__sublink">Blog</a>
+                    </div>
+                </div>
+
+                <a href="/contact" class="mobile-menu__link" data-page="contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- JavaScript for Menu Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.banner-header__hamburger');
+            const mobileMenu = document.querySelector('.banner-header__mobile-menu');
+
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', function() {
+                    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                    hamburger.setAttribute('aria-expanded', !isExpanded);
+                    hamburger.classList.toggle('banner-header__hamburger--active');
+                    mobileMenu.classList.toggle('banner-header__mobile-menu--active');
+                });
+            }
+
+            // Desktop dropdown click functionality
+            document.querySelectorAll('.banner-header__menu-item').forEach(menuItem => {
+                const menuLink = menuItem.querySelector('.banner-header__menu-link:not([href])');
+                const dropdown = menuItem.querySelector('.banner-header__dropdown');
+
+                if (menuLink && dropdown) {
+                    menuLink.style.cursor = 'pointer';
+
+                    // Toggle dropdown on click
+                    menuLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Check if this dropdown is currently open
+                        const isOpen = dropdown.style.display === 'block';
+
+                        // Close all other dropdowns and remove active state from all menu links
+                        document.querySelectorAll('.banner-header__dropdown').forEach(otherDropdown => {
+                            otherDropdown.style.display = 'none';
+                        });
+                        document.querySelectorAll('.banner-header__menu-link').forEach(link => {
+                            link.classList.remove('banner-header__menu-link--active');
+                        });
+
+                        // Toggle current dropdown and active state
+                        if (!isOpen) {
+                            dropdown.style.display = 'block';
+                            menuLink.classList.add('banner-header__menu-link--active');
+                        }
+                    });
+                }
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.banner-header__menu-item')) {
+                    document.querySelectorAll('.banner-header__dropdown').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.banner-header__menu-link').forEach(link => {
+                        link.classList.remove('banner-header__menu-link--active');
+                    });
+                }
+            });
+
+            // Prevent dropdown from closing when clicking inside
+            document.querySelectorAll('.banner-header__dropdown').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+
+            // Mobile submenu toggles
+            document.querySelectorAll('.mobile-menu__trigger').forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const submenu = this.parentElement;
+                    submenu.classList.toggle('mobile-menu__submenu--expanded');
+                });
+            });
+
+            // Active state based on current page
+            const currentPath = window.location.pathname;
+
+            document.querySelectorAll('[data-page]').forEach(item => {
+                const page = item.getAttribute('data-page');
+                if (currentPath === '/' && page === 'home') {
+                    item.classList.add('active');
+                    item.closest('.banner-header__menu-link')?.classList.add('banner-header__menu-link--active');
+                    item.closest('.mobile-menu__link')?.classList.add('mobile-menu__link--active');
+                } else if (currentPath.includes('/' + page)) {
+                    item.classList.add('active');
+                    item.closest('.banner-header__menu-link')?.classList.add('banner-header__menu-link--active');
+                    item.closest('.mobile-menu__link')?.classList.add('mobile-menu__link--active');
+                }
+            });
+
+            // Handle window resize - close mobile menu when expanding to desktop
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    // Close mobile menu if viewport is desktop width (1150px+)
+                    if (window.innerWidth >= 1150) {
+                        if (mobileMenu) {
+                            mobileMenu.classList.remove('banner-header__mobile-menu--active');
+                        }
+                        if (hamburger) {
+                            hamburger.classList.remove('banner-header__hamburger--active');
+                            hamburger.setAttribute('aria-expanded', 'false');
+                        }
+                        // Close any open submenus
+                        document.querySelectorAll('.mobile-menu__submenu').forEach(submenu => {
+                            submenu.classList.remove('mobile-menu__submenu--expanded');
+                        });
+                    }
+                }, 250); // Debounce for smooth performance
+            });
+        });
+    </script>
+</body>
+</html>

@@ -291,6 +291,94 @@
 }
 
 /* =================================================
+   NAVIGATION TYPOGRAPHY TOKENS
+   Extracted from Figma Dev Mode - Navigation Components
+   ================================================= */
+:root {
+  /* Base Navigation Font */
+  --nav-font-family: 'Lato', sans-serif;
+  --nav-font-weight: 800; /* Heavy */
+  --nav-font-style: normal;
+
+  /* Navigation H1/36pt Simple (Desktop Large Menus) */
+  --nav-h1-font-size: 36px;
+  --nav-h1-line-height: 54px; /* 1.5 ratio */
+  --nav-h1-text-transform: uppercase;
+  --nav-h1-white-space: nowrap;
+  --nav-h1-simple-default: var(--color-white);
+  --nav-h1-simple-accent: var(--color-accent-500);
+  --nav-h1-simple-hover: var(--color-accent-400);
+  --nav-h1-simple-active: var(--color-accent-600);
+  --nav-h1-simple-disabled: var(--color-neutral-400);
+
+  /* Navigation H2/30 Simple (Desktop Menu Items) */
+  --nav-h2-font-size: 30px;
+  --nav-h2-line-height: 45px; /* 1.5 ratio */
+  --nav-h2-text-transform: uppercase;
+  --nav-h2-white-space: nowrap;
+  --nav-h2-simple-default: var(--color-white);
+  --nav-h2-simple-accent: var(--color-accent-500);
+  --nav-h2-simple-hover: var(--color-accent-400);
+  --nav-h2-simple-active: var(--color-accent-600);
+  --nav-h2-simple-disabled: var(--color-neutral-400);
+
+  /* Navigation H3/24 Simple (Tablet/Mobile Menu Items) */
+  --nav-h3-font-size: 24px;
+  --nav-h3-line-height: 36px; /* 1.5 ratio */
+  --nav-h3-text-transform: uppercase;
+  --nav-h3-white-space: nowrap;
+  --nav-h3-simple-default: var(--color-white);
+  --nav-h3-simple-accent: var(--color-accent-500);
+  --nav-h3-simple-hover: var(--color-accent-400);
+  --nav-h3-simple-active: var(--color-accent-600);
+  --nav-h3-simple-disabled: var(--color-neutral-400);
+
+  /* Navigation H4/21 Dropdown & Footer */
+  --nav-h4-font-size: 21px;
+  --nav-h4-line-height: 30.5px; /* ~1.45 ratio */
+  --nav-h4-text-transform: none; /* normal case */
+  --nav-h4-white-space: nowrap;
+  --nav-h4-dropdown-default: var(--color-primary-700);
+  --nav-h4-dropdown-hover: var(--color-primary-500);
+  --nav-h4-dropdown-active: var(--color-primary-900);
+  --nav-h4-dropdown-disabled: var(--color-neutral-400);
+  --nav-h4-dropdown-hover-decoration: underline;
+  --nav-h4-dropdown-hover-decoration-style: solid;
+  --nav-h4-footer-default: var(--color-primary-700);
+  --nav-h4-footer-hover: var(--color-primary-700);
+  --nav-h4-footer-active: var(--color-primary-700);
+  --nav-h4-footer-disabled: var(--color-neutral-400);
+
+  /* Navigation H5/18 Simple (Small Menu Items) */
+  --nav-h5-font-size: 18px;
+  --nav-h5-line-height: 27px; /* 1.5 ratio */
+  --nav-h5-text-transform: uppercase;
+  --nav-h5-white-space: nowrap;
+  --nav-h5-simple-default: var(--color-primary-700);
+  --nav-h5-simple-accent: var(--color-accent-500);
+  --nav-h5-simple-hover: var(--color-accent-400);
+  --nav-h5-simple-active: var(--color-accent-600);
+  --nav-h5-simple-disabled: var(--color-neutral-400);
+
+  /* Navigation H6/16 Simple (Extra Small Menu Items) */
+  --nav-h6-font-size: 16px;
+  --nav-h6-line-height: 24px; /* 1.5 ratio */
+  --nav-h6-text-transform: uppercase;
+  --nav-h6-white-space: nowrap;
+  --nav-h6-simple-default: var(--color-primary-700);
+  --nav-h6-simple-accent: var(--color-accent-500);
+  --nav-h6-simple-hover: var(--color-accent-400);
+  --nav-h6-simple-active: var(--color-accent-600);
+  --nav-h6-simple-disabled: var(--color-neutral-400);
+
+  /* Navigation Accordion (H2/30 variant for Mobile) */
+  --nav-accordion-font-size: 30px;
+  --nav-accordion-line-height: 45px;
+  --nav-accordion-text-transform: uppercase;
+  /* Uses same color states as H2 Simple */
+}
+
+/* =================================================
    SPACING TOKENS
    ================================================= */
 :root {
@@ -449,14 +537,76 @@
   --link-dropdown-disabled: var(--color-neutral-400);
   
   /* Dropdown Container */
-  --dropdown-bg-default: var(--color-neutral-100);
-  --dropdown-bg-hover: var(--color-accent-100);
-  --dropdown-bg-active: var(--color-teal-100);
-  --dropdown-padding: 32px 64px 32px 32px;
-  --dropdown-gap: 16px;
-  --dropdown-border-radius: var(--radius-medium);
-  --dropdown-shadow: var(--shadow-subtle);
-  
+  /* Dropdown Container Layout */
+  --dropdown-padding-block: 32px;
+  --dropdown-padding-inline-start: 32px;
+  --dropdown-padding-inline-end: 64px;
+  --dropdown-gap: 32px; /* Gap between link groups */
+  --dropdown-link-gap: 16px; /* Gap between individual links */
+
+  /* Dropdown Container Visual */
+  --dropdown-border-radius: 8px;
+  --dropdown-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+  --dropdown-overflow: clip;
+
+  /* Dropdown Background Colors by State */
+  --dropdown-bg-default: var(--color-neutral-100); /* #eceeef */
+  --dropdown-bg-hover: var(--color-accent-100); /* #f4ebcd - Light Gold */
+  --dropdown-bg-active: var(--color-teal-100); /* #d7f5f5 - Light Teal */
+  --dropdown-bg-disabled: var(--color-neutral-100); /* Same as default */
+
+  /* Dropdown Link Text Colors by State */
+  --dropdown-link-default: var(--color-primary-700); /* Navy */
+  --dropdown-link-hover: var(--color-primary-500); /* Bright Blue */
+  --dropdown-link-hover-decoration: underline;
+  --dropdown-link-hover-decoration-style: solid;
+  --dropdown-link-active: var(--color-primary-900); /* Dark Navy */
+  --dropdown-link-disabled: var(--color-neutral-400); /* Gray */
+  --dropdown-link-sibling-disabled: var(--color-neutral-400); /* Gray out non-active items */
+
+  /* Dropdown Typography (inherits from Navigation H4/21) */
+  --dropdown-font-family: var(--nav-font-family);
+  --dropdown-font-weight: var(--nav-font-weight);
+  --dropdown-font-size: var(--nav-h4-font-size);
+  --dropdown-line-height: var(--nav-h4-line-height);
+  --dropdown-text-transform: var(--nav-h4-text-transform);
+  --dropdown-white-space: var(--nav-h4-white-space);
+
+  /* Dropdown Mix Blend Mode */
+  --dropdown-hover-blend-mode: multiply; /* Applied to container on hover */
+
+  /* Tablet Dropdown - Card Variant (768-1149px) */
+  --dropdown-tablet-card-width: clamp(250px, 28vw, 325px);
+  --dropdown-tablet-card-padding-block: 20px;
+  --dropdown-tablet-card-padding-inline-start: 24px;
+  --dropdown-tablet-card-padding-inline-end: 16px;
+  --dropdown-tablet-card-gap-sections: 20px;
+  --dropdown-tablet-card-gap-items: 10px;
+  --dropdown-tablet-card-border-radius: 8px;
+  --dropdown-tablet-card-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+  --dropdown-tablet-card-overflow: clip;
+  --dropdown-tablet-card-bg-default: var(--color-neutral-100); /* #eceeef */
+  --dropdown-tablet-card-bg-hover: var(--color-accent-100); /* #f4ebcd - Light Gold */
+  --dropdown-tablet-card-list-padding: 10px;
+  --dropdown-tablet-position-top: 100px;
+  --dropdown-tablet-position-right: 45px;
+
+  /* Tablet Dropdown Typography */
+  --dropdown-tablet-heading-font-size: 30px;
+  --dropdown-tablet-heading-line-height: 45px;
+  --dropdown-tablet-heading-text-transform: uppercase;
+  --dropdown-tablet-heading-color: var(--color-primary-700);
+  --dropdown-tablet-item-font-size: 21px;
+  --dropdown-tablet-item-line-height: 30.5px;
+  --dropdown-tablet-item-text-transform: none;
+  --dropdown-tablet-item-color-default: var(--color-primary-700);
+  --dropdown-tablet-item-color-hover: var(--color-primary-500);
+  --dropdown-tablet-item-min-height: 44px;
+
+  /* Dropdown Animation - Slow and Smooth */
+  --dropdown-transition-duration: 0.4s;
+  --dropdown-transition-timing: ease;
+
   /* Mobile Menu Icons */
   --menu-icon-tablet-width: 54px;
   --menu-icon-tablet-height: 53px;
