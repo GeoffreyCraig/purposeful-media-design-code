@@ -118,7 +118,7 @@
     </footer>
 
     <!-- Footer Simple Component - Reverse Color Scheme -->
-    <footer class="footer-simple" data-color-scheme="reverse" id="footer-reverse" style="display: none;">
+    <footer class="footer-simple hidden" data-color-scheme="reverse" id="footer-reverse">
         <!-- Top border accent -->
         <div class="footer-border"></div>
         
@@ -158,20 +158,20 @@
             const defaultFooter = document.getElementById('footer-default');
             const reverseFooter = document.getElementById('footer-reverse');
             const buttons = document.querySelectorAll('.variant-toggle button');
-            
+
             // Hide all footers
-            defaultFooter.style.display = 'none';
-            reverseFooter.style.display = 'none';
-            
+            defaultFooter.classList.add('hidden');
+            reverseFooter.classList.add('hidden');
+
             // Remove active class from all buttons
             buttons.forEach(btn => btn.classList.remove('active'));
-            
+
             // Show selected variant and mark button as active
             if (variant === 'default') {
-                defaultFooter.style.display = 'block';
+                defaultFooter.classList.remove('hidden');
                 buttons[0].classList.add('active');
             } else if (variant === 'reverse') {
-                reverseFooter.style.display = 'block';
+                reverseFooter.classList.remove('hidden');
                 buttons[1].classList.add('active');
             }
         }

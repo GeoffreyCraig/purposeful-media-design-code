@@ -1,14 +1,19 @@
 /* ============================================
-   ORGANISMS - SECTION CONTACT US
+   ORGANISMS - SECTION FAQ GROUP
    Purposeful Media Design System
    Version: 4.0
    Last Modified: 2025-10-30
    Dependencies: variables-v4.0-20251027.css
 
    Description:
-   This organism provides a section wrapper for the Form/Contact molecule.
+   This organism provides a section wrapper for multiple Card/FAQ molecules.
    Following Atomic Design principles: Organisms compose Molecules.
-   The Form/Contact molecule handles all form styling independently.
+   The Card/FAQ molecule handles all FAQ card styling independently.
+
+   Structure:
+   1. Outer Section - Full width, optional background
+   2. Container - Centers content, provides padding
+   3. Items Wrapper - Gray background container that hugs the cards
 
    Breakpoints:
    - Mobile: 380-767px
@@ -24,24 +29,40 @@
    SECTION WRAPPER STYLES
    ============================================ */
 
-/* Section container provides background and spacing */
-.section-contactus {
-  background-color: var(--color-neutral-100, #eceeef);
-  padding: var(--space-16, 64px) var(--space-5, 20px);
+/* Outer section container */
+.section-faq-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  /* Outer section can have optional background image or color */
+  background-color: transparent;
 }
 
-/* Container centers the form molecule */
-.section-contactus__container {
+/* Container centers the FAQ items and provides padding */
+.section-faq-group__container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   max-width: 1200px;
+  padding: var(--space-16, 64px) var(--space-5, 20px);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Items wrapper - gray background that hugs the cards */
+.section-faq-group__items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background-color: var(--color-neutral-100, #eceeef);
+  border-radius: 20px;
+  padding: var(--space-6, 24px);
+  box-sizing: border-box;
+  position: relative;
 }
 
 /* ============================================
@@ -50,41 +71,52 @@
 
 /* Mobile: 380px to 767px */
 @media (max-width: 767px) {
-  .section-contactus {
+  .section-faq-group__container {
     padding: var(--space-16, 64px) var(--space-4, 16px);
+  }
+
+  .section-faq-group__items {
+    border-radius: 16px;
+    padding: var(--space-4, 16px);
   }
 }
 
 /* Tablet: 768px to 1149px */
 @media (min-width: 768px) and (max-width: 1149px) {
-  .section-contactus {
+  .section-faq-group__container {
     padding: var(--space-16, 64px) var(--space-8, 32px);
+    max-width: 900px;
   }
 
-  .section-contactus__container {
-    max-width: 900px;
+  .section-faq-group__items {
+    border-radius: 18px;
+    padding: var(--space-5, 20px);
   }
 }
 
 /* Desktop: 1150px to 1919px */
 @media (min-width: 1150px) and (max-width: 1919px) {
-  .section-contactus {
+  .section-faq-group__container {
     padding: var(--space-16, 64px) var(--space-10, 40px);
+    max-width: 1100px;
   }
 
-  .section-contactus__container {
-    max-width: 1100px;
+  .section-faq-group__items {
+    border-radius: 20px;
+    padding: var(--space-6, 24px);
   }
 }
 
 /* DesktopPlus: 1920px and wider */
 @media (min-width: 1920px) {
-  .section-contactus {
+  .section-faq-group__container {
     padding: var(--space-16, 64px);
+    max-width: 1200px;
   }
 
-  .section-contactus__container {
-    max-width: 1200px;
+  .section-faq-group__items {
+    border-radius: 20px;
+    padding: var(--space-6, 24px);
   }
 }
 
@@ -106,8 +138,16 @@
    ============================================ */
 
 @media print {
-  .section-contactus {
+  .section-faq-group {
     background-color: white;
+  }
+
+  .section-faq-group__container {
     padding: 0;
+  }
+
+  .section-faq-group__items {
+    border-radius: 0;
+    padding: var(--space-4, 16px);
   }
 }

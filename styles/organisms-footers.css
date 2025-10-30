@@ -1,19 +1,20 @@
 /* ============================================
    ORGANISMS - FOOTERS
    Purposeful Media Design System
-   Version: 1.0
-   Last Modified: 2025-10-01
-   Dependencies: variables-v2.0-20250915.css
-   
+   Version: 4.0
+   Last Modified: 2025-10-30
+   Dependencies: variables-v4.0-20251027.css
+
    Components:
    - Footer Main (Desktop/Tablet)
    - Footer Mobile
    - Footer Menu Module
    - Footer Attribution
+   - Footer Simple
    ============================================ */
 
 /* Import dependencies */
-@import url('variables-v2.0-20250915.css');
+@import url('variables-v4.0-20251027.css');
 
 /* ==========================================================================
    1. FOOTER MAIN (DESKTOP/TABLET)

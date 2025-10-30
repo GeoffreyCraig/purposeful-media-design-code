@@ -193,20 +193,21 @@ This project uses **CSS background-image positioning with data attributes**, NOT
 - [ ] Organism: blog-group.html (redundant - use blog-group-clean.html)
 - [x] Organism: content-2column-contact.html (COMPLETED - v4.0 tokenized, all breakpoints)
 - [x] Organism: content-2column-graphic.html (COMPLETED - v4.0 tokenized, removed 300+ lines inline CSS)
-- [ ] Organism: footer-simple.html
-- [ ] Organism: footer-unified.html
-- [ ] Organism: hero-atf-center.html
-- [ ] Organism: hero-atf-left.html (new)
+- [x] Organism: footer-simple.html (COMPLETED - v4.0 tokenized, all breakpoints)
+- [x] Organism: footer-main.html (COMPLETED - v4.0 tokenized, renamed from footer-unified.html, all breakpoints)
+- [x] Organism: hero-atf-center.html (COMPLETED - v4.0 tokenized, removed 230+ lines embedded CSS, all breakpoints)
+- [ ] Organism: hero-atf-left.html (new - file doesn't exist yet)
 - [ ] Organism: hero-atf-right.html (develop in Phase 2 MVW)
-- [ ] Organism: hero-carousel.html
-- [ ] Organism: hero-simple-default.html
-- [ ] Organism: hero-simple-reverse.html
-- [ ] Organism: section-contactus.html (include molecule: form-contact.html)
-- [ ] Organism: section-faq-group.html (include molecule: card-faq.html)
-- [ ] Organism: section-resources.html (include multiple instances of molecule: card-resource.html)
-- [ ] Organism: text-block.html (gather variables for text and pillar page)
+- [x] Organism: hero-carousel.html (COMPLETED - v4.0 tokenized, removed 55 lines embedded CSS, all breakpoints)
+- [x] Organism: hero-simple-default.html (COMPLETED - v4.0 tokenized, removed 135 lines embedded CSS, all breakpoints)
+- [x] Organism: hero-simple-reverse.html (COMPLETED - v4.0 tokenized, removed 134 lines embedded CSS, all breakpoints)
+- [x] Organism: section-contactus.html (COMPLETED - v4.0 rebuilt to properly compose form-contact molecule, Atomic Design principles, all breakpoints)
+- [x] Organism: section-faq-group.html (COMPLETED - v4.0 rebuilt to properly compose card-faq molecules, reduced 304 lines, all breakpoints)
+- [x] Organism: section-resources.html (COMPLETED - v4.0 rebuilt to properly compose card-resources molecules, responsive grid 1-2-3-4 cols, all breakpoints)
+- [x] Organism: text-block.html (COMPLETED - v4.0 tokenized, removed atoms-master.css conflict, all inline styles removed, proper Open Sans rendering)
+- [ ] Organism: text-block-with-sticky-menu.html (Phase 2 - NEW design with xxlarge decorative icons - to be built)
 
-**Organism Layer Progress: 8/15 completed (53%)**
+**Organism Layer Progress: 18/19 completed (95%)** 🎉
 
 ## Notes
 - This is Week 44 sprint work

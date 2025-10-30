@@ -1,19 +1,20 @@
-/* ====================================
-   TEXT BLOCK ORGANISM STYLES
-   Component: Organism/Content/Text-Block
-   Version: 1.0
-   Last Updated: 2025-10-07
-   
-   Description: Single-column content area organism with comprehensive typography support
+/* ============================================
+   ORGANISMS - TEXT BLOCK
+   Purposeful Media Design System
+   Version: 4.0
+   Last Modified: 2025-10-30
+   Dependencies: variables-v4.0-20251027.css
+
+   Description:
+   Single-column content area organism with comprehensive typography support.
    Layouts: Narrative (blog posts), Pillar Page (guides), Topic (articles)
-   Dependencies: variables-v2.0-20250915.css, atoms-master.css, molecules-icon-display.css
-   
+
    Features:
    - All typography variants (H1-H6, paragraphs, lists, blockquotes)
    - Icon integration (symbolic and UI icons)
    - WordPress-compatible structure
    - Fully responsive (Mobile/Tablet/Desktop/DesktopPlus)
-   
+
    Usage:
    <section class="text-block text-block--narrative" data-layout="narrative">
        <div class="text-block__container">
@@ -22,10 +23,16 @@
            </article>
        </div>
    </section>
-   ==================================== */
+
+   Breakpoints:
+   - Mobile: 380-767px
+   - Tablet: 768-1149px
+   - Desktop: 1150-1919px
+   - DesktopPlus: 1920px+
+   ============================================ */
 
 /* Import Dependencies */
-@import url('variables-v2.0-20250915.css');
+@import url('variables-v4.0-20251027.css');
 
 /* ====================================
    BASE TEXT BLOCK CONTAINER
@@ -59,6 +66,10 @@
 }
 
 /* Pillar Page Layout - Comprehensive Guides */
+.text-block--pillar {
+    background-color: var(--color-neutral-50, #F6F6F7);
+}
+
 .text-block--pillar .text-block__content {
     max-width: 900px;
 }
@@ -665,4 +676,58 @@
         color: var(--color-primary-700, #1B1464);
         text-decoration: underline;
     }
+}
+
+/* ====================================
+   LAYOUT SECTION SPACING
+   ==================================== */
+
+/* Add spacing between text-block sections when stacked */
+.text-block + .text-block {
+    margin-top: var(--space-10, 40px);
+}
+
+/* ====================================
+   DEMO INFORMATION SECTION
+   ==================================== */
+
+.demo-info-section {
+    background-color: var(--color-primary-700, #1B1464);
+    color: var(--color-white, #FFFFFF);
+    padding: var(--space-15, 60px) var(--space-5, 20px);
+    margin-top: var(--space-15, 60px);
+    text-align: center;
+}
+
+.demo-info-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.demo-info-title {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 900;
+    margin-bottom: var(--space-5, 20px);
+    color: var(--color-white, #FFFFFF);
+}
+
+.demo-info-text {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 18px;
+    line-height: 27px;
+    margin-bottom: var(--space-5, 20px);
+    color: var(--color-white, #FFFFFF);
+}
+
+.demo-info-details {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-white, #FFFFFF);
+}
+
+.demo-info-details strong {
+    color: var(--color-accent-500, #D4AF37);
 }

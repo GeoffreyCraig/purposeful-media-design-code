@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Block Organism - Purposeful Media Design System</title>
-    
-    <!-- Dependencies -->
-    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
-    <link rel="stylesheet" href="../../styles/atoms-master.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Master Stylesheet - includes all dependencies -->
+    <link rel="stylesheet" href="../../styles/master-styles.css">
+
+    <!-- Icon Display Molecules -->
     <link rel="stylesheet" href="../../styles/molecules-decorative-icon-display.css">
     <link rel="stylesheet" href="../../styles/molecules-ui-icon-display.css">
+
+    <!-- Text Block Organism Styles -->
     <link rel="stylesheet" href="../../styles/organisms-text-block.css">
 </head>
 <body>
@@ -140,7 +148,7 @@
                     </p>
                     
                     <p class="paragraph paragraph--default">
-                        <span class="decorative-icon-display icon-display--small" data-icon="momentum" data-color="navy" style="vertical-align: middle; margin-right: 8px;"></span>
+                        <span class="decorative-icon-display icon-display--small icon-display--inline" data-icon="momentum" data-color="navy"></span>
                         Inline icons can be integrated directly into paragraphs to draw attention to key points or add visual elements without disrupting the reading flow.
                     </p>
                 </section>
@@ -157,7 +165,7 @@
     <!-- ========================================
          TEXT BLOCK ORGANISM - PILLAR PAGE LAYOUT
          ======================================== -->
-    <section class="text-block text-block--pillar" data-layout="pillar" data-breakpoint="desktop" style="background-color: #F6F6F7; margin-top: 40px;">
+    <section class="text-block text-block--pillar" data-layout="pillar" data-breakpoint="desktop">
         <div class="text-block__container">
             <article class="text-block__content">
                 
@@ -243,7 +251,7 @@
     <!-- ========================================
          TEXT BLOCK ORGANISM - TOPIC LAYOUT
          ======================================== -->
-    <section class="text-block text-block--topic" data-layout="topic" data-breakpoint="desktop" style="margin-top: 40px;">
+    <section class="text-block text-block--topic" data-layout="topic" data-breakpoint="desktop">
         <div class="text-block__container">
             <article class="text-block__content">
                 
@@ -331,13 +339,13 @@
     </section>
     
     <!-- Demo Information Section -->
-    <section style="background-color: #1B1464; color: white; padding: 60px 20px; margin-top: 60px; text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="font-family: 'Lato', sans-serif; font-size: 30px; margin-bottom: 20px;">Text Block Organism Documentation</h2>
-            <p style="font-family: 'Open Sans', sans-serif; font-size: 18px; line-height: 27px; margin-bottom: 20px;">
+    <section class="demo-info-section">
+        <div class="demo-info-container">
+            <h2 class="demo-info-title">Text Block Organism Documentation</h2>
+            <p class="demo-info-text">
                 This component demonstrates all typography variants, list styles, icon integrations, and layout patterns available in the Purposeful Media Design System. It's fully responsive and WordPress-compatible.
             </p>
-            <p style="font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 24px;">
+            <p class="demo-info-details">
                 <strong>Layouts:</strong> Narrative (blog posts), Pillar Page (comprehensive guides), Topic (focused articles)<br>
                 <strong>Typography:</strong> H1-H6, Lead/Default/Small paragraphs, Lists, Blockquotes<br>
                 <strong>Icons:</strong> Symbolic (icon-display) and UI (ui-icon-display) molecules<br>

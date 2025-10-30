@@ -1,98 +1,170 @@
-/* ====================================
-   SECTION/RESOURCES COMPONENT STYLES
-   Component: Organism/Section/Resources
-   Version: 1.3
-   Last Updated: 2025-10-04
-   
-   Description: Responsive grid layout for resource cards
-   Breakpoints: Mobile (1 col), Tablet (2 cols), Desktop (3 cols), DesktopPlus (4 cols)
-   Dependencies: variables-v2.0-20250915.css, molecules-cards-resources.css
-   ==================================== */
+/* ============================================
+   ORGANISMS - SECTION RESOURCES
+   Purposeful Media Design System
+   Version: 4.0
+   Last Modified: 2025-10-30
+   Dependencies: variables-v4.0-20251027.css
+
+   Description:
+   This organism provides a responsive grid wrapper for multiple Card/Resources molecules.
+   Following Atomic Design principles: Organisms compose Molecules.
+   The Card/Resources molecule handles all card styling independently.
+
+   Grid Layout:
+   - Mobile (380-767px): 1 column
+   - Tablet (768-1149px): 2 columns
+   - Desktop (1150-1919px): 3 columns
+   - DesktopPlus (1920px+): 4 columns
+
+   Card dimensions: Fixed 350px width per card
+   Gap: 32px between cards
+
+   Breakpoints:
+   - Mobile: 380-767px
+   - Tablet: 768-1149px
+   - Desktop: 1150-1919px
+   - DesktopPlus: 1920px+
+   ============================================ */
 
 /* Import dependencies */
-@import url('variables-v2.0-20250915.css');
+@import url('variables-v4.0-20251027.css');
 
-/* Base Section Container */
+/* ============================================
+   SECTION WRAPPER STYLES
+   ============================================ */
+
+/* Base section container */
 .section-resources {
-    box-sizing: border-box;
-    width: 100%;
-    background-color: var(--color-neutral-100, #ECEEEF);
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--color-neutral-100, #eceeef);
+  padding: var(--space-16, 64px) 0;
 }
 
-/* Grid Container */
+/* Container centers the grid and provides padding */
+.section-resources__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--space-8, 32px);
+  box-sizing: border-box;
+}
+
+/* Grid container - CSS Grid for precise column control */
 .section-resources__grid {
-    box-sizing: border-box;
-    padding: 32px;
-    width: 100%;
-    margin: 0 auto;
+  display: grid;
+  gap: var(--space-8, 32px);
+  width: 100%;
+  justify-content: center;
+  align-items: start;
+  box-sizing: border-box;
+  /* Default: 1 column for mobile-first approach */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+  max-width: 350px;
 }
 
-/* Row Container - Using CSS Grid for precise control */
-.section-resources__row {
-    display: grid;
-    gap: 32px;
-    width: 100%;
-    margin: 0 auto 32px auto;
-    justify-content: center;
-    align-items: center;
-    /* Default: 1 column */
-    grid-template-columns: repeat(auto-fit, 350px);
-}
-
-.section-resources__row:last-child {
-    margin-bottom: 0;
-}
-
-/* Individual Card Wrapper */
-.section-resources__card {
-    width: 350px;
-    justify-self: center;
-}
-
-/* ================================
+/* ============================================
    RESPONSIVE BREAKPOINTS
-   Using CSS Grid for exact column control
-   ================================ */
+   ============================================ */
 
-/* Mobile: 380-767px - 1 card per row */
-@media screen and (max-width: 767px) {
-    .section-resources__grid {
-        padding: 32px 16px;
-    }
-    
-    .section-resources__row {
-        grid-template-columns: 1fr;
-        max-width: 350px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .section-resources__card {
-        width: 100%;
-        max-width: 350px;
-    }
+/* Mobile: 380px to 767px - 1 card per row */
+@media (max-width: 767px) {
+  .section-resources {
+    padding: var(--space-16, 64px) 0;
+  }
+
+  .section-resources__container {
+    padding: 0 var(--space-4, 16px);
+  }
+
+  .section-resources__grid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    gap: var(--space-8, 32px);
+  }
 }
 
-/* Tablet: 768-1149px - EXACTLY 2 cards per row */
-@media screen and (min-width: 768px) and (max-width: 1149px) {
-    .section-resources__row {
-        grid-template-columns: repeat(2, 350px);
-        max-width: 732px; /* 350*2 + 32 gap */
-    }
+/* Tablet: 768px to 1149px - EXACTLY 2 cards per row */
+@media (min-width: 768px) and (max-width: 1149px) {
+  .section-resources {
+    padding: var(--space-16, 64px) 0;
+  }
+
+  .section-resources__container {
+    padding: 0 var(--space-8, 32px);
+  }
+
+  .section-resources__grid {
+    grid-template-columns: repeat(2, 350px);
+    max-width: 732px; /* 350*2 + 32 gap = 732px */
+    gap: var(--space-8, 32px);
+  }
 }
 
-/* Desktop: 1150-1919px - EXACTLY 3 cards per row */
-@media screen and (min-width: 1150px) and (max-width: 1919px) {
-    .section-resources__row {
-        grid-template-columns: repeat(3, 350px);
-        max-width: 1114px; /* 350*3 + 32*2 gaps */
-    }
+/* Desktop: 1150px to 1919px - EXACTLY 3 cards per row */
+@media (min-width: 1150px) and (max-width: 1919px) {
+  .section-resources {
+    padding: var(--space-16, 64px) 0;
+  }
+
+  .section-resources__container {
+    padding: 0 var(--space-10, 40px);
+  }
+
+  .section-resources__grid {
+    grid-template-columns: repeat(3, 350px);
+    max-width: 1114px; /* 350*3 + 32*2 gaps = 1114px */
+    gap: var(--space-8, 32px);
+  }
 }
 
-/* DesktopPlus: 1920px+ - EXACTLY 4 cards per row */
-@media screen and (min-width: 1920px) {
-    .section-resources__row {
-        grid-template-columns: repeat(4, 350px);
-        max-width: 1496px; /* 350*4 + 32*3 gaps */
-    }
+/* DesktopPlus: 1920px and wider - EXACTLY 4 cards per row */
+@media (min-width: 1920px) {
+  .section-resources {
+    padding: var(--space-16, 64px) 0;
+  }
+
+  .section-resources__container {
+    padding: 0 var(--space-16, 64px);
+  }
+
+  .section-resources__grid {
+    grid-template-columns: repeat(4, 350px);
+    max-width: 1496px; /* 350*4 + 32*3 gaps = 1496px */
+    gap: var(--space-8, 32px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .section-resources {
+    background-color: white;
+    padding: 0;
+  }
+
+  .section-resources__container {
+    padding: 0;
+  }
+
+  .section-resources__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4, 16px);
+  }
 }

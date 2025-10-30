@@ -1,182 +1,312 @@
-<!-- Section/ContactUs - Contact Form Page Section Component -->
-<!-- Purposeful Media Design System - Organism Component -->
-<!-- 
-  USAGE: This component can be included directly in any page.
-  The CSS links below are required for proper styling.
-  If these styles are already loaded in your page template,
-  you can remove the duplicate links.
--->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Contact Us - Purposeful Media</title>
 
-<!-- Required Styles -->
-<link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
-<link rel="stylesheet" href="../../styles/organisms-section-contactus.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Google Fonts (if not already loaded) -->
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- Master Stylesheet - includes all dependencies -->
+    <link rel="stylesheet" href="../../styles/master-styles.css">
 
-<section class="section-contactus" data-component="Section/ContactUs">
-  <div class="section-container">
-    <div class="contact-form-wrapper">
-      
-      <!-- Form Title -->
-      <h2 class="form-title">Get in Touch</h2>
-      
-      <!-- Form Intro -->
-      <p class="form-intro">Ready to transform your marketing? Tell us what's on your mind.</p>
-      
-      <!-- Contact Form -->
-      <form class="contact-form" id="contact-form">
-        
-        <!-- Name Fields Row -->
-        <div class="form-row name-row">
-          <!-- First Name -->
-          <div class="form-field">
-            <label for="first-name" class="form-label">First Name</label>
-            <input type="text" 
-                   id="first-name" 
-                   name="firstName" 
-                   class="form-input" 
-                   placeholder=""
-                   aria-describedby="first-name-help">
-            <span id="first-name-help" class="form-help">How do you prefer to be addressed?</span>
-          </div>
-          
-          <!-- Last Name -->
-          <div class="form-field">
-            <label for="last-name" class="form-label">Last Name</label>
-            <input type="text" 
-                   id="last-name" 
-                   name="lastName" 
-                   class="form-input" 
-                   placeholder=""
-                   aria-describedby="last-name-help">
-            <span id="last-name-help" class="form-help">What is your last name?</span>
-          </div>
-        </div>
-        
-        <!-- Email Field -->
-        <div class="form-field">
-          <label for="email" class="form-label">Email Address<span class="required">*</span></label>
-          <input type="email" 
-                 id="email" 
-                 name="email" 
-                 class="form-input" 
-                 placeholder=""
-                 required
-                 aria-required="true"
-                 aria-describedby="email-help">
-          <span id="email-help" class="form-help">*This field is required.</span>
-        </div>
-        
-        <!-- Phone Field -->
-        <div class="form-field form-field--phone">
-          <label for="phone" class="form-label">Phone Number</label>
-          <input type="tel" 
-                 id="phone" 
-                 name="phone" 
-                 class="form-input" 
-                 placeholder=""
-                 aria-describedby="phone-help">
-          <span id="phone-help" class="form-help">What is your contact phone number?</span>
-        </div>
-        
-        <!-- Company Field -->
-        <div class="form-field">
-          <label for="company" class="form-label">Company</label>
-          <input type="text" 
-                 id="company" 
-                 name="company" 
-                 class="form-input" 
-                 placeholder=""
-                 aria-describedby="company-help">
-          <span id="company-help" class="form-help">What is your company?</span>
-        </div>
-        
-        <!-- Message Field -->
-        <div class="form-field form-field--message">
-          <label for="message" class="form-label">Your Message</label>
-          <textarea id="message" 
-                    name="message" 
-                    class="form-textarea" 
-                    rows="4"
-                    placeholder=""
-                    aria-describedby="message-help"></textarea>
-          <span id="message-help" class="form-help">Please write your message</span>
-        </div>
-        
-        <!-- Submit Button -->
-        <div class="form-actions">
-          <button type="submit" class="btn btn--primary">
-            <span class="btn-text">Send Message</span>
-          </button>
-        </div>
-        
-      </form>
-    </div>
-  </div>
-</section>
+    <!-- Form Contact Molecule Styles -->
+    <link rel="stylesheet" href="../../styles/molecules-form-contact.css">
 
-<!-- JavaScript for Form Handling -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('contact-form');
-  
-  if (form) {
-    // Handle form submission
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Get form data
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
-      
-      // Basic validation
-      if (!data.email) {
-        showError('Please enter your email address');
-        return;
-      }
-      
-      // Here you would integrate with your backend or email service
-      console.log('Form submitted:', data);
-      
-      // For now, just show a success message
-      showSuccess('Thank you for your message! We\'ll get back to you soon.');
-      
-      // Reset form
-      form.reset();
-    });
-    
-    // Add input focus/blur handlers for better UX
-    const inputs = form.querySelectorAll('.form-input, .form-textarea');
-    inputs.forEach(input => {
-      input.addEventListener('focus', function() {
-        this.parentElement.classList.add('is-focused');
-      });
-      
-      input.addEventListener('blur', function() {
-        this.parentElement.classList.remove('is-focused');
-        if (this.value) {
-          this.parentElement.classList.add('has-value');
-        } else {
-          this.parentElement.classList.remove('has-value');
+    <!-- Section Contact Us Organism Styles -->
+    <link rel="stylesheet" href="../../styles/organisms-section-contactus.css">
+</head>
+<body>
+    <!-- Section Contact Us Organism Component -->
+    <!--
+        This organism composes the Form/Contact molecule within a section container.
+        Following Atomic Design principles: Organisms compose Molecules.
+    -->
+    <section class="section-contactus" data-component="Section/ContactUs" role="region" aria-label="Contact Us">
+        <div class="section-contactus__container">
+            <!-- Form Contact Molecule Component -->
+            <div class="form-contact" data-state="default" data-name="Form/Contact">
+                <!-- Title -->
+                <h3 class="form-contact__title">Get in Touch</h3>
+
+                <!-- Description -->
+                <p class="form-contact__description">
+                    Ready to transform your marketing? Tell us what's on your mind.
+                </p>
+
+                <!-- Contact Form -->
+                <form class="form-contact__form" id="contact-form">
+                    <!-- Name Row (First & Last) -->
+                    <div class="form-contact__row">
+                        <!-- First Name Field -->
+                        <div class="form-contact__field-container">
+                            <label for="firstName" class="form-contact__label">First Name</label>
+                            <div class="form-contact__input-wrapper">
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    class="form-contact__input"
+                                    placeholder="Enter your first name"
+                                    aria-describedby="firstName-helper"
+                                />
+                            </div>
+                            <span id="firstName-helper" class="form-contact__helper">How do you prefer to be addressed?</span>
+                        </div>
+
+                        <!-- Last Name Field -->
+                        <div class="form-contact__field-container">
+                            <label for="lastName" class="form-contact__label">Last Name</label>
+                            <div class="form-contact__input-wrapper">
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    name="lastName"
+                                    class="form-contact__input"
+                                    placeholder="Enter your last name"
+                                    aria-describedby="lastName-helper"
+                                />
+                            </div>
+                            <span id="lastName-helper" class="form-contact__helper">What is your last name?</span>
+                        </div>
+                    </div>
+
+                    <!-- Email Field (Required) -->
+                    <div class="form-contact__field-container form-contact__field-container--full">
+                        <label for="email" class="form-contact__label">Email Address*</label>
+                        <div class="form-contact__input-wrapper">
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-contact__input"
+                                placeholder="your.email@example.com"
+                                required
+                                aria-required="true"
+                                aria-invalid="false"
+                                aria-describedby="email-helper"
+                            />
+                        </div>
+                        <span id="email-helper" class="form-contact__helper">*This field is required.</span>
+                    </div>
+
+                    <!-- Phone Number Field -->
+                    <div class="form-contact__field-container form-contact__field-container--phone">
+                        <label for="phone" class="form-contact__label">Phone Number</label>
+                        <div class="form-contact__input-wrapper">
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="form-contact__input"
+                                placeholder="(555) 123-4567"
+                                aria-describedby="phone-helper"
+                            />
+                        </div>
+                        <span id="phone-helper" class="form-contact__helper">What is your contact phone number?</span>
+                    </div>
+
+                    <!-- Company Field -->
+                    <div class="form-contact__field-container form-contact__field-container--full">
+                        <label for="company" class="form-contact__label">Company</label>
+                        <div class="form-contact__input-wrapper">
+                            <input
+                                type="text"
+                                id="company"
+                                name="company"
+                                class="form-contact__input"
+                                placeholder="Your company name"
+                                aria-describedby="company-helper"
+                            />
+                        </div>
+                        <span id="company-helper" class="form-contact__helper">What is your company?</span>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div class="form-contact__field-container form-contact__field-container--message">
+                        <label for="message" class="form-contact__label">Your Message</label>
+                        <div class="form-contact__input-wrapper">
+                            <textarea
+                                id="message"
+                                name="message"
+                                class="form-contact__textarea"
+                                placeholder="Tell us about your project..."
+                                aria-describedby="message-helper"
+                            ></textarea>
+                        </div>
+                        <span id="message-helper" class="form-contact__helper">Please write your message</span>
+                    </div>
+
+                    <!-- Submit Container -->
+                    <div class="form-contact__submit-container">
+                        <button type="submit" class="form-contact__submit">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success State (Hidden by default) -->
+                <div class="form-contact__success form-contact__success--hidden" id="contact-success">
+                    <!-- Success Title -->
+                    <h3 class="form-contact__title">Thank you for reaching out to us!</h3>
+
+                    <!-- Success Description -->
+                    <p class="form-contact__description">
+                        Please check your inbox for our automated response. Our representative will follow up with you in person shortly.
+                    </p>
+
+                    <!-- Success CTA -->
+                    <div class="form-contact__submit-container">
+                        <p class="form-contact__success-message">
+                            To schedule a meeting with us, please follow this link to our calendar to check our availability and reserve your time.
+                        </p>
+                        <a href="#" class="form-contact__success-link">Schedule an Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Form Handling -->
+    <script>
+        // Configuration
+        const HUBSPOT_CONFIG = {
+            portalId: '48424315', // Purposeful Media HubSpot Portal ID
+            formId: 'd3b25d84-8bbf-4637-ba32-bd0c9b4d732e', // Contact Form ID
+            region: 'na1' // North America region
+        };
+
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = {
+                firstName: form.firstName.value,
+                lastName: form.lastName.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                company: form.company.value,
+                message: form.message.value
+            };
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailInput = form.email;
+
+            if (!emailRegex.test(emailInput.value)) {
+                // Show error state
+                emailInput.classList.add('form-contact__input--error');
+                emailInput.setAttribute('aria-invalid', 'true');
+
+                // Update helper text
+                const helper = document.getElementById('email-helper');
+                if (helper) {
+                    helper.textContent = 'Please check your address format and try again.';
+                    helper.classList.add('form-contact__helper--error');
+                }
+
+                return;
+            }
+
+            // Here you would typically submit to HubSpot
+            console.log('Form submitted with data:', formData);
+            console.log('HubSpot Portal ID:', HUBSPOT_CONFIG.portalId);
+            console.log('HubSpot Form ID:', HUBSPOT_CONFIG.formId);
+
+            // Simulate success for demo
+            handleFormSuccess();
         }
-      });
-      
-      // Check for existing values on load
-      if (input.value) {
-        input.parentElement.classList.add('has-value');
-      }
-    });
-  }
-  
-  function showError(message) {
-    // You can implement a toast notification here
-    alert(message);
-  }
-  
-  function showSuccess(message) {
-    // You can implement a success toast here
-    alert(message);
-  }
-});
-</script>
+
+        // Handle successful form submission
+        function handleFormSuccess() {
+            const form = document.getElementById('contact-form');
+            const success = document.getElementById('contact-success');
+            const component = document.querySelector('.form-contact');
+            const title = component.querySelector('.form-contact__title');
+            const description = component.querySelector('.form-contact__description');
+
+            // Hide form elements by adding hidden class
+            if (form) form.classList.add('form-contact__success--hidden');
+            if (title && title.textContent === 'Get in Touch') title.classList.add('form-contact__success--hidden');
+            if (description && description.textContent.includes('Ready to transform')) description.classList.add('form-contact__success--hidden');
+
+            // Show success message by removing hidden class
+            if (success) {
+                success.classList.remove('form-contact__success--hidden');
+            }
+
+            // Update component state
+            if (component) {
+                component.setAttribute('data-state', 'success');
+                component.classList.add('form-contact--success');
+            }
+        }
+
+        // Handle input field interactions
+        function setupFieldInteractions() {
+            const inputs = document.querySelectorAll('.form-contact__input, .form-contact__textarea');
+            const component = document.querySelector('.form-contact');
+
+            inputs.forEach(input => {
+                // Clear error on typing
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('form-contact__input--error')) {
+                        this.classList.remove('form-contact__input--error');
+                        this.setAttribute('aria-invalid', 'false');
+
+                        // Reset helper text for email field
+                        if (this.id === 'email') {
+                            const helper = document.getElementById('email-helper');
+                            if (helper) {
+                                helper.textContent = '*This field is required.';
+                                helper.classList.remove('form-contact__helper--error');
+                            }
+                        }
+                    }
+                });
+
+                // Focus state
+                input.addEventListener('focus', function() {
+                    component.setAttribute('data-state', 'active');
+                    component.classList.add('form-contact--active');
+                });
+
+                // Blur state
+                input.addEventListener('blur', function() {
+                    component.setAttribute('data-state', 'default');
+                    component.classList.remove('form-contact--active');
+                });
+            });
+
+            // Hover state for component
+            if (component) {
+                component.addEventListener('mouseenter', function() {
+                    if (!component.classList.contains('form-contact--active')) {
+                        component.classList.add('form-contact--hover');
+                    }
+                });
+
+                component.addEventListener('mouseleave', function() {
+                    component.classList.remove('form-contact--hover');
+                });
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup form submission
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.addEventListener('submit', handleFormSubmit);
+            }
+
+            // Setup field interactions
+            setupFieldInteractions();
+        });
+    </script>
+</body>
+</html>
