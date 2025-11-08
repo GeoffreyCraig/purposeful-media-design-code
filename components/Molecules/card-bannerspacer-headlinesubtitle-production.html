@@ -1,0 +1,78 @@
+<!-- =================================================
+     BANNER SPACER - HEADLINE SUBTITLE MOLECULE
+     Component: Card/BannerSpacer HeadlineSubtitle Variant
+     Purpose: Full-width banner with decorative icon, headline, and subtitle
+     Version: 1.0 (Production-ready)
+     Date: 2025-11-05
+
+     CSS Dependencies:
+     - variables-v4.0-20251027.css
+     - atoms-master.css
+     - molecules-decorative-icon-display.css
+     - molecules-card-banner-spacer.css
+
+     Features:
+     - Fixed height: 120px (desktop/tablet), 245px (mobile)
+     - XLarge decorative icon (120px) - white variant
+     - Navy background with gold bottom border
+     - Responsive layout: Horizontal (desktop/tablet), Vertical (mobile)
+     ================================================= -->
+<link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+<link rel="stylesheet" href="../../styles/atoms-master.css">
+<link rel="stylesheet" href="../../styles/molecules-decorative-icon-display.css">
+<link rel="stylesheet" href="../../styles/molecules-card-banner-spacer.css">
+
+<div class="card-banner-spacer" data-component="card-banner-spacer" data-variant="headline-subtitle">
+    <div class="banner-spacer-content">
+        <!-- Icon - Using standard decorative-icon-display molecule (120px xlarge size) -->
+        <div class="decorative-icon-display decorative-icon-display--xlarge" data-icon="accelerate" data-color="white"></div>
+
+        <!-- Text Container: Headline + Subtitle -->
+        <div class="banner-spacer-header">
+            <!-- Headline -->
+            <h1 class="banner-headline">H1 Headline 36 54h</h1>
+
+            <!-- Subtitle -->
+            <p class="banner-subtitle">Turpis egestas integer eget aliquet nibh praesent tristique</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Card/BannerSpacer HeadlineSubtitle Component JavaScript
+
+    /**
+     * Initialize decorative-icon-display elements on page load
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        const icons = document.querySelectorAll('.decorative-icon-display');
+        icons.forEach(icon => {
+            const iconName = icon.getAttribute('data-icon');
+            const color = icon.getAttribute('data-color');
+            if (iconName && color) {
+                icon.classList.add(`icon--${iconName}-${color}`);
+            }
+        });
+    });
+
+    /**
+     * Update banner icon dynamically
+     * @param {string} iconName - Name of the icon (e.g., 'webinar', 'roi', 'strategy')
+     * @param {string} colorVariant - Color variant (default: 'white' for banners)
+     */
+    function updateBannerIcon(iconName, colorVariant = 'white') {
+        const iconElement = document.querySelector('.card-banner-spacer .decorative-icon-display');
+
+        if (!iconElement) return;
+
+        // Update data attributes
+        iconElement.setAttribute('data-icon', iconName);
+        iconElement.setAttribute('data-color', colorVariant);
+
+        // Update class for decorative-icon-display system
+        iconElement.className = `decorative-icon-display decorative-icon-display--xlarge icon--${iconName}-${colorVariant}`;
+    }
+
+    // Example usage:
+    // updateBannerIcon('strategy', 'white');
+</script>

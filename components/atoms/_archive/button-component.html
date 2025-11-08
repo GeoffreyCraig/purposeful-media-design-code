@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Component System - Lato UI Typography</title>
+    <style>
+        /* Import Lato - UI Typography Font */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+        /* 
+         * BUTTON COMPONENT SYSTEM
+         * Part of Purposeful Media Design System
+         * Typography: Lato (UI/Interface Typography)
+         * 
+         * Buttons are typography elements using Lato font
+         * Line Height: 1.0x font size (compact for UI elements)
+         * Weight: 700 (Bold) for all button text
+         * 
+         * Button Sizes (estimated):
+         * Large: 18px font, 20px padding vertical, 32px horizontal
+         * Medium: 16px font, 16px padding vertical, 24px horizontal  
+         * Small: 14px font, 12px padding vertical, 20px horizontal
+         */
+
+        /* CSS Variables for Purposeful Media brand colors */
+        :root {
+            /* Primary Colors */
+            --color-primary: #1B1464;
+            --color-primary-hover: #36448F;
+            --color-primary-active: #0B1F57;
+            
+            /* Secondary Colors (Accent Gold) */
+            --color-secondary: #D4AF37;
+            --color-secondary-hover: #E4CD82;
+            --color-secondary-active: #B39226;
+            
+            /* Tertiary Colors (Teal) */
+            --color-tertiary: #39CCCC;
+            --color-tertiary-hover: #61D6D6;
+            --color-tertiary-active: #2BA9A9;
+            
+            /* Neutrals */
+            --color-white: #FFFFFF;
+            --color-disabled: #A2A9AF;
+            --color-disabled-bg: #E2E8F0;
+            --color-ghost-border: #C7CBCF;
+            
+            /* Text Colors */
+            --text-on-primary: #FFFFFF;
+            --text-on-secondary: #1B1464;
+            --text-on-tertiary: #1B1464;
+            --text-disabled: #6C757D;
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: #2D3748;
+            background-color: #FFFFFF;
+            padding: 2rem;
+        }
+
+        /* Base Button Component */
+        .button {
+            display: inline-block;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        /* Size Variants */
+        .button--large {
+            font-size: 18px;
+            padding: 20px 32px;
+            min-width: 160px;
+        }
+
+        .button--medium {
+            font-size: 16px;
+            padding: 16px 24px;
+            min-width: 120px;
+        }
+
+        .button--small {
+            font-size: 14px;
+            padding: 12px 20px;
+            min-width: 100px;
+        }
+
+        /* Type: Primary */
+        .button--primary {
+            background-color: var(--color-primary);
+            color: var(--text-on-primary);
+            border-color: var(--color-primary);
+        }
+
+        .button--primary:hover:not(:disabled) {
+            background-color: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+        }
+
+        .button--primary:active:not(:disabled) {
+            background-color: var(--color-primary-active);
+            border-color: var(--color-primary-active);
+        }
+
+        /* Type: Secondary */
+        .button--secondary {
+            background-color: var(--color-secondary);
+            color: var(--text-on-secondary);
+            border-color: var(--color-secondary);
+        }
+
+        .button--secondary:hover:not(:disabled) {
+            background-color: var(--color-secondary-hover);
+            border-color: var(--color-secondary-hover);
+        }
+
+        .button--secondary:active:not(:disabled) {
+            background-color: var(--color-secondary-active);
+            border-color: var(--color-secondary-active);
+        }
+
+        /* Type: Tertiary */
+        .button--tertiary {
+            background-color: var(--color-tertiary);
+            color: var(--text-on-tertiary);
+            border-color: var(--color-tertiary);
+        }
+
+        .button--tertiary:hover:not(:disabled) {
+            background-color: var(--color-tertiary-hover);
+            border-color: var(--color-tertiary-hover);
+        }
+
+        .button--tertiary:active:not(:disabled) {
+            background-color: var(--color-tertiary-active);
+            border-color: var(--color-tertiary-active);
+        }
+
+        /* Type: Ghost Primary */
+        .button--ghost-primary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .button--ghost-primary:hover:not(:disabled) {
+            background-color: var(--color-primary);
+            color: var(--text-on-primary);
+        }
+
+        .button--ghost-primary:active:not(:disabled) {
+            background-color: var(--color-primary-active);
+            color: var(--text-on-primary);
+            border-color: var(--color-primary-active);
+        }
+
+        /* Type: Ghost Secondary */
+        .button--ghost-secondary {
+            background-color: transparent;
+            color: var(--color-secondary);
+            border-color: var(--color-secondary);
+        }
+
+        .button--ghost-secondary:hover:not(:disabled) {
+            background-color: var(--color-secondary);
+            color: var(--text-on-secondary);
+        }
+
+        .button--ghost-secondary:active:not(:disabled) {
+            background-color: var(--color-secondary-active);
+            color: var(--text-on-secondary);
+            border-color: var(--color-secondary-active);
+        }
+
+        /* Type: Ghost Tertiary */
+        .button--ghost-tertiary {
+            background-color: transparent;
+            color: var(--color-tertiary);
+            border-color: var(--color-tertiary);
+        }
+
+        .button--ghost-tertiary:hover:not(:disabled) {
+            background-color: var(--color-tertiary);
+            color: var(--text-on-tertiary);
+        }
+
+        .button--ghost-tertiary:active:not(:disabled) {
+            background-color: var(--color-tertiary-active);
+            color: var(--text-on-tertiary);
+            border-color: var(--color-tertiary-active);
+        }
+
+        /* Disabled State */
+        .button:disabled,
+        .button--disabled {
+            background-color: var(--color-disabled-bg);
+            color: var(--text-disabled);
+            border-color: var(--color-disabled-bg);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .button--ghost-disabled {
+            background-color: transparent;
+            color: var(--text-disabled);
+            border-color: var(--color-ghost-border);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* Utility Classes */
+        .button--full-width {
+            width: 100%;
+        }
+
+        .button--icon-left {
+            padding-left: 20px;
+        }
+
+        .button--icon-right {
+            padding-right: 20px;
+        }
+
+        /* Demo Styles */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #F7FAFC;
+            border-radius: 8px;
+        }
+
+        .demo-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1B1464;
+            margin-bottom: 1.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-subtitle {
+            font-size: 18px;
+            font-weight: 700;
+            color: #6C757D;
+            margin: 1.5rem 0 1rem;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .demo-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-label {
+            font-size: 12px;
+            color: #6C757D;
+            margin-bottom: 0.5rem;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .demo-row {
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .demo-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="margin-bottom: 1rem; color: #1B1464; font-family: 'Lato', sans-serif; font-weight: 900;">
+            Purposeful Media - Button Component System
+        </h1>
+        <p style="margin-bottom: 2rem; color: #6C757D; font-size: 16px; font-family: 'Open Sans', sans-serif;">
+            <strong>Lato UI Typography Component</strong> - Buttons are UI typography elements using Lato font.
+            Part of the UI/Interface typography system alongside headlines and navigation.
+        </p>
+
+        <!-- Primary Buttons -->
+        <div class="demo-section">
+            <h2 class="demo-title">Primary Buttons - Brand Navy</h2>
+            
+            <div class="demo-row">
+                <div class="demo-label">Large Size (18px)</div>
+                <div class="demo-grid">
+                    <button class="button button--primary button--large">
+                        Get Started
+                    </button>
+                    <button class="button button--primary button--large" style="background-color: var(--color-primary-hover); border-color: var(--color-primary-hover);">
+                        Get Started (Hover)
+                    </button>
+                    <button class="button button--primary button--large" style="background-color: var(--color-primary-active); border-color: var(--color-primary-active);">
+                        Get Started (Active)
+                    </button>
+                </div>
+            </div>
+
+            <div class="demo-row">
+                <div class="demo-label">Medium Size (16px)</div>
+                <div class="demo-grid">
+                    <button class="button button--primary button--medium">
+                        Learn More
+                    </button>
+                    <button class="button button--primary button--medium" style="background-color: var(--color-primary-hover); border-color: var(--color-primary-hover);">
+                        Learn More (Hover)
+                    </button>
+                    <button class="button button--primary button--medium" style="background-color: var(--color-primary-active); border-color: var(--color-primary-active);">
+                        Learn More (Active)
+                    </button>
+                </div>
+            </div>
+
+            <div class="demo-row">
+                <div class="demo-label">Small Size (14px)</div>
+                <div class="demo-grid">
+                    <button class="button button--primary button--small">
+                        View Details
+                    </button>
+                    <button class="button button--primary button--small" style="background-color: var(--color-primary-hover); border-color: var(--color-primary-hover);">
+                        View Details (Hover)
+                    </button>
+                    <button class="button button--primary button--small" style="background-color: var(--color-primary-active); border-color: var(--color-primary-active);">
+                        View Details (Active)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary Buttons -->
+        <div class="demo-section">
+            <h2 class="demo-title">Secondary Buttons - Accent Gold</h2>
+            
+            <div class="demo-row">
+                <div class="demo-label">All Sizes</div>
+                <div class="demo-grid">
+                    <button class="button button--secondary button--large">
+                        Download Now
+                    </button>
+                    <button class="button button--secondary button--medium">
+                        Download
+                    </button>
+                    <button class="button button--secondary button--small">
+                        Download
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tertiary Buttons -->
+        <div class="demo-section">
+            <h2 class="demo-title">Tertiary Buttons - Teal</h2>
+            
+            <div class="demo-row">
+                <div class="demo-label">All Sizes</div>
+                <div class="demo-grid">
+                    <button class="button button--tertiary button--large">
+                        Contact Us
+                    </button>
+                    <button class="button button--tertiary button--medium">
+                        Contact
+                    </button>
+                    <button class="button button--tertiary button--small">
+                        Contact
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ghost Buttons -->
+        <div class="demo-section">
+            <h2 class="demo-title">Ghost Button Variants</h2>
+            
+            <div class="demo-row">
+                <div class="demo-label">Ghost Primary (Navy Outline)</div>
+                <div class="demo-grid">
+                    <button class="button button--ghost-primary button--large">
+                        Learn More
+                    </button>
+                    <button class="button button--ghost-primary button--medium">
+                        Learn More
+                    </button>
+                    <button class="button button--ghost-primary button--small">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+
+            <div class="demo-row">
+                <div class="demo-label">Ghost Secondary (Gold Outline)</div>
+                <div class="demo-grid">
+                    <button class="button button--ghost-secondary button--large">
+                        View Portfolio
+                    </button>
+                    <button class="button button--ghost-secondary button--medium">
+                        Portfolio
+                    </button>
+                    <button class="button button--ghost-secondary button--small">
+                        Portfolio
+                    </button>
+                </div>
+            </div>
+
+            <div class="demo-row">
+                <div class="demo-label">Ghost Tertiary (Teal Outline)</div>
+                <div class="demo-grid">
+                    <button class="button button--ghost-tertiary button--large">
+                        Schedule Call
+                    </button>
+                    <button class="button button--ghost-tertiary button--medium">
+                        Schedule
+                    </button>
+                    <button class="button button--ghost-tertiary button--small">
+                        Schedule
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disabled States -->
+        <div class="demo-section">
+            <h2 class="demo-title">Disabled States</h2>
+            
+            <div class="demo-row">
+                <div class="demo-label">Solid Disabled</div>
+                <div class="demo-grid">
+                    <button class="button button--disabled button--large" disabled>
+                        Unavailable
+                    </button>
+                    <button class="button button--disabled button--medium" disabled>
+                        Unavailable
+                    </button>
+                    <button class="button button--disabled button--small" disabled>
+                        Unavailable
+                    </button>
+                </div>
+            </div>
+
+            <div class="demo-row">
+                <div class="demo-label">Ghost Disabled</div>
+                <div class="demo-grid">
+                    <button class="button button--ghost-disabled button--large" disabled>
+                        Coming Soon
+                    </button>
+                    <button class="button button--ghost-disabled button--medium" disabled>
+                        Coming Soon
+                    </button>
+                    <button class="button button--ghost-disabled button--small" disabled>
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-World Examples -->
+        <div class="demo-section">
+            <h2 class="demo-title">Real-World Button Examples</h2>
+            
+            <div class="demo-row">
+                <div class="demo-label">Hero CTA Buttons</div>
+                <div class="demo-grid">
+                    <button class="button button--primary button--large">
+                        Start Free Trial
+                    </button>
+                    <button class="button button--ghost-primary button--large">
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+
+            <div class="demo-row">
+                <div class="demo-label">Form Actions</div>
+                <div class="demo-grid">
+                    <button class="button button--secondary button--medium">
+                        Submit Form
+                    </button>
+                    <button class="button button--ghost-primary button--medium">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+
+            <div class="demo-row">
+                <div class="demo-label">Card Actions</div>
+                <div class="demo-grid">
+                    <button class="button button--tertiary button--small">
+                        Read More
+                    </button>
+                    <button class="button button--ghost-secondary button--small">
+                        Download PDF
+                    </button>
+                    <button class="button button--ghost-tertiary button--small">
+                        Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Button Component JavaScript Class
+        class ButtonComponent {
+            constructor(element, options = {}) {
+                this.element = element;
+                this.options = {
+                    type: options.type || 'primary',
+                    size: options.size || 'medium',
+                    state: options.state || 'default',
+                    fullWidth: options.fullWidth || false,
+                    onClick: options.onClick || null,
+                    ...options
+                };
+                
+                this.init();
+            }
+
+            init() {
+                this.applyClasses();
+                this.bindEvents();
+            }
+
+            applyClasses() {
+                // Clear existing button classes
+                this.element.className = this.element.className.replace(/button--\S+/g, '');
+                
+                // Add base class
+                this.element.classList.add('button');
+                
+                // Add type class
+                this.element.classList.add(`button--${this.options.type}`);
+                
+                // Add size class
+                this.element.classList.add(`button--${this.options.size}`);
+                
+                // Add state class if disabled
+                if (this.options.state === 'disabled') {
+                    this.element.disabled = true;
+                    if (this.options.type.includes('ghost')) {
+                        this.element.classList.add('button--ghost-disabled');
+                    } else {
+                        this.element.classList.add('button--disabled');
+                    }
+                }
+                
+                // Add full width if specified
+                if (this.options.fullWidth) {
+                    this.element.classList.add('button--full-width');
+                }
+            }
+
+            bindEvents() {
+                if (this.options.onClick && !this.element.disabled) {
+                    this.element.addEventListener('click', this.options.onClick);
+                }
+
+                // Add ripple effect on click (optional enhancement)
+                this.element.addEventListener('click', (e) => {
+                    if (this.element.disabled) return;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('button-ripple');
+                    this.element.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            }
+
+            setType(type) {
+                this.options.type = type;
+                this.applyClasses();
+            }
+
+            setSize(size) {
+                this.options.size = size;
+                this.applyClasses();
+            }
+
+            enable() {
+                this.element.disabled = false;
+                this.options.state = 'default';
+                this.applyClasses();
+            }
+
+            disable() {
+                this.element.disabled = true;
+                this.options.state = 'disabled';
+                this.applyClasses();
+            }
+
+            setText(text) {
+                this.element.textContent = text;
+            }
+        }
+
+        // Initialize interactive demo
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add dynamic button demo
+            const dynamicSection = document.createElement('div');
+            dynamicSection.className = 'demo-section';
+            dynamicSection.innerHTML = `
+                <h2 class="demo-title">Interactive Button Demo</h2>
+                <div class="demo-row">
+                    <div class="demo-label">Click buttons to change properties</div>
+                    <div class="demo-grid">
+                        <button id="dynamic-button" class="button button--primary button--medium">
+                            Dynamic Button
+                        </button>
+                    </div>
+                    <div style="margin-top: 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <button onclick="changeButtonType()" class="button button--ghost-primary button--small">
+                            Change Type
+                        </button>
+                        <button onclick="changeButtonSize()" class="button button--ghost-primary button--small">
+                            Change Size
+                        </button>
+                        <button onclick="toggleButtonState()" class="button button--ghost-primary button--small">
+                            Toggle State
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.demo-container').appendChild(dynamicSection);
+
+            // Initialize dynamic button
+            const dynamicBtn = document.getElementById('dynamic-button');
+            window.dynamicButton = new ButtonComponent(dynamicBtn, {
+                type: 'primary',
+                size: 'medium',
+                onClick: () => alert('Button clicked!')
+            });
+        });
+
+        // Demo interaction functions
+        let typeIndex = 0;
+        const types = ['primary', 'secondary', 'tertiary', 'ghost-primary', 'ghost-secondary', 'ghost-tertiary'];
+        
+        function changeButtonType() {
+            typeIndex = (typeIndex + 1) % types.length;
+            window.dynamicButton.setType(types[typeIndex]);
+        }
+
+        let sizeIndex = 1;
+        const sizes = ['small', 'medium', 'large'];
+        
+        function changeButtonSize() {
+            sizeIndex = (sizeIndex + 1) % sizes.length;
+            window.dynamicButton.setSize(sizes[sizeIndex]);
+        }
+
+        function toggleButtonState() {
+            if (window.dynamicButton.element.disabled) {
+                window.dynamicButton.enable();
+            } else {
+                window.dynamicButton.disable();
+            }
+        }
+    </script>
+</body>
+</html>

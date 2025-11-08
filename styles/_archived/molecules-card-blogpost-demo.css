@@ -1,0 +1,157 @@
+/**
+ * Card/BlogPost Demo Styles
+ * Purposeful Media Promotions Design System
+ *
+ * Demo and documentation styles for Card/BlogPost molecule component
+ * Tokenized: 2025-10-29
+ * Version: 1.0
+ * Variables: v4.0-20251027
+ */
+
+/* ============================================
+   GLOBAL RESET (Demo Page Only)
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-secondary);
+    background-color: var(--bg-secondary);
+    padding: var(--space-10) var(--space-5);
+}
+
+/* ============================================
+   DEMO PAGE BASE STYLES
+   ============================================ */
+
+.demo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   DEMO HEADINGS
+   ============================================ */
+
+.demo-heading {
+    font-family: var(--font-primary);
+    font-size: var(--text-h3-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-10);
+}
+
+/* ============================================
+   DEMO SECTIONS
+   ============================================ */
+
+.demo-section {
+    margin-bottom: 60px;
+}
+
+.demo-label {
+    font-family: var(--font-secondary);
+    font-size: var(--label-form-size);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-5);
+    color: var(--color-neutral-700);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   DEMO GRID LAYOUT
+   ============================================ */
+
+.demo-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg-primary);
+    padding: var(--space-5);
+    border-radius: var(--radius-medium);
+}
+
+/* ============================================
+   DEMO DOCUMENTATION INFO
+   ============================================ */
+
+.demo-info {
+    background: var(--color-accent-50);
+    padding: var(--space-5);
+    border-radius: var(--radius-medium);
+    margin-top: var(--space-10);
+}
+
+.demo-info h3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-h5-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-4);
+}
+
+.demo-info h3:not(:first-child) {
+    margin-top: var(--space-5);
+}
+
+.demo-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.demo-info li {
+    font-family: var(--font-secondary);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    color: var(--text-body);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-5);
+    position: relative;
+}
+
+.demo-info li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-500);
+    font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (min-width: 380px) and (max-width: 767px) {
+    body {
+        padding: var(--space-5) var(--space-3);
+    }
+
+    .demo-heading {
+        font-size: var(--text-h4-size);
+    }
+
+    .demo-grid {
+        padding: var(--space-3);
+    }
+
+    .demo-info {
+        padding: var(--space-4);
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    body {
+        padding: var(--space-8) var(--space-4);
+    }
+}
+
+/* Desktop: 1150-1919px - Base styles work well */
+
+/* DesktopPlus: 1920px+ - Base styles scale appropriately */

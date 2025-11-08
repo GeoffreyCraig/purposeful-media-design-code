@@ -14,7 +14,7 @@
 }
 
 .banner-spacer-content {
-    padding: var(--space-3) var(--space-4);
+    padding: 12px var(--space-4);
     box-sizing: border-box;
     display: flex;
     gap: var(--space-2);
@@ -47,6 +47,7 @@
 .card-banner-spacer.variant-headline-banner {
     background-color: var(--banner-bg);
     border-bottom: var(--space-1) solid var(--banner-accent);
+    height: 80px;
 }
 
 .variant-headline-banner .banner-headline {
@@ -60,11 +61,11 @@
 }
 
 /* -------------------------------------------------
-   VARIANT: HeadlineReverse (White bg, navy text, navy top border)
+   VARIANT: HeadlineReverse (White bg, navy text)
    ------------------------------------------------- */
 .card-banner-spacer.variant-headline-reverse {
     background-color: var(--bg-primary);
-    border-top: var(--space-1) solid var(--bg-brand);
+    height: 80px;
 }
 
 .variant-headline-reverse .banner-headline {
@@ -141,10 +142,10 @@
     .variant-headline-reverse .banner-headline {
         font-size: var(--banner-headline-size-mobile);
         line-height: var(--banner-headline-height-mobile);
-        text-align: center;
+        text-align: left;
     }
-    
+
     .banner-spacer-content {
-        justify-content: center;
+        justify-content: flex-start;
     }
 }

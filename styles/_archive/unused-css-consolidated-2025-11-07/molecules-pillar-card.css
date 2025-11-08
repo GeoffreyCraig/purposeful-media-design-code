@@ -1,0 +1,203 @@
+/* ====================================
+   PILLAR CARD MOLECULE - VERSION 4.0
+   ==================================== */
+/* Component: Molecule/Card/Pillar-Card */
+/* Last Updated: 2025-11-03 */
+/* Dependencies: variables-v4.0-20251027.css, molecules-decorative-icon-display.css */
+
+/* ====================================
+   PILLAR CARD COMPONENT TOKENS
+   ==================================== */
+:root {
+    /* Spacing Variables (from Figma) */
+    --pillar-space-4: 16px;
+    --pillar-space-8: 32px;
+    --pillar-space-10: 40px;
+    --pillar-space-12: 48px;
+    --pillar-space-20: 80px;
+
+    /* Color Variables */
+    --pillar-heading-color: var(--heading, #1b1464);
+    --pillar-text-color: var(--color-text-primary, #000000);
+    --pillar-bg-color: var(--color-bg-white, #ffffff);
+
+    /* Typography Tokens */
+    --pillar-h2-font-family: 'Lato', sans-serif;
+    --pillar-h2-font-weight: 800;
+    --pillar-h2-font-size: 30px;
+    --pillar-h2-line-height: 45px;
+    --pillar-h2-text-transform: uppercase;
+
+    --pillar-p-font-family: 'Open Sans', sans-serif;
+    --pillar-p-font-weight: 400;
+    --pillar-p-font-size: 18px;
+    --pillar-p-line-height: 27px;
+
+    /* Component Structure Tokens */
+    --pillar-icon-size-desktop: 256px;
+    --pillar-icon-size-mobile: 120px;
+    --pillar-content-gap: 29px;
+    --pillar-layout-gap-desktop: var(--pillar-space-8);
+    --pillar-layout-gap-mobile: var(--pillar-space-4);
+
+    /* Max Width Constraints */
+    --pillar-content-max-width-desktopplus: 1262px;
+    --pillar-content-max-width-desktop: 1264px;
+}
+
+/* ====================================
+   BASE PILLAR CARD STYLES
+   ==================================== */
+.pillar-card {
+    background-color: var(--pillar-bg-color);
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+}
+
+/* Icon Container */
+.pillar-card__icon {
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Content Container */
+.pillar-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pillar-content-gap);
+    align-items: flex-start;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Headline */
+.pillar-card__headline {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.pillar-card__heading {
+    font-family: var(--pillar-h2-font-family);
+    font-weight: var(--pillar-h2-font-weight);
+    font-size: var(--pillar-h2-font-size);
+    line-height: var(--pillar-h2-line-height);
+    text-transform: var(--pillar-h2-text-transform);
+    color: var(--pillar-heading-color);
+    font-style: normal;
+    position: relative;
+    flex-shrink: 0;
+    width: 305px;
+    margin: 0;
+}
+
+/* Paragraph Container */
+.pillar-card__paragraph {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.pillar-card__text {
+    font-family: var(--pillar-p-font-family);
+    font-weight: var(--pillar-p-font-weight);
+    font-size: var(--pillar-p-font-size);
+    line-height: var(--pillar-p-line-height);
+    color: var(--pillar-text-color);
+    font-style: normal;
+    position: relative;
+    flex: 1 0 0;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+.pillar-card__text p {
+    margin: 0 0 1em 0;
+}
+
+.pillar-card__text p:last-child {
+    margin-bottom: 0;
+}
+
+/* ====================================
+   RESPONSIVE BREAKPOINTS
+   ==================================== */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    .pillar-card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--pillar-layout-gap-mobile);
+        align-items: flex-start;
+        padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-8);
+    }
+
+    .pillar-card__content {
+        width: 100%;
+    }
+
+    .pillar-card__heading {
+        width: 100%;
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .pillar-card {
+        display: flex;
+        flex-direction: row;
+        gap: var(--pillar-layout-gap-desktop);
+        align-items: flex-start;
+        padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-10);
+    }
+
+    .pillar-card__content {
+        flex: 1 0 0;
+        min-width: 1px;
+        min-height: 1px;
+    }
+}
+
+/* Desktop: 1150-1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .pillar-card {
+        display: flex;
+        flex-direction: row;
+        gap: var(--pillar-layout-gap-desktop);
+        align-items: flex-start;
+        padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-12);
+    }
+
+    .pillar-card__content {
+        flex: 1 0 0;
+        max-width: var(--pillar-content-max-width-desktop);
+        min-width: 1px;
+        min-height: 1px;
+    }
+}
+
+/* DesktopPlus: 1920px+ */
+@media (min-width: 1920px) {
+    .pillar-card {
+        display: flex;
+        flex-direction: row;
+        gap: var(--pillar-layout-gap-desktop);
+        align-items: flex-start;
+        padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-12);
+    }
+
+    .pillar-card__content {
+        flex: 1 0 0;
+        max-width: var(--pillar-content-max-width-desktopplus);
+        min-width: 1px;
+        min-height: 1px;
+    }
+}

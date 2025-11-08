@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headline Component System - Lato UI Typography</title>
+    <style>
+        /* Import Lato - UI Typography Font */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+        /* 
+         * HEADLINE COMPONENT SYSTEM
+         * Part of Purposeful Media Design System
+         * Typography: Lato (UI/Interface Typography)
+         * 
+         * This component handles all headline typography using Lato.
+         * For content/reading text, see Open Sans Paragraph components.
+         * 
+         * Line Height: 1.0x font size (compact for UI elements)
+         * Weights: Bold (700) for all headlines
+         * 
+         * Sizes (assuming standard scale):
+         * H1: 48px
+         * H2: 36px
+         * H3: 30px
+         * H4: 24px
+         * H5: 21px
+         * H6: 18px
+         */
+
+        /* CSS Variables for Purposeful Media brand colors */
+        :root {
+            /* Brand Colors */
+            --color-primary: #1B1464;
+            --color-primary-dark: #0B1F57;
+            --color-accent: #D4AF37;
+            --color-teal: #39CCCC;
+            
+            /* Neutrals */
+            --color-default: #1B1464;  /* Primary navy for default */
+            --color-dark: #0B1F57;     /* Darker navy */
+            --color-gray: #6C757D;     /* Slate gray */
+            --color-reverse: #FFFFFF;   /* White for dark backgrounds */
+            
+            /* Additional grays for reference */
+            --color-darkest: #2D3748;
+            --color-charcoal: #54595F;
+            --color-medium: #A0AEC0;
+            --color-light: #E2E8F0;
+            --color-off-white: #F7FAFC;
+        }
+
+        /* Base Typography Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--color-darkest);
+            background-color: var(--color-reverse);
+            padding: 2rem;
+        }
+
+        /* Base Headline Component 
+         * Uses Lato for all UI/headline typography
+         * Open Sans is reserved for content paragraphs
+         */
+        .headline {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 700;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+
+        /* Size Variants - Using semantic HTML tags */
+        .headline--h1, h1.headline {
+            font-size: 48px;
+            line-height: 48px;
+        }
+
+        .headline--h2, h2.headline {
+            font-size: 36px;
+            line-height: 36px;
+        }
+
+        .headline--h3, h3.headline {
+            font-size: 30px;
+            line-height: 30px;
+        }
+
+        .headline--h4, h4.headline {
+            font-size: 24px;
+            line-height: 24px;
+        }
+
+        .headline--h5, h5.headline {
+            font-size: 21px;
+            line-height: 21px;
+        }
+
+        .headline--h6, h6.headline {
+            font-size: 18px;
+            line-height: 18px;
+        }
+
+        /* Color Variants */
+        .headline--color-default {
+            color: var(--color-default);
+        }
+
+        .headline--color-reverse {
+            color: var(--color-reverse);
+        }
+
+        .headline--color-dark {
+            color: var(--color-dark);
+        }
+
+        .headline--color-gray {
+            color: var(--color-gray);
+        }
+
+        /* Case Variants */
+        .headline--case-upper {
+            text-transform: uppercase;
+            letter-spacing: 0.05em; /* Slight spacing for uppercase */
+        }
+
+        .headline--case-default {
+            text-transform: none;
+        }
+
+        /* Utility classes */
+        .headline--center {
+            text-align: center;
+        }
+
+        .headline--right {
+            text-align: right;
+        }
+
+        .headline--nowrap {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Demo container styles */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--color-off-white);
+            border-radius: 8px;
+        }
+
+        .demo-section--dark {
+            background: var(--color-primary);
+        }
+
+        .demo-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-section--dark .demo-title {
+            color: var(--color-reverse);
+        }
+
+        .demo-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .demo-grid--columns {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .demo-item {
+            padding: 1.5rem;
+            background: var(--color-reverse);
+            border-radius: 4px;
+        }
+
+        .demo-section--dark .demo-item {
+            background: var(--color-primary-dark);
+        }
+
+        .demo-label {
+            font-size: 12px;
+            color: var(--color-gray);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .demo-section--dark .demo-label {
+            color: var(--color-light);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .headline--h1, h1.headline {
+                font-size: 36px;
+                line-height: 36px;
+            }
+
+            .headline--h2, h2.headline {
+                font-size: 30px;
+                line-height: 30px;
+            }
+
+            .headline--h3, h3.headline {
+                font-size: 24px;
+                line-height: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="margin-bottom: 1rem; color: var(--color-primary); font-family: 'Lato', sans-serif; font-weight: 900;">
+            Purposeful Media - Headline Component System
+        </h1>
+        <p style="margin-bottom: 2rem; color: var(--color-gray); font-size: 16px; font-family: 'Open Sans', sans-serif;">
+            <strong>Lato UI Typography Component</strong> - For all headlines, navigation, and UI elements. 
+            Content/paragraph text uses Open Sans typography components.
+        </p>
+        
+        <!-- H1 Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">H1 Headlines - 48px</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">Default Color - Normal Case</div>
+                    <h1 class="headline headline--h1 headline--color-default headline--case-default">
+                        Transform Your B2B Marketing
+                    </h1>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Default Color - Uppercase</div>
+                    <h1 class="headline headline--h1 headline--color-default headline--case-upper">
+                        No Corners Cut
+                    </h1>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Gray Color - Normal Case</div>
+                    <h1 class="headline headline--h1 headline--color-gray headline--case-default">
+                        Strategic Excellence
+                    </h1>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Dark Color - Uppercase</div>
+                    <h1 class="headline headline--h1 headline--color-dark headline--case-upper">
+                        Premium Design
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- H2 Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">H2 Headlines - 36px</h2>
+            <div class="demo-grid demo-grid--columns">
+                <div class="demo-item">
+                    <div class="demo-label">Default - Normal</div>
+                    <h2 class="headline headline--h2 headline--color-default headline--case-default">
+                        Email Marketing Excellence
+                    </h2>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Default - Upper</div>
+                    <h2 class="headline headline--h2 headline--color-default headline--case-upper">
+                        Professional Services
+                    </h2>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Gray - Normal</div>
+                    <h2 class="headline headline--h2 headline--color-gray headline--case-default">
+                        Webinar Production
+                    </h2>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Dark - Upper</div>
+                    <h2 class="headline headline--h2 headline--color-dark headline--case-upper">
+                        Content Strategy
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- H3 & H4 Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">H3 (30px) & H4 (24px) Headlines</h2>
+            <div class="demo-grid demo-grid--columns">
+                <div class="demo-item">
+                    <div class="demo-label">H3 Default</div>
+                    <h3 class="headline headline--h3 headline--color-default headline--case-default">
+                        Building Brand Authority
+                    </h3>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">H3 Uppercase</div>
+                    <h3 class="headline headline--h3 headline--color-default headline--case-upper">
+                        Market Qualified Leads
+                    </h3>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">H4 Default</div>
+                    <h4 class="headline headline--h4 headline--color-default headline--case-default">
+                        Strategic Digital Marketing
+                    </h4>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">H4 Gray Upper</div>
+                    <h4 class="headline headline--h4 headline--color-gray headline--case-upper">
+                        Case Study Results
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- H5 & H6 Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">H5 (21px) & H6 (18px) Headlines</h2>
+            <div class="demo-grid demo-grid--columns">
+                <div class="demo-item">
+                    <div class="demo-label">H5 Default</div>
+                    <h5 class="headline headline--h5 headline--color-default headline--case-default">
+                        Systematic Design Excellence
+                    </h5>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">H5 Gray Upper</div>
+                    <h5 class="headline headline--h5 headline--color-gray headline--case-upper">
+                        Featured Resources
+                    </h5>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">H6 Default</div>
+                    <h6 class="headline headline--h6 headline--color-default headline--case-default">
+                        Professional B2B Solutions
+                    </h6>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">H6 Dark Upper</div>
+                    <h6 class="headline headline--h6 headline--color-dark headline--case-upper">
+                        Client Testimonials
+                    </h6>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reverse Variants on Dark Background -->
+        <div class="demo-section demo-section--dark">
+            <h2 class="demo-title">Reverse Color Variants (Dark Background)</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">H1 Reverse - Normal</div>
+                    <h1 class="headline headline--h1 headline--color-reverse headline--case-default">
+                        Enterprise Design Systems
+                    </h1>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">H2 Reverse - Uppercase</div>
+                    <h2 class="headline headline--h2 headline--color-reverse headline--case-upper">
+                        Premium Agency Services
+                    </h2>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">H3 Reverse - Normal</div>
+                    <h3 class="headline headline--h3 headline--color-reverse headline--case-default">
+                        Digital Marketing That Transforms
+                    </h3>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">H4 Reverse - Uppercase</div>
+                    <h4 class="headline headline--h4 headline--color-reverse headline--case-upper">
+                        Purposeful Media Promotions
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mixed Hierarchy Example -->
+        <div class="demo-section">
+            <h2 class="demo-title">Headline Hierarchy Example</h2>
+            <div class="demo-item">
+                <h1 class="headline headline--h1 headline--color-default headline--case-default" style="margin-bottom: 1rem;">
+                    Professional B2B Marketing Agency
+                </h1>
+                <h2 class="headline headline--h2 headline--color-gray headline--case-default" style="margin-bottom: 0.75rem;">
+                    Branding • Design • Promotion
+                </h2>
+                <h3 class="headline headline--h3 headline--color-default headline--case-upper" style="margin-bottom: 1.5rem;">
+                    Transform Your Business
+                </h3>
+                <h4 class="headline headline--h4 headline--color-default headline--case-default" style="margin-bottom: 0.5rem;">
+                    Our Core Services Include:
+                </h4>
+                <h5 class="headline headline--h5 headline--color-gray headline--case-default" style="margin-bottom: 0.25rem;">
+                    Email Marketing Management
+                </h5>
+                <h6 class="headline headline--h6 headline--color-gray headline--case-default" style="margin-bottom: 0.25rem;">
+                    Webinar Production & Promotion
+                </h6>
+                <h6 class="headline headline--h6 headline--color-gray headline--case-default">
+                    Lead Magnet Content Creation
+                </h6>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Headline Component JavaScript Class
+        class HeadlineComponent {
+            constructor(element, options = {}) {
+                this.element = element;
+                this.options = {
+                    level: options.level || 'h2',
+                    color: options.color || 'default',
+                    case: options.case || 'default',
+                    align: options.align || 'left',
+                    ...options
+                };
+                
+                this.init();
+            }
+
+            init() {
+                this.applyClasses();
+                this.setSemanticLevel();
+            }
+
+            applyClasses() {
+                // Clear existing headline classes
+                this.element.className = this.element.className.replace(/headline--\S+/g, '');
+                
+                // Add base class
+                this.element.classList.add('headline');
+                
+                // Add level class
+                this.element.classList.add(`headline--${this.options.level}`);
+                
+                // Add color class
+                this.element.classList.add(`headline--color-${this.options.color}`);
+                
+                // Add case class
+                this.element.classList.add(`headline--case-${this.options.case}`);
+                
+                // Add optional alignment
+                if (this.options.align && this.options.align !== 'left') {
+                    this.element.classList.add(`headline--${this.options.align}`);
+                }
+                
+                // Add nowrap if specified
+                if (this.options.nowrap) {
+                    this.element.classList.add('headline--nowrap');
+                }
+            }
+
+            setSemanticLevel() {
+                // Update ARIA level for accessibility if not matching semantic HTML
+                const semanticLevel = this.element.tagName.toLowerCase();
+                const expectedLevel = this.options.level;
+                
+                if (semanticLevel !== expectedLevel) {
+                    // Set ARIA level for accessibility
+                    const levelNumber = expectedLevel.replace('h', '');
+                    this.element.setAttribute('aria-level', levelNumber);
+                    this.element.setAttribute('role', 'heading');
+                }
+            }
+
+            updateColor(color) {
+                this.options.color = color;
+                this.applyClasses();
+            }
+
+            updateCase(caseType) {
+                this.options.case = caseType;
+                this.applyClasses();
+            }
+
+            updateLevel(level) {
+                this.options.level = level;
+                this.applyClasses();
+                this.setSemanticLevel();
+            }
+
+            setText(text) {
+                this.element.textContent = text;
+            }
+        }
+
+        // Initialize demo functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Example: Create a dynamic headline section
+            const dynamicContainer = document.createElement('div');
+            dynamicContainer.className = 'demo-section';
+            dynamicContainer.style.marginTop = '2rem';
+            dynamicContainer.innerHTML = `
+                <h2 class="demo-title">Dynamic Headline Example</h2>
+                <div class="demo-grid">
+                    <div class="demo-item">
+                        <div class="demo-label">Interactive Headline Component</div>
+                        <h2 id="dynamic-headline"></h2>
+                        <div style="margin-top: 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <button onclick="changeHeadlineColor()" style="padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif;">
+                                Change Color
+                            </button>
+                            <button onclick="changeHeadlineCase()" style="padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif;">
+                                Toggle Case
+                            </button>
+                            <button onclick="changeHeadlineLevel()" style="padding: 0.5rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif;">
+                                Change Size
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.demo-container').appendChild(dynamicContainer);
+
+            // Initialize dynamic headline
+            const dynamicH = document.getElementById('dynamic-headline');
+            window.dynamicHeadline = new HeadlineComponent(dynamicH, {
+                level: 'h2',
+                color: 'default',
+                case: 'default'
+            });
+            dynamicH.textContent = 'Dynamic Marketing Solutions';
+        });
+
+        // Interactive demo functions
+        let colorIndex = 0;
+        const colors = ['default', 'gray', 'dark', 'reverse'];
+        
+        function changeHeadlineColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            window.dynamicHeadline.updateColor(colors[colorIndex]);
+            
+            // Update background if reverse color
+            const container = document.getElementById('dynamic-headline').closest('.demo-item');
+            if (colors[colorIndex] === 'reverse') {
+                container.style.background = 'var(--color-primary)';
+            } else {
+                container.style.background = 'var(--color-reverse)';
+            }
+        }
+
+        function changeHeadlineCase() {
+            const currentCase = window.dynamicHeadline.options.case;
+            const newCase = currentCase === 'default' ? 'upper' : 'default';
+            window.dynamicHeadline.updateCase(newCase);
+        }
+
+        let levelIndex = 0;
+        const levels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+        
+        function changeHeadlineLevel() {
+            levelIndex = (levelIndex + 1) % levels.length;
+            window.dynamicHeadline.updateLevel(levels[levelIndex]);
+        }
+    </script>
+</body>
+</html>

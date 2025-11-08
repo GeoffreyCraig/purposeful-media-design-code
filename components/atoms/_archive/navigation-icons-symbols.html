@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Icons Using SVG Symbols - Purposeful Media</title>
+    <style>
+        /* Import brand colors from design tokens */
+        :root {
+            --color-primary: #1B1464;
+            --color-accent: #D4AF37;
+            --color-accent-dark: #B39226;
+            --color-teal: #39CCCC;
+            --color-gray: #6C757D;
+            --color-gray-light: #ECEEEF;
+            --color-white: #FFFFFF;
+            --color-dark: #0B1F57;
+            --bg-light: #F7FAFC;
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            padding: 2rem;
+            background-color: var(--bg-light);
+        }
+
+        /* =======================================
+           SVG SYMBOL APPROACH
+           Using viewBox to extract icons from sprite
+           ======================================= */
+        
+        /* Hide the SVG definitions */
+        .svg-defs {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        /* Base icon class using inline SVG */
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Icon sizes */
+        .icon--small {
+            width: 16px;
+            height: 16px;
+        }
+
+        .icon--medium {
+            width: 24px;
+            height: 24px;
+        }
+
+        .icon--large {
+            width: 32px;
+            height: 32px;
+        }
+
+        .icon--xlarge {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Icon colors via CSS */
+        .icon--blue { fill: var(--color-primary); }
+        .icon--white { fill: var(--color-white); }
+        .icon--gray { fill: var(--color-gray); }
+        .icon--gold { fill: var(--color-accent); }
+        .icon--gold-dark { fill: var(--color-accent-dark); }
+        .icon--teal { fill: var(--color-teal); }
+        .icon--ghost { fill: var(--color-gray-light); }
+
+        /* =======================================
+           ALTERNATIVE: Using viewBox clipping
+           This extracts portions of the sprite
+           ======================================= */
+        
+        .sprite-icon {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+
+        .sprite-icon svg {
+            display: block;
+        }
+
+        /* Size variants */
+        .sprite-icon--small { 
+            width: 16px; 
+            height: 16px; 
+        }
+        
+        .sprite-icon--medium { 
+            width: 24px; 
+            height: 24px; 
+        }
+        
+        .sprite-icon--large { 
+            width: 32px; 
+            height: 32px; 
+        }
+
+        /* =======================================
+           DEMO STYLES
+           ======================================= */
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .demo-section--dark {
+            background: var(--color-primary);
+        }
+
+        .demo-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-section--dark .demo-title {
+            color: white;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .demo-item {
+            text-align: center;
+        }
+
+        .demo-label {
+            display: block;
+            font-size: 12px;
+            color: var(--color-gray);
+            margin-top: 0.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-section--dark .demo-label {
+            color: var(--color-accent);
+        }
+
+        .icon-showcase {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 4px;
+            min-height: 60px;
+            min-width: 60px;
+        }
+
+        .demo-section--dark .icon-showcase {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Interactive states */
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .icon-button:hover {
+            background-color: rgba(220, 190, 93, 0.1);
+        }
+
+        .icon-button:active {
+            background-color: rgba(220, 190, 93, 0.2);
+        }
+
+        .demo-section--dark .icon-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Solution comparison */
+        .solution-box {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-box h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 18px;
+        }
+
+        .solution-box code {
+            background: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+            color: #e83e8c;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="margin-bottom: 1rem; color: var(--color-primary); font-family: 'Lato', sans-serif; font-weight: 900;">
+            Navigation Icons - Solution Comparison
+        </h1>
+        
+        <!-- Explanation Section -->
+        <div class="demo-section" style="background: #fff3cd; border: 2px solid var(--color-accent);">
+            <h2 class="demo-title">📋 Current Sprite Sheet Analysis</h2>
+            <div class="solution-box">
+                <h3>What We Have:</h3>
+                <ul style="margin-left: 20px; color: var(--color-dark);">
+                    <li>✅ Properly designed 6×4 grid in Illustrator (256px cells)</li>
+                    <li>✅ Icons correctly positioned in grid</li>
+                    <li>❌ SVG export lost grid positioning (converted to absolute paths)</li>
+                    <li>❌ CSS background-position technique won't work with current export</li>
+                </ul>
+            </div>
+
+            <div class="solution-box">
+                <h3>Three Solution Paths:</h3>
+                <ol style="margin-left: 20px; color: var(--color-dark);">
+                    <li><strong>Quick Fix:</strong> Use individual SVG files (already available)</li>
+                    <li><strong>Proper Sprite:</strong> Re-export with position preservation</li>
+                    <li><strong>SVG Symbols:</strong> Define icons as reusable symbols</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Solution 1: Individual Files -->
+        <div class="demo-section">
+            <h2 class="demo-title">Solution 1: Individual SVG Files</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--color-gray);">
+                Using files from: <code>/BRAND ASSETS/Logos & Identity/Iconography/Exports/SVG/</code>
+            </p>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <img src="../../assets/svg/ui-icons/icon-hamburger-default.svg" 
+                             alt="Menu" 
+                             style="width: 32px; height: 32px;">
+                    </div>
+                    <span class="demo-label">Direct IMG tag</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <div style="width: 32px; height: 32px; 
+                                    background: url('../../assets/svg/ui-icons/icon-close-default.svg') no-repeat center;
+                                    background-size: contain;">
+                        </div>
+                    </div>
+                    <span class="demo-label">CSS Background</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solution 2: ViewBox Extraction -->
+        <div class="demo-section">
+            <h2 class="demo-title">Solution 2: ViewBox Extraction from Current Sprite</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--color-gray);">
+                Extract specific regions using SVG viewBox. Each icon gets its viewBox coordinates:
+            </p>
+            
+            <div class="demo-grid">
+                <!-- Example using viewBox to extract search icon region -->
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <div class="sprite-icon sprite-icon--large">
+                            <!-- This would load the sprite and set viewBox to show only search icon -->
+                            <svg viewBox="32 32 256 256" style="width: 100%; height: 100%;">
+                                <use href="../../assets/svg/ui-icons/purposeful-sprite-ui.svg#search"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="demo-label">Search (ViewBox: 32 32 256 256)</span>
+                </div>
+                
+                <!-- Arrow icon region -->
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <div class="sprite-icon sprite-icon--large">
+                            <svg viewBox="768 32 256 256" style="width: 100%; height: 100%;">
+                                <use href="../../assets/svg/ui-icons/purposeful-sprite-ui.svg#arrow"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="demo-label">Arrow (ViewBox: 768 32 256 256)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solution 3: Proper Sprite Rebuild -->
+        <div class="demo-section">
+            <h2 class="demo-title">Solution 3: Rebuild Sprite with Proper Export</h2>
+            <div class="solution-box">
+                <h3>Illustrator Export Steps:</h3>
+                <ol style="margin-left: 20px; color: var(--color-dark); line-height: 1.8;">
+                    <li>Keep your 6×4 grid layout</li>
+                    <li>Place a transparent 256×256px rectangle behind each icon</li>
+                    <li>Group icon + rectangle for each position</li>
+                    <li>Export SVG with these settings:
+                        <ul style="margin-left: 20px; margin-top: 8px;">
+                            <li>Styling: Presentation Attributes</li>
+                            <li>Object IDs: Layer Names</li>
+                            <li>Decimal: 2</li>
+                            <li>Minify: OFF</li>
+                            <li>Responsive: ON</li>
+                        </ul>
+                    </li>
+                    <li>This preserves positioning for CSS sprites</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Recommended Approach -->
+        <div class="demo-section" style="background: #d4edda; border: 2px solid #28a745;">
+            <h2 class="demo-title" style="color: #155724;">✅ Recommended Approach for Phase 1</h2>
+            <div style="color: #155724; line-height: 1.8;">
+                <p style="margin-bottom: 1rem;">
+                    <strong>For MVW Phase 1:</strong> Use individual SVG files (Solution 1)
+                </p>
+                <ul style="margin-left: 20px;">
+                    <li>✅ Files already exist and are ready to use</li>
+                    <li>✅ Easy to implement and maintain</li>
+                    <li>✅ Good enough performance for launch</li>
+                    <li>✅ Can swap colors with CSS filters or inline SVG</li>
+                </ul>
+                
+                <p style="margin-top: 1.5rem; margin-bottom: 1rem;">
+                    <strong>For Phase 2:</strong> Rebuild proper sprite sheet
+                </p>
+                <ul style="margin-left: 20px;">
+                    <li>📋 Apply to both UI and decorative icons</li>
+                    <li>📋 Use consistent 256px grid</li>
+                    <li>📋 Implement CSS sprite technique for performance</li>
+                    <li>📋 Create documentation for icon system</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- File Organization -->
+        <div class="demo-section">
+            <h2 class="demo-title">Current File Organization</h2>
+            <pre style="background: #f8f9fa; padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 13px; color: var(--color-dark);">
+/BRAND ASSETS/Logos & Identity/Iconography/
+├── Exports/
+│   ├── SVG/
+│   │   ├── Navigation Icons/
+│   │   │   ├── navigation-arrow.svg
+│   │   │   ├── navigation-press-pause.svg
+│   │   │   └── navigation-press-play.svg
+│   │   ├── Tablet and Mobile Menu Icons/
+│   │   │   ├── icon-hamburger-default.svg
+│   │   │   ├── icon-hamburger-hover-focus.svg
+│   │   │   ├── icon-hamburger-active.svg
+│   │   │   ├── icon-close-default.svg
+│   │   │   ├── icon-close-hover.svg
+│   │   │   └── icon-close-active.svg
+│   │   └── [21 decorative icons × 4 colors each]
+│   └── Sprite Sheets/
+│       ├── purposeful-sprite-ui.svg (current, needs rebuild)
+│       └── purposeful-sprite-symbolic.svg (decorative icons)
+            </pre>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Icon System Analysis Page Loaded');
+            console.log('Current sprite: 1536×2304px (6×4 grid intended)');
+            console.log('Icon size: 256×256px per cell');
+            console.log('Total UI icons: 24 (6 columns × 4 rows)');
+            console.log('Decorative icons: 21 × 4 color variants = 84 total');
+        });
+    </script>
+</body>
+</html>

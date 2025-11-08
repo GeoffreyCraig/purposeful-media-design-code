@@ -1,0 +1,93 @@
+<!--
+    Hero Carousel Component
+
+    Required CSS Dependencies:
+    - variables-v4.0-20251027.css
+    - molecules-ui-icon-display.css
+    - organisms-heroes.css
+
+    Required JavaScript:
+    - scripts/hero-carousel.js
+-->
+<link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+<link rel="stylesheet" href="../../styles/molecules-ui-icon-display.css">
+<link rel="stylesheet" href="../../styles/organisms-heroes.css">
+
+<!-- Hero Carousel Component -->
+<section class="hero-carousel" id="heroCarousel">
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <!-- Slide 1 - Image -->
+            <div class="carousel-slide active" data-slide="0">
+                <div class="slide-background">
+                    <img src="../../assets/images/hero-slide-1.jpg" alt="Digital Marketing Solutions" loading="eager">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="slide-eyebrow">Transform Your Business</div>
+                    <h1 class="slide-headline">DIGITAL MARKETING THAT DRIVES RESULTS</h1>
+                    <div class="slide-description">
+                        We help B2B companies grow into thriving brands through strategic branding, design, and promotion
+                    </div>
+                    <a href="#contact" class="slide-cta">Get Started</a>
+                </div>
+            </div>
+
+            <!-- Slide 2 - Video -->
+            <div class="carousel-slide" data-slide="1">
+                <div class="slide-background">
+                    <video class="slide-video" muted loop playsinline>
+                        <source src="../../assets/videos/hero-slide-2.mp4" type="video/mp4">
+                        <!-- Fallback image if video doesn't load -->
+                        <img src="../../assets/images/hero-slide-2-fallback.jpg" alt="Marketing Strategies">
+                    </video>
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="slide-eyebrow">Proven Strategies</div>
+                    <h1 class="slide-headline">TURN PROSPECTS INTO BUSINESS VALUE</h1>
+                    <div class="slide-description">
+                        Strategic email campaigns, thought leadership content, and webinar production that converts
+                    </div>
+                    <a href="#services" class="slide-cta">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Slide 3 - Image -->
+            <div class="carousel-slide" data-slide="2">
+                <div class="slide-background">
+                    <img src="../../assets/images/hero-slide-3.jpg" alt="Expert Marketing Support" loading="lazy">
+                    <div class="slide-overlay"></div>
+                </div>
+                <div class="slide-content">
+                    <div class="slide-eyebrow">Expert Support</div>
+                    <h1 class="slide-headline">YOUR PARTNER IN GROWTH</h1>
+                    <div class="slide-description">
+                        From struggling businesses to thriving brands - we provide the marketing resources you need
+                    </div>
+                    <a href="#contact" class="slide-cta">Start Today</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="carousel-controls">
+            <button class="carousel-nav carousel-nav--prev" aria-label="Previous slide" type="button">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="gray" data-direction="left"></div>
+            </button>
+            <button class="carousel-nav carousel-nav--next" aria-label="Next slide" type="button">
+                <div class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="gray" data-direction="right"></div>
+            </button>
+        </div>
+
+        <!-- Slide Indicators -->
+        <div class="carousel-indicators">
+            <button class="indicator active" data-slide="0" aria-label="Go to slide 1" type="button"></button>
+            <button class="indicator" data-slide="1" aria-label="Go to slide 2" type="button"></button>
+            <button class="indicator" data-slide="2" aria-label="Go to slide 3" type="button"></button>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript -->
+<script src="../../scripts/hero-carousel.js"></script>

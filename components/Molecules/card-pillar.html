@@ -1,0 +1,138 @@
+<!-- Pillar Card Component - Molecule Level -->
+<!-- Version: 4.0 (Production) -->
+<!-- Last Updated: 2025-11-03 -->
+<!-- Component: Molecule/Card/Pillar-Card -->
+<!-- Dependencies: variables-v4.0-20251027.css, molecules-pillar-card.css, molecules-decorative-icon-display.css -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pillar Card Component - Purposeful Media</title>
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/molecules-decorative-icon-display.css">
+    <link rel="stylesheet" href="../../styles/molecules-pillar-card.css">
+    <link rel="stylesheet" href="../../styles/demo-page.css">
+</head>
+<body>
+    <!-- Demo Section: Component Examples -->
+    <div class="demo-section">
+        <h2>Pillar Card Component Examples</h2>
+
+        <!-- Example 1: Strategy Card with Navy Icon -->
+        <div class="pillar-card">
+            <div class="pillar-card__icon">
+                <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="strategy" data-color="navy"></div>
+            </div>
+            <div class="pillar-card__content">
+                <div class="pillar-card__headline">
+                    <h2 class="pillar-card__heading">H2 HEADLINE 30 45H</h2>
+                </div>
+                <div class="pillar-card__paragraph">
+                    <div class="pillar-card__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.</p>
+
+                        <p>&nbsp;</p>
+
+                        <p>Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-divider"></div>
+
+        <!-- Example 2: Email Card with Gray Icon -->
+        <div class="pillar-card">
+            <div class="pillar-card__icon">
+                <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="email" data-color="gray"></div>
+            </div>
+            <div class="pillar-card__content">
+                <div class="pillar-card__headline">
+                    <h2 class="pillar-card__heading">H2 HEADLINE 30 45H</h2>
+                </div>
+                <div class="pillar-card__paragraph">
+                    <div class="pillar-card__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.</p>
+
+                        <p>&nbsp;</p>
+
+                        <p>Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Usage Documentation -->
+    <div class="demo-section">
+        <h2>Usage Instructions</h2>
+
+        <div class="demo-note">
+            <strong>Note:</strong> This component uses the decorative-icon-display molecule for icon rendering. Ensure the sprite sheet CSS is loaded.
+        </div>
+
+        <h3>HTML Structure</h3>
+        <div class="demo-code">&lt;div class="pillar-card"&gt;
+    &lt;div class="pillar-card__icon"&gt;
+        &lt;div class="decorative-icon-display decorative-icon-display--xxlarge"
+             data-icon="strategy"
+             data-color="navy"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="pillar-card__content"&gt;
+        &lt;div class="pillar-card__headline"&gt;
+            &lt;h2 class="pillar-card__heading"&gt;Your Heading&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class="pillar-card__paragraph"&gt;
+            &lt;div class="pillar-card__text"&gt;
+                &lt;p&gt;Your content here&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+
+        <h3>Available Icon Options</h3>
+        <ul>
+            <li><strong>Icons:</strong> accelerate, attract, contact, delight, download, efficiency, email, engage, exit, expertise, inbound, momentum, news, persona, professional, roi, schedule, strategy, unit, value, webinar</li>
+            <li><strong>Colors:</strong> navy, gray, dark, white</li>
+            <li><strong>Sizes:</strong> xxlarge (256px) for desktop, xlarge (120px) for mobile (automatic via responsive CSS)</li>
+        </ul>
+
+        <h3>Responsive Behavior</h3>
+        <ul>
+            <li><strong>Mobile (380-767px):</strong> Vertical stack, icon above content, 16px gap</li>
+            <li><strong>Tablet (768-1149px):</strong> Horizontal layout, icon left, content right, 32px gap</li>
+            <li><strong>Desktop (1150-1919px):</strong> Horizontal layout, max-width 1264px for content</li>
+            <li><strong>DesktopPlus (1920px+):</strong> Horizontal layout, max-width 1262px for content</li>
+        </ul>
+    </div>
+
+    <!-- JavaScript for Icon Display -->
+    <script>
+        // Initialize icon display based on viewport
+        function updateIconSizes() {
+            const icons = document.querySelectorAll('.pillar-card__icon .decorative-icon-display');
+            const isMobile = window.innerWidth < 768;
+
+            icons.forEach(icon => {
+                // Remove all size classes
+                icon.classList.remove('decorative-icon-display--xxlarge', 'decorative-icon-display--xlarge');
+
+                // Add appropriate size class based on viewport
+                if (isMobile) {
+                    icon.classList.add('decorative-icon-display--xlarge'); // 120px for mobile
+                } else {
+                    icon.classList.add('decorative-icon-display--xxlarge'); // 256px for desktop
+                }
+            });
+        }
+
+        // Run on load and resize
+        window.addEventListener('DOMContentLoaded', updateIconSizes);
+        window.addEventListener('resize', updateIconSizes);
+    </script>
+</body>
+</html>

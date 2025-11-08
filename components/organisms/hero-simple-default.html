@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hero Simple Default - Purposeful Media</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Master Stylesheet - includes all dependencies -->
-    <link rel="stylesheet" href="../../styles/master-styles.css">
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/organisms-heroes.css">
 </head>
 <body>
     <!-- Hero Simple Default Component -->
@@ -27,18 +23,18 @@
         <p>This hero section features:</p>
         <ul>
             <li>Fixed height of 124px across all breakpoints</li>
-            <li>Gold to blue gradient background with responsive margins</li>
+            <li>Gold to blue gradient background with responsive padding</li>
             <li>4px gold bottom border</li>
-            <li>Smooth margin transition from 848px to 768px</li>
+            <li>Smooth padding transition from 848px to 768px</li>
             <li>Responsive text sizing</li>
         </ul>
         <p>Resize your browser to see the responsive behavior:</p>
         <ul>
-            <li><strong>DesktopPlus (1920px+):</strong> Fixed 1840px content width with 40px margins showing gradient</li>
-            <li><strong>Desktop (1150-1919px):</strong> Both containers scale with 40px margins maintained</li>
-            <li><strong>Tablet (848-1149px):</strong> 40px margins maintained, gradient visible</li>
-            <li><strong>Tablet (768-848px):</strong> Smooth margin reduction from 40px to 0px</li>
-            <li><strong>Mobile (380-767px):</strong> Solid blue background, smaller text, no margins</li>
+            <li><strong>DesktopPlus (1920px+):</strong> 100px padding (40px margin + 60px inner)</li>
+            <li><strong>Desktop (1150-1919px):</strong> 100px padding maintained</li>
+            <li><strong>Tablet (808-1149px):</strong> 100px padding maintained, gradient visible</li>
+            <li><strong>Tablet (768-808px):</strong> Smooth margin increase from 0px to 40px pixel-for-pixel</li>
+            <li><strong>Mobile (380-767px):</strong> No margin, 60px inner padding only</li>
         </ul>
     </div>
     
@@ -48,28 +44,28 @@
             const width = window.innerWidth;
             let breakpoint = 'Mobile';
             let marginSize = 0;
-            
+
             if (width >= 1920) {
                 breakpoint = 'DesktopPlus';
                 marginSize = 40;
             } else if (width >= 1150) {
                 breakpoint = 'Desktop';
                 marginSize = 40;
-            } else if (width >= 848) {
-                breakpoint = 'Tablet (full margins)';
+            } else if (width >= 808) {
+                breakpoint = 'Tablet (full margin)';
                 marginSize = 40;
             } else if (width >= 768) {
                 breakpoint = 'Tablet (transition)';
-                // Calculate the current margin based on viewport width
-                marginSize = Math.round((width - 768) / 2);
+                // Margin increases pixel-for-pixel: at 768px = 0px, at 808px = 40px
+                marginSize = width - 768;
             }
-            
+
             console.log(`Current viewport: ${width}px (${breakpoint}) - Margin: ${marginSize}px each side`);
         }
-        
+
         // Initial check
         updateViewportInfo();
-        
+
         // Update on resize
         window.addEventListener('resize', updateViewportInfo);
     </script>

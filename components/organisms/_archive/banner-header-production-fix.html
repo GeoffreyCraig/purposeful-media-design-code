@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Header - Main with Menu (Production Fixed)</title>
+    
+    <!-- Import Google Fonts directly in HTML -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Component Styles -->
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #f5f5f5;
+            padding-top: 20px;
+        }
+        
+        /* Banner Header Main */
+        .banner-header-main {
+            width: 100%;
+            height: 125px;
+            background-color: #1b1464;
+            border-bottom: 4px solid #d4af37;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+            overflow: visible !important; /* Force overflow visible */
+        }
+        
+        /* Inner Container */
+        .banner-header-main__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative; /* Add this */
+        }
+        
+        /* Logo Link */
+        .banner-header-main__logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-header-main__logo-link:hover {
+            opacity: 0.85;
+        }
+        
+        /* Logo Images */
+        .banner-header-main__logo {
+            display: none;
+            height: auto;
+        }
+        
+        /* Menu Container */
+        .banner-header-main__menu-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+            overflow: visible !important; /* Force overflow visible */
+            position: relative; /* Add this */
+        }
+        
+        /* Main Menu */
+        .main-menu {
+            background-color: transparent;
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            position: relative;
+            overflow: visible !important; /* Force overflow visible */
+        }
+        
+        /* Desktop Navigation Container */
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(40px, 5vw, 80px);
+            padding: 0;
+            min-height: auto;
+            overflow: visible !important; /* Force overflow visible */
+            position: relative; /* Add this */
+        }
+        
+        /* Desktop Menu Items (simple links) */
+        .desktop-nav .menu-item {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Desktop Menu Items with dropdowns */
+        .desktop-nav .menu-item-dropdown {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            z-index: 1001; /* Add high z-index */
+        }
+        
+        /* Menu text for dropdowns */
+        .desktop-nav .menu-text {
+            display: inline-block;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            user-select: none; /* Prevent text selection on click */
+        }
+        
+        /* Desktop Hover States */
+        .desktop-nav .menu-item:hover,
+        .desktop-nav .menu-item-dropdown:hover .menu-text {
+            color: #DCBE5D;
+        }
+        
+        /* Desktop Active State */
+        .desktop-nav .menu-item.active,
+        .desktop-nav .menu-item-dropdown.active .menu-text {
+            color: #B39226;
+        }
+        
+        /* Desktop Dropdown Container - CRITICAL FIX */
+        .dropdown-container {
+            position: absolute;
+            top: 100%; /* Changed from calc(100% + 12px) */
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 280px;
+            z-index: 9999 !important; /* Very high z-index */
+            /* Hidden by default */
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            margin-top: 12px; /* Add spacing via margin instead */
+        }
+        
+        /* Show dropdown when open - CRITICAL FIX */
+        .dropdown-container.open {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            display: block !important;
+        }
+        
+        /* Desktop Dropdown Menu Styling */
+        .dropdown-menu {
+            background-color: #ECEEEF !important;
+            border-radius: 8px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important; /* Stronger shadow */
+            padding: 32px;
+            padding-right: 64px;
+            display: block !important;
+            font-family: 'Lato', sans-serif;
+            min-height: 150px;
+            position: relative;
+            width: 100%;
+            opacity: 1 !important; /* Ensure menu is visible */
+        }
+        
+        .dropdown-menu .dropdown-item {
+            display: block !important;
+            color: #1B1464 !important;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin: 0 0 16px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            font-weight: 800;
+            background-color: transparent;
+            opacity: 1 !important; /* Ensure items are visible */
+            visibility: visible !important;
+        }
+        
+        .dropdown-menu .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Dropdown Item Hover States */
+        .dropdown-menu .dropdown-item:hover {
+            color: #1D50DE !important;
+            background-color: #F4EBCD !important;
+            margin-left: -32px;
+            margin-right: -64px;
+            padding-left: 48px;
+            padding-right: 80px;
+            border-radius: 4px;
+        }
+        
+        /* Mobile/Tablet Navigation Container */
+        .mobile-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0;
+            min-height: auto;
+        }
+        
+        .hamburger-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+        }
+        
+        .hamburger-button svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Icon visibility states */
+        .hamburger-icon {
+            display: block;
+        }
+        
+        .close-icon {
+            display: none;
+        }
+        
+        .menu-open .hamburger-icon {
+            display: none;
+        }
+        
+        .menu-open .close-icon {
+            display: block;
+        }
+        
+        /* Mobile Accordion Menu */
+        .mobile-accordion {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ECEEEF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion.active {
+            display: block;
+            max-height: 600px;
+            padding: 20px 24px;
+        }
+        
+        /* Responsive Breakpoints */
+        
+        /* Mobile: 380-767px */
+        @media (max-width: 767px) {
+            .banner-header-main {
+                height: 100px;
+            }
+            
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--mobile {
+                display: block;
+                width: 179px;
+                height: 89px;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+        }
+        
+        /* Tablet: 768-1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--tablet {
+                display: block;
+                width: 417px;
+                height: 89px;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+        }
+        
+        /* Desktop: 1150-1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .banner-header-main__container {
+                padding: 0 36px 0 24px;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 460px;
+                height: 89px;
+            }
+            
+            .banner-header-main__menu-container {
+                max-width: 886px;
+                min-width: 615px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 48px;
+            }
+            
+            .desktop-nav .menu-item,
+            .desktop-nav .menu-item-dropdown {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .dropdown-menu .dropdown-item {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* DesktopPlus: 1920px+ */
+        @media (min-width: 1920px) {
+            .banner-header-main__container {
+                max-width: 1900px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 481px;
+                height: 93px;
+            }
+            
+            .banner-header-main__menu-container {
+                width: 894px;
+                padding-right: 32px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 80px;
+            }
+        }
+        
+        /* Debug helper - remove in production */
+        .debug-visible {
+            border: 2px solid red !important;
+            background-color: yellow !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Header Main Component -->
+    <header class="banner-header-main">
+        <div class="banner-header-main__container">
+            <!-- Logo -->
+            <a href="/" class="banner-header-main__logo-link" aria-label="Purposeful Media Promotions Home">
+                <!-- Mobile Logo -->
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--mobile"
+                >
+                <!-- Tablet Logo -->
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--tablet"
+                >
+                <!-- Desktop/DesktopPlus Logo -->
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--desktop"
+                >
+            </a>
+            
+            <!-- Menu Container -->
+            <div class="banner-header-main__menu-container">
+                <!-- Main Menu Component (Integrated) -->
+                <nav class="main-menu" role="navigation" aria-label="Main navigation">
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="desktop-nav">
+                        <a href="/" class="menu-item" data-page="home">Home</a>
+                        
+                        <div class="menu-item-dropdown" data-page="solutions">
+                            <span class="menu-text">Solutions</span>
+                            <div class="dropdown-container">
+                                <div class="dropdown-menu">
+                                    <a href="/email-management" class="dropdown-item">Email Management</a>
+                                    <a href="/content-creation" class="dropdown-item">Content Creation</a>
+                                    <a href="/webinar-production" class="dropdown-item">Webinar Production</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item-dropdown" data-page="resources">
+                            <span class="menu-text">Resources</span>
+                            <div class="dropdown-container">
+                                <div class="dropdown-menu">
+                                    <a href="/resource-library" class="dropdown-item">Resource Library</a>
+                                    <a href="/about-us" class="dropdown-item">About Us</a>
+                                    <a href="/blog" class="dropdown-item">Blog</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="/contact" class="menu-item" data-page="contact">Contact</a>
+                    </div>
+                    
+                    <!-- Mobile/Tablet Navigation -->
+                    <div class="mobile-nav">
+                        <button class="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                            <svg class="hamburger-icon" width="46" height="54" viewBox="0 0 46 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0.135254" y="3" width="45" height="8" rx="4" fill="white"/>
+                                <rect x="0.135254" y="23" width="45" height="8" rx="4" fill="white"/>
+                                <rect x="0.135254" y="43" width="45" height="8" rx="4" fill="white"/>
+                            </svg>
+                            <svg class="close-icon" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="5.13525" y="35.9706" width="45" height="8" rx="4" transform="rotate(-45 5.13525 35.9706)" fill="white"/>
+                                <rect x="10.7916" y="4.31421" width="45" height="8" rx="4" transform="rotate(45 10.7916 4.31421)" fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Debug Info -->
+    <div style="margin: 20px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h3>Debug Information:</h3>
+        <p>Click count: <span id="click-count">0</span></p>
+        <p>Last action: <span id="last-action">None</span></p>
+        <p>Dropdown state: <span id="dropdown-state">All closed</span></p>
+    </div>
+    
+    <!-- JavaScript for Menu Functionality -->
+    <script>
+        // Debug counter
+        let clickCount = 0;
+        
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing menu functionality');
+            
+            // Desktop dropdown functionality
+            const menuDropdowns = document.querySelectorAll('.desktop-nav .menu-item-dropdown');
+            console.log('Found dropdowns:', menuDropdowns.length);
+            
+            menuDropdowns.forEach(item => {
+                const menuText = item.querySelector('.menu-text');
+                const dropdown = item.querySelector('.dropdown-container');
+                
+                if (menuText && dropdown) {
+                    console.log('Setting up dropdown for:', menuText.textContent);
+                    
+                    menuText.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Update debug info
+                        clickCount++;
+                        document.getElementById('click-count').textContent = clickCount;
+                        document.getElementById('last-action').textContent = 'Clicked ' + menuText.textContent;
+                        
+                        console.log('Clicked:', menuText.textContent);
+                        console.log('Dropdown element:', dropdown);
+                        console.log('Current classes:', dropdown.className);
+                        
+                        // Close all other dropdowns first
+                        document.querySelectorAll('.dropdown-container').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('open');
+                                console.log('Closed other dropdown');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        const wasOpen = dropdown.classList.contains('open');
+                        dropdown.classList.toggle('open');
+                        
+                        // Add debug class temporarily
+                        if (dropdown.classList.contains('open')) {
+                            console.log('DROPDOWN IS NOW OPEN');
+                            document.getElementById('dropdown-state').textContent = menuText.textContent + ' is OPEN';
+                            
+                            // Check computed styles
+                            const styles = window.getComputedStyle(dropdown);
+                            console.log('Dropdown computed styles:', {
+                                display: styles.display,
+                                visibility: styles.visibility,
+                                opacity: styles.opacity,
+                                zIndex: styles.zIndex,
+                                position: styles.position,
+                                top: styles.top
+                            });
+                            
+                            // Check dropdown menu styles
+                            const menu = dropdown.querySelector('.dropdown-menu');
+                            if (menu) {
+                                const menuStyles = window.getComputedStyle(menu);
+                                console.log('Menu computed styles:', {
+                                    display: menuStyles.display,
+                                    backgroundColor: menuStyles.backgroundColor,
+                                    opacity: menuStyles.opacity
+                                });
+                            }
+                        } else {
+                            console.log('DROPDOWN IS NOW CLOSED');
+                            document.getElementById('dropdown-state').textContent = 'All closed';
+                        }
+                    });
+                }
+            });
+            
+            // Click outside to close all dropdowns
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-item-dropdown')) {
+                    console.log('Clicked outside, closing all dropdowns');
+                    document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                    document.getElementById('dropdown-state').textContent = 'All closed';
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside the dropdown menu
+            document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    console.log('Clicked inside dropdown menu');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

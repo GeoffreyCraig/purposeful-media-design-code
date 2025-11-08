@@ -1,0 +1,152 @@
+<!--
+    Text Block Organism - Narrative Layout
+
+    Required CSS Dependencies:
+    - variables-v4.0-20251027.css
+    - molecules-decorative-icon-display.css
+    - molecules-ui-icon-display.css
+    - organisms-text-block.css
+-->
+<link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+<link rel="stylesheet" href="../../styles/molecules-decorative-icon-display.css">
+<link rel="stylesheet" href="../../styles/molecules-ui-icon-display.css">
+<link rel="stylesheet" href="../../styles/organisms-text-block.css">
+
+<!-- TEXT BLOCK ORGANISM - NARRATIVE LAYOUT -->
+<section class="text-block text-block--narrative" data-layout="narrative" data-breakpoint="desktop">
+    <div class="text-block__container">
+        <article class="text-block__content">
+
+            <!-- Header with H1 and Lead Paragraph -->
+            <header class="text-block__header">
+                <h1 class="headline headline--h1">Page Headline Goes Here</h1>
+                <p class="paragraph paragraph--lead">Lead paragraph introducing the main content. This larger text draws attention and provides context for what follows.</p>
+            </header>
+
+            <!-- Section with H2 -->
+            <section class="text-block__section">
+                <h2 class="headline headline--h2">Section Heading</h2>
+                <p class="paragraph paragraph--default">Standard paragraph with default styling. Use this for most of your content paragraphs throughout the page.</p>
+
+                <p class="paragraph paragraph--default">Multiple paragraphs flow naturally with appropriate spacing between them.</p>
+            </section>
+
+            <!-- Subsection with H3 -->
+            <section class="text-block__section">
+                <h3 class="headline headline--h3">Subsection Heading</h3>
+                <p class="paragraph paragraph--default">Subsections help organize content into logical groups. This hierarchy makes it easy for readers to understand the structure of your content.</p>
+
+                <!-- Icon Callout Example -->
+                <div class="text-block__icon-callout">
+                    <div class="decorative-icon-display icon-display--medium" data-icon="expertise" data-color="navy"></div>
+                    <div class="text-block__icon-callout-content">
+                        <h4 class="headline headline--h4">Callout Heading with Icon</h4>
+                        <p class="paragraph paragraph--default">This callout demonstrates how symbolic icons can be integrated into text blocks to add visual interest and reinforce key concepts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lists Section -->
+            <section class="text-block__section">
+                <h4 class="headline headline--h4">Detailed Subsection</h4>
+
+                <!-- Unordered List -->
+                <h5 class="headline headline--h5">Key Points</h5>
+                <ul class="text-block__list text-block__list--unordered">
+                    <li class="text-block__list-item">
+                        <span class="paragraph paragraph--default">First key point or benefit</span>
+                    </li>
+                    <li class="text-block__list-item">
+                        <span class="paragraph paragraph--default">Second key point or benefit</span>
+                    </li>
+                    <li class="text-block__list-item">
+                        <span class="paragraph paragraph--default">Third key point or benefit</span>
+                    </li>
+                    <li class="text-block__list-item">
+                        <span class="paragraph paragraph--default">Fourth key point or benefit</span>
+                    </li>
+                </ul>
+
+                <!-- Ordered List -->
+                <h5 class="headline headline--h5">Process Steps</h5>
+                <ol class="text-block__list text-block__list--ordered">
+                    <li class="text-block__list-item">
+                        <span class="paragraph paragraph--default"><strong>Step One:</strong> Description of first step in the process.</span>
+                    </li>
+                    <li class="text-block__list-item">
+                        <span class="paragraph paragraph--default"><strong>Step Two:</strong> Description of second step in the process.</span>
+                    </li>
+                    <li class="text-block__list-item">
+                        <span class="paragraph paragraph--default"><strong>Step Three:</strong> Description of third step in the process.</span>
+                    </li>
+                    <li class="text-block__list-item">
+                        <span class="paragraph paragraph--default"><strong>Step Four:</strong> Description of fourth step in the process.</span>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- Icon Bullet List -->
+            <section class="text-block__section">
+                <h4 class="headline headline--h4">Services or Features List</h4>
+                <ul class="text-block__icon-list">
+                    <li class="text-block__icon-list-item">
+                        <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                        <span class="paragraph paragraph--default">Service or feature item one</span>
+                    </li>
+                    <li class="text-block__icon-list-item">
+                        <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                        <span class="paragraph paragraph--default">Service or feature item two</span>
+                    </li>
+                    <li class="text-block__icon-list-item">
+                        <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                        <span class="paragraph paragraph--default">Service or feature item three</span>
+                    </li>
+                    <li class="text-block__icon-list-item">
+                        <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                        <span class="paragraph paragraph--default">Service or feature item four</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Blockquote -->
+            <section class="text-block__section">
+                <blockquote class="text-block__quote">
+                    <div class="quote-container">
+                        <p class="quote quote--large">"Insert testimonial or quote here. This format is perfect for customer testimonials, expert insights, or pull quotes from your content."</p>
+                        <cite class="quote-attribution">
+                            <span class="quote-attribution__name">Client Name</span>
+                            <span class="quote-attribution__role">, Title, Company Name</span>
+                        </cite>
+                    </div>
+                </blockquote>
+            </section>
+
+            <!-- H6 and Small Text -->
+            <section class="text-block__section">
+                <h6 class="headline headline--h6">Fine Print Heading</h6>
+                <p class="paragraph paragraph--small">This is small paragraph text used for disclaimers, footnotes, or supplementary information that's important but not primary content.</p>
+            </section>
+
+            <!-- Inline Text Variations -->
+            <section class="text-block__section">
+                <h3 class="headline headline--h3">Text Variations and Links</h3>
+                <p class="paragraph paragraph--default">
+                    Paragraphs can include <strong>bold text for emphasis</strong>, <em>italic text for subtle emphasis</em>, and
+                    <a href="#" class="text-link text-link--primary">inline text links</a> that follow brand styling. You can also include
+                    <a href="#" class="text-link text-link--accent">accent-colored links</a> when appropriate.
+                </p>
+
+                <p class="paragraph paragraph--default">
+                    <span class="decorative-icon-display icon-display--small icon-display--inline" data-icon="momentum" data-color="navy"></span>
+                    Inline icons can be integrated directly into paragraphs to draw attention to key points or add visual elements.
+                </p>
+            </section>
+
+            <!-- Large Paragraph Callout -->
+            <section class="text-block__section">
+                <p class="paragraph paragraph--large">This is a large paragraph variant, perfect for callouts, pull quotes, or emphasizing key takeaways. It stands out while maintaining readability.</p>
+            </section>
+
+        </article>
+    </div>
+</section>

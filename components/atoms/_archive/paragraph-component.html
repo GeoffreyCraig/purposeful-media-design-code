@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph Component System</title>
+    <style>
+        /* CSS Variables for Purposeful Media brand colors */
+        :root {
+            /* Brand Colors */
+            --color-primary: #1B1464;
+            --color-primary-light: #36448F;
+            --color-accent: #D4AF37;
+            --color-teal: #39CCCC;
+            
+            /* Neutrals */
+            --color-darkest: #2D3748;
+            --color-charcoal: #54595F;
+            --color-slate: #6C757D;
+            --color-medium: #A0AEC0;
+            --color-light: #E2E8F0;
+            --color-off-white: #F7FAFC;
+            --color-white: #FFFFFF;
+            
+            /* Semantic Colors */
+            --color-error: #EF4444;
+            --color-focus: #4872E7;
+            --color-disabled: #A2A9AF;
+        }
+
+        /* Base Typography Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--color-darkest);
+            background-color: var(--color-white);
+            padding: 2rem;
+        }
+
+        /* Base Paragraph Component */
+        .paragraph {
+            margin: 0;
+            padding: 0;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        /* Size Variants */
+        .paragraph--large {
+            font-size: 24px;
+            line-height: 36px;
+            font-weight: 600;
+        }
+
+        .paragraph--default {
+            font-size: 18px;
+            line-height: 27px;
+        }
+
+        .paragraph--lead {
+            font-size: 21px;
+            line-height: 31.5px;
+        }
+
+        .paragraph--form {
+            font-size: 18px;
+            line-height: 18px;
+        }
+
+        .paragraph--small {
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        .paragraph--helper {
+            font-size: 12px;
+            line-height: 12px;
+            font-style: italic;
+        }
+
+        .paragraph--captions {
+            font-size: 10px;
+            line-height: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Color Variants */
+        .paragraph--color-default {
+            color: var(--color-darkest);
+        }
+
+        .paragraph--color-light {
+            color: var(--color-slate);
+        }
+
+        .paragraph--color-reverse {
+            color: var(--color-white);
+        }
+
+        .paragraph--color-brand {
+            color: var(--color-primary);
+        }
+
+        .paragraph--color-focus {
+            color: var(--color-focus);
+        }
+
+        .paragraph--color-error {
+            color: var(--color-error);
+        }
+
+        .paragraph--color-disabled {
+            color: var(--color-disabled);
+        }
+
+        .paragraph--color-placeholder {
+            color: var(--color-medium);
+            font-style: italic;
+        }
+
+        /* Utility classes for common use cases */
+        .paragraph--truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .paragraph--wrap {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .paragraph--center {
+            text-align: center;
+        }
+
+        .paragraph--right {
+            text-align: right;
+        }
+
+        .paragraph--justify {
+            text-align: justify;
+        }
+
+        /* Demo container for examples */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--color-off-white);
+            border-radius: 8px;
+        }
+
+        .demo-section--dark {
+            background: var(--color-primary);
+        }
+
+        .demo-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-section--dark .demo-title {
+            color: var(--color-white);
+        }
+
+        .demo-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .demo-item {
+            padding: 1rem;
+            background: var(--color-white);
+            border-radius: 4px;
+        }
+
+        .demo-section--dark .demo-item {
+            background: var(--color-primary-light);
+        }
+
+        .demo-label {
+            font-size: 12px;
+            color: var(--color-slate);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .demo-section--dark .demo-label {
+            color: var(--color-light);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="margin-bottom: 2rem; color: var(--color-primary);">Purposeful Media - Paragraph Component System</h1>
+        
+        <!-- Default Size Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">Default Size Variants</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">Default Color</div>
+                    <p class="paragraph paragraph--default paragraph--color-default">
+                        Transform marketing from an operational expense into a revenue-generating mechanism.
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Light Color</div>
+                    <p class="paragraph paragraph--default paragraph--color-light">
+                        Strategic digital content and campaigns that drive measurable results.
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Brand Color</div>
+                    <p class="paragraph paragraph--default paragraph--color-brand">
+                        Building B2B marketing systems that attract, engage, and delight.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Large Size Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">Large Size Variants</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">Large Default</div>
+                    <p class="paragraph paragraph--large paragraph--color-default">
+                        Professional Design Systems for B2B Success
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Large Brand</div>
+                    <p class="paragraph paragraph--large paragraph--color-brand">
+                        No Corners Cut, No Excuses
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lead Size Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">Lead Paragraph Variants</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">Lead Default</div>
+                    <p class="paragraph paragraph--lead paragraph--color-default">
+                        We help struggling B2B companies grow into thriving brands by supporting them with the marketing resources they need for branding, design, and promotion.
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Lead Light</div>
+                    <p class="paragraph paragraph--lead paragraph--color-light">
+                        Creating a balance between creativity and integrity that fosters remarkable outcomes and delivers market-qualified leads.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">Form Field Variants</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">Form Default</div>
+                    <p class="paragraph paragraph--form paragraph--color-default">
+                        john.doe@example.com
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Form Focus</div>
+                    <p class="paragraph paragraph--form paragraph--color-focus">
+                        Currently editing...
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Form Error</div>
+                    <p class="paragraph paragraph--form paragraph--color-error">
+                        Please enter a valid email address
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Form Placeholder</div>
+                    <p class="paragraph paragraph--form paragraph--color-placeholder">
+                        Enter your email address
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Form Disabled</div>
+                    <p class="paragraph paragraph--form paragraph--color-disabled">
+                        This field is disabled
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Helper Text Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">Helper Text Variants</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">Helper Default</div>
+                    <p class="paragraph paragraph--helper paragraph--color-default">
+                        We'll never share your email with anyone else.
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Helper Error</div>
+                    <p class="paragraph paragraph--helper paragraph--color-error">
+                        This field is required
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Helper Disabled</div>
+                    <p class="paragraph paragraph--helper paragraph--color-disabled">
+                        This option is currently unavailable
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Small & Caption Variants -->
+        <div class="demo-section">
+            <h2 class="demo-title">Small & Caption Variants</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">Small Default</div>
+                    <p class="paragraph paragraph--small paragraph--color-default">
+                        © 2025 Purposeful Media Promotions. All rights reserved.
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Small Light</div>
+                    <p class="paragraph paragraph--small paragraph--color-light">
+                        Last updated: September 14, 2025
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Caption Default</div>
+                    <p class="paragraph paragraph--captions paragraph--color-default">
+                        Figure 1: Component Architecture
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Caption Brand</div>
+                    <p class="paragraph paragraph--captions paragraph--color-brand">
+                        Featured Case Study
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reverse Variants on Dark Background -->
+        <div class="demo-section demo-section--dark">
+            <h2 class="demo-title">Reverse Color Variants (Dark Background)</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label">Default Reverse</div>
+                    <p class="paragraph paragraph--default paragraph--color-reverse">
+                        Transform your B2B marketing with systematic excellence.
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Large Reverse</div>
+                    <p class="paragraph paragraph--large paragraph--color-reverse">
+                        Enterprise-Grade Design Systems
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Lead Reverse</div>
+                    <p class="paragraph paragraph--lead paragraph--color-reverse">
+                        Building professional marketing infrastructure that scales with your business.
+                    </p>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label">Small Reverse</div>
+                    <p class="paragraph paragraph--small paragraph--color-reverse">
+                        Digital marketing that transforms prospects into business value.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Paragraph Component JavaScript Class
+        class ParagraphComponent {
+            constructor(element, options = {}) {
+                this.element = element;
+                this.options = {
+                    size: options.size || 'default',
+                    color: options.color || 'default',
+                    truncate: options.truncate || false,
+                    maxLength: options.maxLength || null,
+                    align: options.align || 'left',
+                    ...options
+                };
+                
+                this.init();
+            }
+
+            init() {
+                this.applyClasses();
+                if (this.options.maxLength) {
+                    this.truncateText();
+                }
+            }
+
+            applyClasses() {
+                // Clear existing paragraph classes
+                this.element.className = this.element.className.replace(/paragraph--\S+/g, '');
+                
+                // Add base class
+                this.element.classList.add('paragraph');
+                
+                // Add size class
+                this.element.classList.add(`paragraph--${this.options.size}`);
+                
+                // Add color class
+                this.element.classList.add(`paragraph--color-${this.options.color}`);
+                
+                // Add optional classes
+                if (this.options.truncate) {
+                    this.element.classList.add('paragraph--truncate');
+                }
+                
+                if (this.options.align && this.options.align !== 'left') {
+                    this.element.classList.add(`paragraph--${this.options.align}`);
+                }
+            }
+
+            truncateText() {
+                const text = this.element.textContent;
+                if (text.length > this.options.maxLength) {
+                    this.element.textContent = text.substring(0, this.options.maxLength) + '...';
+                    this.element.title = text; // Show full text on hover
+                }
+            }
+
+            updateColor(color) {
+                this.options.color = color;
+                this.applyClasses();
+            }
+
+            updateSize(size) {
+                this.options.size = size;
+                this.applyClasses();
+            }
+
+            setText(text) {
+                this.element.textContent = text;
+                if (this.options.maxLength) {
+                    this.truncateText();
+                }
+            }
+        }
+
+        // Initialize all paragraph components on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Example of programmatic initialization
+            const paragraphs = document.querySelectorAll('.paragraph');
+            
+            paragraphs.forEach(p => {
+                // You can initialize with custom options here
+                // new ParagraphComponent(p, { /* options */ });
+            });
+
+            // Example: Create a dynamic paragraph
+            const dynamicContainer = document.createElement('div');
+            dynamicContainer.className = 'demo-section';
+            dynamicContainer.style.marginTop = '2rem';
+            dynamicContainer.innerHTML = `
+                <h2 class="demo-title">Dynamic Paragraph Example</h2>
+                <div class="demo-grid">
+                    <div class="demo-item">
+                        <div class="demo-label">Programmatically Created</div>
+                        <p id="dynamic-paragraph"></p>
+                        <div style="margin-top: 1rem;">
+                            <button onclick="changeParagraphColor()">Change Color</button>
+                            <button onclick="changeParagraphSize()">Change Size</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.demo-container').appendChild(dynamicContainer);
+
+            // Initialize dynamic paragraph
+            const dynamicP = document.getElementById('dynamic-paragraph');
+            window.dynamicParagraph = new ParagraphComponent(dynamicP, {
+                size: 'default',
+                color: 'brand',
+                align: 'left'
+            });
+            dynamicP.textContent = 'This paragraph can be modified programmatically!';
+        });
+
+        // Example functions for dynamic behavior
+        let colorIndex = 0;
+        const colors = ['default', 'light', 'brand', 'error', 'focus'];
+        
+        function changeParagraphColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            window.dynamicParagraph.updateColor(colors[colorIndex]);
+        }
+
+        let sizeIndex = 0;
+        const sizes = ['small', 'default', 'lead', 'large'];
+        
+        function changeParagraphSize() {
+            sizeIndex = (sizeIndex + 1) % sizes.length;
+            window.dynamicParagraph.updateSize(sizes[sizeIndex]);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+/* ============================================
+   CONTENT/2COLUMNGRAPHIC ORGANISM STYLES
+   Purposeful Media Design System
+   Version: 2.0 - v4.0 Token Implementation
+   Dependencies: variables-v4.0-20251027.css
+   Date: 2025-10-29
+
+   Components:
+   - Content/2ColumnGraphic page section
+   - Single and dual card layouts
+   - Responsive breakpoints
+
+   UPDATED: All hardcoded values replaced with v4.0 tokens
+   ============================================ */
+
+/* Import Variables v4.0 */
+@import url('variables-v4.0-20251027.css');
+
+/* Base Section Container */
+.content-2column-graphic {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background Overlay */
+.content-2column-graphic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(27, 20, 100, 0.7) 0%, 
+        rgba(27, 20, 100, 0.4) 50%, 
+        rgba(212, 175, 55, 0.2) 100%);
+    z-index: 1;
+}
+
+/* Inner Container */
+.content-2column-graphic__inner {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: var(--space-20) var(--space-37);
+    position: relative;
+    z-index: 2;
+}
+
+/* Grid Layout */
+.content-2column-graphic__grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1620px; /* 1920 - 300px padding */
+    margin: 0 auto;
+}
+
+/* ============================================
+   ORIENTATION VARIANTS
+   ============================================ */
+
+/* Single Card Layout */
+.content-2column-graphic[data-orientation="left"] .content-2column-graphic__grid {
+    justify-content: flex-start;
+}
+
+/* Two Column Layout */
+.content-2column-graphic[data-orientation="twocolumns"] .content-2column-graphic__grid {
+    justify-content: space-between;
+}
+
+/* ============================================
+   CARD STYLING
+   ============================================ */
+
+/* Left Card (Primary Offer) */
+.content-2column-graphic__card--left {
+    background-color: var(--color-white);
+    padding: var(--space-10);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-elevated);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    width: 500px; /* Default Desktop width */
+    flex-shrink: 0;
+}
+
+/* Right Card (Secondary CTA) */
+.content-2column-graphic__card--right {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: var(--space-10);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-elevated);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    width: 500px; /* Default Desktop width */
+    flex-shrink: 0;
+}
+
+/* Card Typography */
+.content-2column-graphic .card-heading {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-h2-size);
+    line-height: var(--text-h2-height);
+    color: var(--color-primary-700);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.content-2column-graphic .card-body {
+    font-family: var(--font-secondary);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    color: var(--color-neutral-600);
+    margin: 0;
+}
+
+/* ============================================
+   BUTTON OVERRIDES
+   ============================================ */
+
+/* Secondary Button for Left Card */
+.content-2column-graphic__card--left .card-button {
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: 2px solid var(--button-secondary-border);
+    padding: var(--button-padding-y) var(--space-8);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-default-size);
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--radius-default);
+    display: inline-block;
+    transition: all var(--transition-fast);
+    text-align: center;
+    cursor: pointer;
+}
+
+.content-2column-graphic__card--left .card-button:hover {
+    background-color: var(--button-secondary-bg-hover);
+    border-color: var(--button-secondary-border-hover);
+}
+
+.content-2column-graphic__card--left .card-button:active {
+    background-color: var(--button-secondary-bg-active);
+    border-color: var(--button-secondary-border-active);
+}
+
+/* Primary Button for Right Card */
+.content-2column-graphic__card--right .card-button {
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    border: 2px solid var(--button-primary-border);
+    padding: var(--button-padding-y) var(--space-8);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-default-size);
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--radius-default);
+    display: inline-block;
+    transition: all var(--transition-fast);
+    text-align: center;
+    cursor: pointer;
+}
+
+.content-2column-graphic__card--right .card-button:hover {
+    background-color: var(--button-primary-bg-hover);
+    border-color: var(--button-primary-border-hover);
+}
+
+.content-2column-graphic__card--right .card-button:active {
+    background-color: var(--button-primary-bg-active);
+    border-color: var(--button-primary-border-active);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* DesktopPlus (1920px+) */
+@media (min-width: 1920px) {
+    .content-2column-graphic {
+        min-height: 700px;
+    }
+
+    .content-2column-graphic__inner {
+        padding: var(--space-25) var(--space-37);
+    }
+
+    .content-2column-graphic__card--left,
+    .content-2column-graphic__card--right {
+        width: 600px;
+        padding: var(--space-12);
+    }
+}
+
+/* Desktop (1150px - 1919px) */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .content-2column-graphic {
+        min-height: 650px;
+    }
+
+    .content-2column-graphic__inner {
+        padding: var(--space-20) var(--space-25);
+    }
+
+    .content-2column-graphic__card--left,
+    .content-2column-graphic__card--right {
+        width: 500px;
+    }
+}
+
+/* Tablet (768px - 1149px) */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .content-2column-graphic {
+        min-height: 500px;
+    }
+
+    .content-2column-graphic__inner {
+        padding: var(--space-15) var(--space-15);
+    }
+
+    .content-2column-graphic__card--left,
+    .content-2column-graphic__card--right {
+        width: 400px;
+        padding: var(--space-8);
+    }
+
+    .content-2column-graphic .card-heading {
+        font-size: var(--text-h3-size);
+        line-height: var(--text-h3-height);
+    }
+}
+
+/* Mobile (380px - 767px) */
+@media (max-width: 767px) {
+    .content-2column-graphic {
+        min-height: auto;
+    }
+
+    .content-2column-graphic__inner {
+        padding: var(--space-10) var(--space-7);
+    }
+
+    .content-2column-graphic__grid {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-7);
+    }
+
+    /* Stack cards vertically on mobile */
+    .content-2column-graphic[data-orientation="twocolumns"] .content-2column-graphic__grid {
+        flex-direction: column;
+    }
+
+    .content-2column-graphic__card--left,
+    .content-2column-graphic__card--right {
+        width: 320px;
+        max-width: 100%;
+        padding: var(--space-8) var(--space-6);
+    }
+
+    .content-2column-graphic .card-heading {
+        font-size: var(--text-h4-size);
+        line-height: var(--text-h4-height);
+    }
+
+    .content-2column-graphic .card-body {
+        font-size: var(--text-small-size);
+        line-height: var(--text-small-height);
+    }
+
+    .content-2column-graphic__card--left .card-button,
+    .content-2column-graphic__card--right .card-button {
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-small-size);
+    }
+}
+
+/* ====================================
+   DEMO STYLES (For component demonstration)
+   ==================================== */
+
+.demo-container {
+    background-color: var(--color-neutral-50);
+    min-height: 100vh;
+}
+
+.demo-section {
+    margin-bottom: var(--space-20);
+}
+
+.demo-title {
+    font-family: var(--font-primary);
+    font-size: var(--text-h3-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-700);
+    text-transform: uppercase;
+    text-align: center;
+    padding: var(--space-10) var(--space-5) var(--space-5);
+    background: var(--color-white);
+}
+
+.demo-label {
+    font-family: var(--font-secondary);
+    font-size: var(--text-small-size);
+    color: var(--color-neutral-500);
+    text-align: center;
+    padding: var(--space-2);
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-neutral-200);
+}
+
+/* Demo background image */
+.demo-background {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"%3E%3Cdefs%3E%3ClinearGradient id="g" x1="0%25" y1="0%25" x2="100%25" y2="100%25"%3E%3Cstop offset="0%25" style="stop-color:%234872E7"%3E%3C/stop%3E%3Cstop offset="100%25" style="stop-color:%23D4AF37"%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width="1920" height="1080" fill="url(%23g)"%3E%3C/rect%3E%3C/svg%3E');
+}
+
+/* Demo mobile view container */
+.demo-mobile-container {
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+/* Demo tablet view container */
+.demo-tablet-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Demo usage notes section */
+.demo-usage-notes {
+    background: var(--color-white);
+    padding: var(--space-10);
+    margin: var(--space-10);
+}
+
+.demo-usage-content {
+    font-family: var(--font-secondary);
+    color: var(--color-neutral-600);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.demo-usage-heading {
+    color: var(--color-primary-700);
+    margin-top: var(--space-7);
+}
+
+.demo-usage-code {
+    background: var(--color-neutral-50);
+    padding: var(--space-5);
+    border-radius: var(--radius-default);
+    overflow-x: auto;
+}

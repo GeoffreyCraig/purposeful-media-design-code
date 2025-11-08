@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Simple Component Test - Purposeful Media</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Master Stylesheet -->
+    <link rel="stylesheet" href="../../styles/master-styles.css">
+    
+    <style>
+        /* Test page styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .test-content {
+            flex: 1;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        
+        .test-content h1 {
+            color: #1b1464;
+            margin-bottom: 20px;
+        }
+        
+        .test-content .variant-label {
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            margin: 40px 0 0 0;
+            font-weight: 600;
+        }
+        
+        /* Test different container widths */
+        .test-wrapper {
+            margin-bottom: 40px;
+        }
+        
+        .full-width {
+            width: 100%;
+        }
+        
+        .constrained-width {
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-content">
+        <h1>Simple Footer Component Test</h1>
+        <p>This page tests the Simple Footer organism component in both color schemes.</p>
+        <p>Resize your browser to test responsive behavior at different breakpoints:</p>
+        <ul>
+            <li>Mobile: 380-767px</li>
+            <li>Tablet: 768-1149px</li>
+            <li>Desktop: 1150-1919px</li>
+            <li>DesktopPlus: 1920px+</li>
+        </ul>
+    </div>
+
+    <!-- Default Color Scheme Footer -->
+    <div class="variant-label">Default Color Scheme (Blue Background)</div>
+    <footer class="footer-simple" data-color-scheme="default">
+        <!-- Top border accent -->
+        <div class="footer-border"></div>
+        
+        <!-- Main footer content -->
+        <div class="footer-content">
+            <!-- Logo container - responsive sizing -->
+            <div class="footer-logo">
+                <picture>
+                    <!-- Desktop Plus and Desktop -->
+                    <source media="(min-width: 1150px)" 
+                            srcset="../../assets/svg/logos/purposeful-media-logo-white-desktop-lg.svg">
+                    <!-- Tablet -->
+                    <source media="(min-width: 768px)" 
+                            srcset="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg">
+                    <!-- Mobile (default) -->
+                    <!-- Note: purposeful-media-logo-blue-mobile.svg contains WHITE logo despite the name -->
+                    <img src="../../assets/svg/logos/purposeful-media-logo-blue-mobile.svg" 
+                         alt="Purposeful Media Promotions">
+                </picture>
+            </div>
+            
+            <!-- Sub-footer attribution -->
+            <div class="sub-footer">
+                <div class="attribution">
+                    <span class="copyright">© All rights reserved 2025</span>
+                    <span class="separator">| Purposeful Media Promotions |</span>
+                    <a href="#" class="policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Spacer -->
+    <div style="height: 100px; background: #f5f5f5;"></div>
+
+    <!-- Reverse Color Scheme Footer -->
+    <div class="variant-label">Reverse Color Scheme (Light Background)</div>
+    <footer class="footer-simple" data-color-scheme="reverse">
+        <!-- Top border accent -->
+        <div class="footer-border"></div>
+        
+        <!-- Main footer content -->
+        <div class="footer-content">
+            <!-- Logo container - responsive sizing -->
+            <div class="footer-logo">
+                <picture>
+                    <!-- Desktop Plus and Desktop -->
+                    <source media="(min-width: 1150px)" 
+                            srcset="../../assets/svg/logos/purposeful-media-logo-blue-desktop.svg">
+                    <!-- Tablet -->
+                    <source media="(min-width: 768px)" 
+                            srcset="../../assets/svg/logos/purposeful-media-logo-blue-tablet.svg">
+                    <!-- Mobile (default) -->
+                    <!-- Note: purposeful-media-logo-white-mobile.svg contains BLUE logo despite the name -->
+                    <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                         alt="Purposeful Media Promotions">
+                </picture>
+            </div>
+            
+            <!-- Sub-footer attribution -->
+            <div class="sub-footer">
+                <div class="attribution">
+                    <span class="copyright">© All rights reserved 2025</span>
+                    <span class="separator">| Purposeful Media Promotions |</span>
+                    <a href="#" class="policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to log current viewport width for testing
+        function logViewportWidth() {
+            const width = window.innerWidth;
+            let breakpoint = '';
+            
+            if (width < 768) breakpoint = 'Mobile';
+            else if (width < 1150) breakpoint = 'Tablet';
+            else if (width < 1920) breakpoint = 'Desktop';
+            else breakpoint = 'DesktopPlus';
+            
+            console.log(`Current viewport: ${width}px (${breakpoint})`);
+        }
+        
+        // Log on load and resize
+        logViewportWidth();
+        window.addEventListener('resize', logViewportWidth);
+    </script>
+</body>
+</html>

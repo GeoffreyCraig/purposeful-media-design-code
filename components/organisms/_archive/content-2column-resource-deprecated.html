@@ -1,0 +1,110 @@
+<!--
+    Content/2ColumnResource - Production Version
+    Organism: Two-column resource teaser section
+    Layout: eBook thumbnail left, resource card right
+
+    Required CSS Dependencies:
+    - variables-v4.0-20251027.css
+    - organisms-content-2column-resource.css
+-->
+<link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+<link rel="stylesheet" href="../../styles/organisms-content-2column-resource.css">
+
+<!-- Content/2ColumnResource Section Component -->
+<section class="content-2column-resource" role="region" aria-labelledby="resource-heading">
+    <!-- Optional Background Container for Desktop/DesktopPlus -->
+    <div class="section-background" aria-hidden="true"></div>
+
+    <!-- Main Content Container -->
+    <div class="column-group">
+        <!-- Left Column: eBook Thumbnail Image -->
+        <div class="content-column left-column">
+            <div class="image-container">
+                <img src="../../assets/images/sample-ebook-cover.jpg"
+                     alt="eBook Cover"
+                     class="ebook-image"
+                     loading="lazy">
+            </div>
+        </div>
+
+        <!-- Right Column: Resource Teaser Card -->
+        <div class="content-column right-column">
+            <div class="resource-card">
+                <h2 id="resource-heading" class="card-title">
+                    Complete Guide to B2B Marketing ROI
+                </h2>
+
+                <p class="card-description">
+                    Learn proven strategies to measure and optimize your marketing investment returns. This comprehensive guide walks you through setting up analytics, tracking KPIs, and demonstrating clear ROI to stakeholders.
+                </p>
+
+                <a href="/resources/b2b-marketing-roi-guide" class="resource-link">
+                    <span class="link-text">Download Free Guide</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for responsive behavior -->
+<script>
+    (function() {
+        'use strict';
+
+        // Responsive breakpoint handler
+        const ResourceSection = {
+            breakpoints: {
+                mobile: 767,
+                tablet: 1149,
+                desktop: 1919
+            },
+
+            init: function() {
+                this.handleResize();
+                window.addEventListener('resize', this.debounce(this.handleResize.bind(this), 250));
+            },
+
+            handleResize: function() {
+                const width = window.innerWidth;
+                const sections = document.querySelectorAll('.content-2column-resource');
+
+                sections.forEach(section => {
+                    // Remove all breakpoint classes
+                    section.classList.remove('mobile', 'tablet', 'desktop', 'desktop-plus');
+
+                    // Add appropriate breakpoint class
+                    if (width <= this.breakpoints.mobile) {
+                        section.classList.add('mobile');
+                    } else if (width <= this.breakpoints.tablet) {
+                        section.classList.add('tablet');
+                    } else if (width <= this.breakpoints.desktop) {
+                        section.classList.add('desktop');
+                    } else {
+                        section.classList.add('desktop-plus');
+                    }
+                });
+            },
+
+            debounce: function(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+        };
+
+        // Initialize on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                ResourceSection.init();
+            });
+        } else {
+            ResourceSection.init();
+        }
+    })();
+</script>

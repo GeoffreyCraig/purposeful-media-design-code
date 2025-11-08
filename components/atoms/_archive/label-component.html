@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label Component System - Lato UI Typography</title>
+    <style>
+        /* Import Lato - UI Typography Font */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+        /* 
+         * LABEL COMPONENT SYSTEM
+         * Part of Purposeful Media Design System
+         * Typography: Lato (UI/Interface Typography)
+         * 
+         * Labels are UI text elements for forms, buttons, and CTAs
+         * Used within other components for consistent typography
+         * 
+         * Line Height: 1.0x font size (compact for UI elements)
+         * Weight: 700 (Bold) for all labels
+         * 
+         * Purposes:
+         * - Button: Text within button components (16-18px)
+         * - Label: Form labels and UI labels (14-16px)
+         * - CTA: Call-to-action text (18-21px)
+         */
+
+        /* CSS Variables for Purposeful Media brand colors */
+        :root {
+            /* Primary Colors */
+            --color-default: #1B1464;  /* Navy */
+            --color-dark: #0B1F57;     /* Darker navy */
+            --color-light: #6C757D;    /* Slate gray */
+            --color-gray: #A0AEC0;     /* Medium gray */
+            --color-reverse: #FFFFFF;  /* White */
+            
+            /* Ghost/Accent Colors */
+            --color-ghost-secondary: #D4AF37;  /* Gold */
+            --color-ghost-tertiary: #39CCCC;   /* Teal */
+            
+            /* Background Colors */
+            --bg-dark: #1B1464;
+            --bg-light: #F7FAFC;
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: #2D3748;
+            background-color: #FFFFFF;
+            padding: 2rem;
+        }
+
+        /* Base Label Component */
+        .label {
+            display: inline-block;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 700;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+
+        /* Purpose Variants (Size) */
+        .label--button {
+            font-size: 16px;
+            letter-spacing: 0.05em;
+        }
+
+        .label--label {
+            font-size: 14px;
+            letter-spacing: 0.03em;
+        }
+
+        .label--cta {
+            font-size: 18px;
+            letter-spacing: 0.05em;
+        }
+
+        /* Color Variants */
+        .label--color-default {
+            color: var(--color-default);
+        }
+
+        .label--color-dark {
+            color: var(--color-dark);
+        }
+
+        .label--color-light {
+            color: var(--color-light);
+        }
+
+        .label--color-gray {
+            color: var(--color-gray);
+        }
+
+        .label--color-reverse {
+            color: var(--color-reverse);
+        }
+
+        .label--color-ghost-secondary {
+            color: var(--color-ghost-secondary);
+        }
+
+        .label--color-ghost-tertiary {
+            color: var(--color-ghost-tertiary);
+        }
+
+        /* Case Variants */
+        .label--case-upper {
+            text-transform: uppercase;
+        }
+
+        .label--case-default {
+            text-transform: none;
+        }
+
+        /* Utility Classes */
+        .label--required::after {
+            content: ' *';
+            color: #EF4444;
+        }
+
+        .label--optional::after {
+            content: ' (optional)';
+            font-weight: 400;
+            font-size: 0.875em;
+            color: var(--color-gray);
+            text-transform: none;
+        }
+
+        .label--block {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Demo Styles */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #F7FAFC;
+            border-radius: 8px;
+        }
+
+        .demo-section--dark {
+            background: var(--bg-dark);
+        }
+
+        .demo-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1B1464;
+            margin-bottom: 1.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-section--dark .demo-title {
+            color: var(--color-reverse);
+        }
+
+        .demo-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .demo-item {
+            padding: 1rem;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .demo-section--dark .demo-item {
+            background: #0B1F57;
+        }
+
+        .demo-label-meta {
+            font-size: 10px;
+            color: #A0AEC0;
+            margin-bottom: 0.5rem;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .demo-section--dark .demo-label-meta {
+            color: #7595ED;
+        }
+
+        /* Form Example Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1;
+            border: 2px solid #E2E8F0;
+            border-radius: 4px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-default);
+        }
+
+        /* Button Example */
+        .button-example {
+            padding: 16px 24px;
+            background: var(--color-default);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .button-example:hover {
+            background: #36448F;
+        }
+
+        .button-example--secondary {
+            background: var(--color-ghost-secondary);
+        }
+
+        .button-example--secondary .label {
+            color: var(--color-default);
+        }
+
+        .button-example--tertiary {
+            background: var(--color-ghost-tertiary);
+        }
+
+        .button-example--tertiary .label {
+            color: var(--color-default);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="margin-bottom: 1rem; color: #1B1464; font-family: 'Lato', sans-serif; font-weight: 900;">
+            Purposeful Media - Label Component System
+        </h1>
+        <p style="margin-bottom: 2rem; color: #6C757D; font-size: 16px; font-family: 'Open Sans', sans-serif;">
+            <strong>Lato UI Typography Component</strong> - Labels for buttons, forms, and CTAs.
+            Used within other components to maintain consistent UI typography.
+        </p>
+
+        <!-- Button Labels -->
+        <div class="demo-section">
+            <h2 class="demo-title">Button Labels (16px)</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label-meta">Default / Upper</div>
+                    <span class="label label--button label--color-default label--case-upper">
+                        Get Started
+                    </span>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Default / Normal</div>
+                    <span class="label label--button label--color-default label--case-default">
+                        Get Started
+                    </span>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Light / Upper</div>
+                    <span class="label label--button label--color-light label--case-upper">
+                        Learn More
+                    </span>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Ghost Secondary</div>
+                    <span class="label label--button label--color-ghost-secondary label--case-upper">
+                        Download
+                    </span>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Ghost Tertiary</div>
+                    <span class="label label--button label--color-ghost-tertiary label--case-upper">
+                        Contact
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Labels -->
+        <div class="demo-section">
+            <h2 class="demo-title">Form Labels (14px)</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label-meta">Default / Upper</div>
+                    <label class="label label--label label--color-default label--case-upper label--block">
+                        Email Address
+                    </label>
+                    <input type="email" class="form-control" placeholder="you@example.com">
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Dark / Normal</div>
+                    <label class="label label--label label--color-dark label--case-default label--block">
+                        Company Name
+                    </label>
+                    <input type="text" class="form-control" placeholder="Acme Corp">
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Gray / Upper</div>
+                    <label class="label label--label label--color-gray label--case-upper label--block">
+                        Phone Number
+                    </label>
+                    <input type="tel" class="form-control" placeholder="(555) 123-4567">
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">With Required</div>
+                    <label class="label label--label label--color-default label--case-upper label--block label--required">
+                        Full Name
+                    </label>
+                    <input type="text" class="form-control" placeholder="John Doe">
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Labels -->
+        <div class="demo-section">
+            <h2 class="demo-title">Call-to-Action Labels (18px)</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label-meta">Default CTA</div>
+                    <span class="label label--cta label--color-default label--case-upper">
+                        Start Your Free Trial
+                    </span>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Dark CTA</div>
+                    <span class="label label--cta label--color-dark label--case-default">
+                        Schedule a Demo Today
+                    </span>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Light CTA</div>
+                    <span class="label label--cta label--color-light label--case-upper">
+                        Limited Time Offer
+                    </span>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Gray CTA</div>
+                    <span class="label label--cta label--color-gray label--case-default">
+                        Join 10,000+ Subscribers
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reverse Labels on Dark Background -->
+        <div class="demo-section demo-section--dark">
+            <h2 class="demo-title">Reverse Labels (Dark Background)</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <div class="demo-label-meta">Button / Reverse</div>
+                    <span class="label label--button label--color-reverse label--case-upper">
+                        Get Started
+                    </span>
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">Label / Reverse</div>
+                    <label class="label label--label label--color-reverse label--case-upper label--block">
+                        Email Address
+                    </label>
+                    <input type="email" class="form-control" placeholder="you@example.com">
+                </div>
+                <div class="demo-item">
+                    <div class="demo-label-meta">CTA / Reverse</div>
+                    <span class="label label--cta label--color-reverse label--case-default">
+                        Transform Your Business
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-World Usage Examples -->
+        <div class="demo-section">
+            <h2 class="demo-title">Real-World Usage Examples</h2>
+            
+            <!-- Button with Label -->
+            <div style="margin-bottom: 2rem;">
+                <h3 style="font-family: 'Lato', sans-serif; font-size: 18px; margin-bottom: 1rem; color: #1B1464;">
+                    Labels Within Buttons
+                </h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="button-example">
+                        <span class="label label--button label--color-reverse label--case-upper">
+                            Get Started
+                        </span>
+                    </button>
+                    <button class="button-example button-example--secondary">
+                        <span class="label label--button label--color-default label--case-upper">
+                            Download PDF
+                        </span>
+                    </button>
+                    <button class="button-example button-example--tertiary">
+                        <span class="label label--button label--color-default label--case-upper">
+                            Contact Us
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Form Example -->
+            <div style="max-width: 400px;">
+                <h3 style="font-family: 'Lato', sans-serif; font-size: 18px; margin-bottom: 1rem; color: #1B1464;">
+                    Complete Form Example
+                </h3>
+                <form>
+                    <div class="form-group">
+                        <label class="label label--label label--color-default label--case-upper label--block label--required">
+                            Full Name
+                        </label>
+                        <input type="text" class="form-control" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label class="label label--label label--color-default label--case-upper label--block label--required">
+                            Email Address
+                        </label>
+                        <input type="email" class="form-control" placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="label label--label label--color-default label--case-upper label--block label--optional">
+                            Company
+                        </label>
+                        <input type="text" class="form-control" placeholder="Your company name">
+                    </div>
+                    <button class="button-example" type="submit">
+                        <span class="label label--button label--color-reverse label--case-upper">
+                            Submit Form
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Label Component JavaScript Class
+        class LabelComponent {
+            constructor(element, options = {}) {
+                this.element = element;
+                this.options = {
+                    purpose: options.purpose || 'label',  // button, label, cta
+                    color: options.color || 'default',
+                    case: options.case || 'default',
+                    required: options.required || false,
+                    optional: options.optional || false,
+                    block: options.block || false,
+                    ...options
+                };
+                
+                this.init();
+            }
+
+            init() {
+                this.applyClasses();
+            }
+
+            applyClasses() {
+                // Clear existing label classes
+                this.element.className = this.element.className.replace(/label--\S+/g, '');
+                
+                // Add base class
+                this.element.classList.add('label');
+                
+                // Add purpose class
+                this.element.classList.add(`label--${this.options.purpose}`);
+                
+                // Add color class
+                this.element.classList.add(`label--color-${this.options.color}`);
+                
+                // Add case class
+                this.element.classList.add(`label--case-${this.options.case}`);
+                
+                // Add modifier classes
+                if (this.options.required) {
+                    this.element.classList.add('label--required');
+                }
+                
+                if (this.options.optional) {
+                    this.element.classList.add('label--optional');
+                }
+                
+                if (this.options.block) {
+                    this.element.classList.add('label--block');
+                }
+            }
+
+            setPurpose(purpose) {
+                this.options.purpose = purpose;
+                this.applyClasses();
+            }
+
+            setColor(color) {
+                this.options.color = color;
+                this.applyClasses();
+            }
+
+            setCase(caseType) {
+                this.options.case = caseType;
+                this.applyClasses();
+            }
+
+            setText(text) {
+                // Preserve any modifier text (like * for required)
+                const baseText = this.element.textContent.replace(/\s*\*\s*$/, '').replace(/\s*\(optional\)\s*$/, '');
+                this.element.textContent = text;
+                this.applyClasses(); // Reapply to restore modifiers
+            }
+
+            setRequired(isRequired) {
+                this.options.required = isRequired;
+                this.options.optional = false; // Can't be both
+                this.applyClasses();
+            }
+
+            setOptional(isOptional) {
+                this.options.optional = isOptional;
+                this.options.required = false; // Can't be both
+                this.applyClasses();
+            }
+        }
+
+        // Demo initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add interactive demo
+            const interactiveSection = document.createElement('div');
+            interactiveSection.className = 'demo-section';
+            interactiveSection.innerHTML = `
+                <h2 class="demo-title">Interactive Label Demo</h2>
+                <div style="max-width: 400px;">
+                    <div class="form-group">
+                        <label id="dynamic-label" class="label label--label label--color-default label--case-upper label--block">
+                            Dynamic Label
+                        </label>
+                        <input type="text" class="form-control" placeholder="Example input">
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <button onclick="toggleCase()" style="padding: 8px 16px; background: #E2E8F0; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif; font-weight: 700;">
+                            Toggle Case
+                        </button>
+                        <button onclick="toggleRequired()" style="padding: 8px 16px; background: #E2E8F0; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif; font-weight: 700;">
+                            Toggle Required
+                        </button>
+                        <button onclick="changeColor()" style="padding: 8px 16px; background: #E2E8F0; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif; font-weight: 700;">
+                            Change Color
+                        </button>
+                        <button onclick="changePurpose()" style="padding: 8px 16px; background: #E2E8F0; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif; font-weight: 700;">
+                            Change Size
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.demo-container').appendChild(interactiveSection);
+
+            // Initialize dynamic label
+            const dynamicLabel = document.getElementById('dynamic-label');
+            window.dynamicLabel = new LabelComponent(dynamicLabel, {
+                purpose: 'label',
+                color: 'default',
+                case: 'upper',
+                block: true
+            });
+        });
+
+        // Interactive functions
+        function toggleCase() {
+            const currentCase = window.dynamicLabel.options.case;
+            window.dynamicLabel.setCase(currentCase === 'upper' ? 'default' : 'upper');
+        }
+
+        function toggleRequired() {
+            const isRequired = window.dynamicLabel.options.required;
+            if (isRequired) {
+                window.dynamicLabel.setOptional(true);
+            } else if (window.dynamicLabel.options.optional) {
+                window.dynamicLabel.setOptional(false);
+                window.dynamicLabel.setRequired(false);
+            } else {
+                window.dynamicLabel.setRequired(true);
+            }
+        }
+
+        let colorIndex = 0;
+        const colors = ['default', 'dark', 'light', 'gray'];
+        
+        function changeColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            window.dynamicLabel.setColor(colors[colorIndex]);
+        }
+
+        let purposeIndex = 1;
+        const purposes = ['button', 'label', 'cta'];
+        
+        function changePurpose() {
+            purposeIndex = (purposeIndex + 1) % purposes.length;
+            window.dynamicLabel.setPurpose(purposes[purposeIndex]);
+        }
+    </script>
+</body>
+</html>

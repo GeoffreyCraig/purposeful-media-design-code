@@ -1,0 +1,235 @@
+/* ====================================
+   RETURN BUTTON MOLECULE STYLES
+   Component: Molecule/Button/Return-To-Top
+   Version: 1.0 (Tokenized)
+   Last Updated: 2025-10-28
+
+   Description: Floating return-to-top button with icon
+   Dependencies: variables-v4.0-20251027.css, molecules-ui-icon-display.css
+
+   Features:
+   - Fixed position bottom-right
+   - Scroll-triggered visibility
+   - Icon hover color change (gray → navy)
+   - Smooth scroll animation
+
+   Usage:
+   <button class="return-button" id="returnButton" aria-label="Return to top">
+       <div class="ui-icon-display ui-icon-display--large"
+            data-icon="arrow-up"
+            data-color="gray"
+            data-direction="up"></div>
+   </button>
+   ==================================== */
+
+/* ====================================
+   RETURN BUTTON - FLOATING COMPONENT
+   ==================================== */
+.return-button {
+    position: fixed;
+    bottom: var(--space-8);
+    right: var(--space-8);
+    width: var(--icon-size-large);
+    height: var(--icon-size-large);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: var(--radius-medium);
+    cursor: pointer;
+    box-shadow: var(--shadow-standard);
+    transition: all var(--transition-slow);
+    opacity: 0;
+    visibility: hidden;
+    z-index: var(--z-fixed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Visible State (toggled by JavaScript) */
+.return-button.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hover State */
+.return-button:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+/* Active State */
+.return-button:active {
+    transform: translateY(0);
+}
+
+/* Icon Hover Effect - Gray to Navy */
+.return-button:hover .ui-icon-display[data-color="gray"] {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+}
+
+/* ====================================
+   DEMO STYLES (Remove in production)
+   ==================================== */
+
+/* Demo Container */
+.demo-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Demo Section */
+.demo-section {
+    margin: var(--space-12) 0;
+    padding: var(--space-8);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-medium);
+}
+
+/* Demo Headings */
+.demo-container h1 {
+    margin-bottom: var(--space-4);
+    color: var(--color-primary-700);
+}
+
+.demo-container h2 {
+    margin-bottom: var(--space-4);
+    color: var(--color-neutral-700);
+}
+
+.demo-container h3 {
+    margin-bottom: var(--space-3);
+    color: var(--color-neutral-600);
+}
+
+/* Demo Paragraphs */
+.demo-container p {
+    margin-bottom: var(--space-4);
+}
+
+/* Demo Lists */
+.demo-container ul {
+    margin-left: var(--space-6);
+    margin-bottom: var(--space-4);
+}
+
+.demo-container ul li {
+    margin-bottom: var(--space-2);
+    line-height: var(--text-default-height);
+}
+
+/* Demo Buttons Container */
+.demo-buttons {
+    display: flex;
+    gap: var(--space-8);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Static Demo Button */
+.demo-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-size-large);
+    height: var(--icon-size-large);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-standard);
+}
+
+/* Hover State Demo - Navy color */
+.demo-button--hover .ui-icon-display[data-color="gray"] {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+}
+
+/* Button Wrapper */
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* State Label */
+.state-label {
+    font-size: var(--text-small-size);
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+    text-align: center;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    text-align: center;
+    padding: var(--space-8);
+    margin-top: var(--space-12);
+    background: var(--color-primary-50);
+    border-radius: var(--radius-medium);
+}
+
+.scroll-indicator p {
+    margin-bottom: 0;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary-500);
+}
+
+/* Demo Code Block */
+.demo-container pre {
+    background: var(--bg-secondary);
+    padding: var(--space-4);
+    border-radius: var(--radius-small);
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ====================================
+   BASE DEMO PAGE STYLES
+   ==================================== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: var(--font-content);
+    line-height: 1.6;
+    padding: var(--space-8);
+    min-height: 200vh; /* Make page tall enough to scroll */
+}
+
+/* ====================================
+   RESPONSIVE ADJUSTMENTS
+   ==================================== */
+
+/* Tablet (768px - 1149px) */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .return-button {
+        bottom: var(--space-6);
+        right: var(--space-6);
+    }
+}
+
+/* Mobile (up to 767px) */
+@media (max-width: 767px) {
+    body {
+        padding: var(--space-4);
+    }
+
+    .return-button {
+        bottom: var(--space-4);
+        right: var(--space-4);
+    }
+
+    .demo-section {
+        padding: var(--space-4);
+    }
+
+    .demo-buttons {
+        gap: var(--space-4);
+    }
+}

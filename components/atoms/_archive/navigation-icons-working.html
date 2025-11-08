@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Icons Working Demo - Purposeful Media</title>
+    <style>
+        /* Import brand colors from design tokens */
+        :root {
+            --color-primary: #1B1464;
+            --color-accent: #D4AF37;
+            --color-accent-hover: #DCBE5D;
+            --color-accent-dark: #B39226;
+            --color-teal: #39CCCC;
+            --color-gray: #6C757D;
+            --color-gray-light: #ECEEEF;
+            --color-white: #FFFFFF;
+            --color-dark: #0B1F57;
+            --bg-light: #F7FAFC;
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            padding: 2rem;
+            background-color: var(--bg-light);
+        }
+
+        /* =======================================
+           WORKING ICON SYSTEM
+           Using individual SVG files
+           ======================================= */
+        
+        /* Icon wrapper with size variants */
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 0;
+        }
+
+        .icon--small {
+            width: 16px;
+            height: 16px;
+        }
+
+        .icon--medium {
+            width: 24px;
+            height: 24px;
+        }
+
+        .icon--large {
+            width: 32px;
+            height: 32px;
+        }
+
+        .icon--xlarge {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Icon images fill their container */
+        .icon img,
+        .icon svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Interactive menu button */
+        .menu-button {
+            background: var(--color-primary);
+            border: none;
+            border-radius: 4px;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            background: var(--color-dark);
+        }
+
+        /* Icon switching on hover */
+        .menu-button .icon-default {
+            display: block;
+        }
+
+        .menu-button .icon-hover {
+            display: none;
+        }
+
+        .menu-button:hover .icon-default {
+            display: none;
+        }
+
+        .menu-button:hover .icon-hover {
+            display: block;
+        }
+
+        /* =======================================
+           DEMO STYLES
+           ======================================= */
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .demo-section--dark {
+            background: var(--color-primary);
+        }
+
+        .demo-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-section--dark .demo-title {
+            color: white;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .demo-item {
+            text-align: center;
+        }
+
+        .demo-label {
+            display: block;
+            font-size: 12px;
+            color: var(--color-gray);
+            margin-top: 0.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-section--dark .demo-label {
+            color: var(--color-accent);
+        }
+
+        .icon-showcase {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 4px;
+            min-height: 60px;
+            min-width: 60px;
+        }
+
+        .demo-section--dark .icon-showcase {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Success message */
+        .success-banner {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            color: #155724;
+        }
+
+        .success-banner h2 {
+            margin-bottom: 0.5rem;
+            color: #155724;
+        }
+
+        /* Size comparison */
+        .size-row {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Filter controls for color changes */
+        .filter-demo {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* CSS filters to change icon colors */
+        .icon--filter-gold {
+            filter: brightness(0) saturate(100%) invert(81%) sepia(26%) saturate(735%) hue-rotate(6deg) brightness(93%) contrast(88%);
+        }
+
+        .icon--filter-blue {
+            filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(86%) contrast(105%);
+        }
+
+        .icon--filter-gray {
+            filter: brightness(0) saturate(100%) invert(47%) sepia(8%) saturate(719%) hue-rotate(184deg) brightness(93%) contrast(86%);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="margin-bottom: 1rem; color: var(--color-primary); font-family: 'Lato', sans-serif; font-weight: 900;">
+            Navigation Icons - Working Implementation
+        </h1>
+
+        <!-- Success Message -->
+        <div class="success-banner">
+            <h2>✅ Icons Successfully Implemented!</h2>
+            <p>Using individual SVG files from: <code>/assets/svg/ui-icons/individual/</code></p>
+        </div>
+
+        <!-- Menu Icons -->
+        <div class="demo-section demo-section--dark">
+            <h2 class="demo-title">Menu Icons (Interactive)</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <button class="menu-button">
+                        <span class="icon icon--medium">
+                            <img class="icon-default" src="../../assets/svg/ui-icons/individual/icon-hamburger-default.svg" alt="Menu">
+                            <img class="icon-hover" src="../../assets/svg/ui-icons/individual/icon-hamburger-hover.svg" alt="Menu">
+                        </span>
+                    </button>
+                    <span class="demo-label">Hamburger Menu</span>
+                </div>
+                <div class="demo-item">
+                    <button class="menu-button">
+                        <span class="icon icon--medium">
+                            <img class="icon-default" src="../../assets/svg/ui-icons/individual/icon-close-default.svg" alt="Close">
+                            <img class="icon-hover" src="../../assets/svg/ui-icons/individual/icon-close-hover.svg" alt="Close">
+                        </span>
+                    </button>
+                    <span class="demo-label">Close Button</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Size Variations -->
+        <div class="demo-section">
+            <h2 class="demo-title">Size Variations</h2>
+            
+            <div class="demo-item">
+                <p style="margin-bottom: 1.5rem; color: var(--color-gray);">Hamburger icon at different sizes:</p>
+                
+                <div class="size-row">
+                    <div style="text-align: center;">
+                        <div class="icon-showcase">
+                            <span class="icon icon--small">
+                                <img src="../../assets/svg/ui-icons/individual/icon-hamburger-default.svg" alt="Menu" style="filter: invert(1);">
+                            </span>
+                        </div>
+                        <span class="demo-label">Small (16px)</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="icon-showcase">
+                            <span class="icon icon--medium">
+                                <img src="../../assets/svg/ui-icons/individual/icon-hamburger-default.svg" alt="Menu" style="filter: invert(1);">
+                            </span>
+                        </div>
+                        <span class="demo-label">Medium (24px)</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="icon-showcase">
+                            <span class="icon icon--large">
+                                <img src="../../assets/svg/ui-icons/individual/icon-hamburger-default.svg" alt="Menu" style="filter: invert(1);">
+                            </span>
+                        </div>
+                        <span class="demo-label">Large (32px)</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="icon-showcase">
+                            <span class="icon icon--xlarge">
+                                <img src="../../assets/svg/ui-icons/individual/icon-hamburger-default.svg" alt="Menu" style="filter: invert(1);">
+                            </span>
+                        </div>
+                        <span class="demo-label">XLarge (48px)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Variations using CSS Filters -->
+        <div class="demo-section">
+            <h2 class="demo-title">Color Variations (CSS Filters)</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--color-gray);">
+                Using CSS filters to change SVG colors dynamically:
+            </p>
+            
+            <div class="filter-demo">
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="icon icon--large">
+                            <img src="../../assets/svg/ui-icons/individual/icon-hamburger-default.svg" 
+                                 alt="Menu" 
+                                 class="icon--filter-blue">
+                        </span>
+                    </div>
+                    <span class="demo-label">Blue (#1B1464)</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="icon icon--large">
+                            <img src="../../assets/svg/ui-icons/individual/icon-hamburger-default.svg" 
+                                 alt="Menu" 
+                                 class="icon--filter-gold">
+                        </span>
+                    </div>
+                    <span class="demo-label">Gold (#D4AF37)</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase">
+                        <span class="icon icon--large">
+                            <img src="../../assets/svg/ui-icons/individual/icon-hamburger-default.svg" 
+                                 alt="Menu" 
+                                 class="icon--filter-gray">
+                        </span>
+                    </div>
+                    <span class="demo-label">Gray (#6C757D)</span>
+                </div>
+                <div class="demo-item">
+                    <div class="icon-showcase" style="background: var(--color-primary);">
+                        <span class="icon icon--large">
+                            <img src="../../assets/svg/ui-icons/individual/icon-hamburger-default.svg" 
+                                 alt="Menu">
+                        </span>
+                    </div>
+                    <span class="demo-label">White (Original)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Notes -->
+        <div class="demo-section" style="background: #f8f9fa;">
+            <h2 class="demo-title">Implementation Notes</h2>
+            
+            <h3 style="color: var(--color-primary); margin-bottom: 1rem; font-size: 18px;">
+                ✅ What's Working:
+            </h3>
+            <ul style="margin-left: 20px; margin-bottom: 1.5rem; line-height: 1.8; color: var(--color-dark);">
+                <li>Individual SVG files load correctly</li>
+                <li>Size scaling works perfectly</li>
+                <li>Hover states function as expected</li>
+                <li>CSS filters can change colors dynamically</li>
+            </ul>
+
+            <h3 style="color: var(--color-primary); margin-bottom: 1rem; font-size: 18px;">
+                📋 Next Steps for Complete Icon System:
+            </h3>
+            <ol style="margin-left: 20px; line-height: 1.8; color: var(--color-dark);">
+                <li><strong>Copy remaining UI icons</strong> from Brand Assets folder</li>
+                <li><strong>Copy decorative icons</strong> (21 icons × 4 colors)</li>
+                <li><strong>Create icon documentation</strong> with all available icons</li>
+                <li><strong>Phase 2:</strong> Rebuild sprite sheets with proper grid positioning</li>
+            </ol>
+
+            <h3 style="color: var(--color-primary); margin-bottom: 1rem; margin-top: 1.5rem; font-size: 18px;">
+                🔧 For Sprite Sheet Rebuild:
+            </h3>
+            <div style="background: white; padding: 1rem; border-radius: 4px; margin-top: 0.5rem;">
+                <code style="display: block; color: #d63384; line-height: 1.6;">
+                    1. In Illustrator: Add 256×256px transparent rectangles<br>
+                    2. Group each icon with its rectangle<br>
+                    3. Align to pixel grid (0, 256, 512, 768, 1024, 1280)<br>
+                    4. Export with "Responsive" checked<br>
+                    5. This preserves positions for CSS sprites
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ Navigation Icons Working Demo Loaded');
+            console.log('Icons loaded from: /assets/svg/ui-icons/individual/');
+            
+            // Add click feedback to buttons
+            const buttons = document.querySelectorAll('.menu-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    console.log('Button clicked:', this.querySelector('img').alt);
+                    
+                    // Visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 100);
+                });
+            });
+            
+            console.log('Available icons:', [
+                'icon-hamburger-default.svg',
+                'icon-hamburger-hover.svg',
+                'icon-close-default.svg',
+                'icon-close-hover.svg'
+            ]);
+        });
+    </script>
+</body>
+</html>

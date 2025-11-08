@@ -52,7 +52,7 @@
 
 .text-block__content {
     width: 100%;
-    max-width: 768px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -62,7 +62,7 @@
 
 /* Narrative Layout - Blog Posts, Standard Articles */
 .text-block--narrative .text-block__content {
-    max-width: 768px;
+    max-width: 800px;
 }
 
 /* Pillar Page Layout - Comprehensive Guides */
@@ -77,6 +77,23 @@
 /* Topic Layout - Focused Articles */
 .text-block--topic .text-block__content {
     max-width: 800px;
+}
+
+/* Wide Layout - Full Page Width */
+.text-block--wide {
+    padding: 64px 0;
+}
+
+.text-block--wide .text-block__container {
+    padding: 0 64px;
+}
+
+.text-block--wide .text-block__content {
+    max-width: 100%;
+}
+
+.text-block--wide .text-block__section {
+    margin-bottom: 32px;
 }
 
 /* ====================================
@@ -496,13 +513,26 @@
     .text-block {
         padding: var(--space-10, 40px) 0;
     }
-    
+
     .text-block__container {
         padding: 0 20px;
     }
-    
+
     .text-block__content {
         max-width: 100%;
+    }
+
+    /* Wide Layout Mobile Override */
+    .text-block--wide {
+        padding: 64px 0;
+    }
+
+    .text-block--wide .text-block__container {
+        padding: 0 32px;
+    }
+
+    .text-block--wide .text-block__section {
+        margin-bottom: 32px;
     }
     
     /* Header */

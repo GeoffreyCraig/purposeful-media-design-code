@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content/2ColumnGraphic Component - Purposeful Media</title>
+
+    <!-- Import v4.0 Variables and Component Styles -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/organisms-content-2column-graphic.css">
+</head>
+<body>
+    <div class="demo-container">
+        
+        <!-- Single Card (Left) Orientation Demo -->
+        <div class="demo-section">
+            <h1 class="demo-title">Single Card (Left) Orientation</h1>
+            
+            <!-- Desktop View -->
+            <div class="demo-label">Desktop View</div>
+            <section class="content-2column-graphic demo-background" data-orientation="left" data-breakpoint="desktop">
+                <div class="content-2column-graphic__inner">
+                    <div class="content-2column-graphic__grid">
+                        <div class="content-2column-graphic__card--left">
+                            <h2 class="card-heading">Transform Your Marketing Into Revenue</h2>
+                            <p class="card-body">Download our comprehensive guide to learn how B2B companies are using AI-powered marketing automation to generate qualified leads and accelerate growth. Get proven strategies, real-world case studies, and actionable templates.</p>
+                            <a href="/landing-page" class="card-button">Download Free Guide</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Mobile View -->
+            <div class="demo-label">Mobile View</div>
+            <section class="content-2column-graphic demo-background demo-mobile-container" data-orientation="left" data-breakpoint="mobile">
+                <div class="content-2column-graphic__inner">
+                    <div class="content-2column-graphic__grid">
+                        <div class="content-2column-graphic__card--left">
+                            <h2 class="card-heading">Transform Your Marketing Into Revenue</h2>
+                            <p class="card-body">Download our comprehensive guide to learn how B2B companies are using AI-powered marketing automation to generate qualified leads and accelerate growth.</p>
+                            <a href="/landing-page" class="card-button">Download Guide</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Two Column Orientation Demo -->
+        <div class="demo-section">
+            <h1 class="demo-title">Two Column Orientation</h1>
+            
+            <!-- Desktop View -->
+            <div class="demo-label">Desktop View</div>
+            <section class="content-2column-graphic demo-background" data-orientation="twocolumns" data-breakpoint="desktop">
+                <div class="content-2column-graphic__inner">
+                    <div class="content-2column-graphic__grid">
+                        <div class="content-2column-graphic__card--left">
+                            <h2 class="card-heading">Get Our Free Marketing Toolkit</h2>
+                            <p class="card-body">Everything you need to launch successful B2B marketing campaigns. Templates, checklists, and proven strategies included.</p>
+                            <a href="/resources" class="card-button">Access Toolkit</a>
+                        </div>
+                        <div class="content-2column-graphic__card--right">
+                            <h2 class="card-heading">Ready to Grow?</h2>
+                            <p class="card-body">Schedule a free consultation to discuss how we can help transform your marketing into a revenue-generating machine.</p>
+                            <a href="/schedule" class="card-button">Book Your Call</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tablet View -->
+            <div class="demo-label">Tablet View</div>
+            <section class="content-2column-graphic demo-background demo-tablet-container" data-orientation="twocolumns" data-breakpoint="tablet">
+                <div class="content-2column-graphic__inner">
+                    <div class="content-2column-graphic__grid">
+                        <div class="content-2column-graphic__card--left">
+                            <h2 class="card-heading">Get Our Free Marketing Toolkit</h2>
+                            <p class="card-body">Everything you need to launch successful B2B marketing campaigns.</p>
+                            <a href="/resources" class="card-button">Access Toolkit</a>
+                        </div>
+                        <div class="content-2column-graphic__card--right">
+                            <h2 class="card-heading">Ready to Grow?</h2>
+                            <p class="card-body">Schedule a free consultation to discuss your marketing transformation.</p>
+                            <a href="/schedule" class="card-button">Book Your Call</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Mobile View (Cards Stack) -->
+            <div class="demo-label">Mobile View (Cards Stack Vertically)</div>
+            <section class="content-2column-graphic demo-background demo-mobile-container" data-orientation="twocolumns" data-breakpoint="mobile">
+                <div class="content-2column-graphic__inner">
+                    <div class="content-2column-graphic__grid">
+                        <div class="content-2column-graphic__card--left">
+                            <h2 class="card-heading">Free Marketing Toolkit</h2>
+                            <p class="card-body">Templates and strategies for B2B success.</p>
+                            <a href="/resources" class="card-button">Get Toolkit</a>
+                        </div>
+                        <div class="content-2column-graphic__card--right">
+                            <h2 class="card-heading">Ready to Grow?</h2>
+                            <p class="card-body">Schedule your free consultation today.</p>
+                            <a href="/schedule" class="card-button">Book Call</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Usage Notes -->
+        <div class="demo-section demo-usage-notes">
+            <h2 class="demo-title">Component Usage Notes</h2>
+            <div class="demo-usage-content">
+
+                <h3 class="demo-usage-heading">Overview</h3>
+                <p>The Content/2ColumnGraphic component is a versatile page section designed to drive engagement and conversions. It features a large background image with either one or two call-to-action cards overlaid.</p>
+                
+                <h3 class="demo-usage-heading">Variants</h3>
+                <ul>
+                    <li><strong>Orientation:</strong>
+                        <ul>
+                            <li>"left" - Single card aligned to the left</li>
+                            <li>"twocolumns" - Two cards side by side (stacks on mobile)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Breakpoints:</strong>
+                        <ul>
+                            <li>Mobile: 380-767px (cards stack vertically)</li>
+                            <li>Tablet: 768-1149px (reduced padding)</li>
+                            <li>Desktop: 1150-1919px (standard layout)</li>
+                            <li>DesktopPlus: 1920px+ (expanded spacing)</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3 class="demo-usage-heading">Key Features</h3>
+                <ul>
+                    <li><strong>Background Image:</strong> Full-width with gradient overlay for text readability</li>
+                    <li><strong>Left Card:</strong> Features secondary (gold) button for primary offer visibility</li>
+                    <li><strong>Right Card:</strong> Uses primary (navy) button for scheduling/consultation CTAs</li>
+                    <li><strong>Responsive:</strong> Automatically adapts layout and typography for each breakpoint</li>
+                    <li><strong>Maximum Width:</strong> Content constrained to 1120px (Desktop) or 1400px (DesktopPlus)</li>
+                </ul>
+                
+                <h3 class="demo-usage-heading">Implementation Example</h3>
+                <pre class="demo-usage-code">
+&lt;section class="content-2column-graphic" 
+         data-orientation="twocolumns" 
+         data-breakpoint="desktop"
+         style="background-image: url('path/to/your-image.jpg');"&gt;
+    &lt;div class="content-2column-graphic__inner"&gt;
+        &lt;div class="content-2column-graphic__grid"&gt;
+            
+            &lt;!-- Primary Offer Card (Left) --&gt;
+            &lt;div class="content-2column-graphic__card--left"&gt;
+                &lt;h2 class="card-heading"&gt;Your Headline&lt;/h2&gt;
+                &lt;p class="card-body"&gt;Your compelling offer description.&lt;/p&gt;
+                &lt;a href="/landing-page" class="card-button"&gt;CTA Text&lt;/a&gt;
+            &lt;/div&gt;
+            
+            &lt;!-- Secondary CTA Card (Right) --&gt;
+            &lt;div class="content-2column-graphic__card--right"&gt;
+                &lt;h2 class="card-heading"&gt;Secondary Headline&lt;/h2&gt;
+                &lt;p class="card-body"&gt;Brief call-to-action text.&lt;/p&gt;
+                &lt;a href="/schedule" class="card-button"&gt;Book Call&lt;/a&gt;
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+                </pre>
+                
+                <h3 class="demo-usage-heading">CSS Variables Used</h3>
+                <ul>
+                    <li>Primary colors: --primary-700, --primary-600, --primary-800</li>
+                    <li>Accent colors: --accent-500, --accent-400, --accent-600</li>
+                    <li>Neutral colors: --white, --neutrals-600</li>
+                    <li>Typography: Lato (headings), Open Sans (body)</li>
+                </ul>
+
+                <h3 class="demo-usage-heading">Integration Notes</h3>
+                <ul>
+                    <li>Background images should be high-quality stock photos (1920x1080 minimum)</li>
+                    <li>The gradient overlay ensures text remains readable regardless of image</li>
+                    <li>Cards include subtle shadows for depth and visual hierarchy</li>
+                    <li>Button styles match the atomic button component patterns</li>
+                    <li>Component is fully responsive without JavaScript requirements</li>
+                </ul>
+                
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

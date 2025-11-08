@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content - 2 Column Resource Section</title>
+
+    <!-- Design System Variables and Styles -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/organisms-content-2column-resource.css">
+
+    <style>
+        /* Reset default body margins for component demo */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Content/2ColumnResource Section Component -->
+    <section class="content-2column-resource" role="region" aria-labelledby="resource-heading">
+        <!-- Background Image Container (Desktop/DesktopPlus only) -->
+        <div class="section-background" aria-hidden="true">
+            <img src="../../assets/images/shutterstock_1421446100.jpg" 
+                 alt=""
+                 loading="lazy">
+        </div>
+        
+        <!-- Main Content Container -->
+        <div class="content-container">
+            <div class="column-group">
+                <!-- Left Column: eBook Thumbnail Image -->
+                <div class="left-column">
+                    <div class="image-wrapper">
+                        <img src="../../assets/images/sample-ebook-cover.jpg"
+                             alt="eBook Cover"
+                             class="ebook-image"
+                             loading="lazy">
+                    </div>
+                </div>
+                
+                <!-- Right Column: Resource Teaser Card -->
+                <div class="right-column">
+                    <h2 id="resource-heading" class="card-title">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    </h2>
+                    
+                    <p class="card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.
+                    </p>
+                    
+                    <a href="#" class="resource-button">
+                        Button Text
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- JavaScript for responsive debugging (development only) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Simple breakpoint detector for development testing
+            function detectBreakpoint() {
+                const width = window.innerWidth;
+                let breakpoint = '';
+
+                if (width <= 767) {
+                    breakpoint = 'mobile';
+                } else if (width <= 1149) {
+                    breakpoint = 'tablet';
+                } else if (width <= 1919) {
+                    breakpoint = 'desktop';
+                } else {
+                    breakpoint = 'desktop-plus';
+                }
+
+                const section = document.querySelector('.content-2column-resource');
+                if (section) {
+                    section.setAttribute('data-breakpoint', breakpoint);
+                }
+
+                console.log(`Content 2-Column Resource - Breakpoint: ${breakpoint} (${width}px)`);
+            }
+
+            // Initialize on load
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', detectBreakpoint);
+            } else {
+                detectBreakpoint();
+            }
+
+            // Update on resize (debounced)
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(detectBreakpoint, 250);
+            });
+        })();
+    </script>
+</body>
+</html>

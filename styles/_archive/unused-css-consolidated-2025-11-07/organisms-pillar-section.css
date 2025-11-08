@@ -1,0 +1,123 @@
+/* ====================================
+   PILLAR SECTION ORGANISM - VERSION 4.0
+   ==================================== */
+/* Component: Organism/Section/Pillar-Section */
+/* Last Updated: 2025-11-03 */
+/* Dependencies: variables-v4.0-20251027.css, molecules-pillar-card.css, molecules-decorative-icon-display.css */
+
+/* ====================================
+   PILLAR SECTION ORGANISM TOKENS
+   ==================================== */
+:root {
+    /* Section Background */
+    --pillar-section-bg: var(--secondary, #eceeef);
+
+    /* Section Spacing */
+    --pillar-section-gap: var(--space-8, 32px);
+    --pillar-section-padding-top: var(--space-8, 32px);
+    --pillar-section-padding-bottom: 0px;
+
+    /* Section Headline Typography */
+    --pillar-section-h1-font-family: 'Lato', sans-serif;
+    --pillar-section-h1-font-weight: 800;
+    --pillar-section-h1-font-size: 36px;
+    --pillar-section-h1-line-height: 54px;
+    --pillar-section-h1-text-transform: uppercase;
+    --pillar-section-h1-color: var(--heading, #1b1464);
+}
+
+/* ====================================
+   BASE PILLAR SECTION STYLES
+   ==================================== */
+.pillar-section {
+    background-color: var(--pillar-section-bg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--pillar-section-gap);
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+}
+
+/* Section Headline Container */
+.pillar-section__header {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding: var(--pillar-section-padding-top) var(--pillar-space-20, 80px) var(--pillar-section-padding-bottom);
+    position: relative;
+    width: 100%;
+}
+
+.pillar-section__headline-wrapper {
+    background-color: var(--pillar-section-bg);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+}
+
+.pillar-section__headline {
+    font-family: var(--pillar-section-h1-font-family);
+    font-weight: var(--pillar-section-h1-font-weight);
+    font-size: var(--pillar-section-h1-font-size);
+    line-height: var(--pillar-section-h1-line-height);
+    text-transform: var(--pillar-section-h1-text-transform);
+    color: var(--pillar-section-h1-color);
+    font-style: normal;
+    position: relative;
+    white-space: nowrap;
+    margin: 0;
+}
+
+/* Individual Pillar Card Container (within section) */
+.pillar-section__card {
+    background-color: var(--pillar-section-bg);
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Override pillar-card background to match section */
+.pillar-section .pillar-card {
+    background-color: var(--pillar-section-bg);
+}
+
+/* ====================================
+   RESPONSIVE BREAKPOINTS
+   ==================================== */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    .pillar-section__card {
+        max-width: 767px;
+        min-width: 380px;
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .pillar-section__card {
+        max-width: 1149px;
+        min-width: 768px;
+    }
+}
+
+/* Desktop: 1150-1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .pillar-section__card {
+        max-width: 1920px;
+        min-width: 1150px;
+    }
+}
+
+/* DesktopPlus: 1920px+ */
+@media (min-width: 1920px) {
+    .pillar-section__card {
+        max-width: 1920px;
+        min-width: 1920px;
+    }
+}

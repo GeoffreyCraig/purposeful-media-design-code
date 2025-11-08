@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section/ContactUs Component Demo - Purposeful Media</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/organisms-section-contactus.css">
+    
+    <style>
+        /* Demo Page Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .demo-header {
+            background-color: #1B1464;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .demo-header h1 {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            font-size: 24px;
+        }
+        
+        .demo-header p {
+            margin: 5px 0 0;
+            opacity: 0.8;
+        }
+        
+        .breakpoint-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1B1464;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Header -->
+    <div class="demo-header">
+        <h1>Section/ContactUs Component Demo</h1>
+        <p>Resize your browser to test responsive breakpoints</p>
+    </div>
+
+    <!-- Contact Us Section Component -->
+    <section class="section-contactus" data-component="Section/ContactUs">
+      <div class="section-container">
+        <div class="contact-form-wrapper">
+          
+          <!-- Form Title -->
+          <h2 class="form-title">Get in Touch</h2>
+          
+          <!-- Form Intro -->
+          <p class="form-intro">Ready to transform your marketing? Tell us what's on your mind.</p>
+          
+          <!-- Contact Form -->
+          <form class="contact-form" id="contact-form">
+            
+            <!-- Name Fields Row -->
+            <div class="form-row name-row">
+              <!-- First Name -->
+              <div class="form-field">
+                <label for="first-name" class="form-label">First Name</label>
+                <input type="text" 
+                       id="first-name" 
+                       name="firstName" 
+                       class="form-input" 
+                       placeholder=""
+                       aria-describedby="first-name-help">
+                <span id="first-name-help" class="form-help">How do you prefer to be addressed?</span>
+              </div>
+              
+              <!-- Last Name -->
+              <div class="form-field">
+                <label for="last-name" class="form-label">Last Name</label>
+                <input type="text" 
+                       id="last-name" 
+                       name="lastName" 
+                       class="form-input" 
+                       placeholder=""
+                       aria-describedby="last-name-help">
+                <span id="last-name-help" class="form-help">What is your last name?</span>
+              </div>
+            </div>
+            
+            <!-- Email Field -->
+            <div class="form-field">
+              <label for="email" class="form-label">Email Address<span class="required">*</span></label>
+              <input type="email" 
+                     id="email" 
+                     name="email" 
+                     class="form-input" 
+                     placeholder=""
+                     required
+                     aria-required="true"
+                     aria-describedby="email-help">
+              <span id="email-help" class="form-help">*This field is required.</span>
+            </div>
+            
+            <!-- Phone Field -->
+            <div class="form-field form-field--phone">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" 
+                     id="phone" 
+                     name="phone" 
+                     class="form-input" 
+                     placeholder=""
+                     aria-describedby="phone-help">
+              <span id="phone-help" class="form-help">What is your contact phone number?</span>
+            </div>
+            
+            <!-- Company Field -->
+            <div class="form-field">
+              <label for="company" class="form-label">Company</label>
+              <input type="text" 
+                     id="company" 
+                     name="company" 
+                     class="form-input" 
+                     placeholder=""
+                     aria-describedby="company-help">
+              <span id="company-help" class="form-help">What is your company?</span>
+            </div>
+            
+            <!-- Message Field -->
+            <div class="form-field form-field--message">
+              <label for="message" class="form-label">Your Message</label>
+              <textarea id="message" 
+                        name="message" 
+                        class="form-textarea" 
+                        rows="4"
+                        placeholder=""
+                        aria-describedby="message-help"></textarea>
+              <span id="message-help" class="form-help">Please write your message</span>
+            </div>
+            
+            <!-- Submit Button -->
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary">
+                <span class="btn-text">Send Message</span>
+              </button>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breakpoint Indicator -->
+    <div class="breakpoint-indicator" id="breakpoint-indicator">
+        Desktop Plus
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            
+            if (form) {
+                // Handle form submission
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Basic validation
+                    if (!data.email) {
+                        showMessage('Please enter your email address', 'error');
+                        return;
+                    }
+                    
+                    // Log the data
+                    console.log('Form submitted:', data);
+                    
+                    // Show success message
+                    showMessage('Thank you for your message! We\'ll get back to you soon.', 'success');
+                    
+                    // Reset form
+                    form.reset();
+                });
+                
+                // Add input focus/blur handlers
+                const inputs = form.querySelectorAll('.form-input, .form-textarea');
+                inputs.forEach(input => {
+                    input.addEventListener('focus', function() {
+                        this.parentElement.classList.add('is-focused');
+                    });
+                    
+                    input.addEventListener('blur', function() {
+                        this.parentElement.classList.remove('is-focused');
+                        if (this.value) {
+                            this.parentElement.classList.add('has-value');
+                        } else {
+                            this.parentElement.classList.remove('has-value');
+                        }
+                    });
+                    
+                    // Check for existing values on load
+                    if (input.value) {
+                        input.parentElement.classList.add('has-value');
+                    }
+                });
+            }
+            
+            // Breakpoint indicator
+            function updateBreakpoint() {
+                const indicator = document.getElementById('breakpoint-indicator');
+                const width = window.innerWidth;
+                
+                if (width < 768) {
+                    indicator.textContent = 'Mobile (<768px)';
+                } else if (width < 1150) {
+                    indicator.textContent = 'Tablet (768-1149px)';
+                } else if (width < 1920) {
+                    indicator.textContent = 'Desktop (1150-1919px)';
+                } else {
+                    indicator.textContent = 'Desktop Plus (1920px+)';
+                }
+            }
+            
+            // Update on load and resize
+            updateBreakpoint();
+            window.addEventListener('resize', updateBreakpoint);
+        });
+        
+        // Message display function
+        function showMessage(message, type = 'info') {
+            // Create message element
+            const messageEl = document.createElement('div');
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'success' ? '#39CCCC' : type === 'error' ? '#EF4444' : '#1B1464'};
+                color: white;
+                padding: 15px 30px;
+                border-radius: 4px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 10000;
+                font-family: 'Open Sans', sans-serif;
+                animation: slideDown 0.3s ease;
+            `;
+            messageEl.textContent = message;
+            
+            // Add animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideDown {
+                    from { transform: translateX(-50%) translateY(-100%); }
+                    to { transform: translateX(-50%) translateY(0); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Add to page
+            document.body.appendChild(messageEl);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                messageEl.remove();
+                style.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

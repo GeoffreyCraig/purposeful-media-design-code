@@ -1,0 +1,77 @@
+/* ============================================
+   About & Contact Page Template Styles
+   Purposeful Media Design System
+   Version: 1.0
+   Dependencies: variables-v4.0-20251027.css
+   Date: 2025-11-07
+
+   Purpose: Template-level layout and background styling
+   for about-contact page content containerization at DesktopPlus
+   ============================================ */
+
+/* =================================================================
+   ABOUT-CONTACT WRAPPER - Content Container for DesktopPlus
+   ================================================================= */
+
+.about-contact-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* =================================================================
+   DESKTOPPLUS BREAKPOINT (1920px+)
+   Containerize content and add background pattern
+   ================================================================= */
+
+@media (min-width: 1920px) {
+    .about-contact-wrapper {
+        max-width: 1920px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* Background pattern extending beyond content */
+    .about-contact-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        height: 100%;
+        background: url('../assets/patterns/Tile cell .png') repeat;
+        background-size: 200px 200px;
+        opacity: 0.15; /* Subtle pattern */
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    /* Ensure all direct children respect the container */
+    .about-contact-wrapper > * {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+/* =================================================================
+   FALLBACK for when Tile cell .png doesn't load
+   Use a subtle gradient instead
+   ================================================================= */
+
+@supports not (background: url('../assets/patterns/Tile cell .png')) {
+    @media (min-width: 1920px) {
+        .about-contact-wrapper::before {
+            background: linear-gradient(
+                135deg,
+                var(--bg-secondary) 0%,
+                var(--bg-primary) 50%,
+                var(--bg-secondary) 100%
+            );
+            opacity: 0.03;
+        }
+    }
+}
+
+/* =================================================================
+   END OF ABOUT & CONTACT PAGE TEMPLATE STYLES
+   ================================================================= */

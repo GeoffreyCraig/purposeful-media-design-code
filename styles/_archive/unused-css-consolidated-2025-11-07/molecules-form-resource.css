@@ -1,0 +1,304 @@
+/* =================================================
+   FORM RESOURCE COMPONENT - MOLECULE
+   Component: form-resource.html
+   Purpose: Resource download form with email capture and HubSpot integration
+   States: Default, Hover, Active, Error, Disabled, Success
+   Responsive: Mobile (380-767px), Tablet (768-1149px), Desktop (1150-1919px), DesktopPlus (1920px+)
+   Version: 1.0 - Fully Tokenized
+   Date: 2025-10-29
+   ================================================= */
+
+/* -------------------------------------------------
+   FORM RESOURCE CONTAINER
+   ------------------------------------------------- */
+
+.form-resource {
+    background-color: var(--color-neutral-100);
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-subtle);
+    padding: var(--space-6) 27px var(--space-8);
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    transition: all var(--transition-slow);
+}
+
+/* -------------------------------------------------
+   SIZE VARIANTS
+   ------------------------------------------------- */
+
+.form-resource--size-large {
+    max-width: 600px;
+}
+
+.form-resource--size-medium {
+    max-width: 500px;
+}
+
+.form-resource--size-small {
+    max-width: 400px;
+}
+
+.form-resource--size-mobile {
+    max-width: 320px;
+    padding: var(--space-6) 27px var(--space-8);
+}
+
+/* -------------------------------------------------
+   FORM STATES
+   ------------------------------------------------- */
+
+.form-resource--state-hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 16px 0px rgba(0, 0, 0, 0.15);
+}
+
+.form-resource--state-disabled {
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* -------------------------------------------------
+   TYPOGRAPHY - TITLE
+   ------------------------------------------------- */
+
+.form-resource__title {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-h3-size);
+    line-height: var(--text-h3-height);
+    color: var(--color-primary-700);
+    text-transform: uppercase;
+}
+
+/* -------------------------------------------------
+   TYPOGRAPHY - DESCRIPTION
+   ------------------------------------------------- */
+
+.form-resource__description {
+    font-family: var(--font-secondary);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    color: var(--color-neutral-600);
+}
+
+/* -------------------------------------------------
+   TYPOGRAPHY - LIST
+   ------------------------------------------------- */
+
+.form-resource__list {
+    font-family: var(--font-secondary);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    color: var(--color-neutral-600);
+    padding-left: 27px;
+    list-style-type: disc;
+}
+
+.form-resource__list li {
+    margin-bottom: 0;
+}
+
+/* -------------------------------------------------
+   FORM ITEM
+   ------------------------------------------------- */
+
+.form-resource__form-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-1) 0;
+    width: 100%;
+    max-width: 356px;
+}
+
+.form-resource__label {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-default-size);
+    line-height: var(--text-form-height);
+    color: var(--color-neutral-600);
+}
+
+.form-resource__input {
+    font-family: var(--font-secondary);
+    font-size: var(--text-default-size);
+    line-height: var(--text-form-height);
+    color: var(--color-neutral-600);
+    padding: var(--space-1) var(--space-2);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-neutral-300);
+    border-radius: var(--radius-small);
+    width: 100%;
+    transition: border-color var(--transition-slow);
+    outline: none;
+}
+
+.form-resource__input::placeholder {
+    color: var(--color-neutral-300);
+    font-weight: var(--font-weight-light);
+    font-style: italic;
+}
+
+.form-resource__input:hover {
+    border-color: var(--color-neutral-400);
+}
+
+.form-resource__input:focus {
+    border-color: var(--color-primary-500);
+}
+
+.form-resource__input:disabled {
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-300);
+    cursor: not-allowed;
+}
+
+.form-resource__form-item--error .form-resource__input {
+    background-color: var(--color-error-50);
+    border-color: var(--color-error-500);
+    color: var(--color-error-500);
+}
+
+.form-resource__helper {
+    font-family: var(--font-secondary);
+    font-style: italic;
+    font-size: var(--text-helper-size);
+    line-height: var(--text-helper-height);
+    color: var(--color-neutral-600);
+}
+
+/* -------------------------------------------------
+   SUBMIT SECTION
+   ------------------------------------------------- */
+
+.form-resource__submit {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: center;
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-8);
+}
+
+/* -------------------------------------------------
+   BUTTON STYLES
+   ------------------------------------------------- */
+
+.form-resource__button {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-default-size);
+    line-height: var(--text-form-height);
+    text-transform: uppercase;
+    text-align: center;
+    padding: var(--space-4) var(--space-20);
+    border-radius: var(--radius-small);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-slow);
+    white-space: nowrap;
+}
+
+.form-resource__button--primary {
+    background-color: var(--color-primary-700);
+    color: var(--color-white);
+}
+
+.form-resource__button--primary:hover {
+    background-color: var(--color-primary-500);
+}
+
+.form-resource__button--primary:active {
+    background-color: var(--color-primary-900);
+}
+
+.form-resource__button--primary:disabled {
+    background-color: var(--color-neutral-400);
+    color: var(--color-neutral-200);
+    cursor: not-allowed;
+}
+
+.form-resource__button--outline {
+    background-color: transparent;
+    color: var(--color-neutral-200);
+    border: 2px solid var(--color-neutral-400);
+}
+
+/* -------------------------------------------------
+   SUCCESS STATE
+   ------------------------------------------------- */
+
+.form-resource--state-success .form-resource__content {
+    display: none;
+}
+
+.form-resource__success {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-5);
+    align-items: center;
+    text-align: center;
+}
+
+.form-resource--state-success .form-resource__success {
+    display: flex;
+}
+
+.form-resource__success-title {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-h3-size);
+    line-height: var(--text-h3-height);
+    color: var(--color-primary-700);
+    text-transform: uppercase;
+}
+
+.form-resource__success-message {
+    font-family: var(--font-secondary);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    color: var(--color-neutral-600);
+}
+
+.form-resource__download-link {
+    font-family: var(--font-secondary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    color: var(--color-primary-700);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color var(--transition-slow);
+}
+
+.form-resource__download-link:hover {
+    color: var(--color-primary-500);
+}
+
+.form-resource__bonus-text {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-default-size);
+    line-height: var(--text-form-height);
+    color: var(--color-primary-700);
+    text-align: center;
+    padding: 0 var(--space-16);
+}
+
+/* -------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   ------------------------------------------------- */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    .form-resource--size-mobile .form-resource__button {
+        padding: var(--space-2) var(--space-16);
+    }
+}
+
+/* =================================================
+   END OF FORM RESOURCE COMPONENT
+   ================================================= */

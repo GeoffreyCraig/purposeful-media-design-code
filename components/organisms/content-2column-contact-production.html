@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content 2 Column Contact Component - Integrated</title>
+
+    <!-- Design System v4.0 Variables and Component Styles -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/organisms-content-2column-contact-integrated.css">
+</head>
+<body>
+    <!-- Content 2 Column Contact Component (Image Right) -->
+    <!-- Extracted from Figma Nodes: 5610:8267, 5411:36733, 5610:8306, 5610:8416 -->
+    <div class="content-2column-contact" data-component="content-2column-contact">
+        <!-- Background Layer (Desktop/DesktopPlus only) -->
+        <div class="content-2column-contact__background" aria-hidden="true">
+            <div class="content-2column-contact__background-color"></div>
+            <img 
+                class="content-2column-contact__background-image" 
+                src="../../assets/images/shutterstock_2492759463.jpg" 
+                alt=""
+                loading="lazy"
+            >
+        </div>
+        
+        <!-- Column Group Container -->
+        <div class="content-2column-contact__columns">
+            <!-- Left Column: Card with Content -->
+            <div class="content-2column-contact__card">
+                <h2 class="content-2column-contact__heading">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                </h2>
+                <p class="content-2column-contact__body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.
+                </p>
+                <button class="content-2column-contact__button" type="button">
+                    <span class="content-2column-contact__button-text">Button Text</span>
+                </button>
+            </div>
+            
+            <!-- Right Column: Image -->
+            <div class="content-2column-contact__image-wrapper">
+                <img 
+                    class="content-2column-contact__image" 
+                    src="../../assets/images/shutterstock_2494045679.jpg" 
+                    alt="Professional woman working on tablet in modern office"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </div>
+    
+    <!-- Component JavaScript -->
+    <script>
+        /**
+         * Content/2ColumnContact Component JavaScript Module
+         * Extracted from Figma Component Nodes: 5610:8267, 5411:36733, 5610:8306, 5610:8416
+         */
+        
+        (function(window, document) {
+            'use strict';
+            
+            // Component configuration
+            const CONFIG = {
+                selectors: {
+                    component: '[data-component="content-2column-contact"]',
+                    button: '.content-2column-contact__button',
+                    card: '.content-2column-contact__card',
+                    image: '.content-2column-contact__image',
+                    backgroundImage: '.content-2column-contact__background-image',
+                    columns: '.content-2column-contact__columns'
+                },
+                breakpoints: {
+                    mobile: 768,
+                    tablet: 1150,
+                    desktop: 1920
+                },
+                classes: {
+                    mobile: 'content-2column-contact--mobile',
+                    tablet: 'content-2column-contact--tablet',
+                    desktop: 'content-2column-contact--desktop',
+                    desktopPlus: 'content-2column-contact--desktop-plus',
+                    loaded: 'content-2column-contact--loaded',
+                    active: 'content-2column-contact--active'
+                }
+            };
+            
+            /**
+             * Content2ColumnContact Component Class
+             */
+            class Content2ColumnContact {
+                constructor(element) {
+                    this.element = element;
+                    this.button = element.querySelector(CONFIG.selectors.button);
+                    this.card = element.querySelector(CONFIG.selectors.card);
+                    this.image = element.querySelector(CONFIG.selectors.image);
+                    this.backgroundImage = element.querySelector(CONFIG.selectors.backgroundImage);
+                    this.currentBreakpoint = null;
+                    this.isInitialized = false;
+                    
+                    this.init();
+                }
+                
+                /**
+                 * Initialize the component
+                 */
+                init() {
+                    if (this.isInitialized) return;
+                    
+                    this.setupEventListeners();
+                    this.handleResponsive();
+                    this.setupIntersectionObserver();
+                    this.element.classList.add(CONFIG.classes.loaded);
+                    
+                    this.isInitialized = true;
+                }
+                
+                /**
+                 * Setup event listeners
+                 */
+                setupEventListeners() {
+                    // Button click handler
+                    if (this.button) {
+                        this.button.addEventListener('click', this.handleButtonClick.bind(this));
+                    }
+                    
+                    // Responsive handler
+                    this.handleResize = this.debounce(this.handleResponsive.bind(this), 250);
+                    window.addEventListener('resize', this.handleResize);
+                }
+                
+                /**
+                 * Setup Intersection Observer for animations
+                 */
+                setupIntersectionObserver() {
+                    if (!window.IntersectionObserver) return;
+                    
+                    const options = {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -10% 0px'
+                    };
+                    
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                this.element.classList.add(CONFIG.classes.active);
+                                observer.unobserve(this.element);
+                            }
+                        });
+                    }, options);
+                    
+                    observer.observe(this.element);
+                }
+                
+                /**
+                 * Handle responsive behavior
+                 */
+                handleResponsive() {
+                    const width = window.innerWidth;
+                    const newBreakpoint = this.getBreakpoint(width);
+                    
+                    if (newBreakpoint === this.currentBreakpoint) return;
+                    
+                    // Remove all breakpoint classes
+                    Object.values(CONFIG.classes).forEach(className => {
+                        if (className.includes('--')) {
+                            this.element.classList.remove(className);
+                        }
+                    });
+                    
+                    // Add appropriate breakpoint class
+                    this.element.classList.add(CONFIG.classes[newBreakpoint]);
+                    
+                    // Handle background image visibility
+                    this.handleBackgroundImage(newBreakpoint);
+                    
+                    // Store current breakpoint
+                    this.currentBreakpoint = newBreakpoint;
+                    
+                    // Emit custom event
+                    this.element.dispatchEvent(new CustomEvent('breakpointChange', {
+                        detail: { breakpoint: newBreakpoint }
+                    }));
+                }
+                
+                /**
+                 * Get current breakpoint based on width
+                 */
+                getBreakpoint(width) {
+                    if (width < CONFIG.breakpoints.mobile) {
+                        return 'mobile';
+                    } else if (width < CONFIG.breakpoints.tablet) {
+                        return 'tablet';
+                    } else if (width < CONFIG.breakpoints.desktop) {
+                        return 'desktop';
+                    } else {
+                        return 'desktopPlus';
+                    }
+                }
+                
+                /**
+                 * Handle background image visibility
+                 */
+                handleBackgroundImage(breakpoint) {
+                    if (!this.backgroundImage) return;
+                    
+                    // Background image is visible only on desktop breakpoints
+                    if (breakpoint === 'desktop' || breakpoint === 'desktopPlus') {
+                        this.backgroundImage.style.display = 'block';
+                    } else {
+                        this.backgroundImage.style.display = 'none';
+                    }
+                }
+                
+                /**
+                 * Handle button click
+                 */
+                handleButtonClick(event) {
+                    event.preventDefault();
+                    
+                    // Emit custom event
+                    const customEvent = new CustomEvent('ctaClick', {
+                        detail: {
+                            component: 'content-2column-contact',
+                            button: this.button,
+                            timestamp: Date.now()
+                        },
+                        bubbles: true,
+                        cancelable: true
+                    });
+                    
+                    this.element.dispatchEvent(customEvent);
+                    
+                    // Log for analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'click', {
+                            event_category: 'CTA',
+                            event_label: 'Content 2 Column Contact',
+                            value: 1
+                        });
+                    }
+                    
+                    console.log('Contact CTA clicked');
+                }
+                
+                /**
+                 * Debounce utility
+                 */
+                debounce(func, wait) {
+                    let timeout;
+                    return function executedFunction(...args) {
+                        const later = () => {
+                            clearTimeout(timeout);
+                            func(...args);
+                        };
+                        clearTimeout(timeout);
+                        timeout = setTimeout(later, wait);
+                    };
+                }
+                
+                /**
+                 * Destroy the component
+                 */
+                destroy() {
+                    window.removeEventListener('resize', this.handleResize);
+                    
+                    if (this.button) {
+                        this.button.removeEventListener('click', this.handleButtonClick);
+                    }
+                    
+                    this.element.classList.remove(CONFIG.classes.loaded, CONFIG.classes.active);
+                    this.isInitialized = false;
+                }
+            }
+            
+            /**
+             * Initialize all components on the page
+             */
+            function initializeAll() {
+                const components = document.querySelectorAll(CONFIG.selectors.component);
+                const instances = [];
+                
+                components.forEach(element => {
+                    instances.push(new Content2ColumnContact(element));
+                });
+                
+                return instances;
+            }
+            
+            /**
+             * Auto-initialize on DOM ready
+             */
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeAll);
+            } else {
+                initializeAll();
+            }
+            
+            /**
+             * Export for use in other modules
+             */
+            window.Content2ColumnContact = Content2ColumnContact;
+            window.Content2ColumnContact.init = initializeAll;
+            window.Content2ColumnContact.CONFIG = CONFIG;
+            
+        })(window, document);
+    </script>
+</body>
+</html>

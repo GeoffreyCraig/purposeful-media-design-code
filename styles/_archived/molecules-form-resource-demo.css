@@ -1,0 +1,111 @@
+/**
+ * Form/Resource Demo Styles
+ * Purposeful Media Promotions Design System
+ *
+ * Demo and documentation styles for Form/Resource molecule component
+ * Tokenized: 2025-10-29
+ * Version: 1.0
+ * Variables: v4.0-20251027
+ */
+
+/* ============================================
+   GLOBAL RESET (Demo Page Only)
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================
+   BODY STYLES
+   ============================================ */
+
+body {
+    font-family: var(--font-secondary);
+    color: var(--color-neutral-600);
+    line-height: 1.5;
+    background-color: var(--bg-secondary);
+    padding: var(--space-10) var(--space-5);
+}
+
+/* ============================================
+   DEMO CONTAINER
+   ============================================ */
+
+.demo-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   DEMO HEADINGS
+   ============================================ */
+
+.demo-container h1 {
+    text-align: center;
+    margin-bottom: var(--space-10);
+    font-family: var(--font-primary);
+    color: var(--color-primary-700);
+}
+
+.demo-container h3 {
+    font-family: var(--font-primary);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-5);
+}
+
+/* ============================================
+   DEMO CONTROLS
+   ============================================ */
+
+.demo-controls {
+    margin-top: var(--space-10);
+    text-align: center;
+}
+
+.demo-controls h3 {
+    margin-bottom: var(--space-5);
+}
+
+.demo-controls-group {
+    margin-bottom: var(--space-5);
+}
+
+.demo-controls-group label {
+    font-weight: var(--font-weight-semibold);
+    margin-right: var(--space-2);
+}
+
+.demo-controls button {
+    margin: 0 var(--space-1);
+    padding: var(--space-1) var(--space-4);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-neutral-300);
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.demo-controls button:hover {
+    background-color: var(--color-primary-100);
+    border-color: var(--color-primary-500);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    body {
+        padding: var(--space-5) var(--space-2);
+    }
+
+    .demo-controls button {
+        margin: var(--space-1);
+        padding: var(--space-1) var(--space-2);
+        font-size: var(--text-small-size);
+    }
+}

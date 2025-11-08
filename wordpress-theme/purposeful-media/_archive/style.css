@@ -1,0 +1,38 @@
+/*
+Theme Name: Purposeful Media Promotions
+Theme URI: https://purposefulmediapromotions.com
+Author: Purposeful Media Promotions
+Author URI: https://purposefulmediapromotions.com
+Description: Custom WordPress theme for Purposeful Media B2B marketing website. Built with atomic design methodology and strict adherence to the Purposeful Media Design System.
+Version: 1.1.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: Proprietary
+Text Domain: purposeful-media
+Tags: business, marketing, b2b, custom-design
+*/
+
+/**
+ * =================================================
+ * PURPOSEFUL MEDIA WORDPRESS THEME
+ * Version: 1.0.0
+ * Created: October 14, 2025
+ * =================================================
+ * 
+ * This theme uses a modular CSS architecture.
+ * Individual component styles are loaded via functions.php
+ * using wp_enqueue_style() for better performance.
+ * 
+ * Design System:
+ * - Design tokens in assets/css/variables.css
+ * - Component styles in assets/css/
+ * - Follows BEM naming convention
+ * - Mobile-first responsive design
+ * - Accessibility-first approach
+ * 
+ * =================================================
+ */
+
+/* This file intentionally left minimal - styles are enqueued separately */
+

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources Section - Page Example | Purposeful Media</title>
+    
+    <!-- Import all required stylesheets -->
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-cards-resources.css">
+    <link rel="stylesheet" href="../../styles/organisms-section-resources.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Page Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Main Content Area */
+        main {
+            flex: 1;
+            width: 100%;
+        }
+        
+        /* Page Header (for context - not part of component) */
+        .page-header {
+            background-color: #1B1464;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-family: 'Lato', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .page-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive Info Bar */
+        .responsive-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1B1464;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .responsive-info::before {
+            content: 'Viewport: ';
+            opacity: 0.8;
+        }
+        
+        /* Page Footer (for context - not part of component) */
+        .page-footer {
+            background-color: #2D313E;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        /* Override for card icon backgrounds to ensure they work */
+        .card-resources__icon {
+            background-image: url('../../assets/svg/decorative-icons/purposeful-sprite-symbolic.svg');
+            background-size: 540px 1440px;
+            background-repeat: no-repeat;
+        }
+        
+        /* Fallback background for cards without thumbnails */
+        .card-resources {
+            background: linear-gradient(135deg, #1B1464 0%, #36448F 100%);
+        }
+        
+        .card-resources__thumbnail {
+            display: none; /* Hide since we don't have the actual images */
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 767px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header (for context) -->
+    <header class="page-header">
+        <h1>Our Resources</h1>
+        <p>Download our free guides, templates, and tools to accelerate your B2B marketing success</p>
+    </header>
+    
+    <!-- Main Content Area -->
+    <main>
+        <!-- SECTION/RESOURCES COMPONENT -->
+        <section class="section-resources">
+            <div class="section-resources__grid">
+                <!-- First Row -->
+                <div class="section-resources__row">
+                    <!-- Card 1 -->
+                    <div class="section-resources__card">
+                        <div class="card-resources">
+                            <img class="card-resources__thumbnail" src="../../assets/images/image-blank-lg-portrait-TN.png" alt="Resource thumbnail">
+                            <div class="card-resources__overlay"></div>
+                            <div class="card-resources__content">
+                                <div class="card-resources__header">
+                                    <div class="card-resources__icon card-resources__icon--accelerate-white"></div>
+                                    <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                                </div>
+                                <p class="card-resources__cta">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <a href="#download" class="card-resources__button">
+                                    <span class="card-resources__button-text">Button Text</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="section-resources__card">
+                        <div class="card-resources">
+                            <img class="card-resources__thumbnail" src="../../assets/images/image-blank-lg-portrait-TN.png" alt="Resource thumbnail">
+                            <div class="card-resources__overlay"></div>
+                            <div class="card-resources__content">
+                                <div class="card-resources__header">
+                                    <div class="card-resources__icon card-resources__icon--attract-white"></div>
+                                    <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                                </div>
+                                <p class="card-resources__cta">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <a href="#download" class="card-resources__button">
+                                    <span class="card-resources__button-text">Button Text</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="section-resources__card">
+                        <div class="card-resources">
+                            <img class="card-resources__thumbnail" src="../../assets/images/image-blank-lg-portrait-TN.png" alt="Resource thumbnail">
+                            <div class="card-resources__overlay"></div>
+                            <div class="card-resources__content">
+                                <div class="card-resources__header">
+                                    <div class="card-resources__icon card-resources__icon--contact-white"></div>
+                                    <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                                </div>
+                                <p class="card-resources__cta">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <a href="#download" class="card-resources__button">
+                                    <span class="card-resources__button-text">Button Text</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4 -->
+                    <div class="section-resources__card">
+                        <div class="card-resources">
+                            <img class="card-resources__thumbnail" src="../../assets/images/image-blank-lg-portrait-TN.png" alt="Resource thumbnail">
+                            <div class="card-resources__overlay"></div>
+                            <div class="card-resources__content">
+                                <div class="card-resources__header">
+                                    <div class="card-resources__icon card-resources__icon--delight-white"></div>
+                                    <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                                </div>
+                                <p class="card-resources__cta">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <a href="#download" class="card-resources__button">
+                                    <span class="card-resources__button-text">Button Text</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Second Row -->
+                <div class="section-resources__row">
+                    <!-- Card 5 -->
+                    <div class="section-resources__card">
+                        <div class="card-resources">
+                            <img class="card-resources__thumbnail" src="../../assets/images/image-blank-lg-portrait-TN.png" alt="Resource thumbnail">
+                            <div class="card-resources__overlay"></div>
+                            <div class="card-resources__content">
+                                <div class="card-resources__header">
+                                    <div class="card-resources__icon card-resources__icon--download-white"></div>
+                                    <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                                </div>
+                                <p class="card-resources__cta">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <a href="#download" class="card-resources__button">
+                                    <span class="card-resources__button-text">Button Text</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 6 -->
+                    <div class="section-resources__card">
+                        <div class="card-resources">
+                            <img class="card-resources__thumbnail" src="../../assets/images/image-blank-lg-portrait-TN.png" alt="Resource thumbnail">
+                            <div class="card-resources__overlay"></div>
+                            <div class="card-resources__content">
+                                <div class="card-resources__header">
+                                    <div class="card-resources__icon card-resources__icon--efficiency-white"></div>
+                                    <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                                </div>
+                                <p class="card-resources__cta">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <a href="#download" class="card-resources__button">
+                                    <span class="card-resources__button-text">Button Text</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 7 -->
+                    <div class="section-resources__card">
+                        <div class="card-resources">
+                            <img class="card-resources__thumbnail" src="../../assets/images/image-blank-lg-portrait-TN.png" alt="Resource thumbnail">
+                            <div class="card-resources__overlay"></div>
+                            <div class="card-resources__content">
+                                <div class="card-resources__header">
+                                    <div class="card-resources__icon card-resources__icon--email-white"></div>
+                                    <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                                </div>
+                                <p class="card-resources__cta">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <a href="#download" class="card-resources__button">
+                                    <span class="card-resources__button-text">Button Text</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 8 -->
+                    <div class="section-resources__card">
+                        <div class="card-resources">
+                            <img class="card-resources__thumbnail" src="../../assets/images/image-blank-lg-portrait-TN.png" alt="Resource thumbnail">
+                            <div class="card-resources__overlay"></div>
+                            <div class="card-resources__content">
+                                <div class="card-resources__header">
+                                    <div class="card-resources__icon card-resources__icon--engage-white"></div>
+                                    <h3 class="card-resources__heading">Lorem Ipsum Dolor Sit Amet</h3>
+                                </div>
+                                <p class="card-resources__cta">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <a href="#download" class="card-resources__button">
+                                    <span class="card-resources__button-text">Button Text</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION/RESOURCES COMPONENT -->
+    </main>
+    
+    <!-- Page Footer (for context) -->
+    <footer class="page-footer">
+        <p>&copy; 2025 Purposeful Media Promotions. All rights reserved.</p>
+    </footer>
+    
+    <!-- Responsive Indicator -->
+    <div class="responsive-info" id="responsiveInfo">Desktop Plus</div>
+    
+    <script>
+        // Update responsive indicator based on viewport width
+        function updateResponsiveIndicator() {
+            const width = window.innerWidth;
+            const indicator = document.getElementById('responsiveInfo');
+            
+            if (width < 768) {
+                indicator.textContent = 'Mobile';
+                indicator.style.backgroundColor = '#39CCCC';
+            } else if (width < 1150) {
+                indicator.textContent = 'Tablet';
+                indicator.style.backgroundColor = '#F97316';
+            } else if (width < 1920) {
+                indicator.textContent = 'Desktop';
+                indicator.style.backgroundColor = '#1D50DE';
+            } else {
+                indicator.textContent = 'Desktop Plus';
+                indicator.style.backgroundColor = '#1B1464';
+            }
+        }
+        
+        // Update on load and resize
+        updateResponsiveIndicator();
+        window.addEventListener('resize', updateResponsiveIndicator);
+        
+        // Add smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                console.log('Download button clicked');
+            });
+        });
+    </script>
+</body>
+</html>

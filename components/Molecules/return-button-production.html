@@ -1,0 +1,73 @@
+<!-- =================================================
+     RETURN BUTTON MOLECULE
+     Component: Floating Return-To-Top Button
+     Purpose: Fixed position button that scrolls page to top
+     Version: 1.0 (Production-ready)
+     Date: 2025-11-05
+
+     CSS Dependencies:
+     - variables-v4.0-20251027.css
+     - molecules-ui-icon-display.css
+     - molecules-return-button.css
+
+     Features:
+     - Fixed position bottom-right corner
+     - Appears after scrolling 300px
+     - Smooth scroll animation to top
+     - Icon hover color change (gray → navy)
+     - Responsive positioning across all breakpoints
+
+     Specifications:
+     - Button Size: 48px × 48px
+     - Icon: ui-icon-display large (32px)
+     - Background: White 90% opacity
+     - Border Radius: 8px
+     - Shadow: Subtle with hover enhancement
+     ================================================= -->
+<link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+<link rel="stylesheet" href="../../styles/molecules-ui-icon-display.css">
+<link rel="stylesheet" href="../../styles/molecules-return-button.css">
+
+<button class="return-button" id="returnButton" aria-label="Return to top">
+    <div class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray" data-direction="up"></div>
+</button>
+
+<script>
+    /**
+     * Return to Top Button Functionality
+     * Version: 1.0
+     * Last Modified: 2025-11-05
+     */
+    (function() {
+        'use strict';
+
+        const returnButton = document.getElementById('returnButton');
+
+        // Show/hide button based on scroll position
+        function handleScroll() {
+            const scrollPosition = window.pageYOffset;
+            const showThreshold = 300; // Show button after scrolling 300px
+
+            if (scrollPosition > showThreshold) {
+                returnButton.classList.add('visible');
+            } else {
+                returnButton.classList.remove('visible');
+            }
+        }
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', handleScroll);
+        returnButton.addEventListener('click', scrollToTop);
+
+        // Initial check
+        handleScroll();
+    })();
+</script>

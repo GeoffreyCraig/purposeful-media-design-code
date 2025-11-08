@@ -3,7 +3,7 @@
    ================================================= */
 
 /* Import design tokens */
-@import '../variables-v2.0-20250915.css';
+@import '../variables-v4.0-20251027.css';
 
 /* Import header/menu styles from interior-page template */
 @import 'interior-page.css';

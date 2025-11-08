@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interior Page Template - Purposeful Media Promotions Design System">
+    <title>Interior Page | Purposeful Media Promotions</title>
+
+    <!-- Google Fonts (Load BEFORE CSS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Production CSS - Individual Files (Safari compatibility) -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/production-molecules.css">
+    <link rel="stylesheet" href="../../styles/production-organisms.css">
+    <link rel="stylesheet" href="../../styles/organisms-heroes.css">
+    <link rel="stylesheet" href="../../styles/organisms-text-block.css">
+    <link rel="stylesheet" href="../../styles/organisms-content-2column-graphic.css">
+    <link rel="stylesheet" href="../../styles/templates-base.css">
+
+    <style>
+        /* Reset default body margins for template */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         TEMPLATE STRUCTURE: INTERIOR PAGE
+         ======================================== -->
+
+    <!-- ========================================
+         1. HEADER: Banner Header Main
+         ======================================== -->
+    <header class="banner-header">
+        <div class="banner-header__container">
+            <div class="banner-header__logo">
+                <a href="/" class="banner-header__logo-link" aria-label="Purposeful Media Promotions Home">
+                    <!-- Mobile Logo: 380-767px -->
+                    <img
+                        src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg"
+                        alt="Purposeful Media Promotions"
+                        class="banner-header__logo-image banner-header__logo-image--mobile"
+                    >
+                    <!-- Tablet Logo: 768-1149px -->
+                    <img
+                        src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg"
+                        alt="Purposeful Media Promotions"
+                        class="banner-header__logo-image banner-header__logo-image--tablet"
+                    >
+                    <!-- Desktop/DesktopPlus Logo: 1150px+ -->
+                    <img
+                        src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg"
+                        alt="Purposeful Media Promotions"
+                        class="banner-header__logo-image banner-header__logo-image--desktop"
+                    >
+                </a>
+            </div>
+
+            <!-- Menu Wrapper -->
+            <div class="banner-header__menu-wrapper">
+                <!-- Desktop Navigation Menu -->
+                <nav class="banner-header__menu" role="navigation" aria-label="Main navigation">
+                    <!-- Home -->
+                    <div class="banner-header__menu-item">
+                        <a href="/" class="banner-header__menu-link" data-page="home">Home</a>
+                    </div>
+
+                    <!-- Solutions -->
+                    <div class="banner-header__menu-item">
+                        <span class="banner-header__menu-link">Solutions</span>
+                        <div class="banner-header__dropdown">
+                            <a href="/email-management" class="banner-header__dropdown-link">Email Management</a>
+                            <a href="/content-creation" class="banner-header__dropdown-link">Content Creation</a>
+                            <a href="/webinar-production" class="banner-header__dropdown-link">Webinar Production</a>
+                        </div>
+                    </div>
+
+                    <!-- Resources -->
+                    <div class="banner-header__menu-item">
+                        <span class="banner-header__menu-link">Resources</span>
+                        <div class="banner-header__dropdown">
+                            <a href="/resource-library" class="banner-header__dropdown-link">Resource Library</a>
+                            <a href="/about-us" class="banner-header__dropdown-link">About Us</a>
+                            <a href="/blog" class="banner-header__dropdown-link">Blog</a>
+                        </div>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="banner-header__menu-item">
+                        <a href="/contact" class="banner-header__menu-link" data-page="contact">Contact</a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Hamburger Menu Button (Mobile/Tablet) -->
+            <button class="banner-header__hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span class="banner-header__hamburger-icon"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="banner-header__mobile-menu">
+            <nav class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+                <a href="/" class="mobile-menu__link" data-page="home">Home</a>
+
+                <div class="mobile-menu__submenu">
+                    <div class="mobile-menu__link mobile-menu__trigger">Solutions</div>
+                    <div class="mobile-menu__submenu-items">
+                        <a href="/email-management" class="mobile-menu__sublink">Email Management</a>
+                        <a href="/content-creation" class="mobile-menu__sublink">Content Creation</a>
+                        <a href="/webinar-production" class="mobile-menu__sublink">Webinar Production</a>
+                    </div>
+                </div>
+
+                <div class="mobile-menu__submenu">
+                    <div class="mobile-menu__link mobile-menu__trigger">Resources</div>
+                    <div class="mobile-menu__submenu-items">
+                        <a href="/resource-library" class="mobile-menu__sublink">Resource Library</a>
+                        <a href="/about-us" class="mobile-menu__sublink">About Us</a>
+                        <a href="/blog" class="mobile-menu__sublink">Blog</a>
+                    </div>
+                </div>
+
+                <a href="/contact" class="mobile-menu__link" data-page="contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- JavaScript for Header Menu Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.banner-header__hamburger');
+            const mobileMenu = document.querySelector('.banner-header__mobile-menu');
+
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', function() {
+                    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                    hamburger.setAttribute('aria-expanded', !isExpanded);
+                    hamburger.classList.toggle('banner-header__hamburger--active');
+                    mobileMenu.classList.toggle('banner-header__mobile-menu--active');
+                });
+            }
+
+            // Desktop dropdown click functionality
+            document.querySelectorAll('.banner-header__menu-item').forEach(menuItem => {
+                const menuLink = menuItem.querySelector('.banner-header__menu-link:not([href])');
+                const dropdown = menuItem.querySelector('.banner-header__dropdown');
+
+                if (menuLink && dropdown) {
+                    menuLink.style.cursor = 'pointer';
+
+                    // Toggle dropdown on click
+                    menuLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Check if this dropdown is currently open
+                        const isOpen = dropdown.style.display === 'block';
+
+                        // Close all other dropdowns and remove active state from all menu links
+                        document.querySelectorAll('.banner-header__dropdown').forEach(otherDropdown => {
+                            otherDropdown.style.display = 'none';
+                        });
+                        document.querySelectorAll('.banner-header__menu-link').forEach(link => {
+                            link.classList.remove('banner-header__menu-link--active');
+                        });
+
+                        // Toggle current dropdown and active state
+                        if (!isOpen) {
+                            dropdown.style.display = 'block';
+                            menuLink.classList.add('banner-header__menu-link--active');
+                        }
+                    });
+                }
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.banner-header__menu-item')) {
+                    document.querySelectorAll('.banner-header__dropdown').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.banner-header__menu-link').forEach(link => {
+                        link.classList.remove('banner-header__menu-link--active');
+                    });
+                }
+            });
+
+            // Prevent dropdown from closing when clicking inside
+            document.querySelectorAll('.banner-header__dropdown').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+
+            // Mobile submenu toggles
+            document.querySelectorAll('.mobile-menu__trigger').forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const submenu = this.parentElement;
+                    submenu.classList.toggle('mobile-menu__submenu--expanded');
+                });
+            });
+
+            // Active state based on current page
+            const currentPath = window.location.pathname;
+
+            document.querySelectorAll('[data-page]').forEach(item => {
+                const page = item.getAttribute('data-page');
+                if (currentPath === '/' && page === 'home') {
+                    item.classList.add('active');
+                    item.closest('.banner-header__menu-link')?.classList.add('banner-header__menu-link--active');
+                    item.closest('.mobile-menu__link')?.classList.add('mobile-menu__link--active');
+                } else if (currentPath.includes('/' + page)) {
+                    item.classList.add('active');
+                    item.closest('.banner-header__menu-link')?.classList.add('banner-header__menu-link--active');
+                    item.closest('.mobile-menu__link')?.classList.add('mobile-menu__link--active');
+                }
+            });
+
+            // Handle window resize - close mobile menu when expanding to desktop
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    // Close mobile menu if viewport is desktop width (1150px+)
+                    if (window.innerWidth >= 1150) {
+                        if (mobileMenu) {
+                            mobileMenu.classList.remove('banner-header__mobile-menu--active');
+                        }
+                        if (hamburger) {
+                            hamburger.classList.remove('banner-header__hamburger--active');
+                            hamburger.setAttribute('aria-expanded', 'false');
+                        }
+                        // Close any open submenus
+                        document.querySelectorAll('.mobile-menu__submenu').forEach(submenu => {
+                            submenu.classList.remove('mobile-menu__submenu--expanded');
+                        });
+                    }
+                }, 250); // Debounce for smooth performance
+            });
+        });
+    </script>
+
+    <!-- ========================================
+         MAIN CONTENT WRAPPER (DesktopPlus containerization)
+         ======================================== -->
+    <main class="interior-wrapper">
+
+        <!-- ========================================
+             2. HERO SECTION: Hero Simple Default
+             ======================================== -->
+        <section class="hero-simple" role="banner" aria-label="Page Header">
+            <div class="hero-simple__content">
+                <h1 class="hero-simple__headline">Interior Page Headline</h1>
+            </div>
+        </section>
+
+        <!-- ========================================
+             3. SECTION 1: CONTENT (WIDE LAYOUT)
+             ======================================== -->
+        <section class="text-block text-block--wide" data-layout="wide">
+            <div class="text-block__container">
+                <article class="text-block__content">
+
+                    <!-- Header with H1 and Lead Paragraph -->
+                    <header class="text-block__header">
+                        <h1 class="headline headline--h1">Main Content Heading</h1>
+                        <p class="paragraph paragraph--lead">This is the lead paragraph that introduces the content. The wide layout uses full page width with custom padding specifications for optimal readability across all breakpoints.</p>
+                    </header>
+
+                    <!-- Content Section 1 -->
+                    <section class="text-block__section">
+                        <h2 class="headline headline--h2">Section One Heading</h2>
+                        <p class="paragraph paragraph--default">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                        <p class="paragraph paragraph--default">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </section>
+
+                    <!-- Content Section 2 -->
+                    <section class="text-block__section">
+                        <h2 class="headline headline--h2">Section Two Heading</h2>
+                        <p class="paragraph paragraph--default">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+
+                        <h3 class="headline headline--h3">Subsection Heading</h3>
+                        <p class="paragraph paragraph--default">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+
+                        <!-- Unordered List -->
+                        <ul class="text-block__list text-block__list--unordered">
+                            <li class="text-block__list-item">
+                                <span class="paragraph paragraph--default">First key point or benefit</span>
+                            </li>
+                            <li class="text-block__list-item">
+                                <span class="paragraph paragraph--default">Second key point or benefit</span>
+                            </li>
+                            <li class="text-block__list-item">
+                                <span class="paragraph paragraph--default">Third key point or benefit</span>
+                            </li>
+                            <li class="text-block__list-item">
+                                <span class="paragraph paragraph--default">Fourth key point or benefit</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Content Section 3 -->
+                    <section class="text-block__section">
+                        <h2 class="headline headline--h2">Section Three Heading</h2>
+                        <p class="paragraph paragraph--default">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+
+                        <!-- Icon List -->
+                        <ul class="text-block__icon-list">
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">Feature or service item one</span>
+                            </li>
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">Feature or service item two</span>
+                            </li>
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">Feature or service item three</span>
+                            </li>
+                            <li class="text-block__icon-list-item">
+                                <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="teal"></span>
+                                <span class="paragraph paragraph--default">Feature or service item four</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                </article>
+            </div>
+        </section>
+
+        <!-- Initialize text-block icons -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const icons = document.querySelectorAll('.ui-icon-display');
+                icons.forEach(icon => {
+                    const iconName = icon.getAttribute('data-icon');
+                    const color = icon.getAttribute('data-color');
+                    if (iconName && color) {
+                        icon.classList.add(`icon--${iconName}-${color}`);
+                    }
+                });
+            });
+        </script>
+
+        <!-- ========================================
+             4. SECTION 2: YOUR NEXT STEP
+             ======================================== -->
+
+        <!-- Banner Spacer: Headline + Subtitle -->
+        <div class="card-banner-spacer" data-component="card-banner-spacer" data-variant="headline-subtitle" id="start">
+            <div class="banner-spacer-content">
+                <!-- Icon -->
+                <div class="decorative-icon-display decorative-icon-display--xlarge" data-icon="contact" data-color="white"></div>
+
+                <!-- Text Container: Headline + Subtitle -->
+                <div class="banner-spacer-header">
+                    <!-- Headline -->
+                    <h1 class="banner-headline">Your Next Step</h1>
+
+                    <!-- Subtitle -->
+                    <p class="banner-subtitle">Ready to get started? Let's connect.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Initialize banner icons -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const bannerIcons = document.querySelectorAll('.card-banner-spacer .decorative-icon-display');
+                bannerIcons.forEach(icon => {
+                    const iconName = icon.getAttribute('data-icon');
+                    const color = icon.getAttribute('data-color');
+                    if (iconName && color) {
+                        icon.classList.add(`icon--${iconName}-${color}`);
+                    }
+                });
+            });
+        </script>
+
+        <!-- Content 2-Column Graphic -->
+        <div class="content-2column-graphic">
+            <!-- Background Image -->
+            <div class="content-2column-graphic__background">
+                <img src="../../assets/images/shutterstock_2085055825.jpg"
+                     alt=""
+                     class="content-2column-graphic__background-image">
+            </div>
+
+            <!-- Content Container -->
+            <div class="content-2column-graphic__container">
+                <!-- Left Column -->
+                <div class="content-2column-graphic__column content-2column-graphic__column--left">
+                    <!-- Transform Card -->
+                    <div class="teaser-card">
+                        <div class="teaser-card__headline">
+                            <h2 class="teaser-card__title">
+                               Ready to transform your marketing efforts?
+                            </h2>
+                        </div>
+                        <p class="teaser-card__description">
+                            Schedule a free consultation to discuss your specific challenges and opportunities.
+                        </p>
+                        <button class="teaser-card__button teaser-card__button--gold">
+                            <span class="teaser-card__button-text">Schedule</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="content-2column-graphic__column content-2column-graphic__column--right">
+                    <!-- Ready to Grow Card -->
+                    <div class="teaser-card">
+                        <div class="teaser-card__headline">
+                            <h2 class="teaser-card__title">
+                                Have questions first?
+                            </h2>
+                        </div>
+                        <p class="teaser-card__description">
+                            Get in touch to start a conversation about how we can help your business grow.
+                        </p>
+                        <button class="teaser-card__button teaser-card__button--navy">
+                            <span class="teaser-card__button-text">Get in Touch</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Content 2-Column Graphic: Button Click Handlers
+            document.addEventListener('DOMContentLoaded', function() {
+                const scheduleButton = document.querySelector('.teaser-card__button--gold');
+                const contactButton = document.querySelector('.teaser-card__button--navy');
+
+                if (scheduleButton) {
+                    scheduleButton.addEventListener('click', function() {
+                        console.log('Schedule button clicked');
+                        // Add scheduling action here (e.g., redirect to calendar page)
+                    });
+                }
+
+                if (contactButton) {
+                    contactButton.addEventListener('click', function() {
+                        console.log('Contact button clicked');
+                        // Add contact action here (e.g., redirect to contact page)
+                    });
+                }
+            });
+        </script>
+
+    </main>
+    <!-- End of interior-wrapper -->
+
+    <!-- ========================================
+         5. FOOTER: Footer Main
+         ======================================== -->
+    <footer class="footer-responsive">
+        <!-- DESKTOP/TABLET FOOTER (768px and up) -->
+        <div class="footer-main" data-breakpoint="responsive">
+            <div class="footer-container">
+                <!-- Logo Section -->
+                <div class="footer-logo-section">
+                    <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg"
+                         alt="Purposeful Media Promotions"
+                         class="footer-logo">
+                </div>
+
+                <!-- Footer Content Columns -->
+                <div class="footer-content">
+                    <!-- Column 1: Services -->
+                    <div class="footer-column" data-column="services">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Services</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a></li>
+                                    <li><a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a></li>
+                                    <li><a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a></li>
+                                    <li><span class="footer-menu-link disabled">Succession Planning [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Business Unit Growth [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Who We Serve -->
+                    <div class="footer-column" data-column="who-we-serve">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Who We Serve</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><span class="footer-menu-link disabled">Revenue Growth [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Preparing for Exit [Coming Soon]</span></li>
+                                    <li><span class="footer-menu-link disabled">Plan a Webinar [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Resources -->
+                    <div class="footer-column" data-column="resources">
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Resources</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/blog" class="footer-menu-link">Read Our Blog</a></li>
+                                    <li><a href="/resources/thought-leadership" class="footer-menu-link">Thought Leadership</a></li>
+                                    <li><span class="footer-menu-link disabled">Pricing [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Company & Newsletter -->
+                    <div class="footer-column" data-column="company-newsletter">
+                        <!-- Company Menu -->
+                        <div class="footer-menu-section">
+                            <h3 class="footer-menu-title">Company</h3>
+                            <nav class="footer-menu-nav">
+                                <ul class="footer-menu-list">
+                                    <li><a href="/about" class="footer-menu-link">About Us</a></li>
+                                    <li><a href="/contact" class="footer-menu-link">Contact Us</a></li>
+                                    <li><a href="/privacy" class="footer-menu-link">Privacy Policy</a></li>
+                                    <li><span class="footer-menu-link disabled">Affiliates [Coming Soon]</span></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Newsletter Form -->
+                        <div class="footer-newsletter">
+                            <form class="form-newsletter form-newsletter--mobile">
+                                <h3 class="form-newsletter__title">Stay Connected</h3>
+                                <p class="form-newsletter__description">
+                                    Share your email address and get our B2B marketing strategies and digital transformation inspirations in your inbox.
+                                </p>
+                                <div class="form-newsletter__field-container">
+                                    <label for="footer-email" class="form-newsletter__label">Email Address*</label>
+                                    <div class="form-newsletter__input-wrapper">
+                                        <input type="email"
+                                               id="footer-email"
+                                               name="email"
+                                               class="form-newsletter__input"
+                                               placeholder="Write your input here"
+                                               required
+                                               aria-required="true"
+                                               aria-invalid="false">
+                                    </div>
+                                    <span class="form-newsletter__helper">*This field is required.</span>
+                                </div>
+                                <div class="form-newsletter__submit-container">
+                                    <button type="submit" class="form-newsletter__submit">
+                                        Subscribe Now
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attribution Sub-footer -->
+            <div class="footer-attribution">
+                <div class="footer-attribution-content">
+                    <span class="footer-copyright">© All rights reserved 2025</span>
+                    <span class="footer-divider">|</span>
+                    <span class="footer-company">Purposeful Media Promotions</span>
+                    <span class="footer-divider">|</span>
+                    <a href="/policy" class="footer-policy-link">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE FOOTER (767px and below) -->
+        <div class="footer-mobile">
+            <div class="footer-mobile__top">
+                <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg"
+                     alt="Purposeful Media Promotions"
+                     class="footer-mobile__logo">
+            </div>
+
+            <nav class="footer-mobile__nav">
+                <!-- Services -->
+                <div class="footer-mobile__nav-item" data-dropdown="services">
+                    <span class="footer-mobile__nav-text">Services</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+
+                <!-- Services Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-services">
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/email-marketing" class="dropdown-mobile__link">Email Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/webinar-production" class="dropdown-mobile__link">Webinar Production</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/services/inbound-marketing" class="dropdown-mobile__link">Inbound Marketing</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Succession Planning</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Business Unit Growth</span>
+                    </div>
+                </div>
+
+                <!-- Who We Serve -->
+                <div class="footer-mobile__nav-item" data-dropdown="who-we-serve">
+                    <span class="footer-mobile__nav-text">Who We Serve</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+
+                <!-- Who We Serve Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-who-we-serve">
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Revenue Growth</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Preparing for Exit</span>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Plan a Webinar</span>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div class="footer-mobile__nav-item" data-dropdown="resources">
+                    <span class="footer-mobile__nav-text">Resources</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+
+                <!-- Resources Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-resources">
+                    <div class="dropdown-mobile__item">
+                        <a href="/blog" class="dropdown-mobile__link">Read Our Blog</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/resources/thought-leadership" class="dropdown-mobile__link">Thought Leadership</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Pricing</span>
+                    </div>
+                </div>
+
+                <!-- Company -->
+                <div class="footer-mobile__nav-item" data-dropdown="company">
+                    <span class="footer-mobile__nav-text">Company</span>
+                    <span class="footer-mobile__nav-arrow">&gt;</span>
+                </div>
+
+                <!-- Company Dropdown -->
+                <div class="dropdown-mobile" id="dropdown-company">
+                    <div class="dropdown-mobile__item">
+                        <a href="/about" class="dropdown-mobile__link">About Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/contact" class="dropdown-mobile__link">Contact Us</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <a href="/privacy" class="dropdown-mobile__link">Privacy Policy</a>
+                    </div>
+                    <div class="dropdown-mobile__item">
+                        <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Affiliates [Coming Soon]</span>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Newsletter Form for Mobile -->
+            <div class="footer-mobile__newsletter">
+                <form class="form-newsletter form-newsletter--mobile">
+                    <h3 class="form-newsletter__title">Stay Connected</h3>
+                    <p class="form-newsletter__description">
+                        Get B2B marketing strategies and digital transformation inspiration in your inbox.
+                    </p>
+                    <div class="form-newsletter__field-container">
+                        <label for="footer-mobile-email" class="form-newsletter__label">Email Address*</label>
+                        <div class="form-newsletter__input-wrapper">
+                            <input type="email"
+                                   id="footer-mobile-email"
+                                   name="email"
+                                   class="form-newsletter__input"
+                                   placeholder="Write your input here"
+                                   required
+                                   aria-required="true"
+                                   aria-invalid="false">
+                        </div>
+                        <span class="form-newsletter__helper">*This field is required.</span>
+                    </div>
+                    <div class="form-newsletter__submit-container">
+                        <button type="submit" class="form-newsletter__submit">
+                            Subscribe Now
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="footer-mobile__attribution">
+                <div class="footer-mobile__attribution-content">
+                    <div class="footer-mobile__copyright">© All rights reserved 2025</div>
+                    <div class="footer-mobile__company">Purposeful Media Promotions</div>
+                    <a href="/policy" class="footer-mobile__policy">Policy Statement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Footer Accordion Script -->
+    <script>
+        class MobileFooterNav {
+            constructor() {
+                this.navItems = document.querySelectorAll('.footer-mobile__nav-item[data-dropdown]');
+                this.activeDropdown = null;
+
+                this.init();
+            }
+
+            init() {
+                this.navItems.forEach(item => {
+                    item.addEventListener('click', (e) => this.toggleDropdown(e));
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.footer-mobile__nav')) {
+                        this.closeAllDropdowns();
+                    }
+                });
+            }
+
+            toggleDropdown(event) {
+                event.stopPropagation();
+                const item = event.currentTarget;
+                const dropdownId = item.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(`dropdown-${dropdownId}`);
+
+                if (!dropdown) return;
+
+                if (dropdown.classList.contains('active')) {
+                    this.closeDropdown(dropdown);
+                    item.classList.remove('active');
+                } else {
+                    this.closeAllDropdowns();
+                    this.openDropdown(dropdown);
+                    item.classList.add('active');
+                    this.activeDropdown = dropdown;
+                }
+            }
+
+            openDropdown(dropdown) {
+                dropdown.classList.add('active');
+            }
+
+            closeDropdown(dropdown) {
+                dropdown.classList.remove('active');
+            }
+
+            closeAllDropdowns() {
+                document.querySelectorAll('.dropdown-mobile').forEach(dropdown => {
+                    this.closeDropdown(dropdown);
+                });
+                document.querySelectorAll('.footer-mobile__nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.activeDropdown = null;
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new MobileFooterNav();
+        });
+    </script>
+
+    <!-- ========================================
+         6. RETURN BUTTON: Scroll to Top
+         ======================================== -->
+    <button class="return-button" id="returnButton" aria-label="Return to top">
+        <span class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray" data-direction="up"></span>
+    </button>
+
+    <script>
+        /**
+         * Return to Top Button Functionality
+         * Version: 1.0
+         */
+        (function() {
+            'use strict';
+
+            const returnButton = document.getElementById('returnButton');
+
+            // Show/hide button based on scroll position
+            function handleScroll() {
+                const scrollPosition = window.pageYOffset;
+                const showThreshold = 300; // Show button after scrolling 300px
+
+                if (scrollPosition > showThreshold) {
+                    returnButton.classList.add('visible');
+                } else {
+                    returnButton.classList.remove('visible');
+                }
+            }
+
+            // Smooth scroll to top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Event listeners
+            window.addEventListener('scroll', handleScroll);
+            returnButton.addEventListener('click', scrollToTop);
+
+            // Initial check
+            handleScroll();
+        })();
+    </script>
+
+</body>
+</html>

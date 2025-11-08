@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Header - Main with Menu (Mobile Fix v3)</title>
+    
+    <!-- 
+    ============================================================================
+    COMPONENT: Banner Header Main with Integrated Menu - MOBILE FIX VERSION 3
+    ============================================================================
+    
+    Unified dropdown container hover/active states across all breakpoints:
+    - Desktop dropdown: Entire container background changes to #F4EBCD
+    - Tablet/Mobile accordion: Entire container background changes to #F4EBCD
+    - This creates visual consistency and better balance
+    
+    ============================================================================
+    -->
+    
+    <!-- Import Google Fonts directly in HTML -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Component Styles -->
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+        
+        /* Banner Header Main */
+        .banner-header-main {
+            width: 100%;
+            height: 125px;
+            background-color: #1b1464;
+            border-bottom: 4px solid #d4af37;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+            overflow: visible !important;
+        }
+        
+        /* Inner Container */
+        .banner-header-main__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        /* Logo Link */
+        .banner-header-main__logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-header-main__logo-link:hover {
+            opacity: 0.85;
+        }
+        
+        /* Logo Images */
+        .banner-header-main__logo {
+            display: none;
+            height: auto;
+        }
+        
+        /* Menu Container */
+        .banner-header-main__menu-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+            overflow: visible !important;
+            position: relative;
+        }
+        
+        /* Main Menu */
+        .main-menu {
+            background-color: transparent;
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            position: relative;
+            overflow: visible !important;
+        }
+        
+        /* Desktop Navigation Container */
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(40px, 5vw, 80px);
+            padding: 0;
+            min-height: auto;
+            overflow: visible !important;
+            position: relative;
+        }
+        
+        /* Desktop Menu Items (simple links) */
+        .desktop-nav .menu-item {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Desktop Menu Items with dropdowns */
+        .desktop-nav .menu-item-dropdown {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            line-height: 45px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            z-index: 1001;
+        }
+        
+        /* Menu text for dropdowns */
+        .desktop-nav .menu-text {
+            display: inline-block;
+            cursor: pointer;
+            color: inherit;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        
+        /* Desktop Hover States */
+        .desktop-nav .menu-item:hover,
+        .desktop-nav .menu-item-dropdown:hover .menu-text {
+            color: #DCBE5D;
+        }
+        
+        /* Desktop Active State */
+        .desktop-nav .menu-item.active,
+        .desktop-nav .menu-item-dropdown.active .menu-text {
+            color: #B39226;
+        }
+        
+        /* Desktop Dropdown Container */
+        .dropdown-container {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 280px;
+            z-index: 9999 !important;
+            /* Hidden by default */
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            margin-top: 12px;
+        }
+        
+        /* Show dropdown when open */
+        .dropdown-container.open {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+        
+        /* Desktop Dropdown Menu Styling */
+        .dropdown-menu {
+            background-color: #ECEEEF !important;
+            border-radius: 8px;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important;
+            padding: 32px;
+            padding-right: 64px;
+            display: block !important;
+            font-family: 'Lato', sans-serif;
+            min-height: 150px;
+            position: relative;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        
+        /* Desktop Dropdown Menu Hover - Entire container changes */
+        .dropdown-menu:hover {
+            background-color: #F4EBCD !important; /* Gold accent for entire dropdown */
+        }
+        
+        /* Desktop Dropdown Menu Active State - For current page's dropdown */
+        .menu-item-dropdown.active .dropdown-menu {
+            background-color: #F4EBCD !important; /* Gold accent when on a page in this section */
+        }
+        
+        .dropdown-menu .dropdown-item {
+            display: block !important;
+            color: #1B1464 !important;
+            font-size: 21px;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin: 0 0 16px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            font-weight: 800;
+            background-color: transparent;
+        }
+        
+        .dropdown-menu .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Dropdown Item Hover States - Subtle since container changes */
+        .dropdown-menu .dropdown-item:hover {
+            color: #1D50DE !important; /* Just change text color on hover */
+        }
+        
+        /* Dropdown Item Active State - Current page indicator */
+        .dropdown-menu .dropdown-item.active {
+            background-color: rgba(255, 255, 255, 0.5) !important; /* Semi-transparent white */
+            color: #1B1464 !important;
+            margin-left: -32px;
+            margin-right: -64px;
+            padding-left: 48px;
+            padding-right: 80px;
+            border-radius: 4px;
+        }
+        
+        .dropdown-menu .dropdown-item.active:hover {
+            color: #1D50DE !important; /* Blue text on hover */
+        }
+        
+        /* Mobile/Tablet Navigation Container */
+        .mobile-nav {
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0;
+            min-height: auto;
+        }
+        
+        .hamburger-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+        }
+        
+        .hamburger-button svg,
+        .hamburger-button img {
+            width: 45px;
+            height: auto;
+        }
+        
+        /* Icon visibility states */
+        .hamburger-icon {
+            display: block;
+        }
+        
+        .close-icon {
+            display: none;
+        }
+        
+        .menu-open .hamburger-icon {
+            display: none;
+        }
+        
+        .menu-open .close-icon {
+            display: block;
+        }
+        
+        /* Mobile Accordion Menu */
+        .mobile-accordion {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ECEEEF; /* Default light gray */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .mobile-accordion.active {
+            display: block;
+            max-height: 800px;
+            padding: 20px 24px;
+        }
+        
+        /* Mobile Accordion Hover - Entire container changes */
+        .mobile-accordion:hover {
+            background-color: #F4EBCD !important; /* Gold accent for entire accordion */
+        }
+        
+        /* Mobile Accordion Active State - When on any page with dropdown */
+        .mobile-accordion.has-active-page {
+            background-color: #F4EBCD !important; /* Gold accent when containing active page */
+        }
+        
+        .mobile-accordion .accordion-section {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-accordion .accordion-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mobile-accordion .accordion-header {
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 45px;
+            cursor: pointer;
+            padding: 10px 10px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        /* Accordion header hover - subtle since container changes */
+        .mobile-accordion .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white overlay */
+        }
+        
+        /* Accordion header active state - current page */
+        .mobile-accordion .accordion-header.active {
+            background-color: rgba(255, 255, 255, 0.5) !important; /* Stronger white overlay */
+        }
+        
+        .mobile-accordion .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .mobile-accordion .accordion-content.active {
+            max-height: 300px;
+            padding-top: 10px;
+        }
+        
+        .mobile-accordion .accordion-item {
+            display: block;
+            color: #1B1464;
+            font-family: 'Lato', sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 30.5px;
+            text-transform: none;
+            text-decoration: none;
+            padding: 10px 10px 10px 30px;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            margin: 0 -10px;
+        }
+        
+        /* Accordion item hover - subtle since container changes */
+        .mobile-accordion .accordion-item:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white overlay */
+        }
+        
+        /* Accordion item active state - current page */
+        .mobile-accordion .accordion-item.active {
+            background-color: rgba(255, 255, 255, 0.5) !important; /* Stronger white overlay */
+        }
+        
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+        
+        /* Mobile: 380-767px */
+        @media (max-width: 767px) {
+            .banner-header-main {
+                height: 125px; /* Fixed height to match design */
+            }
+            
+            .banner-header-main__container {
+                padding: 0 24px;
+                height: 100%;
+            }
+            
+            /* Mobile logo - your preferred dimensions */
+            .banner-header-main__logo--mobile {
+                display: block;
+                width: 179px;
+                height: 89px;
+                object-fit: contain;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .hamburger-button {
+                width: 54px;
+                height: 54px;
+            }
+            
+            /* Mobile accordion positioning */
+            .banner-header-main .mobile-accordion {
+                position: fixed;
+                top: 129px; /* Account for header height + border */
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+            
+            .banner-header-main .mobile-accordion.active {
+                padding: 20px 24px;
+            }
+        }
+        
+        /* Tablet: 768-1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .banner-header-main__container {
+                padding: 0 24px;
+            }
+            
+            .banner-header-main__logo--tablet {
+                display: block;
+                width: 417px;
+                height: 89px;
+            }
+            
+            .mobile-nav {
+                display: flex;
+            }
+            
+            /* Tablet accordion positioning */
+            .banner-header-main .mobile-accordion {
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+            
+            .banner-header-main .mobile-accordion.active {
+                padding: 24px;
+            }
+        }
+        
+        /* Desktop: 1150-1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .banner-header-main__container {
+                padding: 0 36px 0 24px;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 460px;
+                height: 89px;
+            }
+            
+            .banner-header-main__menu-container {
+                max-width: 886px;
+                min-width: 615px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 48px;
+            }
+            
+            .desktop-nav .menu-item,
+            .desktop-nav .menu-item-dropdown {
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+            .dropdown-menu .dropdown-item {
+                font-size: 18px;
+                line-height: 27px;
+            }
+        }
+        
+        /* DesktopPlus: 1920px+ */
+        @media (min-width: 1920px) {
+            .banner-header-main__container {
+                max-width: 1900px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            .banner-header-main__logo--desktop {
+                display: block;
+                width: 481px;
+                height: 93px;
+            }
+            
+            .banner-header-main__menu-container {
+                width: 894px;
+                padding-right: 32px;
+            }
+            
+            .desktop-nav {
+                display: flex;
+                gap: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Header Main Component -->
+    <header class="banner-header-main">
+        <div class="banner-header-main__container">
+            <!-- Logo -->
+            <a href="/" class="banner-header-main__logo-link" aria-label="Purposeful Media Promotions Home">
+                <!-- Mobile Logo -->
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--mobile"
+                >
+                <!-- Tablet Logo -->
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--tablet"
+                >
+                <!-- Desktop/DesktopPlus Logo -->
+                <img 
+                    src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg" 
+                    alt="Purposeful Media Promotions" 
+                    class="banner-header-main__logo banner-header-main__logo--desktop"
+                >
+            </a>
+            
+            <!-- Menu Container -->
+            <div class="banner-header-main__menu-container">
+                <!-- Main Menu Component (Integrated) -->
+                <nav class="main-menu" role="navigation" aria-label="Main navigation">
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="desktop-nav">
+                        <a href="/" class="menu-item" data-page="home">Home</a>
+                        
+                        <div class="menu-item-dropdown" data-page="solutions">
+                            <span class="menu-text">Solutions</span>
+                            <div class="dropdown-container">
+                                <div class="dropdown-menu">
+                                    <a href="/email-management" class="dropdown-item">Email Management</a>
+                                    <a href="/content-creation" class="dropdown-item">Content Creation</a>
+                                    <a href="/webinar-production" class="dropdown-item">Webinar Production</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item-dropdown" data-page="resources">
+                            <span class="menu-text">Resources</span>
+                            <div class="dropdown-container">
+                                <div class="dropdown-menu">
+                                    <a href="/resource-library" class="dropdown-item">Resource Library</a>
+                                    <a href="/about-us" class="dropdown-item">About Us</a>
+                                    <a href="/blog" class="dropdown-item">Blog</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="/contact" class="menu-item" data-page="contact">Contact</a>
+                    </div>
+                    
+                    <!-- Mobile/Tablet Navigation -->
+                    <div class="mobile-nav">
+                        <button class="hamburger-button" aria-label="Toggle menu" aria-expanded="false">
+                            <svg class="hamburger-icon" width="45" height="54" viewBox="0 0 45 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="3" width="45" height="8" rx="4" fill="white"/>
+                                <rect y="23" width="45" height="8" rx="4" fill="white"/>
+                                <rect y="43" width="45" height="8" rx="4" fill="white"/>
+                            </svg>
+                            <svg class="close-icon" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="5" y="36" width="45" height="8" rx="4" transform="rotate(-45 5 36)" fill="white"/>
+                                <rect x="10.66" y="4.31" width="45" height="8" rx="4" transform="rotate(45 10.66 4.31)" fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Accordion Menu -->
+                    <div class="mobile-accordion">
+                        <div class="accordion-section">
+                            <a href="/" class="accordion-header no-dropdown" data-page="home">Home</a>
+                        </div>
+                        
+                        <div class="accordion-section">
+                            <div class="accordion-header" data-accordion="solutions">Solutions</div>
+                            <div class="accordion-content" id="solutions-content">
+                                <a href="/email-management" class="accordion-item">Email Management</a>
+                                <a href="/content-creation" class="accordion-item">Content Creation</a>
+                                <a href="/webinar-production" class="accordion-item">Webinar Production</a>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-section">
+                            <div class="accordion-header" data-accordion="resources">Resources</div>
+                            <div class="accordion-content" id="resources-content">
+                                <a href="/resource-library" class="accordion-item">Resource Library</a>
+                                <a href="/about-us" class="accordion-item">About Us</a>
+                                <a href="/blog" class="accordion-item">Blog</a>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-section">
+                            <a href="/contact" class="accordion-header no-dropdown" data-page="contact">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- JavaScript for Menu Functionality -->
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Desktop dropdown functionality
+            const menuDropdowns = document.querySelectorAll('.desktop-nav .menu-item-dropdown');
+            
+            menuDropdowns.forEach(item => {
+                const menuText = item.querySelector('.menu-text');
+                const dropdown = item.querySelector('.dropdown-container');
+                
+                if (menuText && dropdown) {
+                    
+                    menuText.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close all other dropdowns first
+                        document.querySelectorAll('.dropdown-container').forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('open');
+                    });
+                }
+            });
+            
+            // Click outside to close all dropdowns
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.menu-item-dropdown')) {
+                    document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside the dropdown menu
+            document.querySelectorAll('.dropdown-container').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Mobile menu toggle
+            const hamburgerButton = document.querySelector('.hamburger-button');
+            const mobileAccordion = document.querySelector('.mobile-accordion');
+            const mainMenu = document.querySelector('.main-menu');
+            
+            if (hamburgerButton) {
+                hamburgerButton.addEventListener('click', function() {
+                    const isOpen = mobileAccordion.classList.contains('active');
+                    
+                    if (isOpen) {
+                        mobileAccordion.classList.remove('active');
+                        mainMenu.classList.remove('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        mobileAccordion.classList.add('active');
+                        mainMenu.classList.add('menu-open');
+                        hamburgerButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            }
+            
+            // Accordion functionality for mobile
+            document.querySelectorAll('.accordion-header[data-accordion]').forEach(header => {
+                header.addEventListener('click', function() {
+                    const accordionId = this.dataset.accordion;
+                    const content = document.getElementById(accordionId + '-content');
+                    
+                    if (content) {
+                        // Close all other accordions
+                        document.querySelectorAll('.accordion-content').forEach(otherContent => {
+                            if (otherContent !== content) {
+                                otherContent.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current accordion
+                        content.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Set active states based on current page
+            const currentPath = window.location.pathname;
+            
+            // Desktop menu items
+            document.querySelectorAll('.menu-item[data-page], .menu-item-dropdown[data-page]').forEach(item => {
+                if (currentPath === '/' && item.dataset.page === 'home') {
+                    item.classList.add('active');
+                } else if (currentPath.includes(item.dataset.page)) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Dropdown items
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                if (currentPath === item.getAttribute('href')) {
+                    item.classList.add('active');
+                    // Also mark parent as active
+                    const parent = item.closest('.menu-item-dropdown');
+                    if (parent) {
+                        parent.classList.add('active');
+                    }
+                }
+            });
+            
+            // Mobile accordion items and check for active pages
+            let hasActivePage = false;
+            document.querySelectorAll('.accordion-header[data-page], .accordion-item').forEach(item => {
+                const href = item.getAttribute('href');
+                if (href && currentPath === href) {
+                    item.classList.add('active');
+                    hasActivePage = true;
+                }
+            });
+            
+            // Add class to accordion if it contains an active page
+            if (hasActivePage && mobileAccordion) {
+                mobileAccordion.classList.add('has-active-page');
+            }
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    // Close mobile menu if switching to desktop
+                    if (window.innerWidth >= 1150) {
+                        if (mobileAccordion) {
+                            mobileAccordion.classList.remove('active');
+                        }
+                        if (mainMenu) {
+                            mainMenu.classList.remove('menu-open');
+                        }
+                        if (hamburgerButton) {
+                            hamburgerButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                }, 250);
+            });
+        });
+    </script>
+</body>
+</html>

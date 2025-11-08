@@ -1,0 +1,493 @@
+/* ============================================
+   Molecules: Slide Components Styles
+   Version: 1.1
+   Date: September 23, 2025
+   
+   Components:
+   - Slide/Image
+   - Slide/Video
+   - Slide/Hero
+   
+   FIXES APPLIED:
+   - Added import for variables file
+   - Fixed neutral variable names (removed 's')
+   ============================================ */
+
+/* Import design tokens */
+@import url('variables-v4.0-20251027.css');
+
+/* ============================================
+   BASE SLIDE STYLES
+   ============================================ */
+
+.slide-container {
+    position: relative;
+    width: 100%;
+    background: var(--color-white, #ffffff);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.slide-frame {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease;
+}
+
+/* ============================================
+   ASPECT RATIOS
+   ============================================ */
+
+.aspect-16-9 { 
+    aspect-ratio: 16/9; 
+}
+
+.aspect-4-3 { 
+    aspect-ratio: 4/3; 
+}
+
+.aspect-1-1 { 
+    aspect-ratio: 1/1; 
+}
+
+.aspect-flex { 
+    min-height: 156px;
+    height: auto;
+}
+
+/* ============================================
+   SLIDE STATES
+   ============================================ */
+
+/* Loading State */
+.slide-frame[data-state="loading"] {
+    background-color: var(--color-neutral-200, #C7CBCF);
+    background: linear-gradient(
+        90deg,
+        var(--color-neutral-200, #C7CBCF) 25%,
+        var(--color-neutral-100, #ECEEEF) 50%,
+        var(--color-neutral-200, #C7CBCF) 75%
+    );
+    background-size: 2000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Ready State */
+.slide-frame[data-state="ready"] {
+    background-color: transparent;
+}
+
+/* Error State */
+.slide-frame[data-state="error"] {
+    background-color: var(--color-error-100, #FEE2E2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Focus State */
+.slide-frame[data-state="focus"] {
+    background-color: transparent;
+    box-shadow: 0 0 0 3px var(--color-primary-500, #1D50DE);
+    outline: none;
+}
+
+/* ============================================
+   OVERLAYS
+   ============================================ */
+
+/* Caption Overlay for Image Slides */
+.caption-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0) 0%, 
+        var(--color-primary-700, #1B1464) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.slide-image-container:hover .caption-overlay,
+.slide-image-container[data-show-caption="true"] .caption-overlay,
+.slide-image-container:focus-within .caption-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Video Overlay */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(27, 20, 100, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.slide-video-container:hover .video-overlay {
+    background: rgba(27, 20, 100, 0.4);
+}
+
+/* Hero Overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(27, 20, 100, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    pointer-events: none;
+}
+
+/* ============================================
+   CAPTION CONTENT
+   ============================================ */
+
+.slide-headline {
+    font-family: var(--font-primary, 'Lato'), sans-serif;
+    font-weight: 900;
+    font-size: 21px;
+    line-height: 30.5px;
+    color: var(--color-white, #ffffff);
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin: 0;
+}
+
+.slide-paragraph {
+    font-family: var(--font-secondary, 'Open Sans'), sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--color-white, #ffffff);
+    text-align: center;
+    max-width: 100%;
+    margin: 0;
+}
+
+/* ============================================
+   CONTROL BUTTONS
+   ============================================ */
+
+/* Play/Pause Button */
+.play-pause-button {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.play-pause-button:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+.play-pause-button:active {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(0.98);
+}
+
+.play-pause-button.solid {
+    background: var(--color-white, #ffffff);
+}
+
+.play-pause-button.small {
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.nav-arrow:hover {
+    background: var(--color-white, #ffffff);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-arrow.prev {
+    left: 16px;
+}
+
+.nav-arrow.next {
+    right: 16px;
+}
+
+.nav-arrow.outside {
+    background: var(--color-primary-700, #1B1464);
+    color: var(--color-white, #ffffff);
+}
+
+.nav-arrow.outside:hover {
+    background: var(--color-primary-600, #1740B0);
+}
+
+/* Navigation Dots */
+.nav-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-neutral-300, #A2A9AF);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-dot:hover {
+    background: var(--color-neutral-400, #868F97);
+    transform: scale(1.2);
+}
+
+.nav-dot.active {
+    background: var(--color-primary-700, #1B1464);
+    transform: scale(1.2);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes shimmer {
+    0% { 
+        background-position: -1000px 0; 
+    }
+    100% { 
+        background-position: 1000px 0; 
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+    }
+    to { 
+        opacity: 1; 
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    .slide-headline {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    
+    .slide-paragraph {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    
+    .caption-overlay,
+    .video-overlay {
+        padding: 12px;
+    }
+    
+    .play-pause-button {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .nav-arrow {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .nav-arrow.prev {
+        left: 8px;
+    }
+    
+    .nav-arrow.next {
+        right: 8px;
+    }
+    
+    .nav-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .slide-headline {
+        font-size: 19px;
+        line-height: 28px;
+    }
+    
+    .slide-paragraph {
+        font-size: 17px;
+        line-height: 25.5px;
+    }
+    
+    .caption-overlay,
+    .video-overlay {
+        padding: 14px;
+    }
+}
+
+/* Desktop: 1150-1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    /* Default sizes apply */
+}
+
+/* DesktopPlus: 1920px+ */
+@media (min-width: 1920px) {
+    /* Default sizes apply */
+    
+    /* Larger containers may need adjusted spacing */
+    .nav-arrow.prev {
+        left: 24px;
+    }
+    
+    .nav-arrow.next {
+        right: 24px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus visible states */
+.slide-container:focus-visible,
+.play-pause-button:focus-visible,
+.nav-arrow:focus-visible,
+.nav-dot:focus-visible {
+    outline: 2px solid var(--color-primary-500, #1D50DE);
+    outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .slide-frame,
+    .caption-overlay,
+    .video-overlay,
+    .play-pause-button,
+    .nav-arrow,
+    .nav-dot {
+        transition: none;
+    }
+    
+    .slide-frame[data-state="loading"] {
+        animation: none;
+        background: var(--color-neutral-200, #C7CBCF);
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .caption-overlay {
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            var(--color-primary-900, #06102B) 100%
+        );
+    }
+    
+    .play-pause-button,
+    .nav-arrow {
+        border: 2px solid currentColor;
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.slide-hidden {
+    display: none !important;
+}
+
+.slide-visible {
+    display: block !important;
+}
+
+.slide-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.slide-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
+}

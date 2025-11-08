@@ -1,0 +1,390 @@
+/* ============================================
+   CSS ARCHITECTURE DOCUMENTATION
+   Purposeful Media Design System
+   Version: 1.0
+   Last Updated: 2025-10-01
+   Author: Purposeful Media Promotions
+   ============================================ */
+
+/*
+TABLE OF CONTENTS:
+1. OVERVIEW
+2. FILE STRUCTURE
+3. NAMING CONVENTIONS
+4. CASCADE ORDER
+5. BREAKPOINT STRATEGY
+6. COLOR SYSTEM
+7. SPACING SYSTEM
+8. COMPONENT HIERARCHY
+9. BEST PRACTICES
+10. MAINTENANCE GUIDELINES
+*/
+
+/* ============================================
+   1. OVERVIEW
+   ============================================ */
+/*
+The Purposeful Media Design System CSS architecture follows the Atomic Design
+methodology by Brad Frost, organizing components into five distinct layers:
+
+- Variables: Foundation tokens (colors, spacing, typography)
+- Atoms: Basic HTML elements (buttons, inputs, typography)
+- Molecules: Simple component groups (forms, cards, menus)
+- Organisms: Complex components (headers, heroes, footers)
+- Templates: Page-level layouts (homepage, services, contact)
+
+Each layer builds upon the previous, creating a scalable and maintainable system.
+*/
+
+/* ============================================
+   2. FILE STRUCTURE
+   ============================================ */
+/*
+/styles/
+├── variables-v2.0-20250915.css     # Foundation variables
+├── master-styles.css                # Main orchestrator
+├── atoms-master.css                 # All atomic components
+├── molecules-master.css             # Molecule orchestrator
+├── molecules-forms.css              # Form components
+├── molecules-cards-resources.css    # Card components
+├── molecules-slides.css             # Slide components
+├── molecules-dropdown-menus.css     # Dropdown menus
+├── organisms-headers.css            # Header variants
+├── organisms-heroes.css             # Hero section variants
+├── organisms-navigation.css         # Navigation components
+├── organisms-sections.css           # Content sections
+└── organisms-footers.css            # Footer variants
+*/
+
+/* ============================================
+   3. NAMING CONVENTIONS
+   ============================================ */
+/*
+BEM-inspired naming with component prefixes:
+
+Component Classes:
+.component-name                      # Base component
+.component-name__element             # Component element
+.component-name--modifier            # Component variant
+.component-name__element--modifier  # Element variant
+
+Examples:
+.hero-simple                         # Base hero component
+.hero-simple__content               # Hero content container
+.hero-simple--reverse               # Hero variant
+.hero-simple__headline--large      # Headline variant
+
+File Naming:
+[layer]-[category]-[variant].css
+
+Examples:
+atoms-typography.css
+molecules-forms.css
+organisms-heroes.css
+templates-homepage.css
+*/
+
+/* ============================================
+   4. CASCADE ORDER
+   ============================================ */
+/*
+Import order is critical for proper cascade:
+
+1. Variables (Foundation)
+   └── variables-v2.0-20250915.css
+   
+2. Atoms (Base elements)
+   └── atoms-master.css
+   
+3. Molecules (Component groups)
+   └── molecules-master.css
+       ├── molecules-forms.css
+       ├── molecules-cards-resources.css
+       ├── molecules-slides.css
+       └── molecules-dropdown-menus.css
+       
+4. Organisms (Complex components)
+   ├── organisms-headers.css
+   ├── organisms-heroes.css
+   ├── organisms-navigation.css
+   ├── organisms-sections.css
+   └── organisms-footers.css
+   
+5. Templates (Page layouts)
+   └── templates-*.css (future)
+*/
+
+/* ============================================
+   5. BREAKPOINT STRATEGY
+   ============================================ */
+/*
+Mobile-first responsive design with four breakpoints:
+
+Mobile:       380px - 767px
+Tablet:       768px - 1149px
+Desktop:      1150px - 1919px
+DesktopPlus:  1920px and wider
+
+Media Query Examples:
+
+/* Mobile (default, no media query needed) */
+.component { }
+
+/* Tablet and up */
+@media (min-width: 768px) { }
+
+/* Desktop and up */
+@media (min-width: 1150px) { }
+
+/* DesktopPlus */
+@media (min-width: 1920px) { }
+
+/* Specific ranges */
+@media (min-width: 768px) and (max-width: 1149px) { } /* Tablet only */
+@media (min-width: 1150px) and (max-width: 1919px) { } /* Desktop only */
+*/
+
+/* ============================================
+   6. COLOR SYSTEM
+   ============================================ */
+/*
+Color Variables Structure:
+--color-[category]-[weight]
+
+Categories:
+- primary: Brand blue colors
+- accent: Gold accent colors
+- neutral: Grays and whites
+- success: Green indicators
+- warning: Orange alerts
+- error: Red error states
+
+Examples:
+--color-primary-700: #1b1464  (Primary brand blue)
+--color-accent-500: #d4af37   (Primary gold)
+--color-neutral-100: #eceeef  (Light gray)
+--color-white: #ffffff
+*/
+
+/* ============================================
+   7. SPACING SYSTEM
+   ============================================ */
+/*
+Spacing Variables:
+--space-[size]
+
+Scale (4px base):
+--space-1: 4px
+--space-2: 8px
+--space-3: 12px
+--space-4: 16px
+--space-5: 20px
+--space-6: 24px
+--space-8: 32px
+--space-10: 40px
+--space-12: 48px
+--space-16: 64px
+--space-20: 80px
+
+Usage:
+padding: var(--space-4) var(--space-6);
+margin-bottom: var(--space-8);
+*/
+
+/* ============================================
+   8. COMPONENT HIERARCHY
+   ============================================ */
+/*
+ATOMS (Independent)
+├── Typography (headings, paragraphs, links)
+├── Buttons (primary, secondary, disabled)
+├── Form inputs (text, email, textarea)
+├── Icons (UI and decorative sprites)
+└── Navigation controls
+
+MOLECULES (Composed of atoms)
+├── Forms
+│   ├── Newsletter form
+│   ├── Resource download form
+│   └── Contact form
+├── Cards
+│   ├── Resource cards
+│   ├── Blog post cards
+│   └── FAQ cards
+├── Slides
+│   ├── Image slides
+│   ├── Video slides
+│   └── Content slides
+└── Dropdown menus
+
+ORGANISMS (Composed of molecules)
+├── Headers
+│   ├── Main header
+│   ├── Sticky header
+│   └── Mobile header
+├── Heroes
+│   ├── Hero carousel
+│   ├── Hero simple
+│   ├── Hero simple reverse
+│   └── Hero ATF center
+├── Navigation
+│   ├── Main navigation
+│   ├── Mobile navigation
+│   └── Breadcrumb navigation
+├── Sections
+│   ├── Content sections
+│   ├── Feature sections
+│   └── CTA sections
+└── Footers
+    ├── Main footer
+    ├── Mobile footer
+    └── Footer attribution
+
+TEMPLATES (Page layouts using organisms)
+├── Homepage
+├── Service pages
+├── Contact page
+└── About page
+*/
+
+/* ============================================
+   9. BEST PRACTICES
+   ============================================ */
+/*
+1. COMPONENT ISOLATION
+   - Each component should be self-contained
+   - Avoid cross-component dependencies
+   - Use CSS custom properties for theming
+
+2. RESPONSIVE DESIGN
+   - Mobile-first approach
+   - Use relative units (rem, em, %)
+   - Test across all breakpoints
+
+3. PERFORMANCE
+   - Minimize selector specificity
+   - Avoid deep nesting (max 3 levels)
+   - Use CSS Grid and Flexbox for layouts
+
+4. ACCESSIBILITY
+   - Maintain proper color contrast (WCAG AA)
+   - Include focus states for all interactive elements
+   - Support keyboard navigation
+
+5. MAINTAINABILITY
+   - Document complex calculations
+   - Use meaningful variable names
+   - Keep related styles together
+
+6. CSS CUSTOM PROPERTIES
+   - Define at :root level for global access
+   - Use fallback values: var(--color, #fallback)
+   - Override locally when needed
+
+Example:
+.component {
+  background: var(--color-primary-700, #1b1464);
+  padding: var(--space-4, 16px);
+  
+  @media (min-width: 768px) {
+    padding: var(--space-6, 24px);
+  }
+}
+*/
+
+/* ============================================
+   10. MAINTENANCE GUIDELINES
+   ============================================ */
+/*
+ADDING NEW COMPONENTS:
+
+1. Determine the appropriate layer (atom/molecule/organism)
+2. Create new file following naming convention
+3. Add file header with metadata
+4. Import in appropriate master file
+5. Test across all breakpoints
+6. Document in this architecture file
+
+FILE HEADER TEMPLATE:
+
+/* ============================================
+   [LAYER] - [CATEGORY]
+   Purposeful Media Design System
+   Version: 1.0
+   Last Modified: YYYY-MM-DD
+   Dependencies: variables-v2.0-20250915.css
+   
+   Components:
+   - Component 1
+   - Component 2
+   ============================================ */
+
+VERSION CONTROL:
+
+- Use semantic versioning (major.minor.patch)
+- Document all changes in commit messages
+- Keep backup of previous versions
+- Test thoroughly before deploying
+
+DEPRECATION PROCESS:
+
+1. Mark component as deprecated in comments
+2. Provide migration path to new component
+3. Set removal date (typically 3-6 months)
+4. Move to legacy file before deletion
+5. Update all references in codebase
+
+TESTING CHECKLIST:
+
+□ All breakpoints tested
+□ Cross-browser compatibility verified
+□ Accessibility standards met
+□ Performance impact assessed
+□ Documentation updated
+□ Dependencies verified
+□ Cascade order maintained
+
+OPTIMIZATION TIPS:
+
+- Combine similar media queries
+- Remove unused styles quarterly
+- Audit CSS file size monthly
+- Use CSS minification for production
+- Enable gzip compression
+- Leverage browser caching
+- Use critical CSS for above-fold content
+
+TROUBLESHOOTING:
+
+Common Issues:
+1. Styles not applying
+   - Check import order
+   - Verify file paths
+   - Check selector specificity
+
+2. Responsive issues
+   - Verify breakpoint values
+   - Check viewport meta tag
+   - Test on actual devices
+
+3. Variable not working
+   - Check variable name spelling
+   - Verify import of variables file
+   - Check for scope issues
+
+4. Performance problems
+   - Reduce selector complexity
+   - Minimize redundant styles
+   - Optimize media queries
+
+RESOURCES:
+
+- Atomic Design: https://atomicdesign.bradfrost.com/
+- BEM Methodology: http://getbem.com/
+- CSS Custom Properties: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+- WCAG Guidelines: https://www.w3.org/WAI/WCAG21/quickref/
+*/
+
+/* ============================================
+   END OF ARCHITECTURE DOCUMENTATION
+   ============================================ */

@@ -1,0 +1,136 @@
+/**
+ * Card/Resources Demo Styles
+ * Purposeful Media Promotions Design System
+ *
+ * Demo and documentation styles for Card/Resources molecule component
+ * Tokenized: 2025-10-29
+ * Version: 1.0
+ * Variables: v4.0-20251027
+ */
+
+/* ============================================
+   DEMO CONTAINER
+   ============================================ */
+
+.demo-container {
+    padding: var(--space-10);
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+    font-family: var(--font-secondary);
+}
+
+/* ============================================
+   DEMO SECTIONS
+   ============================================ */
+
+.demo-section {
+    margin-bottom: 60px;
+}
+
+.demo-title {
+    font-family: var(--font-primary);
+    font-size: var(--text-h3-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-700);
+    margin-bottom: var(--space-8);
+    text-transform: uppercase;
+}
+
+/* ============================================
+   DEMO GRID
+   ============================================ */
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, max-content));
+    gap: var(--space-8);
+    margin-bottom: var(--space-8);
+}
+
+.demo-label {
+    font-size: var(--text-small-size);
+    color: var(--text-muted);
+    margin-bottom: var(--space-2);
+}
+
+.demo-item {
+    width: max-content;
+}
+
+/* ============================================
+   ICON SELECTOR
+   ============================================ */
+
+.demo-icon-selector {
+    margin-bottom: var(--space-5);
+}
+
+.demo-icon-selector label {
+    display: block;
+    margin-bottom: var(--space-1);
+    color: var(--color-primary-700);
+    font-weight: var(--font-weight-semibold);
+}
+
+.demo-icon-selector select {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-neutral-300);
+    border-radius: var(--radius-small);
+    font-size: var(--text-small-size);
+    width: 200px;
+}
+
+/* ============================================
+   USAGE NOTES
+   ============================================ */
+
+.demo-notes {
+    background: var(--bg-primary);
+    padding: var(--space-8);
+    border-radius: var(--radius-medium);
+    line-height: 1.6;
+    color: var(--color-neutral-700);
+}
+
+.demo-notes h3 {
+    color: var(--color-primary-700);
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-2);
+}
+
+.demo-notes ul {
+    margin-left: var(--space-5);
+    margin-bottom: var(--space-4);
+}
+
+.demo-notes code {
+    background: var(--bg-secondary);
+    padding: 2px var(--space-1);
+    border-radius: var(--radius-xsmall);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.demo-notes pre {
+    background: var(--bg-secondary);
+    padding: var(--space-4);
+    border-radius: var(--radius-small);
+    overflow-x: auto;
+    font-size: 0.9em;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    .demo-container {
+        padding: var(--space-5);
+    }
+
+    .demo-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}

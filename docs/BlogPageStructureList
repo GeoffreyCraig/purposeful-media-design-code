@@ -1,0 +1,18 @@
+#Blog Page Template - Component Assembly List
+
+## Header Section
+- [ ] banner-header-main-production.html (organism)
+
+## Hero Section  
+- [ ] hero-atf-left.html (organism)
+-- Hero image: assets/images/pillar-page-image.jpg
+
+## Content Section 1: Blog Group
+- [ ] tblog-group-frontpage-production.html (organism) 
+
+## Footer Section
+- [ ] footer-main-production.html (organism)
+
+## Notes
+- Apply 1920px max-width pattern to all content sections
+- Add tiled background for DesktopPlus breakpoint

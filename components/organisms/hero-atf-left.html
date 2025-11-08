@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero ATF Left - Image/Video Component</title>
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/organisms-heroes.css">
+</head>
+<body>
+
+<!-- Hero ATF Left Component -->
+<section class="hero-atf-left" id="heroATFLeft" aria-label="Hero Section">
+
+    <!-- Media Container - Supports both Image and Video -->
+    <div class="hero-media-container" id="heroMediaContainer">
+        <!-- Option 1: Image (uncomment to use) -->
+        <img src="../../assets/images/pillar-page-image.jpg" alt="Hero background" class="hero-media" loading="eager">
+
+        <!-- Option 2: Video (uncomment to use) -->
+        <!-- <video class="hero-media" autoplay muted loop playsinline>
+            <source src="path-to-your-video.mp4" type="video/mp4">
+            <source src="path-to-your-video.webm" type="video/webm">
+        </video> -->
+
+        <!-- Placeholder for demo - replace with actual media -->
+        <!-- Remove this div and uncomment one of the options above for production -->
+        <div class="hero-media-placeholder">Image/Video Placeholder</div>
+    </div>
+
+    <!-- Content Container -->
+    <div class="hero-content">
+        <h1 class="hero-headline" contenteditable="false">
+            H1 Headline 36 54h
+        </h1>
+        <p class="hero-subheadline" contenteditable="false">
+            CTA Centered
+        </p>
+        <a href="#" class="hero-button" role="button" aria-label="Call to action">
+            Button Text
+        </a>
+    </div>
+
+</section>
+
+<!-- JavaScript for Video Handling -->
+<script>
+    // Hero Media Handler
+    const HeroMediaHandler = {
+        init() {
+            this.container = document.getElementById('heroMediaContainer');
+            this.hero = document.getElementById('heroATFLeft');
+
+            // Check if media exists
+            const media = this.container.querySelector('img, video');
+            if (!media || media.tagName === 'DIV') {
+                // No real media, add no-media class for fallback gradient
+                this.hero.classList.add('no-media');
+            }
+
+            // Handle video-specific functionality
+            const video = this.container.querySelector('video');
+            if (video) {
+                this.setupVideo(video);
+            }
+        },
+
+        setupVideo(video) {
+            // Ensure video plays silently and loops
+            video.muted = true;
+            video.loop = true;
+            video.playsinline = true;
+
+            // Auto-play handling with fallback
+            const playVideo = () => {
+                video.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                    // If autoplay fails, add play on user interaction
+                    document.addEventListener('click', () => {
+                        video.play();
+                    }, { once: true });
+                });
+            };
+
+            // Start playing when video is ready
+            if (video.readyState >= 3) {
+                playVideo();
+            } else {
+                video.addEventListener('loadeddata', playVideo);
+            }
+
+            // Optimize for mobile
+            if (window.matchMedia('(max-width: 767px)').matches) {
+                video.setAttribute('preload', 'metadata');
+            }
+        },
+
+        // Method to dynamically change media
+        changeMedia(type, src, alt = '') {
+            this.container.innerHTML = '';
+            this.hero.classList.remove('no-media');
+
+            if (type === 'image') {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = alt;
+                img.className = 'hero-media';
+                img.loading = 'eager';
+                this.container.appendChild(img);
+            } else if (type === 'video') {
+                const video = document.createElement('video');
+                video.className = 'hero-media';
+                video.autoplay = true;
+                video.muted = true;
+                video.loop = true;
+                video.playsinline = true;
+
+                const source = document.createElement('source');
+                source.src = src;
+                source.type = 'video/mp4';
+                video.appendChild(source);
+
+                this.container.appendChild(video);
+                this.setupVideo(video);
+            }
+        }
+    };
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => HeroMediaHandler.init());
+    } else {
+        HeroMediaHandler.init();
+    }
+</script>
+
+<!-- Usage Examples -->
+<!--
+To use with an image:
+1. Replace the placeholder div with:
+   <img src="../../assets/your-hero-image.jpg" alt="Hero background" class="hero-media" loading="eager">
+
+To use with a video:
+1. Replace the placeholder div with:
+   <video class="hero-media" autoplay muted loop playsinline>
+       <source src="../../assets/your-hero-video.mp4" type="video/mp4">
+       <source src="../../assets/your-hero-video.webm" type="video/webm">
+   </video>
+
+To dynamically change media via JavaScript:
+   HeroMediaHandler.changeMedia('image', '../../assets/new-image.jpg', 'New hero image');
+   HeroMediaHandler.changeMedia('video', '../../assets/new-video.mp4');
+
+To use without media (gradient only):
+1. Simply remove the img or video element, the component will detect this and show only the gradient
+-->
+
+</body>
+</html>

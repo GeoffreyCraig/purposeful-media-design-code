@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content 2-Column Graphic</title>
+
+    <!-- Design System Styles -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/organisms-content-2column-graphic.css">
+</head>
+<body>
+    <div class="content-2column-graphic">
+        <!-- Background Image -->
+        <div class="content-2column-graphic__background">
+            <img src="../../assets/images/shutterstock_2085055825.jpg" 
+                 alt="" 
+                 class="content-2column-graphic__background-image">
+        </div>
+        
+        <!-- Content Container -->
+        <div class="content-2column-graphic__container">
+            <!-- Left Column -->
+            <div class="content-2column-graphic__column content-2column-graphic__column--left">
+                <!-- Transform Card -->
+                <div class="teaser-card">
+                    <div class="teaser-card__headline">
+                        <h2 class="teaser-card__title">
+                           Ready to transform your marketing efforts?
+                        </h2>
+                    </div>
+                    <p class="teaser-card__description">
+                        Schedule a free consultation to discuss your specific challenges and opportunities.
+                    </p>
+                    <button class="teaser-card__button teaser-card__button--gold">
+                        <span class="teaser-card__button-text">Schedule</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="content-2column-graphic__column content-2column-graphic__column--right">
+                <!-- Ready to Grow Card -->
+                <div class="teaser-card">
+                    <div class="teaser-card__headline">
+                        <h2 class="teaser-card__title">
+                            Have questions first?
+                        </h2>
+                    </div>
+                    <p class="teaser-card__description">
+                        Get in touch to start a conversation about how we can help your B2B business grow.
+                    </p>
+                    <button class="teaser-card__button teaser-card__button--navy">
+                        <span class="teaser-card__button-text">Get in Touch</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Optional: Add click handlers for buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadButton = document.querySelector('.teaser-card__button--gold');
+            const bookingButton = document.querySelector('.teaser-card__button--navy');
+            
+            if (downloadButton) {
+                downloadButton.addEventListener('click', function() {
+                    console.log('Download button clicked');
+                    // Add download action here
+                });
+            }
+            
+            if (bookingButton) {
+                bookingButton.addEventListener('click', function() {
+                    console.log('Book meeting button clicked');
+                    // Add booking action here
+                });
+            }
+        });
+    </script>
+</body>
+</html>

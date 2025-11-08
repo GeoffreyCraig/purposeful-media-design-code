@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Footer Newsletter Test - Purposeful Media</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Master Stylesheet - includes all dependencies -->
+    <link rel="stylesheet" href="../../styles/master-styles.css">
+    
+    <style>
+        /* Test page styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .test-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+        
+        .test-controls h3 {
+            margin: 0 0 15px 0;
+            color: #1b1464;
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .breakpoint-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #1b1464;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+        }
+        
+        .breakpoint-btn:hover {
+            background: #d4af37;
+        }
+        
+        .breakpoint-btn.active {
+            background: #d4af37;
+        }
+        
+        .test-wrapper {
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: width 0.3s ease;
+        }
+        
+        .test-wrapper.mobile {
+            width: 380px;
+        }
+        
+        .test-wrapper.tablet {
+            width: 768px;
+        }
+        
+        .test-wrapper.desktop {
+            width: 1150px;
+        }
+        
+        .test-wrapper.desktop-plus {
+            width: 100%;
+        }
+        
+        .test-content {
+            flex: 1;
+            padding: 40px;
+            background: #f5f5f5;
+            text-align: center;
+        }
+        
+        .current-size {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #1b1464;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Size Indicator -->
+    <div class="current-size" id="sizeIndicator">Mobile: 380px</div>
+    
+    <!-- Test Controls -->
+    <div class="test-controls">
+        <h3>Test Breakpoints</h3>
+        <button class="breakpoint-btn active" onclick="setBreakpoint('mobile')">Mobile (380px)</button>
+        <button class="breakpoint-btn" onclick="setBreakpoint('tablet')">Tablet (768px)</button>
+        <button class="breakpoint-btn" onclick="setBreakpoint('desktop')">Desktop (1150px)</button>
+        <button class="breakpoint-btn" onclick="setBreakpoint('desktop-plus')">DesktopPlus (Full)</button>
+    </div>
+    
+    <!-- Test Wrapper -->
+    <div class="test-wrapper mobile" id="testWrapper">
+        <!-- Test Content -->
+        <div class="test-content">
+            <h1>Footer Newsletter Test</h1>
+            <p>Use the controls to test different breakpoints</p>
+            <p>The newsletter form is now integrated into the mobile footer</p>
+        </div>
+        
+        <!-- The Unified Footer -->
+        <footer class="footer-responsive">
+            <!-- DESKTOP/TABLET FOOTER (hidden on mobile) -->
+            <div class="footer-main" data-breakpoint="responsive">
+                <div class="footer-container">
+                    <!-- Logo Section -->
+                    <div class="footer-logo-section">
+                        <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                             alt="Purposeful Media Promotions" 
+                             class="footer-logo">
+                    </div>
+
+                    <!-- Footer Content Columns -->
+                    <div class="footer-content">
+                        <!-- Column 1: Services -->
+                        <div class="footer-column" data-column="services">
+                            <div class="footer-menu-section">
+                                <h3 class="footer-menu-title">Services</h3>
+                                <nav class="footer-menu-nav">
+                                    <ul class="footer-menu-list">
+                                        <li><a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a></li>
+                                        <li><a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a></li>
+                                        <li><a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: Who We Serve -->
+                        <div class="footer-column" data-column="who-we-serve">
+                            <div class="footer-menu-section">
+                                <h3 class="footer-menu-title">Who We Serve</h3>
+                                <nav class="footer-menu-nav">
+                                    <ul class="footer-menu-list">
+                                        <li><span class="footer-menu-link disabled">Revenue Growth</span></li>
+                                        <li><span class="footer-menu-link disabled">Preparing for Exit</span></li>
+                                        <li><span class="footer-menu-link disabled">Plan a Webinar</span></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Column 3: Resources -->
+                        <div class="footer-column" data-column="resources">
+                            <div class="footer-menu-section">
+                                <h3 class="footer-menu-title">Resources</h3>
+                                <nav class="footer-menu-nav">
+                                    <ul class="footer-menu-list">
+                                        <li><a href="/blog" class="footer-menu-link">Read Our Blog</a></li>
+                                        <li><a href="/resources/thought-leadership" class="footer-menu-link">Thought Leadership</a></li>
+                                        <li><span class="footer-menu-link disabled">Pricing</span></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Column 4: Company & Newsletter -->
+                        <div class="footer-column" data-column="company-newsletter">
+                            <!-- Company Menu -->
+                            <div class="footer-menu-section">
+                                <h3 class="footer-menu-title">Company</h3>
+                                <nav class="footer-menu-nav">
+                                    <ul class="footer-menu-list">
+                                        <li><a href="/about" class="footer-menu-link">About Us</a></li>
+                                        <li><a href="/contact" class="footer-menu-link">Contact Us</a></li>
+                                        <li><a href="/privacy" class="footer-menu-link">Privacy Policy</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            <!-- Newsletter Form -->
+                            <div class="footer-newsletter">
+                              <form class="form-newsletter">
+                                    <h4 class="form-newsletter__title">Stay Connected</h4>
+                                    <p class="form-newsletter__description">
+                                        Get B2B marketing strategies in your inbox.
+                                    </p>
+                                    <div class="form-newsletter__field">
+                                        <label for="footer-email" class="form-newsletter__label">Email Address*</label>
+                                        <input type="email" 
+                                               id="footer-email" 
+                                               class="form-newsletter__input" 
+                                               placeholder="Enter your email"
+                                               required>
+                                        <span class="form-newsletter__helper">*This field is required.</span>
+                                    </div>
+                                    <div class="form-newsletter__submit-wrapper">
+                                        <button type="submit" class="form-newsletter__submit">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attribution Sub-footer -->
+                <div class="footer-attribution">
+                    <div class="footer-attribution-content">
+                        <span class="footer-copyright">© All rights reserved 2025</span>
+                        <span class="footer-divider">|</span>
+                        <span class="footer-company">Purposeful Media Promotions</span>
+                        <span class="footer-divider">|</span>
+                        <a href="/policy" class="footer-policy-link">Policy Statement</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOBILE FOOTER (visible on mobile) -->
+            <div class="footer-mobile">
+                <div class="footer-mobile__top">
+                    <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg" 
+                         alt="Purposeful Media Promotions" 
+                         class="footer-mobile__logo">
+                </div>
+                
+                <nav class="footer-mobile__nav">
+                    <!-- Services -->
+                    <div class="footer-mobile__nav-item" data-dropdown="services">
+                        <span class="footer-mobile__nav-text">Services</span>
+                        <span class="footer-mobile__nav-arrow">&gt;</span>
+                    </div>
+                    
+                    <!-- Services Dropdown -->
+                    <div class="dropdown-mobile" id="dropdown-services">
+                        <div class="dropdown-mobile__item">
+                            <a href="/services/email-marketing" class="dropdown-mobile__link">Email Marketing</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <a href="/services/webinar-production" class="dropdown-mobile__link">Webinar Production</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <a href="/services/inbound-marketing" class="dropdown-mobile__link">Inbound Marketing</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Other navigation items... -->
+                </nav>
+                
+                <!-- NEW: Mobile Newsletter Form -->
+                <div class="footer-mobile__newsletter">
+                    <form class="form-newsletter form-newsletter--size-mobile">
+                        <h4 class="form-newsletter__title">Stay Connected</h4>
+                        <p class="form-newsletter__description">
+                            Get B2B marketing strategies and digital transformation inspiration in your inbox.
+                        </p>
+                        <div class="form-newsletter__field">
+                            <label for="footer-mobile-email" class="form-newsletter__label">Email Address*</label>
+                            <input type="email" 
+                                   id="footer-mobile-email" 
+                                   class="form-newsletter__input" 
+                                   placeholder="Enter your email"
+                                   required>
+                            <span class="form-newsletter__helper">*This field is required.</span>
+                        </div>
+                        <div class="form-newsletter__submit-wrapper">
+                            <button type="submit" class="form-newsletter__submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="footer-mobile__attribution">
+                    <div class="footer-mobile__attribution-content">
+                        <div class="footer-mobile__company">Purposeful Media Promotions</div>
+                        <a href="/policy" class="footer-mobile__policy">Policy Statement</a>
+                        <div class="footer-mobile__copyright">© All rights reserved 2025</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Breakpoint testing functions
+        function setBreakpoint(size) {
+            const wrapper = document.getElementById('testWrapper');
+            const indicator = document.getElementById('sizeIndicator');
+            const buttons = document.querySelectorAll('.breakpoint-btn');
+            
+            // Remove all active states
+            buttons.forEach(btn => btn.classList.remove('active'));
+            wrapper.className = 'test-wrapper';
+            
+            // Set new breakpoint
+            switch(size) {
+                case 'mobile':
+                    wrapper.classList.add('mobile');
+                    indicator.textContent = 'Mobile: 380px';
+                    buttons[0].classList.add('active');
+                    break;
+                case 'tablet':
+                    wrapper.classList.add('tablet');
+                    indicator.textContent = 'Tablet: 768px';
+                    buttons[1].classList.add('active');
+                    break;
+                case 'desktop':
+                    wrapper.classList.add('desktop');
+                    indicator.textContent = 'Desktop: 1150px';
+                    buttons[2].classList.add('active');
+                    break;
+                case 'desktop-plus':
+                    wrapper.classList.add('desktop-plus');
+                    indicator.textContent = 'DesktopPlus: Full Width';
+                    buttons[3].classList.add('active');
+                    break;
+            }
+        }
+        
+        // Mobile Footer Dropdown JavaScript
+        class MobileFooterNav {
+            constructor() {
+                this.navItems = document.querySelectorAll('.footer-mobile__nav-item[data-dropdown]');
+                this.activeDropdown = null;
+                
+                this.init();
+            }
+            
+            init() {
+                this.navItems.forEach(item => {
+                    item.addEventListener('click', (e) => this.toggleDropdown(e));
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.footer-mobile__nav')) {
+                        this.closeAllDropdowns();
+                    }
+                });
+            }
+            
+            toggleDropdown(event) {
+                event.stopPropagation();
+                const item = event.currentTarget;
+                const dropdownId = item.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(`dropdown-${dropdownId}`);
+                
+                if (!dropdown) return;
+                
+                if (dropdown.classList.contains('active')) {
+                    this.closeDropdown(dropdown);
+                    item.classList.remove('active');
+                } else {
+                    this.closeAllDropdowns();
+                    this.openDropdown(dropdown);
+                    item.classList.add('active');
+                    this.activeDropdown = dropdown;
+                }
+            }
+            
+            openDropdown(dropdown) {
+                dropdown.classList.add('active');
+            }
+            
+            closeDropdown(dropdown) {
+                dropdown.classList.remove('active');
+            }
+            
+            closeAllDropdowns() {
+                document.querySelectorAll('.dropdown-mobile').forEach(dropdown => {
+                    this.closeDropdown(dropdown);
+                });
+                document.querySelectorAll('.footer-mobile__nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.activeDropdown = null;
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new MobileFooterNav();
+            
+            // Handle form submissions
+            document.querySelectorAll('.form-newsletter').forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Newsletter signup submitted! (This is a demo)');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

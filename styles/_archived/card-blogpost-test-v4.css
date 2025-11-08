@@ -1,0 +1,433 @@
+/* =================================================
+   CARD/BLOGPOST COMPONENT - v4.0 TOKEN IMPLEMENTATION
+   Test file demonstrating proper v4.0 token usage
+   Date: 2025-10-27
+   ================================================= */
+
+/* =================================================
+   IMPORT VARIABLES
+   ================================================= */
+@import url('../variables-v4.0-20251027.css');
+
+/* =================================================
+   COMPONENT OVERVIEW
+   
+   Card/BlogPost is a molecule component that displays
+   blog content teasers. It demonstrates:
+   
+   1. Proper token usage from v4.0
+   2. State management (default, hover, active, disabled)
+   3. Responsive typography
+   4. Semantic HTML structure
+   5. Component independence (no organism overrides)
+   ================================================= */
+
+/* =================================================
+   BASE STRUCTURE
+   ================================================= */
+
+.card-blogpost {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%; /* Organism controls width constraints */
+  
+  /* Visual - Using v4.0 tokens */
+  background: var(--card-blog-bg-default);
+  box-shadow: var(--shadow-none);
+  
+  /* Spacing - Using base tokens */
+  padding: var(--space-3) var(--space-4);
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: all var(--transition-base);
+  
+  /* Accessibility */
+  position: relative;
+}
+
+/* =================================================
+   CARD TOP (Header Section)
+   ================================================= */
+
+.card-blogpost-top {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1); /* 4px between title and metadata */
+  
+  /* Spacing */
+  margin-bottom: var(--space-4); /* 16px gap to content */
+}
+
+/* =================================================
+   TITLE
+   ================================================= */
+
+.card-blogpost-title {
+  /* Typography - Using base tokens */
+  font-family: var(--font-primary);
+  font-size: var(--text-lead-size); /* 21px */
+  line-height: 30.5px; /* Custom per design */
+  font-weight: var(--font-weight-black); /* 900 */
+  text-transform: uppercase;
+  
+  /* Color - Using semantic token */
+  color: var(--text-heading);
+  
+  /* Layout */
+  margin: 0;
+  
+  /* Transition for hover state */
+  transition: color var(--transition-base);
+}
+
+/* =================================================
+   METADATA
+   ================================================= */
+
+.card-blogpost-meta {
+  /* Typography - Using base tokens */
+  font-family: var(--font-secondary);
+  font-size: var(--text-small-size); /* 12px */
+  line-height: var(--text-small-height); /* 18px */
+  font-weight: var(--font-weight-regular);
+  
+  /* Color - Using semantic token */
+  color: var(--text-heading);
+  
+  /* Layout */
+  display: flex;
+  gap: var(--space-2); /* 8px between items */
+  align-items: center;
+  
+  /* Transition for hover state */
+  transition: color var(--transition-base);
+}
+
+.card-blogpost-meta-separator {
+  color: var(--text-muted);
+}
+
+/* =================================================
+   CONTENT AREA
+   ================================================= */
+
+.card-blogpost-content {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2); /* 8px between excerpt and link */
+  
+  /* Spacing */
+  padding-bottom: var(--space-5); /* 20px extra bottom */
+}
+
+/* =================================================
+   EXCERPT TEXT
+   ================================================= */
+
+.card-blogpost-excerpt {
+  /* Typography - Using base tokens */
+  font-family: var(--font-secondary);
+  font-size: var(--text-default-size); /* 18px */
+  line-height: var(--text-default-height); /* 27px */
+  font-weight: var(--font-weight-regular);
+  
+  /* Color - Using semantic token */
+  color: var(--text-body);
+  
+  /* Layout */
+  margin: 0;
+  
+  /* Text truncation (4 lines) */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =================================================
+   READ MORE LINK
+   ================================================= */
+
+.card-blogpost-readmore {
+  /* Typography */
+  font-family: var(--font-secondary);
+  font-size: var(--text-default-size);
+  font-weight: var(--font-weight-regular);
+  
+  /* Color - Using v4.0 card-specific token */
+  color: var(--card-blog-link-default);
+  
+  /* Interaction */
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+/* =================================================
+   INTERACTIVE STATES
+   ================================================= */
+
+/* HOVER STATE */
+.card-blogpost:hover {
+  /* Background - Using v4.0 card-specific token */
+  background: var(--card-blog-bg-hover);
+  
+  /* Shadow - Using base token */
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Hover - Title color change */
+.card-blogpost:hover .card-blogpost-title {
+  color: var(--text-body); /* Slightly muted */
+}
+
+/* Hover - Metadata color change */
+.card-blogpost:hover .card-blogpost-meta {
+  color: var(--text-body);
+}
+
+/* Hover - Read more link */
+.card-blogpost:hover .card-blogpost-readmore {
+  /* Using v4.0 card-specific token */
+  color: var(--card-blog-link-hover);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+/* ACTIVE STATE (Click/Tap) */
+.card-blogpost:active {
+  /* Background - Using v4.0 card-specific token */
+  background: var(--card-blog-bg-active);
+  
+  /* Shadow - Using base token */
+  box-shadow: var(--shadow-standard);
+}
+
+.card-blogpost:active .card-blogpost-readmore {
+  /* Using v4.0 card-specific token */
+  color: var(--card-blog-link-active);
+}
+
+/* DISABLED STATE */
+.card-blogpost.disabled,
+.card-blogpost[aria-disabled="true"] {
+  /* Background - Using v4.0 card-specific token */
+  background: var(--card-blog-bg-disabled);
+  
+  /* Interaction */
+  pointer-events: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.card-blogpost.disabled .card-blogpost-title,
+.card-blogpost[aria-disabled="true"] .card-blogpost-title {
+  color: var(--text-disabled);
+}
+
+.card-blogpost.disabled .card-blogpost-meta,
+.card-blogpost[aria-disabled="true"] .card-blogpost-meta {
+  color: var(--text-disabled);
+}
+
+.card-blogpost.disabled .card-blogpost-readmore,
+.card-blogpost[aria-disabled="true"] .card-blogpost-readmore {
+  color: var(--text-disabled);
+}
+
+/* FOCUS STATE (Keyboard Navigation) */
+.card-blogpost:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* =================================================
+   RESPONSIVE BEHAVIOR
+   ================================================= */
+
+/* Mobile Typography Adjustments */
+@media (max-width: 767px) {
+  .card-blogpost-title {
+    font-size: 16px; /* Smaller on mobile */
+    line-height: 24px;
+  }
+}
+
+/* =================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ================================================= */
+
+/* Ensure clickable area extends to entire card */
+.card-blogpost {
+  cursor: pointer;
+}
+
+/* Make entire card keyboard accessible */
+.card-blogpost[tabindex="0"] {
+  /* Focusable via keyboard */
+}
+
+/* Screen reader optimizations */
+.card-blogpost-meta[aria-label] {
+  /* Provides context for screen readers */
+}
+
+/* =================================================
+   USAGE IN ORGANISM CONTEXT
+   
+   When this molecule is used within an organism
+   (e.g., Section/BlogGroup), the organism should
+   only control:
+   
+   1. Layout (grid/flex positioning)
+   2. External spacing (gaps between cards)
+   3. Width constraints (if needed)
+   
+   The organism should NOT override:
+   - Card background colors
+   - Typography styles
+   - Interactive states
+   - Internal spacing
+   
+   Example organism CSS:
+   ================================================= */
+
+/*
+.section-blog-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+  padding: var(--space-8);
+}
+
+.section-blog-group .card-blogpost {
+  /* NO style overrides */
+  /* Molecule is fully self-contained */
+}
+*/
+
+/* =================================================
+   HTML USAGE EXAMPLE
+   ================================================= */
+
+/*
+<article 
+  class="card-blogpost" 
+  role="article"
+  tabindex="0"
+  aria-labelledby="blog-title-1"
+>
+  <header class="card-blogpost-top">
+    <h3 id="blog-title-1" class="card-blogpost-title">
+      Email Marketing Best Practices
+    </h3>
+    <div 
+      class="card-blogpost-meta"
+      aria-label="Published in Marketing on October 15, 2025 by Geoffrey Craig"
+    >
+      <span>Marketing</span>
+      <span class="card-blogpost-meta-separator">|</span>
+      <time datetime="2025-10-15">Oct 15, 2025</time>
+      <span class="card-blogpost-meta-separator">|</span>
+      <span>Geoffrey Craig</span>
+    </div>
+  </header>
+  
+  <div class="card-blogpost-content">
+    <p class="card-blogpost-excerpt">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Turpis egestas integer eget aliquet nibh praesent tristique. 
+      Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit.
+    </p>
+    <a 
+      href="/blog/email-marketing-best-practices" 
+      class="card-blogpost-readmore"
+      aria-label="Read full article: Email Marketing Best Practices"
+    >
+      [Read more]
+    </a>
+  </div>
+</article>
+*/
+
+/* =================================================
+   TOKEN USAGE SUMMARY
+   
+   This component demonstrates v4.0 best practices:
+   
+   ✅ Component-specific tokens for states:
+      - var(--card-blog-bg-default)
+      - var(--card-blog-bg-hover)
+      - var(--card-blog-bg-active)
+      - var(--card-blog-link-*)
+   
+   ✅ Base tokens for consistent spacing:
+      - var(--space-*) for all spacing
+      - var(--shadow-*) for effects
+      - var(--transition-*) for animations
+   
+   ✅ Semantic tokens for text:
+      - var(--text-heading)
+      - var(--text-body)
+      - var(--text-disabled)
+   
+   ✅ Typography tokens:
+      - var(--font-primary)
+      - var(--font-secondary)
+      - var(--text-lead-size)
+      - var(--text-default-*)
+   
+   ✅ Focus/accessibility tokens:
+      - var(--focus-outline)
+      - var(--focus-outline-offset)
+   
+   ⚠️ NO hardcoded values
+   ⚠️ NO inline styles in HTML
+   ⚠️ NO organism overrides
+   
+   ================================================= */
+
+/* =================================================
+   TESTING CHECKLIST
+   ================================================= */
+
+/*
+Manual Testing:
+[ ] Default state renders with white background
+[ ] Hover state shows warm gold background (#FAF5E6)
+[ ] Hover state adds subtle shadow
+[ ] Title changes to body color on hover
+[ ] Read more link turns teal on hover
+[ ] Active state deepens background
+[ ] Disabled state shows gray with reduced opacity
+[ ] Focus outline appears on keyboard tab
+[ ] Mobile typography scales correctly
+[ ] Text truncates after 4 lines
+[ ] All colors resolve from v4.0 tokens
+[ ] No console errors
+
+Browser Testing:
+[ ] Chrome/Edge - All states working
+[ ] Firefox - All states working
+[ ] Safari - All states working
+[ ] Mobile Safari - Touch states working
+[ ] Chrome Mobile - Touch states working
+
+Accessibility Testing:
+[ ] Keyboard navigation functional
+[ ] Screen reader announces content properly
+[ ] ARIA attributes correct
+[ ] Focus states visible
+[ ] Color contrast meets WCAG AA (4.5:1 minimum)
+*/
+
+
+
+
+
+
+

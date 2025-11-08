@@ -1,0 +1,279 @@
+/**
+ * UI Icon Display Demo Styles
+ * Purposeful Media Promotions Design System
+ *
+ * Demo and documentation styles for UI Icon Display molecule component
+ * Tokenized: 2025-10-28
+ * Version: 1.0
+ * Variables: v4.0-20251027
+ */
+
+/* ============================================
+   DEMO PAGE BASE STYLES
+   ============================================ */
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: var(--space-5);
+    background: var(--bg-secondary);
+}
+
+/* ============================================
+   DEMO SECTION CONTAINER
+   ============================================ */
+
+.demo-section {
+    background: var(--bg-primary);
+    padding: var(--space-8);
+    margin-bottom: var(--space-8);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-light);
+}
+
+.demo-section h2 {
+    color: var(--color-primary-700);
+    border-bottom: var(--space-half) solid var(--color-accent-500);
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-5);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+}
+
+.demo-section h3 {
+    color: var(--color-primary-700);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-lg);
+}
+
+/* ============================================
+   DEMO GRID LAYOUT
+   ============================================ */
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+}
+
+.demo-item {
+    text-align: center;
+    padding: var(--space-5) var(--space-3);
+    background: var(--neutral-100);
+    border-radius: var(--radius-small);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.demo-item p {
+    margin: 0;
+    font-size: var(--font-size-xs);
+    color: var(--neutral-600);
+}
+
+/* ============================================
+   DEMO ROW LAYOUT
+   ============================================ */
+
+.demo-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    margin-bottom: var(--space-5);
+    padding: var(--space-5);
+    background: var(--neutral-100);
+    border-radius: var(--radius-small);
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   DEMO BACKGROUND VARIANTS
+   ============================================ */
+
+.demo-dark {
+    background: var(--color-primary-700);
+    padding: var(--space-8);
+    border-radius: var(--radius-medium);
+}
+
+.demo-dark p {
+    color: var(--neutral-white);
+    margin-top: var(--space-3);
+}
+
+.demo-teal {
+    background: var(--color-accent-teal);
+    padding: var(--space-8);
+    border-radius: var(--radius-medium);
+}
+
+/* ============================================
+   CODE DISPLAY BLOCKS
+   ============================================ */
+
+.demo-code {
+    background: var(--bg-secondary);
+    padding: var(--space-4);
+    border-radius: var(--radius-small);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    border-left: var(--space-1) solid var(--color-accent-500);
+    margin: var(--space-5) 0;
+    overflow-x: auto;
+}
+
+code {
+    background: var(--bg-secondary);
+    padding: var(--space-half) var(--space-2);
+    border-radius: var(--radius-small);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--color-error);
+}
+
+/* ============================================
+   DEMO BUTTON STYLES
+   ============================================ */
+
+.demo-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    background: var(--color-primary-700);
+    color: var(--neutral-white);
+    border: none;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+}
+
+.demo-button:hover {
+    background: var(--color-accent-500);
+    color: var(--color-primary-700);
+}
+
+/* ============================================
+   INTERACTIVE DEMO CONTROLS
+   ============================================ */
+
+.interactive-demo {
+    background: var(--neutral-100);
+    padding: var(--space-8);
+    border-radius: var(--radius-medium);
+    margin-top: var(--space-8);
+}
+
+.interactive-controls {
+    display: flex;
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.control-group.hidden {
+    display: none;
+}
+
+.control-group label {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    color: var(--color-primary-700);
+}
+
+.control-group select {
+    padding: var(--space-2) var(--space-3);
+    border: var(--border-width-thin) solid var(--neutral-300);
+    border-radius: var(--radius-small);
+    font-size: var(--font-size-sm);
+}
+
+/* ============================================
+   ICON PREVIEW AREA
+   ============================================ */
+
+.icon-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-medium);
+    border: var(--space-half) dashed var(--neutral-300);
+}
+
+.icon-preview.dark-bg {
+    background: var(--color-primary-700);
+}
+
+/* ============================================
+   REFERENCE TABLES
+   ============================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-5) 0;
+}
+
+th,
+td {
+    padding: var(--space-3);
+    text-align: left;
+    border-bottom: var(--border-width-thin) solid var(--neutral-200);
+}
+
+th {
+    background: var(--color-primary-700);
+    color: var(--neutral-white);
+    font-weight: var(--font-weight-semibold);
+}
+
+tr:hover {
+    background: var(--bg-secondary);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (min-width: 380px) and (max-width: 767px) {
+    .demo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: var(--space-3);
+    }
+
+    .demo-row {
+        gap: var(--space-4);
+    }
+
+    .interactive-controls {
+        flex-direction: column;
+    }
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .demo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+
+/* Desktop: 1150-1919px - Base styles already optimized */
+
+/* DesktopPlus: 1920px+ - Base styles scale appropriately */

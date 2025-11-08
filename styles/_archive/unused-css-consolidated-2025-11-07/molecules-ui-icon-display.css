@@ -1,0 +1,280 @@
+/* ====================================
+   UI ICON DISPLAY MOLECULE STYLES
+   Component: Molecule/Icon/UI-Display
+   Version: 1.0
+   Last Updated: 2025-10-08
+   
+   Description: Flexible UI icon display component with size and color variants
+   Sizes: Small (16px), Medium (24px), Large (32px), X-Large (48px)
+   Colors: Navy (#1B1464), Gold (#D4AF37), Gray (#6C757D), White (#FFFFFF), Teal (#39CCCC)
+   Dependencies: variables-v2.0-20250915.css, purposeful-sprite-ui.svg
+   
+   NOTE: UI icons use CSS filters for color variations (single sprite)
+   NOTE: Arrow icon supports rotation via data-direction attribute
+   
+   Sprite Sheet Layout (6 columns × 2 rows, 256px per icon):
+   Row 1: search, arrow-up, play, pause, hamburger, close
+   Row 2: diamond, check, dot
+   
+   Usage:
+   <div class="ui-icon-display ui-icon-display--medium" data-icon="arrow-up" data-color="navy"></div>
+   
+   Arrow Directions:
+   <div class="ui-icon-display ui-icon-display--medium" data-icon="arrow-up" data-color="navy" data-direction="right"></div>
+   ==================================== */
+
+/* Import dependencies */
+@import url('variables-v4.0-20251027.css');
+
+/* ====================================
+   BASE UI ICON DISPLAY STYLES
+   ==================================== */
+.ui-icon-display {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url('../assets/svg/ui-icons/purposeful-sprite-ui.svg');
+    position: relative;
+    flex-shrink: 0;
+    transition: filter 0.2s ease;
+}
+
+/* ====================================
+   SIZE VARIANTS - SMALL (16px)
+   Scale factor: 16/256 = 0.0625
+   Sprite: 96px × 32px
+   ==================================== */
+.ui-icon-display--small {
+    width: 16px;
+    height: 16px;
+    background-size: 96px 32px;
+}
+
+/* Icon positions - Small */
+.ui-icon-display--small[data-icon="search"] { background-position: 0px 0px; }
+.ui-icon-display--small[data-icon="arrow-up"] { background-position: -16px 0px; }
+.ui-icon-display--small[data-icon="play"] { background-position: -32px 0px; }
+.ui-icon-display--small[data-icon="pause"] { background-position: -48px 0px; }
+.ui-icon-display--small[data-icon="hamburger"] { background-position: -64px 0px; }
+.ui-icon-display--small[data-icon="close"] { background-position: -80px 0px; }
+.ui-icon-display--small[data-icon="diamond"] { background-position: 0px -16px; }
+.ui-icon-display--small[data-icon="check"] { background-position: -16px -16px; }
+.ui-icon-display--small[data-icon="dot"] { background-position: -32px -16px; }
+
+/* ====================================
+   SIZE VARIANTS - MEDIUM (24px)
+   Scale factor: 24/256 = 0.09375
+   Sprite: 144px × 48px
+   ==================================== */
+.ui-icon-display--medium {
+    width: 24px;
+    height: 24px;
+    background-size: 144px 48px;
+}
+
+/* Icon positions - Medium */
+.ui-icon-display--medium[data-icon="search"] { background-position: 0px 0px; }
+.ui-icon-display--medium[data-icon="arrow-up"] { background-position: -24px 0px; }
+.ui-icon-display--medium[data-icon="play"] { background-position: -48px 0px; }
+.ui-icon-display--medium[data-icon="pause"] { background-position: -72px 0px; }
+.ui-icon-display--medium[data-icon="hamburger"] { background-position: -96px 0px; }
+.ui-icon-display--medium[data-icon="close"] { background-position: -120px 0px; }
+.ui-icon-display--medium[data-icon="diamond"] { background-position: 0px -24px; }
+.ui-icon-display--medium[data-icon="check"] { background-position: -24px -24px; }
+.ui-icon-display--medium[data-icon="dot"] { background-position: -48px -24px; }
+
+/* ====================================
+   SIZE VARIANTS - LARGE (32px)
+   Scale factor: 32/256 = 0.125
+   Sprite: 192px × 64px
+   ==================================== */
+.ui-icon-display--large {
+    width: 32px;
+    height: 32px;
+    background-size: 192px 64px;
+}
+
+/* Icon positions - Large */
+.ui-icon-display--large[data-icon="search"] { background-position: 0px 0px; }
+.ui-icon-display--large[data-icon="arrow-up"] { background-position: -32px 0px; }
+.ui-icon-display--large[data-icon="play"] { background-position: -64px 0px; }
+.ui-icon-display--large[data-icon="pause"] { background-position: -96px 0px; }
+.ui-icon-display--large[data-icon="hamburger"] { background-position: -128px 0px; }
+.ui-icon-display--large[data-icon="close"] { background-position: -160px 0px; }
+.ui-icon-display--large[data-icon="diamond"] { background-position: 0px -32px; }
+.ui-icon-display--large[data-icon="check"] { background-position: -32px -32px; }
+.ui-icon-display--large[data-icon="dot"] { background-position: -64px -32px; }
+
+/* ====================================
+   SIZE VARIANTS - XLARGE (48px)
+   Scale factor: 48/256 = 0.1875
+   Sprite: 288px × 96px
+   ==================================== */
+.ui-icon-display--xlarge {
+    width: 48px;
+    height: 48px;
+    background-size: 288px 96px;
+}
+
+/* Icon positions - X-Large */
+.ui-icon-display--xlarge[data-icon="search"] { background-position: 0px 0px; }
+.ui-icon-display--xlarge[data-icon="arrow-up"] { background-position: -48px 0px; }
+.ui-icon-display--xlarge[data-icon="play"] { background-position: -96px 0px; }
+.ui-icon-display--xlarge[data-icon="pause"] { background-position: -144px 0px; }
+.ui-icon-display--xlarge[data-icon="hamburger"] { background-position: -192px 0px; }
+.ui-icon-display--xlarge[data-icon="close"] { background-position: -240px 0px; }
+.ui-icon-display--xlarge[data-icon="diamond"] { background-position: 0px -48px; }
+.ui-icon-display--xlarge[data-icon="check"] { background-position: -48px -48px; }
+.ui-icon-display--xlarge[data-icon="dot"] { background-position: -96px -48px; }
+
+/* ====================================
+   COLOR VARIANTS - CSS FILTERS
+   
+   Colors are applied via CSS filters to recolor the sprite
+   Filters generated using: https://codepen.io/sosuke/pen/Pjoqqp
+   ==================================== */
+
+/* Navy (#1B1464) */
+.ui-icon-display[data-color="navy"] {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+}
+
+/* Gold (#D4AF37) */
+.ui-icon-display[data-color="gold"] {
+    filter: brightness(0) saturate(100%) invert(81%) sepia(26%) saturate(735%) hue-rotate(6deg) brightness(95%) contrast(87%);
+}
+
+/* Gray (#6C757D) */
+.ui-icon-display[data-color="gray"] {
+    filter: brightness(0) saturate(100%) invert(47%) sepia(8%) saturate(719%) hue-rotate(178deg) brightness(93%) contrast(87%);
+}
+
+/* White (#FFFFFF) */
+.ui-icon-display[data-color="white"] {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+/* Teal (#39CCCC) */
+.ui-icon-display[data-color="teal"] {
+    filter: brightness(0) saturate(100%) invert(66%) sepia(74%) saturate(458%) hue-rotate(134deg) brightness(96%) contrast(91%);
+}
+
+/* ====================================
+   ARROW DIRECTION VARIANTS
+   
+   Arrow icon supports rotation for different directions
+   Data attribute: data-direction="up|right|down|left"
+   Default: up
+   ==================================== */
+
+.ui-icon-display[data-icon="arrow-up"][data-direction="up"] {
+    transform: rotate(0deg);
+}
+
+.ui-icon-display[data-icon="arrow-up"][data-direction="right"] {
+    transform: rotate(90deg);
+}
+
+.ui-icon-display[data-icon="arrow-up"][data-direction="down"] {
+    transform: rotate(180deg);
+}
+
+.ui-icon-display[data-icon="arrow-up"][data-direction="left"] {
+    transform: rotate(-90deg);
+}
+
+/* ====================================
+   HOVER STATES
+   
+   Optional hover color changes
+   Add .ui-icon-display--interactive class for hover effects
+   ==================================== */
+
+.ui-icon-display--interactive {
+    cursor: pointer;
+}
+
+/* Navy hover to Gold */
+.ui-icon-display--interactive[data-color="navy"]:hover {
+    filter: brightness(0) saturate(100%) invert(81%) sepia(26%) saturate(735%) hue-rotate(6deg) brightness(95%) contrast(87%);
+}
+
+/* Gold hover to Navy */
+.ui-icon-display--interactive[data-color="gold"]:hover {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+}
+
+/* Gray hover to Navy */
+.ui-icon-display--interactive[data-color="gray"]:hover {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+}
+
+/* White hover to Gold */
+.ui-icon-display--interactive[data-color="white"]:hover {
+    filter: brightness(0) saturate(100%) invert(81%) sepia(26%) saturate(735%) hue-rotate(6deg) brightness(95%) contrast(87%);
+}
+
+/* Teal hover to Navy */
+.ui-icon-display--interactive[data-color="teal"]:hover {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg) brightness(93%) contrast(101%);
+}
+
+/* ====================================
+   ACCESSIBILITY
+   ==================================== */
+
+/* Ensure smooth transitions for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .ui-icon-display {
+        transition: none;
+    }
+    
+    .ui-icon-display[data-icon="arrow-up"] {
+        transition: none;
+    }
+}
+
+/* ====================================
+   USAGE EXAMPLES
+   ==================================== */
+
+/*
+Basic Icon:
+<div class="ui-icon-display ui-icon-display--medium" data-icon="search" data-color="navy"></div>
+
+Arrow with Direction:
+<div class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gold" data-direction="right"></div>
+
+Interactive Icon with Hover:
+<div class="ui-icon-display ui-icon-display--medium ui-icon-display--interactive" data-icon="close" data-color="gray"></div>
+
+In a Button:
+<button class="my-button">
+    <span class="ui-icon-display ui-icon-display--small" data-icon="check" data-color="white"></span>
+    <span>Confirm</span>
+</button>
+
+All Available Icons:
+- search
+- arrow-up (supports data-direction: up, right, down, left)
+- play
+- pause
+- hamburger
+- close
+- diamond
+- check
+- dot
+
+All Available Colors:
+- navy (#1B1464)
+- gold (#D4AF37)
+- gray (#6C757D)
+- white (#FFFFFF)
+- teal (#39CCCC)
+
+All Available Sizes:
+- small (16px)
+- medium (24px)
+- large (32px)
+- xlarge (48px)
+*/
+

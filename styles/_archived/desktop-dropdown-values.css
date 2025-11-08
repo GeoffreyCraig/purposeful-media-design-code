@@ -1,0 +1,156 @@
+@charset "UTF-8";
+/* CSS Document */
+/* ============================================
+   DROPDOWN MENU SYSTEM VARIABLES
+   ============================================ */
+
+/* --- Dropdown Container Properties --- */
+:root {
+  /* Container Layout */
+  --dropdown-padding-block: 32px;
+  --dropdown-padding-inline-start: 32px;
+  --dropdown-padding-inline-end: 64px;
+  --dropdown-gap: 32px; /* Gap between link groups */
+  --dropdown-link-gap: 16px; /* Gap between individual links */
+  
+  /* Container Visual */
+  --dropdown-border-radius: 8px;
+  --dropdown-box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+  --dropdown-overflow: clip;
+}
+
+/* --- Dropdown Background Colors by State --- */
+:root {
+  /* Default State */
+  --dropdown-bg-default: #eceeef; /* --secondary */
+  
+  /* Hover States - Item-specific backgrounds */
+  --dropdown-bg-hover1: #f4ebcd; /* --100, Light Gold - First item hover */
+  --dropdown-bg-hover2: #f4ebcd; /* --100, Light Gold - Second item hover */
+  --dropdown-bg-hover3: #f4ebcd; /* --100, Light Gold - Third item hover */
+  
+  /* Active States - Item-specific backgrounds */
+  --dropdown-bg-active1: #d7f5f5; /* --100, Light Teal - First item active */
+  --dropdown-bg-active2: #d7f5f5; /* --100, Light Teal - Second item active */
+  --dropdown-bg-active3: #d7f5f5; /* --100, Light Teal - Third item active */
+  
+  /* Disabled State */
+  --dropdown-bg-disabled: #eceeef; /* --secondary, same as default */
+}
+
+/* --- Dropdown Link Text Colors by State --- */
+:root {
+  /* Default Link */
+  --dropdown-link-default: #1b1464; /* --menudrop, Navy */
+  
+  /* Hover Link */
+  --dropdown-link-hover: #1d50de; /* Bright Blue */
+  --dropdown-link-hover-decoration: underline;
+  --dropdown-link-hover-decoration-style: solid;
+  
+  /* Active Link */
+  --dropdown-link-active: #06102b; /* --activedrop, Dark Navy */
+  
+  /* Disabled Links */
+  --dropdown-link-disabled: #868f97; /* --menudisabled, Gray */
+  
+  /* Sibling Links (non-active items when one is active) */
+  --dropdown-link-sibling-disabled: #868f97; /* Gray out non-active items */
+}
+
+/* --- Dropdown Typography --- */
+:root {
+  /* Inherits from Navigation H4/21 */
+  --dropdown-font-family: var(--nav-font-family);
+  --dropdown-font-weight: var(--nav-font-weight);
+  --dropdown-font-size: var(--nav-h4-font-size);
+  --dropdown-line-height: var(--nav-h4-line-height);
+  --dropdown-text-transform: var(--nav-h4-text-transform);
+  --dropdown-white-space: var(--nav-h4-white-space);
+}
+
+/* --- Dropdown Behavior Notes --- */
+/* 
+IMPORTANT DROPDOWN BEHAVIORS:
+1. Hover State: Changes container background to light gold (#f4ebcd) with mix-blend-multiply
+2. Hover Link: Single hovered link gets bright blue (#1d50de) with underline
+3. Active State: Changes container background to light teal (#d7f5f5)
+4. Active Link: Active link shows dark navy (#06102b), sibling links become disabled gray
+5. Disabled State: All links in dropdown show gray (#868f97), container remains default gray
+6. Container shadow persists across all states
+7. Gap between links: 16px, Gap between sections: 32px
+*/
+
+/* --- Dropdown Variants: Solutions Menu --- */
+:root {
+  /* Solutions dropdown uses same values as Default */
+  --dropdown-solutions-bg-default: var(--dropdown-bg-default);
+  --dropdown-solutions-bg-hover: var(--dropdown-bg-hover1);
+  --dropdown-solutions-bg-active: var(--dropdown-bg-active1);
+  --dropdown-solutions-bg-disabled: var(--dropdown-bg-disabled);
+}
+
+/* --- Dropdown Variants: Resources Menu --- */
+:root {
+  /* Resources dropdown uses same values as Default */
+  --dropdown-resources-bg-default: var(--dropdown-bg-default);
+  --dropdown-resources-bg-hover: var(--dropdown-bg-hover1);
+  --dropdown-resources-bg-active: var(--dropdown-bg-active1);
+  --dropdown-resources-bg-disabled: var(--dropdown-bg-disabled);
+}
+
+/* --- Dropdown Mix Blend Mode --- */
+:root {
+  --dropdown-hover-blend-mode: multiply; /* Applied to container on hover */
+}
+
+/* ============================================
+   DROPDOWN USAGE EXAMPLES
+   ============================================ */
+
+/*
+Example: Dropdown Container
+.dropdown-menu {
+  background-color: var(--dropdown-bg-default);
+  padding: var(--dropdown-padding-block) var(--dropdown-padding-inline-end) 
+           var(--dropdown-padding-block) var(--dropdown-padding-inline-start);
+  border-radius: var(--dropdown-border-radius);
+  box-shadow: var(--dropdown-box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--dropdown-gap);
+}
+
+Example: Dropdown Container on Hover
+.dropdown-menu[data-state="hover"] {
+  background-color: var(--dropdown-bg-hover1);
+  mix-blend-mode: var(--dropdown-hover-blend-mode);
+}
+
+Example: Dropdown Link
+.dropdown-menu__link {
+  font-family: var(--dropdown-font-family);
+  font-weight: var(--dropdown-font-weight);
+  font-size: var(--dropdown-font-size);
+  line-height: var(--dropdown-line-height);
+  color: var(--dropdown-link-default);
+  text-transform: var(--dropdown-text-transform);
+  white-space: var(--dropdown-white-space);
+}
+
+Example: Dropdown Link on Hover
+.dropdown-menu__link:hover {
+  color: var(--dropdown-link-hover);
+  text-decoration: var(--dropdown-link-hover-decoration);
+  text-decoration-style: var(--dropdown-link-hover-decoration-style);
+}
+
+Example: Active Dropdown Link (disables siblings)
+.dropdown-menu__link[aria-current="page"] {
+  color: var(--dropdown-link-active);
+}
+
+.dropdown-menu[data-state="active"] .dropdown-menu__link:not([aria-current="page"]) {
+  color: var(--dropdown-link-sibling-disabled);
+}
+*/

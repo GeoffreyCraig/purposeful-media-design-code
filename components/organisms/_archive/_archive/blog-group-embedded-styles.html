@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Group Component - Organisms</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Component: Blog Group
+         * Purpose: Display blog posts in a responsive grid with pagination
+         * Scrolling Modes: BlogTeaser (2 posts), FrontPage (4-8 posts), Infinite (all posts)
+         * Breakpoints: Mobile (380-767px), Tablet (768-1149px), Desktop (1150-1919px), DesktopPlus (1920px+)
+         */
+        
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        /* Blog Group Container */
+        .blog-group {
+            background-color: white;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Blog Cards Container */
+        .blog-group__cards {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+        }
+        
+        /* Inner container for max-width control */
+        .blog-group__inner {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        /* Individual Blog Card (from card-blogpost.html) */
+        .blog-card {
+            background-color: white;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            width: 100%;
+        }
+        
+        /* Card Top Section */
+        .blog-card__top {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .blog-card__title {
+            font-family: 'Lato', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #1b1464;
+            line-height: 1.45;
+            transition: color 0.3s ease;
+        }
+        
+        .blog-card__meta {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            line-height: 18px;
+            color: #1b1464;
+            transition: color 0.3s ease;
+        }
+        
+        /* Content Area */
+        .blog-card__content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-bottom: 20px;
+        }
+        
+        .blog-card__excerpt {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 27px;
+            color: #51585e;
+        }
+        
+        .blog-card__read-more {
+            color: #1d50de;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        
+        /* Card Hover State */
+        .blog-card:hover {
+            background-color: #faf5e6;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-card:hover .blog-card__title,
+        .blog-card:hover .blog-card__meta {
+            color: #51585e;
+        }
+        
+        .blog-card:hover .blog-card__read-more {
+            color: #39cccc;
+        }
+        
+        /* Card Active State */
+        .blog-card:active {
+            background-color: white;
+            box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.1);
+            transform: scale(0.99);
+        }
+        
+        .blog-card:active .blog-card__title,
+        .blog-card:active .blog-card__meta {
+            color: #1b1464;
+        }
+        
+        .blog-card:active .blog-card__read-more {
+            color: #06102b;
+        }
+        
+        /* Pagination Container */
+        .blog-group__footer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 16px 20px 40px 20px;
+        }
+        
+        .blog-group__pagination {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 18px;
+            color: #51585e;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .blog-group__pagination:hover {
+            color: #1d50de;
+        }
+        
+        /* Scrolling Mode Variations */
+        .blog-group--teaser .blog-card:nth-child(n+3) {
+            display: none;
+        }
+        
+        .blog-group--frontpage-mobile .blog-card:nth-child(n+5) {
+            display: none;
+        }
+        
+        .blog-group--frontpage-tablet .blog-card:nth-child(n+7) {
+            display: none;
+        }
+        
+        .blog-group--frontpage-desktop .blog-card:nth-child(n+9) {
+            display: none;
+        }
+        
+        .blog-group--teaser .blog-group__footer,
+        .blog-group--infinite .blog-group__footer {
+            display: none;
+        }
+        
+        /* Mobile Breakpoint: 380-767px */
+        @media (max-width: 767px) {
+            .blog-card__title {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            
+            .blog-group__cards {
+                padding: 4px 16px;
+            }
+            
+            .blog-group__footer {
+                padding: 16px 20px 40px 20px;
+            }
+        }
+        
+        /* Tablet Breakpoint: 768-1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .blog-card__title {
+                font-size: 18px;
+                line-height: 27px;
+            }
+            
+            .blog-group__cards {
+                padding: 8px 32px;
+            }
+            
+            .blog-group__footer {
+                padding: 16px 40px 60px 40px;
+            }
+        }
+        
+        /* Desktop Breakpoint: 1150-1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .blog-card__title {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+            
+            .blog-group__cards {
+                padding: 16px 64px;
+            }
+            
+            .blog-group__inner {
+                max-width: 1120px;
+                margin: 0 auto;
+            }
+            
+            .blog-group__footer {
+                padding: 16px 80px 80px 80px;
+            }
+        }
+        
+        /* DesktopPlus Breakpoint: 1920px+ */
+        @media (min-width: 1920px) {
+            .blog-card__title {
+                font-size: 21px;
+                line-height: 30.5px;
+            }
+            
+            .blog-group__cards {
+                padding: 16px 64px;
+            }
+            
+            .blog-group__inner {
+                max-width: 1920px;
+                margin: 0 auto;
+            }
+            
+            .blog-card {
+                max-width: 1920px;
+            }
+            
+            .blog-group__footer {
+                padding: 16px 80px 80px 80px;
+            }
+        }
+        
+        /* Demo Container */
+        .demo-container {
+            padding: 20px;
+        }
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .demo-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 20px;
+        }
+        
+        /* Hide/Show elements for demo */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="font-family: 'Lato', sans-serif; color: #1b1464; margin-bottom: 40px; padding: 0 20px;">Blog Group Component</h1>
+        
+        <!-- BlogTeaser Mode -->
+        <div class="demo-section">
+            <div class="demo-label">BlogTeaser Mode (2 posts, all breakpoints)</div>
+            <section class="blog-group blog-group--teaser">
+                <div class="blog-group__cards">
+                    <div class="blog-group__inner">
+                        <!-- Blog Card 1 -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    Essential Email Marketing Strategies for B2B Success in 2025
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Email Marketing | Date: October 2, 2025 | Author: Purposeful Media
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Discover proven email marketing strategies that drive B2B engagement and conversions. Learn how to craft compelling subject lines, segment your audience effectively, and leverage automation to nurture leads through the sales funnel. Our comprehensive guide covers the latest trends and best practices... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 2 -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    How to Create Lead Magnets That Actually Convert
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Content Marketing | Date: September 28, 2025 | Author: Geoffrey Craig
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Learn the secrets to creating lead magnets that your B2B audience can't resist. From choosing the right format to crafting compelling value propositions, this guide walks you through the entire process of developing high-converting lead generation assets... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- FrontPage Mode -->
+        <div class="demo-section">
+            <div class="demo-label">FrontPage Mode (Responsive: 4-8 posts based on viewport)</div>
+            <section class="blog-group blog-group--frontpage" id="frontpage-demo">
+                <div class="blog-group__cards">
+                    <div class="blog-group__inner">
+                        <!-- Blog Card 1 -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    Essential Email Marketing Strategies for B2B Success in 2025
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Email Marketing | Date: October 2, 2025 | Author: Purposeful Media
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Discover proven email marketing strategies that drive B2B engagement and conversions. Learn how to craft compelling subject lines, segment your audience effectively, and leverage automation to nurture leads through the sales funnel... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 2 -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    How to Create Lead Magnets That Actually Convert
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Content Marketing | Date: September 28, 2025 | Author: Geoffrey Craig
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Learn the secrets to creating lead magnets that your B2B audience can't resist. From choosing the right format to crafting compelling value propositions, this guide walks you through the entire process... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 3 -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    Webinar Production Guide: From Planning to Post-Event Nurture
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Webinar Marketing | Date: September 25, 2025 | Author: Purposeful Media
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Master the art of webinar production with our complete guide. From initial planning and promotion to live production and post-event follow-up, we cover every aspect of running successful B2B webinars... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 4 -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    SEO Optimization for B2B: A Comprehensive Strategy Guide
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: SEO | Date: September 20, 2025 | Author: Purposeful Media
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Unlock the power of SEO for your B2B business with our comprehensive strategy guide. Learn keyword research, on-page optimization, technical SEO, and link building strategies tailored for B2B companies... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 5 (Hidden on Mobile) -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    Marketing Automation: Streamline Your B2B Marketing Efforts
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Marketing Automation | Date: September 15, 2025 | Author: Geoffrey Craig
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Discover how marketing automation can transform your B2B marketing efforts. Learn to implement automated workflows, nurture campaigns, and lead scoring systems that drive conversions... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 6 (Hidden on Mobile) -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    Content Repurposing: Maximize Your Content ROI
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Content Strategy | Date: September 10, 2025 | Author: Purposeful Media
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Learn how to repurpose your existing content across multiple channels to maximize ROI. From blog posts to social media, webinars to eBooks, discover strategies that multiply your content's impact... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 7 (Hidden on Mobile and Tablet) -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    LinkedIn Marketing for B2B: Building Your Professional Presence
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Social Media | Date: September 5, 2025 | Author: Purposeful Media
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Master LinkedIn marketing for B2B success. Learn to optimize your company page, create engaging content, leverage LinkedIn ads, and build meaningful professional connections... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 8 (Hidden on Mobile and Tablet) -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    Measuring Marketing ROI: KPIs That Matter for B2B
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Analytics | Date: September 1, 2025 | Author: Geoffrey Craig
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Learn to measure and demonstrate marketing ROI with the KPIs that matter most for B2B businesses. From lead generation metrics to revenue attribution, master the art of marketing analytics... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="blog-group__footer">
+                    <span class="blog-group__pagination">More →</span>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Infinite Mode -->
+        <div class="demo-section">
+            <div class="demo-label">Infinite Mode (All posts, no pagination)</div>
+            <section class="blog-group blog-group--infinite">
+                <div class="blog-group__cards">
+                    <div class="blog-group__inner">
+                        <!-- Blog Card 1 -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    Essential Email Marketing Strategies for B2B Success
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Email Marketing | Date: October 2, 2025 | Author: Purposeful Media
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Discover proven email marketing strategies that drive B2B engagement... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 2 -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    How to Create Lead Magnets That Convert
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Content Marketing | Date: September 28, 2025 | Author: Geoffrey Craig
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Learn the secrets to creating lead magnets that your B2B audience can't resist... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Blog Card 3 -->
+                        <article class="blog-card">
+                            <div class="blog-card__top">
+                                <h3 class="blog-card__title">
+                                    Webinar Production Complete Guide
+                                </h3>
+                                <div class="blog-card__meta">
+                                    Category: Webinar Marketing | Date: September 25, 2025 | Author: Purposeful Media
+                                </div>
+                            </div>
+                            <div class="blog-card__content">
+                                <p class="blog-card__excerpt">
+                                    Master the art of webinar production with our complete guide... <a href="#" class="blog-card__read-more">[Read more]</a>
+                                </p>
+                            </div>
+                        </article>
+                        
+                        <!-- Additional cards would continue here in production -->
+                        <!-- Showing just a sample for demo purposes -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Responsive Info -->
+        <div class="demo-section" style="background: #f0f3fd; padding: 20px; border-radius: 8px;">
+            <h3 style="color: #1b1464; margin-bottom: 10px;">Blog Group Responsive Behavior</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;">📱 <strong>Mobile (380-767px):</strong> FrontPage shows 4 posts, smaller padding</li>
+                <li style="margin-bottom: 8px;">📱 <strong>Tablet (768-1149px):</strong> FrontPage shows 6 posts, medium padding</li>
+                <li style="margin-bottom: 8px;">💻 <strong>Desktop (1150-1919px):</strong> FrontPage shows 8 posts, max-width 1120px</li>
+                <li style="margin-bottom: 8px;">🖥️ <strong>DesktopPlus (1920px+):</strong> FrontPage shows 8 posts, max-width 1920px</li>
+            </ul>
+            <h4 style="color: #1b1464; margin: 20px 0 10px 0;">Scrolling Modes:</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;">📄 <strong>BlogTeaser:</strong> Always shows 2 posts, no pagination</li>
+                <li style="margin-bottom: 8px;">📄 <strong>FrontPage:</strong> Shows 4-8 posts based on breakpoint, with pagination</li>
+                <li style="margin-bottom: 8px;">📄 <strong>Infinite:</strong> Shows all posts, no pagination</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Blog Group Component JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up responsive FrontPage mode
+            function updateFrontPageMode() {
+                const frontPageSection = document.getElementById('frontpage-demo');
+                if (!frontPageSection) return;
+                
+                const width = window.innerWidth;
+                
+                // Remove all existing mode classes
+                frontPageSection.classList.remove('blog-group--frontpage-mobile', 
+                                                 'blog-group--frontpage-tablet', 
+                                                 'blog-group--frontpage-desktop');
+                
+                // Add appropriate class based on breakpoint
+                if (width < 768) {
+                    frontPageSection.classList.add('blog-group--frontpage-mobile');
+                    console.log('Blog Group: Mobile mode (4 posts)');
+                } else if (width < 1150) {
+                    frontPageSection.classList.add('blog-group--frontpage-tablet');
+                    console.log('Blog Group: Tablet mode (6 posts)');
+                } else {
+                    frontPageSection.classList.add('blog-group--frontpage-desktop');
+                    console.log('Blog Group: Desktop/DesktopPlus mode (8 posts)');
+                }
+            }
+            
+            // Initial setup
+            updateFrontPageMode();
+            
+            // Update on resize
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(updateFrontPageMode, 250);
+            });
+            
+            // Add click handlers for blog cards
+            const blogCards = document.querySelectorAll('.blog-card');
+            blogCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking the read more link
+                    if (!e.target.classList.contains('blog-card__read-more')) {
+                        const title = this.querySelector('.blog-card__title').textContent.trim();
+                        console.log('Blog card clicked:', title);
+                    }
+                });
+                
+                // Handle read more links
+                const readMoreLink = card.querySelector('.blog-card__read-more');
+                if (readMoreLink) {
+                    readMoreLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const title = card.querySelector('.blog-card__title').textContent.trim();
+                        console.log('Read more clicked for:', title);
+                    });
+                }
+            });
+            
+            // Add pagination handler
+            const paginationLinks = document.querySelectorAll('.blog-group__pagination');
+            paginationLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Pagination: Loading more posts...');
+                    // In production, this would load more posts via AJAX or navigate to next page
+                });
+            });
+            
+            // Log component initialization
+            console.log('Blog Group component initialized');
+            console.log('Current viewport width:', window.innerWidth);
+        });
+    </script>
+</body>
+</html>

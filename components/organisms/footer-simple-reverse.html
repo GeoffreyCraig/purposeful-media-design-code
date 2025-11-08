@@ -1,0 +1,44 @@
+<!--
+    Footer Simple Component - Reverse Color Scheme
+
+    Required CSS Dependencies:
+    - variables-v4.0-20251027.css
+    - organisms-footers.css
+-->
+<link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+<link rel="stylesheet" href="../../styles/organisms-footers.css">
+
+<!-- Footer Simple Component - Reverse Color Scheme -->
+<footer class="footer-simple" data-color-scheme="reverse">
+    <!-- Top border accent -->
+    <div class="footer-border"></div>
+
+    <!-- Main footer content -->
+    <div class="footer-content">
+        <!-- Logo container - responsive sizing -->
+        <div class="footer-logo">
+            <picture>
+                <!-- Desktop Plus and Desktop -->
+                <source media="(min-width: 1150px)"
+                        srcset="../../assets/svg/logos/purposeful-media-logo-blue-desktop.svg">
+                <!-- Tablet -->
+                <source media="(min-width: 768px)"
+                        srcset="../../assets/svg/logos/purposeful-media-logo-blue-tablet.svg">
+                <!-- Mobile (default) -->
+                <img src="../../assets/svg/logos/purposeful-media-logo-blue-mobile.svg"
+                     alt="Purposeful Media Promotions">
+            </picture>
+        </div>
+
+        <!-- Sub-footer attribution -->
+        <div class="sub-footer">
+            <div class="attribution">
+                <span class="copyright">© All rights reserved 2025</span>
+                <span class="separator">|</span>
+                <span class="company">Purposeful Media Promotions</span>
+                <span class="separator">|</span>
+                <a href="/policy" class="policy-link">Policy Statement</a>
+            </div>
+        </div>
+    </div>
+</footer>

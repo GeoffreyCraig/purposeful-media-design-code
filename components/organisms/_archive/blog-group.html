@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Group Organism - Clean Implementation (Zero Inline Styles)</title>
+  
+  <!-- Import Variables v4.0 -->
+  <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+
+  <!-- Import Card/BlogPost Molecule Styles -->
+  <link rel="stylesheet" href="../../styles/molecules-card-blogpost.css">
+
+  <!-- Import Blog Group Organism Styles -->
+  <link rel="stylesheet" href="../../styles/blog-group-organism-v2.css">
+</head>
+<body>
+  <!-- ZERO INLINE STYLES - Pure token-based implementation -->
+  
+  <!-- Blog Group Section: Teaser Mode (2 posts) -->
+  <section class="blog-group blog-group--teaser">
+    <div class="blog-group__cards">
+      <div class="blog-group__inner">
+        
+        <!-- Card 1 - Using the molecule structure -->
+        <article
+          class="blog-card"
+          role="article"
+          tabindex="0"
+          aria-labelledby="blog-title-1"
+        >
+          <div class="blog-card__top">
+            <h3 id="blog-title-1" class="blog-card__title">
+              Email Marketing Best Practices for B2B Success
+            </h3>
+            <div
+              class="blog-card__meta"
+              aria-label="Published in Marketing on October 27, 2025 by Geoffrey Craig"
+            >
+              Marketing | Oct 27, 2025 | Geoffrey Craig
+            </div>
+          </div>
+
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Discover proven strategies for improving email deliverability,
+              engagement rates, and conversion metrics. Learn how to craft
+              compelling subject lines that get opened and calls-to-action
+              that drive results in your B2B campaigns. <a
+              href="/blog/email-marketing-best-practices"
+              class="blog-card__read-more"
+              aria-label="Read full article: Email Marketing Best Practices"
+            >[Read more]</a>
+            </p>
+          </div>
+        </article>
+        
+        <!-- Card 2 -->
+        <article
+          class="blog-card"
+          role="article"
+          tabindex="0"
+          aria-labelledby="blog-title-2"
+        >
+          <div class="blog-card__top">
+            <h3 id="blog-title-2" class="blog-card__title">
+              Lead Magnet Creation Guide
+            </h3>
+            <div
+              class="blog-card__meta"
+              aria-label="Published in Content on October 24, 2025 by Dana Morris"
+            >
+              Content | Oct 24, 2025 | Dana Morris
+            </div>
+          </div>
+
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Learn the secrets to creating lead magnets that your B2B audience
+              can't resist. From choosing the right format to crafting compelling
+              value propositions, this guide walks you through the entire process
+              of developing high-converting lead generation assets. <a
+              href="/blog/lead-magnet-creation"
+              class="blog-card__read-more"
+              aria-label="Read full article: Lead Magnet Creation Guide"
+            >[Read more]</a>
+            </p>
+          </div>
+        </article>
+        
+        <!-- Card 3 - Hidden in teaser mode -->
+        <article
+          class="blog-card"
+          role="article"
+          tabindex="0"
+          aria-labelledby="blog-title-3"
+        >
+          <div class="blog-card__top">
+            <h3 id="blog-title-3" class="blog-card__title">
+              Webinar Production Masterclass
+            </h3>
+            <div class="blog-card__meta">
+              Events | Oct 20, 2025 | Bill Robertson
+            </div>
+          </div>
+
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Master the art of producing engaging webinars that convert
+              attendees into qualified leads. From technical setup to
+              post-event follow-up, this comprehensive guide covers every
+              aspect of successful webinar management. <a href="/blog/webinar-production" class="blog-card__read-more">[Read more]</a>
+            </p>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+    
+    <!-- No footer in teaser mode -->
+  </section>
+  
+  <!-- Spacer -->
+  <div class="blog-group__spacer" aria-hidden="true"></div>
+  
+  <!-- Blog Group Section: FrontPage Mode (4-8 posts based on viewport) -->
+  <section class="blog-group blog-group--frontpage-desktop" id="frontpage-demo">
+    <div class="blog-group__cards">
+      <div class="blog-group__inner">
+        
+        <!-- 8 cards for desktop view -->
+        <!-- Card 1 -->
+        <article class="blog-card" role="article" tabindex="0">
+          <div class="blog-card__top">
+            <h3 class="blog-card__title">SEO Optimization for B2B Companies</h3>
+            <div class="blog-card__meta">
+              SEO | Oct 27, 2025 | Charles Norton
+            </div>
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Unlock the power of SEO for your B2B business with our comprehensive
+              strategy guide. Learn keyword research, on-page optimization, and
+              link building strategies tailored for B2B companies. <a href="/blog/seo-optimization-b2b" class="blog-card__read-more">[Read more]</a>
+            </p>
+          </div>
+        </article>
+        
+        <!-- Card 2 -->
+        <article class="blog-card" role="article" tabindex="0">
+          <div class="blog-card__top">
+            <h3 class="blog-card__title">Marketing Automation Workflows</h3>
+            <div class="blog-card__meta">
+              Automation | Oct 26, 2025 | Geoffrey Craig
+            </div>
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Discover how marketing automation can transform your B2B marketing
+              efforts. Learn to implement automated workflows, nurture campaigns,
+              and lead scoring systems that drive conversions. <a href="/blog/marketing-automation" class="blog-card__read-more">[Read more]</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="blog-card" role="article" tabindex="0">
+          <div class="blog-card__top">
+            <h3 class="blog-card__title">Content Repurposing Strategies</h3>
+            <div class="blog-card__meta">
+              Content | Oct 25, 2025 | Dana Morris
+            </div>
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Learn how to repurpose your existing content across multiple channels
+              to maximize ROI. From blog posts to social media, webinars to eBooks,
+              discover strategies that multiply your content's impact. <a href="/blog/content-repurposing" class="blog-card__read-more">[Read more]</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="blog-card" role="article" tabindex="0">
+          <div class="blog-card__top">
+            <h3 class="blog-card__title">LinkedIn Marketing for B2B</h3>
+            <div class="blog-card__meta">
+              Social | Oct 24, 2025 | Bill Robertson
+            </div>
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Master LinkedIn marketing for B2B success. Learn to optimize your
+              company page, create engaging content, leverage LinkedIn ads, and
+              build meaningful professional connections. <a href="/blog/linkedin-marketing" class="blog-card__read-more">[Read more]</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 5 (Hidden on mobile) -->
+        <article class="blog-card" role="article" tabindex="0">
+          <div class="blog-card__top">
+            <h3 class="blog-card__title">Email Deliverability Guide</h3>
+            <div class="blog-card__meta">
+              Email | Oct 23, 2025 | Geoffrey Craig
+            </div>
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Ensure your emails reach the inbox with our comprehensive
+              deliverability guide. Learn authentication protocols, reputation
+              management, and best practices for optimal email performance. <a href="/blog/email-deliverability" class="blog-card__read-more">[Read more]</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 6 (Hidden on mobile) -->
+        <article class="blog-card" role="article" tabindex="0">
+          <div class="blog-card__top">
+            <h3 class="blog-card__title">Brand Voice Development</h3>
+            <div class="blog-card__meta">
+              Branding | Oct 22, 2025 | Charles Norton
+            </div>
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Develop a distinctive brand voice that resonates with your B2B
+              audience. Learn to create style guides, maintain consistency, and
+              build authentic connections through your content. <a href="/blog/brand-voice" class="blog-card__read-more">[Read more]</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 7 (Hidden on mobile/tablet) -->
+        <article class="blog-card" role="article" tabindex="0">
+          <div class="blog-card__top">
+            <h3 class="blog-card__title">HubSpot Implementation Guide</h3>
+            <div class="blog-card__meta">
+              Tools | Oct 21, 2025 | Dana Morris
+            </div>
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Get the most from HubSpot with our implementation guide. From initial
+              setup to advanced workflows, learn to leverage HubSpot's full
+              potential for your B2B marketing needs. <a href="/blog/hubspot-implementation" class="blog-card__read-more">[Read more]</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- Card 8 (Hidden on mobile/tablet) -->
+        <article class="blog-card" role="article" tabindex="0">
+          <div class="blog-card__top">
+            <h3 class="blog-card__title">Marketing ROI Measurement</h3>
+            <div class="blog-card__meta">
+              Analytics | Oct 20, 2025 | Bill Robertson
+            </div>
+          </div>
+          <div class="blog-card__content">
+            <p class="blog-card__excerpt">
+              Learn to measure and demonstrate marketing ROI with the KPIs that
+              matter most for B2B businesses. From lead generation metrics to
+              revenue attribution, master marketing analytics. <a href="/blog/marketing-roi" class="blog-card__read-more">[Read more]</a>
+            </p>
+          </div>
+        </article>
+        
+      </div>
+    </div>
+    
+    <footer class="blog-group__footer">
+      <a href="/blog" class="blog-group__pagination">More Articles →</a>
+    </footer>
+  </section>
+  
+  <!-- Responsive Mode Switcher Script -->
+  <script>
+    // Responsive mode management for FrontPage demo
+    document.addEventListener('DOMContentLoaded', function() {
+      function updateFrontPageMode() {
+        const frontPageSection = document.getElementById('frontpage-demo');
+        if (!frontPageSection) return;
+        
+        const width = window.innerWidth;
+        
+        // Remove all existing mode classes
+        frontPageSection.classList.remove(
+          'blog-group--frontpage-mobile',
+          'blog-group--frontpage-tablet',
+          'blog-group--frontpage-desktop'
+        );
+        
+        // Add appropriate class based on breakpoint
+        if (width < 768) {
+          frontPageSection.classList.add('blog-group--frontpage-mobile');
+          console.log('Blog Group: Mobile mode (4 posts visible)');
+        } else if (width < 1150) {
+          frontPageSection.classList.add('blog-group--frontpage-tablet');
+          console.log('Blog Group: Tablet mode (6 posts visible)');
+        } else {
+          frontPageSection.classList.add('blog-group--frontpage-desktop');
+          console.log('Blog Group: Desktop mode (8 posts visible)');
+        }
+      }
+      
+      // Initial setup
+      updateFrontPageMode();
+      
+      // Update on resize
+      let resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateFrontPageMode, 250);
+      });
+      
+      console.log('Blog Group Organism initialized - Zero inline styles!');
+    });
+  </script>
+  
+</body>
+</html>

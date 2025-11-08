@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purposeful Media - Link Components</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Root Variables - Purposeful Media Color System */
+        :root {
+            /* Primary Colors */
+            --primary-700: #1B1464; /* Primary Navy Blue */
+            --primary-600: #1740B0;
+            --primary-500: #1D50DE;
+            --primary-400: #4872E7;
+            --primary-300: #7595ED;
+            
+            /* Accent Colors */
+            --accent-500: #D4AF37; /* Accent Gold */
+            --accent-600: #B39226;
+            --accent-700: #89701E;
+            --accent-400: #DCBE5D;
+            --accent-300: #E4CD82;
+            
+            /* Neutral Colors */
+            --neutral-500: #6C757D; /* Slate Gray */
+            --neutral-400: #868F97;
+            --neutral-300: #A2A9AF;
+            
+            /* Typography */
+            --font-open-sans: 'Open Sans', sans-serif;
+            --font-lato: 'Lato', sans-serif;
+        }
+        
+        /* Base Styles */
+        body {
+            font-family: var(--font-open-sans);
+            padding: 40px;
+            background-color: #f7fafc;
+            color: #2d3748;
+        }
+        
+        /* =========================
+           TEXT LINKS (Inline Links)
+           ========================= */
+        
+        /* Base Text Link Styles */
+        .text-link {
+            font-family: var(--font-open-sans);
+            font-size: 18px;
+            line-height: 1.5; /* 27px line height at 18px font size */
+            text-decoration: underline;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            display: inline;
+        }
+        
+        /* Primary Text Links */
+        .text-link.text-link--primary {
+            color: var(--primary-500);
+        }
+        
+        .text-link.text-link--primary:hover {
+            color: var(--primary-400);
+            text-decoration-thickness: 2px;
+        }
+        
+        .text-link.text-link--primary:active {
+            color: var(--primary-600);
+        }
+        
+        /* Accent Text Links */
+        .text-link.text-link--accent {
+            color: var(--accent-500);
+        }
+        
+        .text-link.text-link--accent:hover {
+            color: var(--accent-400);
+            text-decoration-thickness: 2px;
+        }
+        
+        .text-link.text-link--accent:active {
+            color: var(--accent-600);
+        }
+        
+        /* Disabled Text Links */
+        .text-link.text-link--disabled {
+            color: var(--neutral-300);
+            cursor: not-allowed;
+            opacity: 0.6;
+            pointer-events: none;
+            text-decoration: underline;
+        }
+        
+        /* Attribution Links (smaller, subtle) */
+        .text-link.text-link--attribution {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--neutral-500);
+            text-decoration: underline;
+        }
+        
+        .text-link.text-link--attribution:hover {
+            color: var(--neutral-400);
+        }
+        
+        /* =========================
+           MENU LINKS (Navigation)
+           ========================= */
+        
+        /* Base Menu Link Styles */
+        .menu-link {
+            font-family: var(--font-lato);
+            font-size: 21px;
+            line-height: 1; /* 21px line height */
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        /* Primary Menu Links */
+        .menu-link.menu-link--primary {
+            color: white;
+            background-color: transparent;
+        }
+        
+        .menu-link.menu-link--primary:hover {
+            color: var(--accent-400);
+            background-color: rgba(220, 190, 93, 0.1);
+        }
+        
+        .menu-link.menu-link--primary:active {
+            color: var(--accent-600);
+            background-color: rgba(220, 190, 93, 0.15);
+        }
+        
+        /* Accent Menu Links */
+        .menu-link.menu-link--accent {
+            color: var(--accent-500);
+            background-color: transparent;
+        }
+        
+        .menu-link.menu-link--accent:hover {
+            color: var(--accent-400);
+            background-color: rgba(220, 190, 93, 0.1);
+        }
+        
+        .menu-link.menu-link--accent:active {
+            color: var(--accent-600);
+            background-color: rgba(220, 190, 93, 0.15);
+        }
+        
+        /* Reverse Menu Links (for dark backgrounds) */
+        .menu-link.menu-link--reverse {
+            color: var(--primary-700);
+            background-color: var(--accent-500);
+            padding: 10px 16px;
+        }
+        
+        .menu-link.menu-link--reverse:hover {
+            background-color: var(--accent-400);
+        }
+        
+        .menu-link.menu-link--reverse:active {
+            background-color: var(--accent-600);
+        }
+        
+        /* Disabled Menu Links */
+        .menu-link.menu-link--disabled {
+            color: var(--neutral-300);
+            cursor: not-allowed;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        /* =========================
+           DEMO SECTIONS
+           ========================= */
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .demo-section h2 {
+            font-family: var(--font-lato);
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: var(--primary-700);
+        }
+        
+        .demo-section h3 {
+            font-family: var(--font-lato);
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--primary-600);
+        }
+        
+        .demo-row {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .demo-row.dark-bg {
+            background: var(--primary-700);
+        }
+        
+        .demo-paragraph {
+            font-family: var(--font-open-sans);
+            font-size: 18px;
+            line-height: 1.5;
+            color: #2d3748;
+        }
+        
+        .demo-paragraph.light-text {
+            color: white;
+        }
+        
+        .demo-menu {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Text Links Demo -->
+    <div class="demo-section">
+        <h2>Text Links (Inline Paragraph Links)</h2>
+        
+        <div class="demo-row">
+            <h3>Primary Text Links</h3>
+            <p class="demo-paragraph">
+                Learn more about our <a href="#" class="text-link text-link--primary">email marketing services</a> and how we can help transform your business. 
+                Check out our <a href="#" class="text-link text-link--primary">case studies</a> to see real results.
+            </p>
+        </div>
+        
+        <div class="demo-row">
+            <h3>Accent Text Links</h3>
+            <p class="demo-paragraph">
+                Download our free <a href="#" class="text-link text-link--accent">B2B Marketing Guide</a> or 
+                schedule a <a href="#" class="text-link text-link--accent">consultation call</a> with our team.
+            </p>
+        </div>
+        
+        <div class="demo-row">
+            <h3>Disabled Text Links</h3>
+            <p class="demo-paragraph">
+                This resource is <a href="#" class="text-link text-link--disabled">currently unavailable</a> but will be 
+                accessible soon.
+            </p>
+        </div>
+        
+        <div class="demo-row">
+            <h3>Attribution Links</h3>
+            <p class="demo-paragraph">
+                <a href="#" class="text-link text-link--attribution">Terms of Service</a> | 
+                <a href="#" class="text-link text-link--attribution">Privacy Policy</a> | 
+                <a href="#" class="text-link text-link--attribution">© 2025 Purposeful Media Promotions</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Menu Links Demo -->
+    <div class="demo-section">
+        <h2>Menu Links (Navigation Dropdown Links)</h2>
+        
+        <div class="demo-row dark-bg">
+            <h3 style="color: white;">Primary Menu Links (on dark background)</h3>
+            <nav class="demo-menu">
+                <a href="#" class="menu-link menu-link--primary">Home</a>
+                <a href="#" class="menu-link menu-link--primary">Solutions</a>
+                <a href="#" class="menu-link menu-link--primary">Resources</a>
+                <a href="#" class="menu-link menu-link--primary">Contact</a>
+            </nav>
+        </div>
+        
+        <div class="demo-row">
+            <h3>Accent Menu Links</h3>
+            <nav class="demo-menu">
+                <a href="#" class="menu-link menu-link--accent">Email Management</a>
+                <a href="#" class="menu-link menu-link--accent">Content Creation</a>
+                <a href="#" class="menu-link menu-link--accent">Webinar Production</a>
+            </nav>
+        </div>
+        
+        <div class="demo-row">
+            <h3>Reverse Menu Links (CTA style)</h3>
+            <nav class="demo-menu">
+                <a href="#" class="menu-link menu-link--reverse">Get Started</a>
+                <a href="#" class="menu-link menu-link--reverse">Download Guide</a>
+            </nav>
+        </div>
+        
+        <div class="demo-row">
+            <h3>Disabled Menu Links</h3>
+            <nav class="demo-menu">
+                <a href="#" class="menu-link menu-link--disabled">Coming Soon</a>
+                <a href="#" class="menu-link menu-link--disabled">Unavailable</a>
+            </nav>
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript for enhanced link interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Add keyboard navigation support for menu links
+            const menuLinks = document.querySelectorAll('.menu-link');
+            menuLinks.forEach(link => {
+                link.setAttribute('role', 'menuitem');
+                
+                // Add focus styles
+                link.addEventListener('focus', function() {
+                    this.style.outline = '2px solid var(--accent-500)';
+                    this.style.outlineOffset = '2px';
+                });
+                
+                link.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            });
+            
+            // Track link clicks for analytics (example)
+            const allLinks = document.querySelectorAll('a');
+            allLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Prevent default for demo
+                    e.preventDefault();
+                    
+                    // Log click event (replace with actual analytics)
+                    console.log('Link clicked:', {
+                        text: this.textContent,
+                        type: this.classList.contains('text-link') ? 'text-link' : 'menu-link',
+                        variant: this.className
+                    });
+                    
+                    // Visual feedback
+                    const originalText = this.textContent;
+                    this.textContent = 'Clicked!';
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                    }, 500);
+                });
+            });
+            
+            // Add ARIA labels for accessibility
+            document.querySelectorAll('.text-link--disabled, .menu-link--disabled').forEach(link => {
+                link.setAttribute('aria-disabled', 'true');
+            });
+            
+            // Add smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

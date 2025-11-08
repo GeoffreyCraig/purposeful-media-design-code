@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Component System - Lato UI Typography</title>
+    <style>
+        /* Import Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+        /* 
+         * QUOTE COMPONENT SYSTEM
+         * Part of Purposeful Media Design System
+         * Typography: Lato (UI/Interface Typography)
+         * 
+         * Quotes use Lato to distinguish them from body text (Open Sans)
+         * This creates visual hierarchy and emphasis for testimonials and pullquotes
+         * 
+         * Line Height: 1.5x for readability in quote context
+         * Weight: 300 (Light) for elegance, italic for emphasis
+         * 
+         * Sizes:
+         * - Oversize: 30px (Hero quotes, testimonials)
+         * - Large: 24px (Section quotes)
+         * - Medium: 21px (Inline pullquotes)
+         */
+
+        /* CSS Variables */
+        :root {
+            /* Colors */
+            --color-default: #2D3748;  /* Darkest gray for quotes */
+            --color-light: #6C757D;    /* Slate gray */
+            --color-brand: #1B1464;    /* Navy */
+            --color-reverse: #FFFFFF;  /* White */
+            
+            /* Quote specific */
+            --quote-mark-color: #D4AF37;  /* Gold accent for quotation marks */
+            --quote-attribution-color: #6C757D;
+            
+            /* Backgrounds */
+            --bg-light: #F7FAFC;
+            --bg-dark: #1B1464;
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: #2D3748;
+            background-color: #FFFFFF;
+            padding: 2rem;
+        }
+
+        /* Base Quote Component */
+        .quote {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.5;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            transition: color 0.2s ease;
+        }
+
+        /* Size Variants */
+        .quote--oversize {
+            font-size: 30px;
+            line-height: 45px;
+        }
+
+        .quote--large {
+            font-size: 24px;
+            line-height: 36px;
+        }
+
+        .quote--medium {
+            font-size: 21px;
+            line-height: 31.5px;
+        }
+
+        /* Color Variants */
+        .quote--color-default {
+            color: var(--color-default);
+        }
+
+        .quote--color-light {
+            color: var(--color-light);
+        }
+
+        .quote--color-brand {
+            color: var(--color-brand);
+        }
+
+        .quote--color-reverse {
+            color: var(--color-reverse);
+        }
+
+        /* Quote Marks - Optional Enhancement */
+        .quote--with-marks::before {
+            content: '"';
+            font-size: 1.5em;
+            color: var(--quote-mark-color);
+            font-weight: 700;
+            margin-right: 0.1em;
+        }
+
+        .quote--with-marks::after {
+            content: '"';
+            font-size: 1.5em;
+            color: var(--quote-mark-color);
+            font-weight: 700;
+            margin-left: 0.1em;
+        }
+
+        /* Large Quote Mark Style */
+        .quote--large-mark {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .quote--large-mark::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -0.2em;
+            font-size: 4em;
+            color: var(--quote-mark-color);
+            font-weight: 700;
+            line-height: 1;
+            font-style: normal;
+        }
+
+        /* Attribution */
+        .quote-attribution {
+            margin-top: 1rem;
+            font-family: 'Lato', sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1;
+            color: var(--quote-attribution-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quote-attribution::before {
+            content: '— ';
+        }
+
+        .quote-attribution__role {
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        /* Container Styles */
+        .quote-container {
+            padding: 2rem;
+            margin: 2rem 0;
+            background: var(--bg-light);
+            border-left: 4px solid var(--quote-mark-color);
+        }
+
+        .quote-container--centered {
+            text-align: center;
+            border-left: none;
+            border-top: 2px solid var(--quote-mark-color);
+            border-bottom: 2px solid var(--quote-mark-color);
+            padding: 3rem 2rem;
+        }
+
+        /* Demo Styles */
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #F7FAFC;
+            border-radius: 8px;
+        }
+
+        .demo-section--dark {
+            background: var(--bg-dark);
+        }
+
+        .demo-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1B1464;
+            margin-bottom: 1.5rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .demo-section--dark .demo-title {
+            color: var(--color-reverse);
+        }
+
+        .demo-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .demo-section--dark .demo-item {
+            background: #0B1F57;
+        }
+
+        .demo-label {
+            font-size: 12px;
+            color: #A0AEC0;
+            margin-bottom: 1rem;
+            font-family: 'Lato', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .demo-section--dark .demo-label {
+            color: #7595ED;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 style="margin-bottom: 1rem; color: #1B1464; font-family: 'Lato', sans-serif; font-weight: 900;">
+            Purposeful Media - Quote Component System
+        </h1>
+        <p style="margin-bottom: 2rem; color: #6C757D; font-size: 16px; font-family: 'Open Sans', sans-serif;">
+            <strong>Lato UI Typography Component</strong> - Quotes use Lato italic to distinguish them from body text,
+            creating emphasis for testimonials, pullquotes, and client feedback.
+        </p>
+
+        <!-- Oversize Quotes -->
+        <div class="demo-section">
+            <h2 class="demo-title">Oversize Quotes (30px) - Hero Testimonials</h2>
+            
+            <div class="demo-item">
+                <div class="demo-label">Default Color</div>
+                <blockquote class="quote quote--oversize quote--color-default">
+                    Purposeful Media transformed our B2B marketing from an operational expense into a revenue-generating mechanism. Their systematic approach delivered measurable results within the first quarter.
+                </blockquote>
+                <p class="quote-attribution">
+                    Dana Morris
+                    <span class="quote-attribution__role">, Owner, Engineering Components Inc.</span>
+                </p>
+            </div>
+
+            <div class="demo-item">
+                <div class="demo-label">Brand Color with Large Mark</div>
+                <blockquote class="quote quote--oversize quote--color-brand quote--large-mark">
+                    No corners cut, no excuses. That's not just a motto—it's how they operate. The design system they built for us rivals Fortune 500 quality.
+                </blockquote>
+                <p class="quote-attribution">
+                    Bill Robertson
+                    <span class="quote-attribution__role">, Director of Marketing</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Large Quotes -->
+        <div class="demo-section">
+            <h2 class="demo-title">Large Quotes (24px) - Section Testimonials</h2>
+            
+            <div class="demo-item">
+                <div class="demo-label">Default with Container</div>
+                <div class="quote-container">
+                    <blockquote class="quote quote--large quote--color-default">
+                        The email marketing expertise alone was worth the investment. Our open rates increased by 40% and we're finally seeing real engagement from our B2B prospects.
+                    </blockquote>
+                    <p class="quote-attribution">
+                        Charles Norton
+                        <span class="quote-attribution__role">, Business Consultant</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="demo-item">
+                <div class="demo-label">Light Color</div>
+                <blockquote class="quote quote--large quote--color-light quote--with-marks">
+                    Strategic digital content and campaigns that actually drive measurable results—not just vanity metrics.
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- Medium Quotes -->
+        <div class="demo-section">
+            <h2 class="demo-title">Medium Quotes (21px) - Inline Pullquotes</h2>
+            
+            <div class="demo-item">
+                <div class="demo-label">Default Color</div>
+                <blockquote class="quote quote--medium quote--color-default">
+                    Their webinar production service helped us generate more qualified leads in one month than we had in the previous quarter.
+                </blockquote>
+                <p class="quote-attribution">
+                    Marketing Director
+                    <span class="quote-attribution__role">, SaaS Company</span>
+                </p>
+            </div>
+
+            <div class="demo-item">
+                <div class="demo-label">Brand Color</div>
+                <blockquote class="quote quote--medium quote--color-brand quote--with-marks">
+                    Finally, an agency that understands B2B marketing isn't just B2C with longer sales cycles.
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- Reverse Quotes on Dark Background -->
+        <div class="demo-section demo-section--dark">
+            <h2 class="demo-title">Reverse Color Quotes (Dark Background)</h2>
+            
+            <div class="demo-item">
+                <div class="demo-label">Oversize Reverse</div>
+                <blockquote class="quote quote--oversize quote--color-reverse quote--large-mark">
+                    The systematic excellence they bring to every project sets them apart from typical freelance operations.
+                </blockquote>
+                <p class="quote-attribution" style="color: #E2E8F0;">
+                    VP of Sales
+                    <span class="quote-attribution__role">, Industrial Software</span>
+                </p>
+            </div>
+
+            <div class="demo-item">
+                <div class="demo-label">Large Reverse</div>
+                <blockquote class="quote quote--large quote--color-reverse">
+                    Professional design systems, enterprise-grade components, boutique attention to detail—they deliver it all.
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- Real-World Examples -->
+        <div class="demo-section">
+            <h2 class="demo-title">Real-World Usage Examples</h2>
+            
+            <!-- Centered Hero Quote -->
+            <div class="demo-item">
+                <div class="demo-label">Centered Hero Testimonial</div>
+                <div class="quote-container quote-container--centered">
+                    <blockquote class="quote quote--oversize quote--color-brand">
+                        Transform marketing from an operational expense into a revenue-generating mechanism with strategic digital content and campaigns.
+                    </blockquote>
+                    <p class="quote-attribution">
+                        Geoffrey Craig
+                        <span class="quote-attribution__role">, Founder, Purposeful Media Promotions</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Article Pullquote -->
+            <div class="demo-item">
+                <div class="demo-label">Article Pullquote</div>
+                <article style="font-family: 'Open Sans', sans-serif; font-size: 18px; line-height: 1.5; color: #2D3748;">
+                    <p style="margin-bottom: 1rem;">
+                        When we started working with small B2B businesses, we discovered a common pattern: they knew they needed digital marketing but didn't have the time or expertise to implement it effectively.
+                    </p>
+                    <div class="quote-container" style="margin: 2rem 0;">
+                        <blockquote class="quote quote--medium quote--color-brand">
+                            Every hour spent on foundation work saves ten hours of future fixes. This is the systematic approach that creates exceptional outcomes.
+                        </blockquote>
+                    </div>
+                    <p style="margin-top: 1rem;">
+                        This insight shaped our entire approach to building design systems and marketing infrastructure that scales with our clients' growth.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quote Component JavaScript Class
+        class QuoteComponent {
+            constructor(element, options = {}) {
+                this.element = element;
+                this.options = {
+                    size: options.size || 'medium',
+                    color: options.color || 'default',
+                    marks: options.marks || 'none', // none, inline, large
+                    attribution: options.attribution || null,
+                    role: options.role || null,
+                    container: options.container || false,
+                    centered: options.centered || false,
+                    ...options
+                };
+                
+                this.init();
+            }
+
+            init() {
+                this.applyClasses();
+                this.addAttribution();
+                this.wrapInContainer();
+            }
+
+            applyClasses() {
+                // Clear existing quote classes
+                this.element.className = this.element.className.replace(/quote--\S+/g, '');
+                
+                // Add base class
+                this.element.classList.add('quote');
+                
+                // Add size class
+                this.element.classList.add(`quote--${this.options.size}`);
+                
+                // Add color class
+                this.element.classList.add(`quote--color-${this.options.color}`);
+                
+                // Add mark style
+                if (this.options.marks === 'inline') {
+                    this.element.classList.add('quote--with-marks');
+                } else if (this.options.marks === 'large') {
+                    this.element.classList.add('quote--large-mark');
+                }
+            }
+
+            addAttribution() {
+                if (this.options.attribution) {
+                    // Remove existing attribution
+                    const existingAttribution = this.element.nextElementSibling;
+                    if (existingAttribution && existingAttribution.classList.contains('quote-attribution')) {
+                        existingAttribution.remove();
+                    }
+                    
+                    // Create new attribution
+                    const attribution = document.createElement('p');
+                    attribution.className = 'quote-attribution';
+                    attribution.innerHTML = this.options.attribution;
+                    
+                    if (this.options.role) {
+                        attribution.innerHTML += `<span class="quote-attribution__role">, ${this.options.role}</span>`;
+                    }
+                    
+                    this.element.insertAdjacentElement('afterend', attribution);
+                }
+            }
+
+            wrapInContainer() {
+                if (this.options.container && !this.element.parentElement.classList.contains('quote-container')) {
+                    const container = document.createElement('div');
+                    container.className = 'quote-container';
+                    
+                    if (this.options.centered) {
+                        container.classList.add('quote-container--centered');
+                    }
+                    
+                    this.element.parentNode.insertBefore(container, this.element);
+                    container.appendChild(this.element);
+                    
+                    // Move attribution inside container if it exists
+                    const attribution = container.nextElementSibling;
+                    if (attribution && attribution.classList.contains('quote-attribution')) {
+                        container.appendChild(attribution);
+                    }
+                }
+            }
+
+            setText(text) {
+                this.element.textContent = text;
+            }
+
+            setSize(size) {
+                this.options.size = size;
+                this.applyClasses();
+            }
+
+            setColor(color) {
+                this.options.color = color;
+                this.applyClasses();
+            }
+
+            setAttribution(name, role = null) {
+                this.options.attribution = name;
+                this.options.role = role;
+                this.addAttribution();
+            }
+        }
+
+        // Demo initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add interactive demo
+            const interactiveSection = document.createElement('div');
+            interactiveSection.className = 'demo-section';
+            interactiveSection.innerHTML = `
+                <h2 class="demo-title">Interactive Quote Demo</h2>
+                <div class="demo-item">
+                    <div class="demo-label">Dynamic Quote Component</div>
+                    <blockquote id="dynamic-quote" class="quote quote--large quote--color-default">
+                        This quote can be modified dynamically to test different configurations and styles.
+                    </blockquote>
+                    <div style="margin-top: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <button onclick="changeSize()" style="padding: 0.5rem 1rem; background: #1B1464; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif;">
+                            Change Size
+                        </button>
+                        <button onclick="changeColor()" style="padding: 0.5rem 1rem; background: #1B1464; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif;">
+                            Change Color
+                        </button>
+                        <button onclick="toggleMarks()" style="padding: 0.5rem 1rem; background: #1B1464; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif;">
+                            Toggle Marks
+                        </button>
+                        <button onclick="addAttribution()" style="padding: 0.5rem 1rem; background: #1B1464; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Lato', sans-serif;">
+                            Add Attribution
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.demo-container').appendChild(interactiveSection);
+
+            // Initialize dynamic quote
+            const dynamicQuote = document.getElementById('dynamic-quote');
+            window.dynamicQuote = new QuoteComponent(dynamicQuote, {
+                size: 'large',
+                color: 'default',
+                marks: 'none'
+            });
+        });
+
+        // Interactive functions
+        let sizeIndex = 1;
+        const sizes = ['medium', 'large', 'oversize'];
+        
+        function changeSize() {
+            sizeIndex = (sizeIndex + 1) % sizes.length;
+            window.dynamicQuote.setSize(sizes[sizeIndex]);
+        }
+
+        let colorIndex = 0;
+        const colors = ['default', 'light', 'brand'];
+        
+        function changeColor() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            window.dynamicQuote.setColor(colors[colorIndex]);
+        }
+
+        let markIndex = 0;
+        const marks = ['none', 'inline', 'large'];
+        
+        function toggleMarks() {
+            markIndex = (markIndex + 1) % marks.length;
+            window.dynamicQuote.options.marks = marks[markIndex];
+            window.dynamicQuote.applyClasses();
+        }
+
+        function addAttribution() {
+            window.dynamicQuote.setAttribution('John Doe', 'CEO, Example Corp');
+        }
+    </script>
+</body>
+</html>

@@ -53,9 +53,9 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  
-  /* Spacing - Mobile first */
-  padding: var(--space-4) var(--space-4); /* 16px */
+
+  /* Spacing - Mobile first: 4px 16px */
+  padding: var(--space-1) var(--space-4); /* 4px 16px */
 }
 
 /* =================================================
@@ -83,9 +83,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  
-  /* Spacing */
-  padding: var(--space-4) var(--space-5) var(--space-10) var(--space-5);
+
+  /* Spacing - Mobile: 16px 20px 40px 20px */
+  padding: var(--space-4) var(--space-5) var(--space-10) var(--space-5); /* 16px 20px 40px 20px */
 }
 
 .blog-group__pagination {
@@ -122,7 +122,7 @@
    ================================================= */
 
 /* BlogTeaser Mode - Shows only 2 posts */
-.blog-group--teaser .card-blogpost:nth-child(n+3) {
+.blog-group--teaser .blog-card:nth-child(n+3) {
   display: none;
 }
 
@@ -131,17 +131,17 @@
 }
 
 /* FrontPage Mobile - Shows only 4 posts */
-.blog-group--frontpage-mobile .card-blogpost:nth-child(n+5) {
+.blog-group--frontpage-mobile .blog-card:nth-child(n+5) {
   display: none;
 }
 
 /* FrontPage Tablet - Shows only 6 posts */
-.blog-group--frontpage-tablet .card-blogpost:nth-child(n+7) {
+.blog-group--frontpage-tablet .blog-card:nth-child(n+7) {
   display: none;
 }
 
 /* FrontPage Desktop - Shows only 8 posts */
-.blog-group--frontpage-desktop .card-blogpost:nth-child(n+9) {
+.blog-group--frontpage-desktop .blog-card:nth-child(n+9) {
   display: none;
 }
 
@@ -157,28 +157,29 @@
 /* Tablet: 768-1149px */
 @media (min-width: 768px) {
   .blog-group__cards {
-    /* Increased padding */
+    /* Tablet padding: 8px 32px */
     padding: var(--space-2) var(--space-8); /* 8px 32px */
   }
-  
+
   .blog-group__inner {
     /* Single column maintained */
     flex-direction: column;
     gap: 0;
   }
-  
+
   .blog-group__footer {
-    padding: var(--space-4) var(--space-10) var(--space-16) var(--space-10);
+    /* Tablet footer: 16px 40px 60px 40px */
+    padding: var(--space-4) var(--space-10) calc(var(--space-12) + var(--space-3)) var(--space-10); /* 16px 40px 60px 40px */
   }
 }
 
 /* Desktop: 1150-1919px */
 @media (min-width: 1150px) {
   .blog-group__cards {
-    /* Desktop padding */
+    /* Desktop padding: 16px 64px */
     padding: var(--space-4) var(--space-16); /* 16px 64px */
   }
-  
+
   .blog-group__inner {
     /* SINGLE COLUMN as per Figma design */
     flex-direction: column;
@@ -186,9 +187,10 @@
     max-width: 1120px;
     margin: 0 auto;
   }
-  
+
   .blog-group__footer {
-    padding: var(--space-4) var(--space-20) var(--space-20) var(--space-20);
+    /* Desktop footer: 16px 80px 80px 80px */
+    padding: var(--space-4) var(--space-20) var(--space-20) var(--space-20); /* 16px 80px 80px 80px */
     max-width: 1120px;
     margin: 0 auto;
   }

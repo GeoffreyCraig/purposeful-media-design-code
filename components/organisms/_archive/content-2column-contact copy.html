@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content - 2 Column Contact Section</title>
+    <link rel="stylesheet" href="../../styles/variables-v2.0-20250915.css">
+    <link rel="stylesheet" href="../../styles/atoms-master.css">
+    <link rel="stylesheet" href="../../styles/molecules-master.css">
+    <link rel="stylesheet" href="../../styles/organisms-sections.css">
+</head>
+<body>
+    <!-- Content/2ColumnContact Section Component -->
+    <section class="content-2column-contact" role="region" aria-labelledby="contact-heading">
+        <!-- Optional Background Container for Desktop/DesktopPlus -->
+        <div class="section-background" aria-hidden="true"></div>
+        
+        <!-- Main Content Container -->
+        <div class="column-group">
+            <!-- Left Column: Contact Card -->
+            <div class="content-column left-column">
+                <div class="contact-card">
+                    <h2 id="contact-heading" class="card-title">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    </h2>
+                    
+                    <p class="card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.
+                    </p>
+                    
+                    <button type="button" class="btn btn-primary">
+                        <span class="btn-text">Button Text</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Right Column: Image -->
+            <div class="content-column right-column">
+                <div class="image-container">
+                    <img src="../../assets/images/sample-ebook-cover.jpg" 
+                         alt="eBook Cover" 
+                         class="ebook-image"
+                         loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for responsive behavior -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Responsive breakpoint handler
+            const ContactSection = {
+                breakpoints: {
+                    mobile: 767,
+                    tablet: 1149,
+                    desktop: 1919
+                },
+                
+                init: function() {
+                    this.handleResize();
+                    window.addEventListener('resize', this.debounce(this.handleResize.bind(this), 250));
+                },
+                
+                handleResize: function() {
+                    const width = window.innerWidth;
+                    const section = document.querySelector('.content-2column-contact');
+                    
+                    if (!section) return;
+                    
+                    // Remove all breakpoint classes
+                    section.classList.remove('mobile', 'tablet', 'desktop', 'desktop-plus');
+                    
+                    // Add appropriate breakpoint class
+                    if (width <= this.breakpoints.mobile) {
+                        section.classList.add('mobile');
+                    } else if (width <= this.breakpoints.tablet) {
+                        section.classList.add('tablet');
+                    } else if (width <= this.breakpoints.desktop) {
+                        section.classList.add('desktop');
+                    } else {
+                        section.classList.add('desktop-plus');
+                    }
+                },
+                
+                debounce: function(func, wait) {
+                    let timeout;
+                    return function executedFunction(...args) {
+                        const later = () => {
+                            clearTimeout(timeout);
+                            func(...args);
+                        };
+                        clearTimeout(timeout);
+                        timeout = setTimeout(later, wait);
+                    };
+                }
+            };
+            
+            // Initialize on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    ContactSection.init();
+                });
+            } else {
+                ContactSection.init();
+            }
+        })();
+    </script>
+</body>
+</html>

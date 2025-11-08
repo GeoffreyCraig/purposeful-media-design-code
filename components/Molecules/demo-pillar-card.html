@@ -1,0 +1,384 @@
+<!-- Pillar Card Component - Molecule Level -->
+<!-- Version: 1.0 -->
+<!-- Last Updated: 2025-11-03 -->
+<!-- Component: Molecule/Card/Pillar-Card -->
+<!-- Dependencies: variables-v4.0-20251027.css, molecules-decorative-icon-display.css -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pillar Card Component - Purposeful Media</title>
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/molecules-decorative-icon-display.css">
+    
+    <!-- Component-specific styles with extracted tokens -->
+    <style>
+        /* ====================================
+           PILLAR CARD COMPONENT TOKENS
+           ==================================== */
+        :root {
+            /* Spacing Variables (from Figma) */
+            --pillar-space-4: 16px;
+            --pillar-space-8: 32px;
+            --pillar-space-10: 40px;
+            --pillar-space-12: 48px;
+            --pillar-space-20: 80px;
+            
+            /* Color Variables */
+            --pillar-heading-color: var(--heading, #1b1464);
+            --pillar-text-color: var(--color-text-primary, #000000);
+            --pillar-bg-color: var(--color-bg-white, #ffffff);
+            
+            /* Typography Tokens */
+            --pillar-h2-font-family: 'Lato', sans-serif;
+            --pillar-h2-font-weight: 800;
+            --pillar-h2-font-size: 30px;
+            --pillar-h2-line-height: 45px;
+            --pillar-h2-text-transform: uppercase;
+            
+            --pillar-p-font-family: 'Open Sans', sans-serif;
+            --pillar-p-font-weight: 400;
+            --pillar-p-font-size: 18px;
+            --pillar-p-line-height: 27px;
+            
+            /* Component Structure Tokens */
+            --pillar-icon-size-desktop: 256px;
+            --pillar-icon-size-mobile: 120px;
+            --pillar-content-gap: 29px;
+            --pillar-layout-gap-desktop: var(--pillar-space-8);
+            --pillar-layout-gap-mobile: var(--pillar-space-4);
+            
+            /* Max Width Constraints */
+            --pillar-content-max-width-desktopplus: 1262px;
+            --pillar-content-max-width-desktop: 1264px;
+        }
+
+        /* ====================================
+           BASE PILLAR CARD STYLES
+           ==================================== */
+        .pillar-card {
+            background-color: var(--pillar-bg-color);
+            box-sizing: border-box;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Icon Container */
+        .pillar-card__icon {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        /* Content Container */
+        .pillar-card__content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--pillar-content-gap);
+            align-items: flex-start;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        /* Headline */
+        .pillar-card__headline {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .pillar-card__heading {
+            font-family: var(--pillar-h2-font-family);
+            font-weight: var(--pillar-h2-font-weight);
+            font-size: var(--pillar-h2-font-size);
+            line-height: var(--pillar-h2-line-height);
+            text-transform: var(--pillar-h2-text-transform);
+            color: var(--pillar-heading-color);
+            font-style: normal;
+            position: relative;
+            flex-shrink: 0;
+            width: 305px;
+            margin: 0;
+        }
+
+        /* Paragraph Container */
+        .pillar-card__paragraph {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .pillar-card__text {
+            font-family: var(--pillar-p-font-family);
+            font-weight: var(--pillar-p-font-weight);
+            font-size: var(--pillar-p-font-size);
+            line-height: var(--pillar-p-line-height);
+            color: var(--pillar-text-color);
+            font-style: normal;
+            position: relative;
+            flex: 1 0 0;
+            min-width: 1px;
+            min-height: 1px;
+        }
+
+        .pillar-card__text p {
+            margin: 0 0 1em 0;
+        }
+
+        .pillar-card__text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ====================================
+           RESPONSIVE BREAKPOINTS
+           ==================================== */
+        
+        /* Mobile: 380-767px */
+        @media (max-width: 767px) {
+            .pillar-card {
+                display: flex;
+                flex-direction: column;
+                gap: var(--pillar-layout-gap-mobile);
+                align-items: flex-start;
+                padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-8);
+            }
+            
+            .pillar-card__content {
+                width: 100%;
+            }
+            
+            .pillar-card__heading {
+                width: 100%;
+            }
+        }
+
+        /* Tablet: 768-1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .pillar-card {
+                display: flex;
+                flex-direction: row;
+                gap: var(--pillar-layout-gap-desktop);
+                align-items: flex-start;
+                padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-10);
+            }
+            
+            .pillar-card__content {
+                flex: 1 0 0;
+                min-width: 1px;
+                min-height: 1px;
+            }
+        }
+
+        /* Desktop: 1150-1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .pillar-card {
+                display: flex;
+                flex-direction: row;
+                gap: var(--pillar-layout-gap-desktop);
+                align-items: flex-start;
+                padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-12);
+            }
+            
+            .pillar-card__content {
+                flex: 1 0 0;
+                max-width: var(--pillar-content-max-width-desktop);
+                min-width: 1px;
+                min-height: 1px;
+            }
+        }
+
+        /* DesktopPlus: 1920px+ */
+        @media (min-width: 1920px) {
+            .pillar-card {
+                display: flex;
+                flex-direction: row;
+                gap: var(--pillar-layout-gap-desktop);
+                align-items: flex-start;
+                padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-12);
+            }
+            
+            .pillar-card__content {
+                flex: 1 0 0;
+                max-width: var(--pillar-content-max-width-desktopplus);
+                min-width: 1px;
+                min-height: 1px;
+            }
+        }
+
+        /* ====================================
+           DEMO STYLES
+           ==================================== */
+        .demo-section {
+            padding: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .demo-section h2 {
+            font-family: var(--pillar-h2-font-family);
+            color: var(--pillar-heading-color);
+            margin-bottom: 20px;
+        }
+        
+        .demo-divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 40px 0;
+        }
+        
+        .demo-code {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin: 20px 0;
+        }
+        
+        .demo-note {
+            background: #fff9e6;
+            border-left: 4px solid #ffb800;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Section: Component Examples -->
+    <div class="demo-section">
+        <h2>Pillar Card Component Examples</h2>
+        
+        <!-- Example 1: Strategy Card with Navy Icon -->
+        <div class="pillar-card">
+            <div class="pillar-card__icon">
+                <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="strategy" data-color="navy"></div>
+            </div>
+            <div class="pillar-card__content">
+                <div class="pillar-card__headline">
+                    <h2 class="pillar-card__heading">H2 HEADLINE 30 45H</h2>
+                </div>
+                <div class="pillar-card__paragraph">
+                    <div class="pillar-card__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.</p>
+                        
+                        <p>&nbsp;</p>
+                        
+                        <p>Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-divider"></div>
+        
+        <!-- Example 2: Email Card with Gray Icon -->
+        <div class="pillar-card">
+            <div class="pillar-card__icon">
+                <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="email" data-color="gray"></div>
+            </div>
+            <div class="pillar-card__content">
+                <div class="pillar-card__headline">
+                    <h2 class="pillar-card__heading">H2 HEADLINE 30 45H</h2>
+                </div>
+                <div class="pillar-card__paragraph">
+                    <div class="pillar-card__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.</p>
+                        
+                        <p>&nbsp;</p>
+                        
+                        <p>Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Usage Documentation -->
+    <div class="demo-section">
+        <h2>Usage Instructions</h2>
+        
+        <div class="demo-note">
+            <strong>Note:</strong> This component uses the decorative-icon-display molecule for icon rendering. Ensure the sprite sheet CSS is loaded.
+        </div>
+        
+        <h3>HTML Structure</h3>
+        <div class="demo-code">&lt;div class="pillar-card"&gt;
+    &lt;div class="pillar-card__icon"&gt;
+        &lt;div class="decorative-icon-display decorative-icon-display--xxlarge" 
+             data-icon="strategy" 
+             data-color="navy"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="pillar-card__content"&gt;
+        &lt;div class="pillar-card__headline"&gt;
+            &lt;h2 class="pillar-card__heading"&gt;H2 HEADLINE 30 45H&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class="pillar-card__paragraph"&gt;
+            &lt;div class="pillar-card__text"&gt;
+                &lt;p&gt;[Your content here]&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+        
+        <h3>Available Icon Options</h3>
+        <ul>
+            <li><strong>Icons:</strong> accelerate, attract, contact, delight, download, efficiency, email, engage, exit, expertise, inbound, momentum, news, persona, professional, roi, schedule, strategy, unit, value, webinar</li>
+            <li><strong>Colors:</strong> navy, gray, dark, white</li>
+            <li><strong>Sizes:</strong> xxlarge (256px) for desktop, xlarge (120px) for mobile (automatic via responsive CSS)</li>
+        </ul>
+        
+        <h3>CSS Token Reference</h3>
+        <div class="demo-code">/* Spacing Variables */
+--pillar-space-4: 16px;
+--pillar-space-8: 32px;
+--pillar-space-10: 40px;
+--pillar-space-12: 48px;
+--pillar-space-20: 80px;
+
+/* Typography */
+--pillar-h2-font-size: 30px;
+--pillar-h2-line-height: 45px;
+--pillar-p-font-size: 18px;
+--pillar-p-line-height: 27px;
+
+/* Component Structure */
+--pillar-icon-size-desktop: 256px;
+--pillar-icon-size-mobile: 120px;
+--pillar-content-gap: 29px;</div>
+    </div>
+    
+    <!-- JavaScript for Icon Display -->
+    <script>
+        // Initialize icon display based on viewport
+        function updateIconSizes() {
+            const icons = document.querySelectorAll('.pillar-card__icon .decorative-icon-display');
+            const isMobile = window.innerWidth < 768;
+            
+            icons.forEach(icon => {
+                // Remove all size classes
+                icon.classList.remove('decorative-icon-display--xxlarge', 'decorative-icon-display--xlarge');
+                
+                // Add appropriate size class based on viewport
+                if (isMobile) {
+                    icon.classList.add('decorative-icon-display--xlarge'); // 120px for mobile
+                } else {
+                    icon.classList.add('decorative-icon-display--xxlarge'); // 256px for desktop
+                }
+            });
+        }
+        
+        // Run on load and resize
+        window.addEventListener('DOMContentLoaded', updateIconSizes);
+        window.addEventListener('resize', updateIconSizes);
+    </script>
+</body>
+</html>

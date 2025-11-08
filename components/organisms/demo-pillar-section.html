@@ -1,0 +1,515 @@
+<!-- Pillar Section Component - Organism Level -->
+<!-- Version: 1.0 -->
+<!-- Last Updated: 2025-11-03 -->
+<!-- Component: Organism/Section/Pillar-Section -->
+<!-- Dependencies: variables-v4.0-20251027.css, molecules-decorative-icon-display.css, demo-pillar-card.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pillar Section Component - Purposeful Media</title>
+
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/molecules-decorative-icon-display.css">
+    
+    <!-- Component-specific styles with extracted tokens -->
+    <style>
+        /* ====================================
+           PILLAR SECTION ORGANISM TOKENS
+           ==================================== */
+        :root {
+            /* Section Background */
+            --pillar-section-bg: var(--secondary, #eceeef);
+            
+            /* Section Spacing */
+            --pillar-section-gap: var(--space-8, 32px);
+            --pillar-section-padding-top: var(--space-8, 32px);
+            --pillar-section-padding-bottom: 0px;
+            
+            /* Section Headline Typography */
+            --pillar-section-h1-font-family: 'Lato', sans-serif;
+            --pillar-section-h1-font-weight: 800;
+            --pillar-section-h1-font-size: 36px;
+            --pillar-section-h1-line-height: 54px;
+            --pillar-section-h1-text-transform: uppercase;
+            --pillar-section-h1-color: var(--heading, #1b1464);
+            
+            /* Inherited Card Tokens */
+            --pillar-space-4: 16px;
+            --pillar-space-8: 32px;
+            --pillar-space-10: 40px;
+            --pillar-space-12: 48px;
+            --pillar-space-20: 80px;
+            
+            --pillar-heading-color: var(--heading, #1b1464);
+            --pillar-text-color: var(--color-text-primary, #000000);
+            --pillar-card-bg-color: var(--pillar-section-bg);
+            
+            --pillar-h2-font-family: 'Lato', sans-serif;
+            --pillar-h2-font-weight: 800;
+            --pillar-h2-font-size: 30px;
+            --pillar-h2-line-height: 45px;
+            --pillar-h2-text-transform: uppercase;
+            
+            --pillar-p-font-family: 'Open Sans', sans-serif;
+            --pillar-p-font-weight: 400;
+            --pillar-p-font-size: 18px;
+            --pillar-p-line-height: 27px;
+            
+            --pillar-icon-size-desktop: 256px;
+            --pillar-icon-size-mobile: 120px;
+            --pillar-content-gap: 29px;
+            --pillar-layout-gap-desktop: var(--pillar-space-8);
+            --pillar-layout-gap-mobile: var(--pillar-space-4);
+            
+            --pillar-content-max-width-desktopplus: 1262px;
+            --pillar-content-max-width-desktop: 1264px;
+        }
+
+        /* ====================================
+           BASE PILLAR SECTION STYLES
+           ==================================== */
+        .pillar-section {
+            background-color: var(--pillar-section-bg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--pillar-section-gap);
+            align-items: flex-start;
+            position: relative;
+            width: 100%;
+        }
+
+        /* Section Headline Container */
+        .pillar-section__header {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+            padding: var(--pillar-section-padding-top) var(--pillar-space-20) var(--pillar-section-padding-bottom);
+            position: relative;
+            width: 100%;
+        }
+
+        .pillar-section__headline-wrapper {
+            background-color: var(--pillar-section-bg);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            position: relative;
+        }
+
+        .pillar-section__headline {
+            font-family: var(--pillar-section-h1-font-family);
+            font-weight: var(--pillar-section-h1-font-weight);
+            font-size: var(--pillar-section-h1-font-size);
+            line-height: var(--pillar-section-h1-line-height);
+            text-transform: var(--pillar-section-h1-text-transform);
+            color: var(--pillar-section-h1-color);
+            font-style: normal;
+            position: relative;
+            white-space: nowrap;
+            margin: 0;
+        }
+
+        /* Individual Pillar Card Styles (inheriting from molecule) */
+        .pillar-section__card {
+            background-color: var(--pillar-card-bg-color);
+            box-sizing: border-box;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Card Layout - matches pillar-card component structure */
+        .pillar-card {
+            background-color: var(--pillar-card-bg-color);
+            box-sizing: border-box;
+            width: 100%;
+            position: relative;
+        }
+
+        .pillar-card__icon {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .pillar-card__content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--pillar-content-gap);
+            align-items: flex-start;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .pillar-card__headline {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .pillar-card__heading {
+            font-family: var(--pillar-h2-font-family);
+            font-weight: var(--pillar-h2-font-weight);
+            font-size: var(--pillar-h2-font-size);
+            line-height: var(--pillar-h2-line-height);
+            text-transform: var(--pillar-h2-text-transform);
+            color: var(--pillar-heading-color);
+            font-style: normal;
+            position: relative;
+            flex-shrink: 0;
+            width: 305px;
+            margin: 0;
+        }
+
+        .pillar-card__paragraph {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .pillar-card__text {
+            font-family: var(--pillar-p-font-family);
+            font-weight: var(--pillar-p-font-weight);
+            font-size: var(--pillar-p-font-size);
+            line-height: var(--pillar-p-line-height);
+            color: var(--pillar-text-color);
+            font-style: normal;
+            position: relative;
+            flex: 1 0 0;
+            min-width: 1px;
+            min-height: 1px;
+        }
+
+        .pillar-card__text p {
+            margin: 0 0 1em 0;
+        }
+
+        .pillar-card__text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ====================================
+           RESPONSIVE BREAKPOINTS
+           ==================================== */
+        
+        /* Mobile: 380-767px */
+        @media (max-width: 767px) {
+            .pillar-section__card {
+                max-width: 767px;
+                min-width: 380px;
+            }
+            
+            .pillar-card {
+                display: flex;
+                flex-direction: column;
+                gap: var(--pillar-layout-gap-mobile);
+                align-items: flex-start;
+                padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-8);
+            }
+            
+            .pillar-card__content {
+                width: 100%;
+            }
+            
+            .pillar-card__heading {
+                width: 100%;
+            }
+        }
+
+        /* Tablet: 768-1149px */
+        @media (min-width: 768px) and (max-width: 1149px) {
+            .pillar-section__card {
+                max-width: 1149px;
+                min-width: 768px;
+            }
+            
+            .pillar-card {
+                display: flex;
+                flex-direction: row;
+                gap: var(--pillar-layout-gap-desktop);
+                align-items: flex-start;
+                padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-10);
+            }
+            
+            .pillar-card__content {
+                flex: 1 0 0;
+                min-width: 1px;
+                min-height: 1px;
+            }
+        }
+
+        /* Desktop: 1150-1919px */
+        @media (min-width: 1150px) and (max-width: 1919px) {
+            .pillar-section__card {
+                max-width: 1920px;
+                min-width: 1150px;
+            }
+            
+            .pillar-card {
+                display: flex;
+                flex-direction: row;
+                gap: var(--pillar-layout-gap-desktop);
+                align-items: flex-start;
+                padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-12);
+            }
+            
+            .pillar-card__content {
+                flex: 1 0 0;
+                max-width: var(--pillar-content-max-width-desktop);
+                min-width: 1px;
+                min-height: 1px;
+            }
+        }
+
+        /* DesktopPlus: 1920px+ */
+        @media (min-width: 1920px) {
+            .pillar-section__card {
+                max-width: 1920px;
+                min-width: 1920px;
+            }
+            
+            .pillar-card {
+                display: flex;
+                flex-direction: row;
+                gap: var(--pillar-layout-gap-desktop);
+                align-items: flex-start;
+                padding: var(--pillar-space-4) var(--pillar-space-20) var(--pillar-space-12);
+            }
+            
+            .pillar-card__content {
+                flex: 1 0 0;
+                max-width: var(--pillar-content-max-width-desktopplus);
+                min-width: 1px;
+                min-height: 1px;
+            }
+        }
+
+        /* ====================================
+           DEMO STYLES
+           ==================================== */
+        .demo-container {
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .demo-note {
+            padding: 40px;
+            background: #ffffff;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .demo-note h2 {
+            font-family: var(--pillar-section-h1-font-family);
+            color: var(--pillar-section-h1-color);
+            margin-bottom: 20px;
+        }
+        
+        .demo-code {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin: 20px 0;
+        }
+        
+        .demo-info {
+            background: #fff9e6;
+            border-left: 4px solid #ffb800;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Pillar Section Component -->
+    <div class="demo-container">
+        <section class="pillar-section">
+            <!-- Section Header -->
+            <header class="pillar-section__header">
+                <div class="pillar-section__headline-wrapper">
+                    <h1 class="pillar-section__headline">Pillar Page Section</h1>
+                </div>
+            </header>
+            
+            <!-- Card 1: Overview -->
+            <div class="pillar-section__card pillar-card">
+                <div class="pillar-card__icon">
+                    <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="professional" data-color="navy"></div>
+                </div>
+                <div class="pillar-card__content">
+                    <div class="pillar-card__headline">
+                        <h2 class="pillar-card__heading">Overview</h2>
+                    </div>
+                    <div class="pillar-card__paragraph">
+                        <div class="pillar-card__text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.</p>
+                            
+                            <p>&nbsp;</p>
+                            
+                            <p>Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2: Strategy -->
+            <div class="pillar-section__card pillar-card">
+                <div class="pillar-card__icon">
+                    <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="strategy" data-color="navy"></div>
+                </div>
+                <div class="pillar-card__content">
+                    <div class="pillar-card__headline">
+                        <h2 class="pillar-card__heading">Strategy</h2>
+                    </div>
+                    <div class="pillar-card__paragraph">
+                        <div class="pillar-card__text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.</p>
+                            
+                            <p>&nbsp;</p>
+                            
+                            <p>Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3: Methodology -->
+            <div class="pillar-section__card pillar-card">
+                <div class="pillar-card__icon">
+                    <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="engage" data-color="navy"></div>
+                </div>
+                <div class="pillar-card__content">
+                    <div class="pillar-card__headline">
+                        <h2 class="pillar-card__heading">Methodology</h2>
+                    </div>
+                    <div class="pillar-card__paragraph">
+                        <div class="pillar-card__text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.</p>
+                            
+                            <p>&nbsp;</p>
+                            
+                            <p>Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 4: Benefits -->
+            <div class="pillar-section__card pillar-card">
+                <div class="pillar-card__icon">
+                    <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="roi" data-color="navy"></div>
+                </div>
+                <div class="pillar-card__content">
+                    <div class="pillar-card__headline">
+                        <h2 class="pillar-card__heading">Benefits</h2>
+                    </div>
+                    <div class="pillar-card__paragraph">
+                        <div class="pillar-card__text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.</p>
+                            
+                            <p>&nbsp;</p>
+                            
+                            <p>Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Usage Documentation -->
+    <div class="demo-note">
+        <h2>Pillar Section - Organism Component</h2>
+        
+        <div class="demo-info">
+            <strong>Component Hierarchy:</strong>
+            <ul>
+                <li>Organism: pillar-section (this component)</li>
+                <li>Molecules: pillar-card (4 instances)</li>
+                <li>Atoms: decorative-icon-display, typography elements</li>
+            </ul>
+        </div>
+        
+        <h3>Structure</h3>
+        <div class="demo-code">&lt;section class="pillar-section"&gt;
+    &lt;!-- Section Header --&gt;
+    &lt;header class="pillar-section__header"&gt;
+        &lt;div class="pillar-section__headline-wrapper"&gt;
+            &lt;h1 class="pillar-section__headline"&gt;Pillar Page Section&lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    
+    &lt;!-- Pillar Cards (4x) --&gt;
+    &lt;div class="pillar-section__card pillar-card"&gt;
+        &lt;!-- Card content with icon and text --&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</div>
+        
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Background:</strong> Secondary gray (#eceeef) for the entire section</li>
+            <li><strong>Cards:</strong> Four pillar cards with different icons (Overview, Strategy, Methodology, Benefits)</li>
+            <li><strong>Icons:</strong> Using decorative-icon-display molecule with navy color variant</li>
+            <li><strong>Responsive:</strong> Automatic icon size adjustment (256px desktop, 120px mobile)</li>
+            <li><strong>Typography:</strong> H1 for section title (36px/54px), H2 for card headings (30px/45px)</li>
+        </ul>
+        
+        <h3>CSS Token Reference</h3>
+        <div class="demo-code">/* Section Tokens */
+--pillar-section-bg: #eceeef;
+--pillar-section-gap: 32px;
+--pillar-section-h1-font-size: 36px;
+--pillar-section-h1-line-height: 54px;
+
+/* Card Tokens (inherited) */
+--pillar-h2-font-size: 30px;
+--pillar-h2-line-height: 45px;
+--pillar-p-font-size: 18px;
+--pillar-p-line-height: 27px;
+
+/* Spacing */
+--pillar-space-4: 16px;
+--pillar-space-8: 32px;
+--pillar-space-12: 48px;
+--pillar-space-20: 80px;</div>
+    </div>
+    
+    <!-- JavaScript for Responsive Icon Sizing -->
+    <script>
+        // Initialize icon display based on viewport
+        function updateIconSizes() {
+            const icons = document.querySelectorAll('.pillar-card__icon .decorative-icon-display');
+            const isMobile = window.innerWidth < 768;
+            
+            icons.forEach(icon => {
+                // Remove all size classes
+                icon.classList.remove('decorative-icon-display--xxlarge', 'decorative-icon-display--xlarge');
+                
+                // Add appropriate size class based on viewport
+                if (isMobile) {
+                    icon.classList.add('decorative-icon-display--xlarge'); // 120px for mobile
+                } else {
+                    icon.classList.add('decorative-icon-display--xxlarge'); // 256px for desktop
+                }
+            });
+        }
+        
+        // Run on load and resize
+        window.addEventListener('DOMContentLoaded', updateIconSizes);
+        window.addEventListener('resize', updateIconSizes);
+    </script>
+</body>
+</html>

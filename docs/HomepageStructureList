@@ -1,0 +1,32 @@
+# Homepage Template - Component Assembly List
+
+## Header Section
+- [ ] banner-header-main-production.html (organism)
+
+## Hero Section  
+- [ ] hero-carousel-production.html (organism)
+    - Slide 1 video: `/assets/video/3427717167-preview.mp4`
+    - Slide 2 video: `/assets/video/3432135943-preview.mp4`
+    - Slide 3 video: `/assets/video/3539535235-preview.mp4`
+
+## Content Section 1: Services Overview
+- [ ] headline-banner.html (atom)
+- [ ] text-block.html (organism)
+
+## Content Section 2: Featured Resources
+- [ ] headline-banner.html (atom)
+- [ ] headline-reverse.html (atom)
+- [ ] content-2column-resource-production.html (organism)
+- [ ] headline-reverse.html (atom)
+- [ ] blog-group-teaser-production.html (organism)
+
+## Content Section 3: Your Next Step
+- [ ] card-bannerspacer-headlinesubtitle-production.html (molecule)
+- [ ] content-2column-graphic-production.html (organism)
+
+## Footer Section
+- [ ] footer-main-production.html (organism)
+
+## Notes
+- Apply 1920px max-width pattern to all content sections
+- Add tiled background SVG for DesktopPlus breakpoint

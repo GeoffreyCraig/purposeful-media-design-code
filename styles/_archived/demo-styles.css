@@ -1,0 +1,24 @@
+/* =================================================
+   DEMO STYLES (TESTING/PREVIEW ONLY)
+   File: demo-styles.css
+   Remove this file in production
+   ================================================= */
+
+.demo-container {
+    padding: var(--space-5);
+    background: var(--color-neutral-50);
+}
+
+.demo-section {
+    margin-bottom: var(--space-10);
+}
+
+.demo-label {
+    margin-bottom: var(--space-2);
+    padding: var(--space-2);
+    background: var(--color-neutral-900);
+    color: var(--text-reverse);
+    font-family: var(--font-secondary);
+    font-size: var(--label-form-size);
+    font-weight: var(--font-weight-semibold);
+}

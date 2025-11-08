@@ -1,0 +1,51 @@
+/**
+ * Form/Contact Demo Styles
+ * Purposeful Media Promotions Design System
+ *
+ * Demo and documentation styles for Form/Contact molecule component
+ * Tokenized: 2025-10-29
+ * Version: 1.0
+ * Variables: v4.0-20251027
+ */
+
+/* ============================================
+   GLOBAL RESET (Demo Page Only)
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================
+   BODY STYLES
+   ============================================ */
+
+body {
+    font-family: var(--font-secondary);
+    padding: var(--space-5);
+    background-color: var(--bg-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    body {
+        padding: var(--space-2);
+    }
+}
+
+/* Mobile Small: 320-479px */
+@media (max-width: 479px) {
+    body {
+        padding: var(--space-2);
+    }
+}

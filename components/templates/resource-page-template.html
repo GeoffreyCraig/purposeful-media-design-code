@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resources Page Template - Purposeful Media Promotions Design System">
+    <title>Resources Library | Purposeful Media Promotions</title>
+
+    <!-- Google Fonts (Load BEFORE CSS) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Production CSS - Individual Files (Safari compatibility) -->
+    <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
+    <link rel="stylesheet" href="../../styles/production-molecules.css">
+    <link rel="stylesheet" href="../../styles/production-organisms.css">
+    <link rel="stylesheet" href="../../styles/organisms-heroes.css">
+    <link rel="stylesheet" href="../../styles/organisms-headers.css">
+    <link rel="stylesheet" href="../../styles/organisms-footers.css">
+    <link rel="stylesheet" href="../../styles/atoms-banner-spacer.css">
+    <link rel="stylesheet" href="../../styles/organisms-text-block.css">
+    <link rel="stylesheet" href="../../styles/organisms-content-2column-resource.css">
+    <link rel="stylesheet" href="../../styles/organisms-section-resources.css">
+    <link rel="stylesheet" href="../../styles/organisms-content-2column-contact-integrated.css">
+    <link rel="stylesheet" href="../../styles/templates-base.css">
+
+    <style>
+        /* Reset default body margins for template */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER SECTION
+         Component: banner-header-main-production.html
+         ============================================ -->
+    <header class="banner-header">
+            <div class="banner-header__container">
+                <div class="banner-header__logo">
+                    <a href="/" class="banner-header__logo-link" aria-label="Purposeful Media Promotions Home">
+                        <!-- Mobile Logo: 380-767px -->
+                        <img
+                            src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg"
+                            alt="Purposeful Media Promotions"
+                            class="banner-header__logo-image banner-header__logo-image--mobile"
+                        >
+                        <!-- Tablet Logo: 768-1149px -->
+                        <img
+                            src="../../assets/svg/logos/purposeful-media-logo-white-tablet.svg"
+                            alt="Purposeful Media Promotions"
+                            class="banner-header__logo-image banner-header__logo-image--tablet"
+                        >
+                        <!-- Desktop/DesktopPlus Logo: 1150px+ -->
+                        <img
+                            src="../../assets/svg/logos/purposeful-media-logo-white-desktop.svg"
+                            alt="Purposeful Media Promotions"
+                            class="banner-header__logo-image banner-header__logo-image--desktop"
+                        >
+                    </a>
+                </div>
+
+                <!-- Menu Wrapper -->
+                <div class="banner-header__menu-wrapper">
+                    <!-- Desktop Navigation Menu -->
+                    <nav class="banner-header__menu" role="navigation" aria-label="Main navigation">
+                        <!-- Home -->
+                        <div class="banner-header__menu-item">
+                            <a href="/" class="banner-header__menu-link" data-page="home">Home</a>
+                        </div>
+
+                        <!-- Solutions -->
+                        <div class="banner-header__menu-item">
+                            <span class="banner-header__menu-link">Solutions</span>
+                            <div class="banner-header__dropdown">
+                                <a href="/email-management" class="banner-header__dropdown-link">Email Management</a>
+                                <a href="/content-creation" class="banner-header__dropdown-link">Content Creation</a>
+                                <a href="/webinar-production" class="banner-header__dropdown-link">Webinar Production</a>
+                            </div>
+                        </div>
+
+                        <!-- Resources -->
+                        <div class="banner-header__menu-item">
+                            <span class="banner-header__menu-link">Resources</span>
+                            <div class="banner-header__dropdown">
+                                <a href="/resource-library" class="banner-header__dropdown-link">Resource Library</a>
+                                <a href="/about-us" class="banner-header__dropdown-link">About Us</a>
+                                <a href="/blog" class="banner-header__dropdown-link">Blog</a>
+                            </div>
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="banner-header__menu-item">
+                            <a href="/contact" class="banner-header__menu-link" data-page="contact">Contact</a>
+                        </div>
+                    </nav>
+                </div>
+
+                <!-- Hamburger Menu Button (Mobile/Tablet) -->
+                <button class="banner-header__hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="banner-header__hamburger-icon"></span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="banner-header__mobile-menu">
+                <nav class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+                    <a href="/" class="mobile-menu__link" data-page="home">Home</a>
+
+                    <div class="mobile-menu__submenu">
+                        <div class="mobile-menu__link mobile-menu__trigger">Solutions</div>
+                        <div class="mobile-menu__submenu-items">
+                            <a href="/email-management" class="mobile-menu__sublink">Email Management</a>
+                            <a href="/content-creation" class="mobile-menu__sublink">Content Creation</a>
+                            <a href="/webinar-production" class="mobile-menu__sublink">Webinar Production</a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-menu__submenu">
+                        <div class="mobile-menu__link mobile-menu__trigger">Resources</div>
+                        <div class="mobile-menu__submenu-items">
+                            <a href="/resource-library" class="mobile-menu__sublink">Resource Library</a>
+                            <a href="/about-us" class="mobile-menu__sublink">About Us</a>
+                            <a href="/blog" class="mobile-menu__sublink">Blog</a>
+                        </div>
+                    </div>
+
+                    <a href="/contact" class="mobile-menu__link" data-page="contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="resource-page-wrapper">
+
+        <!-- ============================================
+             HERO SECTION
+             Component: hero-simple-default-production.html
+             ============================================ -->
+        <section class="hero-simple" role="banner" aria-label="Page Header">
+            <div class="hero-simple__content">
+                <h1 class="hero-simple__headline">B2B Marketing Resources</h1>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CONTENT SECTION 1: RESOURCES OVERVIEW
+             Component: text-block.html (organism) - Wide variant
+             ============================================ -->
+        <section class="text-block text-block--wide" data-component="Text Block" role="region" aria-label="Resources Overview">
+            <div class="text-block__container">
+                <div class="text-block__content">
+                    <div class="text-block__section">
+                        <p class="text-block__paragraph">
+                            Welcome to the Purposeful Media Resource Library. We've curated a comprehensive collection of actionable resources designed specifically for B2B marketing professionals. Whether you're looking to optimize your marketing ROI, develop compelling content strategies, or master the latest digital marketing techniques, you'll find practical tools and insights here to help you achieve your goals.
+                        </p>
+                    </div>
+                    <div class="text-block__section">
+                        <p class="text-block__paragraph">
+                            Our resources are developed from real-world experience working with B2B companies across diverse industries. Each guide, template, and framework has been tested and refined to deliver measurable results. Browse our library below to find the resources that will drive your marketing success.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CONTENT SECTION 2: FEATURED RESOURCE
+             ============================================ -->
+
+        <!-- Headline Banner Atom -->
+        <div class="card-banner-spacer variant-headline-banner"
+             data-component="card-banner-spacer"
+             data-variant="headline-banner">
+            <div class="banner-spacer-content">
+                <h1 class="banner-headline">Featured Resource</h1>
+            </div>
+        </div>
+
+        <!-- Content 2 Column Resource Component -->
+        <section class="content-2column-resource" role="region" aria-labelledby="featured-resource-heading">
+            <div class="section-background" aria-hidden="true">
+                <img src="../../assets/images/shutterstock_1421446100.jpg" alt="" loading="lazy">
+            </div>
+            <div class="content-container">
+                <div class="column-group">
+                    <div class="left-column">
+                        <div class="image-wrapper">
+                            <img
+                                src="../../assets/images/sample-ebook-cover.jpg"
+                                alt="Complete Guide to B2B Marketing ROI eBook Cover"
+                                class="ebook-image"
+                                loading="lazy"
+                            >
+                        </div>
+                    </div>
+                    <div class="right-column">
+                        <h2 id="featured-resource-heading" class="card-title">
+                            Complete Guide to B2B Marketing ROI
+                        </h2>
+                        <p class="card-description">
+                            Discover proven strategies to measure, track, and optimize your marketing investment returns. This comprehensive guide walks you through establishing KPIs, implementing analytics frameworks, and demonstrating clear value to stakeholders. Learn how leading B2B companies are achieving 3-5x ROI improvements through data-driven marketing optimization.
+                        </p>
+                        <p class="card-description">
+                            Inside this guide, you'll find practical templates, calculation frameworks, and real-world case studies that show you exactly how to quantify your marketing impact and make strategic decisions based on solid data.
+                        </p>
+                        <a href="/resources/b2b-marketing-roi-guide" class="resource-button">
+                            Download Free Guide
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CONTENT SECTION 3: PURPOSEFUL MEDIA RESOURCE LIBRARY
+             ============================================ -->
+
+        <!-- Headline Banner Atom -->
+        <div class="card-banner-spacer variant-headline-banner"
+             data-component="card-banner-spacer"
+             data-variant="headline-banner">
+            <div class="banner-spacer-content">
+                <h1 class="banner-headline">Purposeful Media Resource Library</h1>
+            </div>
+        </div>
+
+        <!-- Section Resources Component -->
+        <section class="section-resources" data-component="Section/Resources" role="region" aria-label="Resource Library">
+            <div class="section-resources__container">
+                <div class="section-resources__grid">
+
+                    <!-- Resource Card 1: B2B Marketing ROI -->
+                    <div class="card-resources" data-name="Card/Resources">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="decorative-icon-display decorative-icon-display--large" data-icon="roi" data-color="white"></div>
+                                <h3 class="card-resources__heading">Complete Guide to B2B Marketing ROI</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Learn proven strategies to measure and optimize your marketing investment returns.
+                            </p>
+                            <a href="/resources/b2b-marketing-roi-guide" class="card-resources__button">
+                                <span class="card-resources__button-text">Download eBook</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource Card 2: Email Marketing Strategy -->
+                    <div class="card-resources" data-name="Card/Resources">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="decorative-icon-display decorative-icon-display--large" data-icon="strategy" data-color="white"></div>
+                                <h3 class="card-resources__heading">Email Marketing Strategy Playbook</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Master email campaigns that drive engagement and convert prospects to customers.
+                            </p>
+                            <a href="/resources/email-marketing-playbook" class="card-resources__button">
+                                <span class="card-resources__button-text">Get the Guide</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource Card 3: Webinar Production -->
+                    <div class="card-resources" data-name="Card/Resources">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="decorative-icon-display decorative-icon-display--large" data-icon="webinar" data-color="white"></div>
+                                <h3 class="card-resources__heading">Webinar Production Checklist</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Everything you need to plan, produce, and promote successful B2B webinars.
+                            </p>
+                            <a href="/resources/webinar-checklist" class="card-resources__button">
+                                <span class="card-resources__button-text">Download Checklist</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource Card 4: Buyer Persona Template -->
+                    <div class="card-resources" data-name="Card/Resources">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="decorative-icon-display decorative-icon-display--large" data-icon="persona" data-color="white"></div>
+                                <h3 class="card-resources__heading">Buyer Persona Template</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Create detailed buyer personas that drive targeted marketing campaigns.
+                            </p>
+                            <a href="/resources/buyer-persona-template" class="card-resources__button">
+                                <span class="card-resources__button-text">Get Template</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource Card 5: Content Marketing Framework -->
+                    <div class="card-resources" data-name="Card/Resources">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="decorative-icon-display decorative-icon-display--large" data-icon="attract" data-color="white"></div>
+                                <h3 class="card-resources__heading">Content Marketing Framework</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Build a content strategy that attracts, engages, and converts your ideal customers.
+                            </p>
+                            <a href="/resources/content-marketing-framework" class="card-resources__button">
+                                <span class="card-resources__button-text">Download Framework</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource Card 6: Lead Nurturing -->
+                    <div class="card-resources" data-name="Card/Resources">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="decorative-icon-display decorative-icon-display--large" data-icon="engage" data-color="white"></div>
+                                <h3 class="card-resources__heading">Lead Nurturing Best Practices</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Discover proven tactics to nurture leads through your sales funnel effectively.
+                            </p>
+                            <a href="/resources/lead-nurturing-guide" class="card-resources__button">
+                                <span class="card-resources__button-text">Read Guide</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource Card 7: Marketing Automation -->
+                    <div class="card-resources" data-name="Card/Resources">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="decorative-icon-display decorative-icon-display--large" data-icon="efficiency" data-color="white"></div>
+                                <h3 class="card-resources__heading">Marketing Automation Guide</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                Streamline your marketing operations with smart automation workflows.
+                            </p>
+                            <a href="/resources/marketing-automation-guide" class="card-resources__button">
+                                <span class="card-resources__button-text">Get the Guide</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resource Card 8: Case Study -->
+                    <div class="card-resources" data-name="Card/Resources">
+                        <img class="card-resources__thumbnail" src="../../assets/images/sample-ebook-cover.jpg" alt="eBook Cover" onerror="this.style.display='none'">
+                        <div class="card-resources__overlay"></div>
+                        <div class="card-resources__content">
+                            <div class="card-resources__header">
+                                <div class="decorative-icon-display decorative-icon-display--large" data-icon="value" data-color="white"></div>
+                                <h3 class="card-resources__heading">Case Study: 300% Lead Growth</h3>
+                            </div>
+                            <p class="card-resources__cta">
+                                See how we helped a B2B manufacturer triple their qualified leads in 6 months.
+                            </p>
+                            <a href="/resources/case-study-lead-growth" class="card-resources__button">
+                                <span class="card-resources__button-text">Read Case Study</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CONTENT SECTION 4: START THE CONVERSATION
+             ============================================ -->
+
+        <!-- Headline Banner Atom -->
+        <div class="card-banner-spacer variant-headline-banner"
+             data-component="card-banner-spacer"
+             data-variant="headline-banner">
+            <div class="banner-spacer-content">
+                <h1 class="banner-headline">Start the Conversation</h1>
+            </div>
+        </div>
+
+        <!-- Content 2 Column Contact Component -->
+        <div class="content-2column-contact" data-component="content-2column-contact">
+            <!-- Background Layer (Desktop/DesktopPlus only) -->
+            <div class="content-2column-contact__background" aria-hidden="true">
+                <div class="content-2column-contact__background-color"></div>
+                <img
+                    class="content-2column-contact__background-image"
+                    src="../../assets/images/shutterstock_2492759463.jpg"
+                    alt=""
+                    loading="lazy"
+                >
+            </div>
+
+            <!-- Column Group Container -->
+            <div class="content-2column-contact__columns">
+                <!-- Left Column: Card with Content -->
+                <div class="content-2column-contact__card">
+                    <h2 class="content-2column-contact__heading">
+                        Ready to Transform Your B2B Marketing?
+                    </h2>
+                    <p class="content-2column-contact__body">
+                        Let's discuss how Purposeful Media can help you achieve your marketing goals. Whether you're looking to develop a comprehensive content strategy, optimize your digital presence, or create compelling campaigns that drive results, we're here to help. Schedule a consultation with our team to explore how we can partner with you to elevate your B2B marketing.
+                    </p>
+                    <a href="/contact" class="content-2column-contact__button">
+                        <span class="content-2column-contact__button-text">Schedule a Consultation</span>
+                    </a>
+                </div>
+
+                <!-- Right Column: Image -->
+                <div class="content-2column-contact__image-wrapper">
+                    <img
+                        class="content-2column-contact__image"
+                        src="../../assets/images/shutterstock_2494045679.jpg"
+                        alt="Professional consultation in modern office setting"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ============================================
+         FOOTER SECTION
+         Component: footer-main-production.html
+         ============================================ -->
+    <footer class="footer-responsive">
+            <!-- DESKTOP/TABLET FOOTER (768px and up) -->
+            <div class="footer-main" data-breakpoint="responsive">
+                <div class="footer-container">
+                    <!-- Logo Section -->
+                    <div class="footer-logo-section">
+                        <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg"
+                             alt="Purposeful Media Promotions"
+                             class="footer-logo">
+                    </div>
+
+                    <!-- Footer Content Columns -->
+                    <div class="footer-content">
+                        <!-- Column 1: Services -->
+                        <div class="footer-column" data-column="services">
+                            <div class="footer-menu-section">
+                                <h3 class="footer-menu-title">Services</h3>
+                                <nav class="footer-menu-nav">
+                                    <ul class="footer-menu-list">
+                                        <li><a href="/services/email-marketing" class="footer-menu-link">Email Marketing</a></li>
+                                        <li><a href="/services/webinar-production" class="footer-menu-link">Webinar Production</a></li>
+                                        <li><a href="/services/inbound-marketing" class="footer-menu-link">Inbound Marketing</a></li>
+                                        <li><span class="footer-menu-link disabled">Succession Planning [Coming Soon]</span></li>
+                                        <li><span class="footer-menu-link disabled">Business Unit Growth [Coming Soon]</span></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: Who We Serve -->
+                        <div class="footer-column" data-column="who-we-serve">
+                            <div class="footer-menu-section">
+                                <h3 class="footer-menu-title">Who We Serve</h3>
+                                <nav class="footer-menu-nav">
+                                    <ul class="footer-menu-list">
+                                        <li><span class="footer-menu-link disabled">Revenue Growth [Coming Soon]</span></li>
+                                        <li><span class="footer-menu-link disabled">Preparing for Exit [Coming Soon]</span></li>
+                                        <li><span class="footer-menu-link disabled">Plan a Webinar [Coming Soon]</span></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Column 3: Resources -->
+                        <div class="footer-column" data-column="resources">
+                            <div class="footer-menu-section">
+                                <h3 class="footer-menu-title">Resources</h3>
+                                <nav class="footer-menu-nav">
+                                    <ul class="footer-menu-list">
+                                        <li><a href="/blog" class="footer-menu-link">Read Our Blog</a></li>
+                                        <li><a href="/resources/thought-leadership" class="footer-menu-link">Thought Leadership</a></li>
+                                        <li><span class="footer-menu-link disabled">Pricing [Coming Soon]</span></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <!-- Column 4: Company & Newsletter -->
+                        <div class="footer-column" data-column="company-newsletter">
+                            <!-- Company Menu -->
+                            <div class="footer-menu-section">
+                                <h3 class="footer-menu-title">Company</h3>
+                                <nav class="footer-menu-nav">
+                                    <ul class="footer-menu-list">
+                                        <li><a href="/about" class="footer-menu-link">About Us</a></li>
+                                        <li><a href="/contact" class="footer-menu-link">Contact Us</a></li>
+                                        <li><a href="/privacy" class="footer-menu-link">Privacy Policy</a></li>
+                                        <li><span class="footer-menu-link disabled">Affiliates [Coming Soon]</span></li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            <!-- Newsletter Form - Using molecule -->
+                            <div class="footer-newsletter">
+                                <form class="form-newsletter form-newsletter--mobile">
+                                    <h3 class="form-newsletter__title">Stay Connected</h3>
+                                    <p class="form-newsletter__description">
+                                        Share your email address and get our B2B marketing strategies and digital transformation inspirations in your inbox.
+                                    </p>
+                                    <div class="form-newsletter__field-container">
+                                        <label for="footer-email" class="form-newsletter__label">Email Address*</label>
+                                        <div class="form-newsletter__input-wrapper">
+                                            <input type="email"
+                                                   id="footer-email"
+                                                   name="email"
+                                                   class="form-newsletter__input"
+                                                   placeholder="Write your input here"
+                                                   required
+                                                   aria-required="true"
+                                                   aria-invalid="false">
+                                        </div>
+                                        <span class="form-newsletter__helper">*This field is required.</span>
+                                    </div>
+                                    <div class="form-newsletter__submit-container">
+                                        <button type="submit" class="form-newsletter__submit">
+                                            Subscribe Now
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attribution Sub-footer -->
+                <div class="footer-attribution">
+                    <div class="footer-attribution-content">
+                        <span class="footer-copyright">© All rights reserved 2025</span>
+                        <span class="footer-divider">|</span>
+                        <span class="footer-company">Purposeful Media Promotions</span>
+                        <span class="footer-divider">|</span>
+                        <a href="/policy" class="footer-policy-link">Policy Statement</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOBILE FOOTER (767px and below) -->
+            <div class="footer-mobile">
+                <div class="footer-mobile__top">
+                    <img src="../../assets/svg/logos/purposeful-media-logo-white-mobile.svg"
+                         alt="Purposeful Media Promotions"
+                         class="footer-mobile__logo">
+                </div>
+
+                <nav class="footer-mobile__nav">
+                    <!-- Services -->
+                    <div class="footer-mobile__nav-item" data-dropdown="services">
+                        <span class="footer-mobile__nav-text">Services</span>
+                        <span class="footer-mobile__nav-arrow">&gt;</span>
+                    </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="dropdown-mobile" id="dropdown-services">
+                        <div class="dropdown-mobile__item">
+                            <a href="/services/email-marketing" class="dropdown-mobile__link">Email Marketing</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <a href="/services/webinar-production" class="dropdown-mobile__link">Webinar Production</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <a href="/services/inbound-marketing" class="dropdown-mobile__link">Inbound Marketing</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Succession Planning</span>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Business Unit Growth</span>
+                        </div>
+                    </div>
+
+                    <!-- Who We Serve -->
+                    <div class="footer-mobile__nav-item" data-dropdown="who-we-serve">
+                        <span class="footer-mobile__nav-text">Who We Serve</span>
+                        <span class="footer-mobile__nav-arrow">&gt;</span>
+                    </div>
+
+                    <!-- Who We Serve Dropdown -->
+                    <div class="dropdown-mobile" id="dropdown-who-we-serve">
+                        <div class="dropdown-mobile__item">
+                            <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Revenue Growth</span>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Preparing for Exit</span>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Plan a Webinar</span>
+                        </div>
+                    </div>
+
+                    <!-- Resources -->
+                    <div class="footer-mobile__nav-item" data-dropdown="resources">
+                        <span class="footer-mobile__nav-text">Resources</span>
+                        <span class="footer-mobile__nav-arrow">&gt;</span>
+                    </div>
+
+                    <!-- Resources Dropdown -->
+                    <div class="dropdown-mobile" id="dropdown-resources">
+                        <div class="dropdown-mobile__item">
+                            <a href="/blog" class="dropdown-mobile__link">Read Our Blog</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <a href="/resources/thought-leadership" class="dropdown-mobile__link">Thought Leadership</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Pricing</span>
+                        </div>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="footer-mobile__nav-item" data-dropdown="company">
+                        <span class="footer-mobile__nav-text">Company</span>
+                        <span class="footer-mobile__nav-arrow">&gt;</span>
+                    </div>
+
+                    <!-- Company Dropdown -->
+                    <div class="dropdown-mobile" id="dropdown-company">
+                        <div class="dropdown-mobile__item">
+                            <a href="/about" class="dropdown-mobile__link">About Us</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <a href="/contact" class="dropdown-mobile__link">Contact Us</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <a href="/privacy" class="dropdown-mobile__link">Privacy Policy</a>
+                        </div>
+                        <div class="dropdown-mobile__item">
+                            <span class="dropdown-mobile__link dropdown-mobile__link--disabled">Affiliates [Coming Soon]</span>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Newsletter Form for Mobile - Using molecule -->
+                <div class="footer-mobile__newsletter">
+                    <form class="form-newsletter form-newsletter--mobile">
+                        <h3 class="form-newsletter__title">Stay Connected</h3>
+                        <p class="form-newsletter__description">
+                            Get B2B marketing strategies and digital transformation inspiration in your inbox.
+                        </p>
+                        <div class="form-newsletter__field-container">
+                            <label for="footer-mobile-email" class="form-newsletter__label">Email Address*</label>
+                            <div class="form-newsletter__input-wrapper">
+                                <input type="email"
+                                       id="footer-mobile-email"
+                                       name="email"
+                                       class="form-newsletter__input"
+                                       placeholder="Write your input here"
+                                       required
+                                       aria-required="true"
+                                       aria-invalid="false">
+                            </div>
+                            <span class="form-newsletter__helper">*This field is required.</span>
+                        </div>
+                        <div class="form-newsletter__submit-container">
+                            <button type="submit" class="form-newsletter__submit">
+                                Subscribe Now
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="footer-mobile__attribution">
+                    <div class="footer-mobile__attribution-content">
+                        <div class="footer-mobile__copyright">© All rights reserved 2025</div>
+                        <div class="footer-mobile__company">Purposeful Media Promotions</div>
+                        <a href="/policy" class="footer-mobile__policy">Policy Statement</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <!-- ============================================
+         COMPONENT JAVASCRIPT MODULES
+         ============================================ -->
+
+    <!-- Header Navigation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.banner-header__hamburger');
+            const mobileMenu = document.querySelector('.banner-header__mobile-menu');
+
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', function() {
+                    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                    hamburger.setAttribute('aria-expanded', !isExpanded);
+                    hamburger.classList.toggle('banner-header__hamburger--active');
+                    mobileMenu.classList.toggle('banner-header__mobile-menu--active');
+                });
+            }
+
+            // Desktop dropdown click functionality
+            document.querySelectorAll('.banner-header__menu-item').forEach(menuItem => {
+                const menuLink = menuItem.querySelector('.banner-header__menu-link:not([href])');
+                const dropdown = menuItem.querySelector('.banner-header__dropdown');
+
+                if (menuLink && dropdown) {
+                    menuLink.style.cursor = 'pointer';
+
+                    // Toggle dropdown on click
+                    menuLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Check if this dropdown is currently open
+                        const isOpen = dropdown.style.display === 'block';
+
+                        // Close all other dropdowns and remove active state from all menu links
+                        document.querySelectorAll('.banner-header__dropdown').forEach(otherDropdown => {
+                            otherDropdown.style.display = 'none';
+                        });
+                        document.querySelectorAll('.banner-header__menu-link').forEach(link => {
+                            link.classList.remove('banner-header__menu-link--active');
+                        });
+
+                        // Toggle current dropdown and active state
+                        if (!isOpen) {
+                            dropdown.style.display = 'block';
+                            menuLink.classList.add('banner-header__menu-link--active');
+                        }
+                    });
+                }
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.banner-header__menu-item')) {
+                    document.querySelectorAll('.banner-header__dropdown').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.banner-header__menu-link').forEach(link => {
+                        link.classList.remove('banner-header__menu-link--active');
+                    });
+                }
+            });
+
+            // Prevent dropdown from closing when clicking inside
+            document.querySelectorAll('.banner-header__dropdown').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+
+            // Mobile submenu toggles
+            document.querySelectorAll('.mobile-menu__trigger').forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const submenu = this.parentElement;
+                    submenu.classList.toggle('mobile-menu__submenu--expanded');
+                });
+            });
+
+            // Active state based on current page
+            const currentPath = window.location.pathname;
+
+            document.querySelectorAll('[data-page]').forEach(item => {
+                const page = item.getAttribute('data-page');
+                if (currentPath === '/' && page === 'home') {
+                    item.classList.add('active');
+                    item.closest('.banner-header__menu-link')?.classList.add('banner-header__menu-link--active');
+                    item.closest('.mobile-menu__link')?.classList.add('mobile-menu__link--active');
+                } else if (currentPath.includes('/' + page)) {
+                    item.classList.add('active');
+                    item.closest('.banner-header__menu-link')?.classList.add('banner-header__menu-link--active');
+                    item.closest('.mobile-menu__link')?.classList.add('mobile-menu__link--active');
+                }
+            });
+
+            // Handle window resize - close mobile menu when expanding to desktop
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    // Close mobile menu if viewport is desktop width (1150px+)
+                    if (window.innerWidth >= 1150) {
+                        if (mobileMenu) {
+                            mobileMenu.classList.remove('banner-header__mobile-menu--active');
+                        }
+                        if (hamburger) {
+                            hamburger.classList.remove('banner-header__hamburger--active');
+                            hamburger.setAttribute('aria-expanded', 'false');
+                        }
+                        // Close any open submenus
+                        document.querySelectorAll('.mobile-menu__submenu').forEach(submenu => {
+                            submenu.classList.remove('mobile-menu__submenu--expanded');
+                        });
+                    }
+                }, 250); // Debounce for smooth performance
+            });
+        });
+    </script>
+
+    <!-- Content 2 Column Contact Script -->
+    <script>
+        (function(window, document) {
+            'use strict';
+
+            const CONFIG = {
+                selectors: {
+                    component: '[data-component="content-2column-contact"]',
+                    button: '.content-2column-contact__button',
+                    card: '.content-2column-contact__card',
+                    image: '.content-2column-contact__image',
+                    backgroundImage: '.content-2column-contact__background-image',
+                    columns: '.content-2column-contact__columns'
+                },
+                breakpoints: {
+                    mobile: 768,
+                    tablet: 1150,
+                    desktop: 1920
+                },
+                classes: {
+                    mobile: 'content-2column-contact--mobile',
+                    tablet: 'content-2column-contact--tablet',
+                    desktop: 'content-2column-contact--desktop',
+                    desktopPlus: 'content-2column-contact--desktop-plus',
+                    loaded: 'content-2column-contact--loaded',
+                    active: 'content-2column-contact--active'
+                }
+            };
+
+            class Content2ColumnContact {
+                constructor(element) {
+                    this.element = element;
+                    this.button = element.querySelector(CONFIG.selectors.button);
+                    this.card = element.querySelector(CONFIG.selectors.card);
+                    this.image = element.querySelector(CONFIG.selectors.image);
+                    this.backgroundImage = element.querySelector(CONFIG.selectors.backgroundImage);
+                    this.currentBreakpoint = null;
+                    this.isInitialized = false;
+
+                    this.init();
+                }
+
+                init() {
+                    if (this.isInitialized) return;
+
+                    this.setupEventListeners();
+                    this.handleResponsive();
+                    this.setupIntersectionObserver();
+                    this.element.classList.add(CONFIG.classes.loaded);
+
+                    this.isInitialized = true;
+                }
+
+                setupEventListeners() {
+                    if (this.button) {
+                        this.button.addEventListener('click', this.handleButtonClick.bind(this));
+                    }
+
+                    this.handleResize = this.debounce(this.handleResponsive.bind(this), 250);
+                    window.addEventListener('resize', this.handleResize);
+                }
+
+                setupIntersectionObserver() {
+                    if (!window.IntersectionObserver) return;
+
+                    const options = {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -10% 0px'
+                    };
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                this.element.classList.add(CONFIG.classes.active);
+                                observer.unobserve(this.element);
+                            }
+                        });
+                    }, options);
+
+                    observer.observe(this.element);
+                }
+
+                handleResponsive() {
+                    const width = window.innerWidth;
+                    const newBreakpoint = this.getBreakpoint(width);
+
+                    if (newBreakpoint === this.currentBreakpoint) return;
+
+                    Object.values(CONFIG.classes).forEach(className => {
+                        if (className.includes('--')) {
+                            this.element.classList.remove(className);
+                        }
+                    });
+
+                    this.element.classList.add(CONFIG.classes[newBreakpoint]);
+                    this.handleBackgroundImage(newBreakpoint);
+                    this.currentBreakpoint = newBreakpoint;
+
+                    this.element.dispatchEvent(new CustomEvent('breakpointChange', {
+                        detail: { breakpoint: newBreakpoint }
+                    }));
+                }
+
+                getBreakpoint(width) {
+                    if (width < CONFIG.breakpoints.mobile) {
+                        return 'mobile';
+                    } else if (width < CONFIG.breakpoints.tablet) {
+                        return 'tablet';
+                    } else if (width < CONFIG.breakpoints.desktop) {
+                        return 'desktop';
+                    } else {
+                        return 'desktopPlus';
+                    }
+                }
+
+                handleBackgroundImage(breakpoint) {
+                    if (!this.backgroundImage) return;
+
+                    if (breakpoint === 'desktop' || breakpoint === 'desktopPlus') {
+                        this.backgroundImage.style.display = 'block';
+                    } else {
+                        this.backgroundImage.style.display = 'none';
+                    }
+                }
+
+                handleButtonClick(event) {
+                    event.preventDefault();
+
+                    const customEvent = new CustomEvent('ctaClick', {
+                        detail: {
+                            component: 'content-2column-contact',
+                            button: this.button,
+                            timestamp: Date.now()
+                        },
+                        bubbles: true,
+                        cancelable: true
+                    });
+
+                    this.element.dispatchEvent(customEvent);
+
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'click', {
+                            event_category: 'CTA',
+                            event_label: 'Content 2 Column Contact',
+                            value: 1
+                        });
+                    }
+
+                    console.log('Contact CTA clicked');
+                }
+
+                debounce(func, wait) {
+                    let timeout;
+                    return function executedFunction(...args) {
+                        const later = () => {
+                            clearTimeout(timeout);
+                            func(...args);
+                        };
+                        clearTimeout(timeout);
+                        timeout = setTimeout(later, wait);
+                    };
+                }
+
+                destroy() {
+                    window.removeEventListener('resize', this.handleResize);
+
+                    if (this.button) {
+                        this.button.removeEventListener('click', this.handleButtonClick);
+                    }
+
+                    this.element.classList.remove(CONFIG.classes.loaded, CONFIG.classes.active);
+                    this.isInitialized = false;
+                }
+            }
+
+            function initializeAll() {
+                const components = document.querySelectorAll(CONFIG.selectors.component);
+                const instances = [];
+
+                components.forEach(element => {
+                    instances.push(new Content2ColumnContact(element));
+                });
+
+                return instances;
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeAll);
+            } else {
+                initializeAll();
+            }
+
+            window.Content2ColumnContact = Content2ColumnContact;
+            window.Content2ColumnContact.init = initializeAll;
+            window.Content2ColumnContact.CONFIG = CONFIG;
+
+        })(window, document);
+    </script>
+
+    <!-- Mobile Footer Accordion Script -->
+    <script>
+        class MobileFooterNav {
+            constructor() {
+                this.navItems = document.querySelectorAll('.footer-mobile__nav-item[data-dropdown]');
+                this.activeDropdown = null;
+
+                this.init();
+            }
+
+            init() {
+                this.navItems.forEach(item => {
+                    item.addEventListener('click', (e) => this.toggleDropdown(e));
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.footer-mobile__nav')) {
+                        this.closeAllDropdowns();
+                    }
+                });
+            }
+
+            toggleDropdown(event) {
+                event.stopPropagation();
+                const item = event.currentTarget;
+                const dropdownId = item.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(`dropdown-${dropdownId}`);
+
+                if (!dropdown) return;
+
+                if (dropdown.classList.contains('active')) {
+                    this.closeDropdown(dropdown);
+                    item.classList.remove('active');
+                } else {
+                    this.closeAllDropdowns();
+                    this.openDropdown(dropdown);
+                    item.classList.add('active');
+                    this.activeDropdown = dropdown;
+                }
+            }
+
+            openDropdown(dropdown) {
+                dropdown.classList.add('active');
+            }
+
+            closeDropdown(dropdown) {
+                dropdown.classList.remove('active');
+            }
+
+            closeAllDropdowns() {
+                document.querySelectorAll('.dropdown-mobile').forEach(dropdown => {
+                    this.closeDropdown(dropdown);
+                });
+                document.querySelectorAll('.footer-mobile__nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.activeDropdown = null;
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new MobileFooterNav();
+        });
+    </script>
+
+    <!-- ========================================
+         9. RETURN BUTTON: Scroll to Top
+         ======================================== -->
+    <button class="return-button" id="returnButton" aria-label="Return to top">
+        <span class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray" data-direction="up"></span>
+    </button>
+
+    <script>
+        /**
+         * Return to Top Button Functionality
+         * Version: 1.0
+         */
+        (function() {
+            'use strict';
+
+            const returnButton = document.getElementById('returnButton');
+
+            // Show/hide button based on scroll position
+            function handleScroll() {
+                const scrollPosition = window.pageYOffset;
+                const showThreshold = 300; // Show button after scrolling 300px
+
+                if (scrollPosition > showThreshold) {
+                    returnButton.classList.add('visible');
+                } else {
+                    returnButton.classList.remove('visible');
+                }
+            }
+
+            // Smooth scroll to top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Event listeners
+            window.addEventListener('scroll', handleScroll);
+            returnButton.addEventListener('click', scrollToTop);
+
+            // Initial check
+            handleScroll();
+        })();
+    </script>
+
+</body>
+</html>
