@@ -1,0 +1,346 @@
+/* =================================================
+   CONTENT 2-COLUMN GRAPHIC ORGANISM
+   Version: 4.0
+   Date: 2025-11-04
+   Description: Full-viewport background with two teaser card overlays
+   Features: Responsive layout, gold/navy button variants
+   ================================================= */
+
+/* =================================================
+   BASE COMPONENT STRUCTURE
+   ================================================= */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main Container */
+.content-2column-graphic {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Background Image */
+.content-2column-graphic__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.content-2column-graphic__background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+/* Content Container */
+.content-2column-graphic__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 1;
+}
+
+/* =================================================
+   TEASER CARD COMPONENT
+   ================================================= */
+
+.teaser-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-subtle);
+    padding: var(--space-16) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-8);
+    overflow: hidden;
+}
+
+.teaser-card__headline {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-8);
+}
+
+.teaser-card__title {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-h2-size);
+    line-height: var(--text-h2-height);
+    text-transform: uppercase;
+    color: var(--color-primary-700);
+    flex: 1;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+.teaser-card__description {
+    font-family: var(--font-secondary);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    color: var(--color-neutral-600);
+    width: 100%;
+}
+
+/* =================================================
+   BUTTON COMPONENT
+   ================================================= */
+
+.teaser-card__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4) var(--space-20);
+    border-radius: var(--radius-small);
+    cursor: pointer;
+    transition: all var(--transition-slow);
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.teaser-card__button-text {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--label-cta-size);
+    line-height: var(--label-cta-size);
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Gold Button Variant */
+.teaser-card__button--gold {
+    background-color: var(--color-accent-500);
+}
+
+.teaser-card__button--gold:hover {
+    background-color: var(--color-accent-400);
+    transform: translateY(-2px);
+}
+
+.teaser-card__button--gold:active {
+    background-color: var(--color-accent-600);
+}
+
+.teaser-card__button--gold .teaser-card__button-text {
+    color: var(--color-primary-700);
+}
+
+/* Navy Button Variant */
+.teaser-card__button--navy {
+    background-color: var(--color-primary-700);
+}
+
+.teaser-card__button--navy:hover {
+    background-color: var(--color-primary-500);
+    transform: translateY(-2px);
+}
+
+.teaser-card__button--navy:active {
+    background-color: var(--color-primary-900);
+}
+
+.teaser-card__button--navy .teaser-card__button-text {
+    color: var(--color-white);
+}
+
+/* =================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================= */
+
+/* DesktopPlus: 1920px and wider */
+@media (min-width: 1920px) {
+    .content-2column-graphic {
+        height: 1000px;
+    }
+
+    .content-2column-graphic__container {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: var(--space-0) var(--space-16);
+    }
+
+    .content-2column-graphic__column {
+        flex: 1 0 0;
+        min-width: 1px;
+        min-height: 1px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: var(--space-16);
+        gap: var(--space-5);
+        height: 100%;
+    }
+
+    .teaser-card {
+        width: 600px;
+        max-width: 600px;
+    }
+
+    .teaser-card__description {
+        width: 536px;
+    }
+
+    .teaser-card__button {
+        height: 50px;
+    }
+}
+
+/* Desktop: 1150px to 1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .content-2column-graphic {
+        height: 1000px;
+    }
+
+    .content-2column-graphic__container {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: var(--space-0) var(--space-16);
+    }
+
+    .content-2column-graphic__column {
+        flex: 1 0 0;
+        min-width: 1px;
+        min-height: 1px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: var(--space-16);
+        gap: var(--space-5);
+        height: 100%;
+    }
+
+    .content-2column-graphic__column--left {
+        justify-content: flex-start;
+    }
+
+    .content-2column-graphic__column--right {
+        justify-content: flex-end;
+    }
+
+    .teaser-card {
+        flex: 1 0 0;
+        max-width: 600px;
+        min-width: 1px;
+        min-height: 1px;
+    }
+
+    .teaser-card__button {
+        height: 50px;
+    }
+}
+
+/* Tablet: 768px to 1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .content-2column-graphic {
+        min-height: auto;
+        height: auto;
+    }
+
+    .content-2column-graphic__container {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-5);
+        padding: var(--space-0) var(--space-16);
+    }
+
+    .content-2column-graphic__column {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: var(--space-16);
+        gap: var(--space-5);
+    }
+
+    .teaser-card {
+        width: 376px;
+        max-width: 376px;
+    }
+
+    .teaser-card__title {
+        font-size: var(--text-h2-size);
+        line-height: var(--text-h2-height);
+    }
+
+    .teaser-card__description {
+        width: 312px;
+    }
+
+    .teaser-card__button {
+        height: 50px;
+    }
+}
+
+/* Mobile: 380px to 767px */
+@media (max-width: 767px) {
+    .content-2column-graphic {
+        min-height: auto;
+        height: auto;
+    }
+
+    .content-2column-graphic__container {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-5);
+        padding: var(--space-0) var(--space-6);
+    }
+
+    .content-2column-graphic__column {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: var(--space-16) var(--space-4);
+        gap: var(--space-5);
+    }
+
+    .teaser-card {
+        width: 320px;
+        padding: var(--space-16) var(--space-8);
+    }
+
+    .teaser-card__headline {
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+
+    .teaser-card__title {
+        font-size: var(--text-h4-size);
+        line-height: var(--text-h4-height);
+        width: 256px;
+    }
+
+    .teaser-card__description {
+        width: 256px;
+    }
+
+    .teaser-card__button {
+        height: 34px;
+        padding: var(--space-2) var(--space-12);
+    }
+}
+
+/* =================================================
+   END OF COMPONENT
+   ================================================= */

@@ -1,0 +1,437 @@
+/* ============================================
+   Content/2ColumnResource Section Styles
+   Purposeful Media Design System
+   Version: 2.0 - Rebuilt from Figma Extraction
+   Dependencies: variables-v4.0-20251027.css
+   Date: 2025-11-06
+
+   Components:
+   - Two-column responsive resource section
+   - Resource card (teaser) with link to landing page
+   - eBook/resource image display (thumbnail left, card right)
+   - Optional background image for Desktop/DesktopPlus
+
+   Breakpoints:
+   - Mobile: 380-767px (card only, no image)
+   - Tablet: 768-1149px (side-by-side)
+   - Desktop: 1150-1919px (side-by-side with background)
+   - DesktopPlus: 1920px+ (side-by-side with background)
+   ============================================ */
+
+/* =================================================================
+   BASE COMPONENT STYLES
+   ================================================================= */
+
+.content-2column-resource {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-0);
+    overflow: hidden;
+}
+
+/* =================================================================
+   BACKGROUND IMAGE CONTAINER
+   ================================================================= */
+
+.section-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: none; /* Hidden by default, shown on desktop/desktopplus */
+}
+
+.section-background img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    opacity: 0.67;
+    max-width: none;
+}
+
+/* =================================================================
+   CONTENT CONTAINER
+   ================================================================= */
+
+.content-container {
+    position: relative;
+    background: var(--bg-primary);
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-0);
+    padding: var(--space-8) var(--space-5);
+    width: 100%;
+    max-width: 1150px;
+}
+
+/* =================================================================
+   COLUMN LAYOUT
+   ================================================================= */
+
+.column-group {
+    display: flex;
+    width: 100%;
+    gap: var(--space-0);
+    align-items: flex-start;
+}
+
+/* =================================================================
+   LEFT COLUMN - IMAGE CONTAINER
+   ================================================================= */
+
+.left-column {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ebook-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    display: block;
+}
+
+/* =================================================================
+   RIGHT COLUMN - RESOURCE CARD
+   ================================================================= */
+
+.right-column {
+    background: var(--bg-primary);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    box-shadow: var(--shadow-card);
+}
+
+/* =================================================================
+   TYPOGRAPHY
+   ================================================================= */
+
+.card-title {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    text-transform: uppercase;
+    color: var(--text-heading);
+    margin: 0;
+    padding: 0;
+    width: min-content;
+    min-width: 100%;
+}
+
+.card-description {
+    font-family: var(--font-secondary);
+    font-weight: var(--font-weight-regular);
+    color: var(--text-body);
+    margin: 0;
+    padding: 0;
+    width: min-content;
+    min-width: 100%;
+}
+
+/* =================================================================
+   BUTTON
+   ================================================================= */
+
+.resource-button {
+    background: var(--button-primary-bg);
+    color: var(--text-reverse);
+    border: none;
+    border-radius: var(--radius-small);
+    padding: var(--padding-button);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-size);
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color var(--transition-base), transform var(--transition-fast);
+}
+
+.resource-button:hover {
+    background: var(--button-primary-hover);
+    transform: translateY(-1px);
+}
+
+.resource-button:active {
+    background: var(--button-primary-active);
+    transform: translateY(0);
+}
+
+/* =================================================================
+   MOBILE BREAKPOINT (380-767px)
+   ================================================================= */
+
+@media (max-width: 767px) {
+    .content-2column-resource {
+        background: var(--bg-secondary);
+    }
+
+    .section-background {
+        display: none;
+    }
+
+    .content-container {
+        background: var(--bg-primary);
+        padding: var(--space-8) var(--space-5);
+        gap: var(--space-0);
+        flex-direction: column;
+    }
+
+    .column-group {
+        flex-direction: column;
+        gap: var(--space-2);
+        align-items: center;
+    }
+
+    /* Hide image column on mobile */
+    .left-column {
+        display: none;
+    }
+
+    .right-column {
+        width: 100%;
+        max-width: 500px;
+        min-width: 380px;
+        padding: var(--space-10) var(--space-6);
+        gap: var(--space-8);
+        box-shadow: var(--shadow-card);
+        align-items: center;
+    }
+
+    .card-title {
+        font-size: var(--text-h3-size);
+        line-height: var(--text-h3-height);
+    }
+
+    .card-description {
+        font-size: var(--text-default-size);
+        line-height: var(--text-default-height);
+    }
+
+    .resource-button {
+        padding: var(--padding-button-small);
+        font-size: var(--text-default-size);
+        line-height: var(--text-default-size);
+    }
+}
+
+/* =================================================================
+   TABLET BREAKPOINT (768-1149px)
+   ================================================================= */
+
+@media (min-width: 768px) and (max-width: 1149px) {
+    .content-2column-resource {
+        background: var(--bg-primary);
+    }
+
+    .section-background {
+        display: none;
+    }
+
+    .content-container {
+        padding: var(--space-8);
+        gap: var(--space-0);
+        justify-content: center;
+        max-width: 1149px;
+        min-width: 768px;
+    }
+
+    .column-group {
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-0);
+    }
+
+    .left-column {
+        width: 400px;
+        height: 518px;
+        background: var(--bg-primary);
+        padding: var(--space-8) var(--space-3) var(--space-8) var(--space-3);
+        border-radius: var(--radius-small);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0);
+        overflow: hidden;
+        gap: var(--space-1);
+    }
+
+    .image-wrapper {
+        flex: 1;
+        min-height: 1px;
+        min-width: 1px;
+        aspect-ratio: 458/590;
+    }
+
+    .right-column {
+        flex: 1;
+        max-width: 500px;
+        min-height: 1px;
+        min-width: 1px;
+        padding: var(--space-10) var(--space-12);
+        gap: var(--space-8);
+    }
+
+    .card-title {
+        font-size: var(--text-h3-size);
+        line-height: var(--text-h3-height);
+    }
+
+    .card-description {
+        font-size: var(--text-default-size);
+        line-height: var(--text-default-height);
+    }
+
+    .resource-button {
+        padding: var(--padding-button-small);
+    }
+}
+
+/* =================================================================
+   DESKTOP BREAKPOINT (1150-1919px)
+   ================================================================= */
+
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .content-2column-resource {
+        position: relative;
+    }
+
+    .section-background {
+        display: block;
+    }
+
+    .content-container {
+        width: 1150px;
+        padding: var(--space-8) var(--space-5);
+    }
+
+    .left-column {
+        width: 610px;
+        height: 790px;
+        padding: var(--space-6) var(--space-8);
+        gap: var(--space-0);
+    }
+
+    .image-wrapper {
+        width: 100%;
+        aspect-ratio: 458/590;
+    }
+
+    .right-column {
+        flex: 1;
+        align-self: stretch;
+        padding: var(--space-10) var(--space-12);
+        gap: var(--space-8);
+    }
+
+    .card-title {
+        font-size: var(--text-h2-size);
+        line-height: var(--text-h2-height);
+    }
+
+    .card-description {
+        font-size: var(--text-default-size);
+        line-height: var(--text-default-height);
+    }
+
+    .resource-button {
+        padding: var(--padding-button);
+    }
+}
+
+/* =================================================================
+   DESKTOP PLUS BREAKPOINT (1920px+)
+   ================================================================= */
+
+@media (min-width: 1920px) {
+    .content-2column-resource {
+        position: relative;
+    }
+
+    .section-background {
+        display: block;
+    }
+
+    .content-container {
+        width: 1150px;
+        padding: var(--space-8) var(--space-5);
+    }
+
+    .left-column {
+        width: 610px;
+        height: 790px;
+        background: var(--bg-primary);
+        padding: var(--space-8);
+        border-radius: var(--radius-small);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0);
+        overflow: hidden;
+        gap: var(--space-5);
+    }
+
+    .image-wrapper {
+        flex: 1;
+        width: 100%;
+        min-height: 1px;
+        min-width: 1px;
+    }
+
+    .right-column {
+        flex: 1;
+        align-self: stretch;
+        min-height: 1px;
+        min-width: 1px;
+        padding: var(--space-10) var(--space-12);
+        border-radius: var(--radius-small);
+        overflow: hidden;
+    }
+
+    .card-title {
+        font-size: var(--text-h2-size);
+        line-height: var(--text-h2-height);
+    }
+
+    .card-description {
+        font-size: var(--text-default-size);
+        line-height: var(--text-default-height);
+    }
+
+    .resource-button {
+        padding: var(--padding-button);
+    }
+}
+
+/* =================================================================
+   END OF CONTENT 2-COLUMN RESOURCE COMPONENT
+   ================================================================= */

@@ -3,36 +3,80 @@ Theme Name: Purposeful Media Promotions
 Theme URI: https://purposefulmediapromotions.com
 Author: Purposeful Media Promotions
 Author URI: https://purposefulmediapromotions.com
-Description: Custom WordPress theme for Purposeful Media B2B marketing website. Built with atomic design methodology and strict adherence to the Purposeful Media Design System.
-Version: 1.1.0
+Description: Custom WordPress theme for Purposeful Media B2B marketing website. Built with atomic design methodology and strict adherence to the Purposeful Media Design System. Updated November 2025 with W3C validated components and November consolidation strategy.
+Version: 2.0.0
 Requires at least: 6.0
-Tested up to: 6.4
+Tested up to: 6.7
 Requires PHP: 8.0
 License: Proprietary
 Text Domain: purposeful-media
-Tags: business, marketing, b2b, custom-design
+Tags: business, marketing, b2b, custom-design, atomic-design
 */
 
 /**
  * =================================================
  * PURPOSEFUL MEDIA WORDPRESS THEME
- * Version: 1.0.0
- * Created: October 14, 2025
+ * Version: 2.0.0
+ * Updated: November 8, 2025
  * =================================================
- * 
- * This theme uses a modular CSS architecture.
- * Individual component styles are loaded via functions.php
- * using wp_enqueue_style() for better performance.
- * 
- * Design System:
- * - Design tokens in assets/css/variables.css
- * - Component styles in assets/css/
- * - Follows BEM naming convention
- * - Mobile-first responsive design
- * - Accessibility-first approach
- * 
+ *
+ * CHANGELOG v2.0.0 (November 8, 2025):
+ * - Updated all CSS to November 2025 production versions
+ * - Integrated W3C validated components (0 errors)
+ * - Implemented November CSS consolidation strategy
+ * - Added production-molecules.css and production-organisms.css
+ * - Added templates-base.css for DesktopPlus containerization
+ * - Updated variables to v4.0-20251027.css
+ * - Replaced all JavaScript with current versions
+ * - Updated SVG sprite sheets to latest versions
+ * - Modernized enqueue.php with conditional loading
+ *
+ * PREVIOUS VERSIONS:
+ * v1.1.0 (October 15, 2025) - ACF integration
+ * v1.0.3 (October 15, 2025) - Mobile accordion scroll fix
+ * v1.0.2 (October 14, 2025) - Icon paths fixed
+ * v1.0.1 (October 14, 2025) - SVG sprite sheets added
+ * v1.0.0 (October 14, 2025) - Initial theme release
+ *
+ * CSS ARCHITECTURE:
+ * This theme uses a modular CSS architecture with conditional loading
+ * for optimal performance. Individual component styles are loaded via
+ * inc/enqueue.php using wp_enqueue_style() based on template context.
+ *
+ * CORE FILES (Loaded on all pages):
+ * - variables-v4.0-20251027.css - Design tokens (SOURCE OF TRUTH)
+ * - production-molecules.css - Consolidated molecule components
+ * - production-organisms.css - Consolidated organism components
+ * - templates-base.css - DesktopPlus containerization + background pattern
+ *
+ * CONDITIONAL FILES (Loaded per template):
+ * - organisms-heroes.css - Hero sections (homepage, pillar, interior)
+ * - organisms-headers.css - Site headers (all pages)
+ * - organisms-footers.css - Site footers (all pages)
+ * - organisms-text-block.css - Text block sections
+ * - organisms-content-2column-*.css - 2-column layouts
+ * - organisms-section-*.css - Section-specific styles
+ * - blog-group-organism-v2.css - Blog archive layouts
+ * - molecules-card-blogpost.css - Blog post cards
+ * - molecules-form-contact.css - Contact forms
+ * - atoms-banner-spacer.css - Headline banners
+ *
+ * DESIGN SYSTEM:
+ * - Follows Brad Frost's Atomic Design methodology
+ * - BEM naming convention throughout
+ * - Mobile-first responsive design (4 breakpoints)
+ * - Accessibility-first approach (WCAG AA compliant)
+ * - Zero inline styles policy
+ * - W3C validated HTML5 and CSS3
+ *
+ * BREAKPOINTS:
+ * - Mobile: 380-767px
+ * - Tablet: 768-1149px
+ * - Desktop: 1150-1919px
+ * - DesktopPlus: 1920px+
+ *
  * =================================================
  */
 
-/* This file intentionally left minimal - styles are enqueued separately */
+/* This file intentionally left minimal - styles are enqueued separately via inc/enqueue.php */
 

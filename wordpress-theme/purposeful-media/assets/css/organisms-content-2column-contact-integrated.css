@@ -1,0 +1,413 @@
+/* ============================================
+   Content/2ColumnContact Component - Integrated Version
+   Purposeful Media Design System v4.0
+
+   Fully tokenized organism-level component
+   Dependencies: variables-v4.0-20251027.css
+   Date: 2025-11-04
+
+   Component Structure:
+   - Two-column responsive layout
+   - Contact card with heading, body text, and CTA button
+   - Image display with aspect ratio management
+   - Background layer for desktop viewports
+   - Full responsive support across all breakpoints
+
+   BEM Naming Convention:
+   .content-2column-contact (Block)
+   .content-2column-contact__element (Element)
+   .content-2column-contact--modifier (Modifier)
+   ============================================ */
+
+/* ============================================
+   BASE COMPONENT STYLES
+   ============================================ */
+
+.content-2column-contact {
+    box-sizing: border-box;
+    display: flex;
+    gap: var(--space-5);
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    padding: var(--space-2) var(--space-16);
+}
+
+/* ============================================
+   BACKGROUND LAYER (Desktop/DesktopPlus Only)
+   ============================================ */
+
+.content-2column-contact__background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.content-2column-contact__background-color {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-neutral-100);
+}
+
+.content-2column-contact__background-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    opacity: 0.67;
+    max-width: none;
+}
+
+/* ============================================
+   COLUMN LAYOUT
+   ============================================ */
+
+.content-2column-contact__columns {
+    background-color: var(--color-white);
+    box-sizing: border-box;
+    display: flex;
+    gap: var(--space-5);
+    align-items: center;
+    padding: var(--space-4) var(--space-16);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* ============================================
+   CONTACT CARD (Left Column)
+   ============================================ */
+
+.content-2column-contact__card {
+    background-color: var(--color-white);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: var(--space-10) var(--space-12) var(--space-16);
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-subtle);
+    position: relative;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+.content-2column-contact__heading {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: var(--text-h2-size);
+    line-height: var(--text-h2-height);
+    color: var(--color-primary-700);
+    text-transform: uppercase;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.content-2column-contact__body {
+    font-family: var(--font-secondary);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-height);
+    color: var(--color-neutral-600);
+    margin: 0;
+    width: 100%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   BUTTON COMPONENT
+   ============================================ */
+
+.content-2column-contact__button {
+    background-color: var(--button-primary-bg);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4) var(--space-20);
+    border-radius: var(--radius-small);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: background-color var(--transition-base), transform var(--transition-fast);
+    overflow: hidden;
+}
+
+.content-2column-contact__button:hover {
+    background-color: var(--button-primary-hover);
+    transform: translateY(-1px);
+}
+
+.content-2column-contact__button:active {
+    background-color: var(--button-primary-active);
+    transform: translateY(0);
+}
+
+.content-2column-contact__button-text {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-default-size);
+    line-height: var(--text-default-size);
+    color: var(--color-white);
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   IMAGE COMPONENT (Right Column)
+   ============================================ */
+
+.content-2column-contact__image-wrapper {
+    position: relative;
+    aspect-ratio: 667/1000;
+}
+
+.content-2column-contact__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: 50% 50%;
+    max-width: none;
+}
+
+/* Image Loading State - Default visible, smooth transition on load */
+.content-2column-contact__image {
+    opacity: 1;
+    transition: opacity var(--transition-slow);
+}
+
+/* Optional loading state if JavaScript adds loaded class */
+.content-2column-contact__image.loaded {
+    opacity: 1;
+}
+
+/* ============================================
+   STATE CLASSES
+   ============================================ */
+
+/* Component loaded state */
+.content-2column-contact--loaded {
+    animation: fadeIn var(--transition-slow) ease;
+}
+
+/* Component active/visible state */
+.content-2column-contact--active .content-2column-contact__card {
+    animation: slideInLeft 0.5s ease;
+}
+
+.content-2column-contact--active .content-2column-contact__image-wrapper {
+    animation: slideInRight 0.5s ease;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* DesktopPlus (1920px and wider) */
+@media (min-width: 1920px) {
+    .content-2column-contact {
+        justify-content: center;
+        max-width: 1920px;
+        min-width: 1920px;
+        padding: 0;
+        min-height: auto;
+        align-items: center;
+    }
+
+    .content-2column-contact__columns {
+        max-width: 1348px;
+        margin: 0 auto;
+        padding: var(--space-10) var(--space-16);
+    }
+
+    .content-2column-contact__card {
+        width: 600px;
+        flex-shrink: 0;
+    }
+
+    .content-2column-contact__image-wrapper {
+        flex: 1;
+        min-width: 400px;
+        align-self: stretch;
+    }
+
+    /* Hide secondary background on DesktopPlus */
+    .content-2column-contact__background-color {
+        display: none;
+    }
+}
+
+/* Desktop (1150px - 1919px) */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .content-2column-contact {
+        justify-content: center;
+        max-width: 1919px;
+        min-width: 1150px;
+    }
+
+    .content-2column-contact__columns {
+        max-width: 1349px;
+    }
+
+    .content-2column-contact__card {
+        flex: 1 1 0;
+        min-width: 1px;
+        min-height: 1px;
+    }
+
+    .content-2column-contact__image-wrapper {
+        width: 600px;
+        height: 899px;
+        flex-shrink: 0;
+        aspect-ratio: auto;
+    }
+}
+
+/* Tablet (768px - 1149px) */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .content-2column-contact {
+        padding: var(--space-2) 0;
+        background-color: var(--color-neutral-100);
+        max-width: 1149px;
+        min-width: 768px;
+    }
+
+    .content-2column-contact__background {
+        display: none;
+    }
+
+    .content-2column-contact__columns {
+        max-width: 1149px;
+    }
+
+    .content-2column-contact__card {
+        min-width: 500px;
+        flex: 1 1 0;
+    }
+
+    .content-2column-contact__heading {
+        font-size: var(--text-h3-size);
+        line-height: var(--text-h3-height);
+    }
+
+    .content-2column-contact__button {
+        padding: var(--space-3) var(--space-16);
+    }
+
+    .content-2column-contact__image-wrapper {
+        flex: 1;
+        min-width: 300px;
+        align-self: stretch;
+    }
+}
+
+/* Mobile (380px - 767px) */
+@media (max-width: 767px) {
+    .content-2column-contact {
+        padding: var(--space-2) 0;
+        background-color: var(--color-neutral-100);
+        max-width: 767px;
+        min-width: 380px;
+        overflow: hidden;
+    }
+
+    .content-2column-contact__background {
+        display: none;
+    }
+
+    .content-2column-contact__columns {
+        flex-direction: row;
+        align-items: stretch;
+        overflow: visible;
+    }
+
+    .content-2column-contact__card {
+        width: 320px;
+        flex-shrink: 0;
+    }
+
+    .content-2column-contact__image-wrapper {
+        flex: 1;
+        align-self: stretch;
+        min-width: 0;
+        aspect-ratio: auto;
+    }
+
+    .content-2column-contact__image {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+        object-position: left center;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .content-2column-contact__background {
+        display: none;
+    }
+
+    .content-2column-contact__button {
+        border: 1px solid var(--color-primary-700);
+    }
+
+    .content-2column-contact__card {
+        box-shadow: none;
+    }
+}

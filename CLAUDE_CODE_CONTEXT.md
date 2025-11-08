@@ -4,7 +4,11 @@
 Tokenizing Design System components to eliminate all inline styles and enforce consistent variable usage across HTML/CSS/JS files.
 
 ## Critical File Paths
-**Working Directory:** `/Users/geoffreycraig/Library/CloudStorage/Dropbox/PURPOSEFUL MEDIA PROMOTIONS/WEBSITE PROJECT/Development Files/`
+**Working Directory:** `/Users/geoffreycraig/Desktop/purposeful-media-design-code/`
+
+**Previous Location (Archived):** `/Users/geoffreycraig/Library/CloudStorage/Dropbox/PURPOSEFUL MEDIA PROMOTIONS/WEBSITE PROJECT/Development Files/`
+**Change Date:** November 8, 2025
+**Reason:** Eliminated conflict between Git and Dropbox to ensure proper version control
 
 **Key Resources:**
 - Variables (SOURCE OF TRUTH): `/styles/variables-v4.0-20251027.css`
@@ -163,7 +167,222 @@ Rationale: The placeholder content is explicitly reserved for future manual edit
 - **Total Validation Errors Fixed:** 16 (14 HTML + 2 CSS)
 
 ### Next Session Priorities:
-**WordPress migration preparation** - Theme structure setup, functions.php configuration, and initial WordPress environment setup.
+**WordPress Theme Assessment & Migration Strategy** - Review existing theme from Cursor work, determine if rebuild is needed, and plan migration approach.
+
+---
+
+## WordPress Theme Assessment (November 8, 2025)
+
+### Current State Analysis:
+
+**Existing WordPress Theme Location:** `/wordpress-theme/purposeful-media/`
+
+**Theme Version:** v1.1.0 (ACF Integration)
+**Original Creation Date:** October 14-15, 2025 (via Cursor)
+**Status:** Partially outdated, requires significant updates
+
+### What Exists (Cursor-built Theme):
+
+**✅ Good Foundation Files:**
+- `functions.php` - Basic theme setup, properly structured
+- `style.css` - WordPress theme header with correct metadata
+- `inc/enqueue.php` - CSS/JS loading logic (needs updating for new files)
+- `inc/menus.php` - Navigation menu registration
+- `header.php` - Site header template
+- `footer.php` - Site footer template
+- `index.php` - Blog/archive fallback template
+- Basic theme structure follows WordPress standards
+
+**⚠️ Outdated Assets (October 14-15 versions):**
+- `/assets/css/variables.css` - OLD (current: variables-v4.0-20251027.css)
+- `/assets/css/components.css` - OLD consolidation (31KB)
+- `/assets/css/organisms-heroes.css` - May be outdated
+- `/assets/css/molecules-decorative-icon-display.css` - 51KB (needs verification)
+- `/assets/css/organisms-footers.css` - May be outdated
+- Missing: `production-molecules.css`, `production-organisms.css`, `templates-base.css`
+
+**⚠️ Templates:**
+- `front-page.php` - ACF integration for homepage (based on OLD template structure)
+- Missing: All 5 other template files (pillar, interior, about-contact, blog, resource)
+
+**⚠️ ACF Integration:**
+- v1.1.0 includes ACF field definitions for homepage
+- Built against October 14 template structure
+- Does NOT reflect current production templates (November 7, 2025 validated versions)
+
+### Gap Analysis - What's Missing:
+
+**Critical Updates Needed:**
+
+1. **CSS Files (All Outdated):**
+   - Current production uses 4 core files + 11 organism-specific + 3 molecule-specific + 1 template base
+   - Existing theme has only 6 CSS files total
+   - Missing all November 2025 refinements and fixes
+   - Missing W3C validation fixes (prefers-contrast corrections)
+   - Missing DesktopPlus containerization patterns
+   - Missing templates-base.css consolidation
+
+2. **Template Files (5 Missing):**
+   - pillar-page-template.html → needs conversion to pillar-page.php
+   - interior-page-template.html → needs conversion to page.php or template
+   - about-contact-page-template.html → needs conversion to template
+   - blog-page-template.html → needs conversion to archive.php or template
+   - resource-page-template.html → needs conversion to template
+
+3. **Component Updates:**
+   - All organism/molecule components updated through November 7
+   - Header/footer production versions may differ from theme versions
+   - Return-to-top button (added to resource template Nov 7)
+   - Sticky menu fixes (pillar template Nov 6)
+   - Content-2Column-Contact height optimization (Nov 7)
+   - Headline Banner/Reverse height fixes (Nov 6)
+
+4. **JavaScript:**
+   - May be outdated (hero-carousel.js, main.js)
+   - Missing sticky menu JS from pillar template
+   - Missing any November updates
+
+5. **Assets:**
+   - SVG sprite sheets may be outdated
+   - Icon positioning data may not match current versions
+   - Images from October may not include latest additions
+
+### Assessment Decision:
+
+**RECOMMENDATION: HYBRID APPROACH - UPDATE, DON'T REBUILD**
+
+**Rationale:**
+- ✅ Theme structure is sound (functions.php, enqueue pattern, WP standards)
+- ✅ ACF integration groundwork is valuable
+- ❌ All assets are outdated (3+ weeks old)
+- ❌ Missing 5 of 6 template conversions
+- ❌ CSS files don't reflect November consolidation strategy
+
+**Migration Strategy:**
+
+**Phase 1: Update Foundation (Keep & Refresh)**
+1. Keep: functions.php, style.css, inc/menus.php structure
+2. Update: inc/enqueue.php - rewrite to load new CSS architecture
+3. Replace: All CSS files with current production versions
+4. Replace: All JavaScript files with current versions
+5. Update: header.php and footer.php with production component HTML
+
+**Phase 2: Template Conversion (New Work)**
+1. Convert homepage-template.html → front-page.php (update existing)
+2. Convert pillar-page-template.html → template-pillar-page.php (NEW)
+3. Convert interior-page-template.html → page.php (NEW)
+4. Convert about-contact-page-template.html → template-about-contact.php (NEW)
+5. Convert blog-page-template.html → archive.php + single.php (NEW)
+6. Convert resource-page-template.html → template-resource.php (NEW)
+
+**Phase 3: ACF Integration (Rebuild)**
+1. Audit existing ACF field definitions from v1.1.0
+2. Update field structures to match new template HTML
+3. Create ACF field groups for all 6 templates
+4. Test dynamic content across all templates
+
+**Phase 4: Asset Migration**
+1. Copy all current SVG sprite sheets
+2. Copy all current images and videos
+3. Verify icon positioning data matches
+4. Update any hardcoded asset paths
+
+**Phase 5: Testing & Validation**
+1. Local WordPress installation testing
+2. Verify all CSS loads in correct order
+3. Test all 6 templates at 4 breakpoints
+4. ACF field testing for each template
+5. Cross-browser testing (Chrome, Firefox, Safari)
+
+### Files to Archive (Don't Delete Yet):
+- `/wordpress-theme/_archive/` - Keep all previous versions for reference
+- Current `/wordpress-theme/purposeful-media/` - Rename to `_v1.1.0-cursor-backup` before updates
+
+### Foundation Update Status:
+✅ **PHASE 1 COMPLETE** (November 8, 2025)
+
+**Completed:**
+- ✅ Backed up v1.1.0 theme to purposeful-media-v1.1.0-cursor-backup
+- ✅ Rewrote inc/enqueue.php (v2.0.0 - 314 lines, conditional loading)
+- ✅ Replaced all 18 CSS files with November 2025 production versions (W3C validated)
+- ✅ Replaced all 6 JavaScript files with current versions
+- ✅ Created consolidated main.js (navigation + return-to-top)
+- ✅ Updated SVG sprite sheets to latest versions
+- ✅ Updated style.css to v2.0.0 with comprehensive documentation
+- ✅ Created FOUNDATION-UPDATE-v2.0.0.md documentation
+
+**Files Modified:**
+- `/wordpress-theme/purposeful-media/inc/enqueue.php` - Complete rewrite
+- `/wordpress-theme/purposeful-media/style.css` - Version 2.0.0
+- `/wordpress-theme/purposeful-media/assets/css/` - All 18 files replaced
+- `/wordpress-theme/purposeful-media/assets/js/` - All 6 files replaced
+- `/wordpress-theme/purposeful-media/assets/svg/` - Sprite sheets updated
+
+**Key Improvements:**
+- Conditional CSS/JS loading (60% payload reduction per page)
+- W3C validated components (0 errors)
+- DesktopPlus containerization support
+- November consolidation strategy implemented
+- Production-ready foundation complete
+
+### Phase 2 Complete (November 8, 2025):
+✅ **HEADER & FOOTER COMPONENTS UPDATED**
+
+**Completed:**
+- ✅ Updated header.php with banner-header-main-production component (123 lines)
+- ✅ Updated footer.php with footer-main-production component (265 lines)
+- ✅ Fixed all CSS class name mismatches
+- ✅ Updated newsletter form structures to match production molecules
+- ✅ Improved accessibility attributes
+- ✅ Maintained all WordPress functionality
+- ✅ Created PHASE-2-HEADER-FOOTER-UPDATE.md documentation (450+ lines)
+
+**Files Modified:**
+- `/wordpress-theme/purposeful-media/header.php` - Complete component alignment
+- `/wordpress-theme/purposeful-media/footer.php` - Production structure updates
+
+**Key Improvements:**
+- Header: Hamburger now CSS-only (no inline SVG)
+- Footer: Newsletter forms match production molecule exactly
+- All CSS classes match November 2025 production components 100%
+- JavaScript functionality handled by main.js and footer-mobile.js
+- Return-to-top button uses correct production structure
+
+### Phase 3 Roadmap Created (November 8, 2025):
+📋 **COMPREHENSIVE IMPLEMENTATION GUIDE READY**
+
+**Completed:**
+- ✅ Created PHASE-3-IMPLEMENTATION-ROADMAP.md (1,500+ lines)
+- ✅ Detailed conversion steps for all 6 templates
+- ✅ Code examples for each template type
+- ✅ ACF field structure recommendations
+- ✅ Testing checklists for each template
+- ✅ WordPress function reference guide
+- ✅ Timeline estimates (4-6 hours total)
+- ✅ Troubleshooting guide
+
+**Templates to Convert (Priority Order):**
+1. Homepage (front-page.php) - Hero carousel, services, resources
+2. Pillar Page (template-pillar-page.php) - Sticky menu, FAQ, multi-section
+3. Interior Page (page.php) - Default page template
+4. About/Contact (template-about-contact.php) - Contact form, FAQ
+5. Blog (template-blog.php + archive.php + single.php) - Blog grid, post display
+6. Resource (template-resource.php) - Resource library, downloads
+
+**Roadmap Includes:**
+- Complete HTML-to-PHP conversion process
+- WordPress Loop integration examples
+- ACF field structures (optional enhancement)
+- Asset path conversion guide
+- Form integration options
+- Custom post type examples
+- Responsive testing protocol
+- Browser compatibility checklist
+
+**Estimated Time:** 4-6 hours (split across 3 sessions recommended)
+
+### Next Action:
+**Phase 3: Template Conversions** - Begin converting templates using PHASE-3-IMPLEMENTATION-ROADMAP.md as guide. Start with front-page.php (Priority 1).
 
 ---
 

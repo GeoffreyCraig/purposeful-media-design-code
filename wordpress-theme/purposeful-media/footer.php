@@ -73,25 +73,31 @@
                             </nav>
                         </div>
 
-                        <!-- Newsletter Form -->
+                        <!-- Newsletter Form - Using production molecule structure -->
                         <div class="footer-newsletter">
-                            <form class="form-newsletter" method="post" action="">
-                                <h4 class="form-newsletter__title"><?php _e('Stay Connected', 'purposeful-media'); ?></h4>
+                            <form class="form-newsletter form-newsletter--mobile" method="post" action="">
+                                <h3 class="form-newsletter__title"><?php _e('Stay Connected', 'purposeful-media'); ?></h3>
                                 <p class="form-newsletter__description">
                                     <?php _e('Share your email address and get our B2B marketing strategies and digital transformation inspirations in your inbox.', 'purposeful-media'); ?>
                                 </p>
-                                <div class="form-newsletter__field">
+                                <div class="form-newsletter__field-container">
                                     <label for="footer-email" class="form-newsletter__label"><?php _e('Email Address*', 'purposeful-media'); ?></label>
-                                    <input type="email" 
-                                           id="footer-email" 
-                                           name="newsletter_email"
-                                           class="form-newsletter__input" 
-                                           placeholder="<?php esc_attr_e('Enter your email', 'purposeful-media'); ?>"
-                                           required>
+                                    <div class="form-newsletter__input-wrapper">
+                                        <input type="email"
+                                               id="footer-email"
+                                               name="email"
+                                               class="form-newsletter__input"
+                                               placeholder="<?php esc_attr_e('Write your input here', 'purposeful-media'); ?>"
+                                               required
+                                               aria-required="true"
+                                               aria-invalid="false">
+                                    </div>
                                     <span class="form-newsletter__helper"><?php _e('*This field is required.', 'purposeful-media'); ?></span>
                                 </div>
-                                <div class="form-newsletter__submit-wrapper">
-                                    <button type="submit" class="form-newsletter__submit"><?php _e('SUBSCRIBE', 'purposeful-media'); ?></button>
+                                <div class="form-newsletter__submit-container">
+                                    <button type="submit" class="form-newsletter__submit">
+                                        <?php _e('Subscribe Now', 'purposeful-media'); ?>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -206,44 +212,51 @@
                 </div>
             </nav>
             
-            <!-- Newsletter Form for Mobile -->
+            <!-- Newsletter Form for Mobile - Using production molecule structure -->
             <div class="footer-mobile__newsletter">
-                <form class="form-newsletter form-newsletter--size-mobile" method="post" action="">
-                    <h4 class="form-newsletter__title"><?php _e('Stay Connected', 'purposeful-media'); ?></h4>
+                <form class="form-newsletter form-newsletter--mobile" method="post" action="">
+                    <h3 class="form-newsletter__title"><?php _e('Stay Connected', 'purposeful-media'); ?></h3>
                     <p class="form-newsletter__description">
                         <?php _e('Get B2B marketing strategies and digital transformation inspiration in your inbox.', 'purposeful-media'); ?>
                     </p>
-                    <div class="form-newsletter__field">
+                    <div class="form-newsletter__field-container">
                         <label for="footer-mobile-email" class="form-newsletter__label"><?php _e('Email Address*', 'purposeful-media'); ?></label>
-                        <input type="email" 
-                               id="footer-mobile-email" 
-                               name="newsletter_email_mobile"
-                               class="form-newsletter__input" 
-                               placeholder="<?php esc_attr_e('Enter your email', 'purposeful-media'); ?>"
-                               required>
+                        <div class="form-newsletter__input-wrapper">
+                            <input type="email"
+                                   id="footer-mobile-email"
+                                   name="email"
+                                   class="form-newsletter__input"
+                                   placeholder="<?php esc_attr_e('Write your input here', 'purposeful-media'); ?>"
+                                   required
+                                   aria-required="true"
+                                   aria-invalid="false">
+                        </div>
                         <span class="form-newsletter__helper"><?php _e('*This field is required.', 'purposeful-media'); ?></span>
                     </div>
-                    <div class="form-newsletter__submit-wrapper">
-                        <button type="submit" class="form-newsletter__submit"><?php _e('SUBSCRIBE', 'purposeful-media'); ?></button>
+                    <div class="form-newsletter__submit-container">
+                        <button type="submit" class="form-newsletter__submit">
+                            <?php _e('Subscribe Now', 'purposeful-media'); ?>
+                        </button>
                     </div>
                 </form>
             </div>
             
             <div class="footer-mobile__attribution">
                 <div class="footer-mobile__attribution-content">
+                    <div class="footer-mobile__copyright"><?php printf(__('© All rights reserved %s', 'purposeful-media'), date('Y')); ?></div>
                     <div class="footer-mobile__company"><?php bloginfo('name'); ?></div>
                     <a href="<?php echo esc_url(home_url('/policy')); ?>" class="footer-mobile__policy"><?php _e('Policy Statement', 'purposeful-media'); ?></a>
-                    <div class="footer-mobile__copyright"><?php printf(__('© All rights reserved %s', 'purposeful-media'), date('Y')); ?></div>
                 </div>
             </div>
         </div>
     </footer>
     
     <!-- ============================================
-         RETURN TO TOP BUTTON
+         RETURN TO TOP BUTTON - Production Component
+         Updated: November 8, 2025
          ============================================ -->
     <button class="return-button" id="returnButton" aria-label="<?php esc_attr_e('Return to top', 'purposeful-media'); ?>">
-        <div class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray" data-direction="up"></div>
+        <span class="ui-icon-display ui-icon-display--large" data-icon="arrow-up" data-color="gray" data-direction="up"></span>
     </button>
 
 <?php wp_footer(); ?>

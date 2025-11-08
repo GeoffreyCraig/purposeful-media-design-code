@@ -1,0 +1,23 @@
+1. Icon Name: Search, Class: search, Position: (0,0)
+2. Icon Name: Arrow Up, Class: arrow-up, Position: (256,0)
+3. Icon Name: Play, Class: play, Position: (512,0)
+4. Icon Name: Pause, Class: pause, Position: (768,0)
+5. Icon Name: Hamburger, Class: hamburger, Position: (1024,0)
+6. Icon Name: Close, Class: close, Position: (1280,0)
+7. Icon Name: Diamond, Class: diamond, Position: (0,256)
+8. Icon Name: Check, Class: check, Position: (256,256)
+9. Icon Name: Dot, Class: dot, Position: (512,256)
+
+CSS Arrow rotation:
+/* Base direction is up */
+.icon-arrow--up { transform: rotate(0deg); }
+.icon-arrow--right { transform: rotate(90deg); }
+.icon-arrow--down { transform: rotate(180deg); }
+.icon-arrow--left { transform: rotate(-90deg); }
+
+
+CSS UI Icon Color Filter:
+/* Base icon in blue */
+.icon--white { filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(3268%) hue-rotate(237deg); }
+.icon--gold { filter: brightness(0) saturate(100%) invert(81%) sepia(26%) saturate(735%) hue-rotate(6deg); }
+.icon--gray { filter: brightness(0) saturate(100%) invert(47%) sepia(8%) saturate(719%); }
