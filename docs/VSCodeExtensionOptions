@@ -1,5 +1,15 @@
 A markdown document listing Claude's VSCode extention recommendations 
 # Essential VSCode Extensions for Your Workflow
+
+## Installed Extension Summary List
+1. Markdown All in One
+2. Markdown Preview Enhanced
+3. markdownlint
+4. GitLens
+5. Prettier
+6. Path Intellisense
+7. TODO Highlight
+
 ## For Markdown:
 
 Markdown All in One - Table of contents, formatting shortcuts, preview
