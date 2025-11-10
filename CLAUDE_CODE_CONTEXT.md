@@ -386,6 +386,72 @@ Rationale: The placeholder content is explicitly reserved for future manual edit
 
 ---
 
+## Phase 2 MVW Planning Session (November 9, 2025)
+**SESSION COMPLETE: PHASE 2 BACKLOG ORGANIZED** ✅
+
+### Session Goals:
+1. Consolidate two separate Phase 2 planning lists into one organized document
+2. Remove duplicates and add new items
+3. Organize by functional categories with priority ordering
+4. Add dependency tracking
+5. Create deployment checklist
+
+### Completed Items:
+
+1. ✅ **Analyzed Two Source Lists**
+   - Read existing `/docs/MVW Phase II PLANNING List` (8 categories, estimates included)
+   - Read new additions from `/docs/Phase II New Change List` (18 items from Nov 6-7)
+   - Identified duplicates and new items
+
+2. ✅ **Consolidated & Reorganized Phase 2 Planning List**
+   - Created 11 functional categories (A through K)
+   - Organized 47 total items with priority ordering
+   - Added dependency notes for each category
+   - Removed time estimates (per user request)
+   - Applied HIGH/MEDIUM priority labels consistently
+
+3. ✅ **New Category Structure:**
+   - **Category A:** Hero Components & Above-the-Fold Refinements (5 items, HIGH)
+   - **Category B:** Navigation & Interaction Refinements (5 items, HIGH) - Split into B1: Sticky Menu, B2: Animation/Timing, B3: Interactive Elements
+   - **Category C:** Homepage Carousel Updates (2 items, MEDIUM)
+   - **Category D:** Section Layout & Spacing Refinements (3 items, MEDIUM)
+   - **Category E:** Contact & Form System Improvements (3 items, HIGH)
+   - **Category F:** Blog System Enhancements (3 items, HIGH)
+   - **Category G:** New Templates - Phase 2 Core (4 items, HIGH)
+   - **Category H:** Email System Integration (3 items, HIGH)
+   - **Category I:** Content Creation & Publishing (3 items, HIGH)
+   - **Category J:** WordPress Functionality Enhancements (2 items, HIGH)
+   - **Category K:** Future Content Pages - Expansion (7 items, MEDIUM)
+
+4. ✅ **Added Implementation Sections:**
+   - **Critical Path:** 5 dependency chains that must be completed sequentially
+   - **Can Work in Parallel:** 6 categories that can be tackled simultaneously
+   - **Content-Dependent:** 3 areas blocked by copy/assets
+   - **Phase 2 Deployment Checklist:** 11-point pre-launch validation checklist
+
+### Files Modified This Session:
+- `/docs/MVW Phase II PLANNING List` - Complete rewrite with consolidated structure
+
+### Key Details Captured:
+- Homepage carousel slide 2: Replace video + decide on button state behavior vs v4.0 variables
+- eBook disclaimer: Write copy about factual accuracy and contact info for broken links
+- Above-the-fold height: Ensure all hero components account for header height
+- Form success messages: Both contact form and newsletter sign-up need fixes
+
+### Planning List Statistics:
+- **Total Categories:** 11 (A through K)
+- **Total Items:** 47 across all categories
+- **High Priority Items:** 30 (lead generation, templates, UX, WordPress functionality)
+- **Medium Priority Items:** 17 (visual polish, content expansion, carousel)
+
+### Purpose:
+This consolidated list helps organize Asana task creation for Phase 2 MVW development. All changes will be built as one package in staging before deployment to production.
+
+### Next Action:
+**Phase 3: WordPress Template Conversions** - Continue with WordPress theme development per PHASE-3-IMPLEMENTATION-ROADMAP.md. Phase 2 planning list now ready for future Asana task creation after Phase 1 MVW launch.
+
+---
+
 ## Previous Session (November 7, 2025 - Afternoon Session - Part 1)
 **TEMPLATE CSS CONSOLIDATION COMPLETE & WORDPRESS-READY** 🎉
 **ALL 6 TEMPLATES TESTED - ZERO DEFECTS**

@@ -1,0 +1,216 @@
+# MVW Phase 2 - Consolidated Planning List
+
+**Last Updated:** November 9, 2025
+
+**Deployment Strategy:** Phase 2 MVW will be built as a complete package in staging environment, then deployed as one release.
+
+---
+
+## Category A: Hero Components & Above-the-Fold Refinements
+
+**Priority: HIGH** - Affects first impression across multiple templates
+
+1. Hero ATF: Reduce height to better fit 16:9 viewports
+2. Hero ATF: Update all above-the-fold components to account for combined header height
+3. Hero simple/reverse: Fix resizing issues
+4. Hero simple reverse: Change gradient orientation in banner
+5. Buttons: Regularize all button state definitions
+   - Hero ATF Centered
+   - Main Footer
+
+**Dependencies:** None - can be tackled early in Phase 2
+
+---
+
+## Category B: Navigation & Interaction Refinements
+
+**Priority: HIGH** - Critical for UX across all pages
+
+### B1: Sticky Menu System
+1. Reduce minimum tablet width to 768px
+2. Fix sticky behavior in DesktopPlus
+
+### B2: Animation & Timing
+1. Header nav menu dropdown: Open smoother and slower (tablet and mobile)
+2. Footer mobile menu accordion: Smoother and slower animation
+
+### B3: Interactive Elements
+1. Return button: Expand bounding box area for better clickability
+
+**Dependencies:** None - standalone improvements
+
+---
+
+## Category C: Homepage Carousel Updates
+
+**Priority: MEDIUM** - Content refresh and interaction refinement
+
+1. Replace carousel slide 2 with different stock video (mp4)
+2. Carousel overlay button: Decide whether to keep current state behavior or update to match v4.0 variables definition
+
+**Dependencies:** None - can be done anytime
+
+---
+
+## Category D: Section Layout & Spacing Refinements
+
+**Priority: MEDIUM** - Visual polish and consistency
+
+1. FAQ section: Background adjustment
+2. Next step section: Reduce background height by ~10%
+3. Next step graphic 2-column: Adjust height or bottom alignment to show stock model's face in cards
+
+**Dependencies:** None - standalone visual refinements
+
+---
+
+## Category E: Contact & Form System Improvements
+
+**Priority: HIGH** - Affects lead capture functionality
+
+1. Contact Us section: Reformat to 2 columns + CTA layout
+2. Contact form: Fix success statement message
+3. Footer newsletter sign-up: Fix success statement message
+
+**Dependencies:** Items 2-3 depend on item 1 completion for consistent form messaging
+
+---
+
+## Category F: Blog System Enhancements
+
+**Priority: HIGH** - Core content delivery mechanism
+
+1. Blog page: Add headline banner above blog component
+2. Blog page: Connect blog posts and activate infinite scroll/pagination
+3. Blog page: Add linking between related content
+
+**Dependencies:** Item 1 is independent. Items 2-3 require WordPress functionality (see Category J)
+
+---
+
+## Category G: New Templates (Phase 2 Core)
+
+**Priority: HIGH** - Required for Phase 2 operations
+
+1. Blog post template: Design and build (individual post layout)
+2. Landing page template: Design and build (lead generation)
+3. Resource Offer page template: Design and build (eBook downloads)
+4. Email template: Design and build (HubSpot integration)
+
+**Dependencies:**
+- Template 4 (Email) blocks Category H (Email System Integration)
+- Template 3 (Resource Offer) needed for Category I item 1 (PDF resources)
+
+---
+
+## Category H: Email System Integration
+
+**Priority: HIGH** - Required for lead nurturing
+
+1. HubSpot email configuration
+2. Write initial onboarding email sequence
+3. Implement onboarding sequence in HubSpot
+
+**Dependencies:**
+- Requires Category G item 4 (Email template) to be completed first
+- Item 2 blocks item 3
+
+---
+
+## Category I: Content Creation & Publishing (Non-Development)
+
+**Priority: HIGH** - Blocks lead generation
+
+1. Publish PDF resources:
+   - 4 eBooks
+   - 3 case studies
+   - 1 capabilities deck
+2. eBook disclaimer section: Write copy (factual accuracy statement and contact info for broken links)
+3. Finalize eBook versions:
+   - Upwork version
+   - External publication version with contact information
+
+**Dependencies:**
+- Item 1 requires Category G item 3 (Resource Offer template) to be completed
+- Item 2 blocks finalization of eBooks in item 3
+
+---
+
+## Category J: WordPress Functionality Enhancements
+
+**Priority: HIGH** - Needed for blog and content features
+
+1. Blog page: Connect posts with infinite scroll/pagination functionality
+2. Add linking system between related content across site
+
+**Dependencies:**
+- Item 1 blocks Category F items 2-3 (Blog system enhancements)
+- Item 2 enhances overall site UX after content pages are added
+
+---
+
+## Category K: Future Content Pages (Expansion)
+
+**Priority: MEDIUM** - Enhancement, not blocker
+
+### Pillar Pages (Template assembly + copy)
+1. Succession Planning pillar page
+2. Business Unit Growth pillar page
+
+### Topic Pages (Template assembly + copy)
+3. Revenue Growth topic page
+4. Preparing for Exit topic page
+5. Plan a Webinar topic page
+6. Pricing topic page
+7. Affiliates topic page
+
+**Dependencies:** All items require completed content copy before page assembly
+
+---
+
+## Implementation Notes
+
+### Critical Path (Must complete in order):
+1. Category G item 4 (Email template) → Category H (Email system)
+2. Category G item 3 (Resource Offer template) → Category I item 1 (Publish PDFs)
+3. Category I item 2 (eBook disclaimer) → Category I item 3 (Finalize eBooks)
+4. Category H item 2 (Write email sequence) → Category H item 3 (Implement sequence)
+5. Category J item 1 (Blog functionality) → Category F items 2-3 (Blog enhancements)
+
+### Can Work in Parallel:
+- Category A (Hero components)
+- Category B (Navigation)
+- Category C (Homepage carousel)
+- Category D (Section spacing)
+- Category E (Contact/forms)
+- Category F item 1 (Blog headline banner)
+
+### Content-Dependent (Requires copy/assets):
+- Category I (PDF resources and eBook finalization)
+- Category K (All future pages)
+- Category H item 2 (Email sequence writing)
+
+---
+
+## Phase 2 Deployment Checklist
+
+Before moving Phase 2 MVW from staging to production:
+
+- [ ] All Category A-E refinements complete and tested
+- [ ] All Category G templates built and validated
+- [ ] Category H email system configured and tested
+- [ ] Category I resources published and accessible
+- [ ] Category J WordPress functionality tested
+- [ ] Cross-browser testing complete (Chrome, Firefox, Safari)
+- [ ] Responsive testing at all 4 breakpoints (Mobile, Tablet, Desktop, DesktopPlus)
+- [ ] W3C validation passed for new templates
+- [ ] Form submissions tested and success messages verified
+- [ ] HubSpot integration tested end-to-end
+- [ ] Category K pages added (as ready with copy)
+
+---
+
+**Total Categories:** 11 (A through K)
+**Total Items:** 47 items across all categories
+**High Priority Items:** 30
+**Medium Priority Items:** 17

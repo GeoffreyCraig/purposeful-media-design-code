@@ -1,7 +1,7 @@
-A markdown document listing Claude's VSCode extention recommendations 
-# Essential VSCode Extensions for Your Workflow
+# A markdown document listing Claude's VSCode extention recommendations
 
 ## Installed Extension Summary List
+
 1. Markdown All in One
 2. Markdown Preview Enhanced
 3. markdownlint
@@ -10,24 +10,24 @@ A markdown document listing Claude's VSCode extention recommendations
 6. Path Intellisense
 7. TODO Highlight
 
-## For Markdown:
+## For Markdown
 
 Markdown All in One - Table of contents, formatting shortcuts, preview
 Markdown Preview Enhanced - Better preview with mermaid diagrams, etc.
 markdownlint - Catches formatting issues (optional, can be annoying)
 
-## For Git:
+## For Git
 
 GitLens - Supercharges Git integration (blame, history, comparisons)
 Built-in Git is already excellent, but GitLens adds power features
 
-## For General Development:
+## For General Development
 
 Prettier - Code formatting (but can disable for markdown if desired)
 Path Intellisense - Autocompletes file paths
 TODO Highlight - Flags TODO/FIXME comments
 
-## For Your Specific Needs:
+## For Your Specific Needs
 
 YAML - If you work with config files
 HTML CSS Support - For when you peek at HTML files
