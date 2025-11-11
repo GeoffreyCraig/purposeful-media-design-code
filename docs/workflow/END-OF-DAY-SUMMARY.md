@@ -291,8 +291,8 @@ Overall: ~80% Complete
 
 ## 📞 Quick Reference for Tomorrow
 
-### Files to Work With:
-```
+### Files to Work With
+
 Source Components:
 ├── components/organisms/banner-header-main-mobile-fix-v3.html
 ├── components/organisms/footer-unified.html
@@ -306,7 +306,8 @@ Template to Complete:
 └── templates/front-page.html
 ```
 
-### Commands Needed:
+### Commands Needed
+
 ```bash
 # If CSS needs rebuilding
 npm run build:css
