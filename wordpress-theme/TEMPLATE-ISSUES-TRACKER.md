@@ -585,3 +585,60 @@ Pillar page test [Pillar Page] 5/10
 	4. Tile%20cell%20.png:1  Failed to load resource: the server responded with a status of 404 ()
 	5. background-redux-new.js:1 Uncaught (in promise) Error: No tab with id: 1520593207.
 	6. background-redux-new.js:1 Uncaught (in promise) Error: No tab with id: 1520593198.
+
+# Round 2 QA Revision Requests
+
+November 11, 2025
+
+Note that I have cropped https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/10/shutterstock_2085055825.jpg to 1920x1000 px to align with the Content 2-Column Graphic container height.
+
+## Home Frontpage Template
+
+1. Connect body background tile cell file: https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/11/Tile-cell-@3x.png
+2. Tablet and Mobile menu icons (hamburger and X) are missing. However, the menu dropdown and accordion function correctly
+3. In DesktopPlus breakpoint, limit the Content 2-Column Graphic container height to max 1000px
+4. Featured Resource Download section not formatted correctly. The same section is displayed correctly in the Resources page. See that instance as an exact example.
+5. No further errors
+
+## Pillar Page Template
+
+1. Connect body background tile cell file: https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/11/Tile-cell-@3x.png
+2. Tablet and Mobile menu icons (hamburger and X) are missing. However, the menu dropdown and accordion function correctly
+3. In DesktopPlus breakpoint, limit the Content 2-Column Graphic container height to max 1000px
+4. Replace ATF-hero-centered image with: https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/11/pillar-page-image.jpg
+5. Resources Section 
+	1. Missing Headline Reverse banner and Featured Resource Download below the Blog Group Teaser
+	2. Add the featured Resource Reverse Banner
+	3. Add the featured Resource Section
+6. FAQ Section - This component needs to be rebuilt to follow the styling from the original component. If it needs configuring within WordPress, we can address this after ACF Pro configuration.
+7. No further errors 
+
+## Resources Page Template
+
+1. Connect body background tile cell file: https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/11/Tile-cell-@3x.png
+2. Tablet and Mobile menu icons (hamburger and X) are missing. However, the menu dropdown and accordion function correctly
+3. In DesktopPlus breakpoint, limit the Content 2-Column Graphic container height to max 1000px
+4. The Resource section-resources__grid should contain eight card-resource cards 
+5. The card-resource cards have the wrong decorative-icon-display element structure and display icon colors incosistantly. Replace with: <div class="decorative-icon-display decorative-icon-display--large" data-icon="roi" data-color="white"></div>
+6. Remove Banner Spacer: Your Next Step This is included in this page layout
+7. No further errors
+
+## About and Contact Page Template
+
+1. Connect body background tile cell file: https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/11/Tile-cell-@3x.png
+2. Tablet and Mobile menu icons (hamburger and X) are missing. However, the menu dropdown and accordion function correctly
+3. No further errors
+
+## Blog Page Template
+
+1. Connect body background tile cell file: https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/11/Tile-cell-@3x.png
+2. Tablet and Mobile menu icons (hamburger and X) are missing. However, the menu dropdown and accordion function correctly
+3. Blog Group Missing. Do we need to fix after ACF Pro Configuration? 
+4. No further errors
+
+## Interior Page Template
+
+1. Connect body background tile cell file: https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/11/Tile-cell-@3x.png
+2. Tablet and Mobile menu icons (hamburger and X) are missing. However, the menu dropdown and accordion function correctly
+3. In DesktopPlus breakpoint, limit the Content 2-Column Graphic container height to max 1000px
+4. No further errors
