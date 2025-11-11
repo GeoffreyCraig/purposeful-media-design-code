@@ -17,6 +17,7 @@ Phase 3 converts all 6 HTML production templates to WordPress PHP templates. Thi
 ## Template Conversion Checklist
 
 ### Templates to Convert:
+
 1. ✅ **Homepage** - `homepage-template.html` → `front-page.php` (Priority 1)
 2. ⏳ **Pillar Page** - `pillar-page-template.html` → `template-pillar-page.php` (Priority 2)
 3. ⏳ **Interior Page** - `interior-page-template.html` → `page.php` (Priority 3)
@@ -31,6 +32,7 @@ Phase 3 converts all 6 HTML production templates to WordPress PHP templates. Thi
 ### For Every Template:
 
 **Step 1: Preparation**
+
 1. Open the source HTML template file
 2. Identify the main content section (between header and footer)
 3. Note the wrapper class name (e.g., `homepage-wrapper`, `pillar-page-wrapper`)
@@ -38,6 +40,7 @@ Phase 3 converts all 6 HTML production templates to WordPress PHP templates. Thi
 5. Create new PHP file in theme root
 
 **Step 2: Create Template Header**
+
 ```php
 <?php
 /**

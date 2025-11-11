@@ -1,0 +1,31 @@
+# About Us & Contact Us Page Template - Component Assembly List
+
+## Header Section
+
+- [ ] banner-header-main-production.html (organism)
+
+## Hero Section
+
+- [ ] hero-simple-reverse-production.html (organism)
+
+## Content Section 1: About Us
+
+- [ ] headline-banner.html (atom)
+- [ ] text-block.html (organism)
+-- Full page width (The intention is to use the full width of the page.)
+-- Tablet/Desktop/DesktopPlus Padding: 64px; gap: 32px
+-- Mobile Padding Width: 32px; Height: 64px; gap: 32px
+
+## Content Section 2: Contact Us
+
+- [ ] headline-banner.html (atom)
+- [ ] section-contactus.html (organism)
+
+## Footer Section
+
+- [ ] footer-main-production.html (organism)
+
+## Notes
+
+- Apply 1920px max-width pattern to all content sections
+- Add tiled background for DesktopPlus breakpoint

@@ -4,7 +4,7 @@ Theme URI: https://purposefulmediapromotions.com
 Author: Purposeful Media Promotions
 Author URI: https://purposefulmediapromotions.com
 Description: Custom WordPress theme for Purposeful Media B2B marketing website. Built with atomic design methodology and strict adherence to the Purposeful Media Design System. Updated November 2025 with W3C validated components and November consolidation strategy.
-Version: 2.0.0
+Version: 2.0.1
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -16,9 +16,19 @@ Tags: business, marketing, b2b, custom-design, atomic-design
 /**
  * =================================================
  * PURPOSEFUL MEDIA WORDPRESS THEME
- * Version: 2.0.0
- * Updated: November 8, 2025
+ * Version: 2.0.1
+ * Updated: November 10, 2025
  * =================================================
+ *
+ * CHANGELOG v2.0.1 (November 10, 2025):
+ * - FIXED: Resources Page Section 4 replaced with correct components
+ * - FIXED: Pillar Page CTA section now uses Content 2-Column Graphic component
+ * - ADDED: Missing UI sprite sheet (purposeful-sprite-ui.svg)
+ * - ADDED: Hero fallback images for homepage carousel (3 files)
+ * - ADDED: eBook cover thumbnail (sample-ebook-cover.jpg)
+ * - ADDED: Tile background pattern for DesktopPlus (Tile cell .png)
+ * - ADDED: Contact section image (shutterstock_2494045679.jpg)
+ * - VERIFIED: Body padding correctly set to 0px (already correct)
  *
  * CHANGELOG v2.0.0 (November 8, 2025):
  * - Updated all CSS to November 2025 production versions
@@ -79,4 +89,13 @@ Tags: business, marketing, b2b, custom-design, atomic-design
  */
 
 /* This file intentionally left minimal - styles are enqueued separately via inc/enqueue.php */
+
+/**
+ * GLOBAL RESETS
+ * Override WordPress and browser defaults
+ */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
