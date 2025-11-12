@@ -1,0 +1,197 @@
+[
+    {
+        "key": "group_banner_section",
+        "title": "Banner Section",
+        "fields": [
+            {
+                "key": "field_banner_title",
+                "label": "Banner Title",
+                "name": "banner_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Your Next Step",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_banner_subtitle",
+                "label": "Banner Subtitle",
+                "name": "banner_subtitle",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_banner_icon",
+                "label": "Banner Icon",
+                "name": "banner_icon",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "Select decorative icon for the banner",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "": "No Icon",
+                    "contact": "Contact",
+                    "accelerate": "Accelerate",
+                    "strategy": "Strategy",
+                    "attract": "Attract",
+                    "roi": "ROI"
+                },
+                "default_value": "contact",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 1,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "create_options": 0,
+                "save_options": 0
+            },
+            {
+                "key": "field_banner_icon_color",
+                "label": "Icon Color",
+                "name": "banner_icon_color",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "white": "White",
+                    "navy": "Navy Blue",
+                    "teal": "Teal"
+                },
+                "default_value": "white",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "create_options": 0,
+                "save_options": 0
+            },
+            {
+                "key": "field_banner_background_color",
+                "label": "Background Color",
+                "name": "banner_background_color",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "white": "White",
+                    "navy": "Navy Blue",
+                    "gray": "Gray"
+                },
+                "default_value": "white",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "create_options": 0,
+                "save_options": 0
+            },
+            {
+                "key": "field_banner_anchor_id",
+                "label": "Anchor ID (Optional)",
+                "name": "banner_anchor_id",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Optional anchor ID for linking to this section (e.g., 'start', 'resources', 'faq')",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "e.g., start",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "interior-page-template.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "pillar-page-template.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "resource-page-template.php"
+                }
+            ]
+        ],
+        "menu_order": 2,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Headline banner with optional icon and styling",
+        "show_in_rest": 0,
+        "display_title": ""
+    }
+]

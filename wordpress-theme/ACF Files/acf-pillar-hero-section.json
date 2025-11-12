@@ -1,0 +1,134 @@
+[
+    {
+        "key": "group_pillar_hero_section",
+        "title": "Pillar Hero Section",
+        "fields": [
+            {
+                "key": "field_pillar_hero_headline",
+                "label": "Hero Headline",
+                "name": "pillar_hero_headline",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Main headline displayed in the pillar hero section",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_pillar_hero_description",
+                "label": "Hero Description",
+                "name": "pillar_hero_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "Descriptive text displayed below the headline",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": 3,
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_pillar_hero_cta_text",
+                "label": "CTA Button Text",
+                "name": "pillar_hero_cta_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Get Started",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_pillar_hero_cta_link",
+                "label": "CTA Button Link",
+                "name": "pillar_hero_cta_link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_pillar_hero_background_image",
+                "label": "Background Image",
+                "name": "pillar_hero_background_image",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "Hero background image",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "url",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "",
+                "allow_in_bindings": 0,
+                "preview_size": "large"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "pillar-page-template.php"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Pillar page hero with gradient, image, and CTA overlay",
+        "show_in_rest": 0,
+        "display_title": ""
+    }
+]

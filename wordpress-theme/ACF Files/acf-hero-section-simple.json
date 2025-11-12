@@ -1,0 +1,69 @@
+[
+    {
+        "key": "group_hero_simple_section",
+        "title": "Hero Section (Simple)",
+        "fields": [
+            {
+                "key": "field_hero_simple_headline",
+                "label": "Hero Headline",
+                "name": "hero_simple_headline",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Main headline displayed in the hero section",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "interior-page-template.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "about-contact-page-template.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "blog-page-template.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "resource-page-template.php"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Simple hero section with headline only",
+        "show_in_rest": 0,
+        "display_title": ""
+    }
+]
