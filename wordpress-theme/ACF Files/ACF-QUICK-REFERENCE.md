@@ -167,13 +167,15 @@
 - attract
 - roi
 - contact
-- check
+- download
+- engage
 
 **Colors:**
 
 - white
 - navy
-- teal
+- gray
+- dark
 
 ---
 

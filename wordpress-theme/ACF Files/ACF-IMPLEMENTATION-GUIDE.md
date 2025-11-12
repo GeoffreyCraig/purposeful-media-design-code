@@ -1,4 +1,5 @@
 # ACF Pro Field Groups Implementation Guide
+
 **Created:** November 12, 2025  
 **Version:** 1.0  
 **Purpose:** Complete field group structure for Phase 1 MVW templates
@@ -8,6 +9,7 @@
 ## 📦 Field Groups Overview
 
 ### New Field Groups (6)
+
 1. **Hero Section (Simple)** - `acf-hero-section-simple.json`
 2. **Pillar Hero Section** - `acf-pillar-hero-section.json`
 3. **Text Block Section** - `acf-text-block-section.json`
@@ -16,6 +18,7 @@
 6. **FAQ Section** - `acf-faq-section.json`
 
 ### Updated Field Groups (2)
+
 7. **2-Column CTA Section** - `acf-2column-cta-updated.json` (expanded location rules)
 8. **Featured Resource** - `acf-featured-resource-updated.json` (expanded location rules)
 
@@ -24,6 +27,7 @@
 ## 🎯 Field Group Application by Template
 
 ### Homepage (front_page)
+
 - ✅ Homepage Welcome Section (existing)
 - ✅ Homepage Text Block Section (existing)
 - ✅ Homepage Icon Banner (existing)
@@ -31,12 +35,14 @@
 - ✅ Featured Resource (UPDATE with new location rules)
 
 ### Interior Page Template
+
 - 🆕 Hero Section (Simple)
 - 🆕 Text Block Section
 - 🆕 Banner Section
 - ✅ 2-Column CTA Section (UPDATE)
 
 ### Pillar Page Template
+
 - 🆕 Pillar Hero Section
 - 🆕 Text Block Section
 - 🆕 Banner Section
@@ -46,15 +52,18 @@
 - ✅ Featured Resource (UPDATE)
 
 ### About/Contact Page Template
+
 - 🆕 Hero Section (Simple)
 - 🆕 Text Block Section
 - ✅ 2-Column CTA Section (UPDATE)
 
 ### Blog Group Template
+
 - 🆕 Hero Section (Simple)
 - 🆕 Text Block Section
 
 ### Resources Page Template
+
 - 🆕 Hero Section (Simple)
 - 🆕 Text Block Section
 - 🆕 Banner Section
@@ -67,7 +76,9 @@
 ## 📋 Import Instructions
 
 ### Step 1: Backup Current Field Groups
+
 Before importing, export your current homepage field groups as a backup:
+
 1. Go to **Custom Fields → Tools**
 2. Select all existing field groups
 3. Click **Export Field Groups**
@@ -76,6 +87,7 @@ Before importing, export your current homepage field groups as a backup:
 ### Step 2: Import New Field Groups (Order Matters!)
 
 **First: Import the 6 NEW field groups** (in any order):
+
 1. `acf-hero-section-simple.json`
 2. `acf-pillar-hero-section.json`
 3. `acf-text-block-section.json`
@@ -84,17 +96,19 @@ Before importing, export your current homepage field groups as a backup:
 6. `acf-faq-section.json`
 
 **To Import:**
+
 1. Go to **Custom Fields → Tools**
 2. Click **Import Field Groups**
 3. Select JSON file
 4. Click **Import**
 5. Repeat for each file
 
-**Second: Update Existing Field Groups**
+### Second: Update Existing Field Groups
 
 For the 2-Column CTA and Featured Resource field groups, you have two options:
 
-**Option A (Recommended): Update Location Rules Manually**
+#### Option A (Recommended): Update Location Rules Manually
+
 1. Go to **Custom Fields → Field Groups**
 2. Edit "2-Column CTA Section"
 3. Scroll to **Location** section
@@ -108,7 +122,8 @@ For the 2-Column CTA and Featured Resource field groups, you have two options:
    - Page Template is equal to `pillar-page-template.php`
    - Page Template is equal to `resource-page-template.php`
 
-**Option B: Import Updated Versions**
+#### Option B: Import Updated Versions
+
 1. Delete existing "2-Column CTA Section" field group
 2. Import `acf-2column-cta-updated.json`
 3. Delete existing "Featured Resource" field group
@@ -121,9 +136,11 @@ For the 2-Column CTA and Featured Resource field groups, you have two options:
 ## 🔧 Template Integration Notes
 
 ### Field Naming Convention
+
 All field names follow the pattern: `{section}_{element}_{detail}`
 
 Examples:
+
 - `hero_simple_headline`
 - `pillar_hero_cta_text`
 - `text_block_main_heading`
@@ -133,6 +150,7 @@ Examples:
 ### Accessing Fields in PHP Templates
 
 **Simple Text Field:**
+
 ```php
 <?php
 $headline = get_field('hero_simple_headline');
@@ -143,6 +161,7 @@ if ($headline) {
 ```
 
 **Repeater Field (Text Block Sections):**
+
 ```php
 <?php
 if (have_rows('text_block_sections')) {
@@ -160,6 +179,7 @@ if (have_rows('text_block_sections')) {
 ```
 
 **Image Field:**
+
 ```php
 <?php
 $image_url = get_field('pillar_hero_background_image');
@@ -174,8 +194,10 @@ if ($image_url) {
 ## 📊 Field Group Details
 
 ### 1. Hero Section (Simple)
+
 **Purpose:** Simple headline-only hero for most pages  
 **Fields:**
+
 - `hero_simple_headline` (text, required)
 
 **Used on:** Interior, About/Contact, Blog, Resources
@@ -183,8 +205,10 @@ if ($image_url) {
 ---
 
 ### 2. Pillar Hero Section
+
 **Purpose:** Full-featured hero with gradient, image, and CTA  
 **Fields:**
+
 - `pillar_hero_headline` (text, required)
 - `pillar_hero_description` (textarea)
 - `pillar_hero_cta_text` (text, default: "Get Started")
@@ -196,8 +220,10 @@ if ($image_url) {
 ---
 
 ### 3. Text Block Section
+
 **Purpose:** Flexible content sections with optional icons and anchors  
 **Fields:**
+
 - `text_block_main_heading` (text)
 - `text_block_layout` (select: wide/standard)
 - `text_block_sections` (repeater):
@@ -213,8 +239,10 @@ if ($image_url) {
 ---
 
 ### 4. Banner Section
+
 **Purpose:** Headline banners with optional icons (like "Your Next Step")  
 **Fields:**
+
 - `banner_title` (text, default: "Your Next Step")
 - `banner_subtitle` (text)
 - `banner_icon` (select: contact/accelerate/strategy/attract/roi)
@@ -227,8 +255,10 @@ if ($image_url) {
 ---
 
 ### 5. Blog Teaser Cards
+
 **Purpose:** Display featured blog posts  
 **Fields:**
+
 - `blog_teaser_heading` (text, default: "Latest From Our Blog")
 - `blog_teaser_cards` (repeater, max 4):
   - `blog_card_category` (text)
@@ -244,8 +274,10 @@ if ($image_url) {
 ---
 
 ### 6. FAQ Section
+
 **Purpose:** Accordion-style Q&A section  
 **Fields:**
+
 - `faq_heading` (text, default: "Frequently Asked Questions")
 - `faq_items` (repeater):
   - `faq_question` (text, required)
@@ -258,8 +290,10 @@ if ($image_url) {
 ---
 
 ### 7. 2-Column CTA Section (UPDATED)
+
 **Purpose:** Two side-by-side CTA cards with background image  
 **Fields:** (unchanged from homepage version)
+
 - `two_column_background` (image)
 - `left_card_heading` (text)
 - `left_card_text` (textarea)
@@ -277,8 +311,10 @@ if ($image_url) {
 ---
 
 ### 8. Featured Resource (UPDATED)
+
 **Purpose:** Highlight downloadable resource with thumbnail  
 **Fields:** (unchanged from homepage version)
+
 - `resource_banner_headline` (text, default: "Featured Resource Download")
 - `resource_thumbnail` (image)
 - `resource_card_title` (text)
@@ -298,11 +334,13 @@ if ($image_url) {
 After importing all field groups:
 
 ### Visual Check in WP Admin
+
 - [ ] Go to **Custom Fields → Field Groups**
 - [ ] Verify all 13 field groups are listed (5 homepage + 6 new + 2 updated)
 - [ ] Check that field groups are **Active** (green indicator)
 
 ### Test on Each Page Template
+
 - [ ] Edit your Interior page draft → verify all applicable field groups appear
 - [ ] Edit your Pillar page draft → verify all applicable field groups appear
 - [ ] Edit your About/Contact page draft → verify all applicable field groups appear
@@ -311,7 +349,9 @@ After importing all field groups:
 - [ ] Check Homepage → verify updated field groups still appear
 
 ### Field Group Ordering
+
 Field groups should appear in the following order (set by menu_order):
+
 1. Hero Section (order: 0)
 2. Text Block Section (order: 1)
 3. Banner Section (order: 2)
@@ -354,6 +394,7 @@ Field groups should appear in the following order (set by menu_order):
 ## 💡 Pro Tips
 
 ### Content Entry Workflow
+
 1. Start with Hero section (top of page)
 2. Add Text Block sections (main content)
 3. Add Banner section if needed
@@ -361,6 +402,7 @@ Field groups should appear in the following order (set by menu_order):
 5. Complete with 2-Column CTA at bottom
 
 ### Best Practices
+
 - Use consistent heading hierarchy (H1 → H2 → H3)
 - Keep section anchors simple and lowercase (overview, strategy, faq)
 - Add alt text for all images
@@ -368,6 +410,7 @@ Field groups should appear in the following order (set by menu_order):
 - Preview at all breakpoints
 
 ### Common Pitfalls to Avoid
+
 - ❌ Don't skip required fields (marked with *)
 - ❌ Don't use spaces in anchor IDs
 - ❌ Don't exceed max limits on repeater fields (e.g., 4 blog cards)
@@ -379,12 +422,15 @@ Field groups should appear in the following order (set by menu_order):
 ## 📞 Support Reference
 
 ### ACF Documentation
+
 - Repeater Fields: https://www.advancedcustomfields.com/resources/repeater/
 - Image Fields: https://www.advancedcustomfields.com/resources/image/
 - Location Rules: https://www.advancedcustomfields.com/resources/custom-location-rules/
 
 ### Template File Naming
+
 Ensure your WordPress theme has these template files:
+
 - `interior-page-template.php`
 - `pillar-page-template.php`
 - `about-contact-page-template.php`
@@ -392,17 +438,21 @@ Ensure your WordPress theme has these template files:
 - `resource-page-template.php`
 
 ### Troubleshooting
+
 **Field groups not appearing?**
+
 - Check that the page has the correct template assigned
 - Verify field group location rules match template filename exactly
 - Clear WordPress cache
 
 **Values not saving?**
+
 - Check PHP memory limit (recommended: 256M minimum)
 - Verify database permissions
 - Disable conflicting plugins temporarily
 
 **Icons not displaying?**
+
 - Verify sprite sheet files are in correct location
 - Check CSS icon class names match field values
 - Test icon display in isolation
@@ -411,7 +461,8 @@ Ensure your WordPress theme has these template files:
 
 ## 📝 Version History
 
-**v1.0 - November 12, 2025**
+### v1.0 - November 12, 2025
+
 - Initial creation of 6 new field groups
 - Updated location rules for 2 existing field groups
 - Complete documentation and implementation guide
@@ -421,6 +472,7 @@ Ensure your WordPress theme has these template files:
 ## ✨ Summary
 
 You now have a complete, modular ACF field group structure that:
+
 - ✅ Covers all 6 page templates
 - ✅ Uses organism-level component thinking
 - ✅ Maintains consistency with homepage structure
