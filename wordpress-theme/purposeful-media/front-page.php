@@ -221,7 +221,7 @@ get_header();
     </div>
 
     <!-- Content 2-Column Resource -->
-    <section class="content-2column-resource" role="region" aria-labelledby="resource-heading">
+    <section class="content-2column-resource" role="region" aria-labelledby="featured-resource-heading">
         <!-- Background Image Container (Desktop/DesktopPlus only) -->
         <div class="section-background" aria-hidden="true">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/shutterstock_1421446100.jpg"
@@ -244,16 +244,17 @@ get_header();
 
                 <!-- Right Column: Resource Teaser Card -->
                 <div class="right-column">
-                    <h2 id="resource-heading" class="card-title">
+                    <h2 id="featured-resource-heading" class="card-title">
                         <?php _e('Complete Guide to B2B Marketing ROI', 'purposeful-media'); ?>
                     </h2>
-
                     <p class="card-description">
-                        <?php _e('Learn how to measure, track, and optimize your B2B marketing investments. This comprehensive guide provides frameworks, formulas, and real-world examples to help you demonstrate marketing value to stakeholders and improve campaign performance.', 'purposeful-media'); ?>
+                        <?php _e('Discover proven strategies to measure, track, and optimize your marketing investment returns. This comprehensive guide walks you through establishing KPIs, implementing analytics frameworks, and demonstrating clear value to stakeholders. Learn how leading B2B companies are achieving 3-5x ROI improvements through data-driven marketing optimization.', 'purposeful-media'); ?>
                     </p>
-
+                    <p class="card-description">
+                        <?php _e('Inside this guide, you\'ll find practical templates, calculation frameworks, and real-world case studies that show you exactly how to quantify your marketing impact and make strategic decisions based on solid data.', 'purposeful-media'); ?>
+                    </p>
                     <a href="/resources/b2b-marketing-roi-guide" class="resource-button">
-                        <?php _e('Download Now', 'purposeful-media'); ?>
+                        <?php _e('Download Free Guide', 'purposeful-media'); ?>
                     </a>
                 </div>
             </div>

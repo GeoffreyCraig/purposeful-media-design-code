@@ -145,10 +145,144 @@ get_header();
                     endwhile;
                 else :
                 ?>
-                    <!-- No Posts Found -->
-                    <div class="blog-group__empty">
-                        <p><?php _e('No blog posts found.', 'purposeful-media'); ?></p>
-                    </div>
+                    <!-- No Posts Found - Show Static Placeholder Cards -->
+
+                    <!-- Blog Card 1 -->
+                    <article class="blog-card" role="article" tabindex="0">
+                        <div class="blog-card__top">
+                            <h3 class="blog-card__title">
+                                <?php _e('SEO Optimization for B2B Companies', 'purposeful-media'); ?>
+                            </h3>
+                            <div class="blog-card__meta">
+                                <?php _e('SEO | Oct 27, 2025 | Charles Norton', 'purposeful-media'); ?>
+                            </div>
+                        </div>
+                        <div class="blog-card__content">
+                            <p class="blog-card__excerpt">
+                                <?php _e('Unlock the power of SEO for your B2B business with our comprehensive strategy guide. Learn keyword research, on-page optimization, and link building strategies tailored for B2B companies.', 'purposeful-media'); ?> <a href="/blog/seo-optimization-b2b" class="blog-card__read-more"><?php _e('[Read more]', 'purposeful-media'); ?></a>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 2 -->
+                    <article class="blog-card" role="article" tabindex="0">
+                        <div class="blog-card__top">
+                            <h3 class="blog-card__title">
+                                <?php _e('Marketing Automation Workflows', 'purposeful-media'); ?>
+                            </h3>
+                            <div class="blog-card__meta">
+                                <?php _e('Automation | Oct 26, 2025 | Geoffrey Craig', 'purposeful-media'); ?>
+                            </div>
+                        </div>
+                        <div class="blog-card__content">
+                            <p class="blog-card__excerpt">
+                                <?php _e('Discover how marketing automation can transform your B2B marketing efforts. Learn to implement automated workflows, nurture campaigns, and lead scoring systems that drive conversions.', 'purposeful-media'); ?> <a href="/blog/marketing-automation" class="blog-card__read-more"><?php _e('[Read more]', 'purposeful-media'); ?></a>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 3 -->
+                    <article class="blog-card" role="article" tabindex="0">
+                        <div class="blog-card__top">
+                            <h3 class="blog-card__title">
+                                <?php _e('Content Repurposing Strategies', 'purposeful-media'); ?>
+                            </h3>
+                            <div class="blog-card__meta">
+                                <?php _e('Content | Oct 25, 2025 | Dana Morris', 'purposeful-media'); ?>
+                            </div>
+                        </div>
+                        <div class="blog-card__content">
+                            <p class="blog-card__excerpt">
+                                <?php _e('Learn how to repurpose your existing content across multiple channels to maximize ROI. From blog posts to social media, webinars to eBooks, discover strategies that multiply your content\'s impact.', 'purposeful-media'); ?> <a href="/blog/content-repurposing" class="blog-card__read-more"><?php _e('[Read more]', 'purposeful-media'); ?></a>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 4 -->
+                    <article class="blog-card" role="article" tabindex="0">
+                        <div class="blog-card__top">
+                            <h3 class="blog-card__title">
+                                <?php _e('LinkedIn Marketing for B2B', 'purposeful-media'); ?>
+                            </h3>
+                            <div class="blog-card__meta">
+                                <?php _e('Social | Oct 24, 2025 | Bill Robertson', 'purposeful-media'); ?>
+                            </div>
+                        </div>
+                        <div class="blog-card__content">
+                            <p class="blog-card__excerpt">
+                                <?php _e('Master LinkedIn marketing for B2B success. Learn to optimize your company page, create engaging content, leverage LinkedIn ads, and build meaningful professional connections.', 'purposeful-media'); ?> <a href="/blog/linkedin-marketing" class="blog-card__read-more"><?php _e('[Read more]', 'purposeful-media'); ?></a>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 5 (Hidden on mobile) -->
+                    <article class="blog-card" role="article" tabindex="0">
+                        <div class="blog-card__top">
+                            <h3 class="blog-card__title">
+                                <?php _e('Email Deliverability Guide', 'purposeful-media'); ?>
+                            </h3>
+                            <div class="blog-card__meta">
+                                <?php _e('Email | Oct 23, 2025 | Geoffrey Craig', 'purposeful-media'); ?>
+                            </div>
+                        </div>
+                        <div class="blog-card__content">
+                            <p class="blog-card__excerpt">
+                                <?php _e('Ensure your emails reach the inbox with our comprehensive deliverability guide. Learn authentication protocols, reputation management, and best practices for optimal email performance.', 'purposeful-media'); ?> <a href="/blog/email-deliverability" class="blog-card__read-more"><?php _e('[Read more]', 'purposeful-media'); ?></a>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 6 (Hidden on mobile) -->
+                    <article class="blog-card" role="article" tabindex="0">
+                        <div class="blog-card__top">
+                            <h3 class="blog-card__title">
+                                <?php _e('Brand Voice Development', 'purposeful-media'); ?>
+                            </h3>
+                            <div class="blog-card__meta">
+                                <?php _e('Branding | Oct 22, 2025 | Charles Norton', 'purposeful-media'); ?>
+                            </div>
+                        </div>
+                        <div class="blog-card__content">
+                            <p class="blog-card__excerpt">
+                                <?php _e('Develop a distinctive brand voice that resonates with your B2B audience. Learn to create style guides, maintain consistency, and build authentic connections through your content.', 'purposeful-media'); ?> <a href="/blog/brand-voice" class="blog-card__read-more"><?php _e('[Read more]', 'purposeful-media'); ?></a>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 7 (Hidden on mobile/tablet) -->
+                    <article class="blog-card" role="article" tabindex="0">
+                        <div class="blog-card__top">
+                            <h3 class="blog-card__title">
+                                <?php _e('HubSpot Implementation Guide', 'purposeful-media'); ?>
+                            </h3>
+                            <div class="blog-card__meta">
+                                <?php _e('Tools | Oct 21, 2025 | Dana Morris', 'purposeful-media'); ?>
+                            </div>
+                        </div>
+                        <div class="blog-card__content">
+                            <p class="blog-card__excerpt">
+                                <?php _e('Get the most from HubSpot with our implementation guide. From initial setup to advanced workflows, learn to leverage HubSpot\'s full potential for your B2B marketing needs.', 'purposeful-media'); ?> <a href="/blog/hubspot-implementation" class="blog-card__read-more"><?php _e('[Read more]', 'purposeful-media'); ?></a>
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 8 (Hidden on mobile/tablet) -->
+                    <article class="blog-card" role="article" tabindex="0">
+                        <div class="blog-card__top">
+                            <h3 class="blog-card__title">
+                                <?php _e('Marketing ROI Measurement', 'purposeful-media'); ?>
+                            </h3>
+                            <div class="blog-card__meta">
+                                <?php _e('Analytics | Oct 20, 2025 | Bill Robertson', 'purposeful-media'); ?>
+                            </div>
+                        </div>
+                        <div class="blog-card__content">
+                            <p class="blog-card__excerpt">
+                                <?php _e('Learn to measure and demonstrate marketing ROI with the KPIs that matter most for B2B businesses. From lead generation metrics to revenue attribution, master marketing analytics.', 'purposeful-media'); ?> <a href="/blog/marketing-roi" class="blog-card__read-more"><?php _e('[Read more]', 'purposeful-media'); ?></a>
+                            </p>
+                        </div>
+                    </article>
+
                 <?php
                 endif;
                 ?>

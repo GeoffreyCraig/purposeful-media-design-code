@@ -4,7 +4,7 @@ Theme URI: https://purposefulmediapromotions.com
 Author: Purposeful Media Promotions
 Author URI: https://purposefulmediapromotions.com
 Description: Custom WordPress theme for Purposeful Media B2B marketing website. Built with atomic design methodology and strict adherence to the Purposeful Media Design System. Updated November 2025 with W3C validated components and November consolidation strategy.
-Version: 2.0.1
+Version: 2.0.5
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -16,9 +16,39 @@ Tags: business, marketing, b2b, custom-design, atomic-design
 /**
  * =================================================
  * PURPOSEFUL MEDIA WORDPRESS THEME
- * Version: 2.0.1
- * Updated: November 10, 2025
+ * Version: 2.0.5
+ * Updated: November 11, 2025
  * =================================================
+ *
+ * CHANGELOG v2.0.5 (November 11, 2025 - Icon Fix):
+ * - FIXED: Resources Page cards 5 & 6 icons now display white (changed to valid sprite names)
+ *   - Card 5: "calendar" → "schedule" (schedule-white exists in sprite)
+ *   - Card 6: "analytics" → "strategy" (strategy-white exists in sprite)
+ *
+ * CHANGELOG v2.0.4 (November 11, 2025 - Round 3 HOTFIX):
+ * - FIXED: Homepage Featured Resource CSS not loading (added is_front_page() to enqueue.php line 109)
+ * - FIXED: Homepage Blog Group CSS not loading (added is_front_page() to enqueue.php line 169)
+ * - NOTE: Blog page 404 - requires WordPress blog posts setup or page configuration
+ * - NOTE: Resource icons 5 & 6 - data-color="white" is set correctly, may require sprite sheet check
+ *
+ * CHANGELOG v2.0.3 (November 11, 2025 - Round 3):
+ * - FIXED: Blog Page (archive.php) - Added 8-card static placeholder when no posts exist
+ * - REVERTED: Homepage blog section back to 3-card Blog Group Teaser (was incorrectly 8-card version)
+ * - VERIFIED: Homepage Featured Resource section matches Resources page structure
+ * - VERIFIED: Resources Page cards 5 & 6 icons set to data-color="white" (template-level fix)
+ *
+ * CHANGELOG v2.0.2 (November 11, 2025):
+ * - FIXED: Background tile PNG connected via absolute URL to staging
+ * - FIXED: Hamburger/X menu icons - added sprite path override in header.php
+ * - FIXED: Content-2Column-Graphic max-height set to 1000px (DesktopPlus)
+ * - UPDATED: Homepage featured resource section matches Resources page structure
+ * - UPDATED: Homepage blog section now displays 4-8 cards (responsive) with static content
+ * - UPDATED: Pillar Page hero image replaced with pillar-page-image.jpg
+ * - ADDED: Pillar Page Featured Resource section after Blog Group Teaser
+ * - REBUILT: Pillar Page FAQ section to match source component structure
+ * - ADDED: Resources Page now has 8 resource cards (was 6)
+ * - REMOVED: Resources Page duplicate "Your Next Step" banner section
+ * - VERIFIED: All decorative icon structures correct across all templates
  *
  * CHANGELOG v2.0.1 (November 10, 2025):
  * - FIXED: Resources Page Section 4 replaced with correct components

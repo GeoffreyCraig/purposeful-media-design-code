@@ -13,6 +13,9 @@
         .ui-icon-display {
             background-image: url('<?php echo get_template_directory_uri(); ?>/assets/svg/ui-icons/purposeful-sprite-ui.svg') !important;
         }
+        .banner-header__hamburger-icon {
+            background-image: url('<?php echo get_template_directory_uri(); ?>/assets/svg/ui-icons/purposeful-sprite-ui.svg') !important;
+        }
     </style>
 
     <?php wp_head(); ?>

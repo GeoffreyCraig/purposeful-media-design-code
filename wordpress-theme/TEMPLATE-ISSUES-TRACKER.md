@@ -642,3 +642,18 @@ Note that I have cropped https://purposefulmediapromotions.com/staging/2182/wp-c
 2. Tablet and Mobile menu icons (hamburger and X) are missing. However, the menu dropdown and accordion function correctly
 3. In DesktopPlus breakpoint, limit the Content 2-Column Graphic container height to max 1000px
 4. No further errors
+
+# Round 3 QA November 11, 2025 Revision Requests
+
+Blog Page Template
+
+1. Blog Group Missing. Add the Blog Group FrontPage (Static Version with 4-8 cards) component that has been misplaced on the Homepage.
+
+## Home Frontpage Template
+
+1. The Blog Group was *not* meant to go here. Revert the Blog Group FrontPage (Static Version with 4-8 cards) to Blog Group Teaser  "FrontPage" in this name is confusing. It referred to front page of the blog, assuming there were more than eight posts.
+2. The Featured Resource Download section is still not formatted correctly. The same section is displayed correctly in the Resources page. See that instance as an exact example. I have a screenshot for the problem at: docs/screencapture-purposefulmediapromotions-staging-2182-2025-11-11-15_58_59.png 
+
+## Resources Page Template
+
+1. Only one (or two, depending on how you count) more issue and it's a small one: In the Resources Grid, card-resource cards 5 and 6, the icons are blue variants. They need to be white variants like in the rest of the card-resource cards.

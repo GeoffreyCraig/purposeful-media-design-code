@@ -185,7 +185,7 @@ get_header();
                     <div class="card-resources__overlay"></div>
                     <div class="card-resources__content">
                         <div class="card-resources__header">
-                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="calendar" data-color="white"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="schedule" data-color="white"></div>
                             <h3 class="card-resources__heading"><?php _e('Content Calendar Template', 'purposeful-media'); ?></h3>
                         </div>
                         <p class="card-resources__cta">
@@ -203,7 +203,7 @@ get_header();
                     <div class="card-resources__overlay"></div>
                     <div class="card-resources__content">
                         <div class="card-resources__header">
-                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="analytics" data-color="white"></div>
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="strategy" data-color="white"></div>
                             <h3 class="card-resources__heading"><?php _e('Lead Scoring Model Guide', 'purposeful-media'); ?></h3>
                         </div>
                         <p class="card-resources__cta">
@@ -211,6 +211,42 @@ get_header();
                         </p>
                         <a href="/resources/lead-scoring-guide" class="card-resources__button">
                             <span class="card-resources__button-text"><?php _e('Get the Guide', 'purposeful-media'); ?></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Resource Card 7: SEO Strategy Guide -->
+                <div class="card-resources" data-name="Card/Resources">
+                    <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
+                    <div class="card-resources__overlay"></div>
+                    <div class="card-resources__content">
+                        <div class="card-resources__header">
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="expertise" data-color="white"></div>
+                            <h3 class="card-resources__heading"><?php _e('B2B SEO Strategy Guide', 'purposeful-media'); ?></h3>
+                        </div>
+                        <p class="card-resources__cta">
+                            <?php _e('Master search engine optimization tactics designed specifically for B2B companies.', 'purposeful-media'); ?>
+                        </p>
+                        <a href="/resources/seo-strategy-guide" class="card-resources__button">
+                            <span class="card-resources__button-text"><?php _e('Download Guide', 'purposeful-media'); ?></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Resource Card 8: Marketing Automation Playbook -->
+                <div class="card-resources" data-name="Card/Resources">
+                    <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
+                    <div class="card-resources__overlay"></div>
+                    <div class="card-resources__content">
+                        <div class="card-resources__header">
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="efficiency" data-color="white"></div>
+                            <h3 class="card-resources__heading"><?php _e('Marketing Automation Playbook', 'purposeful-media'); ?></h3>
+                        </div>
+                        <p class="card-resources__cta">
+                            <?php _e('Automate your marketing workflows to nurture leads and drive conversions at scale.', 'purposeful-media'); ?>
+                        </p>
+                        <a href="/resources/marketing-automation" class="card-resources__button">
+                            <span class="card-resources__button-text"><?php _e('Get Playbook', 'purposeful-media'); ?></span>
                         </a>
                     </div>
                 </div>
@@ -224,36 +260,6 @@ get_header();
         document.addEventListener('DOMContentLoaded', function() {
             const resourceIcons = document.querySelectorAll('.card-resources .decorative-icon-display');
             resourceIcons.forEach(icon => {
-                const iconName = icon.getAttribute('data-icon');
-                const color = icon.getAttribute('data-color');
-                if (iconName && color) {
-                    icon.classList.add(`icon--${iconName}-${color}`);
-                }
-            });
-        });
-    </script>
-
-    <!-- ========================================
-         CONTENT SECTION 4: CONTACT CTA
-         ======================================== -->
-
-    <!-- Banner Spacer: Your Next Step -->
-    <div class="card-banner-spacer" data-component="card-banner-spacer" data-variant="headline-subtitle" id="start">
-        <div class="banner-spacer-content">
-            <div class="decorative-icon-display decorative-icon-display--xlarge" data-icon="contact" data-color="white"></div>
-
-            <div class="banner-spacer-header">
-                <h1 class="banner-headline"><?php _e('Your Next Step', 'purposeful-media'); ?></h1>
-                <p class="banner-subtitle"><?php _e('Need help implementing these strategies? Let\'s talk.', 'purposeful-media'); ?></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Initialize banner icons -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const bannerIcons = document.querySelectorAll('.card-banner-spacer .decorative-icon-display');
-            bannerIcons.forEach(icon => {
                 const iconName = icon.getAttribute('data-icon');
                 const color = icon.getAttribute('data-color');
                 if (iconName && color) {

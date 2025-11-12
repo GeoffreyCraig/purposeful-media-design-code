@@ -105,8 +105,8 @@ function purposeful_media_enqueue_assets() {
         );
     }
 
-    // Content 2-Column Resource - Pillar & Resource pages
-    if (is_page_template('template-pillar-page.php') || is_page_template('template-resource.php')) {
+    // Content 2-Column Resource - Homepage, Pillar & Resource pages
+    if (is_front_page() || is_page_template('template-pillar-page.php') || is_page_template('template-resource.php')) {
         wp_enqueue_style(
             'organisms-content-2column-resource',
             $theme_uri . '/assets/css/organisms-content-2column-resource.css',
@@ -165,8 +165,8 @@ function purposeful_media_enqueue_assets() {
         );
     }
 
-    // Blog Group - Blog page & archives
-    if (is_page_template('template-blog.php') || is_home() || is_archive() || is_single()) {
+    // Blog Group - Homepage, Blog page & archives
+    if (is_front_page() || is_page_template('template-blog.php') || is_home() || is_archive() || is_single()) {
         wp_enqueue_style(
             'blog-group-organism-v2',
             $theme_uri . '/assets/css/blog-group-organism-v2.css',
