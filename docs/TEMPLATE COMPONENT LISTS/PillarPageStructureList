@@ -1,0 +1,48 @@
+# Pillar Page Components List Document
+
+## Header Section
+
+- [ ] banner-header-main-production.html (organism)
+
+## Hero Section
+
+- [ ] hero-atf-center.html (organism)
+
+## Sticky Navigation Section
+
+- [ ] sticky-nav-pillar-page.html (molecule)
+
+  - Navigation links to:
+    - Overview
+    - Strategy
+    - Methodology
+    - Benefits
+    - Resources
+    - FAQ
+    - Next Steps
+
+## Content Section 1: Pillar Section
+
+- [ ] section-pillar-production.html
+
+## Content Section 2: Resources
+
+- [ ] headline-banner.html (atom)
+- [ ] headline-reverse.html (atom)
+- [ ] blog-group-teaser-production.html (organism)
+- [ ] headline-reverse.html (atom)
+- [ ] content-2column-resource-production.html (organism)
+
+## Content Section 3: FAQ
+
+- [ ] headline-banner.html (atom)
+- [ ] faq-accordion-group.html (organism)
+
+## Content Section 4: Your Next Step
+
+- [ ] card-bannerspacer-headlinesubtitle-production.html (molecule)
+- [ ] content-2column-graphic-production.html (organism)
+
+## Footer Section
+
+- [ ] footer-main-production.html (organism)
