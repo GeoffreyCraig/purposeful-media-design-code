@@ -930,14 +930,198 @@ User completed Round 3 testing and identified 4 remaining issues. Applied fixes 
 - "Splendid work, Claude. Very satisfying to have gotten this far."
 - "All issues resolved."
 
-### Next Session Priorities:
-**ACF Pro Configuration** - Configure Advanced Custom Fields Pro page sections for dynamic content management
+### ACF Pro Field Groups Complete (November 12, 2025 - Evening Check-in)
+**ALL 8 FIELD GROUPS CREATED & DOCUMENTED** 🎉
+
+**Session Summary (Claude Desktop Work):**
+User worked with Claude Desktop to create comprehensive ACF Pro field group structure for all 6 WordPress templates.
+
+**Field Groups Created:**
+
+**6 New Field Groups:**
+1. ✅ **Hero Section (Simple)** - `acf-hero-section-simple.json`
+   - Single headline field: `hero_simple_headline`
+   - Used on: Interior, About/Contact, Blog, Resources pages
+
+2. ✅ **Pillar Hero Section** - `acf-pillar-hero-section.json`
+   - Fields: headline, description, CTA text/link, background image
+   - Used on: Pillar pages only
+   - Full-featured hero with gradient overlay
+
+3. ✅ **Text Block Section** - `acf-text-block-section.json`
+   - Main heading + layout selector (wide/standard)
+   - **Repeater field:** `text_block_sections` (unlimited sections)
+     * section_heading (text)
+     * section_content (WYSIWYG)
+     * section_icon (select: accelerate/strategy/attract/roi/contact/check)
+     * section_anchor (text for sticky menu linking)
+   - **MOST FLEXIBLE field group** - used on 5 of 6 templates
+   - Used on: Interior, Pillar, About/Contact, Blog, Resources
+
+4. ✅ **Banner Section** - `acf-banner-section.json`
+   - Fields: title, subtitle, icon, icon color, background color, anchor ID
+   - Used on: Interior, Pillar, Resources (e.g., "Your Next Step" banners)
+
+5. ✅ **Blog Teaser Cards** - `acf-blog-teaser-cards.json`
+   - Heading + **Repeater field:** `blog_teaser_cards` (max 4)
+     * category, title, excerpt, image, link, author, date
+   - Used on: Pillar, Resources pages
+
+6. ✅ **FAQ Section** - `acf-faq-section.json`
+   - Heading + **Repeater field:** `faq_items` (unlimited)
+     * faq_question (text, required)
+     * faq_answer (WYSIWYG, required)
+   - Collapsed by question for easy management
+   - Used on: Pillar pages only
+
+**2 Updated Field Groups (Location Rules Expanded):**
+7. ✅ **2-Column CTA Section** - `acf-2column-cta-updated.json`
+   - **Was:** Homepage only
+   - **Now:** Homepage, Interior, Pillar, About/Contact, Resources
+   - Fields unchanged: two_column_background, left/right card fields
+
+8. ✅ **Featured Resource** - `acf-featured-resource-updated.json`
+   - **Was:** Homepage only
+   - **Now:** Homepage, Pillar, Resources
+   - Fields unchanged: resource banner, thumbnail, card, button, background
+
+**Documentation Created:**
+- ✅ `/wordpress-theme/ACF Files/ACF-IMPLEMENTATION-GUIDE.md` (484 lines)
+  * Complete field group overview
+  * Template-by-template field group application matrix
+  * Import instructions (order matters!)
+  * Field naming conventions
+  * PHP integration examples
+  * Verification checklist
+  * Pro tips and best practices
+
+- ✅ `/wordpress-theme/ACF Files/ACF-QUICK-REFERENCE.md` (196 lines)
+  * Field Group → Template matrix
+  * Template component stacks
+  * Import order
+  * Field name quick reference
+  * Icon options reference
+
+**File Locations:**
+All ACF JSON files in: `/wordpress-theme/ACF Files/`
+- 6 new field group JSON files
+- 2 updated field group JSON files
+- 2 comprehensive markdown documentation files
+- 1 homepage export file (reference)
+**Total: 11 files**
+
+**Template Coverage Summary:**
+
+| Template | Field Groups | Status |
+|----------|--------------|--------|
+| **Homepage** | 5 field groups | ✅ Existing setup successful |
+| **Interior** | 4 field groups | ⏳ Configuration in progress |
+| **Pillar** | 7 field groups | ⏳ Configuration in progress |
+| **About/Contact** | 3 field groups | ⏳ Configuration in progress |
+| **Blog** | 2 field groups | ⏳ Configuration in progress |
+| **Resources** | 6 field groups | ⏳ Configuration in progress |
+
+**Current Status (User Report):**
+1. ✅ All 8 field groups imported into WordPress staging
+2. ⏳ User configuring field group → template associations
+3. ⏳ Once configuration complete, may need debugging assistance
+4. ✅ Homepage ACF setup from previous Cursor work was successful (template for approach)
+5. ✅ Field naming conventions validated and approved
+
+**Key Design Decisions:**
+- **Organism-level thinking:** Field groups match component structure from Phase 1 templates
+- **Repeater fields:** Maximum flexibility for Text Blocks, Blog Cards, FAQs
+- **Icon integration:** Select dropdowns reference sprite sheet icon names
+- **Anchor ID support:** Enables sticky menu functionality (Pillar pages)
+- **Layout options:** Text Block supports "wide" and "standard" variants
+- **Proper ordering:** menu_order parameter ensures logical display in WP admin (Hero → Text Block → Banner → Blog → FAQ → CTA → Resource)
+
+**Template File Naming (Must Match Location Rules):**
+- `front-page.php` (Homepage)
+- `interior-page-template.php`
+- `pillar-page-template.php`
+- `about-contact-page-template.php`
+- `blog-page-template.php`
+- `resource-page-template.php`
+
+**Field Naming Convention:**
+Pattern: `{section}_{element}_{detail}`
+
+Examples:
+- `hero_simple_headline`
+- `pillar_hero_cta_text`
+- `text_block_main_heading`
+- `text_block_sections` (repeater)
+  - `section_heading`
+  - `section_content`
+  - `section_icon`
+  - `section_anchor`
+- `banner_title`
+- `banner_icon_color`
+- `blog_teaser_cards` (repeater)
+  - `blog_card_title`
+  - `blog_card_excerpt`
+- `faq_items` (repeater)
+  - `faq_question`
+  - `faq_answer`
+
+**PHP Integration Pattern (For Tomorrow's Work):**
+
+Simple field:
+```php
+$headline = get_field('hero_simple_headline');
+if ($headline) {
+    echo '<h1>' . esc_html($headline) . '</h1>';
+}
+```
+
+Repeater field:
+```php
+if (have_rows('text_block_sections')) {
+    while (have_rows('text_block_sections')) {
+        the_row();
+        $heading = get_sub_field('section_heading');
+        $content = get_sub_field('section_content');
+        $icon = get_sub_field('section_icon');
+        $anchor = get_sub_field('section_anchor');
+        // Output section HTML with dynamic content
+    }
+}
+```
+
+Image field:
+```php
+$image_url = get_field('pillar_hero_background_image');
+if ($image_url) {
+    echo '<img src="' . esc_url($image_url) . '" alt="">';
+}
+```
+
+**Previous Homepage Success (Reference for Tomorrow):**
+User notes: "I previously created a homepage file based on a template built by Cursor. The ACF field group setup was successful."
+- Homepage can serve as working reference for integration approach
+- Same patterns should apply to all 5 remaining templates
+
+**Next Session Priorities (November 13, 2025):**
+**ACF Template Integration & Debugging**
 
 **Goals:**
-1. Set up ACF field groups for each template
-2. Configure flexible content sections
-3. Test dynamic content loading
-4. Migrate from static content to ACF fields
+1. Debug any field group → template association issues
+2. Replace hardcoded content in PHP templates with `get_field()` calls
+3. Test ACF field display and saving on each template
+4. Verify repeater fields work correctly (Text Blocks, Blog Cards, FAQs)
+5. Test icon selection and display integration
+6. Verify anchor ID functionality for sticky menu (Pillar page)
+7. Ensure all 6 templates have functional ACF integration
+
+**Approach:**
+- Use Homepage as working reference model
+- Test one template at a time
+- Verify field groups appear in WP admin for each template
+- Integrate PHP code to output ACF field values
+- Test at all 4 breakpoints after integration
+
+**User Status:** Confident in field group structure, ready to debug integration tomorrow
 
 ### Key Achievements - Phase 3:
 - ✅ **100% Template Conversion Rate** - All 6 templates completed
