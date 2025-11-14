@@ -16,8 +16,14 @@ get_header();
          HERO SECTION: Hero Simple Reverse
          ======================================== -->
     <section class="hero-simple-reverse" role="banner" aria-label="<?php esc_attr_e('Page Header', 'purposeful-media'); ?>">
+		<!-- Updated to integrate the dynamic ACF Field Group and fallback headline -->
         <div class="hero-simple-reverse__content">
-            <h1 class="hero-simple-reverse__headline"><?php _e('About Us & Contact', 'purposeful-media'); ?></h1>
+            <h1 class="hero-simple-reverse__headline">
+			<?php 
+				$headline = get_field('hero-simple-reverse__headline');
+				echo esc_html($headline ? $headline : __('About Us & Contact', 'purposeful-media'));
+			?>
+</h1>
         </div>
     </section>
 
