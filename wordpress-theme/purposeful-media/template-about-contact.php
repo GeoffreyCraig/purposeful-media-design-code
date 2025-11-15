@@ -23,7 +23,7 @@ get_header();
 				$headline = get_field('hero-simple-reverse__headline');
 				echo esc_html($headline ? $headline : __('About Us & Contact', 'purposeful-media'));
 			?>
-</h1>
+            </h1>
         </div>
     </section>
 
