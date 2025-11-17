@@ -14,28 +14,88 @@ get_header();
 
     <!-- ========================================
          HERO: Hero ATF Center
+         ACF INTEGRATION: v1.0 - 2025-11-17
+         Field Group: ATF Hero Centered
+         Fields: atf_hero_centered_headline, atf_hero_centered_description,
+                 atf_hero_centered_cta_text, atf_hero_centered_ta_link,
+                 atf_hero_centered_bg_image
+         Fallbacks: Intelligent defaults for all fields
          ======================================== -->
     <section class="hero-atf-center" id="heroATFCenter" aria-label="<?php esc_attr_e('Hero Section', 'purposeful-media'); ?>">
-
         <!-- Media Container - Supports both Image and Video -->
         <div class="hero-media-container" id="heroMediaContainer">
+            <?php 
+            // ACF Background Image with multiple format support
+            $hero_bg = get_field('atf_hero_centered_bg_image');
+            $img_url = '';
+            $img_alt = esc_attr__('Hero background', 'purposeful-media');
+            
+            if ($hero_bg) {
+                if (is_array($hero_bg)) {
+                    // Image Array format
+                    $img_url = esc_url($hero_bg['url']);
+                    $img_alt = !empty($hero_bg['alt']) ? esc_attr($hero_bg['alt']) : $img_alt;
+                } elseif (is_numeric($hero_bg)) {
+                    // Image ID format
+                    $img_url = wp_get_attachment_image_url($hero_bg, 'full');
+                    $img_alt = get_post_meta($hero_bg, '_wp_attachment_image_alt', true);
+                    if (empty($img_alt)) {
+                        $img_alt = esc_attr__('Hero background', 'purposeful-media');
+                    }
+                } else {
+                    // Image URL format (string)
+                    $img_url = esc_url($hero_bg);
+                }
+            }
+            
+            // Fallback to default image if no ACF image set
+            if (empty($img_url)) {
+                $img_url = 'https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/11/pillar-page-image.jpg';
+            }
+            ?>
             <!-- Hero Image -->
-            <img src="https://purposefulmediapromotions.com/staging/2182/wp-content/uploads/2025/11/pillar-page-image.jpg" alt="<?php esc_attr_e('Hero background', 'purposeful-media'); ?>" class="hero-media" loading="eager">
+            <img src="<?php echo $img_url; ?>" alt="<?php echo $img_alt; ?>" class="hero-media" loading="eager">
         </div>
-
+        
         <!-- Content Container -->
         <div class="hero-content">
+            <?php 
+            // ACF Headline with fallback
+            $headline = get_field('atf_hero_centered_headline');
+            if (empty($headline)) {
+                $headline = __('Transform Your Marketing Strategy', 'purposeful-media');
+            }
+            ?>
             <h1 class="hero-headline">
-                <?php _e('H1 Headline 36 54h', 'purposeful-media'); ?>
+                <?php echo esc_html($headline); ?>
             </h1>
-            <p class="hero-subheadline">
-                <?php _e('CTA Centered', 'purposeful-media'); ?>
-            </p>
-            <a href="#overview" class="hero-button" role="button" aria-label="<?php esc_attr_e('Call to action', 'purposeful-media'); ?>">
-                <?php _e('Button Text', 'purposeful-media'); ?>
+            
+            <?php 
+            // ACF Description - conditional display
+            $description = get_field('atf_hero_centered_description');
+            if (!empty($description)) : 
+            ?>
+                <p class="hero-subheadline">
+                    <?php echo esc_html($description); ?>
+                </p>
+            <?php endif; ?>
+            
+            <?php 
+            // ACF CTA with fallbacks
+            $cta_text = get_field('atf_hero_centered_cta_text');
+            $cta_link = get_field('atf_hero_centered_ta_link');
+            
+            if (empty($cta_text)) {
+                $cta_text = __('Learn More', 'purposeful-media');
+            }
+            if (empty($cta_link)) {
+                $cta_link = '#overview';
+            }
+            ?>
+            <a href="<?php echo esc_url($cta_link); ?>" class="hero-button" role="button" aria-label="<?php esc_attr_e('Call to action', 'purposeful-media'); ?>">
+                <?php echo esc_html($cta_text); ?>
             </a>
         </div>
-
     </section>
 
     <!-- Hero Media & Button Smooth Scroll JavaScript -->
