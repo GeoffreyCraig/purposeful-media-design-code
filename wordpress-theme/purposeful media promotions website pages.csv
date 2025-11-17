@@ -1,0 +1,79 @@
+﻿Content Module Name,Production File Name,Locations,Page Class Name,ACF Field Group Title,ACF Field Name,Field Type,Fallback Strategy,Status,Notes
+Invitation Section,content-2column-resource-production.html,"Home, Pillar, Resource",content-2column-graphic__background,2-Column CTA Section ,two_column_background,Image,,FALSE,
+Invitation Section,content-2column-resource-production.html,"Home, Pillar, Resource",teaser-card__title,2-Column CTA Section ,left_card_heading,Text,,FALSE,
+Invitation Section,content-2column-resource-production.html,"Home, Pillar, Resource",teaser-card__description,2-Column CTA Section ,left_card_text,Text Area,,FALSE,
+Invitation Section,content-2column-resource-production.html,"Home, Pillar, Resource",teaser-card__button-text,2-Column CTA Section ,left_card_button_text,Text,,FALSE,
+Invitation Section,content-2column-resource-production.html,"Home, Pillar, Resource",teaser-card__button teaser-card__button--gold,2-Column CTA Section ,left_card_button_link,URL,,FALSE,
+Invitation Section,content-2column-resource-production.html,"Home, Pillar, Resource",teaser-card__title,2-Column CTA Section ,right_card_heading,Text,,FALSE,
+Invitation Section,content-2column-resource-production.html,"Home, Pillar, Resource",teaser-card__description,2-Column CTA Section ,right_card_text,Text Area,,FALSE,
+Invitation Section,content-2column-resource-production.html,"Home, Pillar, Resource",teaser-card__button-text,2-Column CTA Section ,right_card_button_text,Text,,FALSE,
+Invitation Section,content-2column-resource-production.html,"Home, Pillar, Resource",teaser-card__button teaser-card__button--navy,2-Column CTA Section ,right_card_button_link,URL,,FALSE,
+ATF Hero Centered,hero-atf-center.html,Pillar,hero-headline,ATF Hero Centered,atf_hero_centered_headline,Text,None,FALSE,
+ATF Hero Centered,hero-atf-center.html,Pillar,hero-subheadline,ATF Hero Centered,atf_hero_centered_description,Text Area,Conditional,FALSE,
+ATF Hero Centered,hero-atf-center.html,Pillar,hero-button,ATF Hero Centered,atf_hero_centered_cta_text,Text,Default text,FALSE,
+ATF Hero Centered,hero-atf-center.html,Pillar,hero-button,ATF Hero Centered,atf_hero_centered_ta_link,URL,,FALSE,Could be the wrong class
+ATF Hero Centered,hero-atf-center.html,Pillar,hero-media-container,ATF Hero Centered,atf_hero_centered_bg_image,Image,,FALSE,Could be the wrong class
+ATF Hero Left-Handed,hero-atf-left.html,Blog,hero-headline,ATF Hero Left-Aligned,atf_hero_lh_headline,Text,,FALSE,
+ATF Hero Left-Handed,hero-atf-left.html,Blog,hero-subheadline,ATF Hero Left-Aligned,atf_hero_lh_description,Text Area,,FALSE,
+ATF Hero Left-Handed,hero-atf-left.html,Blog,hero-button,ATF Hero Left-Aligned,atf_hero_lh_cta_text,Text,,FALSE,
+ATF Hero Left-Handed,hero-atf-left.html,Blog,hero-button,ATF Hero Left-Aligned,atf_hero_lh_ta_link,URL,,FALSE,
+ATF Hero Left-Handed,hero-atf-left.html,Blog,hero-media-container,ATF Hero Left-Aligned,atf_hero_lh_bg_image,Image,,FALSE,
+ATF Hero Right-Handed,hero-atf-right.html,N/A,hero-headline,ATF Hero Right-Aligned,atf_hero_rh_headline,Text,,TRUE,Inactive until assigned
+ATF Hero Right-Handed,hero-atf-right.html,N/A,hero-subheadline,ATF Hero Right-Aligned,atf_hero_rh_description,Text Area,,TRUE,Inactive until assigned
+ATF Hero Right-Handed,hero-atf-right.html,N/A,hero-button,ATF Hero Right-Aligned,atf_hero_rh_cta_text,Text,,TRUE,Inactive until assigned
+ATF Hero Right-Handed,hero-atf-right.html,N/A,hero-button,ATF Hero Right-Aligned,atf_hero_rh_ta_link,URL,,TRUE,Inactive until assigned
+ATF Hero Right-Handed,hero-atf-right.html,N/A,hero-media-container,ATF Hero Right-Aligned,atf_hero_rh_bg_image,Image,,TRUE,Inactive until assigned
+ATF Hero Short Primary,hero-simple-default-production.html,"Interior, Resources",hero-simple__headline,ATF Hero Short Primary,hero_simple_headline,Text,,FALSE,
+ATF Hero Short Reverse,hero-simple-reverse-production.html ,About,hero-simple-reverse__headline,ATF Hero Short Reverse,hero-simple-reverse__headline,Text,,FALSE,
+Download Offer Section,content-2column-graphic-production.html,"Home, Interior, Pillar",ebook-image,Download Offer Section,resource_thumbnail,Image,,FALSE,If class not correct try: image-wrapper
+Download Offer Section,content-2column-graphic-production.html,"Home, Interior, Pillar",pillar-resource-heading,Download Offer Section,resource_card_title,Text,,FALSE,
+Download Offer Section,content-2column-graphic-production.html,"Home, Interior, Pillar",card-description,Download Offer Section,resource_card_description,Text Area,,FALSE,Could be a Repeater!
+Download Offer Section,content-2column-graphic-production.html,"Home, Interior, Pillar",resource-button,Download Offer Section,resource_button_text,Text,,FALSE,
+Download Offer Section,content-2column-graphic-production.html,"Home, Interior, Pillar",resource-button,Download Offer Section,resource_button_link,URL,,FALSE,
+Download Offer Section,content-2column-graphic-production.html,"Home, Interior, Pillar",section-background,Download Offer Section,resource_background_image,Image,,FALSE,
+FAQ Section,faq-accordion-group.html,Pillar,card-faq,FAQ Section ,faq_items,Repeater,,FALSE,
+FAQ Section,faq-accordion-group.html,Pillar,card-faq__question,FAQ Section ,faq_question,Text,,FALSE,
+FAQ Section,faq-accordion-group.html,Pillar,card-faq__answer,FAQ Section ,faq_answer,WYSIWYG Editor,,FALSE,
+Headline Banner H1 Primary,headline-banner.html,"About, Home, Pillar, Resources",card-banner-spacer variant-headline-banner,H1 Headline Banner,banner-spacer-content,Text,,FALSE,
+Headline Banner H2 Reverse,headline-reverse.html,"About, Home, Pillar",hero-simple-reverse__headline,Hero Section Reverse,hero-simple-reverse__headline,Text,,FALSE,Additional PHP edits to add still for Home and Pillar page templates
+Homepage Carousel Section,hero-carousel-production.html,Home,slide-background,Homepage Hero Carousel ,carousel_slides,Repeater,,FALSE,Double-check: slide-background
+Homepage Carousel Section,hero-carousel-production.html,Home,slide-video,Homepage Hero Carousel ,Slide_video,File,,FALSE,
+Homepage Carousel Section,hero-carousel-production.html,Home,slide-video,Homepage Hero Carousel ,fallback_image,Image,,FALSE,
+Homepage Carousel Section,hero-carousel-production.html,Home,slide-eyebrow,Homepage Hero Carousel ,eyebrow_text,Text,,FALSE,
+Homepage Carousel Section,hero-carousel-production.html,Home,slide-headline,Homepage Hero Carousel ,headline,Text,,FALSE,
+Homepage Carousel Section,hero-carousel-production.html,Home,slide-description,Homepage Hero Carousel ,description,Text Area,,FALSE,
+Homepage Carousel Section,hero-carousel-production.html,Home,slide-cta,Homepage Hero Carousel ,cta_text,Text,,FALSE,
+Homepage Carousel Section,hero-carousel-production.html,Home,slide-cta,Homepage Hero Carousel ,cta_link,URL,,FALSE,
+Headline Banner With Icon ,card-bannerspacer-headlinesubtitle-production.html,"Home, Interior, Pillar",decorative-icon-display decorative-icon-display--xlarge icon--contact-white,Icon Banner Section,icon_banner_icon,Select,,FALSE,
+Headline Banner With Icon ,card-bannerspacer-headlinesubtitle-production.html,"Home, Interior, Pillar",decorative-icon-display decorative-icon-display--xlarge icon--contact-white,Icon Banner Section,icon_banner_color,Select,,FALSE,
+Headline Banner With Icon ,card-bannerspacer-headlinesubtitle-production.html,"Home, Interior, Pillar",banner-headline,Icon Banner Section,icon_banner_title,Text,,FALSE,
+Headline Banner With Icon ,card-bannerspacer-headlinesubtitle-production.html,"Home, Interior, Pillar",banner-subtitle,Icon Banner Section,icon_banner_tagline,Text,,FALSE,
+Content Text Block,text-block.html,"About, Home, Interior, Resources",headline headline--h1,Text Block Section,text_block_main_heading,Text,,FALSE,
+Content Text Block,text-block.html,"About, Home, Interior, Resources",text-block__section,Text Block Section,text_block_layout,Select,,FALSE,Default: Wide
+Content Text Block,text-block.html,"About, Home, Interior, Resources",text-block__section,Text Block Section,text_block_sections,Repeater,,FALSE,
+Content Text Block,text-block.html,"About, Home, Interior, Resources",headline headline--h2,Text Block Section,section_heading,Text,,FALSE,
+Content Text Block,text-block.html,"About, Home, Interior, Resources",paragraph paragraph--default,Text Block Section,section_content,WYSIWYG Editor,,FALSE,
+Content Text Block,text-block.html,"About, Home, Interior, Resources",ui-icon-display ui-icon-display--small icon--check-teal,Text Block Section,section_icon,Select,Conditional,FALSE,Bullet mark options
+Content Text Block,text-block.html,"About, Home, Interior, Resources",paragraph paragraph--default,Text Block Section,section_anchor,Text,,FALSE,
+Blog Teaser 2-Post,blog-group-teaser-production.html,N/A,N/A,Z-N/A,N/A,N/A,,FALSE,N/A
+Z-Blog Group Main Section,blog-group-frontpage-production.html,N/A,N/A,Z-N/A,N/A,N/A,,FALSE,N/A
+Z-Sticky Menu Component,sticky-nav-pillar-page.html,N/A,N/A,Z-N/A,N/A,N/A,,FALSE,N/A
+Resources Grid Section,section-resources.html,Resources,section-resources__grid,Resources Grid Section,section-resources__grid,Repeater,,FALSE,
+Resources Grid Section,section-resources.html,Resources,card-resources__thumbnail,Resources Grid Section,card-resources__thumbnail,Image,,FALSE,
+Resources Grid Section,section-resources.html,Resources,decorative-icon-display decorative-icon-display--large icon--roi-white,Resources Grid Section,decorative-icon-display decorative-icon-display--large icon--roi-white,Select,,FALSE,
+Resources Grid Section,section-resources.html,Resources,card-resources__heading,Resources Grid Section,card-resources__heading,Text,,FALSE,
+Resources Grid Section,section-resources.html,Resources,card-resources__cta,Resources Grid Section,card-resources__cta,Text Area,,FALSE,
+Resources Grid Section,section-resources.html,Resources,card-resources__button,Resources Grid Section,card-resources__button_text,Text,,FALSE,
+Resources Grid Section,section-resources.html,Resources,card-resources__button,Resources Grid Section,card-resources__button,URL,,FALSE,
+Contact Form Section,section-contactus.html,About,form-contact,Contact Form Section,form-contact,?,,FALSE,
+Contact Offer Section,content-2column-contact-production.html,Resources,content-2column-contact__background-image,Contact Offer Section,content-contact__bg,Image,,FALSE,
+Contact Offer Section,content-2column-contact-production.html,Resources,content-2column-contact__heading,Contact Offer Section,content-contact__heading,Text,,FALSE,
+Contact Offer Section,content-2column-contact-production.html,Resources,content-2column-contact__body,Contact Offer Section,content-contact__body,Text Area,,FALSE,
+Contact Offer Section,content-2column-contact-production.html,Resources,content-2column-contact__button,Contact Offer Section,content-contact__button,URL,,FALSE,
+Contact Offer Section,content-2column-contact-production.html,Resources,content-2column-contact__button-text,Contact Offer Section,content-contact__button-text,Text,,FALSE,
+Contact Offer Section,content-2column-contact-production.html,Resources,content-2column-contact__image,Contact Offer Section,content-contact__image,Image,,FALSE,
+Pillar Page Text Section,section-pillar-production.html,Pillar,pillar-section__header,Pillar Page Text Section,pillar_page_headline,Text,,FALSE,
+Pillar Page Text Section,section-pillar-production.html,Pillar,pillar-section__card pillar-card,Pillar Page Text Section,pillar_page_card,Repeater,,FALSE,
+Pillar Page Text Section,section-pillar-production.html,Pillar,decorative-icon-display decorative-icon-display--xxlarge,Pillar Page Text Section,pillar_card_icon,Select,,FALSE,
+Pillar Page Text Section,section-pillar-production.html,Pillar,pillar-card__heading,Pillar Page Text Section,pillar_card_headline,Text,,FALSE,
+Pillar Page Text Section,section-pillar-production.html,Pillar,pillar-card__text,Pillar Page Text Section,pillar_card_text,Text Area,,FALSE,

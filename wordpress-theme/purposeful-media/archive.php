@@ -14,64 +14,127 @@ get_header();
 
     <!-- ========================================
          HERO SECTION: Hero ATF Left
+         ACF INTEGRATION: v1.0 - 2025-11-17
+         Field Group: ATF Hero Left-Aligned
+         Fields: atf_hero_lh_headline, atf_hero_lh_description, 
+                 atf_hero_lh_cta_text, atf_hero_lh_ta_link, 
+                 atf_hero_lh_bg_image
+         Fallbacks: All fields have intelligent defaults
          ======================================== -->
+	
     <section class="hero-atf-left" id="heroATFLeft" aria-label="<?php esc_attr_e('Hero Section', 'purposeful-media'); ?>">
-
         <!-- Media Container -->
         <div class="hero-media-container" id="heroMediaContainer">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/shutterstock_2618933959.jpg" alt="<?php esc_attr_e('Blog insights and resources', 'purposeful-media'); ?>" class="hero-media" loading="eager">
+            <?php 
+            // ACF Background Image with multiple format support
+            $hero_bg = get_field('atf_hero_lh_bg_image');
+            $img_url = '';
+            $img_alt = esc_attr__('Blog insights and resources', 'purposeful-media');
+            
+            if ($hero_bg) {
+                if (is_array($hero_bg)) {
+                    // Image Array format
+                    $img_url = esc_url($hero_bg['url']);
+                    $img_alt = !empty($hero_bg['alt']) ? esc_attr($hero_bg['alt']) : $img_alt;
+                } elseif (is_numeric($hero_bg)) {
+                    // Image ID format
+                    $img_url = wp_get_attachment_image_url($hero_bg, 'full');
+                    $img_alt = get_post_meta($hero_bg, '_wp_attachment_image_alt', true);
+                    if (empty($img_alt)) {
+                        $img_alt = esc_attr__('Blog insights and resources', 'purposeful-media');
+                    }
+                } else {
+                    // Image URL format (string)
+                    $img_url = esc_url($hero_bg);
+                }
+            }
+            
+            // Fallback to default image if no ACF image set
+            if (empty($img_url)) {
+                $img_url = get_template_directory_uri() . '/assets/images/shutterstock_2618933959.jpg';
+            }
+            ?>
+            <img src="<?php echo $img_url; ?>" alt="<?php echo $img_alt; ?>" class="hero-media" loading="eager">
         </div>
-
+        
         <!-- Content Container -->
         <div class="hero-content">
             <h1 class="hero-headline">
                 <?php
-                if (is_category()) {
-                    single_cat_title();
-                } elseif (is_tag()) {
-                    single_tag_title();
-                } elseif (is_author()) {
-                    printf(__('Posts by %s', 'purposeful-media'), get_the_author());
-                } elseif (is_date()) {
-                    _e('Blog Archive', 'purposeful-media');
+                // Check for ACF headline override
+                $custom_headline = get_field('atf_hero_lh_headline');
+                
+                if (!empty($custom_headline)) {
+                    // Use ACF custom headline if provided
+                    echo esc_html($custom_headline);
                 } else {
-                    _e('B2B Marketing Insights & Resources', 'purposeful-media');
+                    // Fall back to smart archive conditional logic
+                    if (is_category()) {
+                        single_cat_title();
+                    } elseif (is_tag()) {
+                        single_tag_title();
+                    } elseif (is_author()) {
+                        printf(__('Posts by %s', 'purposeful-media'), get_the_author());
+                    } elseif (is_date()) {
+                        _e('Blog Archive', 'purposeful-media');
+                    } else {
+                        _e('B2B Marketing Insights & Resources', 'purposeful-media');
+                    }
                 }
                 ?>
             </h1>
-            <p class="hero-subheadline">
-                <?php _e('Expert advice, strategies, and best practices to grow your business', 'purposeful-media'); ?>
-            </p>
-            <a href="#blog-posts" class="hero-button" role="button" aria-label="<?php esc_attr_e('View blog posts', 'purposeful-media'); ?>">
-                <?php _e('Explore Articles', 'purposeful-media'); ?>
+            
+            <?php 
+            // ACF Description with conditional display
+            $hero_description = get_field('atf_hero_lh_description');
+            if (!empty($hero_description)) : 
+            ?>
+                <p class="hero-subheadline">
+                    <?php echo esc_html($hero_description); ?>
+                </p>
+            <?php else : ?>
+                <p class="hero-subheadline">
+                    <?php _e('Expert advice, strategies, and best practices to grow your business', 'purposeful-media'); ?>
+                </p>
+            <?php endif; ?>
+            
+            <?php 
+            // ACF CTA with fallbacks
+            $cta_text = get_field('atf_hero_lh_cta_text');
+            $cta_link = get_field('atf_hero_lh_ta_link');
+            
+            if (empty($cta_text)) {
+                $cta_text = __('Explore Articles', 'purposeful-media');
+            }
+            if (empty($cta_link)) {
+                $cta_link = '#blog-posts';
+            }
+            ?>
+            <a href="<?php echo esc_url($cta_link); ?>" class="hero-button" role="button" aria-label="<?php esc_attr_e('View blog posts', 'purposeful-media'); ?>">
+                <?php echo esc_html($cta_text); ?>
             </a>
         </div>
-
     </section>
-
+    
     <!-- Hero Media Handler JavaScript -->
     <script>
         const HeroMediaHandler = {
             init() {
                 this.container = document.getElementById('heroMediaContainer');
                 this.hero = document.getElementById('heroATFLeft');
-
                 const media = this.container.querySelector('img, video');
                 if (!media || media.tagName === 'DIV') {
                     this.hero.classList.add('no-media');
                 }
-
                 const video = this.container.querySelector('video');
                 if (video) {
                     this.setupVideo(video);
                 }
             },
-
             setupVideo(video) {
                 video.muted = true;
                 video.loop = true;
                 video.playsinline = true;
-
                 const playVideo = () => {
                     video.play().catch(e => {
                         console.log('Autoplay prevented:', e);
@@ -80,19 +143,16 @@ get_header();
                         }, { once: true });
                     });
                 };
-
                 if (video.readyState >= 3) {
                     playVideo();
                 } else {
                     video.addEventListener('loadeddata', playVideo);
                 }
-
                 if (window.matchMedia('(max-width: 767px)').matches) {
                     video.setAttribute('preload', 'metadata');
                 }
             }
         };
-
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => HeroMediaHandler.init());
         } else {
