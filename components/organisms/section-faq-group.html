@@ -11,7 +11,32 @@
     <link rel="stylesheet" href="../../styles/organisms-section-faq-group.css">
 </head>
 <body>
-    <!-- Section FAQ Group Organism Component -->
+    <!-- ========================================
+     FAQ SECTION: Accordion Group
+     
+     COMPONENT STATUS: ACF-Ready
+     WordPress Integration: template-pillar-page.php
+     ACF Field Group: FAQ Section
+     
+     Static FAQ items in this file are PLACEHOLDERS.
+     Live WordPress version uses dynamic ACF repeater:
+     - Repeater: faq_items
+       - Question: faq_question (Text)
+       - Answer: faq_answer (WYSIWYG Editor)
+     
+     Features:
+     - Dynamic FAQ count (unlimited items)
+     - First item defaults to open state
+     - WYSIWYG answers allow rich formatting
+     - Inline accordion script for reliability
+     - Full keyboard accessibility
+     
+     Fallback Strategy:
+     - If repeater empty: Shows 2 default FAQ items
+     - If question empty: Skips that row
+     
+     Last Updated: 2025-11-18
+     ======================================== -->
     <!--
         This organism composes multiple Card/FAQ molecules within a section container.
         Following Atomic Design principles: Organisms compose Molecules.

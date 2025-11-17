@@ -14,7 +14,7 @@ get_header();
 
     <!-- ========================================
          HERO: Hero ATF Center
-         ACF INTEGRATION: v1.0 - 2025-11-17
+         ACF INTEGRATION: v1.0 - 2025-11-18
          Field Group: ATF Hero Centered
          Fields: atf_hero_centered_headline, atf_hero_centered_description,
                  atf_hero_centered_cta_text, atf_hero_centered_ta_link,
@@ -679,91 +679,122 @@ get_header();
         </div>
     </div>
 
-    <!-- ========================================
+<!-- ========================================
          FAQ SECTION: Frequently Asked Questions
+         ACF INTEGRATION: v1.0 - 2025-11-18
+         Field Group: FAQ Section
+         Fields: faq_items (Repeater), faq_question (Text), faq_answer (WYSIWYG)
+         Fallbacks: Default FAQ content if repeater empty
          ======================================== -->
     <section class="section-faq-group" id="faq" data-component="Section/FAQGroup" role="region" aria-label="<?php esc_attr_e('Frequently Asked Questions', 'purposeful-media'); ?>">
         <div class="section-faq-group__container">
             <div class="section-faq-group__items">
 
-                <!-- FAQ Card 1 -->
-                <div class="card-faq" data-name="Card/FAQ">
-                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-1">
+                <?php 
+                // Check if FAQ repeater has rows
+                if (have_rows('faq_items')) :
+                    $faq_index = 1;
+                    
+                    while (have_rows('faq_items')) : the_row();
+                        $question = get_sub_field('faq_question');
+                        $answer = get_sub_field('faq_answer');
+                        
+                        // Skip if question is empty
+                        if (empty($question)) continue;
+                        
+                        // First item defaults to open state
+                        $is_open = ($faq_index === 1);
+                        $card_class = $is_open ? 'card-faq card-faq--open' : 'card-faq';
+                        $aria_expanded = $is_open ? 'true' : 'false';
+                        $aria_hidden = $is_open ? 'false' : 'true';
+                ?>
+                
+                <!-- FAQ Card <?php echo $faq_index; ?> -->
+                <div class="<?php echo esc_attr($card_class); ?>" data-name="Card/FAQ">
+                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="<?php echo esc_attr($aria_expanded); ?>" aria-controls="faq-answer-<?php echo $faq_index; ?>">
+                        <div class="card-faq__question-text">
+                            <?php echo esc_html($question); ?>
+                        </div>
+                        <div class="card-faq__arrow" aria-hidden="true">›</div>
+                    </div>
+                    <div class="card-faq__answer" id="faq-answer-<?php echo $faq_index; ?>" aria-hidden="<?php echo esc_attr($aria_hidden); ?>">
+                        <div class="card-faq__answer-content">
+                            <?php echo wp_kses_post($answer); ?>
+                        </div>
+                    </div>
+                </div>
+
+                <?php 
+                        $faq_index++;
+                    endwhile;
+                    
+                else : 
+                    // Fallback: Default FAQ items if repeater is empty
+                ?>
+                
+                <!-- Fallback FAQ Card 1 -->
+                <div class="card-faq card-faq--open" data-name="Card/FAQ">
+                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="true" aria-controls="faq-answer-1">
                         <div class="card-faq__question-text">
                             <?php _e('What digital marketing services do you offer for B2B companies?', 'purposeful-media'); ?>
                         </div>
                         <div class="card-faq__arrow" aria-hidden="true">›</div>
                     </div>
-                    <div class="card-faq__answer" id="faq-answer-1" aria-hidden="true">
+                    <div class="card-faq__answer" id="faq-answer-1" aria-hidden="false">
                         <div class="card-faq__answer-content">
                             <?php _e('We specialize in comprehensive B2B digital marketing services including email marketing management, webinar production and promotion, lead magnet creation (eBooks, guides, templates), content repurposing across channels, and SEO optimization. Our focus is on generating qualified leads through strategic content and campaigns.', 'purposeful-media'); ?>
                         </div>
                     </div>
                 </div>
 
-                <!-- FAQ Card 2 -->
+                <!-- Fallback FAQ Card 2 -->
                 <div class="card-faq" data-name="Card/FAQ">
                     <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-2">
-                        <div class="card-faq__question-text">
-                            <?php _e('How do you help improve email deliverability and engagement?', 'purposeful-media'); ?>
-                        </div>
-                        <div class="card-faq__arrow" aria-hidden="true">›</div>
-                    </div>
-                    <div class="card-faq__answer" id="faq-answer-2" aria-hidden="true">
-                        <div class="card-faq__answer-content">
-                            <?php _e('We implement proven strategies to improve email deliverability including reputation remediation, list hygiene, authentication setup (SPF, DKIM, DMARC), and engagement optimization. We also configure HubSpot email platforms to maximize deliverability while creating compelling content that drives opens and clicks.', 'purposeful-media'); ?>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Card 3 -->
-                <div class="card-faq" data-name="Card/FAQ">
-                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-3">
-                        <div class="card-faq__question-text">
-                            <?php _e('What makes your approach different from other marketing agencies?', 'purposeful-media'); ?>
-                        </div>
-                        <div class="card-faq__arrow" aria-hidden="true">›</div>
-                    </div>
-                    <div class="card-faq__answer" id="faq-answer-3" aria-hidden="true">
-                        <div class="card-faq__answer-content">
-                            <?php _e('We combine AI efficiencies with human marketing expertise, specializing in technically complex B2B industries. Our unique approach involves using the same marketing tools and processes for our own business that we implement for clients, ensuring proven, tested strategies. We focus on delivering measurable marketing outcomes and market-qualified leads.', 'purposeful-media'); ?>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Card 4 -->
-                <div class="card-faq card-faq--open" data-name="Card/FAQ">
-                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="true" aria-controls="faq-answer-4">
-                        <div class="card-faq__question-text">
-                            <?php _e('Who is your ideal B2B client?', 'purposeful-media'); ?>
-                        </div>
-                        <div class="card-faq__arrow" aria-hidden="true">›</div>
-                    </div>
-                    <div class="card-faq__answer" id="faq-answer-4" aria-hidden="false">
-                        <div class="card-faq__answer-content">
-                            <?php _e('Our ideal clients are small to mid-size B2B companies with complex products or services, particularly in industrial, engineering, and SaaS sectors. We work best with business owners planning an exit within 5-7 years, senior executives seeking to modernize their marketing, and professionals looking to establish thought leadership in their industry.', 'purposeful-media'); ?>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Card 5 -->
-                <div class="card-faq" data-name="Card/FAQ">
-                    <div class="card-faq__question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-answer-5">
                         <div class="card-faq__question-text">
                             <?php _e('How do you measure marketing success and ROI?', 'purposeful-media'); ?>
                         </div>
                         <div class="card-faq__arrow" aria-hidden="true">›</div>
                     </div>
-                    <div class="card-faq__answer" id="faq-answer-5" aria-hidden="true">
+                    <div class="card-faq__answer" id="faq-answer-2" aria-hidden="true">
                         <div class="card-faq__answer-content">
                             <?php _e('We track success through key metrics including market-qualified leads (MQLs), email engagement rates, webinar attendance and conversion, content downloads, and ultimately revenue attribution. We use tools like Google Analytics, HubSpot, and SEMrush to provide transparent reporting on campaign performance and ROI.', 'purposeful-media'); ?>
                         </div>
                     </div>
                 </div>
 
+                <?php endif; ?>
+
             </div>
         </div>
-    </section>
+</section>
+    
+    <!-- FAQ Accordion Handler (Test) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.card-faq__question');
+            
+            faqItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    const card = this.closest('.card-faq');
+                    const answer = card.querySelector('.card-faq__answer');
+                    const isOpen = card.classList.contains('card-faq--open');
+                    
+                    // Toggle states
+                    card.classList.toggle('card-faq--open');
+                    this.setAttribute('aria-expanded', !isOpen);
+                    answer.setAttribute('aria-hidden', isOpen);
+                });
+                
+                // Keyboard accessibility
+                item.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        });
+    </script>
 
     <!-- FAQ Accordion JavaScript -->
     <script>
