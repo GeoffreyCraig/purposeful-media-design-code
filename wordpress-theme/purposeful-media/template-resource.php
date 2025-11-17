@@ -282,40 +282,119 @@ get_header();
         </div>
     </div>
 
-    <!-- Content 2 Column Contact -->
+ <!-- Content 2 Column Contact -->
+        <!-- ACF INTEGRATION: v1.0 - 2025-11-18
+             Field Group: Contact Offer Section
+             Fields: content-contact__bg, content-contact__heading, content-contact__body,
+                     content-contact__button, content-contact__button-text, content-contact__image
+             Fallbacks: All fields have intelligent defaults -->
     <div class="content-2column-contact" data-component="content-2column-contact">
         <!-- Background Layer (Desktop/DesktopPlus only) -->
         <div class="content-2column-contact__background" aria-hidden="true">
             <div class="content-2column-contact__background-color"></div>
+            <?php 
+            // ACF Background Image with multiple format support
+            $bg_image = get_field('content-contact__bg');
+            $bg_url = '';
+            
+            if ($bg_image) {
+                if (is_array($bg_image)) {
+                    $bg_url = esc_url($bg_image['url']);
+                } elseif (is_numeric($bg_image)) {
+                    $bg_url = wp_get_attachment_image_url($bg_image, 'full');
+                } else {
+                    $bg_url = esc_url($bg_image);
+                }
+            }
+            
+            // Fallback to default background image
+            if (empty($bg_url)) {
+                $bg_url = get_template_directory_uri() . '/assets/images/shutterstock_2492759463.jpg';
+            }
+            ?>
             <img
                 class="content-2column-contact__background-image"
-                src="<?php echo get_template_directory_uri(); ?>/assets/images/shutterstock_2492759463.jpg"
+                src="<?php echo $bg_url; ?>"
                 alt=""
                 loading="lazy"
             >
         </div>
-
+        
         <!-- Column Group Container -->
         <div class="content-2column-contact__columns">
             <!-- Left Column: Card with Content -->
             <div class="content-2column-contact__card">
+                <?php 
+                // ACF Heading with fallback
+                $heading = get_field('content-contact__heading');
+                if (empty($heading)) {
+                    $heading = __('Ready to put these resources into action?', 'purposeful-media');
+                }
+                ?>
                 <h2 class="content-2column-contact__heading">
-                    <?php _e('Ready to put these resources into action?', 'purposeful-media'); ?>
+                    <?php echo esc_html($heading); ?>
                 </h2>
+                
+                <?php 
+                // ACF Body text with fallback
+                $body = get_field('content-contact__body');
+                if (empty($body)) {
+                    $body = __('Our team is here to help you develop and execute strategies that drive real business results. Schedule a free consultation today to discuss your specific marketing challenges and opportunities.', 'purposeful-media');
+                }
+                ?>
                 <p class="content-2column-contact__body">
-                    <?php _e('Our team is here to help you develop and execute strategies that drive real business results. Schedule a free consultation today to discuss your specific marketing challenges and opportunities.', 'purposeful-media'); ?>
+                    <?php echo esc_html($body); ?>
                 </p>
-                <button class="content-2column-contact__button" type="button" onclick="window.location.href='/contact'">
-                    <span class="content-2column-contact__button-text"><?php _e('Get in Touch', 'purposeful-media'); ?></span>
+                
+                <?php 
+                // ACF Button with fallbacks
+                $button_text = get_field('content-contact__button-text');
+                $button_link = get_field('content-contact__button');
+                
+                if (empty($button_text)) {
+                    $button_text = __('Get in Touch', 'purposeful-media');
+                }
+                if (empty($button_link)) {
+                    $button_link = '/contact';
+                }
+                ?>
+                <button class="content-2column-contact__button" type="button" onclick="window.location.href='<?php echo esc_url($button_link); ?>'">
+                    <span class="content-2column-contact__button-text"><?php echo esc_html($button_text); ?></span>
                 </button>
             </div>
-
+            
             <!-- Right Column: Image -->
             <div class="content-2column-contact__image-wrapper">
+                <?php 
+                // ACF Content Image with multiple format support
+                $content_image = get_field('content-contact__image');
+                $img_url = '';
+                $img_alt = esc_attr__('Professional woman working on tablet in modern office', 'purposeful-media');
+                
+                if ($content_image) {
+                    if (is_array($content_image)) {
+                        $img_url = esc_url($content_image['url']);
+                        $img_alt = !empty($content_image['alt']) ? esc_attr($content_image['alt']) : $img_alt;
+                    } elseif (is_numeric($content_image)) {
+                        $img_url = wp_get_attachment_image_url($content_image, 'full');
+                        $alt_text = get_post_meta($content_image, '_wp_attachment_image_alt', true);
+                        if (!empty($alt_text)) {
+                            $img_alt = esc_attr($alt_text);
+                        }
+                    } else {
+                        $img_url = esc_url($content_image);
+                    }
+                }
+                
+                // Fallback to default content image
+                if (empty($img_url)) {
+                    $img_url = get_template_directory_uri() . '/assets/images/shutterstock_2494045679.jpg';
+                }
+                ?>
                 <img
                     class="content-2column-contact__image"
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/shutterstock_2494045679.jpg"
-                    alt="<?php esc_attr_e('Professional woman working on tablet in modern office', 'purposeful-media'); ?>"
+                    src="<?php echo $img_url; ?>"
+                    alt="<?php echo $img_alt; ?>"
                     loading="lazy"
                 >
             </div>
