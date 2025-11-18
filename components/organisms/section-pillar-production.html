@@ -9,6 +9,36 @@
 
     Note: Includes responsive icon-sizing JavaScript at bottom of file
 -->
+
+<!-- ========================================
+     PILLAR SECTION: Main Content Cards
+     
+     COMPONENT STATUS: ACF-Ready
+     WordPress Integration: template-pillar-page.php
+     ACF Field Group: Pillar Page Text Section
+     
+     Static fields in this file are PLACEHOLDERS.
+     Live WordPress version uses dynamic ACF fields:
+     - Section Headline: pillar_page_headline
+     - Repeater: pillar_page_card
+       - Icon: pillar_card_icon (Select)
+       - Headline: pillar_card_headline (Text)
+       - Text: pillar_card_text (WYSIWYG)
+     
+     Features:
+     - Dynamic card count (unlimited items)
+     - Icon select from sprite sheet
+     - WYSIWYG text for rich formatting
+     - Auto-generated anchor IDs from headlines
+     - Responsive icon sizing JavaScript
+     
+     Fallback Strategy:
+     - Section headline: "Pillar Page Section"
+     - If repeater empty: Shows 2 default cards
+     - Icon not selected: Defaults to "professional"
+     
+     Last Updated: 2025-11-18
+     ======================================== -->
 <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
 <link rel="stylesheet" href="../../styles/molecules-decorative-icon-display.css">
 <link rel="stylesheet" href="../../styles/molecules-pillar-card.css">

@@ -421,18 +421,77 @@ get_header();
         })();
     </script>
 
-    <!-- ========================================
+<!-- ========================================
          PILLAR SECTION: Main Content Cards
+         ACF INTEGRATION: v1.0 - 2025-11-18
+         Field Group: Pillar Page Text Section
+         Fields: pillar_page_headline, pillar_page_card (Repeater),
+                 pillar_card_icon (Select), pillar_card_headline, pillar_card_text
+         Fallbacks: Default cards if repeater empty
          ======================================== -->
     <section class="pillar-section" id="overview">
         <!-- Section Header -->
         <header class="pillar-section__header">
             <div class="pillar-section__headline-wrapper">
-                <h1 class="pillar-section__headline"><?php _e('Pillar Page Section', 'purposeful-media'); ?></h1>
+                <?php 
+                // ACF Section Headline with fallback
+                $section_headline = get_field('pillar_page_headline');
+                if (empty($section_headline)) {
+                    $section_headline = __('Pillar Page Section', 'purposeful-media');
+                }
+                ?>
+                <h1 class="pillar-section__headline"><?php echo esc_html($section_headline); ?></h1>
             </div>
         </header>
 
-        <!-- Card 1: Overview -->
+        <?php 
+        // Check if Pillar Card repeater has rows
+        if (have_rows('pillar_page_card')) :
+            $card_index = 1;
+            
+            while (have_rows('pillar_page_card')) : the_row();
+                $icon = get_sub_field('pillar_card_icon');
+                $headline = get_sub_field('pillar_card_headline');
+                $text = get_sub_field('pillar_card_text');
+                
+                // Skip if headline is empty
+                if (empty($headline)) continue;
+                
+                // Generate anchor ID from headline
+                $anchor_id = sanitize_title($headline);
+                
+                // Default icon if not selected
+                if (empty($icon)) {
+                    $icon = 'professional';
+                }
+        ?>
+
+        <!-- Card <?php echo $card_index; ?>: <?php echo esc_html($headline); ?> -->
+        <div class="pillar-section__card pillar-card">
+            <div class="pillar-card__icon">
+                <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="<?php echo esc_attr($icon); ?>" data-color="navy"></div>
+            </div>
+            <div class="pillar-card__content">
+                <div class="pillar-card__headline"<?php echo ($card_index > 1) ? ' id="' . esc_attr($anchor_id) . '"' : ''; ?>>
+                    <h2 class="pillar-card__heading"><?php echo esc_html($headline); ?></h2>
+                </div>
+                <div class="pillar-card__paragraph">
+                    <div class="pillar-card__text">
+                        <?php echo wp_kses_post($text); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php 
+                $card_index++;
+            endwhile;
+            
+        else : 
+            // Fallback: Default cards if repeater is empty
+        ?>
+
+        <!-- Fallback Card 1: Overview -->
         <div class="pillar-section__card pillar-card">
             <div class="pillar-card__icon">
                 <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="professional" data-color="navy"></div>
@@ -443,15 +502,14 @@ get_header();
                 </div>
                 <div class="pillar-card__paragraph">
                     <div class="pillar-card__text">
-                        <p><?php _e('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.', 'purposeful-media'); ?></p>
-
-                        <p><?php _e('Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.', 'purposeful-media'); ?></p>
+                        <p><?php _e('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique.', 'purposeful-media'); ?></p>
+                        <p><?php _e('Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo.', 'purposeful-media'); ?></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Card 2: Strategy -->
+        <!-- Fallback Card 2: Strategy -->
         <div class="pillar-section__card pillar-card">
             <div class="pillar-card__icon">
                 <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="strategy" data-color="navy"></div>
@@ -462,51 +520,14 @@ get_header();
                 </div>
                 <div class="pillar-card__paragraph">
                     <div class="pillar-card__text">
-                        <p><?php _e('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.', 'purposeful-media'); ?></p>
-
-                        <p><?php _e('Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.', 'purposeful-media'); ?></p>
+                        <p><?php _e('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique.', 'purposeful-media'); ?></p>
+                        <p><?php _e('Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo.', 'purposeful-media'); ?></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Card 3: Methodology -->
-        <div class="pillar-section__card pillar-card">
-            <div class="pillar-card__icon">
-                <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="engage" data-color="navy"></div>
-            </div>
-            <div class="pillar-card__content">
-                <div class="pillar-card__headline" id="method">
-                    <h2 class="pillar-card__heading"><?php _e('Methodology', 'purposeful-media'); ?></h2>
-                </div>
-                <div class="pillar-card__paragraph">
-                    <div class="pillar-card__text">
-                        <p><?php _e('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.', 'purposeful-media'); ?></p>
-
-                        <p><?php _e('Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.', 'purposeful-media'); ?></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 4: Benefits -->
-        <div class="pillar-section__card pillar-card">
-            <div class="pillar-card__icon">
-                <div class="decorative-icon-display decorative-icon-display--xxlarge" data-icon="roi" data-color="navy"></div>
-            </div>
-            <div class="pillar-card__content">
-                <div class="pillar-card__headline" id="benefits">
-                    <h2 class="pillar-card__heading"><?php _e('Benefits', 'purposeful-media'); ?></h2>
-                </div>
-                <div class="pillar-card__paragraph">
-                    <div class="pillar-card__text">
-                        <p><?php _e('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi quis hendrerit dolor magna.', 'purposeful-media'); ?></p>
-
-                        <p><?php _e('Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus pretium quam.', 'purposeful-media'); ?></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endif; ?>
     </section>
 
     <!-- JavaScript for Responsive Icon Sizing -->
