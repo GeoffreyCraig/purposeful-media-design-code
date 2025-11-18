@@ -12,91 +12,161 @@ get_header();
 
 <main class="homepage-wrapper">
 
-    <!-- ========================================
-         HERO SECTION: Hero Carousel
-         ======================================== -->
-    <section class="hero-carousel" id="heroCarousel">
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <!-- Slide 1 - Video -->
-                <div class="carousel-slide active" data-slide="0">
-                    <div class="slide-background">
-                        <video class="slide-video" muted loop playsinline autoplay>
-                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/3427717167-preview.mp4" type="video/mp4">
-                            <!-- Fallback image if video doesn't load -->
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slide-1-fallback.jpg" alt="<?php esc_attr_e('Digital Marketing Solutions', 'purposeful-media'); ?>">
-                        </video>
-                        <div class="slide-overlay"></div>
-                    </div>
-                    <div class="slide-content">
-                        <div class="slide-eyebrow"><?php _e('Transform Your Business', 'purposeful-media'); ?></div>
-                        <h1 class="slide-headline"><?php _e('DIGITAL MARKETING THAT DRIVES RESULTS', 'purposeful-media'); ?></h1>
-                        <div class="slide-description">
-                            <?php _e('We help B2B companies grow into thriving brands through strategic branding, design, and promotion', 'purposeful-media'); ?>
-                        </div>
-                        <a href="#services" class="slide-cta"><?php _e('Get Started', 'purposeful-media'); ?></a>
-                    </div>
-                </div>
+<!-- ========================================
+     HERO SECTION: Hero Video Carousel
+     ========================================
+     ACF Integration: Homepage Hero Carousel
+     Date: November 18, 2025
+     
+     Dynamic Fields (Repeater):
+     - hero_carousel_slides (Repeater)
+       - slide_video (File - Array)
+       - slide_fallback_image (Image - Array)
+       - slide_eyebrow (Text)
+       - slide_headline (Text)
+       - slide_description (Textarea)
+       - slide_cta_text (Text)
+       - slide_cta_link (URL)
+     
+     Fallback Strategy:
+     If ACF repeater returns empty/null, displays three
+     default slides with original static content.
+     
+     Location: Homepage
+     ======================================== -->
+	<section class="hero-carousel" id="heroCarousel">
+		<div class="carousel-container">
+			<div class="carousel-track">
+				<?php 
+				// Check if ACF repeater has rows
+				if (have_rows('hero_carousel_slides')) :
+					$slide_index = 0;
+					while (have_rows('hero_carousel_slides')) : the_row();
+						$video = get_sub_field('slide_video');
+						$fallback_image = get_sub_field('slide_fallback_image');
+						$eyebrow = get_sub_field('slide_eyebrow');
+						$headline = get_sub_field('slide_headline');
+						$description = get_sub_field('slide_description');
+						$cta_text = get_sub_field('slide_cta_text');
+						$cta_link = get_sub_field('slide_cta_link');
+						$active_class = ($slide_index === 0) ? ' active' : '';
+				?>
+					<!-- DEBUG: Row data = <?php print_r(get_row()); ?> -->
+					<div class="carousel-slide<?php echo $active_class; ?>" data-slide="<?php echo $slide_index; ?>">
+						<div class="slide-background">
+							<video class="slide-video" muted loop playsinline<?php echo ($slide_index === 0) ? ' autoplay' : ''; ?>>
+								<source src="<?php echo esc_url($video['url']); ?>" type="video/mp4">
+								<!-- Fallback image if video doesn't load -->
+								<img src="<?php echo esc_url($fallback_image['url']); ?>" alt="<?php echo esc_attr($fallback_image['alt']); ?>">
+							</video>
+							<div class="slide-overlay"></div>
+						</div>
+						<div class="slide-content">
+							<div class="slide-eyebrow"><?php echo esc_html($eyebrow); ?></div>
+							<h1 class="slide-headline"><?php echo esc_html($headline); ?></h1>
+							<div class="slide-description">
+								<?php echo esc_html($description); ?>
+							</div>
+							<a href="<?php echo esc_url($cta_link); ?>" class="slide-cta"><?php echo esc_html($cta_text); ?></a>
+						</div>
+					</div>
+				<?php 
+						$slide_index++;
+					endwhile;
+				else : 
+				// Fallback: Default static slides if no ACF data
+				?>
+					<!-- Slide 1 - Video (Fallback) -->
+					<div class="carousel-slide active" data-slide="0">
+						<div class="slide-background">
+							<video class="slide-video" muted loop playsinline autoplay>
+								<source src="<?php echo get_template_directory_uri(); ?>/assets/videos/3427717167-preview.mp4" type="video/mp4">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slide-1-fallback.jpg" alt="<?php esc_attr_e('Digital Marketing Solutions', 'purposeful-media'); ?>">
+							</video>
+							<div class="slide-overlay"></div>
+						</div>
+						<div class="slide-content">
+							<div class="slide-eyebrow"><?php _e('Transform Your Business', 'purposeful-media'); ?></div>
+							<h1 class="slide-headline"><?php _e('DIGITAL MARKETING THAT DRIVES RESULTS', 'purposeful-media'); ?></h1>
+							<div class="slide-description">
+								<?php _e('We help B2B companies grow into thriving brands through strategic branding, design, and promotion', 'purposeful-media'); ?>
+							</div>
+							<a href="#services" class="slide-cta"><?php _e('Get Started', 'purposeful-media'); ?></a>
+						</div>
+					</div>
 
-                <!-- Slide 2 - Video -->
-                <div class="carousel-slide" data-slide="1">
-                    <div class="slide-background">
-                        <video class="slide-video" muted loop playsinline>
-                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/3432135943-preview.mp4" type="video/mp4">
-                            <!-- Fallback image if video doesn't load -->
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slide-2-fallback.jpg" alt="<?php esc_attr_e('Marketing Strategies', 'purposeful-media'); ?>">
-                        </video>
-                        <div class="slide-overlay"></div>
-                    </div>
-                    <div class="slide-content">
-                        <div class="slide-eyebrow"><?php _e('Proven Strategies', 'purposeful-media'); ?></div>
-                        <h1 class="slide-headline"><?php _e('TURN PROSPECTS INTO BUSINESS VALUE', 'purposeful-media'); ?></h1>
-                        <div class="slide-description">
-                            <?php _e('Strategic email campaigns, thought leadership content, and webinar production that converts', 'purposeful-media'); ?>
-                        </div>
-                        <a href="#services" class="slide-cta"><?php _e('Learn More', 'purposeful-media'); ?></a>
-                    </div>
-                </div>
+					<!-- Slide 2 - Video (Fallback) -->
+					<div class="carousel-slide" data-slide="1">
+						<div class="slide-background">
+							<video class="slide-video" muted loop playsinline>
+								<source src="<?php echo get_template_directory_uri(); ?>/assets/videos/3432135943-preview.mp4" type="video/mp4">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slide-2-fallback.jpg" alt="<?php esc_attr_e('Marketing Strategies', 'purposeful-media'); ?>">
+							</video>
+							<div class="slide-overlay"></div>
+						</div>
+						<div class="slide-content">
+							<div class="slide-eyebrow"><?php _e('Proven Strategies', 'purposeful-media'); ?></div>
+							<h1 class="slide-headline"><?php _e('TURN PROSPECTS INTO BUSINESS VALUE', 'purposeful-media'); ?></h1>
+							<div class="slide-description">
+								<?php _e('Strategic email campaigns, thought leadership content, and webinar production that converts', 'purposeful-media'); ?>
+							</div>
+							<a href="#services" class="slide-cta"><?php _e('Learn More', 'purposeful-media'); ?></a>
+						</div>
+					</div>
 
-                <!-- Slide 3 - Video -->
-                <div class="carousel-slide" data-slide="2">
-                    <div class="slide-background">
-                        <video class="slide-video" muted loop playsinline>
-                            <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/3539535235-preview.mp4" type="video/mp4">
-                            <!-- Fallback image if video doesn't load -->
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slide-3-fallback.jpg" alt="<?php esc_attr_e('Expert Marketing Support', 'purposeful-media'); ?>">
-                        </video>
-                        <div class="slide-overlay"></div>
-                    </div>
-                    <div class="slide-content">
-                        <div class="slide-eyebrow"><?php _e('Expert Support', 'purposeful-media'); ?></div>
-                        <h1 class="slide-headline"><?php _e('YOUR PARTNER IN GROWTH', 'purposeful-media'); ?></h1>
-                        <div class="slide-description">
-                            <?php _e('From struggling businesses to thriving brands - we provide the marketing resources you need', 'purposeful-media'); ?>
-                        </div>
-                        <a href="#contact" class="slide-cta"><?php _e('Start Today', 'purposeful-media'); ?></a>
-                    </div>
-                </div>
-            </div>
+					<!-- Slide 3 - Video (Fallback) -->
+					<div class="carousel-slide" data-slide="2">
+						<div class="slide-background">
+							<video class="slide-video" muted loop playsinline>
+								<source src="<?php echo get_template_directory_uri(); ?>/assets/videos/3539535235-preview.mp4" type="video/mp4">
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero-slide-3-fallback.jpg" alt="<?php esc_attr_e('Expert Marketing Support', 'purposeful-media'); ?>">
+							</video>
+							<div class="slide-overlay"></div>
+						</div>
+						<div class="slide-content">
+							<div class="slide-eyebrow"><?php _e('Expert Support', 'purposeful-media'); ?></div>
+							<h1 class="slide-headline"><?php _e('YOUR PARTNER IN GROWTH', 'purposeful-media'); ?></h1>
+							<div class="slide-description">
+								<?php _e('From struggling businesses to thriving brands - we provide the marketing resources you need', 'purposeful-media'); ?>
+							</div>
+							<a href="#contact" class="slide-cta"><?php _e('Start Today', 'purposeful-media'); ?></a>
+						</div>
+					</div>
+				<?php endif; ?>
+			</div>
 
-            <!-- Navigation Controls -->
-            <div class="carousel-controls">
-                <button class="carousel-nav carousel-nav--prev" aria-label="<?php esc_attr_e('Previous slide', 'purposeful-media'); ?>" type="button">
-                    <span class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="gray" data-direction="left"></span>
-                </button>
-                <button class="carousel-nav carousel-nav--next" aria-label="<?php esc_attr_e('Next slide', 'purposeful-media'); ?>" type="button">
-                    <span class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="gray" data-direction="right"></span>
-                </button>
-            </div>
+			<!-- Navigation Controls -->
+			<div class="carousel-controls">
+				<button class="carousel-nav carousel-nav--prev" aria-label="<?php esc_attr_e('Previous slide', 'purposeful-media'); ?>" type="button">
+					<span class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="gray" data-direction="left"></span>
+				</button>
+				<button class="carousel-nav carousel-nav--next" aria-label="<?php esc_attr_e('Next slide', 'purposeful-media'); ?>" type="button">
+					<span class="ui-icon-display ui-icon-display--xlarge" data-icon="arrow-up" data-color="gray" data-direction="right"></span>
+				</button>
+			</div>
 
-            <!-- Slide Indicators -->
-            <div class="carousel-indicators">
-                <button class="indicator active" data-slide="0" aria-label="<?php esc_attr_e('Go to slide 1', 'purposeful-media'); ?>" type="button"></button>
-                <button class="indicator" data-slide="1" aria-label="<?php esc_attr_e('Go to slide 2', 'purposeful-media'); ?>" type="button"></button>
-                <button class="indicator" data-slide="2" aria-label="<?php esc_attr_e('Go to slide 3', 'purposeful-media'); ?>" type="button"></button>
-            </div>
-        </div>
-    </section>
+			<!-- Slide Indicators (Dynamic) -->
+			<div class="carousel-indicators">
+				<?php 
+				if (have_rows('hero_carousel_slides')) :
+					$indicator_index = 0;
+					while (have_rows('hero_carousel_slides')) : the_row();
+						$active_indicator = ($indicator_index === 0) ? ' active' : '';
+				?>
+					<button class="indicator<?php echo $active_indicator; ?>" data-slide="<?php echo $indicator_index; ?>" aria-label="<?php echo esc_attr(sprintf(__('Go to slide %d', 'purposeful-media'), $indicator_index + 1)); ?>" type="button"></button>
+				<?php 
+						$indicator_index++;
+					endwhile;
+				else :
+				// Fallback indicators
+				?>
+					<button class="indicator active" data-slide="0" aria-label="<?php esc_attr_e('Go to slide 1', 'purposeful-media'); ?>" type="button"></button>
+					<button class="indicator" data-slide="1" aria-label="<?php esc_attr_e('Go to slide 2', 'purposeful-media'); ?>" type="button"></button>
+					<button class="indicator" data-slide="2" aria-label="<?php esc_attr_e('Go to slide 3', 'purposeful-media'); ?>" type="button"></button>
+				<?php endif; ?>
+			</div>
+		</div>
+	</section>
 
     <!-- ========================================
          SECTION 1: SERVICES OVERVIEW
