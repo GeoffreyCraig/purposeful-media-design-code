@@ -12,17 +12,28 @@ get_header();
 
 <main class="about-contact-wrapper">
 
-    <!-- ========================================
-         HERO SECTION: Hero Simple Reverse
-         ======================================== -->
+<!-- ========================================
+     HERO SECTION: Hero Simple Reverse
+     ========================================
+     ACF Integration: ATF Hero Short Reverse
+     Date: November 18, 2025
+     
+     Dynamic Fields:
+     - hero_simple_reverse_headline (Text)
+     
+     Fallback Strategy:
+     If ACF field returns empty/null, displays default
+     text "About Us & Contact" via WordPress i18n function.
+     
+     Location: About & Contact page
+     ======================================== -->
     <section class="hero-simple-reverse" role="banner" aria-label="<?php esc_attr_e('Page Header', 'purposeful-media'); ?>">
-		<!-- Updated to integrate the dynamic ACF Field Group and fallback headline -->
         <div class="hero-simple-reverse__content">
             <h1 class="hero-simple-reverse__headline">
-			<?php 
-				$headline = get_field('hero-simple-reverse__headline');
-				echo esc_html($headline ? $headline : __('About Us & Contact', 'purposeful-media'));
-			?>
+                <?php 
+                    $headline = get_field('hero_simple_reverse_headline');
+                    echo esc_html($headline ? $headline : __('About Us & Contact', 'purposeful-media'));
+                ?>
             </h1>
         </div>
     </section>
