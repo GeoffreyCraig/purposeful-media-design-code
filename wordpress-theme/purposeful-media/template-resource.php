@@ -89,25 +89,95 @@ get_header();
         </div>
     </section>
 
-    <!-- ========================================
-         CONTENT SECTION 3: RESOURCE LIBRARY
-         ======================================== -->
-
-    <!-- Headline Banner -->
-    <div class="card-banner-spacer variant-headline-banner"
-         data-component="card-banner-spacer"
-         data-variant="headline-banner">
-        <div class="banner-spacer-content">
-            <h1 class="banner-headline"><?php _e('Purposeful Media Resource Library', 'purposeful-media'); ?></h1>
-        </div>
-    </div>
-
-    <!-- Section Resources -->
+<!-- Section Resources -->
+    <!-- ACF INTEGRATION: v1.0 - 2025-11-18
+         Field Group: Resources Grid Section
+         Fields: resources_grid (Repeater), resource_thumbnail, resource_icon,
+                 resource_heading, resource_description, resource_button_text, resource_button_link
+         Fallbacks: Default resource cards if repeater empty -->
     <section class="section-resources" data-component="Section/Resources" role="region" aria-label="<?php esc_attr_e('Resource Library', 'purposeful-media'); ?>">
         <div class="section-resources__container">
             <div class="section-resources__grid">
 
-                <!-- Resource Card 1: B2B Marketing ROI -->
+                <?php 
+                // Check if Resources Grid repeater has rows
+                if (have_rows('section-resources__grid')) :               
+                    while (have_rows('section-resources__grid')) : the_row();
+                        $thumbnail = get_sub_field('card-resources__thumbnail');
+                        $icon = get_sub_field('decorative-icon-display'); // Check your actual icon field name
+                        $heading = get_sub_field('card-resources__heading');
+                        $description = get_sub_field('card-resources__cta');
+                        $button_text = get_sub_field('card-resources__button_text');
+                        $button_link = get_sub_field('card-resources__button');
+                        // Skip if heading is empty
+                        if (empty($heading)) continue;
+                        
+                        // Process thumbnail image
+                        $thumb_url = '';
+                        $thumb_alt = esc_attr__('eBook Cover', 'purposeful-media');
+                        
+                        if ($thumbnail) {
+                            if (is_array($thumbnail)) {
+                                $thumb_url = esc_url($thumbnail['url']);
+                                $thumb_alt = !empty($thumbnail['alt']) ? esc_attr($thumbnail['alt']) : $thumb_alt;
+                            } elseif (is_numeric($thumbnail)) {
+                                $thumb_url = wp_get_attachment_image_url($thumbnail, 'medium');
+                                $alt_text = get_post_meta($thumbnail, '_wp_attachment_image_alt', true);
+                                if (!empty($alt_text)) {
+                                    $thumb_alt = esc_attr($alt_text);
+                                }
+                            } else {
+                                $thumb_url = esc_url($thumbnail);
+                            }
+                        }
+                        
+                        // Fallback thumbnail
+                        if (empty($thumb_url)) {
+                            $thumb_url = get_template_directory_uri() . '/assets/images/sample-ebook-cover.jpg';
+                        }
+                        
+                        // Default icon if not selected
+                        if (empty($icon)) {
+                            $icon = 'roi';
+                        }
+                        
+                        // Default button text
+                        if (empty($button_text)) {
+                            $button_text = __('Download', 'purposeful-media');
+                        }
+                        
+                        // Default button link
+                        if (empty($button_link)) {
+                            $button_link = '#';
+                        }
+                ?>
+
+                <!-- Resource Card: <?php echo esc_html($heading); ?> -->
+                <div class="card-resources" data-name="Card/Resources">
+                    <img class="card-resources__thumbnail" src="<?php echo $thumb_url; ?>" alt="<?php echo $thumb_alt; ?>" onerror="this.style.display='none'">
+                    <div class="card-resources__overlay"></div>
+                    <div class="card-resources__content">
+                        <div class="card-resources__header">
+                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="<?php echo esc_attr($icon); ?>" data-color="white"></div>
+                            <h3 class="card-resources__heading"><?php echo esc_html($heading); ?></h3>
+                        </div>
+                        <p class="card-resources__cta">
+                            <?php echo esc_html($description); ?>
+                        </p>
+                        <a href="<?php echo esc_url($button_link); ?>" class="card-resources__button">
+                            <span class="card-resources__button-text"><?php echo esc_html($button_text); ?></span>
+                        </a>
+                    </div>
+                </div>
+
+                <?php 
+                    endwhile;
+                    
+                else : 
+                    // Fallback: Default resource cards if repeater is empty
+                ?>
+
+                <!-- Fallback Resource Card 1 -->
                 <div class="card-resources" data-name="Card/Resources">
                     <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
                     <div class="card-resources__overlay"></div>
@@ -125,7 +195,7 @@ get_header();
                     </div>
                 </div>
 
-                <!-- Resource Card 2: Email Marketing Strategy -->
+                <!-- Fallback Resource Card 2 -->
                 <div class="card-resources" data-name="Card/Resources">
                     <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
                     <div class="card-resources__overlay"></div>
@@ -143,113 +213,7 @@ get_header();
                     </div>
                 </div>
 
-                <!-- Resource Card 3: Webinar Production -->
-                <div class="card-resources" data-name="Card/Resources">
-                    <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
-                    <div class="card-resources__overlay"></div>
-                    <div class="card-resources__content">
-                        <div class="card-resources__header">
-                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="webinar" data-color="white"></div>
-                            <h3 class="card-resources__heading"><?php _e('Webinar Production Checklist', 'purposeful-media'); ?></h3>
-                        </div>
-                        <p class="card-resources__cta">
-                            <?php _e('Everything you need to plan, produce, and promote successful B2B webinars.', 'purposeful-media'); ?>
-                        </p>
-                        <a href="/resources/webinar-checklist" class="card-resources__button">
-                            <span class="card-resources__button-text"><?php _e('Download Checklist', 'purposeful-media'); ?></span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Resource Card 4: Buyer Persona Template -->
-                <div class="card-resources" data-name="Card/Resources">
-                    <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
-                    <div class="card-resources__overlay"></div>
-                    <div class="card-resources__content">
-                        <div class="card-resources__header">
-                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="persona" data-color="white"></div>
-                            <h3 class="card-resources__heading"><?php _e('Buyer Persona Template', 'purposeful-media'); ?></h3>
-                        </div>
-                        <p class="card-resources__cta">
-                            <?php _e('Build detailed buyer personas that drive targeted marketing strategies.', 'purposeful-media'); ?>
-                        </p>
-                        <a href="/resources/buyer-persona-template" class="card-resources__button">
-                            <span class="card-resources__button-text"><?php _e('Get Template', 'purposeful-media'); ?></span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Resource Card 5: Content Calendar -->
-                <div class="card-resources" data-name="Card/Resources">
-                    <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
-                    <div class="card-resources__overlay"></div>
-                    <div class="card-resources__content">
-                        <div class="card-resources__header">
-                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="schedule" data-color="white"></div>
-                            <h3 class="card-resources__heading"><?php _e('Content Calendar Template', 'purposeful-media'); ?></h3>
-                        </div>
-                        <p class="card-resources__cta">
-                            <?php _e('Plan and organize your content strategy with our proven calendar framework.', 'purposeful-media'); ?>
-                        </p>
-                        <a href="/resources/content-calendar" class="card-resources__button">
-                            <span class="card-resources__button-text"><?php _e('Download Template', 'purposeful-media'); ?></span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Resource Card 6: Lead Scoring Model -->
-                <div class="card-resources" data-name="Card/Resources">
-                    <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
-                    <div class="card-resources__overlay"></div>
-                    <div class="card-resources__content">
-                        <div class="card-resources__header">
-                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="strategy" data-color="white"></div>
-                            <h3 class="card-resources__heading"><?php _e('Lead Scoring Model Guide', 'purposeful-media'); ?></h3>
-                        </div>
-                        <p class="card-resources__cta">
-                            <?php _e('Implement effective lead scoring to prioritize and convert your best prospects.', 'purposeful-media'); ?>
-                        </p>
-                        <a href="/resources/lead-scoring-guide" class="card-resources__button">
-                            <span class="card-resources__button-text"><?php _e('Get the Guide', 'purposeful-media'); ?></span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Resource Card 7: SEO Strategy Guide -->
-                <div class="card-resources" data-name="Card/Resources">
-                    <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
-                    <div class="card-resources__overlay"></div>
-                    <div class="card-resources__content">
-                        <div class="card-resources__header">
-                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="expertise" data-color="white"></div>
-                            <h3 class="card-resources__heading"><?php _e('B2B SEO Strategy Guide', 'purposeful-media'); ?></h3>
-                        </div>
-                        <p class="card-resources__cta">
-                            <?php _e('Master search engine optimization tactics designed specifically for B2B companies.', 'purposeful-media'); ?>
-                        </p>
-                        <a href="/resources/seo-strategy-guide" class="card-resources__button">
-                            <span class="card-resources__button-text"><?php _e('Download Guide', 'purposeful-media'); ?></span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Resource Card 8: Marketing Automation Playbook -->
-                <div class="card-resources" data-name="Card/Resources">
-                    <img class="card-resources__thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/sample-ebook-cover.jpg" alt="<?php esc_attr_e('eBook Cover', 'purposeful-media'); ?>" onerror="this.style.display='none'">
-                    <div class="card-resources__overlay"></div>
-                    <div class="card-resources__content">
-                        <div class="card-resources__header">
-                            <div class="decorative-icon-display decorative-icon-display--large" data-icon="efficiency" data-color="white"></div>
-                            <h3 class="card-resources__heading"><?php _e('Marketing Automation Playbook', 'purposeful-media'); ?></h3>
-                        </div>
-                        <p class="card-resources__cta">
-                            <?php _e('Automate your marketing workflows to nurture leads and drive conversions at scale.', 'purposeful-media'); ?>
-                        </p>
-                        <a href="/resources/marketing-automation" class="card-resources__button">
-                            <span class="card-resources__button-text"><?php _e('Get Playbook', 'purposeful-media'); ?></span>
-                        </a>
-                    </div>
-                </div>
+                <?php endif; ?>
 
             </div>
         </div>

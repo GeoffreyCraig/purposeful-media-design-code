@@ -23,6 +23,38 @@
         - Desktop (1150-1919px): 3 columns
         - DesktopPlus (1920px+): 4 columns
     -->
+    !-- ========================================
+     RESOURCES SECTION: Resource Library Grid
+     
+     COMPONENT STATUS: ACF-Ready
+     WordPress Integration: template-resource.php
+     ACF Field Group: Resources Grid Section
+     
+     Static resource cards in this file are PLACEHOLDERS.
+     Live WordPress version uses dynamic ACF repeater:
+     - Repeater: section-resources__grid
+       - Thumbnail: card-resources__thumbnail (Image)
+       - Icon: decorative-icon-display (Select)
+       - Heading: card-resources__heading (Text)
+       - Description: card-resources__cta (Text Area, 125 char limit)
+       - Button Text: card-resources__button_text (Text)
+       - Button Link: card-resources__button (URL)
+     
+     Features:
+     - Dynamic card count (unlimited resources)
+     - Icon select from sprite sheet
+     - Multi-format image handling for thumbnails
+     - Icon initialization JavaScript preserved
+     
+     Fallback Strategy:
+     - If repeater empty: Shows 2 default resource cards
+     - Thumbnail: sample-ebook-cover.jpg
+     - Icon: "roi"
+     - Button text: "Download"
+     
+     Last Updated: 2025-11-18
+     ======================================== -->
+     
     <section class="section-resources" data-component="Section/Resources" role="region" aria-label="Resources">
         <div class="section-resources__container">
             <div class="section-resources__grid">
