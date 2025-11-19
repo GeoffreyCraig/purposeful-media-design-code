@@ -59,17 +59,42 @@ get_header();
     </section>
 
     <!-- ========================================
-         CONTENT SECTION 2: FEATURED RESOURCE
-         ======================================== -->
-
-    <!-- Headline Banner -->
-    <div class="card-banner-spacer variant-headline-banner"
-         data-component="card-banner-spacer"
-         data-variant="headline-banner">
-        <div class="banner-spacer-content">
-            <h1 class="banner-headline"><?php _e('Featured Resource', 'purposeful-media'); ?></h1>
-        </div>
+     HEADLINE: H1 Headline Banner Top
+     ========================================
+     ACF Integration: H1 Headline Banner Top
+     Date: November 19, 2025
+     
+     Dynamic Fields:
+     - h1_headline_banner_top (Text)
+     
+     Fallback Strategy:
+     About: "About Us"
+     Homepage: "Our Services"
+     Pillar: "Resources"
+     Resources: "Featured Resource"
+     
+     Location: About, Homepage, Pillar, Resources
+     ======================================== -->
+<!-- Headline Banner: Top -->
+<div class="card-banner-spacer variant-headline-banner" id="services">
+    <div class="banner-spacer-content">
+        <?php 
+            $headline_top = get_field('h1_headline_banner_top');
+            if ($headline_top) {
+                echo '<h1 class="banner-headline">' . esc_html($headline_top) . '</h1>';
+            } elseif (is_front_page()) {
+                echo '<h1 class="banner-headline">' . esc_html__('OUR SERVICES', 'purposeful-media') . '</h1>';
+            } elseif (is_page('about-contact')) {
+                echo '<h1 class="banner-headline">' . esc_html__('ABOUT US', 'purposeful-media') . '</h1>';
+            } elseif (is_page('resources')) {
+                echo '<h1 class="banner-headline">' . esc_html__('FEATURED RESOURCE', 'purposeful-media') . '</h1>';
+            } else {
+                // Pillar pages
+                echo '<h1 class="banner-headline">' . esc_html__('RESOURCES', 'purposeful-media') . '</h1>';
+            }
+        ?>
     </div>
+</div>
 
 <!-- ========================================
      CONTENT: Download Offer Section
@@ -141,6 +166,31 @@ get_header();
         </div>
     </div>
 </section>
+<!-- ========================================
+     HEADLINE: H1 Headline Banner Mid
+     ========================================
+     ACF Integration: H1 Headline Banner Mid
+     Date: November 19, 2025
+     
+     Dynamic Fields:
+     - h1_headline_banner_mid (Text)
+     
+     Fallback Strategy:
+     Resources: "Resource Library"
+     
+     Location: Resources
+     ======================================== -->
+    <!-- Headline Banner: Mid -->
+    <div class="card-banner-spacer variant-headline-banner">
+        <div class="banner-spacer-content">
+            <h1 class="banner-headline">
+                <?php 
+                    $headline_mid = get_field('h1_headline_banner_mid');
+                    echo esc_html($headline_mid ? $headline_mid : __('RESOURCE LIBRARY', 'purposeful-media'));
+                ?>
+            </h1>
+        </div>
+    </div>
 
 <!-- Section Resources -->
     <!-- ACF INTEGRATION: v1.0 - 2025-11-18
@@ -290,12 +340,41 @@ get_header();
          CONTENT SECTION 4: START THE CONVERSATION
          ======================================== -->
 
-    <!-- Headline Banner -->
-    <div class="card-banner-spacer variant-headline-banner"
-         data-component="card-banner-spacer"
-         data-variant="headline-banner">
+    <!-- ========================================
+     HEADLINE: H1 Headline Banner Bottom
+     ========================================
+     ACF Integration: H1 Headline Banner Bottom
+     Date: November 19, 2025
+     
+     Dynamic Fields:
+     - h1_headline_banner_bottom (Text)
+     
+     Fallback Strategy:
+     About: "Contact Us"
+     Homepage: "Resources"
+     Pillar: "FAQ"
+     Resources: "Start the Conversation"
+     
+     Location: About, Homepage, Pillar, Resources
+     ======================================== -->
+    <!-- Headline Banner: Bottom -->
+    <div class="card-banner-spacer variant-headline-banner">
         <div class="banner-spacer-content">
-            <h1 class="banner-headline"><?php _e('Start the Conversation', 'purposeful-media'); ?></h1>
+            <?php 
+                $headline_bottom = get_field('h1_headline_banner_bottom');
+                if ($headline_bottom) {
+                    echo '<h1 class="banner-headline">' . esc_html($headline_bottom) . '</h1>';
+                } elseif (is_front_page()) {
+                    echo '<h1 class="banner-headline">' . esc_html__('RESOURCES', 'purposeful-media') . '</h1>';
+                } elseif (is_page('about-contact')) {
+                    echo '<h1 class="banner-headline">' . esc_html__('CONTACT US', 'purposeful-media') . '</h1>';
+                } elseif (is_page('resources')) {
+                    echo '<h1 class="banner-headline">' . esc_html__('START THE CONVERSATION', 'purposeful-media') . '</h1>';
+                } else {
+                    // Pillar pages
+                    echo '<h1 class="banner-headline">' . esc_html__('FAQ', 'purposeful-media') . '</h1>';
+                }
+            ?>
         </div>
     </div>
 

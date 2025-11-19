@@ -551,17 +551,43 @@ get_header();
         window.addEventListener('resize', updateIconSizes);
     </script>
 
-    <!-- ========================================
-         HEADLINE BANNER: Resources
-         ======================================== -->
-    <div class="card-banner-spacer variant-headline-banner"
-         id="resources"
-         data-component="card-banner-spacer"
-         data-variant="headline-banner">
-        <div class="banner-spacer-content">
-            <h1 class="banner-headline"><?php _e('Resources', 'purposeful-media'); ?></h1>
-        </div>
-    </div>
+	<!-- ========================================
+		 HEADLINE: H1 Headline Banner Top
+		 ========================================
+		 ACF Integration: H1 Headline Banner Top
+		 Date: November 19, 2025
+
+		 Dynamic Fields:
+		 - h1_headline_banner_top (Text)
+
+		 Fallback Strategy:
+		 About: "About Us"
+		 Homepage: "Our Services"
+		 Pillar: "Resources"
+		 Resources: "Featured Resource"
+
+		 Location: About, Homepage, Pillar, Resources
+		 ======================================== -->
+	<!-- Headline Banner: Top -->
+		<div class="card-banner-spacer variant-headline-banner" id="services">
+			<div class="banner-spacer-content">
+				<?php 
+					$headline_top = get_field('h1_headline_banner_top');
+					if ($headline_top) {
+						echo '<h1 class="banner-headline">' . esc_html($headline_top) . '</h1>';
+					} elseif (is_front_page()) {
+						echo '<h1 class="banner-headline">' . esc_html__('OUR SERVICES', 'purposeful-media') . '</h1>';
+					} elseif (is_page('about-contact')) {
+						echo '<h1 class="banner-headline">' . esc_html__('ABOUT US', 'purposeful-media') . '</h1>';
+					} elseif (is_page('resources')) {
+						echo '<h1 class="banner-headline">' . esc_html__('FEATURED RESOURCE', 'purposeful-media') . '</h1>';
+					} else {
+						// Pillar pages
+						echo '<h1 class="banner-headline">' . esc_html__('RESOURCES', 'purposeful-media') . '</h1>';
+					}
+				?>
+			</div>
+		</div>
 
 	<!-- ========================================
 		 HEADLINE: H2 Headline Reverse Top
@@ -763,16 +789,43 @@ get_header();
 		</div>
 	</section>
 
-    <!-- ========================================
-         HEADLINE BANNER: FAQ
-         ======================================== -->
-    <div class="card-banner-spacer variant-headline-banner"
-         data-component="card-banner-spacer"
-         data-variant="headline-banner">
-        <div class="banner-spacer-content">
-            <h1 class="banner-headline"><?php _e('FAQ', 'purposeful-media'); ?></h1>
-        </div>
-    </div>
+	<!-- ========================================
+		 HEADLINE: H1 Headline Banner Bottom
+		 ========================================
+		 ACF Integration: H1 Headline Banner Bottom
+		 Date: November 19, 2025
+
+		 Dynamic Fields:
+		 - h1_headline_banner_bottom (Text)
+
+		 Fallback Strategy:
+		 About: "Contact Us"
+		 Homepage: "Resources"
+		 Pillar: "FAQ"
+		 Resources: "Start the Conversation"
+
+		 Location: About, Homepage, Pillar, Resources
+		 ======================================== -->
+	<!-- Headline Banner: Bottom -->
+		<div class="card-banner-spacer variant-headline-banner">
+			<div class="banner-spacer-content">
+				<?php 
+					$headline_bottom = get_field('h1_headline_banner_bottom');
+					if ($headline_bottom) {
+						echo '<h1 class="banner-headline">' . esc_html($headline_bottom) . '</h1>';
+					} elseif (is_front_page()) {
+						echo '<h1 class="banner-headline">' . esc_html__('RESOURCES', 'purposeful-media') . '</h1>';
+					} elseif (is_page('about-contact')) {
+						echo '<h1 class="banner-headline">' . esc_html__('CONTACT US', 'purposeful-media') . '</h1>';
+					} elseif (is_page('resources')) {
+						echo '<h1 class="banner-headline">' . esc_html__('START THE CONVERSATION', 'purposeful-media') . '</h1>';
+					} else {
+						// Pillar pages
+						echo '<h1 class="banner-headline">' . esc_html__('FAQ', 'purposeful-media') . '</h1>';
+					}
+				?>
+			</div>
+		</div>
 
 <!-- ========================================
          FAQ SECTION: Frequently Asked Questions

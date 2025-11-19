@@ -13,6 +13,31 @@
      Background: Navy (--banner-bg)
      Border: Gold bottom (--banner-accent)
      ================================================= -->
+     <!-- ========================================
+     COMPONENT: H1 Headline Banner
+     ========================================
+     ACF Field Groups: 
+     - H1 Headline Banner Top
+     - H1 Headline Banner Mid
+     - H1 Headline Banner Bottom
+     Integration Date: November 19, 2025
+     
+     This component has THREE associated ACF Pro Field Groups
+     for pages with multiple instances.
+     
+     See WordPress theme file for PHP implementation
+     with get_field() calls and page-specific fallbacks.
+     
+     Fields:
+     - h1_headline_banner_top (Text)
+     - h1_headline_banner_mid (Text)
+     - h1_headline_banner_bottom (Text)
+     
+     Fallback logic uses is_front_page() and is_page()
+     to determine default text per template.
+     
+     Location: About, Homepage, Pillar, Resources
+     ======================================== -->
 <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
 <link rel="stylesheet" href="../../styles/atoms-banner-spacer.css">
 
