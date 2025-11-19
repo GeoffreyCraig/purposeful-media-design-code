@@ -124,55 +124,91 @@ get_header();
         });
     </script>
 
-    <!-- Content 2-Column Graphic -->
-    <div class="content-2column-graphic">
-        <!-- Background Image -->
-        <div class="content-2column-graphic__background">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/shutterstock_2085055825.jpg"
-                 alt=""
-                 class="content-2column-graphic__background-image">
-        </div>
+	<!-- ========================================
+		 CONTENT: 2-Column CTA Section
+		 ========================================
+		 ACF Integration: 2-Column CTA Section
+		 Date: November 18, 2025
 
-        <!-- Content Container -->
-        <div class="content-2column-graphic__container">
-            <!-- Left Column -->
-            <div class="content-2column-graphic__column content-2column-graphic__column--left">
-                <!-- Transform Card -->
-                <div class="teaser-card">
-                    <div class="teaser-card__headline">
-                        <h2 class="teaser-card__title">
-                           <?php _e('Ready to transform your marketing efforts?', 'purposeful-media'); ?>
-                        </h2>
-                    </div>
-                    <p class="teaser-card__description">
-                        <?php _e('Schedule a free consultation to discuss your specific challenges and opportunities.', 'purposeful-media'); ?>
-                    </p>
-                    <button class="teaser-card__button teaser-card__button--gold">
-                        <span class="teaser-card__button-text"><?php _e('Schedule', 'purposeful-media'); ?></span>
-                    </button>
-                </div>
-            </div>
+		 Dynamic Fields:
+		 - two_column_background (Image)
+		 - left_card_heading (Text)
+		 - left_card_text (Text Area)
+		 - left_card_button_text (Text)
+		 - left_card_button_link (URL)
+		 - right_card_heading (Text)
+		 - right_card_text (Text Area)
+		 - right_card_button_text (Text)
+		 - right_card_button_link (URL)
 
-            <!-- Right Column -->
-            <div class="content-2column-graphic__column content-2column-graphic__column--right">
-                <!-- Ready to Grow Card -->
-                <div class="teaser-card">
-                    <div class="teaser-card__headline">
-                        <h2 class="teaser-card__title">
-                            <?php _e('Have questions first?', 'purposeful-media'); ?>
-                        </h2>
-                    </div>
-                    <p class="teaser-card__description">
-                        <?php _e('Get in touch to start a conversation about how we can help your business grow.', 'purposeful-media'); ?>
-                    </p>
-                    <button class="teaser-card__button teaser-card__button--navy">
-                        <span class="teaser-card__button-text"><?php _e('Get in Touch', 'purposeful-media'); ?></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+		 Fallback Strategy:
+		 If ACF fields return empty/null, displays default
+		 "Schedule" and "Get in Touch" CTA content.
 
+		 Location: Homepage, Pillar, Resources
+		 ======================================== -->
+	<div class="content-2column-graphic">
+		<?php
+			$background = get_field('two_column_background');
+			$left_heading = get_field('left_card_heading');
+			$left_text = get_field('left_card_text');
+			$left_button_text = get_field('left_card_button_text');
+			$left_button_link = get_field('left_card_button_link');
+			$right_heading = get_field('right_card_heading');
+			$right_text = get_field('right_card_text');
+			$right_button_text = get_field('right_card_button_text');
+			$right_button_link = get_field('right_card_button_link');
+		?>
+
+		<!-- Background Image -->
+		<div class="content-2column-graphic__background">
+			<img src="<?php echo esc_url($background ? $background['url'] : get_template_directory_uri() . '/assets/images/shutterstock_2085055825.jpg'); ?>"
+				 alt="<?php echo esc_attr($background ? $background['alt'] : ''); ?>"
+				 class="content-2column-graphic__background-image">
+		</div>
+		<!-- Content Container -->
+		<div class="content-2column-graphic__container">
+			<!-- Left Column -->
+			<div class="content-2column-graphic__column content-2column-graphic__column--left">
+				<!-- Transform Card -->
+				<div class="teaser-card">
+					<div class="teaser-card__headline">
+						<h2 class="teaser-card__title">
+							<?php echo esc_html($left_heading ? $left_heading : __('Ready to transform your marketing efforts?', 'purposeful-media')); ?>
+						</h2>
+					</div>
+					<p class="teaser-card__description">
+						<?php echo esc_html($left_text ? $left_text : __('Schedule a free consultation to discuss your specific challenges and opportunities.', 'purposeful-media')); ?>
+					</p>
+					<a href="<?php echo esc_url($left_button_link ? $left_button_link : '#'); ?>" class="teaser-card__button teaser-card__button--gold">
+						<span class="teaser-card__button-text">
+							<?php echo esc_html($left_button_text ? $left_button_text : __('Schedule', 'purposeful-media')); ?>
+						</span>
+					</a>
+				</div>
+			</div>
+			<!-- Right Column -->
+			<div class="content-2column-graphic__column content-2column-graphic__column--right">
+				<!-- Ready to Grow Card -->
+				<div class="teaser-card">
+					<div class="teaser-card__headline">
+						<h2 class="teaser-card__title">
+							<?php echo esc_html($right_heading ? $right_heading : __('Have questions first?', 'purposeful-media')); ?>
+						</h2>
+					</div>
+					<p class="teaser-card__description">
+						<?php echo esc_html($right_text ? $right_text : __('Get in touch to start a conversation about how we can help your business grow.', 'purposeful-media')); ?>
+					</p>
+					<a href="<?php echo esc_url($right_button_link ? $right_button_link : '#'); ?>" class="teaser-card__button teaser-card__button--navy">
+						<span class="teaser-card__button-text">
+							<?php echo esc_html($right_button_text ? $right_button_text : __('Get in Touch', 'purposeful-media')); ?>
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
     <script>
         // Content 2-Column Graphic: Button Click Handlers
         document.addEventListener('DOMContentLoaded', function() {
