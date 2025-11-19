@@ -1,7 +1,7 @@
 <!-- =================================================
      HEADLINE REVERSE ATOM
      Component: HeadlineReverse
-     Purpose: White banner with navy headline and navy top border
+     Purpose: White banner with navy headline
      Version: 1.0 (Production-ready)
      Date: 2025-11-05
 
@@ -11,8 +11,31 @@
 
      Typography: H2 uppercase navy text
      Background: White (--bg-primary)
-     Border: Navy top (--bg-brand)
+     Border: None
      ================================================= -->
+<!-- ========================================
+     COMPONENT: H2 Headline Reverse
+     ========================================
+     ACF Field Groups: 
+     - H2 Headline Reverse Top
+     - H2 Headline Reverse Mid
+     Integration Date: November 19, 2025
+     
+     This component has TWO associated ACF Pro Field Groups
+     for pages with multiple instances.
+     
+     See WordPress theme file for PHP implementation
+     with get_field() calls and page-specific fallbacks.
+     
+     Fields:
+     - h2_headline_reverse_top (Text)
+     - h2_headline_reverse_mid (Text)
+     
+     Fallback logic uses is_front_page() to determine
+     which default text to display per template.
+     
+     Location: Homepage, Pillar (2 instances each)
+     ======================================== -->
 <link rel="stylesheet" href="../../styles/variables-v4.0-20251027.css">
 <link rel="stylesheet" href="../../styles/atoms-banner-spacer.css">
 

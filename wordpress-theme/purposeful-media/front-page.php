@@ -283,90 +283,140 @@ get_header();
         </div>
     </div>
 
-    <!-- Headline Reverse: Featured Resource -->
-    <div class="card-banner-spacer variant-headline-reverse">
-        <div class="banner-spacer-content">
-            <h1 class="banner-headline"><?php _e('Featured Resource Download', 'purposeful-media'); ?></h1>
-        </div>
-    </div>
+	<!-- ========================================
+		 HEADLINE: H2 Headline Reverse Top
+		 ========================================
+		 ACF Integration: H2 Headline Reverse Top
+		 Date: November 19, 2025
 
-<!-- ========================================
-     CONTENT: Download Offer Section
-     ========================================
-     ACF Integration: Download Offer Section
-     Date: November 18, 2025
-     
-     Dynamic Fields:
-     - resource_background_image (Image)
-     - resource_thumbnail (Image)
-     - resource_card_title (Text)
-     - resource_card_description (Text Area)
-     - resource_button_text (Text)
-     - resource_button_link (URL)
-     
-     Fallback Strategy:
-     If ACF fields return empty/null, displays default
-     B2B Marketing ROI Guide content.
-     
-     Location: Homepage, Pillar, Resources
-     ======================================== -->
-<!-- Content 2 Column Resource -->
-<section class="content-2column-resource" role="region" aria-labelledby="featured-resource-heading">
-    <?php
-        $background = get_field('resource_background_image');
-        $thumbnail = get_field('resource_thumbnail');
-        $title = get_field('resource_card_title');
-        $description = get_field('resource_card_description');
-        $button_text = get_field('resource_button_text');
-        $button_link = get_field('resource_button_link');
-    ?>
-    <div class="section-background" aria-hidden="true">
-        <img src="<?php echo esc_url($background ? $background['url'] : get_template_directory_uri() . '/assets/images/shutterstock_1421446100.jpg'); ?>" 
-             alt="" 
-             loading="lazy">
-    </div>
-    <div class="content-container">
-        <div class="column-group">
-            <div class="left-column">
-                <div class="image-wrapper">
-                    <img
-                        src="<?php echo esc_url($thumbnail ? $thumbnail['url'] : get_template_directory_uri() . '/assets/images/sample-ebook-cover.jpg'); ?>"
-                        alt="<?php echo esc_attr($thumbnail ? $thumbnail['alt'] : __('Complete Guide to B2B Marketing ROI eBook Cover', 'purposeful-media')); ?>"
-                        class="ebook-image"
-                        loading="lazy"
-                    >
-                </div>
-            </div>
-            <div class="right-column">
-                <h2 id="featured-resource-heading" class="card-title">
-                    <?php echo esc_html($title ? $title : __('Complete Guide to B2B Marketing ROI', 'purposeful-media')); ?>
-                </h2>
-                <?php if ($description) : ?>
-                    <div class="card-description">
-                        <?php echo wp_kses_post(wpautop($description)); ?>
-                    </div>
-                <?php else : ?>
-                    <p class="card-description">
-                        <?php _e('Discover proven strategies to measure, track, and optimize your marketing investment returns. This comprehensive guide walks you through establishing KPIs, implementing analytics frameworks, and demonstrating clear value to stakeholders. Learn how leading B2B companies are achieving 3-5x ROI improvements through data-driven marketing optimization.', 'purposeful-media'); ?>
-                    </p>
-                    <p class="card-description">
-                        <?php _e('Inside this guide, you\'ll find practical templates, calculation frameworks, and real-world case studies that show you exactly how to quantify your marketing impact and make strategic decisions based on solid data.', 'purposeful-media'); ?>
-                    </p>
-                <?php endif; ?>
-                <a href="<?php echo esc_url($button_link ? $button_link : '/resources/b2b-marketing-roi-guide'); ?>" class="resource-button">
-                    <?php echo esc_html($button_text ? $button_text : __('Download Free Guide', 'purposeful-media')); ?>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+		 Dynamic Fields:
+		 - h2_headline_reverse_top (Text)
 
-    <!-- Headline Reverse: Blog Section -->
-    <div class="card-banner-spacer variant-headline-reverse">
-        <div class="banner-spacer-content">
-            <h1 class="banner-headline"><?php _e('The Latest From Our Blog', 'purposeful-media'); ?></h1>
-        </div>
-    </div>
+		 Fallback Strategy:
+		 If ACF field returns empty/null, displays default text.
+		 Homepage: "Featured Resource Download"
+		 Pillar: "The Latest From Our Blog"
+
+		 Location: Homepage, Pillar
+		 ======================================== -->
+	<!-- Headline Reverse: Top -->
+	<div class="card-banner-spacer variant-headline-reverse">
+		<div class="banner-spacer-content">
+			<?php 
+				$headline_top = get_field('h2_headline_reverse_top');
+				if ($headline_top) {
+					echo '<h1 class="banner-headline">' . esc_html($headline_top) . '</h1>';
+				} elseif (is_front_page()) {
+					echo '<h1 class="banner-headline">' . esc_html__('Featured Resource Download', 'purposeful-media') . '</h1>';
+				} else {
+					echo '<h1 class="banner-headline">' . esc_html__('The Latest From Our Blog', 'purposeful-media') . '</h1>';
+				}
+			?>
+		</div>
+	</div>
+
+	<!-- ========================================
+		 CONTENT: Download Offer Section
+		 ========================================
+		 ACF Integration: Download Offer Section
+		 Date: November 18, 2025
+
+		 Dynamic Fields:
+		 - resource_background_image (Image)
+		 - resource_thumbnail (Image)
+		 - resource_card_title (Text)
+		 - resource_card_description (Text Area)
+		 - resource_button_text (Text)
+		 - resource_button_link (URL)
+
+		 Fallback Strategy:
+		 If ACF fields return empty/null, displays default
+		 B2B Marketing ROI Guide content.
+
+		 Location: Homepage, Pillar, Resources
+		 ======================================== -->
+	<!-- Content 2 Column Resource -->
+	<section class="content-2column-resource" role="region" aria-labelledby="featured-resource-heading">
+		<?php
+			$background = get_field('resource_background_image');
+			$thumbnail = get_field('resource_thumbnail');
+			$title = get_field('resource_card_title');
+			$description = get_field('resource_card_description');
+			$button_text = get_field('resource_button_text');
+			$button_link = get_field('resource_button_link');
+		?>
+		<div class="section-background" aria-hidden="true">
+			<img src="<?php echo esc_url($background ? $background['url'] : get_template_directory_uri() . '/assets/images/shutterstock_1421446100.jpg'); ?>" 
+				 alt="" 
+				 loading="lazy">
+		</div>
+		<div class="content-container">
+			<div class="column-group">
+				<div class="left-column">
+					<div class="image-wrapper">
+						<img
+							src="<?php echo esc_url($thumbnail ? $thumbnail['url'] : get_template_directory_uri() . '/assets/images/sample-ebook-cover.jpg'); ?>"
+							alt="<?php echo esc_attr($thumbnail ? $thumbnail['alt'] : __('Complete Guide to B2B Marketing ROI eBook Cover', 'purposeful-media')); ?>"
+							class="ebook-image"
+							loading="lazy"
+						>
+					</div>
+				</div>
+				<div class="right-column">
+					<h2 id="featured-resource-heading" class="card-title">
+						<?php echo esc_html($title ? $title : __('Complete Guide to B2B Marketing ROI', 'purposeful-media')); ?>
+					</h2>
+					<?php if ($description) : ?>
+						<div class="card-description">
+							<?php echo wp_kses_post(wpautop($description)); ?>
+						</div>
+					<?php else : ?>
+						<p class="card-description">
+							<?php _e('Discover proven strategies to measure, track, and optimize your marketing investment returns. This comprehensive guide walks you through establishing KPIs, implementing analytics frameworks, and demonstrating clear value to stakeholders. Learn how leading B2B companies are achieving 3-5x ROI improvements through data-driven marketing optimization.', 'purposeful-media'); ?>
+						</p>
+						<p class="card-description">
+							<?php _e('Inside this guide, you\'ll find practical templates, calculation frameworks, and real-world case studies that show you exactly how to quantify your marketing impact and make strategic decisions based on solid data.', 'purposeful-media'); ?>
+						</p>
+					<?php endif; ?>
+					<a href="<?php echo esc_url($button_link ? $button_link : '/resources/b2b-marketing-roi-guide'); ?>" class="resource-button">
+						<?php echo esc_html($button_text ? $button_text : __('Download Free Guide', 'purposeful-media')); ?>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ========================================
+		 HEADLINE: H2 Headline Reverse Mid
+		 ========================================
+		 ACF Integration: H2 Headline Reverse Mid
+		 Date: November 19, 2025
+
+		 Dynamic Fields:
+		 - h2_headline_reverse_mid (Text)
+
+		 Fallback Strategy:
+		 If ACF field returns empty/null, displays default text.
+		 Homepage: "The Latest From Our Blog"
+		 Pillar: "Featured Resource Download"
+
+		 Location: Homepage, Pillar
+		 ======================================== -->
+	<!-- Headline Reverse: Mid -->
+	<div class="card-banner-spacer variant-headline-reverse">
+		<div class="banner-spacer-content">
+			<?php 
+				$headline_mid = get_field('h2_headline_reverse_mid');
+				if ($headline_mid) {
+					echo '<h1 class="banner-headline">' . esc_html($headline_mid) . '</h1>';
+				} elseif (is_front_page()) {
+					echo '<h1 class="banner-headline">' . esc_html__('The Latest From Our Blog', 'purposeful-media') . '</h1>';
+				} else {
+					echo '<h1 class="banner-headline">' . esc_html__('Featured Resource Download', 'purposeful-media') . '</h1>';
+				}
+			?>
+		</div>
+	</div>
 
     <!-- Blog Group Teaser -->
     <section class="blog-group blog-group--teaser">

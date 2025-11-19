@@ -563,14 +563,37 @@ get_header();
         </div>
     </div>
 
-    <!-- ========================================
-         HEADLINE REVERSE: Blog
-         ======================================== -->
-    <div class="card-banner-spacer variant-headline-reverse">
-        <div class="banner-spacer-content">
-            <h1 class="banner-headline"><?php _e('The Latest From Our Blog', 'purposeful-media'); ?></h1>
-        </div>
-    </div>
+	<!-- ========================================
+		 HEADLINE: H2 Headline Reverse Top
+		 ========================================
+		 ACF Integration: H2 Headline Reverse Top
+		 Date: November 19, 2025
+
+		 Dynamic Fields:
+		 - h2_headline_reverse_top (Text)
+
+		 Fallback Strategy:
+		 If ACF field returns empty/null, displays default text.
+		 Homepage: "Featured Resource Download"
+		 Pillar: "The Latest From Our Blog"
+
+		 Location: Homepage, Pillar
+		 ======================================== -->
+	<!-- Headline Reverse: Top -->
+	<div class="card-banner-spacer variant-headline-reverse">
+		<div class="banner-spacer-content">
+			<?php 
+				$headline_top = get_field('h2_headline_reverse_top');
+				if ($headline_top) {
+					echo '<h1 class="banner-headline">' . esc_html($headline_top) . '</h1>';
+				} elseif (is_front_page()) {
+					echo '<h1 class="banner-headline">' . esc_html__('Featured Resource Download', 'purposeful-media') . '</h1>';
+				} else {
+					echo '<h1 class="banner-headline">' . esc_html__('The Latest From Our Blog', 'purposeful-media') . '</h1>';
+				}
+			?>
+		</div>
+	</div>
 
     <!-- ========================================
          BLOG GROUP TEASER
@@ -637,16 +660,37 @@ get_header();
         </div>
     </section>
 
-    <!-- ========================================
-         FEATURED RESOURCE SECTION
-         ======================================== -->
+	<!-- ========================================
+		 HEADLINE: H2 Headline Reverse Mid
+		 ========================================
+		 ACF Integration: H2 Headline Reverse Mid
+		 Date: November 19, 2025
 
-    <!-- Headline Reverse: Featured Resource -->
-    <div class="card-banner-spacer variant-headline-reverse">
-        <div class="banner-spacer-content">
-            <h1 class="banner-headline"><?php _e('Featured Resource Download', 'purposeful-media'); ?></h1>
-        </div>
-    </div>
+		 Dynamic Fields:
+		 - h2_headline_reverse_mid (Text)
+
+		 Fallback Strategy:
+		 If ACF field returns empty/null, displays default text.
+		 Homepage: "The Latest From Our Blog"
+		 Pillar: "Featured Resource Download"
+
+		 Location: Homepage, Pillar
+		 ======================================== -->
+	<!-- Headline Reverse: Mid -->
+	<div class="card-banner-spacer variant-headline-reverse">
+		<div class="banner-spacer-content">
+			<?php 
+				$headline_mid = get_field('h2_headline_reverse_mid');
+				if ($headline_mid) {
+					echo '<h1 class="banner-headline">' . esc_html($headline_mid) . '</h1>';
+				} elseif (is_front_page()) {
+					echo '<h1 class="banner-headline">' . esc_html__('The Latest From Our Blog', 'purposeful-media') . '</h1>';
+				} else {
+					echo '<h1 class="banner-headline">' . esc_html__('Featured Resource Download', 'purposeful-media') . '</h1>';
+				}
+			?>
+		</div>
+	</div>
 
 	<!-- ========================================
 		 CONTENT: Download Offer Section
