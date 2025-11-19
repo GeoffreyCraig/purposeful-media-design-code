@@ -12,15 +12,32 @@ get_header();
 
 <main class="interior-wrapper">
 
-    <!-- ========================================
-         HERO SECTION: Hero Simple Default
-         ======================================== -->
-    <section class="hero-simple" role="banner" aria-label="<?php esc_attr_e('Page Header', 'purposeful-media'); ?>">
-        <div class="hero-simple__content">
-            <h1 class="hero-simple__headline"><?php the_title(); ?></h1>
-        </div>
-    </section>
+	<!-- ========================================
+		 HERO SECTION: Hero Simple Default
+		 ========================================
+		 ACF Integration: ATF Hero Simple Default
+		 Date: November 19, 2025
 
+		 Dynamic Fields:
+		 - hero_simple_headline (Text)
+
+		 Fallback Strategy:
+		 If ACF field returns empty/null, displays the
+		 WordPress page title via the_title().
+
+		 Location: Interior, Resources
+		 ======================================== -->
+	<section class="hero-simple" role="banner" aria-label="<?php esc_attr_e('Page Header', 'purposeful-media'); ?>">
+		<div class="hero-simple__content">
+			<h1 class="hero-simple__headline">
+				<?php 
+					$headline = get_field('hero_simple_headline');
+					echo esc_html($headline ? $headline : get_the_title());
+				?>
+			</h1>
+		</div>
+	</section>
+	
     <!-- ========================================
          SECTION 1: CONTENT (WIDE LAYOUT)
          ======================================== -->
