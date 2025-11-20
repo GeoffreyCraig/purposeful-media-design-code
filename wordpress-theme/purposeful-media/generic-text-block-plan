@@ -1,0 +1,223 @@
+# Generic Text Block Field Group with Style Tokens
+
+## Implementation Specification for Claude Code
+
+---
+
+## Overview
+
+### Objective
+
+Create a single, reusable ACF field group for text blocks that uses style tokens to handle contextual variations across all page templates. This replaces multiple hard-coded text sections with one flexible, admin-friendly component.
+
+### Benefits
+
+- Single source of truth for text block content
+- Style variation controlled via tokens, not duplicate field groups
+- Simplified WordPress admin experience
+- Reduced maintenance overhead
+- Consistent rendering across all templates
+
+---
+
+## ACF Field Group Structure
+
+### Field Group Name
+
+`text-block-generic`
+
+### Fields
+
+#### Content Fields
+
+| Field Name | Field Type | Description |
+|------------|------------|-------------|
+| `text_block_heading` | Text | Optional heading for the text block |
+| `text_block_content` | WYSIWYG | Main content area with formatting controls |
+| `text_block_style_variant` | Select | Dropdown to choose style token set |
+
+#### Style Variant Options
+
+The `text_block_style_variant` select field should include:
+
+- `default` - Standard body text styling
+- `featured` - Emphasized content (larger text, different spacing)
+- `sidebar` - Condensed styling for narrow contexts
+- `cta` - Call-to-action styling (may include background treatment)
+
+**Add additional variants as needed based on template audit**
+
+---
+
+## Style Token System
+
+### CSS Variables Structure
+
+```css
+/* Text Block Base Tokens */
+--text-block-padding: var(--spacing-md);
+--text-block-margin: var(--spacing-lg);
+--text-block-max-width: var(--content-width);
+
+/* Default Variant */
+--text-block-default-font-size: var(--font-size-body);
+--text-block-default-line-height: var(--line-height-body);
+--text-block-default-color: var(--color-text-primary);
+
+/* Featured Variant */
+--text-block-featured-font-size: var(--font-size-lg);
+--text-block-featured-line-height: var(--line-height-relaxed);
+--text-block-featured-color: var(--color-text-primary);
+
+/* Sidebar Variant */
+--text-block-sidebar-font-size: var(--font-size-sm);
+--text-block-sidebar-line-height: var(--line-height-tight);
+--text-block-sidebar-color: var(--color-text-secondary);
+
+/* CTA Variant */
+--text-block-cta-font-size: var(--font-size-body);
+--text-block-cta-line-height: var(--line-height-body);
+--text-block-cta-color: var(--color-text-primary);
+--text-block-cta-background: var(--color-background-accent);
+--text-block-cta-padding: var(--spacing-lg);
+```
+
+---
+
+## PHP Template Integration
+
+### Component Structure
+
+```php
+/* ========================================
+   COMPONENT: Text Block Generic
+   ACF Field Group: text-block-generic
+   Style Variants: default, featured, sidebar, cta
+   Used in: All page templates
+   ======================================== */
+
+<?php
+$text_heading = get_sub_field('text_block_heading');
+$text_content = get_sub_field('text_block_content');
+$style_variant = get_sub_field('text_block_style_variant') ?: 'default';
+?>
+
+<section class="text-block text-block--<?php echo esc_attr($style_variant); ?>">
+  <div class="text-block__container">
+    <?php if ($text_heading) : ?>
+      <h2 class="text-block__heading"><?php echo esc_html($text_heading); ?></h2>
+    <?php endif; ?>
+    
+    <?php if ($text_content) : ?>
+      <div class="text-block__content">
+        <?php echo $text_content; ?>
+      </div>
+    <?php endif; ?>
+  </div>
+</section>
+```
+
+### CSS Class Structure (BEM)
+
+```css
+.text-block { }
+.text-block--default { }
+.text-block--featured { }
+.text-block--sidebar { }
+.text-block--cta { }
+.text-block__container { }
+.text-block__heading { }
+.text-block__content { }
+```
+
+---
+
+## Implementation Steps
+
+### Step 1: Create ACF Field Group
+
+1. In WordPress Admin → ACF → Field Groups
+2. Create new field group: `text-block-generic`
+3. Add fields as specified above
+4. Set location rules for all relevant page templates
+5. Configure WYSIWYG toolbar options (limit to essential formatting)
+
+### Step 2: Add Style Tokens to CSS Variables File
+
+1. Open `variables-v4.0.css` (or current version)
+2. Add text block token definitions
+3. Ensure tokens reference existing design system variables
+
+### Step 3: Create Component CSS
+
+1. Create or update component stylesheet
+2. Define `.text-block` base styles
+3. Define variant modifier styles using tokens
+4. Ensure responsive behavior at all breakpoints
+
+### Step 4: Update Page Templates
+
+1. Identify all templates currently using hard-coded text blocks
+2. Replace hard-coded sections with ACF flexible content or repeater calling the generic text block
+3. Test each template for correct rendering
+
+### Step 5: Verification
+
+1. Test all style variants in WordPress admin
+2. Verify rendering on all page templates
+3. Check responsive behavior (Mobile, Tablet, Desktop, DesktopPlus)
+4. Validate HTML output
+
+---
+
+## Templates Requiring Updates
+
+*List all page templates that currently contain hard-coded text blocks:*
+
+- [ ] Homepage
+- [ ] Pillar page
+- [ ] Interior page
+- [ ] About/Contact page
+- [ ] Blog page
+- [ ] Resources page
+
+---
+
+## Files to Modify
+
+### New Files
+
+- Component CSS for text block (if not consolidating into main stylesheet)
+
+### Modified Files
+
+- `variables-v4.0.css` - Add text block tokens
+- `style.css` or component stylesheet - Add text block styles
+- Individual page template PHP files - Replace hard-coded text with ACF integration
+
+---
+
+## Testing Checklist
+
+- [ ] Field group appears correctly in WordPress admin
+- [ ] WYSIWYG editor functions properly
+- [ ] All style variants selectable
+- [ ] Default variant renders correctly
+- [ ] Featured variant renders correctly
+- [ ] Sidebar variant renders correctly
+- [ ] CTA variant renders correctly
+- [ ] Heading displays when populated
+- [ ] Heading hides when empty
+- [ ] Content renders with proper formatting
+- [ ] Responsive behavior verified at all breakpoints
+- [ ] BEM class naming consistent
+- [ ] Tokens reference design system correctly
+
+---
+
+## Notes
+
+- This implementation prioritizes simplicity in the WordPress admin experience
+- Style variants can be expanded as needs evolve
+- The component structure is designed for future inclusion in the Phase 2 master component template
+- WYSIWYG toolbar should be limited to prevent admin users from overriding design system typography

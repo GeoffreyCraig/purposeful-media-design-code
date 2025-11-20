@@ -743,6 +743,110 @@
   /* Currently using standard nav and text tokens */
 }
 
+/* -------------------------------------------------
+   TEXT BLOCK COMPONENT (NEW - Week 47 Thursday)
+   Generic text block style tokens for ACF integration
+   ------------------------------------------------- */
+:root {
+  /* Base Text Block Tokens */
+  --text-block-padding-y: var(--space-16); /* 64px vertical */
+  --text-block-padding-y-tablet: var(--space-12); /* 48px tablet */
+  --text-block-padding-y-mobile: var(--space-10); /* 40px mobile */
+
+  --text-block-container-padding-x: 40px;
+  --text-block-container-padding-x-mobile: 20px;
+
+  --text-block-content-max-width: 800px;
+  --text-block-section-margin: var(--space-12); /* 48px */
+  --text-block-section-margin-mobile: var(--space-8); /* 32px */
+
+  /* Default Variant Tokens */
+  --text-block-default-bg: var(--color-white);
+  --text-block-default-text: var(--color-neutral-600);
+  --text-block-default-heading: var(--color-primary-700);
+  --text-block-default-max-width: 800px;
+
+  /* Wide Variant Tokens */
+  --text-block-wide-bg: var(--color-white);
+  --text-block-wide-text: var(--color-neutral-600);
+  --text-block-wide-heading: var(--color-primary-700);
+  --text-block-wide-max-width: 100%; /* Full width */
+  --text-block-wide-padding-x: 64px;
+  --text-block-wide-padding-x-mobile: 32px;
+
+  /* Narrative Variant Tokens (Blog posts) */
+  --text-block-narrative-bg: var(--color-white);
+  --text-block-narrative-text: var(--color-neutral-600);
+  --text-block-narrative-heading: var(--color-primary-700);
+  --text-block-narrative-max-width: 800px;
+  --text-block-narrative-lead-text: var(--color-neutral-700);
+
+  /* Pillar Variant Tokens (Guides with gray background) */
+  --text-block-pillar-bg: var(--color-neutral-50);
+  --text-block-pillar-text: var(--color-neutral-600);
+  --text-block-pillar-heading: var(--color-primary-700);
+  --text-block-pillar-max-width: 900px;
+  --text-block-pillar-lead-text: var(--color-neutral-700);
+
+  /* Featured Variant Tokens (Emphasized content) */
+  --text-block-featured-bg: var(--color-neutral-50);
+  --text-block-featured-text: var(--color-neutral-700);
+  --text-block-featured-heading: var(--color-primary-700);
+  --text-block-featured-max-width: 800px;
+  --text-block-featured-padding: var(--space-10); /* 40px */
+  --text-block-featured-border: 2px solid var(--color-accent-500);
+  --text-block-featured-radius: var(--radius-medium);
+
+  /* Sidebar Variant Tokens (Condensed style) */
+  --text-block-sidebar-bg: var(--color-neutral-50);
+  --text-block-sidebar-text: var(--color-neutral-600);
+  --text-block-sidebar-heading: var(--color-primary-700);
+  --text-block-sidebar-max-width: 400px;
+  --text-block-sidebar-padding: var(--space-6); /* 24px */
+  --text-block-sidebar-font-size: var(--text-paragraph-small-size);
+  --text-block-sidebar-line-height: var(--text-paragraph-small-height);
+
+  /* Icon Integration Tokens */
+  --text-block-icon-callout-bg: var(--color-neutral-50);
+  --text-block-icon-callout-border-color: var(--color-accent-500);
+  --text-block-icon-callout-padding: var(--space-8); /* 32px */
+  --text-block-icon-callout-gap: var(--space-6); /* 24px */
+
+  --text-block-icon-grid-gap: var(--space-8); /* 32px */
+  --text-block-icon-grid-gap-mobile: var(--space-5); /* 20px */
+  --text-block-icon-grid-min-width: 250px;
+
+  /* List Tokens */
+  --text-block-list-margin-y: var(--space-8); /* 32px */
+  --text-block-list-margin-y-mobile: var(--space-6); /* 24px */
+  --text-block-list-padding-left: var(--space-8); /* 32px */
+  --text-block-list-padding-left-mobile: var(--space-6); /* 24px */
+  --text-block-list-item-margin: var(--space-5); /* 20px */
+  --text-block-list-item-margin-mobile: var(--space-4); /* 16px */
+
+  /* Typography Spacing Tokens */
+  --text-block-h1-margin-bottom: var(--space-8); /* 32px */
+  --text-block-h2-margin-top: var(--space-12); /* 48px */
+  --text-block-h2-margin-top-mobile: var(--space-8); /* 32px */
+  --text-block-h2-margin-bottom: var(--space-6); /* 24px */
+  --text-block-h2-margin-bottom-mobile: var(--space-5); /* 20px */
+  --text-block-h3-margin-top: var(--space-10); /* 40px */
+  --text-block-h3-margin-top-mobile: var(--space-6); /* 24px */
+  --text-block-h3-margin-bottom: var(--space-5); /* 20px */
+  --text-block-h3-margin-bottom-mobile: var(--space-4); /* 16px */
+
+  --text-block-paragraph-margin: var(--space-6); /* 24px */
+  --text-block-paragraph-lead-margin: var(--space-8); /* 32px */
+
+  /* Quote Tokens */
+  --text-block-quote-margin-y: var(--space-12); /* 48px */
+  --text-block-quote-margin-y-mobile: var(--space-8); /* 32px */
+  --text-block-quote-padding: var(--space-10); /* 40px */
+  --text-block-quote-padding-mobile: var(--space-6); /* 24px */
+  --text-block-quote-bg: var(--color-neutral-50);
+  --text-block-quote-border-color: var(--color-accent-500);
+}
+
 /* =================================================
    END OF VARIABLES
    ================================================= */

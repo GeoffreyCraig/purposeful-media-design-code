@@ -1,0 +1,247 @@
+{
+    "key": "group_text_block_generic",
+    "title": "Text Block - Generic",
+    "fields": [
+        {
+            "key": "field_text_block_sections",
+            "label": "Text Block Sections",
+            "name": "text_block_sections",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add one or more text block sections. Each section can have its own heading, content, and style variant.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_section_heading",
+            "button_label": "Add Text Block Section",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_section_heading",
+                    "label": "Section Heading",
+                    "name": "section_heading",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional heading for this text block section (H2 level)",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "Section Heading",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_section_content",
+                    "label": "Section Content",
+                    "name": "section_content",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Main content for this section. Use the toolbar for basic formatting.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_section_style_variant",
+                    "label": "Style Variant",
+                    "name": "section_style_variant",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Choose the visual style for this text block section",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "default": "Default (Standard body text)",
+                        "wide": "Wide (Full width layout)",
+                        "narrative": "Narrative (Blog post style)",
+                        "pillar": "Pillar (Guide style with gray background)",
+                        "featured": "Featured (Emphasized content)",
+                        "sidebar": "Sidebar (Condensed style)"
+                    },
+                    "default_value": "default",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_section_icon",
+                    "label": "Section Icon (Optional)",
+                    "name": "section_icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Optional decorative icon to display with this section",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50%",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "": "No Icon",
+                        "accelerate": "Accelerate",
+                        "attract": "Attract",
+                        "contact": "Contact",
+                        "delight": "Delight",
+                        "download": "Download",
+                        "efficiency": "Efficiency",
+                        "email": "Email",
+                        "engage": "Engage",
+                        "exit": "Exit",
+                        "expertise": "Expertise",
+                        "inbound": "Inbound",
+                        "momentum": "Momentum",
+                        "news": "News",
+                        "persona": "Persona",
+                        "professional": "Professional",
+                        "roi": "ROI",
+                        "schedule": "Schedule",
+                        "strategy": "Strategy",
+                        "unit": "Unit",
+                        "value": "Value",
+                        "webinar": "Webinar"
+                    },
+                    "default_value": "",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 1,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_section_icon_color",
+                    "label": "Icon Color",
+                    "name": "section_icon_color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Color for the section icon",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_section_icon",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50%",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "navy": "Navy Blue",
+                        "gray": "Gray",
+                        "dark": "Dark",
+                        "white": "White"
+                    },
+                    "default_value": "navy",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_section_anchor",
+                    "label": "Anchor ID (Optional)",
+                    "name": "section_anchor",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional anchor ID for sticky menu linking (e.g., 'overview', 'benefits'). Use lowercase with hyphens, no spaces.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "section-anchor-id",
+                    "prepend": "#",
+                    "append": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "default"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-about-contact.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-pillar-page.php"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-resource.php"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Generic text block component with flexible content sections and style variants. Can be used across multiple page templates.",
+    "show_in_rest": 0
+}
