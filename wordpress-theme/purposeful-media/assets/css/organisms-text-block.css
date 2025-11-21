@@ -35,6 +35,107 @@
 @import url('variables-v4.0-20251027.css');
 
 /* ====================================
+   BASE TYPOGRAPHY CLASSES (GLOBAL)
+   Week 47 Thursday - Added for ACF text blocks
+   ==================================== */
+
+/* Headline Base Classes - Lato Font */
+.headline {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    color: var(--color-primary-700, #1B1464);
+    margin: 0;
+}
+
+.headline--h1 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h1-size, 36px);
+    line-height: var(--text-h1-height, 54px);
+    font-weight: var(--text-h1-weight, 700);
+    color: var(--color-primary-700, #1B1464);
+}
+
+.headline--h2 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h2-size, 30px);
+    line-height: var(--text-h2-height, 45px);
+    font-weight: var(--text-h2-weight, 700);
+    color: var(--color-primary-700, #1B1464);
+}
+
+.headline--h3 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h3-size, 24px);
+    line-height: var(--text-h3-height, 36px);
+    font-weight: var(--text-h3-weight, 700);
+    color: var(--color-primary-700, #1B1464);
+}
+
+.headline--h4 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h4-size, 21px);
+    line-height: var(--text-h4-height, 31.5px);
+    font-weight: var(--text-h4-weight, 700);
+    color: var(--color-neutral-600, #51585E);
+}
+
+.headline--h5 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h5-size, 18px);
+    line-height: var(--text-h5-height, 27px);
+    font-weight: var(--text-h5-weight, 700);
+    color: var(--color-neutral-600, #51585E);
+}
+
+.headline--h6 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h6-size, 16px);
+    line-height: var(--text-h6-height, 24px);
+    font-weight: var(--text-h6-weight, 700);
+    color: var(--color-neutral-600, #51585E);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Paragraph Base Classes - Open Sans Font */
+.paragraph {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    color: var(--color-neutral-600, #51585E);
+    margin: 0;
+}
+
+.paragraph--lead {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: var(--text-lead-size, 21px);
+    line-height: var(--text-lead-height, 31.5px);
+    font-weight: var(--text-lead-weight, 400);
+    color: var(--color-neutral-700, #363A3E);
+}
+
+.paragraph--default {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: var(--text-default-size, 18px);
+    line-height: var(--text-default-height, 27px);
+    font-weight: var(--text-default-weight, 400);
+    color: var(--color-neutral-600, #51585E);
+}
+
+.paragraph--small {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: var(--text-small-size, 12px);
+    line-height: var(--text-small-height, 18px);
+    font-weight: var(--text-small-weight, 400);
+    color: var(--color-neutral-500, #6C757D);
+}
+
+.paragraph--large {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: var(--text-large-size, 24px);
+    line-height: var(--text-large-height, 36px);
+    font-weight: var(--text-large-weight, 600);
+    color: var(--color-neutral-700, #363A3E);
+}
+
+/* ====================================
    BASE TEXT BLOCK CONTAINER
    ==================================== */
 .text-block {
@@ -158,12 +259,20 @@
 /* Headlines */
 .text-block h1,
 .text-block .headline--h1 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h1-size, 36px);
+    line-height: var(--text-h1-height, 54px);
+    font-weight: var(--text-h1-weight, 700);
     margin-bottom: var(--space-8, 32px);
     color: var(--color-primary-700, #1B1464);
 }
 
 .text-block h2,
 .text-block .headline--h2 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h2-size, 30px);
+    line-height: var(--text-h2-height, 45px);
+    font-weight: var(--text-h2-weight, 700);
     margin-top: var(--space-12, 48px);
     margin-bottom: var(--space-6, 24px);
     color: var(--color-primary-700, #1B1464);
@@ -175,6 +284,10 @@
 
 .text-block h3,
 .text-block .headline--h3 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h3-size, 24px);
+    line-height: var(--text-h3-height, 36px);
+    font-weight: var(--text-h3-weight, 700);
     margin-top: var(--space-10, 40px);
     margin-bottom: var(--space-5, 20px);
     color: var(--color-primary-700, #1B1464);
@@ -182,6 +295,10 @@
 
 .text-block h4,
 .text-block .headline--h4 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h4-size, 21px);
+    line-height: var(--text-h4-height, 31.5px);
+    font-weight: var(--text-h4-weight, 700);
     margin-top: var(--space-8, 32px);
     margin-bottom: var(--space-4, 16px);
     color: var(--color-neutral-600, #51585E);
@@ -189,6 +306,10 @@
 
 .text-block h5,
 .text-block .headline--h5 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h5-size, 18px);
+    line-height: var(--text-h5-height, 27px);
+    font-weight: var(--text-h5-weight, 700);
     margin-top: var(--space-6, 24px);
     margin-bottom: var(--space-3, 12px);
     color: var(--color-neutral-600, #51585E);
@@ -196,6 +317,10 @@
 
 .text-block h6,
 .text-block .headline--h6 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: var(--text-h6-size, 16px);
+    line-height: var(--text-h6-height, 24px);
+    font-weight: var(--text-h6-weight, 700);
     margin-top: var(--space-5, 20px);
     margin-bottom: var(--space-2, 8px);
     color: var(--color-neutral-600, #51585E);
@@ -206,6 +331,10 @@
 /* Paragraphs */
 .text-block p,
 .text-block .paragraph {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: var(--text-default-size, 18px);
+    line-height: var(--text-default-height, 27px);
+    font-weight: var(--text-default-weight, 400);
     margin-bottom: var(--space-6, 24px);
     color: var(--color-neutral-600, #51585E);
 }

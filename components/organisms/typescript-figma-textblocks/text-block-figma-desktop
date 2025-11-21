@@ -1,0 +1,345 @@
+<div
+  style="
+    background: var(--secondary, #eceeef);
+    padding: var(--space-16, 64px);
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-8, 32px);
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    min-width: 1150px;
+    max-width: 1919px;
+    position: relative;
+  "
+>
+  <div
+    style="
+      background: var(--secondary, #eceeef);
+      padding: var(--space-6, 24px) var(--space-4, 16px) var(--space-6, 24px)
+        var(--space-4, 16px);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4, 16px);
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+      "
+    >
+      <div
+        style="
+          color: var(--heading, #1b1464);
+          text-align: left;
+          font-family: 'Lato-Heavy', sans-serif;
+          font-size: 36px;
+          line-height: 54px;
+          font-weight: 400;
+          text-transform: uppercase;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Lorem ipsum dolor sit amet
+      </div>
+      <div
+        style="
+          color: var(--body, #51585e);
+          text-align: left;
+          font-family: 'OpenSans-Regular', sans-serif;
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Turpis egestas
+        integer eget aliquet nibh praesent tristique. Fermentum posuere urna nec
+        tincidunt. Mi sit amet mauris commodo quis imperdiet. Massa ultricies mi
+        quis hendrerit dolor magna.
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+      "
+    >
+      <div
+        style="
+          color: var(--heading, #1b1464);
+          text-align: left;
+          font-family: 'Lato-Heavy', sans-serif;
+          font-size: 24px;
+          line-height: 36px;
+          font-weight: 400;
+          text-transform: uppercase;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Sed do eiusmod tempor incididunt
+      </div>
+      <div
+        style="
+          color: var(--body, #51585e);
+          text-align: left;
+          font-family: 'OpenSans-Regular', sans-serif;
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Risus in hendrerit gravida rutrum quisque. Imperdiet massa tincidunt
+        nunc pulvinar sapien et ligula. Malesuada nunc vel risus commodo. Vitae
+        auctor eu augue ut lectus arcu bibendum. Vitae sapien pellentesque
+        habitant morbi tristique senectus. Sit amet cursus sit amet. Egestas
+        purus viverra accumsan in nisl nisi. Tempus egestas sed sed risus
+        pretium quam. 
+      </div>
+    </div>
+    <div
+      style="
+        padding: var(--space-3, 12px) 0px var(--space-3, 12px) 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+      "
+    >
+      <div
+        style="
+          color: var(--heading, #1b1464);
+          text-align: left;
+          font-family: 'Lato-Heavy', sans-serif;
+          font-size: 30px;
+          line-height: 45px;
+          font-weight: 400;
+          text-transform: uppercase;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Turpis egestas integer eget aliquet nibh praesent tristique
+      </div>
+      <div
+        style="
+          color: var(--body, #51585e);
+          text-align: left;
+          font-family: 'OpenSans-Regular', sans-serif;
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Porttitor lacus luctus accumsan tortor. Id ornare arcu odio ut sem
+        nulla. Sit amet nulla facilisi morbi tempus iaculis urna id. Blandit
+        aliquam etiam erat velit scelerisque in dictum non. Sapien pellentesque
+        habitant morbi tristique senectus. Posuere urna nec tincidunt praesent
+        semper feugiat. Nisi porta lorem mollis aliquam. Platea dictumst
+        vestibulum rhoncus est pellentesque elit ullamcorper. 
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+      "
+    >
+      <div
+        style="
+          color: var(--heading, #1b1464);
+          text-align: left;
+          font-family: 'Lato-Heavy', sans-serif;
+          font-size: 24px;
+          line-height: 36px;
+          font-weight: 400;
+          text-transform: uppercase;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Fermentum posuere urna nec tincidunt
+      </div>
+      <div
+        style="
+          color: var(--body, #51585e);
+          text-align: left;
+          font-family: 'OpenSans-Regular', sans-serif;
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum
+        dui. At auctor urna nunc id. In hac habitasse platea dictumst. Dictumst
+        quisque sagittis purus sit amet volutpat. Ultrices in iaculis nunc sed
+        augue. Dictum fusce ut placerat orci nulla pellentesque dignissim. Vitae
+        proin. 
+      </div>
+      <div
+        style="
+          color: var(--body, #51585e);
+          text-align: left;
+          font-family: 'OpenSans-Regular', sans-serif;
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        <ul class="bulleted-points-span">
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Sed do eiusmod tempor incididunt</li>
+          <li>Labore et dolore magna aliqua</li>
+          <li>Fermentum posuere urna nec tincidunt</li>
+          <li>Mi sit amet mauris commodo quis imperdiet</li>
+          <li>Massa ultricies mi quis hendrerit dolor magna</li>
+        </ul>
+      </div>
+      <div
+        style="
+          color: var(--body, #51585e);
+          text-align: left;
+          font-family: 'OpenSans-Regular', sans-serif;
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Vulputate enim nulla aliquet porttitor lacus luctus accumsan. Ut ornare
+        lectus sit amet est placerat. Ullamcorper eget nulla facilisi etiam
+        dignissim diam. Orci a scelerisque purus semper eget duis at tellus.
+        Vitae auctor eu augue ut lectus. Viverra suspendisse potenti nullam ac
+        tortor vitae purus faucibus ornare. 
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+      "
+    >
+      <div
+        style="
+          color: var(--heading, #1b1464);
+          text-align: left;
+          font-family: 'Lato-Heavy', sans-serif;
+          font-size: 24px;
+          line-height: 36px;
+          font-weight: 400;
+          text-transform: uppercase;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Fermentum posuere urna nec tincidunt
+      </div>
+      <div
+        style="
+          color: var(--body, #51585e);
+          text-align: left;
+          font-family: 'OpenSans-Regular', sans-serif;
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum
+        dui. At auctor urna nunc id. In hac habitasse platea dictumst. Dictumst
+        quisque sagittis purus sit amet volutpat. Ultrices in iaculis nunc sed
+        augue. Dictum fusce ut placerat orci nulla pellentesque dignissim. Vitae
+        proin. 
+      </div>
+      <div
+        style="
+          color: var(--body, #51585e);
+          text-align: left;
+          font-family: 'OpenSans-Regular', sans-serif;
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        <ul class="bulleted-points-span">
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Sed do eiusmod tempor incididunt</li>
+          <li>Labore et dolore magna aliqua</li>
+          <li>Fermentum posuere urna nec tincidunt</li>
+          <li>Mi sit amet mauris commodo quis imperdiet</li>
+          <li>Massa ultricies mi quis hendrerit dolor magna</li>
+        </ul>
+      </div>
+      <div
+        style="
+          color: var(--body, #51585e);
+          text-align: left;
+          font-family: 'OpenSans-Regular', sans-serif;
+          font-size: 18px;
+          line-height: 27px;
+          font-weight: 400;
+          position: relative;
+          align-self: stretch;
+        "
+      >
+        Vulputate enim nulla aliquet porttitor lacus luctus accumsan. Ut ornare
+        lectus sit amet est placerat. Ullamcorper eget nulla facilisi etiam
+        dignissim diam. Orci a scelerisque purus semper eget duis at tellus.
+        Vitae auctor eu augue ut lectus. Viverra suspendisse potenti nullam ac
+        tortor vitae purus faucibus ornare. 
+      </div>
+    </div>
+  </div>
+</div>

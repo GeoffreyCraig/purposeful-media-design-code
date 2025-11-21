@@ -1,9 +1,11 @@
 # Generic Text Block - Quick Start Guide
-**Week 47 Thursday - November 20, 2025**
+
+- **Week 47 Thursday - November 20, 2025**
 
 ## 5-Minute Setup
 
 ### 1. Import ACF Field Group (2 minutes)
+
 ```
 WordPress Admin → ACF → Tools → Import Field Groups
 → Upload: acf-text-block-generic.json
@@ -11,6 +13,7 @@ WordPress Admin → ACF → Tools → Import Field Groups
 ```
 
 ### 2. Test on Interior Page (3 minutes)
+
 ```
 WordPress Admin → Pages → Edit "Policy Page" (or any interior page)
 → Scroll to "Text Block - Generic" field group
@@ -29,8 +32,10 @@ WordPress Admin → Pages → Edit "Policy Page" (or any interior page)
 
 ### Replace Hard-Coded Text Blocks:
 
-**OLD (Hard-coded):**
+- **OLD (Hard-coded):**
+
 ```php
+
 <section class="text-block text-block--wide">
     <div class="text-block__container">
         <article class="text-block__content">
@@ -41,7 +46,8 @@ WordPress Admin → Pages → Edit "Policy Page" (or any interior page)
 </section>
 ```
 
-**NEW (ACF-powered):**
+- **NEW (ACF-powered):**
+
 ```php
 <?php get_template_part( 'template-parts/text-block-generic' ); ?>
 ```
@@ -63,7 +69,16 @@ WordPress Admin → Pages → Edit "Policy Page" (or any interior page)
 
 ## Icon Options (21 Available)
 
-**Most Common:**
+- `attract` - Magnet
+- `engage` - Chat bubbles
+- `delight` - Smiley face
+- `efficiency` - Gear/cog
+- `expertise` - Lightbulb
+- `inbound` - Arrow into box
+- `unit` - Building blocks
+- `value` - Price tag
+- `news` - Newspaper
+- `exit` - Exit door
 - `contact` - Phone/message icon
 - `email` - Email envelope
 - `roi` - ROI graph
@@ -84,30 +99,35 @@ WordPress Admin → Pages → Edit "Policy Page" (or any interior page)
 ## Template Integration Checklist
 
 ### Interior Page (page.php) ✅
+
 - [x] Import ACF field group
 - [ ] Replace hard-coded text block at lines 44-70
 - [ ] Test default variant
 - [ ] Test wide variant
 
 ### About & Contact (template-about-contact.php)
+
 - [x] Import ACF field group
 - [ ] Replace hard-coded text block at lines 84-133
 - [ ] Test wide variant with icon list
 - [ ] Test multiple sections
 
 ### Resources (template-resource.php)
+
 - [x] Import ACF field group
 - [ ] Replace hard-coded text block (Section 2)
 - [ ] Test wide variant
 - [ ] Keep featured resource section separate
 
 ### Pillar Page (template-pillar-page.php)
+
 - [x] Import ACF field group
 - [ ] Replace hard-coded text blocks
 - [ ] Test pillar variant (gray background)
 - [ ] Test anchor ID integration with sticky menu
 
 ### Blog Posts (single.php)
+
 - [x] Import ACF field group
 - [ ] Optional: Add text blocks before/after post content
 - [ ] Test narrative variant
@@ -124,11 +144,13 @@ WordPress Admin → Pages → Edit "Policy Page" (or any interior page)
 4. Fill in the fields:
 
 **Section Heading** (Optional)
+
 ```
 Example: "Our Mission"
 ```
 
 **Section Content** (Required)
+
 ```
 Use the WYSIWYG editor to add:
 - Paragraphs
@@ -139,6 +161,7 @@ Use the WYSIWYG editor to add:
 ```
 
 **Style Variant** (Required - choose one)
+
 - Default - Most common, standard body text
 - Wide - Full-width content
 - Narrative - Blog post style
@@ -147,16 +170,19 @@ Use the WYSIWYG editor to add:
 - Sidebar - Compact information box
 
 **Section Icon** (Optional)
+
 - Choose from 21 decorative icons
 - Leave blank if no icon needed
 
 **Icon Color** (If icon selected)
+
 - Navy (default) - Primary brand color
 - Gray - Neutral option
 - Dark - High contrast
 - White - For dark backgrounds
 
 **Anchor ID** (Optional)
+
 ```
 Use for sticky menu linking
 Example: "mission" creates linkable #mission
@@ -169,21 +195,25 @@ Example: "mission" creates linkable #mission
 ## Troubleshooting
 
 ### ❌ Field group not showing
+
 - Check ACF Pro license is active
 - Verify you're editing the correct template
 - Refresh the page editor
 
 ### ❌ Styles not applying
+
 - Hard refresh: Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows)
 - Check browser console for CSS errors
 - Verify variables.css loaded before organisms-text-block.css
 
 ### ❌ Icons not displaying
+
 - Check icon sprite sheet loaded: `/assets/svg/decorative-icons/purposeful-sprite-symbolic.svg`
 - Verify JavaScript executing (check browser console)
 - Ensure icon name spelled correctly
 
 ### ❌ Content not saving
+
 - Check WordPress memory limit (increase if needed)
 - Verify ACF field group imported correctly
 - Try saving with fewer sections first
@@ -193,12 +223,14 @@ Example: "mission" creates linkable #mission
 ## Files Reference
 
 ### Core Files:
+
 1. **ACF Field Group:** `/wordpress-theme/ACF Files/acf-text-block-generic.json`
 2. **PHP Template Part:** `/wordpress-theme/purposeful-media/template-parts/text-block-generic.php`
 3. **CSS Variables:** `/wordpress-theme/purposeful-media/assets/css/variables-v4.0-20251027.css` (lines 747-848)
 4. **CSS Component:** `/wordpress-theme/purposeful-media/assets/css/organisms-text-block.css` (lines 765-900)
 
 ### Documentation:
+
 1. **Full Guide:** `TEXT-BLOCK-GENERIC-IMPLEMENTATION-GUIDE.md`
 2. **Quick Start:** `TEXT-BLOCK-QUICK-START.md` (this file)
 

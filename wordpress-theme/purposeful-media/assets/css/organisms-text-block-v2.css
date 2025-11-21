@@ -1,0 +1,392 @@
+/**
+ * =================================================
+ * TEXT BLOCK ORGANISM - VERSION 2.0 (FIGMA-ACCURATE)
+ * =================================================
+ *
+ * Created: November 20, 2025 (Week 47 Thursday)
+ * Based on: Figma TypeScript exports (exact specifications)
+ *
+ * This file replaces organisms-text-block.css with Figma-accurate styling
+ * Key differences from v1:
+ * - Gray background (#ECEEEF)
+ * - Uppercase headlines (text-transform: uppercase)
+ * - Lato-Heavy font (font-weight: 900)
+ * - Nested padding structure matching Figma
+ * - Exact gap spacing (16px between sections)
+ *
+ * Breakpoints:
+ * - Mobile: 380-767px
+ * - Tablet: 768-1149px
+ * - Desktop: 1150-1919px
+ * - DesktopPlus: 1920px+
+ * =================================================
+ */
+
+/* Import Dependencies */
+@import url('variables-v4.0-20251027.css');
+
+/* ====================================
+   BASE TYPOGRAPHY CLASSES (GLOBAL)
+   Figma-accurate with uppercase and heavy weight
+   ==================================== */
+
+/* Headline Base Classes - Lato-Heavy, Uppercase */
+.headline {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    color: var(--color-primary-700, #1B1464);
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0;
+}
+
+.headline--h1 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 36px;
+    line-height: 54px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+}
+
+.headline--h2 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+}
+
+.headline--h3 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+}
+
+.headline--h4 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 21px;
+    line-height: 31.5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+}
+
+.headline--h5 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+}
+
+.headline--h6 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+}
+
+/* Paragraph Base Classes - Open Sans */
+.paragraph {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    color: var(--color-neutral-600, #51585E);
+    margin: 0;
+}
+
+.paragraph--lead {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 21px;
+    line-height: 31.5px;
+    font-weight: 400;
+    color: var(--color-neutral-700, #363A3E);
+}
+
+.paragraph--default {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: var(--color-neutral-600, #51585E);
+}
+
+/* ====================================
+   TEXT BLOCK CONTAINER (OUTER)
+   Figma: Gray background, proper padding per breakpoint
+   ==================================== */
+
+.text-block {
+    width: 100%;
+    background: var(--color-neutral-50, #ECEEEF);
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-8, 32px);
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Mobile: 380-767px */
+.text-block {
+    padding: var(--space-16, 64px) var(--space-6, 24px);
+}
+
+/* Tablet: 768-1149px */
+@media (min-width: 768px) and (max-width: 1149px) {
+    .text-block {
+        padding: var(--space-16, 64px) var(--space-12, 48px);
+    }
+}
+
+/* Desktop: 1150-1919px */
+@media (min-width: 1150px) and (max-width: 1919px) {
+    .text-block {
+        padding: var(--space-16, 64px);
+    }
+}
+
+/* DesktopPlus: 1920px+ */
+@media (min-width: 1920px) {
+    .text-block {
+        padding: var(--space-16, 64px);
+    }
+}
+
+/* ====================================
+   TEXT BLOCK CONTAINER (INNER)
+   Figma: Inner wrapper with specific padding
+   ==================================== */
+
+.text-block__container {
+    background: var(--color-neutral-50, #ECEEEF);
+    padding: var(--space-6, 24px) var(--space-4, 16px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 16px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ====================================
+   TEXT BLOCK CONTENT WRAPPER
+   ==================================== */
+
+.text-block__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4, 16px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* ====================================
+   TEXT BLOCK HEADER
+   Figma: Header with H1 + lead paragraph
+   ==================================== */
+
+.text-block__header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.text-block__header .headline--h1 {
+    text-align: left;
+    position: relative;
+    align-self: stretch;
+}
+
+.text-block__header .paragraph--lead {
+    text-align: left;
+    position: relative;
+    align-self: stretch;
+}
+
+/* ====================================
+   TEXT BLOCK SECTION
+   Figma: Individual content sections with H2/H3 + paragraphs
+   ==================================== */
+
+.text-block__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Sections with H2 get top padding */
+.text-block__section:has(.headline--h2) {
+    padding: var(--space-3, 12px) 0;
+}
+
+.text-block__section .headline--h2,
+.text-block__section .headline--h3 {
+    text-align: left;
+    position: relative;
+    align-self: stretch;
+}
+
+.text-block__section .paragraph--default {
+    text-align: left;
+    position: relative;
+    align-self: stretch;
+}
+
+/* ====================================
+   TEXT BLOCK - TYPOGRAPHY ELEMENTS
+   Figma-accurate spacing and styling
+   ==================================== */
+
+/* Headlines in text blocks */
+.text-block h1,
+.text-block .headline--h1 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 36px;
+    line-height: 54px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+    margin: 0;
+}
+
+.text-block h2,
+.text-block .headline--h2 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+    margin: 0;
+}
+
+.text-block h3,
+.text-block .headline--h3 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+    margin: 0;
+}
+
+.text-block h4,
+.text-block .headline--h4 {
+    font-family: var(--font-primary, 'Lato', sans-serif);
+    font-size: 21px;
+    line-height: 31.5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-primary-700, #1B1464);
+    margin: 0;
+}
+
+/* Paragraphs in text blocks */
+.text-block p,
+.text-block .paragraph {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: var(--color-neutral-600, #51585E);
+    margin: 0;
+}
+
+/* ====================================
+   TEXT BLOCK - LISTS
+   Figma: Bulleted lists with proper spacing
+   ==================================== */
+
+.text-block ul,
+.text-block ol {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: var(--color-neutral-600, #51585E);
+    margin: 0;
+    padding-left: 24px;
+    align-self: stretch;
+}
+
+.text-block ul li,
+.text-block ol li {
+    margin-bottom: 8px;
+}
+
+.text-block ul li:last-child,
+.text-block ol li:last-child {
+    margin-bottom: 0;
+}
+
+/* Bulleted points span (from Figma) */
+.bulleted-points-span {
+    list-style-type: disc;
+}
+
+/* ====================================
+   RESPONSIVE ADJUSTMENTS
+   ==================================== */
+
+/* Mobile: 380-767px */
+@media (max-width: 767px) {
+    .text-block h1,
+    .text-block .headline--h1 {
+        font-size: 30px;
+        line-height: 45px;
+    }
+
+    .text-block h2,
+    .text-block .headline--h2 {
+        font-size: 24px;
+        line-height: 36px;
+    }
+
+    .text-block h3,
+    .text-block .headline--h3 {
+        font-size: 21px;
+        line-height: 31.5px;
+    }
+}
+
+/* ====================================
+   VARIANT MODIFIERS (OPTIONAL)
+   Can be added later if needed
+   ==================================== */
+
+/* Default variant - already base styles above */
+.text-block--default {
+    /* Uses base styles */
+}
+
+/* Wide variant - if needed */
+.text-block--wide {
+    /* Could add full-width modifications */
+}
+
+/* ====================================
+   END OF TEXT BLOCK V2
+   ==================================== */

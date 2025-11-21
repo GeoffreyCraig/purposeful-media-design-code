@@ -95,11 +95,11 @@ function purposeful_media_enqueue_assets() {
         $theme_version
     );
 
-    // Text Block - Multiple templates
-    if (is_front_page() || is_page_template('template-pillar-page.php') || is_page_template('template-about-contact.php')) {
+    // Text Block V2 - Multiple templates (Figma-accurate styling)
+    if (is_front_page() || is_page_template('page.php') || is_page_template('template-pillar-page.php') || is_page_template('template-about-contact.php') || is_page_template('template-resource.php') || is_single()) {
         wp_enqueue_style(
-            'organisms-text-block',
-            $theme_uri . '/assets/css/organisms-text-block.css',
+            'organisms-text-block-v2',
+            $theme_uri . '/assets/css/organisms-text-block-v2.css',
             array('purposeful-media-organisms'),
             $theme_version
         );

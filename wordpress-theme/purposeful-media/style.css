@@ -4,7 +4,7 @@ Theme URI: https://purposefulmediapromotions.com
 Author: Purposeful Media Promotions
 Author URI: https://purposefulmediapromotions.com
 Description: Custom WordPress theme for Purposeful Media B2B marketing website. Built with atomic design methodology and strict adherence to the Purposeful Media Design System. Updated November 2025 with W3C validated components and November consolidation strategy.
-Version: 2.0.5
+Version: 2.0.8
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -16,8 +16,30 @@ Tags: business, marketing, b2b, custom-design, atomic-design
 /**
  * =================================================
  * PURPOSEFUL MEDIA WORDPRESS THEME
- * Version: 2.0.5
- * Updated: November 11, 2025
+ * Version: 2.0.8
+ * Updated: November 20, 2025 (Week 47 Thursday)
+ * =================================================
+ *
+ * CHANGELOG v2.0.8 (November 20, 2025 - Text Block Cache Bust):
+ * - FIXED: Removed old text-block styles from production-organisms.css
+ * - Cache busting to force reload of updated CSS files
+ *
+ * CHANGELOG v2.0.7 (November 20, 2025 - Text Block V2 Figma-Accurate):
+ * - NEW: organisms-text-block-v2.css - Complete rewrite based on Figma specifications
+ * - FIXED: Gray background (#ECEEEF) now applied to text blocks
+ * - FIXED: Headlines now use text-transform: uppercase (Figma-accurate)
+ * - FIXED: Font-weight changed to 900 (Lato-Heavy) for all headlines
+ * - FIXED: Nested padding structure matches Figma exactly
+ * - FIXED: Gap spacing set to 16px between sections (Figma-accurate)
+ * - UPDATED: enqueue.php - Now loads organisms-text-block-v2.css instead of v1
+ *
+ * CHANGELOG v2.0.6 (November 20, 2025 - ACF Text Block Component):
+ * - NEW: ACF-powered generic text block component with style variants
+ * - NEW: Base typography classes (.headline, .paragraph) with Lato/Open Sans fonts
+ * - UPDATED: variables-v4.0 - Added 70+ text block style tokens (lines 747-848)
+ * - NEW: template-parts/text-block-generic.php - Reusable ACF template part
+ * - NEW: ACF field group "text-block-generic" with 6 style variants
+ *
  * =================================================
  *
  * CHANGELOG v2.0.5 (November 11, 2025 - Icon Fix):
