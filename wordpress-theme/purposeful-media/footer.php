@@ -20,9 +20,9 @@
                             <h3 class="footer-menu-title"><?php _e('Services', 'purposeful-media'); ?></h3>
                             <nav class="footer-menu-nav">
                                 <ul class="footer-menu-list">
-                                    <li><a href="<?php echo esc_url(home_url('/services/email-marketing')); ?>" class="footer-menu-link"><?php _e('Email Marketing', 'purposeful-media'); ?></a></li>
-                                    <li><a href="<?php echo esc_url(home_url('/services/webinar-production')); ?>" class="footer-menu-link"><?php _e('Webinar Production', 'purposeful-media'); ?></a></li>
-                                    <li><a href="<?php echo esc_url(home_url('/services/inbound-marketing')); ?>" class="footer-menu-link"><?php _e('Inbound Marketing', 'purposeful-media'); ?></a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/email-deliverability-consulting-service')); ?>" class="footer-menu-link"><?php _e('Email Marketing', 'purposeful-media'); ?></a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/webinar-production-service')); ?>" class="footer-menu-link"><?php _e('Webinar Production', 'purposeful-media'); ?></a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/content-creation-service')); ?>" class="footer-menu-link"><?php _e('Content Creation', 'purposeful-media'); ?></a></li>
                                     <li><span class="footer-menu-link disabled"><?php _e('Succession Planning [Coming Soon]', 'purposeful-media'); ?></span></li>
                                     <li><span class="footer-menu-link disabled"><?php _e('Business Unit Growth [Coming Soon]', 'purposeful-media'); ?></span></li>
                                 </ul>
@@ -50,8 +50,8 @@
                             <h3 class="footer-menu-title"><?php _e('Resources', 'purposeful-media'); ?></h3>
                             <nav class="footer-menu-nav">
                                 <ul class="footer-menu-list">
-                                    <li><a href="<?php echo esc_url(home_url('/blog')); ?>" class="footer-menu-link"><?php _e('Read Our Blog', 'purposeful-media'); ?></a></li>
-                                    <li><a href="<?php echo esc_url(home_url('/resources/thought-leadership')); ?>" class="footer-menu-link"><?php _e('Thought Leadership', 'purposeful-media'); ?></a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/blog-archive')); ?>" class="footer-menu-link"><?php _e('Read Our Blog', 'purposeful-media'); ?></a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/purposeful-resources-library')); ?>" class="footer-menu-link"><?php _e('Thought Leadership', 'purposeful-media'); ?></a></li>
                                     <li><span class="footer-menu-link disabled"><?php _e('Pricing [Coming Soon]', 'purposeful-media'); ?></span></li>
                                 </ul>
                             </nav>
@@ -65,9 +65,9 @@
                             <h3 class="footer-menu-title"><?php _e('Company', 'purposeful-media'); ?></h3>
                             <nav class="footer-menu-nav">
                                 <ul class="footer-menu-list">
-                                    <li><a href="<?php echo esc_url(home_url('/about')); ?>" class="footer-menu-link"><?php _e('About Us', 'purposeful-media'); ?></a></li>
-                                    <li><a href="<?php echo esc_url(home_url('/contact')); ?>" class="footer-menu-link"><?php _e('Contact Us', 'purposeful-media'); ?></a></li>
-                                    <li><a href="<?php echo esc_url(home_url('/privacy')); ?>" class="footer-menu-link"><?php _e('Privacy Policy', 'purposeful-media'); ?></a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/about-and-contact-purposeful-media-promotions')); ?>" class="footer-menu-link"><?php _e('About Us', 'purposeful-media'); ?></a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/about-and-contact-purposeful-media-promotions/#contact')); ?>" class="footer-menu-link"><?php _e('Contact Us', 'purposeful-media'); ?></a></li>
+                                    <li><a href="<?php echo esc_url(home_url('/privacy-policy-statement')); ?>" class="footer-menu-link"><?php _e('Privacy Policy', 'purposeful-media'); ?></a></li>
                                     <li><span class="footer-menu-link disabled"><?php _e('Affiliates [Coming Soon]', 'purposeful-media'); ?></span></li>
                                 </ul>
                             </nav>
@@ -135,13 +135,13 @@
                 <!-- Services Dropdown -->
                 <div class="dropdown-mobile" id="dropdown-services">
                     <div class="dropdown-mobile__item">
-                        <a href="<?php echo esc_url(home_url('/services/email-marketing')); ?>" class="dropdown-mobile__link"><?php _e('Email Marketing', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/email-deliverability-consulting-service')); ?>" class="dropdown-mobile__link"><?php _e('Email Marketing', 'purposeful-media'); ?></a>
                     </div>
                     <div class="dropdown-mobile__item">
-                        <a href="<?php echo esc_url(home_url('/services/webinar-production')); ?>" class="dropdown-mobile__link"><?php _e('Webinar Production', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/webinar-production-service')); ?>" class="dropdown-mobile__link"><?php _e('Webinar Production', 'purposeful-media'); ?></a>
                     </div>
                     <div class="dropdown-mobile__item">
-                        <a href="<?php echo esc_url(home_url('/services/inbound-marketing')); ?>" class="dropdown-mobile__link"><?php _e('Inbound Marketing', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/content-creation-service')); ?>" class="dropdown-mobile__link"><?php _e('Content Creation', 'purposeful-media'); ?></a>
                     </div>
                     <div class="dropdown-mobile__item">
                         <span class="dropdown-mobile__link dropdown-mobile__link--disabled"><?php _e('Succession Planning', 'purposeful-media'); ?></span>
@@ -179,10 +179,10 @@
                 <!-- Resources Dropdown -->
                 <div class="dropdown-mobile" id="dropdown-resources">
                     <div class="dropdown-mobile__item">
-                        <a href="<?php echo esc_url(home_url('/blog')); ?>" class="dropdown-mobile__link"><?php _e('Read Our Blog', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/blog-archive')); ?>" class="dropdown-mobile__link"><?php _e('Read Our Blog', 'purposeful-media'); ?></a>
                     </div>
                     <div class="dropdown-mobile__item">
-                        <a href="<?php echo esc_url(home_url('/resources/thought-leadership')); ?>" class="dropdown-mobile__link"><?php _e('Thought Leadership', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/purposeful-resources-library')); ?>" class="dropdown-mobile__link"><?php _e('Thought Leadership', 'purposeful-media'); ?></a>
                     </div>
                     <div class="dropdown-mobile__item">
                         <span class="dropdown-mobile__link dropdown-mobile__link--disabled"><?php _e('Pricing', 'purposeful-media'); ?></span>
@@ -198,13 +198,13 @@
                 <!-- Company Dropdown -->
                 <div class="dropdown-mobile" id="dropdown-company">
                     <div class="dropdown-mobile__item">
-                        <a href="<?php echo esc_url(home_url('/about')); ?>" class="dropdown-mobile__link"><?php _e('About Us', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/about-and-contact-purposeful-media-promotions')); ?>" class="dropdown-mobile__link"><?php _e('About Us', 'purposeful-media'); ?></a>
                     </div>
                     <div class="dropdown-mobile__item">
-                        <a href="<?php echo esc_url(home_url('/contact')); ?>" class="dropdown-mobile__link"><?php _e('Contact Us', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/about-and-contact-purposeful-media-promotions/#contact')); ?>" class="dropdown-mobile__link"><?php _e('Contact Us', 'purposeful-media'); ?></a>
                     </div>
                     <div class="dropdown-mobile__item">
-                        <a href="<?php echo esc_url(home_url('/privacy')); ?>" class="dropdown-mobile__link"><?php _e('Privacy Policy', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/privacy-policy-statement')); ?>" class="dropdown-mobile__link"><?php _e('Privacy Policy', 'purposeful-media'); ?></a>
                     </div>
                     <div class="dropdown-mobile__item">
                         <span class="dropdown-mobile__link dropdown-mobile__link--disabled"><?php _e('Affiliates [Coming Soon]', 'purposeful-media'); ?></span>
@@ -245,7 +245,7 @@
                 <div class="footer-mobile__attribution-content">
                     <div class="footer-mobile__copyright"><?php printf(__('© All rights reserved %s', 'purposeful-media'), date('Y')); ?></div>
                     <div class="footer-mobile__company"><?php bloginfo('name'); ?></div>
-                    <a href="<?php echo esc_url(home_url('/policy')); ?>" class="footer-mobile__policy"><?php _e('Policy Statement', 'purposeful-media'); ?></a>
+                    <a href="<?php echo esc_url(home_url('/privacy-policy-statement')); ?>" class="footer-mobile__policy"><?php _e('Policy Statement', 'purposeful-media'); ?></a>
                 </div>
             </div>
         </div>
