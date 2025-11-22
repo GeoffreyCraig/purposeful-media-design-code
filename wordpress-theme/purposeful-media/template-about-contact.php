@@ -60,7 +60,7 @@ get_header();
 		 Location: About, Homepage, Pillar, Resources
 		 ======================================== -->
 	<!-- Headline Banner: Top -->
-	<div class="card-banner-spacer variant-headline-banner" id="services">
+	<div class="card-banner-spacer variant-headline-banner" id="about">
 		<div class="banner-spacer-content">
 			<?php 
 				$headline_top = get_field('h1_headline_banner_top');
@@ -169,7 +169,7 @@ get_header();
 		 Location: About, Homepage, Pillar, Resources
 		 ======================================== -->
 	<!-- Headline Banner: Bottom -->
-	<div class="card-banner-spacer variant-headline-banner">
+	<div class="card-banner-spacer variant-headline-banner" id="contact">
 		<div class="banner-spacer-content">
 			<?php 
 				$headline_bottom = get_field('h1_headline_banner_bottom');
