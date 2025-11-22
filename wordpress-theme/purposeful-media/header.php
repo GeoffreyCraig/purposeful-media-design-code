@@ -66,9 +66,9 @@
                 <div class="banner-header__menu-item">
                     <span class="banner-header__menu-link"><?php _e('Solutions', 'purposeful-media'); ?></span>
                     <div class="banner-header__dropdown">
-                        <a href="<?php echo esc_url(home_url('/email-management')); ?>" class="banner-header__dropdown-link"><?php _e('Email Management', 'purposeful-media'); ?></a>
-                        <a href="<?php echo esc_url(home_url('/content-creation')); ?>" class="banner-header__dropdown-link"><?php _e('Content Creation', 'purposeful-media'); ?></a>
-                        <a href="<?php echo esc_url(home_url('/webinar-production')); ?>" class="banner-header__dropdown-link"><?php _e('Webinar Production', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/email-deliverability-consulting-service')); ?>" class="banner-header__dropdown-link"><?php _e('Email Management', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/content-creation-service')); ?>" class="banner-header__dropdown-link"><?php _e('Content Creation', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/webinar-production-service')); ?>" class="banner-header__dropdown-link"><?php _e('Webinar Production', 'purposeful-media'); ?></a>
                     </div>
                 </div>
 
@@ -76,15 +76,15 @@
                 <div class="banner-header__menu-item">
                     <span class="banner-header__menu-link"><?php _e('Resources', 'purposeful-media'); ?></span>
                     <div class="banner-header__dropdown">
-                        <a href="<?php echo esc_url(home_url('/resource-library')); ?>" class="banner-header__dropdown-link"><?php _e('Resource Library', 'purposeful-media'); ?></a>
-                        <a href="<?php echo esc_url(home_url('/about-us')); ?>" class="banner-header__dropdown-link"><?php _e('About Us', 'purposeful-media'); ?></a>
-                        <a href="<?php echo esc_url(home_url('/blog')); ?>" class="banner-header__dropdown-link"><?php _e('Blog', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/purposeful-resources-library')); ?>" class="banner-header__dropdown-link"><?php _e('Resource Library', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/about-and-contact-purposeful-media-promotions')); ?>" class="banner-header__dropdown-link"><?php _e('About Us', 'purposeful-media'); ?></a>
+                        <a href="<?php echo esc_url(home_url('/blog-archive')); ?>" class="banner-header__dropdown-link"><?php _e('Blog', 'purposeful-media'); ?></a>
                     </div>
                 </div>
 
                 <!-- Contact -->
                 <div class="banner-header__menu-item">
-                    <a href="<?php echo esc_url(home_url('/contact')); ?>" class="banner-header__menu-link" data-page="contact"><?php _e('Contact', 'purposeful-media'); ?></a>
+                    <a href="<?php echo esc_url(home_url('/about-and-contact-purposeful-media-promotions/#contact')); ?>" class="banner-header__menu-link" data-page="contact"><?php _e('Contact', 'purposeful-media'); ?></a>
                 </div>
             </nav>
         </div>
@@ -103,22 +103,22 @@
             <div class="mobile-menu__submenu">
                 <div class="mobile-menu__link mobile-menu__trigger"><?php _e('Solutions', 'purposeful-media'); ?></div>
                 <div class="mobile-menu__submenu-items">
-                    <a href="<?php echo esc_url(home_url('/email-management')); ?>" class="mobile-menu__sublink"><?php _e('Email Management', 'purposeful-media'); ?></a>
-                    <a href="<?php echo esc_url(home_url('/content-creation')); ?>" class="mobile-menu__sublink"><?php _e('Content Creation', 'purposeful-media'); ?></a>
-                    <a href="<?php echo esc_url(home_url('/webinar-production')); ?>" class="mobile-menu__sublink"><?php _e('Webinar Production', 'purposeful-media'); ?></a>
+                    <a href="<?php echo esc_url(home_url('/email-deliverability-consulting-service')); ?>" class="mobile-menu__sublink"><?php _e('Email Management', 'purposeful-media'); ?></a>
+                    <a href="<?php echo esc_url(home_url('/content-creation-service')); ?>" class="mobile-menu__sublink"><?php _e('Content Creation', 'purposeful-media'); ?></a>
+                    <a href="<?php echo esc_url(home_url('/webinar-production-service')); ?>" class="mobile-menu__sublink"><?php _e('Webinar Production', 'purposeful-media'); ?></a>
                 </div>
             </div>
 
             <div class="mobile-menu__submenu">
                 <div class="mobile-menu__link mobile-menu__trigger"><?php _e('Resources', 'purposeful-media'); ?></div>
                 <div class="mobile-menu__submenu-items">
-                    <a href="<?php echo esc_url(home_url('/resource-library')); ?>" class="mobile-menu__sublink"><?php _e('Resource Library', 'purposeful-media'); ?></a>
-                    <a href="<?php echo esc_url(home_url('/about-us')); ?>" class="mobile-menu__sublink"><?php _e('About Us', 'purposeful-media'); ?></a>
-                    <a href="<?php echo esc_url(home_url('/blog')); ?>" class="mobile-menu__sublink"><?php _e('Blog', 'purposeful-media'); ?></a>
+                    <a href="<?php echo esc_url(home_url('/purposeful-resources-library')); ?>" class="mobile-menu__sublink"><?php _e('Resource Library', 'purposeful-media'); ?></a>
+                    <a href="<?php echo esc_url(home_url('/about-and-contact-purposeful-media-promotionsabout-and-contact-purposeful-media-promotions')); ?>" class="mobile-menu__sublink"><?php _e('About Us', 'purposeful-media'); ?></a>
+                    <a href="<?php echo esc_url(home_url('/blog-archive')); ?>" class="mobile-menu__sublink"><?php _e('Blog', 'purposeful-media'); ?></a>
                 </div>
             </div>
 
-            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="mobile-menu__link" data-page="contact"><?php _e('Contact', 'purposeful-media'); ?></a>
+            <a href="<?php echo esc_url(home_url('/about-and-contact-purposeful-media-promotions/#contact')); ?>" class="mobile-menu__link" data-page="contact"><?php _e('Contact', 'purposeful-media'); ?></a>
         </nav>
     </div>
 </header>
